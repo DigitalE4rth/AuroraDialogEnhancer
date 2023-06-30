@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="AuroraDialogEnhancer.Frontend.Controls.GameSelector.GameSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cards="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.Cards"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
+             xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+             d:DesignHeight="50"
+             d:DesignWidth="250"
+             mc:Ignorable="d">
+    <Grid>
+        <cards:ComboBoxProfile x:Name="ComboBoxGames"
+                               Padding="15,5,15,5"
+                               HorizontalContentAlignment="Center"
+                               d:SelectedIndex="0"
+                               Style="{StaticResource ComboBoxText}">
+
+            <cards:ComboBoxProfile.LeftIcon>
+                <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                    <woControls:PathIcon x:Name="LeftIcon"
+                                         Data="{StaticResource Icon.Controller}"
+                                         RenderTransformOrigin="0.5,0.5"
+                                         Style="{StaticResource IconLarge}">
+                        <woControls:PathIcon.RenderTransform>
+                            <RotateTransform />
+                        </woControls:PathIcon.RenderTransform>
+                    </woControls:PathIcon>
+                </Grid>
+            </cards:ComboBoxProfile.LeftIcon>
+
+            <d:ComboBox.Items>
+                <ComboBoxItem Content="d: Game profile item" />
+            </d:ComboBox.Items>
+
+            <cards:ComboBoxProfile.RightIcon>
+                <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                    <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
+                                         Data="{StaticResource Icon.ExpandMore}"
+                                         Style="{StaticResource IconSmall}" />
+                </Grid>
+            </cards:ComboBoxProfile.RightIcon>
+        </cards:ComboBoxProfile>
+    </Grid>
+</UserControl>

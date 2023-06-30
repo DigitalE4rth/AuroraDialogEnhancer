@@ -1,0 +1,133 @@
+﻿<Window x:Class="AuroraDialogEnhancer.AppConfig.NotifyIcon.NotifyMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
+        xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
+        xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+        Title="NotifyMenuWindow"
+        d:Height="225"
+        d:Width="175"
+        AllowsTransparency="True"
+        Background="Transparent"
+        RenderOptions.BitmapScalingMode="NearestNeighbor"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        SizeToContent="WidthAndHeight"
+        Topmost="True"
+        UseLayoutRounding="True"
+        WindowStyle="None"
+        mc:Ignorable="d">
+
+    <Grid>
+        <Border Background="Transparent"
+                MouseDown="Shadow_OnMouseDown"
+                StylusDown="Shadow_OnStylusDown"
+                TouchDown="Shadow_OnTouchDown" />
+
+        <Border x:Name="Container"
+                Margin="10"
+                Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Surface, Mode=OneTime}"
+                BorderBrush="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Outline, Mode=OneTime}"
+                BorderThickness="1"
+                CornerRadius="{Binding Source={x:Static woProperties:Settings.Default}, Path=UI_CardCornerRadius, Mode=OneTime}"
+                RenderTransformOrigin="0.5,0.5">
+
+            <Border.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="{Binding Source={x:Static properties:Settings.Default}, Path=UI_Scale, Mode=OneTime}" ScaleY="{Binding Source={x:Static properties:Settings.Default}, Path=UI_Scale, Mode=OneTime}" />
+                </TransformGroup>
+            </Border.LayoutTransform>
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10"
+                                  Opacity="0.1"
+                                  ShadowDepth="0"
+                                  Color="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Shadow, Mode=OneTime}" />
+            </Border.Effect>
+
+            <StackPanel Margin="5">
+                <woControls:Button MinHeight="30"
+                                   HorizontalContentAlignment="Left"
+                                   Click="Button_OpenMainWindow_OnClick"
+                                   Style="{StaticResource ButtonText}">
+
+                    <Grid Margin="5,5,10,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
+                              Margin="0,0,10,0">
+                            <woControls:PathIcon Data="{StaticResource Icon.WindowRestore.Regular}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+
+                        <TextBlock Grid.Column="1" Text="{x:Static localization:Resources.NotifyMenu_Open}" />
+                    </Grid>
+                </woControls:Button>
+
+                <woControls:Button x:Name="ButtonScreenshots"
+                                   MinHeight="30"
+                                   HorizontalContentAlignment="Left"
+                                   Click="Button_Screenshots_OnClick"
+                                   Style="{StaticResource ButtonText}">
+
+                    <Grid Margin="5,5,10,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
+                              Margin="0,0,10,0">
+                            <woControls:PathIcon Data="{StaticResource Icon.Image}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+
+                        <TextBlock Grid.Column="1" Text="{x:Static localization:Resources.NotifyMenu_Screenshots}" />
+                    </Grid>
+
+                </woControls:Button>
+
+                <Border Height="1"
+                        Margin="0,5"
+                        VerticalAlignment="Bottom"
+                        Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
+
+                <StackPanel x:Name="ContainerGameButtons" />
+
+                <Border x:Name="SeparatorExit"
+                        Height="1"
+                        Margin="0,5"
+                        VerticalAlignment="Bottom"
+                        Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
+
+                <woControls:Button MinHeight="30"
+                                   HorizontalContentAlignment="Left"
+                                   Click="Button_Exit_OnClick"
+                                   Style="{StaticResource ButtonText}">
+
+                    <Grid Margin="5,5,10,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
+                              Margin="0,0,10,0">
+                            <woControls:PathIcon Data="{StaticResource Icon.DoorOpen}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+
+                        <TextBlock Grid.Column="1" Text="{x:Static localization:Resources.NotifyMenu_Exit}" />
+                    </Grid>
+
+                </woControls:Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

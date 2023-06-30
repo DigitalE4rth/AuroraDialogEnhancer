@@ -1,0 +1,99 @@
+﻿using System.Collections.Generic;
+using AuroraDialogEnhancerExtensions.KeyBinding;
+
+namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
+
+public class KeyBindingProfileViewModel
+{
+    #region Utilities
+    public bool IsCursorHideOnManualClick { get; set; }
+
+    public bool IsCycleThrough { get; set; }
+
+    public ESingleDialogOptionBehaviour SingleDialogOptionBehaviour { get; set; }
+
+    public ENumericActionBehaviour NumericActionBehaviour { get; set; }
+
+    public ECursorBehaviour CursorBehaviour { get; set; }
+
+    public EHiddenCursorSetting HiddenCursorSetting { get; set; }
+    #endregion
+
+    #region General
+    public ActionViewModel PauseResume;
+
+    public ActionViewModel Reload;
+
+    public ActionViewModel Screenshot;
+
+    public ActionViewModel HideCursor;
+    #endregion
+
+    #region Controls
+    public ActionViewModel Select;
+
+    public ActionViewModel Previous;
+
+    public ActionViewModel Next;
+
+    public ActionViewModel AutoDialog;
+    
+    public ActionViewModel HideUi;
+
+    public ActionViewModel FullScreenPopUp;
+    #endregion
+
+    #region Numeric
+    public ActionViewModel One;
+
+    public ActionViewModel Two;
+
+    public ActionViewModel Three;
+
+    public ActionViewModel Four;
+
+    public ActionViewModel Five;
+
+    public ActionViewModel Six;
+
+    public ActionViewModel Seven;
+
+    public ActionViewModel Eight;
+
+    public ActionViewModel Nine;
+
+    public ActionViewModel Ten;
+    #endregion
+
+    public KeyBindingProfileViewModel()
+    {
+        IsCursorHideOnManualClick   = false;
+        IsCycleThrough              = true;
+        SingleDialogOptionBehaviour = ESingleDialogOptionBehaviour.Highlight;
+        NumericActionBehaviour      = ENumericActionBehaviour.Highlight;
+        CursorBehaviour             = ECursorBehaviour.Hide;
+
+        PauseResume = new ActionViewModel(new List<TriggerViewModel>());
+        Reload      = new ActionViewModel(new List<TriggerViewModel>());
+        Screenshot  = new ActionViewModel(new List<TriggerViewModel>());
+        HideCursor  = new ActionViewModel(new List<TriggerViewModel>());
+
+        Select          = new ActionViewModel(new List<TriggerViewModel>());
+        Previous        = new ActionViewModel(new List<TriggerViewModel>());
+        Next            = new ActionViewModel(new List<TriggerViewModel>());
+        AutoDialog      = new ActionViewModel(new List<TriggerViewModel>());
+        HideUi          = new ActionViewModel(new List<TriggerViewModel>());
+        FullScreenPopUp = new ActionViewModel(new List<TriggerViewModel>());
+
+        One   = new ActionViewModel(new List<TriggerViewModel>());
+        Two   = new ActionViewModel(new List<TriggerViewModel>());
+        Three = new ActionViewModel(new List<TriggerViewModel>());
+        Four  = new ActionViewModel(new List<TriggerViewModel>());
+        Five  = new ActionViewModel(new List<TriggerViewModel>());
+        Six   = new ActionViewModel(new List<TriggerViewModel>());
+        Seven = new ActionViewModel(new List<TriggerViewModel>());
+        Eight = new ActionViewModel(new List<TriggerViewModel>());
+        Nine  = new ActionViewModel(new List<TriggerViewModel>());
+        Ten   = new ActionViewModel(new List<TriggerViewModel>());
+    }
+}

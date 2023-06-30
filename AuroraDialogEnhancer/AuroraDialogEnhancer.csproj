@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\net48\OpenCvSharp4.runtime.win.props" Condition="Exists('..\packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\net48\OpenCvSharp4.runtime.win.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A0618694-B2EF-4801-A1A8-0FE3ACA5F594}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AuroraDialogEnhancer</RootNamespace>
+    <AssemblyName>AuroraDialogEnhancer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <Nullable>enable</Nullable>
+    <LangVersion>10.0</LangVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>CS8632</NoWarn>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <LangVersion>10</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>10</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.7.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.7.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.7.0.20230115\lib\net48\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.Extensions.4.7.0.20230115\lib\net48\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.7.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppConfig\Config\SingleInstanceService.cs" />
+    <Compile Include="AppConfig\Config\SingleInstanceEventArgs.cs" />
+    <Compile Include="AppConfig\Database\EntityRepository.cs" />
+    <Compile Include="AppConfig\NotifyIcon\NotifyGameContent.xaml.cs">
+      <DependentUpon>NotifyGameContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfig\NotifyIcon\NotifyMenuWindow.xaml.cs">
+      <DependentUpon>NotifyMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfig\Statics\StringConstants.cs" />
+    <Compile Include="AppConfig\Theme\ColorThemeService.cs" />
+    <Compile Include="AppConfig\Theme\EColorTheme.cs" />
+    <Compile Include="AppConfig\Theme\EAppCursor.cs" />
+    <Compile Include="Backend\Extensions\ExtensionConfigMapper.cs" />
+    <Compile Include="Backend\Generics\IMapper.cs" />
+    <Compile Include="Backend\Hooks\Game\HookedGameData.cs" />
+    <Compile Include="Backend\Hooks\Game\HookedGameDataProvider.cs" />
+    <Compile Include="Backend\KeyBinding\KeyBindingProfileService.cs" />
+    <Compile Include="Backend\KeyBinding\Mappers\KeyBindingProfileMapper.cs" />
+    <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelMapper.cs" />
+    <Compile Include="Backend\OpenCv\CvPresetMapper.cs" />
+    <Compile Include="Backend\OpenCv\CvPresetsService.cs" />
+    <Compile Include="Backend\OpenCv\ColorRangeScalar.cs" />
+    <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
+    <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
+    <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\ColorPickerDialog.xaml.cs">
+      <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Controls\ColorPicker\ColorPickerViewModel.cs" />
+    <Compile Include="Frontend\Controls\GameSelector\GameSelectorContent.xaml.cs">
+      <DependentUpon>GameSelectorContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Controls\GameSelector\SpinnerStoryboardProvider.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Converters\ColorToSolidBrushConverter.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Converters\ColorToSolidConverter.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Converters\HsvToColorConverter.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Converters\HueToColorConverter.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Formatters\HexValueFormatter.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Formatters\HueValueFormatter.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Converters\UnitToPercentConverter.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Services\HsbColorService.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\EColorType.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Controls\HuePicker.xaml.cs">
+      <DependentUpon>HuePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Controls\ColorPicker\Controls\PaletteButton.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Services\PointClamperService.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Controls\SaturationBrightnessPicker.xaml.cs">
+      <DependentUpon>SaturationBrightnessPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Controls\ColorPicker\Controls\SaturationBrightnessPickerAdorner.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Controls\SliderPicker.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Controls\SliderPickerAdorner.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Controls\TransparencyPicker.xaml.cs">
+      <DependentUpon>TransparencyPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Controls\ColorPicker\Validators\HexColorInputValidator.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Validators\SaturationBrightnessInputValidator.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Validators\HueInputValidator.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Validators\RgbaInputValidator.cs" />
+    <Compile Include="Frontend\Controls\ColorPicker\Validators\ColorInputValidator.cs" />
+    <Compile Include="Frontend\Controls\FontPicker\FontPicker.xaml.cs">
+      <DependentUpon>FontPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Controls\FontPicker\FontPickerDataContext.cs" />
+    <Compile Include="Frontend\Controls\FontPicker\FontSizeValidator.cs" />
+    <Compile Include="Frontend\Controls\GameSelector\GameSelector.xaml.cs">
+      <DependentUpon>GameSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Converters\UiZoomToVisibilityConverter.cs" />
+    <Compile Include="Frontend\Converters\WindowScaleAdjuster.cs" />
+    <Compile Include="Frontend\Formatters\FontFamilyWithoutFallbackFormatter.cs" />
+    <Compile Include="Frontend\Forms\About\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\About\ExtensionViewModel.cs" />
+    <Compile Include="Frontend\Forms\Appearance\AppearancePage.xaml.cs">
+      <DependentUpon>AppearancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Debug\BitmapUtils.cs" />
+    <Compile Include="Frontend\Forms\Debug\GameCvDialogOptionFinder.cs" />
+    <Compile Include="Frontend\Forms\Debug\DebugPage.xaml.cs">
+      <DependentUpon>DebugPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Debug\DialogOptionSearchArea.cs" />
+    <Compile Include="Frontend\Forms\Debug\GameCvData.cs" />
+    <Compile Include="Frontend\Forms\Debug\OutlineArea.cs" />
+    <Compile Include="Frontend\Forms\KeyBinding\EKeyBindingSettingsAction.cs" />
+    <Compile Include="Frontend\Forms\KeyBinding\ComboBoxContent.xaml.cs">
+      <DependentUpon>ComboBoxContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Menu\MenuHookStateIcon.xaml.cs">
+      <DependentUpon>MenuHookStateIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\PresetsEditor\PresetsEditorPage.xaml.cs">
+      <DependentUpon>PresetsEditorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Utils\InfoDialog.xaml.cs">
+      <DependentUpon>InfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Utils\InfoDialogBuilder.cs" />
+    <Compile Include="Frontend\Forms\Utils\InfoDialogConfig.cs" />
+    <Compile Include="Frontend\Forms\Utils\MissingExtensionsPage.xaml.cs">
+      <DependentUpon>MissingExtensionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Utils\TextInputResetDialogDataContext.cs" />
+    <Compile Include="Frontend\Generics\EWindowState.cs" />
+    <Compile Include="Frontend\Providers\DefaultUiElementsProvider.cs" />
+    <Compile Include="Frontend\Services\UiService.cs" />
+    <Compile Include="Backend\Hooks\Game\EHookLaunchType.cs" />
+    <Compile Include="Backend\Extensions\ExtensionConfig.cs" />
+    <Compile Include="Backend\Extensions\ExtensionConfigRepository.cs" />
+    <Compile Include="Backend\Extensions\ExtensionConfigService.cs" />
+    <Compile Include="Backend\OpenCv\CvPreset.cs" />
+    <Compile Include="Backend\OpenCv\DialogOptionTemplate.cs" />
+    <Compile Include="Backend\External\FolderPicker.cs" />
+    <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerExceptions.cs" />
+    <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerRecordService.cs" />
+    <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerServiceBase.cs" />
+    <Compile Include="Backend\Hooks\Mouse\MouseHookManagerService.cs" />
+    <Compile Include="Backend\Hooks\Mouse\MouseHookManagerRecordService.cs" />
+    <Compile Include="Backend\KeyBinding\Models\KeyBindingProfile.cs" />
+    <Compile Include="Backend\Utils\BlobToBitmapImageConverter.cs" />
+    <Compile Include="Frontend\Controls\Cards\CardDropDownWithArtificialFocus.cs" />
+    <Compile Include="Frontend\Controls\Cards\KeyCap.cs" />
+    <Compile Include="Frontend\Converters\BorderThicknessToMarginConverter.cs" />
+    <Compile Include="Frontend\Forms\HookControl\HookSettingsDataContext.cs" />
+    <Page Include="AppConfig\NotifyIcon\NotifyGameContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppConfig\NotifyIcon\NotifyMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Controls\ColorPicker\ColorPickerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Controls\GameSelector\GameSelectorContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Controls\ColorPicker\Controls\HuePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Controls\ColorPicker\Resources\StaticBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Controls\ColorPicker\Controls\SaturationBrightnessPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Controls\ColorPicker\Controls\TransparencyPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Controls\FontPicker\FontPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Controls\GameSelector\GameSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\About\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Appearance\AppearancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Debug\DebugPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\KeyBinding\ComboBoxContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\KeyBinding\KeyBindingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\KeyBinding\TriggerEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Main\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Menu\MenuHookStateIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Menu\MenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\HookControl\HookControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppConfig\DependencyInjection\AppServices.cs" />
+    <Compile Include="AppConfig\DependencyInjection\ServiceProviderConfigurator.cs" />
+    <Compile Include="AppConfig\Statics\AssemblyInfo.cs" />
+    <Compile Include="AppConfig\Statics\Global.cs" />
+    <Compile Include="AppConfig\Statics\Locations.cs" />
+    <Compile Include="AppConfig\Localization\CultureInfo.cs" />
+    <Compile Include="AppConfig\Localization\CultureService.cs" />
+    <Compile Include="AppConfig\Localization\CultureProvider.cs" />
+    <Compile Include="AppConfig\Config\AppConfig.cs" />
+    <Compile Include="Backend\Hooks\Mouse\CursorInfoStruct.cs" />
+    <Compile Include="Backend\Hooks\Mouse\CursorVisibilityStateProvider.cs" />
+    <Compile Include="Backend\External\NativeMethods.cs" />
+    <Compile Include="Backend\Core\CoreService.cs" />
+    <Compile Include="Backend\Hooks\Game\EHookState.cs" />
+    <Compile Include="Backend\Hooks\Mouse\LowLevelMouseHookStruct.cs" />
+    <Compile Include="Backend\Hooks\Process\ProcessStartService.cs" />
+    <Compile Include="Backend\KeyBinding\Interpreters\KeyboardKeyInterpreterService.cs" />
+    <Compile Include="Backend\KeyBinding\Interpreters\KeyInterpreterService.cs" />
+    <Compile Include="Backend\Hooks\Mouse\MouseEmulationService.cs" />
+    <Compile Include="Backend\Hooks\Mouse\MouseHookManagerServiceBase.cs" />
+    <Compile Include="Backend\Hooks\Process\WindowInfo.cs" />
+    <Compile Include="Backend\KeyBinding\Models\KeyBindingProfileViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\KeyBindingProfileRepository.cs" />
+    <Compile Include="Backend\KeyBinding\Interpreters\MouseKeyInterpreterService.cs" />
+    <Compile Include="Backend\KeyBinding\Models\TriggerViewModel.cs" />
+    <Compile Include="Backend\Extensions\ExtensionsProvider.cs" />
+    <Compile Include="Backend\KeyHandler\DialogOptionCursorPositionInfo.cs" />
+    <Compile Include="Backend\KeyHandler\CursorPositioningService.cs" />
+    <Compile Include="Backend\Hooks\Process\WindowHookService.cs" />
+    <Compile Include="Backend\Hooks\Keyboard\KeyBindStruct.cs" />
+    <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerService.cs" />
+    <Compile Include="Backend\Hooks\Keyboard\ModifierKeysProvider.cs" />
+    <Compile Include="Backend\KeyHandler\KeyHandlerService.cs" />
+    <Compile Include="Backend\ScreenCapture\ScreenCaptureService.cs" />
+    <Compile Include="Backend\Hooks\Process\ProcessInfo.cs" />
+    <Compile Include="Backend\OpenCv\OpenCvService.cs" />
+    <Compile Include="Backend\Hooks\Process\ProcessInfoService.cs" />
+    <Compile Include="Frontend\Forms\HookControl\HookControlPage.xaml.cs">
+      <DependentUpon>HookControlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\KeyBinding\KeyBindingPage.xaml.cs">
+      <DependentUpon>KeyBindingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\KeyBinding\TriggerEditorWindow.xaml.cs">
+      <DependentUpon>TriggerEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Main\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Menu\EPageType.cs" />
+    <Compile Include="Frontend\Forms\Menu\MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\Utils\TextInputResetDialog.xaml.cs">
+      <DependentUpon>TextInputResetDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Services\KeyCapsService.cs" />
+    <Compile Include="Backend\Extensions\ExtensionConfigViewModel.cs" />
+    <Compile Include="Properties\DefaultSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>DefaultSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Localization\Resources.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfig\NotifyIcon\NotifyIconService.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ActionViewModel.cs" />
+    <Compile Include="Frontend\Forms\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Frontend\Forms\PresetsEditor\PresetsEditorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Settings\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Utils\InfoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Utils\MissingExtensionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Forms\Utils\TextInputResetDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Styles\CardButtonWithCustomBackground.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Styles\CardDropDownWithArtificialFocus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Styles\CardPathIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Styles\CardTitle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Styles\CardTitleButtonTitle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Styles\ComboBoxProfile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frontend\Styles\PaletteButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Styles\General.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Styles\KeyCap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Localization\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Localization\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Localization\Resources.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\DefaultSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>DefaultSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WhyOrchid\WhyOrchid\WhyOrchid.csproj">
+      <Project>{d2125a32-f6aa-4344-b1dc-2174135fd7f2}</Project>
+      <Name>WhyOrchid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AuroraDialogEnhancer.Extensions\AuroraDialogEnhancer.Extensions.csproj">
+      <Project>{6bd3b68a-e65e-4b61-83c0-0f9f047986a6}</Project>
+      <Name>AuroraDialogEnhancer.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CS_Logo.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>GOTO END
+
+rem Copy compiled l18n assemblies to alt folder
+
+if not exist $(TargetDir)Localization mkdir $(TargetDir)Localization
+set langs=ru
+
+for %25%25l in (%25langs%25) do (
+   xcopy $(TargetDir)%25%25l $(TargetDir)Localization\%25%25l\ /s /y
+   rmdir /s /q $(TargetDir)%25%25l
+)
+
+rmdir /s /q $(TargetDir)dll\x86 -r
+del /s /q $(TargetDir)dll\x64\opencv_videoio_ffmpeg*.dll
+
+:END</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\net48\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.7.0.20230115\build\net48\OpenCvSharp4.runtime.win.props'))" />
+  </Target>
+</Project>

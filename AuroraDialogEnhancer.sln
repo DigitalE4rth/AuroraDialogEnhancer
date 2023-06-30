@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraDialogEnhancer", "AuroraDialogEnhancer\AuroraDialogEnhancer.csproj", "{A0618694-B2EF-4801-A1A8-0FE3ACA5F594}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraDialogEnhancer.Extensions", "AuroraDialogEnhancer.Extensions\AuroraDialogEnhancer.Extensions.csproj", "{6BD3B68A-E65E-4B61-83C0-0F9F047986A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension.GenshinImpact", "Extension.GenshinImpact\Extension.GenshinImpact.csproj", "{25320638-DFC4-49D2-9BBE-194C8BAAF138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension.HonkaiStarRail", "Extension.HonkaiStarRail\Extension.HonkaiStarRail.csproj", "{7D9A56F8-1533-4EF1-B000-0671482BECC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhyOrchid", "..\WhyOrchid\WhyOrchid\WhyOrchid.csproj", "{D2125A32-F6AA-4344-B1DC-2174135FD7F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0618694-B2EF-4801-A1A8-0FE3ACA5F594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0618694-B2EF-4801-A1A8-0FE3ACA5F594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0618694-B2EF-4801-A1A8-0FE3ACA5F594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0618694-B2EF-4801-A1A8-0FE3ACA5F594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BD3B68A-E65E-4B61-83C0-0F9F047986A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD3B68A-E65E-4B61-83C0-0F9F047986A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BD3B68A-E65E-4B61-83C0-0F9F047986A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BD3B68A-E65E-4B61-83C0-0F9F047986A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25320638-DFC4-49D2-9BBE-194C8BAAF138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25320638-DFC4-49D2-9BBE-194C8BAAF138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25320638-DFC4-49D2-9BBE-194C8BAAF138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25320638-DFC4-49D2-9BBE-194C8BAAF138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D9A56F8-1533-4EF1-B000-0671482BECC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D9A56F8-1533-4EF1-B000-0671482BECC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D9A56F8-1533-4EF1-B000-0671482BECC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D9A56F8-1533-4EF1-B000-0671482BECC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_SortFileContentOnSave = True
+		SolutionGuid = {C935B261-2F57-4E4C-AF1B-648A6A766E84}
+	EndGlobalSection
+EndGlobal

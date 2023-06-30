@@ -1,0 +1,209 @@
+﻿<Page x:Class="AuroraDialogEnhancer.Frontend.Forms.Settings.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:cards="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.Cards"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:generics="clr-namespace:AuroraDialogEnhancer.Frontend.Generics"
+      xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
+      xmlns:localizationConfig="clr-namespace:AuroraDialogEnhancer.AppConfig.Localization"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
+      xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
+      xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+      Title="Settings"
+      d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
+      d:DesignHeight="850"
+      d:DesignWidth="800"
+      mc:Ignorable="d">
+
+    <woControls:ScrollViewer IsInnerScrollbarsArrangement="True" VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="800" Margin="55,25,55,25">
+
+            <!--  General  -->
+            <StackPanel Margin="0,0,0,25">
+                <!--  Title  -->
+                <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.Settings_General}" />
+
+                <!--  Language  -->
+                <woControls:CardComboBox x:Name="ComboBoxLanguages"
+                                         Title="{x:Static localization:Resources.Settings_Language}"
+                                         MinHeight="55"
+                                         Margin="0,0,0,5"
+                                         d:ItemsSource="{d:DesignInstance d:Type=localizationConfig:CultureInfo,
+                                                                          IsDesignTimeCreatable=False}"
+                                         ContentForeground="Secondary"
+                                         DisplayMemberPath="DisplayName">
+
+                    <woControls:CardComboBox.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.EarthAfrica}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardComboBox.LeftIcon>
+
+                    <woControls:CardComboBox.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
+                                                 Data="{StaticResource Icon.ExpandMore}"
+                                                 Style="{StaticResource IconSmall}" />
+                        </Grid>
+                    </woControls:CardComboBox.RightIcon>
+                </woControls:CardComboBox>
+
+                <!--  Startup window state  -->
+                <woControls:CardComboBox x:Name="ComboBoxStartupWindowState"
+                                         Title="{x:Static localization:Resources.Settings_WindowsState_Main_Title}"
+                                         MinHeight="55"
+                                         Margin="0,0,0,5"
+                                         d:SelectedIndex="0"
+                                         ContentForeground="Secondary">
+
+                    <woControls:CardComboBox.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.WindowRestore.Regular}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardComboBox.LeftIcon>
+
+                    <ComboBoxItem Content="{x:Static localization:Resources.Settings_WindowsState_Default}" Tag="{x:Static generics:EWindowState.Default}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.Settings_WindowsState_TaskBar}" Tag="{x:Static generics:EWindowState.TaskBar}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.Settings_WindowsState_SystemTray}" Tag="{x:Static generics:EWindowState.SystemTray}" />
+
+                    <woControls:CardComboBox.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
+                                                 Data="{StaticResource Icon.ExpandMore}"
+                                                 Style="{StaticResource IconSmall}" />
+                        </Grid>
+                    </woControls:CardComboBox.RightIcon>
+                </woControls:CardComboBox>
+
+                <!--  Shortcut window state  -->
+                <woControls:CardComboBox x:Name="ComboBoxShortcutWindowState"
+                                         MinHeight="55"
+                                         Margin="0,0,0,5"
+                                         d:SelectedIndex="2"
+                                         ContentForeground="Secondary">
+
+                    <woControls:CardComboBox.Title>
+                        <TextBlock Text="{x:Static localization:Resources.Settings_WindowsState_Shortcut_Title}" TextWrapping="WrapWithOverflow" />
+                    </woControls:CardComboBox.Title>
+
+                    <woControls:CardComboBox.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.WindowRestore.Solid}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardComboBox.LeftIcon>
+
+                    <ComboBoxItem Content="{x:Static localization:Resources.Settings_WindowsState_Default}" Tag="{x:Static generics:EWindowState.Default}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.Settings_WindowsState_TaskBar}" Tag="{x:Static generics:EWindowState.TaskBar}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.Settings_WindowsState_SystemTray}" Tag="{x:Static generics:EWindowState.SystemTray}" />
+
+                    <woControls:CardComboBox.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
+                                                 Data="{StaticResource Icon.ExpandMore}"
+                                                 Style="{StaticResource IconSmall}" />
+                        </Grid>
+                    </woControls:CardComboBox.RightIcon>
+                </woControls:CardComboBox>
+
+                <!--  Close minimizes  -->
+                <woControls:CardToggleButton Title="{x:Static localization:Resources.Settings_CloseMinimizes}"
+                                             MinHeight="55"
+                                             Margin="0,0,0,5"
+                                             Click="CloseMinimizes_OnClick"
+                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsCloseMinimizes, Mode=OneTime}">
+
+                    <woControls:CardToggleButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.DownLeftAndUpRightToCenter}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardToggleButton.LeftIcon>
+                </woControls:CardToggleButton>
+
+                <!--  Minimize to task bar  -->
+                <woControls:CardToggleButton Title="{x:Static localization:Resources.Settings_MinimizeToTaskBar}"
+                                             MinHeight="55"
+                                             Click="MinimizeToTaskBar_OnClick"
+                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsMinimizeToTaskBar, Mode=OneTime}">
+
+                    <woControls:CardToggleButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.SquareMinus}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardToggleButton.LeftIcon>
+                </woControls:CardToggleButton>
+            </StackPanel>
+
+            <!--  Utilities  -->
+            <StackPanel>
+                <!--  Title  -->
+                <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.Settings_Utils}" />
+
+                <!--  Startup  -->
+                <woControls:CardToggleButton Title="{x:Static localization:Resources.Settings_Startup}"
+                                             MinHeight="55"
+                                             Margin="0,0,0,5"
+                                             Click="Button_SetStartup_OnClick"
+                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsStartup, Mode=OneTime}">
+
+                    <woControls:CardToggleButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.Rocket}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardToggleButton.LeftIcon>
+                </woControls:CardToggleButton>
+
+                <!--  Screenshots manager  -->
+                <woControls:CardToggleButton Title="{x:Static localization:Resources.Settings_ScreenshotsManager_Title}"
+                                             MinHeight="55"
+                                             Margin="0,0,0,5"
+                                             Click="Button_ScreenshotManager_OnClick"
+                                             Description="{x:Static localization:Resources.Settings_ScreenshotsManager_Description}"
+                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsScreenshotsManager, Mode=OneTime}">
+
+                    <woControls:CardToggleButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.Image}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardToggleButton.LeftIcon>
+                </woControls:CardToggleButton>
+
+                <!--  Expert mode  -->
+                <woControls:CardToggleButton Title="{x:Static localization:Resources.Settings_ExpertMode_Title}"
+                                             MinHeight="55"
+                                             Margin="0,0,0,5"
+                                             Click="ExpertMode_OnClick"
+                                             Description="{x:Static localization:Resources.Settings_ExpertMode_Description}"
+                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Mode=OneTime}">
+
+                    <woControls:CardToggleButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.Glasses}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardToggleButton.LeftIcon>
+                </woControls:CardToggleButton>
+
+                <!--  Application Folder  -->
+                <woControls:CardButton Title="{x:Static localization:Resources.Settings_ApplicationFolder}"
+                                       MinHeight="55"
+                                       Margin="0,0,0,0"
+                                       Click="Button_OpenApplicationFolder_OnClick"
+                                       ContentForeground="Secondary">
+
+                    <woControls:CardButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.FolderOpen}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardButton.LeftIcon>
+
+                    <woControls:CardButton.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                        </Grid>
+                    </woControls:CardButton.RightIcon>
+                </woControls:CardButton>
+
+            </StackPanel>
+        </StackPanel>
+    </woControls:ScrollViewer>
+</Page>

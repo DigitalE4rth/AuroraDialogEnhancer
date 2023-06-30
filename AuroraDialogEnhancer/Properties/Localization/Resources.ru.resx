@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About_AllOfYou" xml:space="preserve">
+    <value>Всем вам, друзья</value>
+  </data>
+  <data name="About_ApplicationIcon" xml:space="preserve">
+    <value>Иконка приложения</value>
+  </data>
+  <data name="About_Consultant" xml:space="preserve">
+    <value>консультант</value>
+  </data>
+  <data name="About_CreativeSociety_Description" xml:space="preserve">
+    <value>Этот проект был бы невозможен без данной цели</value>
+  </data>
+  <data name="About_CreativeSociety_Link" xml:space="preserve">
+    <value>https://creative-society.ru</value>
+  </data>
+  <data name="About_CreativeSociety_Title" xml:space="preserve">
+    <value>Созидательное Общество</value>
+  </data>
+  <data name="About_EnglishTranslation" xml:space="preserve">
+    <value>Перевод на английский</value>
+  </data>
+  <data name="About_Gratitude" xml:space="preserve">
+    <value>Благодарности</value>
+  </data>
+  <data name="About_LibrariesAndResources" xml:space="preserve">
+    <value>Библиотеки и ресурсы</value>
+  </data>
+  <data name="About_PreRelease" xml:space="preserve">
+    <value>Пре-релиз</value>
+  </data>
+  <data name="About_SpecialThanks" xml:space="preserve">
+    <value>Особая благодарность</value>
+  </data>
+  <data name="About_Tester" xml:space="preserve">
+    <value>Тестировщик</value>
+  </data>
+  <data name="About_ThankYou" xml:space="preserve">
+    <value>Спасибо, спасибо, спасибо!</value>
+  </data>
+  <data name="About_UserInterface" xml:space="preserve">
+    <value>Пользовательский интерфейс</value>
+  </data>
+  <data name="About_Version" xml:space="preserve">
+    <value>Версия</value>
+  </data>
+  <data name="About_VersionInfo" xml:space="preserve">
+    <value>Информация о версиях</value>
+  </data>
+  <data name="Appearance_AccentColor_Description" xml:space="preserve">
+    <value>Выбор акцентного цвета приложения</value>
+  </data>
+  <data name="Appearance_AccentColor_RestoreDefault" xml:space="preserve">
+    <value>Восстановить значение по умолчанию</value>
+  </data>
+  <data name="Appearance_AccentColor_Title" xml:space="preserve">
+    <value>Акцентный цвет</value>
+  </data>
+  <data name="Appearance_ColorTheme_Create" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="Appearance_ColorTheme_Custom" xml:space="preserve">
+    <value>Пользовательская</value>
+  </data>
+  <data name="Appearance_ColorTheme_Dark" xml:space="preserve">
+    <value>Тёмная</value>
+  </data>
+  <data name="Appearance_ColorTheme_Description" xml:space="preserve">
+    <value>Основная цветовая схема оформления</value>
+  </data>
+  <data name="Appearance_ColorTheme_Export" xml:space="preserve">
+    <value>Экспорт</value>
+  </data>
+  <data name="Appearance_ColorTheme_Import" xml:space="preserve">
+    <value>Импорт</value>
+  </data>
+  <data name="Appearance_ColorTheme_Light" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="Appearance_ColorTheme_Management" xml:space="preserve">
+    <value>Управление темой</value>
+  </data>
+  <data name="Appearance_ColorTheme_System" xml:space="preserve">
+    <value>Системная</value>
+  </data>
+  <data name="Appearance_ColorTheme_Title" xml:space="preserve">
+    <value>Основная тема</value>
+  </data>
+  <data name="Appearance_Cursor_Default" xml:space="preserve">
+    <value>Стандартный</value>
+  </data>
+  <data name="Appearance_Cursor_Hand" xml:space="preserve">
+    <value>Рука</value>
+  </data>
+  <data name="Appearance_Cursor_Title" xml:space="preserve">
+    <value>Курсор взаимодействия</value>
+  </data>
+  <data name="Appearance_Error_Export" xml:space="preserve">
+    <value>Ошибка экспорта темы</value>
+  </data>
+  <data name="Appearance_Error_Import" xml:space="preserve">
+    <value>Ошибка импорта темы</value>
+  </data>
+  <data name="Appearance_Font_Title" xml:space="preserve">
+    <value>Шрифт интерфейса приложения</value>
+  </data>
+  <data name="Appearance_Title" xml:space="preserve">
+    <value>Общие</value>
+  </data>
+  <data name="Appearance_ZoomLevel_RestoreDefault" xml:space="preserve">
+    <value>Восстановить значение по умолчанию</value>
+  </data>
+  <data name="Appearance_ZoomLevel_Title" xml:space="preserve">
+    <value>Масштабирование</value>
+  </data>
+  <data name="ColorPickerDialog_Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="ColorPickerDialog_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="ColorPickerDialog_Title" xml:space="preserve">
+    <value>Выбор акцентного цвета</value>
+  </data>
+  <data name="CoreInfoState_ClientSize_Minimized" xml:space="preserve">
+    <value>Свёрнуто</value>
+  </data>
+  <data name="CoreInfoState_Detection_Canceled" xml:space="preserve">
+    <value>Отмена...</value>
+  </data>
+  <data name="CoreInfoState_Detection_Detected" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="CoreInfoState_Detection_Search" xml:space="preserve">
+    <value>Поиск...</value>
+  </data>
+  <data name="CoreInfoState_DialogMode_No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="CoreInfoState_DialogMode_Yes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="EntityRepository_Error_Read" xml:space="preserve">
+    <value>Ошибка чтения файла</value>
+  </data>
+  <data name="EntityRepository_Error_Write" xml:space="preserve">
+    <value>Ошибка записи файла</value>
+  </data>
+  <data name="FileDialog_AllFiles" xml:space="preserve">
+    <value>Все файлы</value>
+  </data>
+  <data name="FileDialog_File" xml:space="preserve">
+    <value>файл</value>
+  </data>
+  <data name="FileDialog_Files" xml:space="preserve">
+    <value>файлы</value>
+  </data>
+  <data name="FileDialog_Shortcut_Title" xml:space="preserve">
+    <value>Сохранение ярлыка профиля</value>
+  </data>
+  <data name="FontPicker_Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="FontPicker_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="FontPicker_FontSize" xml:space="preserve">
+    <value>Размер</value>
+  </data>
+  <data name="FontPicker_Title" xml:space="preserve">
+    <value>Выбор шрифта</value>
+  </data>
+  <data name="HookSettings_AdditionalSettings" xml:space="preserve">
+    <value>Дополнительные настройки</value>
+  </data>
+  <data name="HookSettings_CreateShortcut_Description" xml:space="preserve">
+    <value>Создать ярлык запуска для данного профиля</value>
+  </data>
+  <data name="HookSettings_CreateShortcut_Title" xml:space="preserve">
+    <value>Создать ярлык</value>
+  </data>
+  <data name="HookSettings_Error_Location_Game_Empty" xml:space="preserve">
+    <value>Месторасположение игры не указано</value>
+  </data>
+  <data name="HookSettings_Error_Location_Game_NotExists" xml:space="preserve">
+    <value>Месторасположение игры не существует</value>
+  </data>
+  <data name="HookSettings_Error_Location_Launcher_Empty" xml:space="preserve">
+    <value>Месторасположение лаунчера не указано</value>
+  </data>
+  <data name="HookSettings_Error_Location_Launcher_NotExists" xml:space="preserve">
+    <value>Месторасположение лаунчера не существует</value>
+  </data>
+  <data name="HookSettings_Error_Preset_IsMissing" xml:space="preserve">
+    <value>отсутсвует</value>
+  </data>
+  <data name="HookSettings_Error_Preset_Preset" xml:space="preserve">
+    <value>Конфигурация для разрешения</value>
+  </data>
+  <data name="HookSettings_Error_Preset_TemplateImage" xml:space="preserve">
+    <value>Шаблон изображения для разрешения</value>
+  </data>
+  <data name="HookSettings_Error_ProcessName_Game" xml:space="preserve">
+    <value>Название процесса игры не указано</value>
+  </data>
+  <data name="HookSettings_Error_ProcessName_Launcher" xml:space="preserve">
+    <value>Название процесса лаунчера не указано</value>
+  </data>
+  <data name="HookSettings_ExitSettings_Description" xml:space="preserve">
+    <value>Закрывать приложение при выходе из игры</value>
+  </data>
+  <data name="HookSettings_ExitSettings_Title" xml:space="preserve">
+    <value>Выходить вместе с игрой</value>
+  </data>
+  <data name="HookSettings_HookInfo" xml:space="preserve">
+    <value>Состояние хука</value>
+  </data>
+  <data name="HookSettings_HookSettings" xml:space="preserve">
+    <value>Настройки хука</value>
+  </data>
+  <data name="HookSettings_Location_Game" xml:space="preserve">
+    <value>Месторасположение игры</value>
+  </data>
+  <data name="HookSettings_Location_Launcher" xml:space="preserve">
+    <value>Месторасположение лаунчера</value>
+  </data>
+  <data name="HookSettings_Location_Screenshots" xml:space="preserve">
+    <value>Месторасположение скриншотов</value>
+  </data>
+  <data name="HookSettings_OnLaunch_Action" xml:space="preserve">
+    <value>Запускать при старте хука</value>
+  </data>
+  <data name="HookSettings_OnLaunch_Type_Game" xml:space="preserve">
+    <value>Игра</value>
+  </data>
+  <data name="HookSettings_OnLaunch_Type_Launcher" xml:space="preserve">
+    <value>Лаунчер</value>
+  </data>
+  <data name="HookSettings_OnLaunch_Type_Nothing" xml:space="preserve">
+    <value>Ничего</value>
+  </data>
+  <data name="HookSettings_OpenScreenShotsFolder" xml:space="preserve">
+    <value>Открыть папку со скриншотами</value>
+  </data>
+  <data name="HookSettings_ProcessName_Game" xml:space="preserve">
+    <value>Название процесса игры</value>
+  </data>
+  <data name="HookSettings_ProcessName_Launcher" xml:space="preserve">
+    <value>Название процесса лаунчера</value>
+  </data>
+  <data name="HookSettings_Profile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="HookSettings_Settings_Action_Reset" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="HookSettings_State_AppException" xml:space="preserve">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="HookSettings_State_Canceled" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="HookSettings_State_Detected" xml:space="preserve">
+    <value>Обнаружено</value>
+  </data>
+  <data name="HookSettings_State_Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="HookSettings_State_None" xml:space="preserve">
+    <value>Запустить</value>
+  </data>
+  <data name="HookSettings_State_Paused" xml:space="preserve">
+    <value>Приостановлено</value>
+  </data>
+  <data name="HookSettings_State_Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="HookSettings_State_Search_PressToStop" xml:space="preserve">
+    <value>Нажмите для остановки</value>
+  </data>
+  <data name="HookSettings_State_Warning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="HookSettings_Warning_UnappliedChanges" xml:space="preserve">
+    <value>Изменения будут применены после перезапуска хука</value>
+  </data>
+  <data name="InfoDialog_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="InfoDialog_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="InfoDialog_Info" xml:space="preserve">
+    <value>Инфо</value>
+  </data>
+  <data name="InfoDialog_Ok" xml:space="preserve">
+    <value>Ок</value>
+  </data>
+  <data name="InfoDialog_SomethingWentWrong" xml:space="preserve">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="KeyBindAction_DialogOption" xml:space="preserve">
+    <value>Вариант диалога</value>
+  </data>
+  <data name="KeyBindAction_ManualDialogMode" xml:space="preserve">
+    <value>Ручной режим диалога</value>
+  </data>
+  <data name="KeyBindAction_Next" xml:space="preserve">
+    <value>Следующий</value>
+  </data>
+  <data name="KeyBindAction_Previous" xml:space="preserve">
+    <value>Предыдущий</value>
+  </data>
+  <data name="KeyBindAction_ScreenShot" xml:space="preserve">
+    <value>Снимок экрана</value>
+  </data>
+  <data name="KeyBindAction_Select" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="KeyBinding_Control" xml:space="preserve">
+    <value>Управление</value>
+  </data>
+  <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
+    <value>Автоматическое воспроизведение</value>
+  </data>
+  <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
+    <value>Нажатие на полноэкранное всплывающее окно</value>
+  </data>
+  <data name="KeyBinding_Control_HideUi" xml:space="preserve">
+    <value>Скрыть интерфейс</value>
+  </data>
+  <data name="KeyBinding_Control_Next" xml:space="preserve">
+    <value>Следующий</value>
+  </data>
+  <data name="KeyBinding_Control_Previous" xml:space="preserve">
+    <value>Предыдущий</value>
+  </data>
+  <data name="KeyBinding_Control_Select" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="KeyBinding_General" xml:space="preserve">
+    <value>Общие</value>
+  </data>
+  <data name="KeyBinding_General_HideCursor" xml:space="preserve">
+    <value>Скрыть курсор</value>
+  </data>
+  <data name="KeyBinding_General_PauseResume" xml:space="preserve">
+    <value>Приостановить/Возобновить хук</value>
+  </data>
+  <data name="KeyBinding_General_Reload" xml:space="preserve">
+    <value>Перезапустить хук</value>
+  </data>
+  <data name="KeyBinding_General_Screenshot" xml:space="preserve">
+    <value>Скриншот</value>
+  </data>
+  <data name="KeyBinding_Numeric" xml:space="preserve">
+    <value>Выбор варианта диалога</value>
+  </data>
+  <data name="KeyBinding_Numeric_Eighth" xml:space="preserve">
+    <value>Восьмой</value>
+  </data>
+  <data name="KeyBinding_Numeric_Fifth" xml:space="preserve">
+    <value>Пятый</value>
+  </data>
+  <data name="KeyBinding_Numeric_First" xml:space="preserve">
+    <value>Первый</value>
+  </data>
+  <data name="KeyBinding_Numeric_Fourth" xml:space="preserve">
+    <value>Четвёртый</value>
+  </data>
+  <data name="KeyBinding_Numeric_Ninth" xml:space="preserve">
+    <value>Девятый</value>
+  </data>
+  <data name="KeyBinding_Numeric_Second" xml:space="preserve">
+    <value>Второй</value>
+  </data>
+  <data name="KeyBinding_Numeric_Seventh" xml:space="preserve">
+    <value>Седьмой</value>
+  </data>
+  <data name="KeyBinding_Numeric_Sixth" xml:space="preserve">
+    <value>Шестой</value>
+  </data>
+  <data name="KeyBinding_Numeric_Tenth" xml:space="preserve">
+    <value>Десятый</value>
+  </data>
+  <data name="KeyBinding_Numeric_Third" xml:space="preserve">
+    <value>Третий</value>
+  </data>
+  <data name="KeyBinding_Profile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="KeyBinding_Utilities" xml:space="preserve">
+    <value>Утилиты</value>
+  </data>
+  <data name="KeyBinding_Utilities_CursorBehaviour" xml:space="preserve">
+    <value>Поведение курсора</value>
+  </data>
+  <data name="KeyBinding_Utilities_CursorBehaviour_Hide" xml:space="preserve">
+    <value>Прятать</value>
+  </data>
+  <data name="KeyBinding_Utilities_CursorBehaviour_HideAfterSelection" xml:space="preserve">
+    <value>Прятать после выбора</value>
+  </data>
+  <data name="KeyBinding_Utilities_CursorBehaviour_Nothing" xml:space="preserve">
+    <value>Ничего</value>
+  </data>
+  <data name="KeyBinding_Utilities_CycleThrough" xml:space="preserve">
+    <value>Циклическое пролистывание</value>
+  </data>
+  <data name="KeyBinding_Utilities_HiddenCursorSetting_Coordinates" xml:space="preserve">
+    <value>Координаты</value>
+  </data>
+  <data name="KeyBinding_Utilities_HiddenCursorSetting_Title" xml:space="preserve">
+    <value>Месторасположение скрытого курсора</value>
+  </data>
+  <data name="KeyBinding_Utilities_HiddenCursorSetting_YCoordinate" xml:space="preserve">
+    <value>Y Координата</value>
+  </data>
+  <data name="KeyBinding_Utilities_HideCursorOnManualClick" xml:space="preserve">
+    <value>Скрывать курсор при ручном выборе</value>
+  </data>
+  <data name="KeyBinding_Utilities_NumericActionBehaviour" xml:space="preserve">
+    <value>Поведение числовых действий</value>
+  </data>
+  <data name="KeyBinding_Utilities_NumericActionBehaviour_Highlight" xml:space="preserve">
+    <value>Подсвечивание</value>
+  </data>
+  <data name="KeyBinding_Utilities_NumericActionBehaviour_Select" xml:space="preserve">
+    <value>Выбор</value>
+  </data>
+  <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour" xml:space="preserve">
+    <value>Поведение при одном варианте диалога</value>
+  </data>
+  <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight" xml:space="preserve">
+    <value>Любое действие подсвечивает</value>
+  </data>
+  <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Select" xml:space="preserve">
+    <value>Любое действие выбирает</value>
+  </data>
+  <data name="Language_Automatic" xml:space="preserve">
+    <value>Автоматически</value>
+  </data>
+  <data name="Language_Name" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>О Программе</value>
+  </data>
+  <data name="Menu_Appearance" xml:space="preserve">
+    <value>Внешний вид</value>
+  </data>
+  <data name="Menu_DebugMode" xml:space="preserve">
+    <value>Отладка</value>
+  </data>
+  <data name="Menu_HookControl" xml:space="preserve">
+    <value>Управление хуком</value>
+  </data>
+  <data name="Menu_KeyBindings" xml:space="preserve">
+    <value>Привязка клавиш</value>
+  </data>
+  <data name="Menu_PreRelease" xml:space="preserve">
+    <value>Пре-релиз</value>
+  </data>
+  <data name="Menu_Presets" xml:space="preserve">
+    <value>Пресеты</value>
+  </data>
+  <data name="Menu_Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Menu_Version" xml:space="preserve">
+    <value>Версия</value>
+  </data>
+  <data name="MissingExtensions_Description" xml:space="preserve">
+    <value>Добавьте игровые рачширения и перезапустите приложение</value>
+  </data>
+  <data name="MissingExtensions_Title" xml:space="preserve">
+    <value>Расширения отсутствуют</value>
+  </data>
+  <data name="NotifyMenu_Exit" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="NotifyMenu_Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="NotifyMenu_Screenshots" xml:space="preserve">
+    <value>Скриншоты</value>
+  </data>
+  <data name="Settings_ApplicationFolder" xml:space="preserve">
+    <value>Папка приложения</value>
+  </data>
+  <data name="Settings_CloseMinimizes" xml:space="preserve">
+    <value>Сворачивать вместо закрытия</value>
+  </data>
+  <data name="Settings_ExpertMode_Description" xml:space="preserve">
+    <value>Экспериментальный функционал</value>
+  </data>
+  <data name="Settings_ExpertMode_Title" xml:space="preserve">
+    <value>Экспертный режим</value>
+  </data>
+  <data name="Settings_General" xml:space="preserve">
+    <value>Общие</value>
+  </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="Settings_MinimizeToTaskBar" xml:space="preserve">
+    <value>Сворачивать в панель задач</value>
+  </data>
+  <data name="Settings_ScreenshotsManager_Description" xml:space="preserve">
+    <value>Откроется только если были сделаны скриншоты</value>
+  </data>
+  <data name="Settings_ScreenshotsManager_Title" xml:space="preserve">
+    <value>Открывать папку со скриншотами при выходе из игры</value>
+  </data>
+  <data name="Settings_StartMinimized" xml:space="preserve">
+    <value>Запускать свёрнутым</value>
+  </data>
+  <data name="Settings_Startup" xml:space="preserve">
+    <value>Запускать вместе с Windows</value>
+  </data>
+  <data name="Settings_Startup_Exception_Delete" xml:space="preserve">
+    <value>Ошибка при удалении ярлыка</value>
+  </data>
+  <data name="Settings_Startup_Exception_Save" xml:space="preserve">
+    <value>Ошибка при создании ярлыка</value>
+  </data>
+  <data name="Settings_UnloadUi_Description" xml:space="preserve">
+    <value>Выгружать интерфейс при минимизации для сохранения памяти</value>
+  </data>
+  <data name="Settings_UnloadUi_Title" xml:space="preserve">
+    <value>Выгружать интерфейс</value>
+  </data>
+  <data name="Settings_Utils" xml:space="preserve">
+    <value>Утилиты</value>
+  </data>
+  <data name="Settings_WindowsState_Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="Settings_WindowsState_Main_Title" xml:space="preserve">
+    <value>Состояние окна при запуске программы</value>
+  </data>
+  <data name="Settings_WindowsState_Shortcut_Title" xml:space="preserve">
+    <value>Состояние окна при запуске ярлыка профиля</value>
+  </data>
+  <data name="Settings_WindowsState_SystemTray" xml:space="preserve">
+    <value>Системный трей</value>
+  </data>
+  <data name="Settings_WindowsState_TaskBar" xml:space="preserve">
+    <value>Панель задач</value>
+  </data>
+  <data name="TextInputDialog_Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="TextInputDialog_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="TextInputDialog_Reset" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="TextInputDialog_Title" xml:space="preserve">
+    <value>Редактирование</value>
+  </data>
+  <data name="TriggerEditor_AddNew" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="TriggerEditor_Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="TriggerEditor_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="TriggerEditor_Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="TriggerEditor_Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="TriggerEditor_EmptyTriggers" xml:space="preserve">
+    <value>Здесь пока ничего нет</value>
+  </data>
+  <data name="TriggerEditor_MoveDown" xml:space="preserve">
+    <value>Опустить вниз</value>
+  </data>
+  <data name="TriggerEditor_MoveUp" xml:space="preserve">
+    <value>Поднять вверх</value>
+  </data>
+  <data name="TriggerEditor_RecordingMessage_Part1" xml:space="preserve">
+    <value>Нажмите на кнопку, чтобы назначить её для выбранного действия, или нажмите</value>
+  </data>
+  <data name="TriggerEditor_RecordingMessage_Part2" xml:space="preserve">
+    <value>для отмены</value>
+  </data>
+  <data name="TriggerEditor_Title" xml:space="preserve">
+    <value>Редактор триггеров</value>
+  </data>
+  <data name="TriggerEditor_Triggers" xml:space="preserve">
+    <value>Триггеры</value>
+  </data>
+  <data name="WindowInfo_ClientSize" xml:space="preserve">
+    <value>Рарешение клиента</value>
+  </data>
+  <data name="WindowInfo_Minimized" xml:space="preserve">
+    <value>Свёрнуто</value>
+  </data>
+</root>

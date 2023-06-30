@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AuroraDialogEnhancer.Properties" GeneratedClassName="DefaultSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UI_ThemeInfo_AccentColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#7764d8</Value>
+    </Setting>
+    <Setting Name="FontStyle_FontFamily" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Segoe UI</Value>
+    </Setting>
+    <Setting Name="FontStyle_FontSize" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">14</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

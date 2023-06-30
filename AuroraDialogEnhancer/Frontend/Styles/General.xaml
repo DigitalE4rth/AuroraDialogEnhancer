@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="CardButtonWithCustomBackground.xaml" />
+        <ResourceDictionary Source="CardDropDownWithArtificialFocus.xaml" />
+        <ResourceDictionary Source="CardPathIcon.xaml" />
+        <ResourceDictionary Source="/Frontend/Styles/CardTitle.xaml" />
+        <ResourceDictionary Source="/Frontend/Styles/CardTitleButtonTitle.xaml" />
+        <ResourceDictionary Source="ComboBoxProfile.xaml" />
+        <ResourceDictionary Source="KeyCap.xaml" />
+        <ResourceDictionary Source="PaletteButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

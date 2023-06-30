@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
+                    xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid">
+
+    <Style x:Key="IconLarge" TargetType="{x:Type woControls:PathIcon}">
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Height" Value="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" />
+        <Setter Property="Foreground" Value="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
+    </Style>
+
+    <Style x:Key="IconMedium" TargetType="{x:Type woControls:PathIcon}">
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Height" Value="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}" />
+        <Setter Property="Foreground" Value="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
+    </Style>
+
+    <Style x:Key="IconSmall" TargetType="{x:Type woControls:PathIcon}">
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Height" Value="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}" />
+        <Setter Property="Foreground" Value="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
+    </Style>
+
+</ResourceDictionary>
