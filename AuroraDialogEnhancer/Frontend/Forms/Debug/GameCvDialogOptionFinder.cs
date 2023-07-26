@@ -71,7 +71,7 @@ internal class GameCvDialogOptionFinder
 
             // Left outline
             var top = topOutline + ((bottomOutline - topOutline) / 2) - (_searchTemplate.VerticalOutlineSearchHeight / 2);
-            var verticalOutline = GetVerticalOutline(image,
+            var verticalOutline = GetXOutline(image,
                 _searchTemplate.VerticalOutlineSearchRangeX.From,
                 top,
                 _searchTemplate.VerticalOutlineSearchRangeX.To,
@@ -105,7 +105,7 @@ internal class GameCvDialogOptionFinder
             y = area.Bottom + _searchTemplate.Gap;
         }
 
-        DrawRectangles(image, dialogOptionsList);
+        _bitmapUtils.DrawRectangles(image, dialogOptionsList);
         image.Save("Result.png");
 
         return dialogOptionsList;
@@ -155,55 +155,6 @@ internal class GameCvDialogOptionFinder
         return (true, ordinalLinePosition == -1 ? maxSearchPoint : ordinalLinePosition - 1);
     }
 
-    private void DrawRectangles(Image bitmap, List<Rectangle> rectangles)
-    {
-        if (!rectangles.Any()) return;
-
-        using var graphics = Graphics.FromImage(bitmap);
-        using var pen = new Pen(Color.LimeGreen, 1);
-        rectangles.ForEach(r => graphics.DrawRectangle(pen, r));
-    }
-
-    private int GetVerticalOutline(Bitmap image, int x, int y, int maxX, int maxY, double threshold)
-    {
-        while (maxX >= 0)
-        {
-            if (IsVerticalOutline(image, maxX, y, maxY, threshold) == false)
-            {
-                maxX -= 1;
-                continue;
-            }
-
-            var ordinal = GetXOrdinalBackward(image, x, maxX, y, maxY, threshold);
-            return ordinal == -1 ? x : ordinal + 1;
-        }
-
-        return -1;
-    }
-
-    private int GetXOrdinalBackward(Bitmap image, int x, int maxX, int y, int maxY, double threshold)
-    {
-        for (var i = maxX; i >= x; i--)
-        {
-            if (IsVerticalOutline(image, i, y, maxY, threshold) == false) return i;
-        }
-        
-        return -1;
-    }
-
-    private bool IsVerticalOutline(Bitmap image, int x, int y, int maxY, double threshold)
-    {
-        var totalPoints = maxY - y;
-        var resultPoints = 0;
-
-        for (var i = y; i < maxY; i++)
-        {
-            if (IsGrayOutline(image.GetPixel(x, y))) resultPoints++;
-        }
-
-        return resultPoints >= totalPoints * threshold;
-    }
-
     private int GetYOutline(Bitmap image, int x, int maxX, int y, int maxY, double threshold)
     {
         for (var i = y; i <= maxY; i++)
@@ -232,6 +183,46 @@ internal class GameCvDialogOptionFinder
         }
 
         return resultPoints >= (maxX - x) * threshold;
+    }
+
+    private int GetXOutline(Bitmap image, int x, int y, int maxX, int maxY, double threshold)
+    {
+        while (maxX >= 0)
+        {
+            if (IsVerticalOutline(image, maxX, y, maxY, threshold) == false)
+            {
+                maxX -= 1;
+                continue;
+            }
+
+            var ordinal = GetXOrdinalBackward(image, x, maxX, y, maxY, threshold);
+            return ordinal == -1 ? x : ordinal + 1;
+        }
+
+        return -1;
+    }
+
+    private int GetXOrdinalBackward(Bitmap image, int x, int maxX, int y, int maxY, double threshold)
+    {
+        for (var i = maxX; i >= x; i--)
+        {
+            if (IsVerticalOutline(image, i, y, maxY, threshold) == false) return i;
+        }
+
+        return -1;
+    }
+
+    private bool IsVerticalOutline(Bitmap image, int x, int y, int maxY, double threshold)
+    {
+        var totalPoints = maxY - y;
+        var resultPoints = 0;
+
+        for (var i = y; i < maxY; i++)
+        {
+            if (IsGrayOutline(image.GetPixel(x, y))) resultPoints++;
+        }
+
+        return resultPoints >= totalPoints * threshold;
     }
 
     private bool IsGrayOutline(Color color)

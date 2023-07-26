@@ -1,5 +1,7 @@
 ﻿using System.Drawing.Imaging;
 using System.Drawing;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
 
@@ -35,6 +37,15 @@ internal class BitmapUtils
         using var graphics = Graphics.FromImage(croppedImage);
         graphics.DrawImage(image, rectangle with { X = 0, Y = 0 }, rectangle, GraphicsUnit.Pixel);
         return croppedImage;
+    }
+
+    public void DrawRectangles(Image bitmap, List<Rectangle> rectangles)
+    {
+        if (!rectangles.Any()) return;
+
+        using var graphics = Graphics.FromImage(bitmap);
+        using var pen = new Pen(Color.LimeGreen, 1);
+        rectangles.ForEach(r => graphics.DrawRectangle(pen, r));
     }
 }
 
