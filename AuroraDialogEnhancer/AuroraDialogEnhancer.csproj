@@ -217,13 +217,16 @@
       <DependentUpon>AppearancePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frontend\Forms\Debug\BitmapUtils.cs" />
+    <Compile Include="Frontend\Forms\Debug\CvData\ConcreteTemplate.cs" />
+    <Compile Include="Frontend\Forms\Debug\CvData\DynamicTemplate.cs" />
+    <Compile Include="Frontend\Forms\Debug\CvData\SearchArea.cs" />
+    <Compile Include="Frontend\Forms\Debug\CvData\SearchRange.cs" />
+    <Compile Include="Frontend\Forms\Debug\CvData\DynamicTemplateService.cs" />
     <Compile Include="Frontend\Forms\Debug\GameCvDialogOptionFinder.cs" />
     <Compile Include="Frontend\Forms\Debug\DebugPage.xaml.cs">
       <DependentUpon>DebugPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\Forms\Debug\DialogOptionSearchArea.cs" />
-    <Compile Include="Frontend\Forms\Debug\GameCvData.cs" />
-    <Compile Include="Frontend\Forms\Debug\OutlineArea.cs" />
+    <Compile Include="Frontend\Forms\Debug\CvData\SearchTemplate.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\EKeyBindingSettingsAction.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\ComboBoxContent.xaml.cs">
       <DependentUpon>ComboBoxContent.xaml</DependentUpon>

@@ -1,116 +1,241 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Point = System.Drawing.Point;
+using System.Linq;
+using AuroraDialogEnhancer.Frontend.Forms.Debug.CvData;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
 
 internal class GameCvDialogOptionFinder
 {
-    private readonly BitmapUtils _bitmapUtils;
-    private readonly GameCvData  _gameCvData;
-    private DialogOptionSearchArea _dialogOptionSearchArea;
-    private Rectangle _searchArea;
+    private readonly BitmapUtils            _bitmapUtils;
+    private readonly DynamicTemplateService _templateService;
+    private SearchTemplate                  _searchTemplate;
 
     public GameCvDialogOptionFinder()
     {
-        _bitmapUtils = new BitmapUtils();
-        _gameCvData = new GameCvData();
-        _dialogOptionSearchArea = null!;
+        _bitmapUtils     = new BitmapUtils();
+        _templateService = new DynamicTemplateService();
+        _searchTemplate  = new SearchTemplate();
     }
 
     public void Initialize(Size clientSize)
     {
-        var doHeight = (int) (clientSize.Width * _gameCvData.DialogOptionHeightInPercentage);
-        var searchAreaStart = (int) (clientSize.Width * _gameCvData.DialogOptionsSearchWidthStartInPercentage);
-        var searchAreaEnd   = (int) (searchAreaStart + (doHeight + doHeight * 0.5));
-        var searchAreaWidth = searchAreaEnd - searchAreaStart;
-
-        _searchArea = new Rectangle(searchAreaStart, 0, searchAreaWidth, clientSize.Height);
-        _dialogOptionSearchArea = new DialogOptionSearchArea(searchAreaWidth, doHeight);
+        _searchTemplate = _templateService.GetDynamicTemplate(clientSize);
     }
 
-    public List<Point> GetDialogOptions(Bitmap rawImage)
+    public List<Rectangle> GetDialogOptions(Bitmap rawImage, double threshold = 1)
     {
-        var result = new List<Point>();
-        using var searchArea = _bitmapUtils.GetArea(rawImage, _searchArea);
-        using var processingImage = _bitmapUtils.ToGrayScale(searchArea);
-        processingImage.Save("GrayTest.png");
+        var dialogOptionsList = new List<Rectangle>();
+        using var croppedArea = _bitmapUtils.GetArea(rawImage, 
+            new Rectangle(
+                _searchTemplate.DialogOptionsSearchArea.Width.From,
+                _searchTemplate.DialogOptionsSearchArea.Height.From,
+                _searchTemplate.DialogOptionsSearchArea.Width.To - _searchTemplate.DialogOptionsSearchArea.Width.From,
+                _searchTemplate.DialogOptionsSearchArea.Height.To - _searchTemplate.DialogOptionsSearchArea.Height.From));
 
-        for (var y = 0; y < processingImage.Height; y++)
+        using var image = _bitmapUtils.ToGrayScale(croppedArea);
+
+        image.Save("Cut.png");
+
+        for (var y = 0; y < image.Height; y++)
         {
-            // Top line is outline (by X)
-            if (IsLineOutline(processingImage, _dialogOptionSearchArea.WidthFifty, y, processingImage.Width) == false) continue;
-            if (y + _dialogOptionSearchArea.OutlineArea.Height > processingImage.Height) break;
-
-            // Bottom line is outline (by X)
-            var bottomLineY = GetYOutlineLinePosition(processingImage, 
-                _dialogOptionSearchArea.WidthFifty, y + _dialogOptionSearchArea.OutlineArea.HeightNinetyTwo,
-                processingImage.Width, _dialogOptionSearchArea.OutlineArea.BottomLineSearchHeight);
-
-            if (bottomLineY == -1) continue;
-
-            // Center line in NOT outline (by X)
-            if (IsLineOutline(processingImage,
-                    _dialogOptionSearchArea.WidthFifty, y + _dialogOptionSearchArea.OutlineArea.HeightFifty,
-                    processingImage.Width,
-                    0.5))
+            // Top outline
+            var (isTopFound, topOutline) = GetTopOutline(image, y, threshold);
+            if (isTopFound == false)
             {
-                y = bottomLineY;
+                y = topOutline + 1;
                 continue;
             }
 
-            // Left line has outline points (by Y)
-            var leftLineX = GetXOutlineLinePosition(processingImage,
-                0, y + _dialogOptionSearchArea.OutlineArea.HeightFifty,
-                _dialogOptionSearchArea.WidthOne);
+            if (topOutline + _searchTemplate.OutlineAreaHeight > image.Height) break;
+            
+            // Bottom outline
+            var (isBottomFound, bottomOutline) = GetBottomOutline(image, topOutline, threshold);
+            if (isBottomFound == false)
+            {
+                y = bottomOutline + 1;
+                continue;
+            }
 
-            if (leftLineX == -1) continue;
+            // Center is empty
+            if (GetYOutline(image, 
+                    _searchTemplate.HorizontalOutlineSearchRangeX.From,
+                    _searchTemplate.HorizontalOutlineSearchRangeX.To,
+                    topOutline + _searchTemplate.CenterOutlineSearchRangeY.From,
+                    topOutline + _searchTemplate.CenterOutlineSearchRangeY.To,
+                    0.5) != -1)
+            {
+                y = bottomOutline;
+                continue;
+            }
 
-            result.Add(new Point(_searchArea.X + leftLineX, y));
+            // Left outline
+            var top = topOutline + ((bottomOutline - topOutline) / 2) - (_searchTemplate.VerticalOutlineSearchHeight / 2);
+            var verticalOutline = GetVerticalOutline(image,
+                _searchTemplate.VerticalOutlineSearchRangeX.From,
+                top,
+                _searchTemplate.VerticalOutlineSearchRangeX.To,
+                top + _searchTemplate.VerticalOutlineSearchHeight,
+                threshold);
 
-            y = bottomLineY + 1;
+            if (verticalOutline == -1)
+            {
+                y = bottomOutline;
+                continue;
+            }
+
+            // Wrap everything into area
+            // Test area
+            var area = new Rectangle(
+                verticalOutline,
+                topOutline,
+                image.Width,
+                bottomOutline - topOutline);
+            dialogOptionsList.Add(area);
+
+            /* Client Area
+            var area = new Rectangle(
+                verticalOutline - _searchTemplate.BackgroundPadding,
+                topOutline - _searchTemplate.BackgroundPadding,
+                _searchTemplate.Width,
+                bottomOutline - topOutline + _searchTemplate.BackgroundPadding * 2);
+            dialogOptionsList.Add(area);
+            */
+
+            y = area.Bottom + _searchTemplate.Gap;
         }
 
-        return result;
+        DrawRectangles(image, dialogOptionsList);
+        image.Save("Result.png");
+
+        return dialogOptionsList;
     }
 
-    private int GetXOutlineLinePosition(Bitmap image, int x, int y, int maxX)
+    private (bool, int) GetTopOutline(Bitmap image, int y, double threshold)
     {
-        for (var i = x; i < maxX; i++)
+        var maxSearchPoint = y + _searchTemplate.TopOutlineSearchRangeY.To;
+        if (maxSearchPoint >= image.Height) return (false, maxSearchPoint);
+
+        var firstOutlinePosition = GetYOutline(image,
+            _searchTemplate.HorizontalOutlineSearchRangeX.From,
+            _searchTemplate.HorizontalOutlineSearchRangeX.To,
+            y + _searchTemplate.TopOutlineSearchRangeY.From,
+            maxSearchPoint, threshold);
+
+        if (firstOutlinePosition == -1) return (false, y + _searchTemplate.TopOutlineSearchRangeY.To);
+
+        var ordinalLinePosition = GetYOrdinal(image,
+            _searchTemplate.HorizontalOutlineSearchRangeX.From,
+            _searchTemplate.HorizontalOutlineSearchRangeX.To,
+            firstOutlinePosition + 1,
+            maxSearchPoint, threshold);
+
+        return (true, ordinalLinePosition == -1 ? maxSearchPoint : ordinalLinePosition - 1);
+    }
+
+    private (bool, int) GetBottomOutline(Bitmap image, int y, double threshold)
+    {
+        var maxSearchPoint = y + _searchTemplate.BottomOutlineSearchRangeY.To;
+        if (maxSearchPoint >= image.Height) return (false, maxSearchPoint);
+
+        var firstOutlinePosition = GetYOutline(image,
+            _searchTemplate.HorizontalOutlineSearchRangeX.From,
+            _searchTemplate.HorizontalOutlineSearchRangeX.To,
+            y + _searchTemplate.BottomOutlineSearchRangeY.From,
+            maxSearchPoint, threshold);
+
+        if (firstOutlinePosition == -1) return (false, y);
+
+        var ordinalLinePosition = GetYOrdinal(image,
+            _searchTemplate.HorizontalOutlineSearchRangeX.From,
+            _searchTemplate.HorizontalOutlineSearchRangeX.To,
+            firstOutlinePosition + 1,
+            maxSearchPoint, threshold);
+
+        return (true, ordinalLinePosition == -1 ? maxSearchPoint : ordinalLinePosition - 1);
+    }
+
+    private void DrawRectangles(Image bitmap, List<Rectangle> rectangles)
+    {
+        if (!rectangles.Any()) return;
+
+        using var graphics = Graphics.FromImage(bitmap);
+        using var pen = new Pen(Color.LimeGreen, 1);
+        rectangles.ForEach(r => graphics.DrawRectangle(pen, r));
+    }
+
+    private int GetVerticalOutline(Bitmap image, int x, int y, int maxX, int maxY, double threshold)
+    {
+        while (maxX >= 0)
         {
-            if (IsGrayOutline(image.GetPixel(i, y)) &&
-                IsGrayOutline(image.GetPixel(i, y - 1)) &&
-                IsGrayOutline(image.GetPixel(i, y + 1))) return i;
+            if (IsVerticalOutline(image, maxX, y, maxY, threshold) == false)
+            {
+                maxX -= 1;
+                continue;
+            }
+
+            var ordinal = GetXOrdinalBackward(image, x, maxX, y, maxY, threshold);
+            return ordinal == -1 ? x : ordinal + 1;
         }
 
         return -1;
     }
-    
-    private int GetYOutlineLinePosition(Bitmap image, int x, int y, int maxX, int height)
+
+    private int GetXOrdinalBackward(Bitmap image, int x, int maxX, int y, int maxY, double threshold)
     {
-        for (var i = y; i < y + height; i++)
+        for (var i = maxX; i >= x; i--)
         {
-            if (IsLineOutline(image, x, i, maxX)) return i;
+            if (IsVerticalOutline(image, i, y, maxY, threshold) == false) return i;
         }
+        
         return -1;
     }
 
-    private bool IsLineOutline(Bitmap image, int x, int y, int maxX, double threshold = 1)
+    private bool IsVerticalOutline(Bitmap image, int x, int y, int maxY, double threshold)
     {
-        var totalPoints = maxX - x;
+        var totalPoints = maxY - y;
         var resultPoints = 0;
 
-        for (var i = x; i < maxX; i++)
+        for (var i = y; i < maxY; i++)
         {
-            if (!IsGrayOutline(image.GetPixel(i, y))) continue;
-            resultPoints++;
+            if (IsGrayOutline(image.GetPixel(x, y))) resultPoints++;
         }
 
         return resultPoints >= totalPoints * threshold;
     }
 
+    private int GetYOutline(Bitmap image, int x, int maxX, int y, int maxY, double threshold)
+    {
+        for (var i = y; i <= maxY; i++)
+        {
+            if (IsHorizontalLineOutline(image, x, i, maxX, threshold)) return i;
+        }
+        return -1;
+    }
+
+    private int GetYOrdinal(Bitmap image, int x, int maxX, int y, int maxY, double threshold)
+    {
+        for (var i = y; i <= maxY; i++)
+        {
+            if (IsHorizontalLineOutline(image, x, i, maxX, threshold) == false) return i;
+        }
+        return -1;
+    }
+
+    private bool IsHorizontalLineOutline(Bitmap image, int x, int y, int maxX, double threshold)
+    {
+        var resultPoints = 0;
+
+        for (var i = x; i < maxX; i++)
+        {
+            if (IsGrayOutline(image.GetPixel(i, y))) resultPoints++;
+        }
+
+        return resultPoints >= (maxX - x) * threshold;
+    }
+
     private bool IsGrayOutline(Color color)
     {
-        return _gameCvData.LowGrayColor <= color.R && color.R <= _gameCvData.HighGrayColor;
+        return _searchTemplate.GrayColorRange.From <= color.R && color.R <= _searchTemplate.GrayColorRange.To;
     }
 }

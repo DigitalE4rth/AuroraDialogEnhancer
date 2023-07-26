@@ -5,22 +5,21 @@ namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
 
 internal class BitmapUtils
 {
+    private readonly ColorMatrix _grayColorMatrix = new(
+        new[]
+        {
+            new[] { .299f, .299f, .299f, 0, 0 },
+            new[] { .587f, .587f, .587f, 0, 0 },
+            new[] { .114f, .114f, .114f, 0, 0 },
+            new[] { 0f, 0, 0, 1, 0 },
+            new[] { 0f, 0, 0, 0, 1 }
+        });
+
     public Bitmap ToGrayScale(Bitmap image)
     {
         var grayImage = new Bitmap(image.Width, image.Height);
-
-        var colorMatrix = new ColorMatrix(
-            new[]
-            {
-                new[] { .299f, .299f, .299f, 0, 0 },
-                new[] { .587f, .587f, .587f, 0, 0 },
-                new[] { .114f, .114f, .114f, 0, 0 },
-                new[] { 0f, 0, 0, 1, 0 },
-                new[] { 0f, 0, 0, 0, 1 }
-            });
-
         using var attributes = new ImageAttributes();
-        attributes.SetColorMatrix(colorMatrix);
+        attributes.SetColorMatrix(_grayColorMatrix);
 
         using var graphics = Graphics.FromImage(grayImage);
         graphics.DrawImage(image,

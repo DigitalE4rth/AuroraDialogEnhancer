@@ -2,14 +2,14 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.Menu"
       xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
+      xmlns:statics="clr-namespace:AuroraDialogEnhancer.AppConfig.Statics"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-      xmlns:local="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.Menu"
-      xmlns:statics="clr-namespace:AuroraDialogEnhancer.AppConfig.Statics"
       MinWidth="210"
       d:DesignHeight="450"
       d:DesignWidth="250"
@@ -51,12 +51,12 @@
                     <woControls:PathIcon Grid.Column="0"
                                          Margin="10"
                                          Data="{StaticResource Icon.AutoAwesome}"
-                                         Opacity="0.2" >
+                                         Opacity="0.2">
                         <woControls:PathIcon.Foreground>
-                            <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                                 <GradientStop Color="Transparent" />
-                                <GradientStop Color="Transparent" Offset="0.58"/>
-                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Offset="0.58" Color="Transparent" />
+                                <GradientStop Offset="1" Color="White" />
                             </LinearGradientBrush>
                         </woControls:PathIcon.Foreground>
                     </woControls:PathIcon>

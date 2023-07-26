@@ -47,7 +47,7 @@ public partial class DebugPage
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
     {
         // 720x576
-        FindPoints("1768x992");
+        FindPoints("1920x1440");
         //_resolutionsTest.ForEach(FindPoints);
     }
 
