@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using AuroraDialogEnhancer.Frontend.Forms.Debug.CvData;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
 
 internal class GameCvDialogOptionFinder
 {
-    private readonly BitmapUtils            _bitmapUtils;
+    private readonly BitmapUtils _bitmapUtils;
     private readonly DynamicTemplateService _templateService;
-    private SearchTemplate                  _searchTemplate;
+    private SearchTemplate _searchTemplate;
 
     public GameCvDialogOptionFinder()
     {
@@ -26,7 +25,8 @@ internal class GameCvDialogOptionFinder
     public List<Rectangle> GetDialogOptions(Bitmap rawImage, double threshold = 1)
     {
         var dialogOptionsList = new List<Rectangle>();
-        using var croppedArea = _bitmapUtils.GetArea(rawImage, 
+        using var croppedArea = _bitmapUtils.GetArea(
+            rawImage, 
             new Rectangle(
                 _searchTemplate.DialogOptionsSearchArea.Width.From,
                 _searchTemplate.DialogOptionsSearchArea.Height.From,
@@ -43,7 +43,7 @@ internal class GameCvDialogOptionFinder
             var (isTopFound, topOutline) = GetTopOutline(image, y, threshold);
             if (isTopFound == false)
             {
-                y = topOutline + 1;
+                y = topOutline;
                 continue;
             }
 
@@ -53,7 +53,7 @@ internal class GameCvDialogOptionFinder
             var (isBottomFound, bottomOutline) = GetBottomOutline(image, topOutline, threshold);
             if (isBottomFound == false)
             {
-                y = bottomOutline + 1;
+                y = bottomOutline;
                 continue;
             }
 
