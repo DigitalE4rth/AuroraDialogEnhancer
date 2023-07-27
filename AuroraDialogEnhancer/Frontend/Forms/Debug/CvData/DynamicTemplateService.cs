@@ -21,16 +21,18 @@ internal class DynamicTemplateService
             (int)(_dynamicTemplate.DialogOptionsSearchArea.Height.From * clientSize.Height),
             (int)(_dynamicTemplate.DialogOptionsSearchArea.Height.To * clientSize.Height));
 
+        searchTemplate.Width = (int)(_dynamicTemplate.Width * clientSize.Width);
         searchTemplate.Height = (int)(_dynamicTemplate.Height * clientSize.Width);
-
-        searchTemplate.Width = (int)(_dynamicTemplate.Width  * clientSize.Width);
-
+        
         var searchWidth = searchTemplate.DialogOptionsSearchArea.Width.To - searchTemplate.DialogOptionsSearchArea.Width.From;
+
         searchTemplate.VerticalOutlineSearchRangeX = new SearchRange<int>(
             (int)(searchWidth * _dynamicTemplate.VerticalOutlineSearchRangeX.From),
             (int)(searchWidth * _dynamicTemplate.VerticalOutlineSearchRangeX.To));
 
-        searchTemplate.VerticalOutlineSearchHeight = _dynamicTemplate.VerticalOutlineSearchHeight;
+        searchTemplate.VerticalOutlineSearchRangeY = new SearchRange<int>(
+            (int)(searchTemplate.Height * _dynamicTemplate.VerticalOutlineSearchRangeY.From),
+            (int)(searchTemplate.Height * _dynamicTemplate.VerticalOutlineSearchRangeY.To));
 
         searchTemplate.HorizontalOutlineSearchRangeX = new SearchRange<int>(
             (int)(searchWidth * _dynamicTemplate.HorizontalOutlineSearchRangeX.From),

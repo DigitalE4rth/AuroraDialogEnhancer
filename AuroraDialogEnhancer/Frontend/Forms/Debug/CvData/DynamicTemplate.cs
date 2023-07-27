@@ -6,7 +6,7 @@ internal class DynamicTemplate
     /// The search area of the dialog options.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public SearchArea<double> DialogOptionsSearchArea = new(0.66, 0.692, 0, 1);
 
@@ -14,23 +14,23 @@ internal class DynamicTemplate
     /// The search range of the vertical outline line by X.
     /// </summary>
     /// <remarks>
-    /// Relative to the dialog option height.
+    /// Related to the dialog option width.
     /// </remarks>
     public SearchRange<double> VerticalOutlineSearchRangeX = new(0, 0.1);
 
     /// <summary>
-    /// The height of the vertical outline line.
+    /// The search range of the vertical outline line by Y.
     /// </summary>
     /// <remarks>
-    /// Relative to the outline area height.
+    /// Related to the dialog option height.
     /// </remarks>
-    public int VerticalOutlineSearchHeight = 5;
+    public SearchRange<double> VerticalOutlineSearchRangeY = new(0.47, 0.52);
 
     /// <summary>
     /// The search range of the horizontal outline line by X.
     /// </summary>
     /// <remarks>
-    /// Relative to the dialog option width.
+    /// Related to the dialog option width.
     /// </remarks>
     public SearchRange<double> HorizontalOutlineSearchRangeX = new(0.5, 1);
 
@@ -43,7 +43,7 @@ internal class DynamicTemplate
     /// The width of the dialog option.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public double Width = 0.29;
 
@@ -51,7 +51,7 @@ internal class DynamicTemplate
     /// The height of the dialog option.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public double Height = 0.033;
 
@@ -59,7 +59,7 @@ internal class DynamicTemplate
     /// The gap between dialog options.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public double Gap = 0.0056;
 
@@ -67,7 +67,7 @@ internal class DynamicTemplate
     /// The area between the edge of the dialog option and the outline area.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public double BackgroundPadding = 0.0015;
 
@@ -75,7 +75,7 @@ internal class DynamicTemplate
     /// The height of the outline area.
     /// </summary>
     /// <remarks>
-    /// Relative to the dialog option area.
+    /// Related to the dialog option area.
     /// </remarks>
     public double OutlineAreaHeight = 0.95;
 
@@ -83,7 +83,7 @@ internal class DynamicTemplate
     /// The search area of the topmost outline line.
     /// </summary>
     /// <remarks>
-    /// Relative to the outline area.
+    /// Related to the outline area.
     /// </remarks>
     public SearchRange<double> TopOutlineSearchRangeY = new(0, 0.1);
 
@@ -91,7 +91,7 @@ internal class DynamicTemplate
     /// The search area of the center outline line.
     /// </summary>
     /// <remarks>
-    /// Relative to the outline area.
+    /// Related to the outline area.
     /// </remarks>
     public SearchRange<double> CenterOutlineSearchRangeY = new(0.48, 0.52);
 
@@ -99,7 +99,7 @@ internal class DynamicTemplate
     /// The search area of the bottommost outline line.
     /// </summary>
     /// <remarks>
-    /// Relative to the outline area.
+    /// Related to the outline area.
     /// </remarks>
     public SearchRange<double> BottomOutlineSearchRangeY = new(0.95, 1);
 }

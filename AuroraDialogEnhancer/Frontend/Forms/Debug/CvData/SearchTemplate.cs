@@ -6,7 +6,7 @@ internal class SearchTemplate
     /// The search area of the dialog options.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public SearchArea<int> DialogOptionsSearchArea { get; set; } = new();
 
@@ -14,23 +14,23 @@ internal class SearchTemplate
     /// The search range of the vertical outline line by X.
     /// </summary>
     /// <remarks>
-    /// Relative to the dialog option height.
+    /// Related to the dialog option width.
     /// </remarks>
     public SearchRange<int> VerticalOutlineSearchRangeX { get; set; } = new();
 
     /// <summary>
-    /// The height of the vertical outline line.
+    /// The search range of the vertical outline line by Y.
     /// </summary>
     /// <remarks>
-    /// Relative to the outline area height.
+    /// Related to the dialog option height.
     /// </remarks>
-    public int VerticalOutlineSearchHeight = 5;
+    public SearchRange<int> VerticalOutlineSearchRangeY { get; set; } = new();
 
     /// <summary>
     /// The search range of the horizontal outline line by X.
     /// </summary>
     /// <remarks>
-    /// Relative to the dialog option width.
+    /// Related to the dialog option width.
     /// </remarks>
     public SearchRange<int> HorizontalOutlineSearchRangeX { get; set; } = new();
 
@@ -43,7 +43,7 @@ internal class SearchTemplate
     /// The width of the dialog option.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public int Width { get; set; }
 
@@ -51,7 +51,7 @@ internal class SearchTemplate
     /// The height of the dialog option.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public int Height { get; set; }
 
@@ -59,7 +59,7 @@ internal class SearchTemplate
     /// The gap between dialog options.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public int Gap { get; set; }
 
@@ -67,7 +67,7 @@ internal class SearchTemplate
     /// The area between the edge of the dialog option and the outline area.
     /// </summary>
     /// <remarks>
-    /// Relative to the client size.
+    /// Related to the client size.
     /// </remarks>
     public int BackgroundPadding { get; set; }
 
@@ -75,7 +75,7 @@ internal class SearchTemplate
     /// The height of the outline area.
     /// </summary>
     /// <remarks>
-    /// Relative to the dialog option area.
+    /// Related to the dialog option area.
     /// </remarks>
     public int OutlineAreaHeight { get; set; }
 
@@ -83,7 +83,7 @@ internal class SearchTemplate
     /// The search area of the topmost outline line.
     /// </summary>
     /// <remarks>
-    /// Relative to the outline area.
+    /// Related to the outline area.
     /// </remarks>
     public SearchRange<int> TopOutlineSearchRangeY { get; set; } = new();
 
@@ -91,7 +91,7 @@ internal class SearchTemplate
     /// The search area of the center outline line.
     /// </summary>
     /// <remarks>
-    /// Relative to the outline area.
+    /// Related to the outline area.
     /// </remarks>
     public SearchRange<int> CenterOutlineSearchRangeY { get; set; } = new();
 
@@ -99,7 +99,7 @@ internal class SearchTemplate
     /// The search area of the bottommost outline line.
     /// </summary>
     /// <remarks>
-    /// Relative to the outline area.
+    /// Related to the outline area.
     /// </remarks>
     public SearchRange<int> BottomOutlineSearchRangeY { get; set; } = new();
 

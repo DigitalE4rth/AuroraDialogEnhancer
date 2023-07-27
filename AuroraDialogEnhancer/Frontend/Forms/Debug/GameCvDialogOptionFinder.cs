@@ -47,8 +47,6 @@ internal class GameCvDialogOptionFinder
                 continue;
             }
 
-            if (topOutline + _searchTemplate.OutlineAreaHeight > image.Height) break;
-            
             // Bottom outline
             var (isBottomFound, bottomOutline) = GetBottomOutline(image, topOutline, threshold);
             if (isBottomFound == false)
@@ -70,15 +68,13 @@ internal class GameCvDialogOptionFinder
             }
 
             // Left outline
-            var top = topOutline + ((bottomOutline - topOutline) / 2) - (_searchTemplate.VerticalOutlineSearchHeight / 2);
-            var verticalOutline = GetXOutline(image,
+            var leftOutline = GetXOutline(image,
                 _searchTemplate.VerticalOutlineSearchRangeX.From,
-                top,
+                y + _searchTemplate.VerticalOutlineSearchRangeY.From,
                 _searchTemplate.VerticalOutlineSearchRangeX.To,
-                top + _searchTemplate.VerticalOutlineSearchHeight,
+                y + _searchTemplate.VerticalOutlineSearchRangeY.To,
                 threshold);
-
-            if (verticalOutline == -1)
+            if (leftOutline == -1)
             {
                 y = bottomOutline;
                 continue;
@@ -87,7 +83,7 @@ internal class GameCvDialogOptionFinder
             // Wrap everything into area
             // Test area
             var area = new Rectangle(
-                verticalOutline,
+                leftOutline,
                 topOutline,
                 image.Width,
                 bottomOutline - topOutline);
