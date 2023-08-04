@@ -4,13 +4,16 @@ namespace AuroraDialogEnhancerExtensions.Proxy;
 
 public class DialogOptionsFinderInfo
 {
-    public Rectangle CaptureArea { get; }
+    public Rectangle SpeakerNameArea { get; }
+
+    public Rectangle DialogOptionsArea { get; }
 
     public IDialogOptionsFinder DialogOptionsFinder { get; }
-
-    public DialogOptionsFinderInfo(Rectangle captureArea, IDialogOptionsFinder dialogOptionsFinder)
+    
+    public DialogOptionsFinderInfo(Rectangle speakerNameArea, Rectangle dialogOptionsArea, IDialogOptionsFinder dialogOptionsFinder)
     {
-        CaptureArea = captureArea;
+        SpeakerNameArea = speakerNameArea;
+        DialogOptionsArea = dialogOptionsArea;
         DialogOptionsFinder = dialogOptionsFinder;
     }
 }

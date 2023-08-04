@@ -18,6 +18,12 @@ internal class DialogOptionsFinderProvider : IDialogOptionsFinderProvider
             searchTemplate.DialogOptionsSearchArea.Width.Length, 
             searchTemplate.DialogOptionsSearchArea.Height.Length);
 
-        return new DialogOptionsFinderInfo(captureArea, dialogOptionsFinder);
+        var speakerNameArea = new Rectangle(
+            searchTemplate.SpeakerNameArea.Width.From,
+            searchTemplate.SpeakerNameArea.Height.From,
+            searchTemplate.SpeakerNameArea.Width.Length,
+            searchTemplate.SpeakerNameArea.Height.Length);
+
+        return new DialogOptionsFinderInfo(speakerNameArea, captureArea, dialogOptionsFinder);
     }
 }
