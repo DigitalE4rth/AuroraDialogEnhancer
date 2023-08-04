@@ -12,7 +12,7 @@ public abstract class CvPresetDto
     #region Search regions
     public virtual Rectangle SpeakerNameSearchRegion { get; protected set; }
 
-    public virtual ChannelRange? SpeakerNameColorRange { get; protected set; }
+    public virtual ColorRange SpeakerNameColorRange { get; protected set; } = new();
     #endregion
 
     #region Dialog option

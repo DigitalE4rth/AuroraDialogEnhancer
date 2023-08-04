@@ -6,7 +6,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
 
 public partial class DebugPage
 {
-    private readonly GameCvDialogOptionFinder _gameCvDialogOptionFinder;
+    //private readonly GameCvDialogOptionFinder _gameCvDialogOptionFinder;
     private readonly List<string> _resolutionsTest = new List<string>()
     {
         "640x480",
@@ -41,7 +41,7 @@ public partial class DebugPage
 
     public DebugPage()
     {
-        _gameCvDialogOptionFinder = new GameCvDialogOptionFinder();
+        //_gameCvDialogOptionFinder = new GameCvDialogOptionFinder();
         InitializeComponent();
     }
 

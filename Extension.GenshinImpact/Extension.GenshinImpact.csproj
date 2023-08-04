@@ -69,7 +69,6 @@
     <Compile Include="Services\DialogOptionsFinderProvider.cs" />
     <Compile Include="Templates\SearchTemplateMapper.cs" />
     <Compile Include="Services\DialogOptionFinder.cs" />
-    <Compile Include="Templates\ConcreteTemplate.cs" />
     <Compile Include="Templates\DynamicTemplate.cs" />
     <Compile Include="Templates\SearchTemplate.cs" />
   </ItemGroup>

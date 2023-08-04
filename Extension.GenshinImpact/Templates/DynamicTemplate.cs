@@ -121,7 +121,7 @@ public class DynamicTemplate
     public RangeDynamic BottomOutlineSearchRangeY = new(0.95, 1);
 
     /// <summary>
-    /// The threshold of the computer vision service.
+    /// The threshold of the dialog options finder service.
     /// </summary>
     public int Threshold = 1;
 }
