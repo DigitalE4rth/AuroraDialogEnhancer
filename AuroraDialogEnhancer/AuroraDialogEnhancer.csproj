@@ -156,9 +156,9 @@
     <Compile Include="Backend\KeyBinding\KeyBindingProfileService.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingProfileMapper.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelMapper.cs" />
-    <Compile Include="Backend\OpenCv\CvPresetMapper.cs" />
-    <Compile Include="Backend\OpenCv\CvPresetsService.cs" />
-    <Compile Include="Backend\OpenCv\ColorRangeScalar.cs" />
+    <Compile Include="Backend\ComputerVision\CvPresetMapper.cs" />
+    <Compile Include="Backend\ComputerVision\CvPresetsService.cs" />
+    <Compile Include="Backend\ComputerVision\ColorRangeScalar.cs" />
     <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
@@ -216,17 +216,9 @@
     <Compile Include="Frontend\Forms\Appearance\AppearancePage.xaml.cs">
       <DependentUpon>AppearancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\Forms\Debug\BitmapUtils.cs" />
-    <Compile Include="Frontend\Forms\Debug\CvData\ConcreteTemplate.cs" />
-    <Compile Include="Frontend\Forms\Debug\CvData\DynamicTemplate.cs" />
-    <Compile Include="Frontend\Forms\Debug\CvData\SearchArea.cs" />
-    <Compile Include="Frontend\Forms\Debug\CvData\SearchRange.cs" />
-    <Compile Include="Frontend\Forms\Debug\CvData\DynamicTemplateService.cs" />
-    <Compile Include="Frontend\Forms\Debug\GameCvDialogOptionFinder.cs" />
     <Compile Include="Frontend\Forms\Debug\DebugPage.xaml.cs">
       <DependentUpon>DebugPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\Forms\Debug\CvData\SearchTemplate.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\EKeyBindingSettingsAction.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\ComboBoxContent.xaml.cs">
       <DependentUpon>ComboBoxContent.xaml</DependentUpon>
@@ -253,8 +245,8 @@
     <Compile Include="Backend\Extensions\ExtensionConfig.cs" />
     <Compile Include="Backend\Extensions\ExtensionConfigRepository.cs" />
     <Compile Include="Backend\Extensions\ExtensionConfigService.cs" />
-    <Compile Include="Backend\OpenCv\CvPreset.cs" />
-    <Compile Include="Backend\OpenCv\DialogOptionTemplate.cs" />
+    <Compile Include="Backend\ComputerVision\CvPreset.cs" />
+    <Compile Include="Backend\ComputerVision\DialogOptionTemplate.cs" />
     <Compile Include="Backend\External\FolderPicker.cs" />
     <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerExceptions.cs" />
     <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerRecordService.cs" />
@@ -390,7 +382,7 @@
     <Compile Include="Backend\KeyHandler\KeyHandlerService.cs" />
     <Compile Include="Backend\ScreenCapture\ScreenCaptureService.cs" />
     <Compile Include="Backend\Hooks\Process\ProcessInfo.cs" />
-    <Compile Include="Backend\OpenCv\OpenCvService.cs" />
+    <Compile Include="Backend\ComputerVision\OpenCvService.cs" />
     <Compile Include="Backend\Hooks\Process\ProcessInfoService.cs" />
     <Compile Include="Frontend\Forms\HookControl\HookControlPage.xaml.cs">
       <DependentUpon>HookControlPage.xaml</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿using AuroraDialogEnhancerExtensions.KeyBinding;
 
-namespace AuroraDialogEnhancerExtensions.Utilities;
+namespace AuroraDialogEnhancerExtensions.Dimensions;
 
 public sealed class KeyBindingProfileEmpty : KeyBindingProfileDto
 {

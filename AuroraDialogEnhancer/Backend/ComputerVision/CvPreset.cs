@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace AuroraDialogEnhancer.Backend.OpenCv;
+namespace AuroraDialogEnhancer.Backend.ComputerVision;
 
 public class CvPreset : IDisposable
 {

@@ -2,6 +2,7 @@
 using AuroraDialogEnhancer.AppConfig.Localization;
 using AuroraDialogEnhancer.AppConfig.NotifyIcon;
 using AuroraDialogEnhancer.AppConfig.Theme;
+using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
@@ -12,7 +13,6 @@ using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 using AuroraDialogEnhancer.Backend.KeyHandler;
-using AuroraDialogEnhancer.Backend.OpenCv;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
 using AuroraDialogEnhancer.Backend.Utils;
 using AuroraDialogEnhancer.Frontend.Forms;

@@ -1,4 +1,4 @@
-﻿namespace AuroraDialogEnhancerExtensions.Utilities;
+﻿namespace AuroraDialogEnhancerExtensions.Dimensions;
 public class Rgba
 {
     public int R { get; set; }

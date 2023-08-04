@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using AuroraDialogEnhancerExtensions.Content;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
 
@@ -47,17 +48,17 @@ public partial class DebugPage
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
     {
         // 720x576
-        FindPoints("1920x1440");
+        //FindPoints("2560x1440");
         //_resolutionsTest.ForEach(FindPoints);
     }
 
     private void FindPoints(string clientSize)
     {
-        using var image = new Bitmap($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{clientSize}.png");
+        /*using var image = new Bitmap($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\1\\{clientSize}.png");
         _gameCvDialogOptionFinder.Initialize(image.Size);
 
         var result = _gameCvDialogOptionFinder.GetDialogOptions(image);
         System.Diagnostics.Debug.WriteLine($"Client size: {image.Size.Width}x{image.Size.Height}, Points count: {result.Count}");
-        result.ForEach(point => System.Diagnostics.Debug.WriteLine(point));
+        result.ForEach(point => System.Diagnostics.Debug.WriteLine(point));*/
     }
 }

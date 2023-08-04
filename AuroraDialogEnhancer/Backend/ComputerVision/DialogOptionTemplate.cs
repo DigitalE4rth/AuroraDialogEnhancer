@@ -3,7 +3,7 @@ using System.Drawing;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
-namespace AuroraDialogEnhancer.Backend.OpenCv;
+namespace AuroraDialogEnhancer.Backend.ComputerVision;
 
 public class DialogOptionTemplate : IDisposable
 {

@@ -1,7 +1,7 @@
 ﻿using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancerExtensions.Content;
 
-namespace AuroraDialogEnhancer.Backend.OpenCv;
+namespace AuroraDialogEnhancer.Backend.ComputerVision;
 
 public class CvPresetMapper : IMapper<CvPresetDto, CvPreset>
 {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using AuroraDialogEnhancerExtensions.Dimensions;
 using AuroraDialogEnhancerExtensions.KeyBinding;
-using AuroraDialogEnhancerExtensions.Utilities;
 
 namespace AuroraDialogEnhancerExtensions.Content;
 

@@ -3,7 +3,7 @@ using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancerExtensions.Content;
 
-namespace AuroraDialogEnhancer.Backend.OpenCv;
+namespace AuroraDialogEnhancer.Backend.ComputerVision;
 
 public class CvPresetsService
 {
@@ -30,6 +30,7 @@ public class CvPresetsService
                            + Properties.Localization.Resources.HookSettings_Error_Preset_IsMissing);
         }
 
+        var preset = (CvPresetDto)Activator.CreateInstance(presetType);
         hookedGameData.CvPreset = _cvPresetMapper.Map((CvPresetDto) Activator.CreateInstance(presetType));
 
         if (hookedGameData.CvPreset.DialogOptionTemplate is null)

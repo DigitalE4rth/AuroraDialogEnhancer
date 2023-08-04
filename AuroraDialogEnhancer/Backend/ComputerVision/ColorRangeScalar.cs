@@ -1,7 +1,7 @@
-﻿using AuroraDialogEnhancerExtensions.Utilities;
+﻿using AuroraDialogEnhancerExtensions.Dimensions;
 using OpenCvSharp;
 
-namespace AuroraDialogEnhancer.Backend.OpenCv;
+namespace AuroraDialogEnhancer.Backend.ComputerVision;
 
 public class ColorRangeScalar
 {

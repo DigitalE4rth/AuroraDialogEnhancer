@@ -49,6 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Proxy\IDialogOptionsFinder.cs" />
+    <Compile Include="Proxy\DialogOptionsFinderInfo.cs" />
+    <Compile Include="Proxy\IDialogOptionsFinderProvider.cs" />
+    <Compile Include="Dimensions\Area.cs" />
+    <Compile Include="Dimensions\AreaBase.cs" />
+    <Compile Include="Dimensions\AreaDynamic.cs" />
+    <Compile Include="Dimensions\ChannelRange.cs" />
+    <Compile Include="Dimensions\Range.cs" />
+    <Compile Include="Dimensions\RangeBase.cs" />
+    <Compile Include="Dimensions\RangeDynamic.cs" />
     <Compile Include="KeyBinding\ECursorBehaviour.cs" />
     <Compile Include="KeyBinding\EHiddenCursorSetting.cs" />
     <Compile Include="KeyBinding\EHighMouseKey.cs" />
@@ -57,11 +67,11 @@
     <Compile Include="KeyBinding\GenericKey.cs" />
     <Compile Include="KeyBinding\KeyBindingProfileDto.cs" />
     <Compile Include="KeyBinding\KeyBindingProfileDefault.cs" />
-    <Compile Include="Utilities\ColorRange.cs" />
-    <Compile Include="Utilities\ExtensionConfigEmpty.cs" />
-    <Compile Include="Utilities\KeyBindingProfileEmpty.cs" />
-    <Compile Include="Utilities\Region.cs" />
-    <Compile Include="Utilities\Rgba.cs" />
+    <Compile Include="Dimensions\ColorRange.cs" />
+    <Compile Include="Dimensions\ExtensionConfigEmpty.cs" />
+    <Compile Include="Dimensions\KeyBindingProfileEmpty.cs" />
+    <Compile Include="Dimensions\Region.cs" />
+    <Compile Include="Dimensions\Rgba.cs" />
     <Compile Include="Content\ExtensionConfigDto.cs" />
     <Compile Include="Content\CvPresetDto.cs" />
     <Compile Include="Content\ExtensionDto.cs" />
@@ -73,6 +83,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Presets.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\BitmapUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Presets.resx">
@@ -93,5 +104,6 @@
   <ItemGroup>
     <None Include="Resources\Presets\Genshin Impact\GI_DO_TEMPLATE_1920_1200.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

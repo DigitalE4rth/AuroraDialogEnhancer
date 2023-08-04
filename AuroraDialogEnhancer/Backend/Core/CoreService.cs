@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using AuroraDialogEnhancer.AppConfig.Statics;
+using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.KeyHandler;
-using AuroraDialogEnhancer.Backend.OpenCv;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
 
 namespace AuroraDialogEnhancer.Backend.Core;

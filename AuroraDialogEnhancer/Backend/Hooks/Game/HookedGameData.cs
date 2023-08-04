@@ -1,7 +1,7 @@
 ﻿using System;
+using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
-using AuroraDialogEnhancer.Backend.OpenCv;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Game;
 

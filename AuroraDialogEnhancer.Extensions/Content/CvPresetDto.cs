@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using AuroraDialogEnhancerExtensions.Utilities;
+using AuroraDialogEnhancerExtensions.Dimensions;
 
 namespace AuroraDialogEnhancerExtensions.Content;
 
@@ -12,7 +12,7 @@ public abstract class CvPresetDto
     #region Search regions
     public virtual Rectangle SpeakerNameSearchRegion { get; protected set; }
 
-    public virtual ColorRange? SpeakerNameColorRange { get; protected set; }
+    public virtual ChannelRange? SpeakerNameColorRange { get; protected set; }
     #endregion
 
     #region Dialog option

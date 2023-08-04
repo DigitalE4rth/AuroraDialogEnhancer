@@ -66,6 +66,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\DialogOptionsFinderProvider.cs" />
+    <Compile Include="Templates\SearchTemplateMapper.cs" />
+    <Compile Include="Services\DialogOptionFinder.cs" />
+    <Compile Include="Templates\ConcreteTemplate.cs" />
+    <Compile Include="Templates\DynamicTemplate.cs" />
+    <Compile Include="Templates\SearchTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -106,6 +112,7 @@
   <ItemGroup>
     <None Include="Resources\Template_1680.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Genshin Impact\$(TargetFileName)"</PostBuildEvent>

@@ -1,14 +1,31 @@
-﻿namespace AuroraDialogEnhancer.Frontend.Forms.Debug.CvData;
+﻿using AuroraDialogEnhancerExtensions.Dimensions;
 
-internal class SearchTemplate
+namespace Extension.GenshinImpact.Templates;
+
+public class SearchTemplate
 {
+    /// <summary>
+    /// The color range of the speaker name.
+    /// </summary>
+    public ColorRange SpeakerColorRange = new(new Rgba(255, 230, 170, 0), new Rgba(255, 255, 210, 10));
+
+    /// <summary>
+    /// The speaker name area
+    /// </summary>
+    public Area SpeakerNameArea = new();
+
+    /// <summary>
+    /// Minimum number of pixels in the color range.
+    /// </summary>
+    public int SpeakerNameThreshold;
+
     /// <summary>
     /// The search area of the dialog options.
     /// </summary>
     /// <remarks>
     /// Related to the client size.
     /// </remarks>
-    public SearchArea<int> DialogOptionsSearchArea { get; set; } = new();
+    public Area DialogOptionsSearchArea { get; set; } = new();
 
     /// <summary>
     /// The search range of the vertical outline line by X.
@@ -16,7 +33,7 @@ internal class SearchTemplate
     /// <remarks>
     /// Related to the dialog option width.
     /// </remarks>
-    public SearchRange<int> VerticalOutlineSearchRangeX { get; set; } = new();
+    public Range VerticalOutlineSearchRangeX { get; set; } = new();
 
     /// <summary>
     /// The search range of the vertical outline line by Y.
@@ -24,7 +41,7 @@ internal class SearchTemplate
     /// <remarks>
     /// Related to the dialog option height.
     /// </remarks>
-    public SearchRange<int> VerticalOutlineSearchRangeY { get; set; } = new();
+    public Range VerticalOutlineSearchRangeY { get; set; } = new();
 
     /// <summary>
     /// The search range of the horizontal outline line by X.
@@ -32,12 +49,12 @@ internal class SearchTemplate
     /// <remarks>
     /// Related to the dialog option width.
     /// </remarks>
-    public SearchRange<int> HorizontalOutlineSearchRangeX { get; set; } = new();
+    public Range HorizontalOutlineSearchRangeX { get; set; } = new();
 
     /// <summary>
     /// The gray color range of the outline area.
     /// </summary>
-    public SearchRange<int> GrayColorRange { get; set; } = new();
+    public ChannelRange GrayChannelRange { get; set; } = new();
 
     /// <summary>
     /// The width of the dialog option.
@@ -85,7 +102,7 @@ internal class SearchTemplate
     /// <remarks>
     /// Related to the outline area.
     /// </remarks>
-    public SearchRange<int> TopOutlineSearchRangeY { get; set; } = new();
+    public Range TopOutlineSearchRangeY { get; set; } = new();
 
     /// <summary>
     /// The search area of the center outline line.
@@ -93,7 +110,7 @@ internal class SearchTemplate
     /// <remarks>
     /// Related to the outline area.
     /// </remarks>
-    public SearchRange<int> CenterOutlineSearchRangeY { get; set; } = new();
+    public Range CenterOutlineSearchRangeY { get; set; } = new();
 
     /// <summary>
     /// The search area of the bottommost outline line.
@@ -101,10 +118,12 @@ internal class SearchTemplate
     /// <remarks>
     /// Related to the outline area.
     /// </remarks>
-    public SearchRange<int> BottomOutlineSearchRangeY { get; set; } = new();
+    public Range BottomOutlineSearchRangeY { get; set; } = new();
 
     /// <summary>
     /// The offset of the dialog option by X and Y.
     /// </summary>
     public (int, int) Offset { get; set; }
+
+    public int Threshold = 1;
 }

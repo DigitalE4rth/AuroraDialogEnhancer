@@ -7,7 +7,7 @@ using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using Point = System.Drawing.Point;
 
-namespace AuroraDialogEnhancer.Backend.OpenCv;
+namespace AuroraDialogEnhancer.Backend.ComputerVision;
 
 public class OpenCvService
 {

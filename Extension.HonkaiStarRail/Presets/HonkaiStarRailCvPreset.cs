@@ -1,5 +1,5 @@
 ﻿using AuroraDialogEnhancerExtensions.Content;
-using AuroraDialogEnhancerExtensions.Utilities;
+using AuroraDialogEnhancerExtensions.Dimensions;
 
 namespace Extension.HonkaiStarRail.Presets;
 

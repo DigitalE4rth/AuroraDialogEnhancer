@@ -1,14 +1,31 @@
-﻿namespace AuroraDialogEnhancer.Frontend.Forms.Debug.CvData;
+﻿using AuroraDialogEnhancerExtensions.Dimensions;
 
-internal class DynamicTemplate
+namespace Extension.GenshinImpact.Templates;
+
+public class DynamicTemplate
 {
+    /// <summary>
+    /// The color range of the speaker name.
+    /// </summary>
+    public ColorRange SpeakerColorRange = new(new Rgba(255, 230, 170, 0), new Rgba(255, 255, 210, 10));
+
+    /// <summary>
+    /// The speaker name area.
+    /// </summary>
+    public AreaDynamic SpeakerNameArea = new(0.485, 0.515, 0.8, 0.9);
+
+    /// <summary>
+    /// The percentage of pixels in the color range of the total number of pixels.
+    /// </summary>
+    public double SpeakerNameThreshold = 0.1;
+
     /// <summary>
     /// The search area of the dialog options.
     /// </summary>
     /// <remarks>
     /// Related to the client size.
     /// </remarks>
-    public SearchArea<double> DialogOptionsSearchArea = new(0.66, 0.692, 0, 1);
+    public AreaDynamic DialogOptionsSearchArea = new(0.66, 0.692, 0, 1);
 
     /// <summary>
     /// The search range of the vertical outline line by X.
@@ -16,7 +33,7 @@ internal class DynamicTemplate
     /// <remarks>
     /// Related to the dialog option width.
     /// </remarks>
-    public SearchRange<double> VerticalOutlineSearchRangeX = new(0, 0.1);
+    public RangeDynamic VerticalOutlineSearchRangeX = new(0, 0.1);
 
     /// <summary>
     /// The search range of the vertical outline line by Y.
@@ -24,7 +41,7 @@ internal class DynamicTemplate
     /// <remarks>
     /// Related to the dialog option height.
     /// </remarks>
-    public SearchRange<double> VerticalOutlineSearchRangeY = new(0.47, 0.52);
+    public RangeDynamic VerticalOutlineSearchRangeY = new(0.47, 0.52);
 
     /// <summary>
     /// The search range of the horizontal outline line by X.
@@ -32,12 +49,12 @@ internal class DynamicTemplate
     /// <remarks>
     /// Related to the dialog option width.
     /// </remarks>
-    public SearchRange<double> HorizontalOutlineSearchRangeX = new(0.5, 1);
+    public RangeDynamic HorizontalOutlineSearchRangeX = new(0.5, 1);
 
     /// <summary>
     /// The gray color range of the outline area.
     /// </summary>
-    public SearchRange<int> GrayColorRange = new(76, 109);
+    public ChannelRange GrayChannelRange = new(76, 109);
 
     /// <summary>
     /// The width of the dialog option.
@@ -85,7 +102,7 @@ internal class DynamicTemplate
     /// <remarks>
     /// Related to the outline area.
     /// </remarks>
-    public SearchRange<double> TopOutlineSearchRangeY = new(0, 0.1);
+    public RangeDynamic TopOutlineSearchRangeY = new(0, 0.1);
 
     /// <summary>
     /// The search area of the center outline line.
@@ -93,7 +110,7 @@ internal class DynamicTemplate
     /// <remarks>
     /// Related to the outline area.
     /// </remarks>
-    public SearchRange<double> CenterOutlineSearchRangeY = new(0.48, 0.52);
+    public RangeDynamic CenterOutlineSearchRangeY = new(0.48, 0.52);
 
     /// <summary>
     /// The search area of the bottommost outline line.
@@ -101,5 +118,10 @@ internal class DynamicTemplate
     /// <remarks>
     /// Related to the outline area.
     /// </remarks>
-    public SearchRange<double> BottomOutlineSearchRangeY = new(0.95, 1);
+    public RangeDynamic BottomOutlineSearchRangeY = new(0.95, 1);
+
+    /// <summary>
+    /// The threshold of the computer vision service.
+    /// </summary>
+    public int Threshold = 1;
 }
