@@ -10,11 +10,11 @@ using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.KeyBinding;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
-using AuroraDialogEnhancerExtensions.KeyBinding;
 using Microsoft.Extensions.DependencyInjection;
 using Cursor = System.Windows.Forms.Cursor;
-using Point = System.Drawing.Point;
+using Point  = System.Drawing.Point;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 
@@ -31,7 +31,7 @@ public class KeyHandlerService : IDisposable
     private readonly ScreenCaptureService          _screenCaptureService;
     private readonly WindowHookService             _windowHookService;
 
-    private KeyBindingProfileDto? _keyBindingProfile;
+    private KeyBindingProfile? _keyBindingProfile;
 
     private List<Point> _currentDialogOptionsCoordinates;
     private bool        _isSpeakerNamePresent;
@@ -142,9 +142,6 @@ public class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.Select,          OnSelectPress);
         Register(_keyBindingProfile.Next,            OnNextPress);
         Register(_keyBindingProfile.Previous,        OnPreviousPress);
-        Register(_keyBindingProfile.AutoDialog,      OnAutoDialog);
-        Register(_keyBindingProfile.HideUi,          OnHideUi);
-        Register(_keyBindingProfile.FullScreenPopUp, OnFullScreenPopUpClick);
 
         Register(_keyBindingProfile.One,   OnOnePress);
         Register(_keyBindingProfile.Two,   OnTwoPress);

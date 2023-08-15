@@ -1,8 +1,18 @@
 ﻿namespace AuroraDialogEnhancerExtensions.Content;
 
-public abstract class ExtensionConfigDto
+public class ExtensionConfigDto
 {
-    public virtual string GameProcessName { get; protected set; } = string.Empty;
+    public string GameProcessName { get; } = string.Empty;
 
-    public virtual string LauncherProcessName { get; protected set; } = string.Empty;
+    public string LauncherProcessName { get; } = string.Empty;
+
+    public ExtensionConfigDto(string gameProcessName, string launcherProcessName)
+    {
+        GameProcessName = gameProcessName;
+        LauncherProcessName = launcherProcessName;
+    }
+
+    public ExtensionConfigDto()
+    {
+    }
 }

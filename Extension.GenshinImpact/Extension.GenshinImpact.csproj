@@ -50,9 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExtensionConfig.cs" />
-    <Compile Include="KeyBindingProfile.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfile.cs" />
     <Compile Include="Extension.cs" />
+    <Compile Include="ClickablePoints\ClickableScreenPointsProvider.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfileProvider.cs" />
+    <Compile Include="Properties\Resources.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DialogOptionFinderInfoMapper.cs" />
+    <Compile Include="ClickablePoints\ClickablePointsMapper.cs" />
+    <Compile Include="Presets\Preset.cs" />
     <Compile Include="Presets\Preset1680X1050.cs" />
     <Compile Include="Presets\Preset1768X992.cs" />
     <Compile Include="Presets\Preset1920X1440.cs" />
@@ -66,16 +75,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\DialogOptionsFinderProvider.cs" />
+    <Compile Include="ClickablePoints\DynamicPointTemplate.cs" />
+    <Compile Include="ClickablePoints\PointTemplate.cs" />
     <Compile Include="Templates\SearchTemplateMapper.cs" />
     <Compile Include="Services\DialogOptionFinder.cs" />
     <Compile Include="Templates\DynamicTemplate.cs" />
-    <Compile Include="Templates\SearchTemplate.cs" />
+    <Compile Include="Templates\PreciseTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +128,12 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Genshin Impact\$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Genshin Impact\$(TargetFileName)"
+
+set langs=ru
+for %25%25l in (%25langs%25) do (
+   xcopy "$(TargetDir)%25%25l" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Genshin Impact\%25%25l" /s /y /i
+)
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

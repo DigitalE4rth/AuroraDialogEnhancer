@@ -2,6 +2,6 @@
 
 namespace AuroraDialogEnhancerExtensions.Dimensions;
 
-public sealed class KeyBindingProfileEmpty : KeyBindingProfileDto
+public sealed class KeyBindingProfileExtEmpty : KeyBindingProfileExtDto
 {
 }

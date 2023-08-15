@@ -6,6 +6,7 @@ using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
+using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
 using Microsoft.Extensions.DependencyInjection;
 

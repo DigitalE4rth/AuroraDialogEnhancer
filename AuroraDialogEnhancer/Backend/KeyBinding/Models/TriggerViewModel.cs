@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AuroraDialogEnhancerExtensions.KeyBinding;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
 

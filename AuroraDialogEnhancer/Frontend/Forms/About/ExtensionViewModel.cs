@@ -1,4 +1,5 @@
-﻿using AuroraDialogEnhancerExtensions.Content;
+﻿using AuroraDialogEnhancerExtensions;
+using AuroraDialogEnhancerExtensions.Content;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.About;
 

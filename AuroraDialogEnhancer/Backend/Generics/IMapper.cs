@@ -1,6 +1,6 @@
 ﻿namespace AuroraDialogEnhancer.Backend.Generics;
 
-public interface IMapper<I, O> where I : class where O : class
+public interface IMapper<in I, O> where O : class
 {
-    public O Map(I obj);
+    O Map(I obj);
 }

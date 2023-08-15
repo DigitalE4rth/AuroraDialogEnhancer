@@ -1,5 +1,6 @@
 ﻿using System;
-using AuroraDialogEnhancerExtensions.KeyBinding;
+using AuroraDialogEnhancer.Backend.KeyBinding;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Mouse;
 

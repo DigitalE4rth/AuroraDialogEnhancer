@@ -3,31 +3,31 @@ using AuroraDialogEnhancerExtensions.KeyBinding;
 
 namespace Extension.GenshinImpact;
 
-public sealed class KeyBindingProfile : KeyBindingProfileDefault
+public sealed class KeyBindingProfileExt : KeyBindingProfileExtDefault
 {
-    public override List<List<GenericKey>> HideCursor { get; set; } = new()
-        { new List<GenericKey> { new KeyboardKey(191) } }; // ?
+    public override List<List<GenericKeyExt>> HideCursor { get; set; } = new()
+        { new List<GenericKeyExt> { new KeyboardKeyExt(191) } }; // ?
 
-    public override List<List<GenericKey>> Select { get; set; } = new()
+    public override List<List<GenericKeyExt>> Select { get; set; } = new()
     {
-        new List<GenericKey> { new KeyboardKey(32) }, // Space
-        new List<GenericKey> { new KeyboardKey(70) }  // F
+        new List<GenericKeyExt> { new KeyboardKeyExt(32) }, // Space
+        new List<GenericKeyExt> { new KeyboardKeyExt(70) }  // F
     };
 
-    public override List<List<GenericKey>> Previous { get; set; } = new()
+    public override List<List<GenericKeyExt>> Previous { get; set; } = new()
     {
-        new List<GenericKey> { new MouseKey(EHighMouseKey.MouseWheelUp) },
-        new List<GenericKey> { new KeyboardKey(67) } // C
+        new List<GenericKeyExt> { new MouseKeyExt(EHighMouseKeyExt.MouseWheelUp) },
+        new List<GenericKeyExt> { new KeyboardKeyExt(67) } // C
     };
 
-    public override List<List<GenericKey>> Next { get; set; } = new()
+    public override List<List<GenericKeyExt>> Next { get; set; } = new()
     {
-        new List<GenericKey> { new MouseKey(EHighMouseKey.MouseWheelDown) },
-        new List<GenericKey> { new KeyboardKey(86) } // V
+        new List<GenericKeyExt> { new MouseKeyExt(EHighMouseKeyExt.MouseWheelDown) },
+        new List<GenericKeyExt> { new KeyboardKeyExt(86) } // V
     };
 
-    public override List<List<GenericKey>> AutoDialog { get; set; } = new()
-        { new List<GenericKey> { new KeyboardKey(19) } }; // Pause
+    public override List<List<GenericKeyExt>> AutoDialog { get; set; } = new()
+        { new List<GenericKeyExt> { new KeyboardKeyExt(19) } }; // Pause
 
     //public override List<List<GenericKey>> FullScreenPopUp { get; set; } = new() { new List<GenericKey> { new KeyboardKey(35) } }; // End
 }

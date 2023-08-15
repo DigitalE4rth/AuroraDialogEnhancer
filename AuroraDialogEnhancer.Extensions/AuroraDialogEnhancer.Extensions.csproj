@@ -49,9 +49,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Proxy\IDialogOptionsFinder.cs" />
-    <Compile Include="Proxy\DialogOptionsFinderInfo.cs" />
-    <Compile Include="Proxy\IDialogOptionsFinderProvider.cs" />
+    <Compile Include="Dimensions\DynamicPoint.cs" />
+    <Compile Include="KeyBindings\ClickablePointDto.cs" />
+    <Compile Include="KeyBindings\ClickablePointVmDto.cs" />
+    <Compile Include="KeyBindings\ECursorBehaviourDto.cs" />
+    <Compile Include="KeyBindings\EHiddenCursorSettingDto.cs" />
+    <Compile Include="KeyBindings\EHighMouseKeyDto.cs" />
+    <Compile Include="KeyBindings\ENumericActionBehaviourDto.cs" />
+    <Compile Include="KeyBindings\ESingleDialogOptionBehaviourDto.cs" />
+    <Compile Include="KeyBindings\GenericKeyDto.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfileDto.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfileDtoDefault.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfileProviderDto.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfileProviderEmpty.cs" />
+    <Compile Include="KeyBindings\KeyboardKeyDto.cs" />
+    <Compile Include="KeyBindings\MouseKeyDto.cs" />
+    <Compile Include="Proxy\DialogOptionFinderEmpty.cs" />
+    <Compile Include="Proxy\IPresetDto.cs" />
+    <Compile Include="Proxy\IDialogOptionFinder.cs" />
+    <Compile Include="Proxy\DialogOptionFinderInfo.cs" />
     <Compile Include="Dimensions\Area.cs" />
     <Compile Include="Dimensions\AreaBase.cs" />
     <Compile Include="Dimensions\AreaDynamic.cs" />
@@ -59,30 +75,22 @@
     <Compile Include="Dimensions\Range.cs" />
     <Compile Include="Dimensions\RangeBase.cs" />
     <Compile Include="Dimensions\RangeDynamic.cs" />
-    <Compile Include="KeyBinding\ECursorBehaviour.cs" />
-    <Compile Include="KeyBinding\EHiddenCursorSetting.cs" />
-    <Compile Include="KeyBinding\EHighMouseKey.cs" />
-    <Compile Include="KeyBinding\ENumericActionBehaviour.cs" />
-    <Compile Include="KeyBinding\ESingleDialogOptionBehaviour.cs" />
-    <Compile Include="KeyBinding\GenericKey.cs" />
-    <Compile Include="KeyBinding\KeyBindingProfileDto.cs" />
-    <Compile Include="KeyBinding\KeyBindingProfileDefault.cs" />
     <Compile Include="Dimensions\ColorRange.cs" />
-    <Compile Include="Dimensions\ExtensionConfigEmpty.cs" />
-    <Compile Include="Dimensions\KeyBindingProfileEmpty.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfileDtoEmpty.cs" />
     <Compile Include="Dimensions\Region.cs" />
     <Compile Include="Dimensions\Rgba.cs" />
     <Compile Include="Content\ExtensionConfigDto.cs" />
     <Compile Include="Content\CvPresetDto.cs" />
-    <Compile Include="Content\ExtensionDto.cs" />
-    <Compile Include="KeyBinding\KeyboardKey.cs" />
-    <Compile Include="KeyBinding\MouseKey.cs" />
+    <Compile Include="ExtensionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Presets.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Presets.resx</DependentUpon>
     </Compile>
+    <Compile Include="KeyBindings\ClickableScreenPointDto.cs" />
+    <Compile Include="Proxy\IPresetProvider.cs" />
+    <Compile Include="Proxy\PresetEmpty.cs" />
     <Compile Include="Services\BitmapUtils.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -83,7 +83,7 @@ internal class ServiceProviderConfigurator
 
         serviceCollection.AddSingleton<KeyBindingProfileRepository>();
         serviceCollection.AddSingleton<KeyBindingProfileService>();
-        serviceCollection.AddSingleton<KeyBindingProfileMapper>();
+        serviceCollection.AddSingleton<KeyBindingViewModelBackMapper>();
         serviceCollection.AddSingleton<KeyBindingViewModelMapper>();
         #endregion
 

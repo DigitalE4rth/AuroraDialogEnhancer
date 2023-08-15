@@ -249,7 +249,7 @@ public partial class HookControlPage
         {
             TextBoxTitle = Properties.Localization.Resources.HookSettings_ProcessName_Game,
             TextContent  = _hookSettingsDataContext!.ExtensionConfig.GameProcessName,
-            ResetContent = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetExtensionConfig().GameProcessName
+            ResetContent = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetConfig().GameProcessName
         })
         {
             Owner = Application.Current.MainWindow,
@@ -267,7 +267,7 @@ public partial class HookControlPage
         {
             TextBoxTitle = Properties.Localization.Resources.HookSettings_ProcessName_Launcher,
             TextContent  = _hookSettingsDataContext!.ExtensionConfig.LauncherProcessName,
-            ResetContent = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetExtensionConfig().LauncherProcessName
+            ResetContent = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetConfig().LauncherProcessName
         })
         {
             Owner = Application.Current.MainWindow

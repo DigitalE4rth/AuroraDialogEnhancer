@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
-using AuroraDialogEnhancerExtensions.KeyBinding;
+using AuroraDialogEnhancerExtensions.KeyBindings;
 
 namespace Extension.HonkaiStarRail;
 
@@ -20,11 +21,9 @@ public sealed class Extension : ExtensionDto
 
     public override string Link { get; protected set; } = "https://gitee.com/e4rth/aurora-dialog-enhancer";
 
-    public override ExtensionConfigDto GetExtensionConfig() => new ExtensionConfig();
+    public override ExtensionConfigDto GetConfig() => new("HonkaiStarRail", "launcher");
 
     public override Bitmap GetCover() => Properties.Resources.Cover;
-
-    public override KeyBindingProfileDto GetKeyBindingProfile() => new KeyBindingProfile();
 
     public override Dictionary<Size, Type> Presets { get; protected set; } = new()
     {

@@ -65,8 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExtensionConfig.cs" />
-    <Compile Include="KeyBindingProfile.cs" />
+    <Compile Include="KeyBindingProfileDto.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="Presets\HonkaiStarRailCvPreset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,6 +104,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Honkai Star Rail\$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Honkai Star Rail\$(TargetFileName)"
+
+GOTO END
+set langs=ru
+for %25%25l in (%25langs%25) do (
+   xcopy "$(TargetDir)%25%25l" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Honkai Star Rail\%25%25l" /s /y /i
+)
+:END</PostBuildEvent>
   </PropertyGroup>
 </Project>

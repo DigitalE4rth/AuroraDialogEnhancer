@@ -123,5 +123,5 @@ public class DynamicTemplate
     /// <summary>
     /// The threshold of the dialog options finder service.
     /// </summary>
-    public int Threshold = 1;
+    public double Threshold = 0.9;
 }

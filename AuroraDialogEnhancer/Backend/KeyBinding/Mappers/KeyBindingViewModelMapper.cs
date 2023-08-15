@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
-using AuroraDialogEnhancerExtensions.KeyBinding;
+using AuroraDialogEnhancerExtensions.KeyBindings;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 
-public class KeyBindingViewModelMapper : IMapper<KeyBindingProfileDto, KeyBindingProfileViewModel>
+public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<ClickablePointVmDto>), KeyBindingProfileViewModel>
 {
     private readonly KeyInterpreterService _keyInterpreterService;
 
@@ -16,44 +17,59 @@ public class KeyBindingViewModelMapper : IMapper<KeyBindingProfileDto, KeyBindin
         _keyInterpreterService = keyInterpreterService;
     }
 
-    public KeyBindingProfileViewModel Map(KeyBindingProfileDto obj)
+    public KeyBindingProfileViewModel Map((KeyBindingProfile, List<ClickablePointVmDto>) obj)
     {
+        var profile = obj.Item1;
+        var clickablePointsVmDto = obj.Item2;
+
         return new KeyBindingProfileViewModel
         {
-            IsCursorHideOnManualClick   = obj.IsCursorHideOnManualClick,
-            IsCycleThrough              = obj.IsCycleThrough,
-            SingleDialogOptionBehaviour = obj.SingleDialogOptionBehaviour,
-            NumericActionBehaviour      = obj.NumericActionBehaviour,
-            CursorBehaviour             = obj.CursorBehaviour,
-            HiddenCursorSetting         = obj.HiddenCursorSetting,
+            IsCursorHideOnManualClick   = profile.IsCursorHideOnManualClick,
+            IsCycleThrough              = profile.IsCycleThrough,
+            SingleDialogOptionBehaviour = profile.SingleDialogOptionBehaviour,
+            NumericActionBehaviour      = profile.NumericActionBehaviour,
+            CursorBehaviour             = profile.CursorBehaviour,
+            HiddenCursorSetting         = profile.HiddenCursorSetting,
 
-            Reload      = GetActionViewModel(obj.Reload),
-            PauseResume = GetActionViewModel(obj.PauseResume),
-            Screenshot  = GetActionViewModel(obj.Screenshot),
-            HideCursor  = GetActionViewModel(obj.HideCursor),
+            Reload      = Map(profile.Reload),
+            PauseResume = Map(profile.PauseResume),
+            Screenshot  = Map(profile.Screenshot),
+            HideCursor  = Map(profile.HideCursor),
 
-            Previous        = GetActionViewModel(obj.Previous),
-            Select          = GetActionViewModel(obj.Select),
-            Next            = GetActionViewModel(obj.Next),
-            AutoDialog      = GetActionViewModel(obj.AutoDialog),
-            HideUi          = GetActionViewModel(obj.HideUi),
-            FullScreenPopUp = GetActionViewModel(obj.FullScreenPopUp),
+            Previous        = Map(profile.Previous),
+            Select          = Map(profile.Select),
+            Next            = Map(profile.Next),
+            ClickablePoints = Map(profile.ClickablePoints, clickablePointsVmDto),
 
-            One   = GetActionViewModel(obj.One),
-            Two   = GetActionViewModel(obj.Two),
-            Three = GetActionViewModel(obj.Three),
-            Four  = GetActionViewModel(obj.Four),
-            Five  = GetActionViewModel(obj.Five),
-            Six   = GetActionViewModel(obj.Six),
-            Seven = GetActionViewModel(obj.Seven),
-            Eight = GetActionViewModel(obj.Eight),
-            Nine  = GetActionViewModel(obj.Nine),
-            Ten   = GetActionViewModel(obj.Ten)
+            One   = Map(profile.One),
+            Two   = Map(profile.Two),
+            Three = Map(profile.Three),
+            Four  = Map(profile.Four),
+            Five  = Map(profile.Five),
+            Six   = Map(profile.Six),
+            Seven = Map(profile.Seven),
+            Eight = Map(profile.Eight),
+            Nine  = Map(profile.Nine),
+            Ten   = Map(profile.Ten)
         };
     }
 
-    private ActionViewModel GetActionViewModel(IEnumerable<List<GenericKey>> lowActions)
+    private ActionViewModel Map(IEnumerable<List<GenericKey>> lowActions)
     {
         return new ActionViewModel(lowActions.Select(rawKeys => new TriggerViewModel(rawKeys, _keyInterpreterService.InterpretKeys(rawKeys))).ToList());
+    }
+
+    private Dictionary<string, ClickablePointVm> Map(IEnumerable<ClickablePoint> clickablePoints, IReadOnlyCollection<ClickablePointVmDto> clickablePointsVm)
+    {
+        return (from point in clickablePoints
+                from vmPoint in clickablePointsVm
+                where point.Id.Equals(vmPoint.Id, StringComparison.Ordinal)
+                select new ClickablePointVm(
+                    point.Id,
+                    vmPoint.Name,
+                    vmPoint.Description,
+                    vmPoint.PathIcon,
+                    Map(point.Keys)))
+            .ToDictionary(vm => vm.Id, vm => vm);
     }
 }

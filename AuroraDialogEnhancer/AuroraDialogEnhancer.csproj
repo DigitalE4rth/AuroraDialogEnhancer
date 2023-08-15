@@ -153,13 +153,25 @@
     <Compile Include="Backend\Generics\IMapper.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameData.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameDataProvider.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ClickablePoint.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ClickablePointVm.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ECursorBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\EHiddenCursorSetting.cs" />
+    <Compile Include="Backend\KeyBinding\Models\EHighMouseKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ENumericActionBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ESingleDialogOptionBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\GenericKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\KeyBindingProfile.cs" />
     <Compile Include="Backend\KeyBinding\KeyBindingProfileService.cs" />
-    <Compile Include="Backend\KeyBinding\Mappers\KeyBindingProfileMapper.cs" />
+    <Compile Include="Backend\KeyBinding\Models\KeyboardKey.cs" />
+    <Compile Include="Backend\KeyBinding\Mappers\KeyBindingExtensionMapper.cs" />
+    <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelBackMapper.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelMapper.cs" />
     <Compile Include="Backend\ComputerVision\CvPresetMapper.cs" />
     <Compile Include="Backend\ComputerVision\CvPresetsService.cs" />
     <Compile Include="Backend\ComputerVision\ColorRangeScalar.cs" />
     <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
+    <Compile Include="Backend\KeyBinding\Models\MouseKey.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
     <Compile Include="Frontend\Controls\ColorPicker\ColorPickerDialog.xaml.cs">
@@ -253,7 +265,6 @@
     <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerServiceBase.cs" />
     <Compile Include="Backend\Hooks\Mouse\MouseHookManagerService.cs" />
     <Compile Include="Backend\Hooks\Mouse\MouseHookManagerRecordService.cs" />
-    <Compile Include="Backend\KeyBinding\Models\KeyBindingProfile.cs" />
     <Compile Include="Backend\Utils\BlobToBitmapImageConverter.cs" />
     <Compile Include="Frontend\Controls\Cards\CardDropDownWithArtificialFocus.cs" />
     <Compile Include="Frontend\Controls\Cards\KeyCap.cs" />
@@ -573,7 +584,7 @@ if not exist $(TargetDir)Localization mkdir $(TargetDir)Localization
 set langs=ru
 
 for %25%25l in (%25langs%25) do (
-   xcopy $(TargetDir)%25%25l $(TargetDir)Localization\%25%25l\ /s /y
+   xcopy $(TargetDir)%25%25l $(TargetDir)Localization\%25%25l\ /s /y /i
    rmdir /s /q $(TargetDir)%25%25l
 )
 

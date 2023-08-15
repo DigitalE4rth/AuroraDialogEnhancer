@@ -6,12 +6,12 @@ using Extension.GenshinImpact.Templates;
 
 namespace Extension.GenshinImpact.Services;
 
-public class DialogOptionFinder : IDialogOptionsFinder
+public class DialogOptionFinder : IDialogOptionFinder
 {
     private readonly BitmapUtils _bitmapUtils;
-    private readonly SearchTemplate _searchTemplate;
+    private readonly PreciseTemplate _searchTemplate;
     
-    public DialogOptionFinder(SearchTemplate searchTemplate)
+    public DialogOptionFinder(PreciseTemplate searchTemplate)
     {
         _searchTemplate = searchTemplate;
         _bitmapUtils = new BitmapUtils();

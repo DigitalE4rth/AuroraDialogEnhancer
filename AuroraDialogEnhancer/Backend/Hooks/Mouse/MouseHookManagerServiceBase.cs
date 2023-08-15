@@ -4,7 +4,8 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AuroraDialogEnhancerExtensions.KeyBinding;
+using AuroraDialogEnhancer.Backend.KeyBinding;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using NativeMethods = AuroraDialogEnhancer.Backend.External.NativeMethods;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Mouse;

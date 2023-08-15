@@ -1,4 +1,5 @@
 ﻿using AuroraDialogEnhancer.Backend.Generics;
+using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
 
 namespace AuroraDialogEnhancer.Backend.Extensions;
@@ -7,7 +8,7 @@ public class ExtensionConfigMapper : IMapper<ExtensionDto, ExtensionConfig>
 {
     public ExtensionConfig Map(ExtensionDto obj)
     {
-        var config = obj.GetExtensionConfig();
+        var config = obj.GetConfig();
 
         return new ExtensionConfig
         {

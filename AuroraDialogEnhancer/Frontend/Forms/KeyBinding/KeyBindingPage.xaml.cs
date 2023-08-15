@@ -2,28 +2,30 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Frontend.Services;
-using AuroraDialogEnhancerExtensions.KeyBinding;
 using Microsoft.Extensions.DependencyInjection;
 using WhyOrchid.Controls;
+using WhyOrchid.Controls.Config;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding;
 
-public partial class KeyBindingPage : Page
+public partial class KeyBindingPage
 {
     private readonly KeyBindingProfileService _keyBindingProfileService;
     private readonly KeyCapsService           _keyCapsService;
 
-    private KeyBindingProfileViewModel? _keyBindingProfileViewModel;
+    private KeyBindingProfileViewModel _keyBindingProfileViewModel;
 
     public KeyBindingPage(KeyCapsService           keyCapsService,
                           KeyBindingProfileService keyBindingProfileService)
     {
-        _keyBindingProfileService = keyBindingProfileService;
-        _keyCapsService           = keyCapsService;
+        _keyBindingProfileViewModel = new KeyBindingProfileViewModel();
+        _keyBindingProfileService   = keyBindingProfileService;
+        _keyCapsService             = keyCapsService;
 
         InitializeComponent();
 
@@ -35,6 +37,8 @@ public partial class KeyBindingPage : Page
     {
         UnloadComponentEvents();
         _keyBindingProfileViewModel = _keyBindingProfileService.GetViewModel(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+
+        InitializeClickablePointButtons();
         InitializeProfileValues();
         InitializeComponentEvents();
     }
@@ -47,7 +51,7 @@ public partial class KeyBindingPage : Page
         ComboBoxSingleBehaviour.SelectionChanged     += ComboBoxSingleBehaviour_OnSelectionChanged;
         ComboBoxNumericBehaviour.SelectionChanged    += ComboBoxNumericBehaviour_OnSelectionChanged;
         ComboBoxCursorBehaviour.SelectionChanged     += ComboBoxCursorBehaviour_OnSelectionChanged;
-        ComboBoxHiddenCursorSetting.SelectionChanged += ComboBoxHiddenCursorSettingOnSelectionChanged;
+        ComboBoxHiddenCursorSetting.SelectionChanged += ComboBoxHiddenCursorSetting_OnSelectionChanged;
     }
 
     private void UnloadComponentEvents()
@@ -56,12 +60,16 @@ public partial class KeyBindingPage : Page
         ComboBoxSingleBehaviour.SelectionChanged     -= ComboBoxSingleBehaviour_OnSelectionChanged;
         ComboBoxNumericBehaviour.SelectionChanged    -= ComboBoxNumericBehaviour_OnSelectionChanged;
         ComboBoxCursorBehaviour.SelectionChanged     -= ComboBoxCursorBehaviour_OnSelectionChanged;
-        ComboBoxHiddenCursorSetting.SelectionChanged -= ComboBoxHiddenCursorSettingOnSelectionChanged;
+        ComboBoxHiddenCursorSetting.SelectionChanged -= ComboBoxHiddenCursorSetting_OnSelectionChanged;
+        foreach (CardButton cardButtonClickablePoint in ContainerClickablePoints.Children)
+        {
+            cardButtonClickablePoint.Click -= CardButton_ClickablePoint_OnClick;
+        }
     }
 
     public void InitializeProfileValues()
     {
-        ToggleCycleThrough.IsChecked = _keyBindingProfileViewModel!.IsCycleThrough;
+        ToggleCycleThrough.IsChecked = _keyBindingProfileViewModel.IsCycleThrough;
         ToggleHideCursor.IsChecked = _keyBindingProfileViewModel.IsCursorHideOnManualClick;
 
         var singleBehaviour = ComboBoxSingleBehaviour.Items.OfType<ComboBoxItem>().First(item => (ESingleDialogOptionBehaviour)item.Tag == _keyBindingProfileViewModel.SingleDialogOptionBehaviour);
@@ -79,9 +87,53 @@ public partial class KeyBindingPage : Page
         InitializeKeyCaps();
     }
 
+    private void InitializeClickablePointButtons()
+    {
+        foreach (var clickablePointVm in _keyBindingProfileViewModel.ClickablePoints.Values)
+        {
+            var button = new CardButton
+            {
+                Title             = clickablePointVm.Name,
+                Description       = clickablePointVm.Description,
+                MinHeight         = 55,
+                Margin            = new Thickness(0,5,0,0),
+                Tag               = clickablePointVm.Id,
+                ContentForeground = ECardButtonContentForeground.Secondary,
+                LeftIcon          = new Grid
+                {
+                    Width    = WhyOrchid.Properties.Settings.Default.FontStyle_Large,
+                    Children =
+                    {
+                        new PathIcon
+                        {
+                            Width = WhyOrchid.Properties.Settings.Default.FontStyle_Medium,
+                            Data  = Geometry.Parse(clickablePointVm.PathIcon),
+                            Style = (Style) Application.Current.Resources["IconMedium"]
+                        }
+                    }
+                },
+                RightIcon = new Grid
+                {
+                    Width    = WhyOrchid.Properties.Settings.Default.FontStyle_Medium,
+                    Children =
+                    {
+                        new PathIcon
+                        {
+                            Data  = (PathGeometry) Application.Current.Resources["Icon.ChevronRight"],
+                            Style = (Style) Application.Current.Resources["IconSmall"]
+                        }
+                    }
+                },
+            };
+
+            button.Click += CardButton_ClickablePoint_OnClick;
+            ContainerClickablePoints.Children.Add(button);
+        }
+    }
+
     private void InitializeKeyCaps()
     {
-        _keyCapsService.SetKeyCaps(CardButtonReload,      _keyBindingProfileViewModel!.Reload);
+        _keyCapsService.SetKeyCaps(CardButtonReload,      _keyBindingProfileViewModel.Reload);
         _keyCapsService.SetKeyCaps(CardButtonPauseResume, _keyBindingProfileViewModel.PauseResume);
         _keyCapsService.SetKeyCaps(CardButtonScreenshot,  _keyBindingProfileViewModel.Screenshot);
         _keyCapsService.SetKeyCaps(CardButtonHideCursor,  _keyBindingProfileViewModel.HideCursor);
@@ -89,9 +141,6 @@ public partial class KeyBindingPage : Page
         _keyCapsService.SetKeyCaps(CardButtonSelect,     _keyBindingProfileViewModel.Select);
         _keyCapsService.SetKeyCaps(CardButtonPrevious,   _keyBindingProfileViewModel.Previous);
         _keyCapsService.SetKeyCaps(CardButtonNext,       _keyBindingProfileViewModel.Next);
-        _keyCapsService.SetKeyCaps(CardButtonAutoDialog, _keyBindingProfileViewModel.AutoDialog);
-        _keyCapsService.SetKeyCaps(CardButtonHideUi,     _keyBindingProfileViewModel.HideUi);
-        _keyCapsService.SetKeyCaps(CardButtonFullScreenPopUp, _keyBindingProfileViewModel.FullScreenPopUp);
 
         _keyCapsService.SetKeyCaps(CardButtonOne,   _keyBindingProfileViewModel.One);
         _keyCapsService.SetKeyCaps(CardButtonTwo,   _keyBindingProfileViewModel.Two);
@@ -103,6 +152,11 @@ public partial class KeyBindingPage : Page
         _keyCapsService.SetKeyCaps(CardButtonEight, _keyBindingProfileViewModel.Eight);
         _keyCapsService.SetKeyCaps(CardButtonNine,  _keyBindingProfileViewModel.Nine);
         _keyCapsService.SetKeyCaps(CardButtonTen,   _keyBindingProfileViewModel.Ten);
+
+        foreach (CardButton cardButton in ContainerClickablePoints.Children)
+        {
+            _keyCapsService.SetKeyCaps(cardButton, _keyBindingProfileViewModel.ClickablePoints[(string)cardButton.Tag].ActionViewModel);
+        }
     }
 
     private void ComboBoxSettings_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -130,144 +184,135 @@ public partial class KeyBindingPage : Page
     #region Utilities
     private void ToggleCycleThrough_OnClick(object sender, RoutedEventArgs e)
     {
-        _keyBindingProfileViewModel!.IsCycleThrough = (bool)ToggleCycleThrough.IsChecked!;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel!);
+        _keyBindingProfileViewModel.IsCycleThrough = (bool)ToggleCycleThrough.IsChecked!;
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
     private void ToggleHideCursor_OnClick(object sender, RoutedEventArgs e)
     {
-        _keyBindingProfileViewModel!.IsCursorHideOnManualClick = (bool)ToggleHideCursor.IsChecked!;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel!);
+        _keyBindingProfileViewModel.IsCursorHideOnManualClick = (bool)ToggleHideCursor.IsChecked!;
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
     private void ComboBoxSingleBehaviour_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        _keyBindingProfileViewModel!.SingleDialogOptionBehaviour = (ESingleDialogOptionBehaviour)((ComboBoxItem)ComboBoxSingleBehaviour.SelectedItem).Tag;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel!);
+        _keyBindingProfileViewModel.SingleDialogOptionBehaviour = (ESingleDialogOptionBehaviour)((ComboBoxItem)ComboBoxSingleBehaviour.SelectedItem).Tag;
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
     private void ComboBoxNumericBehaviour_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        _keyBindingProfileViewModel!.NumericActionBehaviour = (ENumericActionBehaviour)((ComboBoxItem)ComboBoxNumericBehaviour.SelectedItem).Tag;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel!);
+        _keyBindingProfileViewModel.NumericActionBehaviour = (ENumericActionBehaviour)((ComboBoxItem)ComboBoxNumericBehaviour.SelectedItem).Tag;
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
     private void ComboBoxCursorBehaviour_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        _keyBindingProfileViewModel!.CursorBehaviour = (ECursorBehaviour)((ComboBoxItem)ComboBoxCursorBehaviour.SelectedItem).Tag;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel!);
+        _keyBindingProfileViewModel.CursorBehaviour = (ECursorBehaviour)((ComboBoxItem)ComboBoxCursorBehaviour.SelectedItem).Tag;
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
-    private void ComboBoxHiddenCursorSettingOnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ComboBoxHiddenCursorSetting_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        _keyBindingProfileViewModel!.HiddenCursorSetting = (EHiddenCursorSetting)((ComboBoxItem)ComboBoxHiddenCursorSetting.SelectedItem).Tag;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel!);
+        _keyBindingProfileViewModel.HiddenCursorSetting = (EHiddenCursorSetting)((ComboBoxItem)ComboBoxHiddenCursorSetting.SelectedItem).Tag;
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
     #endregion
 
     #region General
     private void CardButton_Reload_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton) sender, _keyBindingProfileViewModel!.Reload);
+        EditActionViewModel((CardButton) sender, _keyBindingProfileViewModel.Reload);
     }
 
     private void CardButton_PauseResume_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.PauseResume);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.PauseResume);
     }
 
     private void CardButton_Screenshot_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Screenshot);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Screenshot);
     }
 
     private void CardButton_HideCursor_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.HideCursor);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.HideCursor);
     }
     #endregion
 
     #region Controls
     private void CardButton_Select_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Select);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Select);
     }
 
     private void CardButton_Previous_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Previous);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Previous);
     }
 
     private void CardButton_Next_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Next);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Next);
     }
 
-    private void CardButton_AutoDialog_OnClick(object sender, RoutedEventArgs e)
+    private void CardButton_ClickablePoint_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.AutoDialog);
-    }
-
-    private void CardButton_HideUi_OnClick(object sender, RoutedEventArgs e)
-    {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.HideUi);
-    }
-
-    private void CardButton_FullScreenPopUp_OnClick(object sender, RoutedEventArgs e)
-    {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.FullScreenPopUp);
+        var button = (CardButton)sender;
+        EditActionViewModel(button, _keyBindingProfileViewModel.ClickablePoints[(string)button.Tag].ActionViewModel);
     }
     #endregion
 
     #region Numeric
     private void CardButton_First_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.One);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.One);
     }
 
     private void CardButton_Second_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Two);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Two);
     }
 
     private void CardButton_Third_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Three);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Three);
     }
 
     private void CardButton_Fourth_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Four);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Four);
     }
 
     private void CardButton_Fifth_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Five);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Five);
     }
 
     private void CardButton_Sixth_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Six);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Six);
     }
 
     private void CardButton_Seventh_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Seven);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Seven);
     }
 
     private void CardButton_Eighth_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Eight);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Eight);
     }
 
     private void CardButton_Ninth_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Nine);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Nine);
     }
 
     private void CardButton_Tenth_OnClick(object sender, RoutedEventArgs e)
     {
-        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel!.Ten);
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Ten);
     }
     #endregion
     #endregion
@@ -285,14 +330,14 @@ public partial class KeyBindingPage : Page
         RemoveDuplicates(result);
 
         actionViewModel.TriggerViewModels = result.TriggerViewModels;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel!);
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
 
         InitializeProfileValues();
     }
 
     private void RemoveDuplicates(ActionViewModel sourceVm)
     {
-        RemoveDuplicates(_keyBindingProfileViewModel!.Reload,     sourceVm);
+        RemoveDuplicates(_keyBindingProfileViewModel.Reload,      sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.PauseResume, sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Screenshot,  sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.HideCursor,  sourceVm);
@@ -300,9 +345,6 @@ public partial class KeyBindingPage : Page
         RemoveDuplicates(_keyBindingProfileViewModel.Select,     sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Previous,   sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Next,       sourceVm);
-        RemoveDuplicates(_keyBindingProfileViewModel.AutoDialog, sourceVm);
-        RemoveDuplicates(_keyBindingProfileViewModel.HideUi,     sourceVm);
-        RemoveDuplicates(_keyBindingProfileViewModel.FullScreenPopUp, sourceVm);
 
         RemoveDuplicates(_keyBindingProfileViewModel.One,   sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Two,   sourceVm);
@@ -314,16 +356,22 @@ public partial class KeyBindingPage : Page
         RemoveDuplicates(_keyBindingProfileViewModel.Eight, sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Nine,  sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Ten,   sourceVm);
+
+        foreach (CardButton cardButton in ContainerClickablePoints.Children)
+        {
+            RemoveDuplicates( _keyBindingProfileViewModel.ClickablePoints[(string)cardButton.Tag].ActionViewModel, sourceVm);
+        }
     }
 
     private void RemoveDuplicates(ActionViewModel targetVm, ActionViewModel sourceVm)
     {
-        var duplicates = from target in targetVm.TriggerViewModels
-                         from source in sourceVm.TriggerViewModels
-                         where target.Equals(source)
-                         select target;
+        var duplicatesQuery = 
+            from target in targetVm.TriggerViewModels
+            from source in sourceVm.TriggerViewModels
+            where target.Equals(source)
+            select target;
 
-        targetVm.TriggerViewModels = targetVm.TriggerViewModels.Except(duplicates).ToList();
+        targetVm.TriggerViewModels = targetVm.TriggerViewModels.Except(duplicatesQuery).ToList();
     }
 
     private void KeyBindingPage_Unloaded(object sender, RoutedEventArgs e)

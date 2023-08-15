@@ -8,7 +8,7 @@ using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Frontend.Forms.Menu;
 using AuroraDialogEnhancer.Frontend.Forms.Utils;
 using AuroraDialogEnhancer.Frontend.Services;
-using AuroraDialogEnhancerExtensions.Content;
+using AuroraDialogEnhancerExtensions;
 
 namespace AuroraDialogEnhancer.Backend.Extensions;
 
@@ -19,7 +19,7 @@ public class ExtensionsLoader
     private readonly ExtensionsProvider       _extensionsProvider;
     private readonly UiService                _uiService;
 
-    public ExtensionsLoader(ExtensionConfigService    extensionConfigService,
+    public ExtensionsLoader(ExtensionConfigService   extensionConfigService,
                             KeyBindingProfileService keyBindingProfileService, 
                             ExtensionsProvider       extensionsProvider, 
                             UiService                uiService)

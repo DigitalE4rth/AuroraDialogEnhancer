@@ -3,13 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:gameSelector="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.GameSelector"
-      xmlns:keyBinding="clr-namespace:AuroraDialogEnhancerExtensions.KeyBinding;assembly=AuroraDialogEnhancer.Extensions"
       xmlns:local="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.KeyBinding"
       xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+      xmlns:keyBinding="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models"
       d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
       d:DesignHeight="1450"
       d:DesignWidth="800"
@@ -345,7 +345,7 @@
             </StackPanel>
 
             <!--  Controls  -->
-            <StackPanel Margin="0,0,0,25">
+            <StackPanel>
                 <!--  Title  -->
                 <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.KeyBinding_Control}" />
 
@@ -353,7 +353,6 @@
                 <woControls:CardButton x:Name="CardButtonSelect"
                                        Title="{x:Static localization:Resources.KeyBinding_Control_Select}"
                                        MinHeight="55"
-                                       Margin="0,0,0,5"
                                        Click="CardButton_Select_OnClick"
                                        ContentForeground="Secondary">
 
@@ -374,7 +373,7 @@
                 <woControls:CardButton x:Name="CardButtonPrevious"
                                        Title="{x:Static localization:Resources.KeyBinding_Control_Previous}"
                                        MinHeight="55"
-                                       Margin="0,0,0,5"
+                                       Margin="0,5,0,0"
                                        Click="CardButton_Previous_OnClick"
                                        ContentForeground="Secondary">
 
@@ -397,7 +396,7 @@
                 <woControls:CardButton x:Name="CardButtonNext"
                                        Title="{x:Static localization:Resources.KeyBinding_Control_Next}"
                                        MinHeight="55"
-                                       Margin="0,0,0,5"
+                                       Margin="0,5,0,0"
                                        Click="CardButton_Next_OnClick"
                                        ContentForeground="Secondary">
 
@@ -415,73 +414,10 @@
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
-
-                <!--  Auto dialog  -->
-                <woControls:CardButton x:Name="CardButtonAutoDialog"
-                                       Title="{x:Static localization:Resources.KeyBinding_Control_AutoDialog}"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="CardButton_AutoDialog_OnClick"
-                                       ContentForeground="Secondary">
-
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.CirclePlay}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
-
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ChevronRight}" Style="{StaticResource IconSmall}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
-
-                <!--  Hide Ui  -->
-                <woControls:CardButton x:Name="CardButtonHideUi"
-                                       Title="{x:Static localization:Resources.KeyBinding_Control_HideUi}"
-                                       MinHeight="55"
-                                       Margin="0,5,0,3"
-                                       Click="CardButton_HideUi_OnClick"
-                                       ContentForeground="Secondary"
-                                       ToolTip="Star Rail"
-                                       Visibility="Collapsed">
-
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.HideImage}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
-
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ChevronRight}" Style="{StaticResource IconSmall}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
-
-                <!--  FullScreen PopUp Mouse Click  -->
-                <woControls:CardButton x:Name="CardButtonFullScreenPopUp"
-                                       Title="{x:Static localization:Resources.KeyBinding_Control_FullScreenPopUpMouseClick}"
-                                       MinHeight="55"
-                                       d:Visibility="Visible"
-                                       Click="CardButton_FullScreenPopUp_OnClick"
-                                       ContentForeground="Secondary"
-                                       Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Converter={StaticResource BooleanToVisibilityConverter}}">
-
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.Mouse}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
-
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ChevronRight}" Style="{StaticResource IconSmall}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
             </StackPanel>
+
+            <!--  Clickable points  -->
+            <StackPanel x:Name="ContainerClickablePoints" Margin="0,0,0,25"/>
 
             <!--  Dialog options  -->
             <StackPanel>

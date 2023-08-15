@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
-using AuroraDialogEnhancerExtensions.KeyBinding;
+using AuroraDialogEnhancer.Backend.KeyBinding;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 

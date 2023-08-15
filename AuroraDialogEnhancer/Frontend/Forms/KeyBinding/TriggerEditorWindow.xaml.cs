@@ -7,11 +7,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
+using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Frontend.Controls.Cards;
 using AuroraDialogEnhancer.Frontend.Services;
-using AuroraDialogEnhancerExtensions.KeyBinding;
 using WhyOrchid.Controls;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
