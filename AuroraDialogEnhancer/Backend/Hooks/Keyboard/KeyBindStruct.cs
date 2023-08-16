@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 
-public class KeyBindStruct : IEquatable<KeyBindStruct>
+public class KeyBindStruct
 {
     public readonly SortedSet<int> VirtualKeys;
 
@@ -23,20 +22,13 @@ public class KeyBindStruct : IEquatable<KeyBindStruct>
         VirtualKeys = new SortedSet<int>();
     }
 
-    public bool Equals(KeyBindStruct? other)
-    {
-        if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
-        return VirtualKeys.SetEquals(other.VirtualKeys);
-    }
-
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
+        if (obj is null) return false;
         if (ReferenceEquals(this, obj)) return true;
         if (obj.GetType() != GetType()) return false;
-        return Equals((KeyBindStruct)obj);
+        return VirtualKeys.SetEquals(((KeyBindStruct)obj).VirtualKeys);
     }
 
-    public override int GetHashCode() => VirtualKeys.Aggregate(17, (current, virtualKey) => (current * 7) + virtualKey.GetHashCode());
+    public override int GetHashCode() => VirtualKeys.Aggregate(17, (total, next) => total * 7 + next.GetHashCode());
 }
