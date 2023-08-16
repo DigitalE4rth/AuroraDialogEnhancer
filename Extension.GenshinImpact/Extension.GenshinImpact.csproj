@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyBindings\ClickablePointViewModelProvider.cs" />
     <Compile Include="KeyBindings\KeyBindingProfile.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="ClickablePoints\ClickableScreenPointsProvider.cs" />

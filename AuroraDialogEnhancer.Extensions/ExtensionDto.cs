@@ -25,7 +25,7 @@ public abstract class ExtensionDto
 
     public virtual ExtensionConfigDto GetConfig() => new();
 
-    public virtual KeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProviderEmpty();
+    public virtual IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProviderEmpty();
 
     public virtual IPresetDto GetPreset(Size clientSize) => new PresetEmpty();
 

@@ -60,7 +60,7 @@
     <Compile Include="KeyBindings\GenericKeyDto.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileDto.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileDtoDefault.cs" />
-    <Compile Include="KeyBindings\KeyBindingProfileProviderDto.cs" />
+    <Compile Include="KeyBindings\IKeyBindingProfileProviderDto.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileProviderEmpty.cs" />
     <Compile Include="KeyBindings\KeyboardKeyDto.cs" />
     <Compile Include="KeyBindings\MouseKeyDto.cs" />

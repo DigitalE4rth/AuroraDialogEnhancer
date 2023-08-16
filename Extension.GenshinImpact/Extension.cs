@@ -28,7 +28,7 @@ public sealed class Extension : ExtensionDto
 
     public override Bitmap GetCover() => Properties.Resources.Cover;
 
-    public override KeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProvider();
+    public override IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProvider();
 
     public override IPresetDto GetPreset(Size clientSize) => new Preset(clientSize);
 

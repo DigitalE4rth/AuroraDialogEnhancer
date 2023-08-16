@@ -1,5 +1,10 @@
-﻿namespace AuroraDialogEnhancerExtensions.KeyBindings;
+﻿using System.Collections.Generic;
 
-internal sealed class KeyBindingProfileProviderEmpty : KeyBindingProfileProviderDto
+namespace AuroraDialogEnhancerExtensions.KeyBindings;
+
+internal class KeyBindingProfileProviderEmpty : IKeyBindingProfileProviderDto
 {
+    public KeyBindingProfileDto GetKeyBindingProfileDto() => new KeyBindingProfileDtoEmpty();
+
+    public List<ClickablePointVmDto> GetClickablePointsVm() => new(0);
 }
