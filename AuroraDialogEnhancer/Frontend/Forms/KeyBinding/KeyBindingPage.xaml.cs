@@ -89,6 +89,12 @@ public partial class KeyBindingPage
 
     private void InitializeClickablePointButtons()
     {
+        foreach (CardButton cardButtonClickablePoint in ContainerClickablePoints.Children)
+        {
+            cardButtonClickablePoint.Click -= CardButton_ClickablePoint_OnClick;
+        }
+        ContainerClickablePoints.Children.Clear();
+
         foreach (var clickablePointVm in _keyBindingProfileViewModel.ClickablePoints.Values)
         {
             var button = new CardButton
