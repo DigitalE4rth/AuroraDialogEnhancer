@@ -1,12 +1,12 @@
 ﻿namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
 
-public class KeyboardKey : GenericKey
+public record KeyboardKey : GenericKey
 {
-    public KeyboardKey()
+    public KeyboardKey(int keyCode) : base(keyCode)
     {
     }
 
-    public KeyboardKey(int keyCode) : base(keyCode)
+    public KeyboardKey()
     {
     }
 }

@@ -7,7 +7,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
-using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Frontend.Controls.Cards;
@@ -233,6 +232,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
 
             var triggerViewModel = new TriggerViewModel();
             _actionViewModelSnapshot!.TriggerViewModels.Add(triggerViewModel);
+
             var cardDropDown = GenerateCardDropDown(triggerViewModel);
             _cardDropDownButtonsDictionary.Add(cardDropDown, triggerViewModel);
 
@@ -355,7 +355,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                 StopRecording();
 
                 _processingTrigger!.KeyCodes = new List<GenericKey> { new MouseKey(e) };
-                _processingTrigger.KeyNames = new List<string> { _keyInterpreterService.InterpretKey(e) };
+                _processingTrigger.KeyNames  = new List<string>     { _keyInterpreterService.InterpretKey(e) };
 
                 _keyCapsService.SetKeyCaps((StackPanel) _processingCardDropDown!.BodyContent, _processingTrigger!);
                 ClearProcessingObjects();
@@ -381,18 +381,23 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                     }
 
                     StopRecording();
+
                     var modifierAndRegularKeys = new List<KeyboardKey>(modifierKeys.Select(keyCode => new KeyboardKey(keyCode))) { new(lastRegularKey) };
+
                     _processingTrigger!.KeyCodes = new List<GenericKey>(modifierAndRegularKeys);
-                    _processingTrigger.KeyNames = modifierAndRegularKeys.Select(_keyInterpreterService.InterpretKey).ToList();
+                    _processingTrigger.KeyNames  = modifierAndRegularKeys.Select(_keyInterpreterService.InterpretKey).ToList();
 
                     _keyCapsService.SetKeyCaps((StackPanel)_processingCardDropDown!.BodyContent, _processingTrigger!);
+
                     ClearProcessingObjects();
                     return;
                 }
 
                 var highModifierKeys = modifierKeys.Select(keyCode => new KeyboardKey(keyCode)).ToList();
+
                 _processingTrigger!.KeyCodes = new List<GenericKey>(highModifierKeys);
-                _processingTrigger.KeyNames = highModifierKeys.Select(_keyInterpreterService.InterpretKey).ToList();
+                _processingTrigger.KeyNames  = highModifierKeys.Select(_keyInterpreterService.InterpretKey).ToList();
+
                 _keyCapsService.SetKeyCaps((StackPanel) _processingCardDropDown!.BodyContent, _processingTrigger!);
             });
         }
@@ -416,7 +421,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         private void ClearProcessingObjects()
         {
             _processingCardDropDown = null;
-            _processingTrigger = null;
+            _processingTrigger      = null;
         }
 
         private void StopRecording(bool isCanceled = false)
@@ -426,8 +431,8 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             _keyboardHookManagerRecordService.Stop();
             _mouseHookManagerRecordService.Stop();
 
-            _keyboardHookManagerRecordService.OnKeyDown -= KeyboardHookManagerRecordService_OnKeyDown;
-            _keyboardHookManagerRecordService.OnKeyUp -= KeyboardHookManagerRecordService_OnKeyUp;
+            _keyboardHookManagerRecordService.OnKeyDown   -= KeyboardHookManagerRecordService_OnKeyDown;
+            _keyboardHookManagerRecordService.OnKeyUp     -= KeyboardHookManagerRecordService_OnKeyUp;
             _mouseHookManagerRecordService.OnMouseKeyDown -= MouseHookManagerRecordService_OnMouseKeyDown;
             
             _processingCardDropDown!.IsArtificiallyFocused = false;

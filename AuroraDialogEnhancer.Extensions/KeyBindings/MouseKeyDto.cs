@@ -1,8 +1,8 @@
 ﻿namespace AuroraDialogEnhancerExtensions.KeyBindings;
 
-public class MouseKeyDto : GenericKeyDto
+public record MouseKeyDto : GenericKeyDto
 {
-    public MouseKeyDto()
+    public MouseKeyDto(EHighMouseKeyDto highMouseKeyDto) : base((int)highMouseKeyDto)
     {
     }
 
@@ -10,7 +10,7 @@ public class MouseKeyDto : GenericKeyDto
     {
     }
 
-    public MouseKeyDto(EHighMouseKeyDto highMouseKeyDto) : base((int) highMouseKeyDto)
+    public MouseKeyDto()
     {
     }
 }

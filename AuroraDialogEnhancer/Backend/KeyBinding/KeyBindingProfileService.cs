@@ -36,7 +36,7 @@ public class KeyBindingProfileService
     #region Create
     public void Create(ExtensionDto extension)
     {
-        var extensionProfile = extension.GetKeyBindingProfileProvider().KeyBindingProfileDto;
+        var extensionProfile = extension.GetKeyBindingProfileProvider().GetKeyBindingProfileDto();
         var mappedProfile = new KeyBindingExtensionMapper().Map(extensionProfile);
 
         Directory.CreateDirectory(Path.Combine(Global.Locations.ExtensionsFolder, extension.Name));
@@ -57,7 +57,7 @@ public class KeyBindingProfileService
 
     public void SaveDefault(string id)
     {
-        var extensionProfile = _extensionsProvider.ExtensionsDictionary[id].GetKeyBindingProfileProvider().KeyBindingProfileDto;
+        var extensionProfile = _extensionsProvider.ExtensionsDictionary[id].GetKeyBindingProfileProvider().GetKeyBindingProfileDto();
         var mappedProfile = new KeyBindingExtensionMapper().Map(extensionProfile);
 
         SaveAndApplyIfHookIsActive(id, mappedProfile);
@@ -109,7 +109,7 @@ public class KeyBindingProfileService
         var profile = Get(id);
         var extensionProfile = _extensionsProvider.ExtensionsDictionary[id].GetKeyBindingProfileProvider();
 
-        return _viewModelMapper.Map((profile, extensionProfile.ClickablePointsVm));
+        return _viewModelMapper.Map((profile, extensionProfile.GetClickablePointsVm()));
     }
     #endregion
 }

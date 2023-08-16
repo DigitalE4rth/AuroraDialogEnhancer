@@ -1,12 +1,12 @@
 ﻿namespace AuroraDialogEnhancerExtensions.KeyBindings;
 
-public class KeyboardKeyDto : GenericKeyDto
+public record KeyboardKeyDto : GenericKeyDto
 {
-    public KeyboardKeyDto()
+    public KeyboardKeyDto(int keyCode) : base(keyCode)
     {
     }
 
-    public KeyboardKeyDto(int keyCode) : base(keyCode)
+    public KeyboardKeyDto()
     {
     }
 }

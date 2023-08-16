@@ -4,11 +4,6 @@ using System.Linq;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 
-/// <summary>
-/// A struct to represent a key bind (modifiers + key).
-/// When the key bind struct is compared to another key bind struct, the equality is based on the modifiers and the virtual key code.
-/// </summary>
-[Serializable]
 public class KeyBindStruct : IEquatable<KeyBindStruct>
 {
     public readonly SortedSet<int> VirtualKeys;
