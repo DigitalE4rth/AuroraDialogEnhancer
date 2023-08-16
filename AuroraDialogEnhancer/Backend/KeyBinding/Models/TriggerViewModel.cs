@@ -38,6 +38,6 @@ public class TriggerViewModel
     public override int GetHashCode()
     {
         // ReSharper disable once NonReadonlyMemberInGetHashCode
-        return KeyCodes.Select(key => key.KeyCode).Sum();
+        return KeyCodes.Aggregate(17, (current, virtualKey) => (current * 7) + virtualKey.GetHashCode());
     }
 }
