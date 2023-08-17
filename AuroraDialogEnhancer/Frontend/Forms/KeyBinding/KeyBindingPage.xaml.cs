@@ -330,8 +330,7 @@ public partial class KeyBindingPage
 
         if (window.ShowDialog() != true) return;
 
-        var result = window.GetResult()!;
-        result.TriggerViewModels = result.TriggerViewModels.Distinct().ToList();
+        var result = window.GetResult();
 
         RemoveDuplicates(result);
 
@@ -371,10 +370,11 @@ public partial class KeyBindingPage
 
     private void RemoveDuplicates(ActionViewModel targetVm, ActionViewModel sourceVm)
     {
+        var comparer = new TriggerViewModelComparer();
         var duplicatesQuery = 
             from target in targetVm.TriggerViewModels
             from source in sourceVm.TriggerViewModels
-            where target.Equals(source)
+            where comparer.Equals(target, source)
             select target;
 
         targetVm.TriggerViewModels = targetVm.TriggerViewModels.Except(duplicatesQuery).ToList();

@@ -24,8 +24,8 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         private readonly MouseHookManagerRecordService    _mouseHookManagerRecordService;
 
         private readonly Dictionary<CardDropDownWithArtificialFocus, TriggerViewModel> _cardDropDownButtonsDictionary;
-        private ActionViewModel?                 _actionViewModelSnapshot;
-        private TriggerViewModel?                _processingTrigger;
+        private ActionViewModel                  _actionViewModelSnapshot;
+        private TriggerViewModel                 _processingTrigger;
         private CardDropDownWithArtificialFocus? _processingCardDropDown;
         private bool _isRecording;
         private bool _isCardButtonPristine;
@@ -47,6 +47,8 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             _cardDropDownButtonsDictionary = new Dictionary<CardDropDownWithArtificialFocus, TriggerViewModel>();
+            _processingTrigger       = new TriggerViewModel(new List<GenericKey>(0), new List<string>(0));
+            _actionViewModelSnapshot = new ActionViewModel(new List<TriggerViewModel>(0));
             _focusLock = new object();
 
             Unloaded    += TriggerEditorWindow_Unloaded;
@@ -64,7 +66,11 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             InitializeTriggers();
         }
 
-        public ActionViewModel? GetResult() => _actionViewModelSnapshot;
+        public ActionViewModel GetResult()
+        {
+            _actionViewModelSnapshot.TriggerViewModels = _actionViewModelSnapshot.TriggerViewModels.Distinct(new TriggerViewModelComparer()).ToList();
+            return _actionViewModelSnapshot;
+        }
 
         private void TriggerEditorWindow_Activated(object sender, EventArgs e)
         {
@@ -88,7 +94,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         #region Triggers rendering
         private void InitializeTriggers()
         {
-            if (_actionViewModelSnapshot!.TriggerViewModels.Count == 0)
+            if (_actionViewModelSnapshot.TriggerViewModels.Count == 0)
             {
                 StackPanelNoTriggers.Visibility  = Visibility.Visible;
                 return;
@@ -213,7 +219,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
 
         private void SetCardPositionStyles()
         {
-            if (_actionViewModelSnapshot!.TriggerViewModels.Count != 0) return;
+            if (_actionViewModelSnapshot.TriggerViewModels.Count != 0) return;
             StackPanelNoTriggers.Visibility = Visibility.Visible;
         }
         #endregion
@@ -225,13 +231,13 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
 
             _isCardButtonPristine = true;
 
-            if (_actionViewModelSnapshot!.TriggerViewModels.Count == 0)
+            if (_actionViewModelSnapshot.TriggerViewModels.Count == 0)
             {
                 StackPanelNoTriggers.Visibility = Visibility.Collapsed;
             }
 
             var triggerViewModel = new TriggerViewModel();
-            _actionViewModelSnapshot!.TriggerViewModels.Add(triggerViewModel);
+            _actionViewModelSnapshot.TriggerViewModels.Add(triggerViewModel);
 
             var cardDropDown = GenerateCardDropDown(triggerViewModel);
             _cardDropDownButtonsDictionary.Add(cardDropDown, triggerViewModel);
@@ -272,7 +278,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
 
             if (index == 0) return;
 
-            var itemToShift = _actionViewModelSnapshot!.TriggerViewModels[index];
+            var itemToShift = _actionViewModelSnapshot.TriggerViewModels[index];
             _actionViewModelSnapshot.TriggerViewModels.RemoveAt(index);
             _actionViewModelSnapshot.TriggerViewModels.Insert(index - 1, itemToShift);
 
@@ -287,7 +293,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         {
             var index = UniformGridTriggers.Children.IndexOf(cardButton);
 
-            if (index == _actionViewModelSnapshot!.TriggerViewModels.Count - 1) return;
+            if (index == _actionViewModelSnapshot.TriggerViewModels.Count - 1) return;
 
             var itemToShift = _actionViewModelSnapshot.TriggerViewModels[index];
             _actionViewModelSnapshot.TriggerViewModels.RemoveAt(index);
@@ -314,7 +320,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         {
             var index = UniformGridTriggers.Children.IndexOf(cardButton);
 
-            _actionViewModelSnapshot!.TriggerViewModels.RemoveAt(index);
+            _actionViewModelSnapshot.TriggerViewModels.RemoveAt(index);
             _cardDropDownButtonsDictionary.Remove(cardButton);
             UniformGridTriggers.Children.RemoveAt(index);
 
@@ -354,10 +360,10 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             { 
                 StopRecording();
 
-                _processingTrigger!.KeyCodes = new List<GenericKey> { new MouseKey(e) };
-                _processingTrigger.KeyNames  = new List<string>     { _keyInterpreterService.InterpretKey(e) };
+                _processingTrigger.KeyCodes = new List<GenericKey> { new MouseKey(e) };
+                _processingTrigger.KeyNames  = new List<string>    { _keyInterpreterService.InterpretKey(e) };
 
-                _keyCapsService.SetKeyCaps((StackPanel) _processingCardDropDown!.BodyContent, _processingTrigger!);
+                _keyCapsService.SetKeyCaps((StackPanel) _processingCardDropDown!.BodyContent, _processingTrigger);
                 ClearProcessingObjects();
             });
         }
@@ -384,10 +390,10 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
 
                     var modifierAndRegularKeys = new List<KeyboardKey>(modifierKeys.Select(keyCode => new KeyboardKey(keyCode))) { new(lastRegularKey) };
 
-                    _processingTrigger!.KeyCodes = new List<GenericKey>(modifierAndRegularKeys);
-                    _processingTrigger.KeyNames  = modifierAndRegularKeys.Select(_keyInterpreterService.InterpretKey).ToList();
+                    _processingTrigger.KeyCodes = new List<GenericKey>(modifierAndRegularKeys);
+                    _processingTrigger.KeyNames = modifierAndRegularKeys.Select(_keyInterpreterService.InterpretKey).ToList();
 
-                    _keyCapsService.SetKeyCaps((StackPanel)_processingCardDropDown!.BodyContent, _processingTrigger!);
+                    _keyCapsService.SetKeyCaps((StackPanel)_processingCardDropDown!.BodyContent, _processingTrigger);
 
                     ClearProcessingObjects();
                     return;
@@ -395,10 +401,10 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
 
                 var highModifierKeys = modifierKeys.Select(keyCode => new KeyboardKey(keyCode)).ToList();
 
-                _processingTrigger!.KeyCodes = new List<GenericKey>(highModifierKeys);
-                _processingTrigger.KeyNames  = highModifierKeys.Select(_keyInterpreterService.InterpretKey).ToList();
+                _processingTrigger.KeyCodes = new List<GenericKey>(highModifierKeys);
+                _processingTrigger.KeyNames = highModifierKeys.Select(_keyInterpreterService.InterpretKey).ToList();
 
-                _keyCapsService.SetKeyCaps((StackPanel) _processingCardDropDown!.BodyContent, _processingTrigger!);
+                _keyCapsService.SetKeyCaps((StackPanel) _processingCardDropDown!.BodyContent, _processingTrigger);
             });
         }
 
@@ -421,7 +427,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         private void ClearProcessingObjects()
         {
             _processingCardDropDown = null;
-            _processingTrigger      = null;
         }
 
         private void StopRecording(bool isCanceled = false)
@@ -442,7 +447,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                 ActionDelete(_processingCardDropDown);
                 _isCardButtonPristine = false;
 
-                if (_actionViewModelSnapshot!.TriggerViewModels.Count == 0)
+                if (_actionViewModelSnapshot.TriggerViewModels.Count == 0)
                 {
                     StackPanelNoTriggers.Visibility = Visibility.Visible;
                 }

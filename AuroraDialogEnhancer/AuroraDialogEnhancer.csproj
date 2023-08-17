@@ -172,6 +172,7 @@
     <Compile Include="Backend\ComputerVision\ColorRangeScalar.cs" />
     <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
     <Compile Include="Backend\KeyBinding\Models\MouseKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\TriggerViewModelComparer.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
     <Compile Include="Frontend\Controls\ColorPicker\ColorPickerDialog.xaml.cs">
