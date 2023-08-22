@@ -1,5 +1,7 @@
-﻿using AuroraDialogEnhancer.Backend.Extensions;
+﻿using System.Linq;
+using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
+using AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 using AuroraDialogEnhancer.Backend.KeyHandler;
 
 namespace AuroraDialogEnhancer.Backend.ComputerVision;
@@ -29,16 +31,18 @@ public class ComputerVisionPresetService
 
         var preset = presetInfo.GetPreset();
 
-        var doFinderProvider = preset.GetDialogOptionFinderProvider(clientSize);
-        if (doFinderProvider is null) return (false, $"{Properties.Localization.Resources.HookSettings_Error_Preset_Preset} {clientSize.Width}x{clientSize.Height} {Properties.Localization.Resources.HookSettings_Error_Preset_IsMissing}");
+        var dialogOptionFinderProvider = preset.GetDialogOptionFinderProvider(clientSize);
+        if (dialogOptionFinderProvider is null) return (false, $"{Properties.Localization.Resources.HookSettings_Error_Preset_Preset} {clientSize.Width}x{clientSize.Height} {Properties.Localization.Resources.HookSettings_Error_Preset_IsMissing}");
 
-        _computerVisionService.Initialize(doFinderProvider);
-        _cursorPositioningService.CursorPosition = doFinderProvider.Data.InitialCursorPosition;
+        _computerVisionService.Initialize(dialogOptionFinderProvider);
+        _cursorPositioningService.CursorPosition = dialogOptionFinderProvider.Data.InitialCursorPosition;
 
         var clickablePoints = preset.GetClickablePoints(clientSize);
         if (clickablePoints is not null)
         {
-            _keyHandlerService.InitializeClickablePoints(clickablePoints);
+            var clickablePointMapper = new ClickablePrecisePointMapper();
+            var mappedPoints = clickablePoints.Select(clickablePointMapper.Map).ToList();
+            _keyHandlerService.InitializeClickablePoints(mappedPoints);
         }
         
         return (true, string.Empty);

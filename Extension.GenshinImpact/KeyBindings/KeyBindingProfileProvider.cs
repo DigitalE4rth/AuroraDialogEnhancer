@@ -7,5 +7,5 @@ public class KeyBindingProfileProvider : IKeyBindingProfileProviderDto
 {
     public KeyBindingProfileDto GetKeyBindingProfileDto() => new KeyBindingProfile();
 
-    public List<ClickablePointVmDto> GetClickablePointsVm() => new ClickablePointViewModelProvider().Get();
+    public List<ClickablePointVmDto> GetClickablePointsVmDto() => new ClickablePointViewModelProvider().Get();
 }

@@ -6,5 +6,5 @@ public interface IKeyBindingProfileProviderDto
 {
     public KeyBindingProfileDto GetKeyBindingProfileDto();
 
-    public List<ClickablePointVmDto> GetClickablePointsVm();
+    public List<ClickablePointVmDto> GetClickablePointsVmDto();
 }

@@ -6,10 +6,10 @@ namespace Extension.GenshinImpact.ClickablePoints;
 
 public class ClickableScreenPointsProvider
 {
-    public List<ClickablePrecisePoint> Get(Size clientSize)
+    public List<ClickablePrecisePointDto> Get(Size clientSize)
     {
         var concretePoints = new ClickablePointsMapper().Map(clientSize);
-        return new List<ClickablePrecisePoint>()
+        return new List<ClickablePrecisePointDto>()
         {
             new("autoplay", concretePoints.AutoPlay)
         };

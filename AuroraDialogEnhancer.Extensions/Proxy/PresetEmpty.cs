@@ -13,5 +13,5 @@ internal class PresetEmpty : IPreset
             new DialogOptionFinderData(Rectangle.Empty, Rectangle.Empty, Point.Empty));
     }
 
-    public List<ClickablePrecisePoint> GetClickablePoints(Size clientSize) => new(0);
+    public List<ClickablePrecisePointDto> GetClickablePoints(Size clientSize) => new(0);
 }

@@ -6,5 +6,5 @@ internal class KeyBindingProfileProviderEmpty : IKeyBindingProfileProviderDto
 {
     public KeyBindingProfileDto GetKeyBindingProfileDto() => new KeyBindingProfileDtoEmpty();
 
-    public List<ClickablePointVmDto> GetClickablePointsVm() => new(0);
+    public List<ClickablePointVmDto> GetClickablePointsVmDto() => new(0);
 }

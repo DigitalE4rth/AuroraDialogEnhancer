@@ -8,5 +8,5 @@ public interface IPreset
 {
     public DialogOptionFinderProvider? GetDialogOptionFinderProvider(Size clientSize);
 
-    public List<ClickablePrecisePoint>? GetClickablePoints(Size clientSize);
+    public List<ClickablePrecisePointDto>? GetClickablePoints(Size clientSize);
 }

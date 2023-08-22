@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
 using AuroraDialogEnhancerExtensions.Proxy;
@@ -30,17 +29,12 @@ public class ComputerVisionService : IDisposable
 
     public bool IsDialogMode()
     {
-        Debug.WriteLine("================");
-        var result = DialogOptionFinder.IsDialogMode(_screenCaptureService.CaptureRelative(SpeakerNameArea));
-        Debug.WriteLine("Dialog mode: " + result);
-        return result;
+        return DialogOptionFinder.IsDialogMode(_screenCaptureService.CaptureRelative(SpeakerNameArea));
     }
 
     public List<Rectangle> GetDialogOptions()
     {
-        var result = DialogOptionFinder.GetDialogOptions(_screenCaptureService.CaptureRelative(DialogOptionsArea));
-        Debug.WriteLine("Dialog options: " + result.Count);
-        return result;
+        return DialogOptionFinder.GetDialogOptions(_screenCaptureService.CaptureRelative(DialogOptionsArea));
     }
 
     public void Dispose()

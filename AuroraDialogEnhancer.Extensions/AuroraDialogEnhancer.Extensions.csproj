@@ -88,7 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Presets.resx</DependentUpon>
     </Compile>
-    <Compile Include="KeyBindings\ClickablePrecisePoint.cs" />
+    <Compile Include="KeyBindings\ClickablePrecisePointDto.cs" />
     <Compile Include="Proxy\DialogOptionFinderData.cs" />
     <Compile Include="Proxy\PresetEmpty.cs" />
     <Compile Include="Services\BitmapUtils.cs" />

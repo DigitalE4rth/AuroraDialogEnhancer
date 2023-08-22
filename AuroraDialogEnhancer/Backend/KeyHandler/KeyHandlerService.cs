@@ -38,7 +38,7 @@ public class KeyHandlerService : IDisposable
     private List<Rectangle> _currentDialogOptions;
     private Point           _primaryDownPoint;
     private Point           _primaryUpPoint;
-    private Dictionary<string, Point> _clickablePrecisePoints;
+    private Dictionary<string, Point> _clickablePoints;
 
     private bool _isWindowFocused;
     private bool _isProcessing;
@@ -71,7 +71,7 @@ public class KeyHandlerService : IDisposable
         _screenCaptureService          = screenCaptureService;
         _windowHookService             = windowHookService;
 
-        _clickablePrecisePoints          = new Dictionary<string, Point>(0);
+        _clickablePoints      = new Dictionary<string, Point>(0);
         _currentDialogOptions = new List<Rectangle>(0);
         _focusLock      = new object();
         _processingLock = new object();
@@ -79,10 +79,9 @@ public class KeyHandlerService : IDisposable
     }
 
     #region Initializing
-
     public void InitializeClickablePoints(List<ClickablePrecisePoint> clickablePoints)
     {
-        _clickablePrecisePoints = clickablePoints.ToDictionary(point => point.Id, point => point.Point);
+        _clickablePoints = clickablePoints.ToDictionary(point => point.Id, point => point.Point);
     }
 
     public void ApplyKeyBinds()
@@ -190,14 +189,14 @@ public class KeyHandlerService : IDisposable
                 {
                     _mouseHookManagerService.RegisterHotKey(
                         genericKeys[0].KeyCode, 
-                        () => { ClickCursor(_clickablePrecisePoints[clickablePoint.Id]); });
+                        () => { ClickCursor(_clickablePoints[clickablePoint.Id]); });
 
                     continue;
                 }
 
                 _keyboardHookManagerService.RegisterHotKeys(
                     genericKeys.Select(key => key.KeyCode), 
-                    () => { ClickCursor(_clickablePrecisePoints[clickablePoint.Id]); });
+                    () => { ClickCursor(_clickablePoints[clickablePoint.Id]); });
             }
         }
     }
@@ -611,7 +610,7 @@ public class KeyHandlerService : IDisposable
     public void Dispose()
     {
         _windowHookService.OnFocusChanged -= OnWindowFocusChanged;
-        _clickablePrecisePoints = new Dictionary<string, Point>(0);
+        _clickablePoints = new Dictionary<string, Point>(0);
         StopPeripheryHook();
     }
 }

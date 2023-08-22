@@ -11,5 +11,5 @@ public class Preset : IPreset
 {
     public DialogOptionFinderProvider GetDialogOptionFinderProvider(Size clientSize) => new DialogOptionFinderInfoMapper().Map(clientSize);
 
-    public List<ClickablePrecisePoint> GetClickablePoints(Size clientSize) => new ClickableScreenPointsProvider().Get(clientSize);
+    public List<ClickablePrecisePointDto> GetClickablePoints(Size clientSize) => new ClickableScreenPointsProvider().Get(clientSize);
 }
