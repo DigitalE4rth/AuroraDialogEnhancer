@@ -50,11 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dimensions\ThresholdArea.cs" />
+    <Compile Include="Dimensions\ThresholdAreaDynamic.cs" />
     <Compile Include="KeyBindings\ClickablePointViewModelProvider.cs" />
     <Compile Include="KeyBindings\KeyBindingProfile.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="ClickablePoints\ClickableScreenPointsProvider.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileProvider.cs" />
+    <Compile Include="Presets\PresetData.cs" />
     <Compile Include="Properties\Resources.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

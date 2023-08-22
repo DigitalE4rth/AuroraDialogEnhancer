@@ -65,9 +65,9 @@
     <Compile Include="KeyBindings\KeyboardKeyDto.cs" />
     <Compile Include="KeyBindings\MouseKeyDto.cs" />
     <Compile Include="Proxy\DialogOptionFinderEmpty.cs" />
-    <Compile Include="Proxy\IPresetDto.cs" />
+    <Compile Include="Proxy\IPreset.cs" />
     <Compile Include="Proxy\IDialogOptionFinder.cs" />
-    <Compile Include="Proxy\DialogOptionFinderInfo.cs" />
+    <Compile Include="Proxy\DialogOptionFinderProvider.cs" />
     <Compile Include="Dimensions\Area.cs" />
     <Compile Include="Dimensions\AreaBase.cs" />
     <Compile Include="Dimensions\AreaDynamic.cs" />
@@ -88,8 +88,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Presets.resx</DependentUpon>
     </Compile>
-    <Compile Include="KeyBindings\ClickableScreenPointDto.cs" />
-    <Compile Include="Proxy\IPresetProvider.cs" />
+    <Compile Include="KeyBindings\ClickablePrecisePoint.cs" />
+    <Compile Include="Proxy\DialogOptionFinderData.cs" />
     <Compile Include="Proxy\PresetEmpty.cs" />
     <Compile Include="Services\BitmapUtils.cs" />
   </ItemGroup>

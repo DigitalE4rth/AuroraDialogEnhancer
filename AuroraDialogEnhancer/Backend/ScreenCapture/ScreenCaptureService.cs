@@ -114,9 +114,9 @@ public class ScreenCaptureService
             _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangle.Height));
     }
 
-    public Bitmap? CaptureRelative(Rectangle rectangle)
+    public Bitmap CaptureRelative(Rectangle rectangle)
     {
-        if (!CanBeCaptured()) return null;
+        if (!CanBeCaptured()) return new Bitmap(0,0);
 
         var relativeRectangle = new Rectangle(
             _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + rectangle.X,

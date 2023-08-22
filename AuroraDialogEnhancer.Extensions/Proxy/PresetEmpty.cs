@@ -4,9 +4,14 @@ using AuroraDialogEnhancerExtensions.KeyBindings;
 
 namespace AuroraDialogEnhancerExtensions.Proxy;
 
-internal class PresetEmpty : IPresetDto
+internal class PresetEmpty : IPreset
 {
-    public DialogOptionFinderInfo DialogOptionsFinderInfo { get; } = new(Rectangle.Empty, Rectangle.Empty, new DialogOptionFinderEmpty());
+    public DialogOptionFinderProvider GetDialogOptionFinderProvider(Size clientSize)
+    {
+        return new DialogOptionFinderProvider(
+            new DialogOptionFinderEmpty(),
+            new DialogOptionFinderData(Rectangle.Empty, Rectangle.Empty, Point.Empty));
+    }
 
-    public List<ClickableScreenPointDto> ClickablePoints { get; } = new(0);
+    public List<ClickablePrecisePoint> GetClickablePoints(Size clientSize) => new(0);
 }

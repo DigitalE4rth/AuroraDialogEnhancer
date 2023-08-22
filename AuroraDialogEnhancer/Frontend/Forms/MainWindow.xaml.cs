@@ -37,6 +37,9 @@ public partial class MainWindow
     private void InitializeTitle()
     {
         Title = Assembly.GetEntryAssembly()!.GetCustomAttribute<AssemblyTitleAttribute>().Title;
+#if DEBUG
+        Title += " ● DEVELOPMENT";
+#endif
     }
 
     private void InitializeLocation()

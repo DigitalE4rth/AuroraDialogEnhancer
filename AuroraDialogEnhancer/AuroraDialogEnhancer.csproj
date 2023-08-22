@@ -149,6 +149,8 @@
     <Compile Include="AppConfig\Theme\ColorThemeService.cs" />
     <Compile Include="AppConfig\Theme\EColorTheme.cs" />
     <Compile Include="AppConfig\Theme\EAppCursor.cs" />
+    <Compile Include="Backend\ComputerVision\DialogOptionFinderEmpty.cs" />
+    <Compile Include="Backend\ComputerVision\ComputerVisionService.cs" />
     <Compile Include="Backend\Extensions\ExtensionConfigMapper.cs" />
     <Compile Include="Backend\Generics\IMapper.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameData.cs" />
@@ -168,7 +170,7 @@
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelBackMapper.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelMapper.cs" />
     <Compile Include="Backend\ComputerVision\CvPresetMapper.cs" />
-    <Compile Include="Backend\ComputerVision\CvPresetsService.cs" />
+    <Compile Include="Backend\ComputerVision\ComputerVisionPresetService.cs" />
     <Compile Include="Backend\ComputerVision\ColorRangeScalar.cs" />
     <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
     <Compile Include="Backend\KeyBinding\Models\MouseKey.cs" />
@@ -394,7 +396,6 @@
     <Compile Include="Backend\KeyHandler\KeyHandlerService.cs" />
     <Compile Include="Backend\ScreenCapture\ScreenCaptureService.cs" />
     <Compile Include="Backend\Hooks\Process\ProcessInfo.cs" />
-    <Compile Include="Backend\ComputerVision\OpenCvService.cs" />
     <Compile Include="Backend\Hooks\Process\ProcessInfoService.cs" />
     <Compile Include="Frontend\Forms\HookControl\HookControlPage.xaml.cs">
       <DependentUpon>HookControlPage.xaml</DependentUpon>

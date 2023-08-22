@@ -1,48 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
-using AuroraDialogEnhancer.Backend.KeyBinding;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 
 public class CursorPositioningService
 {
     private readonly HookedGameDataProvider _hookedGameDataProvider;
-    private Action HideAction { get; set; }
+
+    public Point CursorPosition = Point.Empty;
 
     public CursorPositioningService(HookedGameDataProvider hookedGameDataProvider)
     {
         _hookedGameDataProvider = hookedGameDataProvider;
-        HideAction = HideByY;
     }
 
-    public void SetHiddenSetting(EHiddenCursorSetting cursorSetting)
+    public void ApplyRelative(Rectangle dialogOption)
     {
-        HideAction = cursorSetting == EHiddenCursorSetting.YCoordinate ? HideByY : HideByCoordinates;
+        CursorPosition = new Point(
+            Cursor.Position.X - _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X - dialogOption.X,
+            Cursor.Position.Y - _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y - dialogOption.Y);
     }
 
-    public void ApplyRelative(Point dialogOptionPoint)
+    public void ApplyRelativeX(Rectangle dialogOption)
     {
-        _hookedGameDataProvider.Data!.CvPreset!.DialogOptionInitialCursorPosition = new Point(
-            Cursor.Position.X - _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X - dialogOptionPoint.X,
-            Cursor.Position.Y - _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y - dialogOptionPoint.Y);
-    }
-
-    public void ApplyRelativeX(Point dialogOptionPoint)
-    {
-        _hookedGameDataProvider.Data!.CvPreset!.DialogOptionInitialCursorPosition = new Point(
-            Cursor.Position.X - _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X - dialogOptionPoint.X,
-            _hookedGameDataProvider.Data!.CvPreset!.DialogOptionInitialCursorPosition.Y);
+        CursorPosition = new Point(
+            Cursor.Position.X - _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X - dialogOption.X,
+            CursorPosition.Y);
     }
 
 
-    public Point GetTargetCursorPlacement(Point dialogOptionPoint)
+    public Point GetTargetCursorPlacement(Rectangle dialogOption)
     {
-        return new Point(_hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + dialogOptionPoint.X + _hookedGameDataProvider.Data!.CvPreset!.DialogOptionInitialCursorPosition.X,
-                         _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + dialogOptionPoint.Y + _hookedGameDataProvider.Data!.CvPreset!.DialogOptionInitialCursorPosition.Y);
+        return new Point(_hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + dialogOption.X + CursorPosition.X,
+                         _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + dialogOption.Y + CursorPosition.Y);
 
     }
 
@@ -54,7 +46,7 @@ public class CursorPositioningService
                Cursor.Position.Y <= _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangle.Height;
     }
 
-    public DialogOptionCursorPositionInfo GetPositionByDialogOptions(List<Point> dialogOptionPoints, Point cursorPosition = default)
+    public DialogOptionCursorPositionInfo GetPositionByDialogOptions(List<Rectangle> dialogOption, Point cursorPosition = default)
     {
         if (cursorPosition == Point.Empty)
         {
@@ -66,37 +58,37 @@ public class CursorPositioningService
             cursorPosition.Y - _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y);
 
         // Not within boundaries
-        if (relativeCursorPosition.X < dialogOptionPoints[0].X + _hookedGameDataProvider.Data.CvPreset!.DialogOptionRegion.X ||
-            relativeCursorPosition.X > dialogOptionPoints[0].X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Width)
+        if (relativeCursorPosition.X < dialogOption[0].Left ||
+            relativeCursorPosition.X > dialogOption[0].Right)
         {
             return new DialogOptionCursorPositionInfo(-1, -1, -1);
         }
 
         // Upper area of first
-        if (relativeCursorPosition.X >= dialogOptionPoints[0].X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.X &&
-            relativeCursorPosition.X <= dialogOptionPoints[0].X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Width &&
-            relativeCursorPosition.Y >= 0 &&
-            relativeCursorPosition.Y < dialogOptionPoints[0].Y + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Y)
+        if (relativeCursorPosition.X >= dialogOption[0].Left &&
+            relativeCursorPosition.X <= dialogOption[0].Right &&
+            relativeCursorPosition.Y >= _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangle.Top &&
+            relativeCursorPosition.Y < dialogOption[0].Top)
         {
             return new DialogOptionCursorPositionInfo(-1, -1, 0);
         }
 
         // Lower area of last
-        if (relativeCursorPosition.X >= dialogOptionPoints[dialogOptionPoints.Count - 1].X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.X &&
-            relativeCursorPosition.X <= dialogOptionPoints[dialogOptionPoints.Count - 1].X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Width &&
-            relativeCursorPosition.Y <= _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangle.Height &&
-            relativeCursorPosition.Y > dialogOptionPoints[dialogOptionPoints.Count - 1].Y + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Y + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Height)
+        if (relativeCursorPosition.X >= dialogOption[dialogOption.Count - 1].Left &&
+            relativeCursorPosition.X <= dialogOption[dialogOption.Count - 1].Right &&
+            relativeCursorPosition.Y <= _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangle.Bottom &&
+            relativeCursorPosition.Y > dialogOption[dialogOption.Count - 1].Bottom)
         {
-            return new DialogOptionCursorPositionInfo(dialogOptionPoints.Count - 1, -1, -1);
+            return new DialogOptionCursorPositionInfo(dialogOption.Count - 1, -1, -1);
         }
 
         var closestUpperIndex = -1;
         var closestLowerIndex = -1;
-        var highlightedIndex = GetHighlightedIndex(dialogOptionPoints, relativeCursorPosition);
+        var highlightedIndex = GetHighlightedIndex(dialogOption, relativeCursorPosition);
 
         if (highlightedIndex != -1)
         {
-            if (highlightedIndex > 0 && highlightedIndex < dialogOptionPoints.Count - 1)
+            if (highlightedIndex > 0 && highlightedIndex < dialogOption.Count - 1)
             {
                 closestUpperIndex = highlightedIndex - 1;
                 closestLowerIndex = highlightedIndex + 1;
@@ -108,7 +100,7 @@ public class CursorPositioningService
                 closestUpperIndex = -1;
             }
 
-            if (highlightedIndex == dialogOptionPoints.Count - 1)
+            if (highlightedIndex == dialogOption.Count - 1)
             {
                 closestLowerIndex = -1;
             }
@@ -116,22 +108,22 @@ public class CursorPositioningService
             return new DialogOptionCursorPositionInfo(closestUpperIndex, highlightedIndex, closestLowerIndex);
         }
 
-        closestLowerIndex = GetHighlightedIndex(dialogOptionPoints, new Point(relativeCursorPosition.X, relativeCursorPosition.Y + _hookedGameDataProvider.Data.CvPreset.DialogOptionGap));
-        closestUpperIndex = GetHighlightedIndex(dialogOptionPoints, new Point(relativeCursorPosition.X, relativeCursorPosition.Y - _hookedGameDataProvider.Data.CvPreset.DialogOptionGap));
+        closestLowerIndex = GetHighlightedIndex(dialogOption, new Point(relativeCursorPosition.X, relativeCursorPosition.Y));
+        closestUpperIndex = GetHighlightedIndex(dialogOption, new Point(relativeCursorPosition.X, relativeCursorPosition.Y));
 
         return new DialogOptionCursorPositionInfo(closestUpperIndex, highlightedIndex, closestLowerIndex);
     }
 
-    private int GetHighlightedIndex(IReadOnlyList<Point> dialogOptionPoints, Point relativeCursorPosition)
+    private int GetHighlightedIndex(IReadOnlyList<Rectangle> dialogOption, Point relativeCursorPosition)
     {
         var highlightedIndex = -1;
-        for (var i = 0; i < dialogOptionPoints.Count; i++)
+        for (var i = 0; i < dialogOption.Count; i++)
         {
             // Within current boundaries
-            if (relativeCursorPosition.X >= dialogOptionPoints[i].X + _hookedGameDataProvider.Data!.CvPreset!.DialogOptionRegion.X &&
-                relativeCursorPosition.X <= dialogOptionPoints[i].X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.X + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Width &&
-                relativeCursorPosition.Y >= dialogOptionPoints[i].Y + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Y &&
-                relativeCursorPosition.Y <= dialogOptionPoints[i].Y + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Y + _hookedGameDataProvider.Data.CvPreset.DialogOptionRegion.Height)
+            if (relativeCursorPosition.X >= dialogOption[i].Left &&
+                relativeCursorPosition.X <= dialogOption[i].Right &&
+                relativeCursorPosition.Y >= dialogOption[i].Top &&
+                relativeCursorPosition.Y <= dialogOption[i].Bottom)
             {
                 highlightedIndex = i;
                 break;
@@ -147,26 +139,18 @@ public class CursorPositioningService
                          _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + relativePoint.Y);
     }
 
-    public void Hide() => HideAction();
-
-    private void HideByCoordinates()
-    {
-        Cursor.Position = new Point(
-            _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + _hookedGameDataProvider.Data.CvPreset!.HiddenCursorLocation.X,
-            _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + _hookedGameDataProvider.Data.CvPreset.HiddenCursorLocation.Y);
-    }
+    public void Hide() => HideByY();
 
     private void HideByY()
     {
         Cursor.Position = Cursor.Position with
         {
-            Y = _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.Y 
-                + _hookedGameDataProvider.Data.CvPreset!.HiddenCursorLocation.Y
+            Y = _hookedGameDataProvider.Data!.GameWindowInfo!.BottomYPoint
         };
     }
 
-    public Point GetRelatedNormalizedPoint(Point currentSourcePoint, Point desiredSourcePoint)
+    public Point GetRelatedNormalizedPoint(Rectangle currentDialogOption, Rectangle desiredDialogOption)
     {
-        return new Point(Cursor.Position.X, (Cursor.Position.Y - currentSourcePoint.Y) + desiredSourcePoint.Y);
+        return new Point(Cursor.Position.X, (Cursor.Position.Y - currentDialogOption.Y) + desiredDialogOption.Y);
     }
 }

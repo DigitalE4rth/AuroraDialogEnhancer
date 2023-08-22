@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
-using AuroraDialogEnhancerExtensions.KeyBindings;
 
 namespace Extension.HonkaiStarRail;
 

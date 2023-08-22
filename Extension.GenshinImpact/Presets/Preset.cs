@@ -7,15 +7,9 @@ using Extension.GenshinImpact.Services;
 
 namespace Extension.GenshinImpact.Presets;
 
-public class Preset : IPresetDto
+public class Preset : IPreset
 {
-    public DialogOptionFinderInfo DialogOptionsFinderInfo { get; }
+    public DialogOptionFinderProvider GetDialogOptionFinderProvider(Size clientSize) => new DialogOptionFinderInfoMapper().Map(clientSize);
 
-    public List<ClickableScreenPointDto> ClickablePoints { get; }
-
-    public Preset(Size clientSize)
-    {
-        DialogOptionsFinderInfo = new DialogOptionFinderInfoMapper().Map(clientSize);
-        ClickablePoints = new ClickableScreenPointsProvider().Get(clientSize);
-    }
+    public List<ClickablePrecisePoint> GetClickablePoints(Size clientSize) => new ClickableScreenPointsProvider().Get(clientSize);
 }

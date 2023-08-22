@@ -18,13 +18,13 @@ namespace AuroraDialogEnhancer.Backend.Core;
 
 public class CoreService : IDisposable
 {
-    private readonly CvPresetsService       _cvPresetsService;
-    private readonly ExtensionConfigService _extensionConfigService;
-    private readonly HookedGameDataProvider _hookedGameDataProvider;
-    private readonly KeyHandlerService      _keyHandlerService;
-    private readonly ProcessInfoService     _processInfoService;
-    private readonly ScreenCaptureService   _screenCaptureService;
-    private readonly WindowHookService      _windowHookService;
+    private readonly ComputerVisionPresetService _computerVisionPresetService;
+    private readonly ExtensionConfigService      _extensionConfigService;
+    private readonly HookedGameDataProvider      _hookedGameDataProvider;
+    private readonly KeyHandlerService           _keyHandlerService;
+    private readonly ProcessInfoService          _processInfoService;
+    private readonly ScreenCaptureService        _screenCaptureService;
+    private readonly WindowHookService           _windowHookService;
     
     private readonly object _cancellingLock;
     private readonly object _processingLock;
@@ -36,21 +36,21 @@ public class CoreService : IDisposable
 
     private CancellationTokenSource? _cancellationTokenSource;
 
-    public CoreService(CvPresetsService       cvPresetsService,
-                       ExtensionConfigService extensionConfigService,
-                       HookedGameDataProvider hookedGameDataProvider,
-                       KeyHandlerService      keyHandlerService,
-                       ProcessInfoService     processInfoService,
-                       ScreenCaptureService   screenCaptureService,
-                       WindowHookService      windowHookService)
+    public CoreService(ComputerVisionPresetService computerVisionPresetService,
+                       ExtensionConfigService      extensionConfigService,
+                       HookedGameDataProvider      hookedGameDataProvider,
+                       KeyHandlerService           keyHandlerService,
+                       ProcessInfoService          processInfoService,
+                       ScreenCaptureService        screenCaptureService,
+                       WindowHookService           windowHookService)
     {
-        _cvPresetsService       = cvPresetsService;
-        _extensionConfigService = extensionConfigService;
-        _hookedGameDataProvider = hookedGameDataProvider;
-        _keyHandlerService      = keyHandlerService;
-        _processInfoService     = processInfoService;
-        _screenCaptureService   = screenCaptureService;
-        _windowHookService      = windowHookService;
+        _computerVisionPresetService = computerVisionPresetService;
+        _extensionConfigService      = extensionConfigService;
+        _hookedGameDataProvider      = hookedGameDataProvider;
+        _keyHandlerService           = keyHandlerService;
+        _processInfoService          = processInfoService;
+        _screenCaptureService        = screenCaptureService;
+        _windowHookService           = windowHookService;
 
         _cancellingLock = new object();
         _processingLock = new object();
@@ -173,7 +173,7 @@ public class CoreService : IDisposable
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
-            var (isSuccess, message) = _cvPresetsService.SetPresets(_hookedGameDataProvider.Data);
+            var (isSuccess, message) = _computerVisionPresetService.SetPreset(_hookedGameDataProvider.Data);
             if (!isSuccess)
             {
                 Dispose();

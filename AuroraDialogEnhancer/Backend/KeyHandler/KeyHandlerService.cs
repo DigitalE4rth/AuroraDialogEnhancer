@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
@@ -12,6 +13,7 @@ using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
+using AuroraDialogEnhancerExtensions.KeyBindings;
 using Microsoft.Extensions.DependencyInjection;
 using Cursor = System.Windows.Forms.Cursor;
 using Point  = System.Drawing.Point;
@@ -27,16 +29,16 @@ public class KeyHandlerService : IDisposable
     private readonly KeyboardHookManagerService    _keyboardHookManagerService;
     private readonly MouseEmulationService         _mouseEmulationService;
     private readonly MouseHookManagerService       _mouseHookManagerService;
-    private readonly OpenCvService                 _openCvService;
+    private readonly ComputerVisionService         _computerVisionService;
     private readonly ScreenCaptureService          _screenCaptureService;
     private readonly WindowHookService             _windowHookService;
 
     private KeyBindingProfile? _keyBindingProfile;
 
-    private List<Point> _currentDialogOptionsCoordinates;
-    private bool        _isSpeakerNamePresent;
-    private Point       _primaryDownPoint;
-    private Point       _primaryUpPoint;
+    private List<Rectangle> _currentDialogOptions;
+    private Point           _primaryDownPoint;
+    private Point           _primaryUpPoint;
+    private Dictionary<string, Point> _clickablePrecisePoints;
 
     private bool _isWindowFocused;
     private bool _isProcessing;
@@ -54,7 +56,7 @@ public class KeyHandlerService : IDisposable
                              KeyboardHookManagerService    keyboardHookManagerService,
                              MouseEmulationService         mouseEmulationService,
                              MouseHookManagerService       mouseHookManagerService,
-                             OpenCvService                 openCvService,
+                             ComputerVisionService         computerVisionService,
                              ScreenCaptureService          screenCaptureService,
                              WindowHookService             windowHookService)
     {
@@ -64,18 +66,25 @@ public class KeyHandlerService : IDisposable
         _keyboardHookManagerService    = keyboardHookManagerService;
         _mouseEmulationService         = mouseEmulationService;
         _mouseHookManagerService       = mouseHookManagerService;
-        _openCvService                 = openCvService;
+        _computerVisionService         = computerVisionService;
         _keyBindingProfileService      = keyBindingProfileService;
         _screenCaptureService          = screenCaptureService;
         _windowHookService             = windowHookService;
 
-        _currentDialogOptionsCoordinates = new List<Point>();
+        _clickablePrecisePoints          = new Dictionary<string, Point>(0);
+        _currentDialogOptions = new List<Rectangle>(0);
         _focusLock      = new object();
         _processingLock = new object();
         _mouseClickLock = new object();
     }
 
     #region Initializing
+
+    public void InitializeClickablePoints(List<ClickablePrecisePoint> clickablePoints)
+    {
+        _clickablePrecisePoints = clickablePoints.ToDictionary(point => point.Id, point => point.Point);
+    }
+
     public void ApplyKeyBinds()
     {
         StopPeripheryHook();
@@ -122,7 +131,7 @@ public class KeyHandlerService : IDisposable
     {
         _keyboardHookManagerService.Stop();
         _mouseHookManagerService.Stop();
-        _currentDialogOptionsCoordinates.Clear();
+        _currentDialogOptions.Clear();
     }
 
     private void InitializeKeyBinds()
@@ -137,7 +146,6 @@ public class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.Reload,       OnReload);
         Register(_keyBindingProfile.Screenshot,   OnScreenshot);
         Register(_keyBindingProfile.HideCursor,   OnHideCursor);
-        _cursorPositioningService.SetHiddenSetting(_keyBindingProfile.HiddenCursorSetting);
 
         Register(_keyBindingProfile.Select,          OnSelectPress);
         Register(_keyBindingProfile.Next,            OnNextPress);
@@ -153,6 +161,7 @@ public class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.Eight, OnEightPress);
         Register(_keyBindingProfile.Nine,  OnNinePress);
         Register(_keyBindingProfile.Ten,   OnTenPress);
+        Register(_keyBindingProfile.ClickablePoints);
 
         _mouseHookManagerService.RegisterPrimaryClick(OnMousePrimaryClick);
     }
@@ -168,6 +177,28 @@ public class KeyHandlerService : IDisposable
             }
 
             _keyboardHookManagerService.RegisterHotKeys(genericKeys.Select(key => key.KeyCode), action);
+        }
+    }
+
+    private void Register(List<ClickablePoint> clickablePoints)
+    {
+        foreach (var clickablePoint in clickablePoints)
+        {
+            foreach (var genericKeys in clickablePoint.Keys)
+            {
+                if (genericKeys.Count == 1 && genericKeys[0].GetType() == typeof(MouseKey))
+                {
+                    _mouseHookManagerService.RegisterHotKey(
+                        genericKeys[0].KeyCode, 
+                        () => { ClickCursor(_clickablePrecisePoints[clickablePoint.Id]); });
+
+                    continue;
+                }
+
+                _keyboardHookManagerService.RegisterHotKeys(
+                    genericKeys.Select(key => key.KeyCode), 
+                    () => { ClickCursor(_clickablePrecisePoints[clickablePoint.Id]); });
+            }
         }
     }
 
@@ -251,7 +282,7 @@ public class KeyHandlerService : IDisposable
     {
         if (!CanBeExecuted() || !IsDialogOptionsPresent()) return;
 
-        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptionsCoordinates);
+        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
         ApplyRelativeCursorPosition(cursorPosition);
 
@@ -264,7 +295,7 @@ public class KeyHandlerService : IDisposable
 
     private bool HandleSingleNumericDialogOption(DialogOptionCursorPositionInfo cursorPositionInfo, int selectedIndex)
     {
-        if (_currentDialogOptionsCoordinates.Count != 1) return false;
+        if (_currentDialogOptions.Count != 1) return false;
 
         if (selectedIndex != 0)
         {
@@ -275,7 +306,7 @@ public class KeyHandlerService : IDisposable
 
         if (cursorPositionInfo.HighlightedIndex == -1)
         {
-            Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptionsCoordinates[0]);
+            Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions[0]);
         }
 
         if (_keyBindingProfile!.NumericActionBehaviour != ENumericActionBehaviour.Select) return false;
@@ -288,9 +319,9 @@ public class KeyHandlerService : IDisposable
 
     private void HandleNumericSelection(DialogOptionCursorPositionInfo cursorPositionInfo, int selectedIndex)
     {
-        if (selectedIndex > _currentDialogOptionsCoordinates.Count - 1) return;
+        if (selectedIndex > _currentDialogOptions.Count - 1) return;
 
-        Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptionsCoordinates[selectedIndex]);
+        Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions[selectedIndex]);
 
         if (_keyBindingProfile!.NumericActionBehaviour == ENumericActionBehaviour.Select || cursorPositionInfo.HighlightedIndex == selectedIndex)
         {
@@ -304,7 +335,7 @@ public class KeyHandlerService : IDisposable
     {
         if (!CanBeExecuted() || !IsDialogOptionsPresent()) return;
 
-        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptionsCoordinates);
+        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
         ApplyRelativeCursorPosition(cursorPosition);
 
@@ -312,7 +343,7 @@ public class KeyHandlerService : IDisposable
 
         if (HandleHighlightOnNothing(cursorPosition, 0, cursorPosition.ClosestLowerIndex)) return;
 
-        if (HandleCycleThrough(_currentDialogOptionsCoordinates.Count - 1, cursorPosition.HighlightedIndex, 0)) return;
+        if (HandleCycleThrough(_currentDialogOptions.Count - 1, cursorPosition.HighlightedIndex, 0)) return;
 
         HighlightNext(true, cursorPosition.HighlightedIndex);
 
@@ -323,15 +354,15 @@ public class KeyHandlerService : IDisposable
     {
         if (!CanBeExecuted() || !IsDialogOptionsPresent()) return;
 
-        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptionsCoordinates);
+        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
         ApplyRelativeCursorPosition(cursorPosition);
 
         if (HandleSingleDialogOption(cursorPosition)) return;
 
-        if (HandleHighlightOnNothing(cursorPosition, _currentDialogOptionsCoordinates.Count - 1, cursorPosition.ClosestUpperIndex)) return;
+        if (HandleHighlightOnNothing(cursorPosition, _currentDialogOptions.Count - 1, cursorPosition.ClosestUpperIndex)) return;
 
-        if (HandleCycleThrough(0, cursorPosition.HighlightedIndex, _currentDialogOptionsCoordinates.Count - 1)) return;
+        if (HandleCycleThrough(0, cursorPosition.HighlightedIndex, _currentDialogOptions.Count - 1)) return;
 
         HighlightNext(false, cursorPosition.HighlightedIndex);
 
@@ -342,7 +373,7 @@ public class KeyHandlerService : IDisposable
     {
         if (!CanBeExecuted() || !IsDialogOptionsPresent()) return;
 
-        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptionsCoordinates);
+        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
         ApplyRelativeCursorPosition(cursorPosition);
 
@@ -353,21 +384,6 @@ public class KeyHandlerService : IDisposable
         HandleSelectPress(true);
 
         _isProcessing = false;
-    }
-
-    private void OnAutoDialog()
-    {
-        ClickCursor(_hookedGameDataProvider.Data!.CvPreset!.AutoSkipLocation);
-    }
-
-    private void OnHideUi()
-    {
-        ClickCursor(_hookedGameDataProvider.Data!.CvPreset!.HideUiLocation);
-    }
-
-    private void OnFullScreenPopUpClick()
-    {
-        ClickCursor(_hookedGameDataProvider.Data!.CvPreset!.FullScreenPopUpLocation);
     }
 
     private void ClickCursor(Point relativeLocation)
@@ -418,14 +434,14 @@ public class KeyHandlerService : IDisposable
 
     private void HandleSelectPress(bool isArtificialClick)
     {
-        if (!_currentDialogOptionsCoordinates.Any()) return;
+        if (!_currentDialogOptions.Any()) return;
 
         if (isArtificialClick)
         {
-            var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptionsCoordinates);
+            var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
-            _cursorPositioningService.ApplyRelative(_currentDialogOptionsCoordinates[cursorPosition.HighlightedIndex]);
-            _currentDialogOptionsCoordinates.Clear();
+            _cursorPositioningService.ApplyRelative(_currentDialogOptions[cursorPosition.HighlightedIndex]);
+            _currentDialogOptions.Clear();
 
             _isPrimarySuppressed = true;
             _mouseEmulationService.DoMouseClick();
@@ -437,17 +453,17 @@ public class KeyHandlerService : IDisposable
             return;
         }
 
-        var upCursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptionsCoordinates, _primaryUpPoint);
+        var upCursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions, _primaryUpPoint);
         if (upCursorPosition.HighlightedIndex == -1) return;
 
         if (_primaryDownPoint != _primaryUpPoint)
         {
-            var downCursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptionsCoordinates, _primaryDownPoint);
+            var downCursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions, _primaryDownPoint);
             if (downCursorPosition.HighlightedIndex != upCursorPosition.HighlightedIndex) return;
         }
 
-        _cursorPositioningService.ApplyRelative(_currentDialogOptionsCoordinates[upCursorPosition.HighlightedIndex]);
-        _currentDialogOptionsCoordinates.Clear();
+        _cursorPositioningService.ApplyRelative(_currentDialogOptions[upCursorPosition.HighlightedIndex]);
+        _currentDialogOptions.Clear();
 
         if (_keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Nothing || !_keyBindingProfile.IsCursorHideOnManualClick) return;
         Task.Delay(50).Wait();
@@ -478,13 +494,19 @@ public class KeyHandlerService : IDisposable
 
     private bool IsDialogOptionsPresent()
     {
-        if (_currentDialogOptionsCoordinates.Any()) return true;
+        if (_currentDialogOptions.Any()) return true;
 
-        (_isSpeakerNamePresent, _currentDialogOptionsCoordinates) = _openCvService.GetDialogOptionsCoordinates();
+        if (_computerVisionService.IsDialogMode() == false)
+        {
+            _isProcessing = false;
+            return false;
+        }
+        
+        _currentDialogOptions = _computerVisionService.GetDialogOptions();
 
-        if (_currentDialogOptionsCoordinates.Any()) return true;
-
-        if (_isSpeakerNamePresent && _keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Hide)
+        if (_currentDialogOptions.Any()) return true;
+        
+        if (_keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Hide)
         {
             _cursorPositioningService.Hide();
         }
@@ -499,23 +521,23 @@ public class KeyHandlerService : IDisposable
 
         if (cursorPositionInfo.HighlightedIndex != -1)
         {
-            _cursorPositioningService.ApplyRelative(_currentDialogOptionsCoordinates[cursorPositionInfo.HighlightedIndex]);
+            _cursorPositioningService.ApplyRelative(_currentDialogOptions[cursorPositionInfo.HighlightedIndex]);
         }
         else
         {
-            _cursorPositioningService.ApplyRelativeX(_currentDialogOptionsCoordinates[0]);
+            _cursorPositioningService.ApplyRelativeX(_currentDialogOptions[0]);
         }
     }
 
     private bool HandleSingleDialogOption(DialogOptionCursorPositionInfo cursorPositionInfo, bool isSelectAction = false)
     {
-        if (_currentDialogOptionsCoordinates.Count != 1) return false;
+        if (_currentDialogOptions.Count != 1) return false;
 
         if (_keyBindingProfile!.SingleDialogOptionBehaviour == ESingleDialogOptionBehaviour.Highlight)
         {
             if (cursorPositionInfo.HighlightedIndex == -1)
             {
-                Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptionsCoordinates[0]);
+                Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions[0]);
                 _isProcessing = false;
                 return true;
             }
@@ -533,7 +555,7 @@ public class KeyHandlerService : IDisposable
         {
             if (cursorPositionInfo.HighlightedIndex == -1)
             {
-                Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptionsCoordinates[0]);
+                Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions[0]);
             }
 
             HandleSelectPress(true);
@@ -550,9 +572,9 @@ public class KeyHandlerService : IDisposable
 
         Cursor.Position = cursorPositionInfo.IsWithinBoundaries
             ? _cursorPositioningService.GetTargetCursorPlacement(closestIndex == -1
-                ? _currentDialogOptionsCoordinates[targetIndex]
-                : _currentDialogOptionsCoordinates[closestIndex])
-            : _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptionsCoordinates[targetIndex]);
+                ? _currentDialogOptions[targetIndex]
+                : _currentDialogOptions[closestIndex])
+            : _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions[targetIndex]);
 
         _isProcessing = false;
         return true;
@@ -569,8 +591,8 @@ public class KeyHandlerService : IDisposable
         }
 
         Cursor.Position = _cursorPositioningService.GetRelatedNormalizedPoint(
-            _currentDialogOptionsCoordinates[highlightedIndex],
-            _currentDialogOptionsCoordinates[targetIndex]);
+            _currentDialogOptions[highlightedIndex],
+            _currentDialogOptions[targetIndex]);
 
         _isProcessing = false;
         return true;
@@ -580,8 +602,8 @@ public class KeyHandlerService : IDisposable
     {
         var indexedDirection = direction ? highlightedIndex + 1 : highlightedIndex - 1;
         Cursor.Position = _cursorPositioningService.GetRelatedNormalizedPoint(
-            _currentDialogOptionsCoordinates[highlightedIndex],
-            _currentDialogOptionsCoordinates[indexedDirection]);
+            _currentDialogOptions[highlightedIndex],
+            _currentDialogOptions[indexedDirection]);
     }
     #endregion
     #endregion
@@ -589,6 +611,7 @@ public class KeyHandlerService : IDisposable
     public void Dispose()
     {
         _windowHookService.OnFocusChanged -= OnWindowFocusChanged;
+        _clickablePrecisePoints = new Dictionary<string, Point>(0);
         StopPeripheryHook();
     }
 }

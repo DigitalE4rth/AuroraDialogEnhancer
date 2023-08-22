@@ -1,9 +1,12 @@
 ﻿using AuroraDialogEnhancerExtensions.Dimensions;
+using Extension.GenshinImpact.Dimensions;
+using System.Collections.Generic;
 
 namespace Extension.GenshinImpact.Templates;
 
 public class PreciseTemplate
 {
+    #region Speaker
     /// <summary>
     /// The color range of the speaker name.
     /// </summary>
@@ -18,6 +21,12 @@ public class PreciseTemplate
     /// Minimum number of pixels in the color range.
     /// </summary>
     public int SpeakerNameThreshold;
+    #endregion
+
+    #region Measurements
+    public int TemplateWidth;
+
+    public int TemplateHeight;
 
     /// <summary>
     /// The search area of the dialog options.
@@ -25,36 +34,7 @@ public class PreciseTemplate
     /// <remarks>
     /// Related to the client size.
     /// </remarks>
-    public Area DialogOptionsSearchArea { get; set; } = new();
-
-    /// <summary>
-    /// The search range of the vertical outline line by X.
-    /// </summary>
-    /// <remarks>
-    /// Related to the dialog option width.
-    /// </remarks>
-    public Range VerticalOutlineSearchRangeX { get; set; } = new();
-
-    /// <summary>
-    /// The search range of the vertical outline line by Y.
-    /// </summary>
-    /// <remarks>
-    /// Related to the dialog option height.
-    /// </remarks>
-    public Range VerticalOutlineSearchRangeY { get; set; } = new();
-
-    /// <summary>
-    /// The search range of the horizontal outline line by X.
-    /// </summary>
-    /// <remarks>
-    /// Related to the dialog option width.
-    /// </remarks>
-    public Range HorizontalOutlineSearchRangeX { get; set; } = new();
-
-    /// <summary>
-    /// The gray color range of the outline area.
-    /// </summary>
-    public ChannelRange GrayChannelRange { get; set; } = new();
+    public Area TemplateSearchArea { get; set; } = new();
 
     /// <summary>
     /// The width of the dialog option.
@@ -62,7 +42,7 @@ public class PreciseTemplate
     /// <remarks>
     /// Related to the client size.
     /// </remarks>
-    public int Width { get; set; }
+    public int DialogOptionWidth { get; set; }
 
     /// <summary>
     /// The height of the dialog option.
@@ -70,7 +50,7 @@ public class PreciseTemplate
     /// <remarks>
     /// Related to the client size.
     /// </remarks>
-    public int Height { get; set; }
+    public int DialogOptionHeight { get; set; }
 
     /// <summary>
     /// The gap between dialog options.
@@ -95,6 +75,47 @@ public class PreciseTemplate
     /// Related to the dialog option area.
     /// </remarks>
     public int OutlineAreaHeight { get; set; }
+    #endregion
+
+    #region Lines
+    /// <summary>
+    /// The gray color range of the outline area.
+    /// </summary>
+    public ChannelRange OutlineGrayChannelRange { get; set; } = new();
+
+    /// <summary>
+    /// The search range of the vertical outline line by X.
+    /// </summary>
+    /// <remarks>
+    /// Related to the dialog option width.
+    /// </remarks>
+    public Range VerticalOutlineSearchRangeX { get; set; } = new();
+
+    /// <summary>
+    /// The search range of the vertical outline line by Y.
+    /// </summary>
+    /// <remarks>
+    /// Related to the dialog option height.
+    /// </remarks>
+    public Range VerticalOutlineSearchRangeY { get; set; } = new();
+
+    /// <summary>
+    /// The threshold of the vertical outline line.
+    /// </summary>
+    public int VerticalOutlineThreshold;
+
+    /// <summary>
+    /// The search range of the horizontal outline line by X.
+    /// </summary>
+    /// <remarks>
+    /// Related to the dialog option width.
+    /// </remarks>
+    public Range HorizontalOutlineSearchRangeX { get; set; } = new();
+
+    /// <summary>
+    /// The threshold of the horizontal outline line.
+    /// </summary>
+    public int HorizontalOutlineThreshold;
 
     /// <summary>
     /// The search area of the topmost outline line.
@@ -105,14 +126,6 @@ public class PreciseTemplate
     public Range TopOutlineSearchRangeY { get; set; } = new();
 
     /// <summary>
-    /// The search area of the center outline line.
-    /// </summary>
-    /// <remarks>
-    /// Related to the outline area.
-    /// </remarks>
-    public Range CenterOutlineSearchRangeY { get; set; } = new();
-
-    /// <summary>
     /// The search area of the bottommost outline line.
     /// </summary>
     /// <remarks>
@@ -121,12 +134,39 @@ public class PreciseTemplate
     public Range BottomOutlineSearchRangeY { get; set; } = new();
 
     /// <summary>
-    /// The offset of the dialog option by X and Y.
+    /// Corner outline areas.
     /// </summary>
-    public (int, int) Offset { get; set; }
+    /// <remarks>
+    /// Related to the template sizes.
+    /// </remarks>
+    public List<Area> CornerOutlineAreas = new();
+    #endregion
+
+    #region Extra
+    /// <summary>
+    /// The search area of the icon.
+    /// </summary>
+    /// <remarks>
+    /// Related to the width of the dialog option search area ant to the height of the outline area.
+    /// </remarks>
+    public Area IconArea = new();
 
     /// <summary>
-    /// The threshold of the dialog options finder service.
+    /// The minimum number of matching pixels that exceeds the maximum outline color range in the icon area.
     /// </summary>
-    public double Threshold = 1;
+    public int IconAreaThreshold;
+
+    /// <summary>
+    /// The center area of the dialog option without outline pixels.
+    /// </summary>
+    /// <remarks>
+    /// Related to the width of the dialog option search area ant to the height of the outline area.
+    /// </remarks>
+    public Area EmptyCenterArea = new();
+
+    /// <summary>
+    /// The minimum number of matching pixels outside the outline color range.
+    /// </summary>
+    public int EmptyCenterAreaThreshold;
+    #endregion
 }

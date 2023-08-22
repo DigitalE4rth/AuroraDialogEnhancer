@@ -93,8 +93,8 @@ internal class ServiceProviderConfigurator
         #endregion
 
         #region OpenCv
-        serviceCollection.AddSingleton<OpenCvService>();
-        serviceCollection.AddTransient<CvPresetsService>();
+        serviceCollection.AddSingleton<ComputerVisionService>();
+        serviceCollection.AddTransient<ComputerVisionPresetService>();
         #endregion
 
         #region Presets

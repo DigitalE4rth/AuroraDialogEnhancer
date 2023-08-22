@@ -24,6 +24,16 @@ public class BitmapUtils
         return pixel.R >= channelRange.Low && pixel.R <= channelRange.High;
     }
 
+    public bool IsDarkerGrayRange(Bitmap image, int x, int y, ChannelRange channelRange)
+    {
+        return image.GetPixel(x, y).R < channelRange.Low;
+    }
+
+    public bool IsBrighterGrayRange(Bitmap image, int x, int y, ChannelRange channelRange)
+    {
+        return image.GetPixel(x, y).R > channelRange.High;
+    }
+
     public int CountInRange(Bitmap image, ColorRange colorRange)
     {
         var count = 0;

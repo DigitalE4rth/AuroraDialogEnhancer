@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using AuroraDialogEnhancerExtensions.Proxy;
 
-namespace AuroraDialogEnhancerExtensions.Proxy;
+namespace AuroraDialogEnhancer.Backend.ComputerVision;
 
 public class DialogOptionFinderEmpty : IDialogOptionFinder
 {

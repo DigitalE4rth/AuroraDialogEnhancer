@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using AuroraDialogEnhancerExtensions.Content;
+using System.IO;
+using AuroraDialogEnhancer.AppConfig.DependencyInjection;
+using AuroraDialogEnhancer.Backend.ComputerVision;
+using AuroraDialogEnhancer.Backend.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
 
@@ -47,9 +51,22 @@ public partial class DebugPage
 
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
     {
-        // 720x576
-        //FindPoints("2560x1440");
-        //_resolutionsTest.ForEach(FindPoints);
+        //_resolutionsTest.ForEach(path => Count($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{path}.png"));
+        Count();
+    }
+
+    private void Count()
+    {
+        var extensionProvider = AppServices.ServiceProvider.GetService<ExtensionsProvider>();
+        var presetInfo = extensionProvider!.ExtensionsDictionary["GI"];
+        var preset = presetInfo.GetPreset();
+        //using var image = new Bitmap(path);
+        //using var image = new Bitmap("C:\\Games\\Genshin Impact\\Genshin Impact game\\ScreenShot\\20230821201400.png");
+        using var image = new Bitmap("D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\1440x1080.png");
+        var finder = preset.GetDialogOptionFinderProvider(image.Size);
+        using var croppedImage = GetArea(image, finder!.Data.DialogOptionsArea);
+        var dialogOptions = finder.DialogOptionsFinder.GetDialogOptions(image);
+        var result = dialogOptions.Count;
     }
 
     private void FindPoints(string clientSize)
@@ -60,5 +77,13 @@ public partial class DebugPage
         var result = _gameCvDialogOptionFinder.GetDialogOptions(image);
         System.Diagnostics.Debug.WriteLine($"Client size: {image.Size.Width}x{image.Size.Height}, Points count: {result.Count}");
         result.ForEach(point => System.Diagnostics.Debug.WriteLine(point));*/
+    }
+
+    private Bitmap GetArea(Bitmap image, Rectangle rectangle)
+    {
+        var croppedImage = new Bitmap(rectangle.Width, rectangle.Height);
+        using var graphics = Graphics.FromImage(croppedImage);
+        graphics.DrawImage(image, rectangle with { X = 0, Y = 0 }, rectangle, GraphicsUnit.Pixel);
+        return croppedImage;
     }
 }

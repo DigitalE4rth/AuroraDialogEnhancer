@@ -1,5 +1,4 @@
 ﻿using System;
-using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
 
@@ -13,11 +12,8 @@ public class HookedGameData : IDisposable
 
     public WindowInfo? GameWindowInfo { get; set; }
 
-    public CvPreset? CvPreset { get; set; }
-
     public void Dispose()
     {
         GameProcess?.Dispose();
-        CvPreset?.Dispose();
     }
 }
