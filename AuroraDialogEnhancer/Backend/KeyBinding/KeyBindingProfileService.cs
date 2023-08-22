@@ -63,7 +63,7 @@ public class KeyBindingProfileService
         SaveAndApplyIfHookIsActive(id, mappedProfile);
     }
 
-    public void SavePristine(string id)
+    public void SaveEmpty(string id)
     {
         SaveAndApplyIfHookIsActive(id, new KeyBindingProfile());
     }
@@ -109,7 +109,7 @@ public class KeyBindingProfileService
         var profile = Get(id);
         var extensionProfile = _extensionsProvider.ExtensionsDictionary[id].GetKeyBindingProfileProvider();
 
-        return _viewModelMapper.Map((profile, extensionProfile.GetClickablePointsVm()));
+        return _viewModelMapper.Map((profile, extensionProfile.GetClickablePointsVmDto()));
     }
     #endregion
 }

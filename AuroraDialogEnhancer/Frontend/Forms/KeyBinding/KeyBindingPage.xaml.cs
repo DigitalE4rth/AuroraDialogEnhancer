@@ -179,7 +179,7 @@ public partial class KeyBindingPage
                 break;
             case EKeyBindingSettingsAction.Clear:
             default:
-                _keyBindingProfileService.SavePristine(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+                _keyBindingProfileService.SaveEmpty(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
                 break;
         }
 
