@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using AuroraDialogEnhancerExtensions.Content;
 using AuroraDialogEnhancerExtensions.KeyBindings;
@@ -28,6 +27,4 @@ public abstract class ExtensionDto
     public virtual IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProviderEmpty();
 
     public virtual IPreset GetPreset() => new PresetEmpty();
-
-    public virtual Dictionary<Size, Type> Presets { get; protected set; } = new(0);
 }

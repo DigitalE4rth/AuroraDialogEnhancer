@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using AuroraDialogEnhancerExtensions.Dimensions;
 using AuroraDialogEnhancerExtensions.Proxy;
 using AuroraDialogEnhancerExtensions.Services;
-using Extension.GenshinImpact.Dimensions;
 using Extension.GenshinImpact.Templates;
 
 namespace Extension.GenshinImpact.Services;
 
 public class DialogOptionFinder : IDialogOptionFinder
 {
-    private readonly BitmapUtils _bitmapUtils;
+    private readonly BitmapUtils     _bitmapUtils;
     private readonly PreciseTemplate _searchTemplate;
     
     public DialogOptionFinder(PreciseTemplate searchTemplate)
@@ -29,48 +26,14 @@ public class DialogOptionFinder : IDialogOptionFinder
     public List<Rectangle> GetDialogOptions(Bitmap image)
     {
         var dialogOptionsList = new List<Rectangle>();
-        /*using var croppedArea = _bitmapUtils.GetArea(
-            image, 
-            new Rectangle(
-                _searchTemplate.DialogOptionsSearchArea.Width.From,
-                _searchTemplate.DialogOptionsSearchArea.Height.From,
-                _searchTemplate.DialogOptionsSearchArea.Width.Length,
-                _searchTemplate.DialogOptionsSearchArea.Height.Length));*/
-
-        /*using var croppedArea = _bitmapUtils.GetArea(
-            rawImage,
-            new Rectangle(
-                0,
-                0,
-                rawImage.Width,
-                rawImage.Height));*/
 
         using var croppedImage = _bitmapUtils.ToGrayScale(image);
 
-
-        /*DrawLine(croppedImage, 
-            new Point(_searchTemplate.UpperLeftCorner.Width.From, 0),
-            new Point(_searchTemplate.UpperLeftCorner.Width.From, image.Height));
-
-        DrawLine(croppedImage,
-            new Point(_searchTemplate.UpperLeftCorner.Width.To, 0),
-            new Point(_searchTemplate.UpperLeftCorner.Width.To, image.Height));*/
-
-        //croppedImage.Save("01_Cut.png");
-        //croppedImage.Save($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\test\\{image.Width}x{image.Height}x{Guid.NewGuid()}.png");
-
-        //_searchTemplate.CornerOutlineAreas.ForEach(area => Debug.WriteLine(area.Threshold));
-        
         for (var x = 0; x + _searchTemplate.TemplateSearchArea.Width.Length <= croppedImage.Width; x++)
         {
-            var isFound = false;
+            var isFoundByY = false;
             for (var y = 0; y < croppedImage.Height; y++)
             {
-                //if (y >= 680)
-                //{
-                    //System.Diagnostics.Debug.WriteLine("a");
-                //}
-
                 #region Top outline
                 var (isTopFound, topOutline) = GetTopOutline(croppedImage, x, y, _searchTemplate.HorizontalOutlineThreshold);
                 if (isTopFound == false)
@@ -89,16 +52,7 @@ public class DialogOptionFinder : IDialogOptionFinder
                 }
                 #endregion
 
-                #region Has icon
-                /*using var croppedIcon = _bitmapUtils.GetArea(
-                    croppedImage,
-                    new Rectangle(
-                        x + _searchTemplate.IconArea.Width.From,
-                        topOutline + _searchTemplate.IconArea.Height.From,
-                        (x + _searchTemplate.IconArea.Width.To) - (x + _searchTemplate.IconArea.Width.From),
-                        (topOutline + _searchTemplate.IconArea.Height.To) - (topOutline + _searchTemplate.IconArea.Height.From)));
-                croppedIcon.Save("02_Icon.png");*/
-
+                #region Icon
                 if (IsAreaBrighterThenOutline(croppedImage,
                         x + _searchTemplate.IconArea.Width.From,
                         topOutline + _searchTemplate.IconArea.Height.From,
@@ -112,15 +66,6 @@ public class DialogOptionFinder : IDialogOptionFinder
                 #endregion
 
                 #region Empty center
-                /*using var croppedArea = _bitmapUtils.GetArea(
-                    croppedImage,
-                    new Rectangle(
-                        x + _searchTemplate.EmptyCenterArea.Width.From,
-                        topOutline + _searchTemplate.EmptyCenterArea.Height.From,
-                        (x + _searchTemplate.EmptyCenterArea.Width.To) - (x + _searchTemplate.EmptyCenterArea.Width.From),
-                        (topOutline + _searchTemplate.EmptyCenterArea.Height.To) - (topOutline + _searchTemplate.EmptyCenterArea.Height.From)));
-                croppedArea.Save("03_EmptyCenter.png");*/
-
                 if (IsAreaInOutlineRange(croppedImage,
                         x + _searchTemplate.EmptyCenterArea.Width.From,
                         topOutline + _searchTemplate.EmptyCenterArea.Height.From,
@@ -148,26 +93,6 @@ public class DialogOptionFinder : IDialogOptionFinder
                 #endregion
 
                 #region Corners
-                /*for (var i = 0; i < _searchTemplate.CornerOutlineAreas.Count; i++)
-                {
-                    var cornerArea = _searchTemplate.CornerOutlineAreas[i];
-                    using var croppedCornerArea = _bitmapUtils.GetArea(
-                        croppedImage,
-                        new Rectangle(
-                            x + cornerArea.Width.From,
-                            topOutline + cornerArea.Height.From,
-                            (x + cornerArea.Width.To) - (x + cornerArea.Width.From),
-                            (topOutline + cornerArea.Height.To) - (topOutline + cornerArea.Height.From)));
-
-                    croppedCornerArea.Save($"04_Corner_{i}.png");
-                }*/
-
-                /*if (IsAreasInRange(image, _searchTemplate.CornerOutlineAreas, x, y))
-                {
-                    y = topOutline;
-                    continue;
-                }*/
-
                 if (_searchTemplate.CornerOutlineAreas.All(cornerArea => IsAreaInOutlineRange(image,
                         x + cornerArea.Width.From,
                         topOutline + cornerArea.Height.From,
@@ -180,7 +105,7 @@ public class DialogOptionFinder : IDialogOptionFinder
                 }
                 #endregion
 
-                #region Result wrapping
+                #region Result
                 var area = new Rectangle(
                     _searchTemplate.TemplateSearchArea.Width.From + leftOutline - _searchTemplate.BackgroundPadding,
                     _searchTemplate.TemplateSearchArea.Height.From + topOutline - _searchTemplate.BackgroundPadding,
@@ -189,18 +114,13 @@ public class DialogOptionFinder : IDialogOptionFinder
                 dialogOptionsList.Add(area);
                 #endregion
 
-                y = area.Bottom + _searchTemplate.Gap;
-                isFound = true;
+                y = area.Bottom + _searchTemplate.Gap - 1;
+                isFoundByY = true;
             }
 
-            x = isFound 
-                ? x + _searchTemplate.TemplateSearchArea.Width.Length 
-                : x + _searchTemplate.VerticalOutlineSearchRangeX.Length - 1;
+            x = isFoundByY ? x + _searchTemplate.TemplateSearchArea.Width.Length - 1 : x + _searchTemplate.VerticalOutlineSearchRangeX.Length - 1;
         }
-        
-        //_bitmapUtils.DrawRectangles(croppedImage, dialogOptionsList);
-        //croppedImage.Save("05_Result.png");
-        
+
         return dialogOptionsList;
     }
 

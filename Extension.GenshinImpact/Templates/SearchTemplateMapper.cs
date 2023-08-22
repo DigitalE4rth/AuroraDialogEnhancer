@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using AuroraDialogEnhancerExtensions.Dimensions;
 using Extension.GenshinImpact.Dimensions;
 
@@ -23,13 +21,13 @@ internal class SearchTemplateMapper
             (int)(dynamicTemplate.SpeakerNameArea.Height.From * clientSize.Height),
             (int)(dynamicTemplate.SpeakerNameArea.Height.To * clientSize.Height));
 
-        preciseTemplate.SpeakerNameThreshold = (int) (preciseTemplate.SpeakerNameArea.Width.Length * preciseTemplate.SpeakerNameArea.Height.Length * dynamicTemplate.SpeakerNameThreshold);
+        preciseTemplate.SpeakerNameThreshold = (int)(preciseTemplate.SpeakerNameArea.Width.Length * preciseTemplate.SpeakerNameArea.Height.Length * dynamicTemplate.SpeakerNameThreshold);
         #endregion
 
         #region Measurements
-        preciseTemplate.TemplateWidth = (int)(dynamicTemplate.TemplateWidth * clientSize.Width);
+        var templateWidth = (int)(dynamicTemplate.TemplateWidth * clientSize.Width);
 
-        preciseTemplate.TemplateHeight = (int)(dynamicTemplate.TemplateHeight * clientSize.Width);
+        var templateHeight = (int)(dynamicTemplate.TemplateHeight * clientSize.Width);
 
         preciseTemplate.TemplateSearchArea = new Area(
             (int)(dynamicTemplate.TemplateSearchArea.Width.From * clientSize.Width),
@@ -52,18 +50,18 @@ internal class SearchTemplateMapper
         preciseTemplate.OutlineGrayChannelRange = dynamicTemplate.OutlineGrayChannelRange;
 
         preciseTemplate.VerticalOutlineSearchRangeX = new Range(
-            (int)(preciseTemplate.TemplateWidth * dynamicTemplate.VerticalOutlineSearchRangeX.From),
-            (int)(preciseTemplate.TemplateWidth * dynamicTemplate.VerticalOutlineSearchRangeX.To));
+            (int)(templateWidth * dynamicTemplate.VerticalOutlineSearchRangeX.From),
+            (int)(templateWidth * dynamicTemplate.VerticalOutlineSearchRangeX.To));
 
         preciseTemplate.VerticalOutlineSearchRangeY = new Range(
-            (int)(preciseTemplate.TemplateHeight * dynamicTemplate.VerticalOutlineSearchRangeY.From),
-            (int)(preciseTemplate.TemplateHeight * dynamicTemplate.VerticalOutlineSearchRangeY.To));
+            (int)(templateHeight * dynamicTemplate.VerticalOutlineSearchRangeY.From),
+            (int)(templateHeight * dynamicTemplate.VerticalOutlineSearchRangeY.To));
 
         preciseTemplate.VerticalOutlineThreshold = (int)(preciseTemplate.VerticalOutlineSearchRangeY.Length * dynamicTemplate.VerticalOutlineThreshold);
 
         preciseTemplate.HorizontalOutlineSearchRangeX = new Range(
-            (int)(preciseTemplate.TemplateWidth * dynamicTemplate.HorizontalOutlineSearchRangeX.From),
-            (int)(preciseTemplate.TemplateWidth * dynamicTemplate.HorizontalOutlineSearchRangeX.To));
+            (int)(templateWidth * dynamicTemplate.HorizontalOutlineSearchRangeX.From),
+            (int)(templateWidth * dynamicTemplate.HorizontalOutlineSearchRangeX.To));
 
         preciseTemplate.HorizontalOutlineThreshold = (int)(preciseTemplate.HorizontalOutlineSearchRangeX.Length * dynamicTemplate.HorizontalOutlineThreshold);
 
@@ -77,28 +75,28 @@ internal class SearchTemplateMapper
 
         foreach (var cornerArea in dynamicTemplate.CornerOutlineAreas)
         {
-            var widthFrom = (int)(cornerArea.Width.From * preciseTemplate.TemplateWidth);
-            var widthTo = (int)(cornerArea.Width.To * preciseTemplate.TemplateWidth);
-            var heightFrom = (int)(cornerArea.Height.From * preciseTemplate.TemplateHeight);
-            var heightTo = (int)(cornerArea.Height.To * preciseTemplate.TemplateHeight);
+            var widthFrom = (int)(cornerArea.Width.From * templateWidth);
+            var widthTo = (int)(cornerArea.Width.To * templateWidth);
+            var heightFrom = (int)(cornerArea.Height.From * templateHeight);
+            var heightTo = (int)(cornerArea.Height.To * templateHeight);
             var threshold = (int) Math.Ceiling((widthTo - widthFrom) * (heightTo - heightFrom) * cornerArea.Threshold);
 
-            preciseTemplate.CornerOutlineAreas.Add(new ThresholdArea(widthFrom, widthTo, heightFrom, heightTo, threshold));
+            preciseTemplate.CornerOutlineAreas.Add(new AreaWithThreshold(widthFrom, widthTo, heightFrom, heightTo, threshold));
         }
         #endregion
 
         #region Extra
         preciseTemplate.IconArea = new Area(
-            (int)(preciseTemplate.TemplateWidth * dynamicTemplate.IconArea.Width.From),
-            (int)(preciseTemplate.TemplateWidth * dynamicTemplate.IconArea.Width.To),
+            (int)(templateWidth * dynamicTemplate.IconArea.Width.From),
+            (int)(templateWidth * dynamicTemplate.IconArea.Width.To),
             (int)(preciseTemplate.OutlineAreaHeight * dynamicTemplate.IconArea.Height.From),
             (int)(preciseTemplate.OutlineAreaHeight * dynamicTemplate.IconArea.Height.To));
 
         preciseTemplate.IconAreaThreshold = (int)(preciseTemplate.IconArea.Width.Length * preciseTemplate.IconArea.Height.Length * dynamicTemplate.IconAreaThreshold);
 
         preciseTemplate.EmptyCenterArea = new Area(
-            (int)(preciseTemplate.TemplateWidth * dynamicTemplate.EmptyCenterArea.Width.From),
-            (int)(preciseTemplate.TemplateWidth * dynamicTemplate.EmptyCenterArea.Width.To),
+            (int)(templateWidth * dynamicTemplate.EmptyCenterArea.Width.From),
+            (int)(templateWidth * dynamicTemplate.EmptyCenterArea.Width.To),
             (int)(preciseTemplate.OutlineAreaHeight * dynamicTemplate.EmptyCenterArea.Height.From),
             (int)(preciseTemplate.OutlineAreaHeight * dynamicTemplate.EmptyCenterArea.Height.To));
 

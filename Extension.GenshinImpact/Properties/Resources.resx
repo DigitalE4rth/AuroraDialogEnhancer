@@ -127,28 +127,4 @@
   <data name="Cover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mask_1680" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mask_1680.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mask_1768" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mask_1768.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mask_1920" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mask_1920.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mask_2560" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mask_2560.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Template_1680" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Template_1680.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Template_1768" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Template_1768.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Template_1920" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Template_1920.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Template_2560" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Template_2560.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

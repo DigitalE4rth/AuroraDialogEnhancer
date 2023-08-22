@@ -23,9 +23,15 @@ public class DynamicTemplate
     public double SpeakerNameThreshold = 0.005;
     #endregion
 
-    #region Measurements
+    #region Measurements    
+    /// <summary>
+    /// The template width.
+    /// </summary>
     public double TemplateWidth = 0.032;
 
+    /// <summary>
+    /// The template height.
+    /// </summary>
     public double TemplateHeight = 0.033;
 
     /// <summary>
@@ -139,15 +145,15 @@ public class DynamicTemplate
     /// <remarks>
     /// Related to the template sizes.
     /// </remarks>
-    public List<ThresholdAreaDynamic> CornerOutlineAreas = new()
+    public List<AreaDynamicWithThreshold> CornerOutlineAreas = new()
     {
         // Upper
-        new ThresholdAreaDynamic(0.225, 0.3, 0.05, 0.15, 0.07),
-        new ThresholdAreaDynamic(0.15, 0.225, 0.125, 0.2, 0.07),
+        new AreaDynamicWithThreshold(0.225, 0.3, 0.05, 0.15, 0.07),
+        new AreaDynamicWithThreshold(0.15, 0.225, 0.125, 0.2, 0.07),
         
         // Bottom
-        new ThresholdAreaDynamic(0.225, 0.3, 0.8, 0.875, 0.07),
-        new ThresholdAreaDynamic(0.15, 0.225, 0.75, 0.825, 0.07)
+        new AreaDynamicWithThreshold(0.225, 0.3, 0.8, 0.875, 0.07),
+        new AreaDynamicWithThreshold(0.15, 0.225, 0.75, 0.825, 0.07)
     };
     #endregion
 

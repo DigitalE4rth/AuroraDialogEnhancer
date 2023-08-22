@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
 
@@ -23,8 +21,4 @@ public sealed class Extension : ExtensionDto
     public override ExtensionConfigDto GetConfig() => new("HonkaiStarRail", "launcher");
 
     public override Bitmap GetCover() => Properties.Resources.Cover;
-
-    public override Dictionary<Size, Type> Presets { get; protected set; } = new()
-    {
-    };
 }

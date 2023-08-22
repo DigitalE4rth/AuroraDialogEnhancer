@@ -24,10 +24,6 @@ public class PreciseTemplate
     #endregion
 
     #region Measurements
-    public int TemplateWidth;
-
-    public int TemplateHeight;
-
     /// <summary>
     /// The search area of the dialog options.
     /// </summary>
@@ -139,7 +135,7 @@ public class PreciseTemplate
     /// <remarks>
     /// Related to the template sizes.
     /// </remarks>
-    public List<ThresholdArea> CornerOutlineAreas = new();
+    public List<AreaWithThreshold> CornerOutlineAreas = new();
     #endregion
 
     #region Extra
