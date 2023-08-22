@@ -75,11 +75,16 @@ internal class SearchTemplateMapper
             (int)(preciseTemplate.OutlineAreaHeight * dynamicTemplate.BottomOutlineSearchRangeY.From),
             (int)(preciseTemplate.OutlineAreaHeight * dynamicTemplate.BottomOutlineSearchRangeY.To));
 
-        preciseTemplate.CornerOutlineAreas = dynamicTemplate.CornerOutlineAreas.Select(cornerArea => new Area(
-            (int)(cornerArea.Width.From * preciseTemplate.TemplateWidth),
-            (int)(cornerArea.Width.To * preciseTemplate.TemplateWidth),
-            (int)(cornerArea.Height.From * preciseTemplate.TemplateHeight),
-            (int)(cornerArea.Height.To * preciseTemplate.TemplateHeight))).ToList();
+        foreach (var cornerArea in dynamicTemplate.CornerOutlineAreas)
+        {
+            var widthFrom = (int)(cornerArea.Width.From * preciseTemplate.TemplateWidth);
+            var widthTo = (int)(cornerArea.Width.To * preciseTemplate.TemplateWidth);
+            var heightFrom = (int)(cornerArea.Height.From * preciseTemplate.TemplateHeight);
+            var heightTo = (int)(cornerArea.Height.To * preciseTemplate.TemplateHeight);
+            var threshold = (int) Math.Ceiling((widthTo - widthFrom) * (heightTo - heightFrom) * cornerArea.Threshold);
+
+            preciseTemplate.CornerOutlineAreas.Add(new ThresholdArea(widthFrom, widthTo, heightFrom, heightTo, threshold));
+        }
         #endregion
 
         #region Extra

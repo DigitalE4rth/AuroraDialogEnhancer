@@ -51,22 +51,24 @@ public partial class DebugPage
 
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
     {
-        //_resolutionsTest.ForEach(path => Count($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{path}.png"));
-        Count();
+        _resolutionsTest.ForEach(path => Count($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{path}.png"));
+        //Count();
     }
 
-    private void Count()
+    private void Count(string path)
     {
         var extensionProvider = AppServices.ServiceProvider.GetService<ExtensionsProvider>();
         var presetInfo = extensionProvider!.ExtensionsDictionary["GI"];
         var preset = presetInfo.GetPreset();
-        //using var image = new Bitmap(path);
+        using var image = new Bitmap(path);
         //using var image = new Bitmap("C:\\Games\\Genshin Impact\\Genshin Impact game\\ScreenShot\\20230821201400.png");
-        using var image = new Bitmap("D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\1440x1080.png");
+        //using var image = new Bitmap("D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\1440x1080.png");
         var finder = preset.GetDialogOptionFinderProvider(image.Size);
         using var croppedImage = GetArea(image, finder!.Data.DialogOptionsArea);
-        var dialogOptions = finder.DialogOptionsFinder.GetDialogOptions(image);
-        var result = dialogOptions.Count;
+        var dialogOptions = finder.DialogOptionsFinder.GetDialogOptions(croppedImage);
+        //var result = dialogOptions.Count;
+        DrawRectangles(image, dialogOptions);
+        image.Save($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\test\\{image.Width}x{image.Height}.png");
     }
 
     private void FindPoints(string clientSize)
@@ -77,6 +79,13 @@ public partial class DebugPage
         var result = _gameCvDialogOptionFinder.GetDialogOptions(image);
         System.Diagnostics.Debug.WriteLine($"Client size: {image.Size.Width}x{image.Size.Height}, Points count: {result.Count}");
         result.ForEach(point => System.Diagnostics.Debug.WriteLine(point));*/
+    }
+
+    public void DrawRectangles(Image bitmap, List<Rectangle> rectangles)
+    {
+        using var graphics = Graphics.FromImage(bitmap);
+        using var pen = new Pen(Color.LimeGreen, 1);
+        rectangles.ForEach(r => graphics.DrawRectangle(pen, r));
     }
 
     private Bitmap GetArea(Bitmap image, Rectangle rectangle)

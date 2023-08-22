@@ -139,7 +139,7 @@ public class PreciseTemplate
     /// <remarks>
     /// Related to the template sizes.
     /// </remarks>
-    public List<Area> CornerOutlineAreas = new();
+    public List<ThresholdArea> CornerOutlineAreas = new();
     #endregion
 
     #region Extra

@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using AuroraDialogEnhancerExtensions.Dimensions;
 using AuroraDialogEnhancerExtensions.Proxy;
 using AuroraDialogEnhancerExtensions.Services;
+using Extension.GenshinImpact.Dimensions;
 using Extension.GenshinImpact.Templates;
 
 namespace Extension.GenshinImpact.Services;
@@ -22,13 +24,6 @@ public class DialogOptionFinder : IDialogOptionFinder
     public bool IsDialogMode(Bitmap image)
     {
         return _bitmapUtils.CountInRange(image, _searchTemplate.SpeakerColorRange) > _searchTemplate.SpeakerNameThreshold;
-    }
-
-    public void DrawLine(Image bitmap, Point from, Point to)
-    {
-        using var graphics = Graphics.FromImage(bitmap);
-        using var pen = new Pen(Color.LimeGreen, 1);
-        graphics.DrawLine(pen, from, to);
     }
 
     public List<Rectangle> GetDialogOptions(Bitmap image)
@@ -64,6 +59,7 @@ public class DialogOptionFinder : IDialogOptionFinder
         //croppedImage.Save("01_Cut.png");
         //croppedImage.Save($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\test\\{image.Width}x{image.Height}x{Guid.NewGuid()}.png");
 
+        //_searchTemplate.CornerOutlineAreas.ForEach(area => Debug.WriteLine(area.Threshold));
         
         for (var x = 0; x + _searchTemplate.TemplateSearchArea.Width.Length <= croppedImage.Width; x++)
         {
@@ -172,12 +168,12 @@ public class DialogOptionFinder : IDialogOptionFinder
                     continue;
                 }*/
 
-                if (_searchTemplate.CornerOutlineAreas.All(cornerArea => IsAreaHasOutlinePixel(image,
-                        cornerArea,
+                if (_searchTemplate.CornerOutlineAreas.All(cornerArea => IsAreaInOutlineRange(image,
                         x + cornerArea.Width.From,
                         topOutline + cornerArea.Height.From,
                         x + cornerArea.Width.To,
-                        topOutline + cornerArea.Height.To)) == false)
+                        topOutline + cornerArea.Height.To,
+                        cornerArea.Threshold)) == false)
                 {
                     y = topOutline;
                     continue;
@@ -202,7 +198,7 @@ public class DialogOptionFinder : IDialogOptionFinder
                 : x + _searchTemplate.VerticalOutlineSearchRangeX.Length - 1;
         }
         
-        _bitmapUtils.DrawRectangles(croppedImage, dialogOptionsList);
+        //_bitmapUtils.DrawRectangles(croppedImage, dialogOptionsList);
         //croppedImage.Save("05_Result.png");
         
         return dialogOptionsList;
@@ -383,19 +379,5 @@ public class DialogOptionFinder : IDialogOptionFinder
 
         return resultPoints >= threshold;
     }
-
-    private bool IsAreaHasOutlinePixel(Bitmap image, Area area, int x, int y, int maxX, int maxY)
-    {
-        for (var i = x; i < maxX; i++)
-        {
-            for (var j = y; j < maxY; j++)
-            {
-                if (_bitmapUtils.IsWithinGrayRange(image, i, j, _searchTemplate.OutlineGrayChannelRange)) return true;
-            }
-        }
-
-        return false;
-    }
-
     #endregion
 }

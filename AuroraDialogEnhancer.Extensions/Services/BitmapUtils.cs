@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
 
 namespace AuroraDialogEnhancerExtensions.Services;
 
@@ -54,8 +53,6 @@ public class BitmapUtils
     #region Geometry painter
     public void DrawRectangles(Image bitmap, List<Rectangle> rectangles)
     {
-        if (!rectangles.Any()) return;
-
         using var graphics = Graphics.FromImage(bitmap);
         using var pen = new Pen(Color.LimeGreen, 1);
         rectangles.ForEach(r => graphics.DrawRectangle(pen, r));
@@ -66,6 +63,13 @@ public class BitmapUtils
         using var graphics = Graphics.FromImage(bitmap);
         using var pen = new Pen(Color.LimeGreen, 1);
         graphics.DrawRectangle(pen, rectangle);
+    }
+
+    public void DrawLine(Image bitmap, Point from, Point to)
+    {
+        using var graphics = Graphics.FromImage(bitmap);
+        using var pen = new Pen(Color.LimeGreen, 1);
+        graphics.DrawLine(pen, from, to);
     }
     #endregion
 

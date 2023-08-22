@@ -139,15 +139,15 @@ public class DynamicTemplate
     /// <remarks>
     /// Related to the template sizes.
     /// </remarks>
-    public List<AreaDynamic> CornerOutlineAreas = new()
+    public List<ThresholdAreaDynamic> CornerOutlineAreas = new()
     {
         // Upper
-        new AreaDynamic(0.225, 0.3, 0.05, 0.15),
-        new AreaDynamic(0.15, 0.225, 0.125, 0.2),
+        new ThresholdAreaDynamic(0.225, 0.3, 0.05, 0.15, 0.07),
+        new ThresholdAreaDynamic(0.15, 0.225, 0.125, 0.2, 0.07),
         
         // Bottom
-        new AreaDynamic(0.225, 0.3, 0.8, 0.875),
-        new AreaDynamic(0.15, 0.225, 0.75, 0.825)
+        new ThresholdAreaDynamic(0.225, 0.3, 0.8, 0.875, 0.07),
+        new ThresholdAreaDynamic(0.15, 0.225, 0.75, 0.825, 0.07)
     };
     #endregion
 
