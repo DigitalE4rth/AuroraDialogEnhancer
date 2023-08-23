@@ -49,10 +49,9 @@ public partial class MenuHookStateIcon
         switch (_hookedGameInfoProvider!.HookState)
         {
             case EHookState.Hooked:
-                icon = "Icon.Check.700";
-                IconBackground.Background = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Primary));
-                Icon.Foreground           = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_OnPrimary));
-                Icon.Margin               = new Thickness(2,2,3,2);
+                icon = "Icon.Solid.CircleCheck";
+                Icon.Foreground           = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Primary));
+                Icon.Margin               = new Thickness(0);
                 break;
             case EHookState.Warning:
             case EHookState.Error:
