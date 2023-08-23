@@ -20,6 +20,14 @@ public class ClickablePointVmDto
         PathIcon = pathIcon;
     }
 
+    public ClickablePointVmDto(string id, string name, string pathIcon)
+    {
+        Id = id;
+        Name = name;
+        Description = string.Empty;
+        PathIcon = pathIcon;
+    }
+
     public ClickablePointVmDto()
     {
         Id = Guid.NewGuid().ToString();

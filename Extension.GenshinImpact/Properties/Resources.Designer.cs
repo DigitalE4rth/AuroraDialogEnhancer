@@ -61,15 +61,6 @@ namespace Extension.GenshinImpact.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic dialog playback.
-        /// </summary>
-        internal static string ClickablePoint_AutoPlay_Description {
-            get {
-                return ResourceManager.GetString("ClickablePoint_AutoPlay_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Autoplay.
         /// </summary>
         internal static string ClickablePoint_AutoPlay_Name {
