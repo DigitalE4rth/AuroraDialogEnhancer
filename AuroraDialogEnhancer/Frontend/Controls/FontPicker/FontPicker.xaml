@@ -1,15 +1,15 @@
 ﻿<Window x:Class="AuroraDialogEnhancer.Frontend.Controls.FontPicker.FontPicker"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:AuroraDialogEnhancer.Frontend.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:fontPicker="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.FontPicker"
         xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
         xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
         xmlns:woConverters="clr-namespace:WhyOrchid.Converters;assembly=WhyOrchid"
         xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-        xmlns:converters="clr-namespace:AuroraDialogEnhancer.Frontend.Converters"
-        xmlns:fontPicker="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.FontPicker"
         Title="{x:Static localization:Resources.FontPicker_Title}"
         d:DataContext="{d:DesignInstance d:Type=fontPicker:FontPickerDataContext,
                                          IsDesignTimeCreatable=False}"
@@ -269,8 +269,16 @@
                     <woControls:Button Margin="5,0,0,0"
                                        Padding="10,0"
                                        Click="Button_Apply_OnClick"
-                                       Content="{x:Static localization:Resources.FontPicker_Apply}"
-                                       Style="{StaticResource ButtonFilled}" />
+                                       Style="{StaticResource ButtonFilled}">
+                        <TextBlock Style="{StaticResource FontStyleMedium}" Text="{x:Static localization:Resources.FontPicker_Apply}">
+                            <TextBlock.Effect>
+                                <DropShadowEffect BlurRadius="5"
+                                                  Opacity="0.3"
+                                                  ShadowDepth="0"
+                                                  Color="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Shadow, Mode=OneTime}" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+                    </woControls:Button>
                 </UniformGrid>
             </Grid>
         </Grid>

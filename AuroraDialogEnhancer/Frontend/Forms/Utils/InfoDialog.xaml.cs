@@ -13,8 +13,8 @@ public partial class InfoDialog : Window
         Title = config.WindowTitle;
 
         if (!config.ShowSecondaryButton) ButtonSecondary.Visibility = Visibility.Hidden;
-        ButtonPrimary.Content   = config.PrimaryButtonText;
-        ButtonSecondary.Content = config.SecondaryButtonText;
+        ButtonPrimaryContent.Text = config.PrimaryButtonText;
+        ButtonSecondary.Content   = config.SecondaryButtonText;
 
         TextBoxMessage.Text = config.Message;
         if (config.IsReadOnly)
