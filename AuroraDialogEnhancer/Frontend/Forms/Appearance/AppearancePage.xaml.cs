@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
-using System.Windows.Media;
 using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.AppConfig.Theme;
 using AuroraDialogEnhancer.Frontend.Controls.ColorPicker;
@@ -193,17 +192,9 @@ public partial class AppearancePage
 
     private void Button_AccentColor_OnClick(object sender, RoutedEventArgs e)
     {
-        Color userAccentColor;
-        try
-        {
-            userAccentColor = (Color) ColorConverter.ConvertFromString(Properties.Settings.Default.UI_ThemeInfo_CustomThemeAccentColor);
-        }
-        catch (Exception)
-        {
-            userAccentColor = (Color) ColorConverter.ConvertFromString(Properties.DefaultSettings.Default.UI_ThemeInfo_AccentColor);
-        }
+        var accentColor = _colorThemeService.GetAccentColor();
 
-        var colorPickerDialog = new ColorPickerDialog(userAccentColor)
+        var colorPickerDialog = new ColorPickerDialog(accentColor)
         {
             Owner = Application.Current.MainWindow
         };

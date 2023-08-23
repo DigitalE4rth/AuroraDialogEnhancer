@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Media;
 using System.Xml.Serialization;
 using AuroraDialogEnhancer.Frontend.Forms.Utils;
 using WhyOrchid.ColorTheme.BuildIn;
@@ -179,6 +180,23 @@ public class ColorThemeService
 
         WhyOrchid.Properties.Settings.Default.Color_Primary = Properties.Settings.Default.UI_ThemeInfo_CustomThemeAccentColor;
         WhyOrchid.Properties.Settings.Default.Save();
+    }
+
+    public Color GetAccentColor()
+    {
+        if (!Properties.Settings.Default.UI_ThemeInfo_IsCustomAccentColor)
+        {
+            return (Color) ColorConverter.ConvertFromString(Properties.DefaultSettings.Default.UI_ThemeInfo_AccentColor);
+        }
+
+        try
+        {
+            return (Color) ColorConverter.ConvertFromString(Properties.Settings.Default.UI_ThemeInfo_CustomThemeAccentColor);
+        }
+        catch (Exception)
+        {
+            return (Color) ColorConverter.ConvertFromString(Properties.DefaultSettings.Default.UI_ThemeInfo_AccentColor);
+        }
     }
     #endregion
 
