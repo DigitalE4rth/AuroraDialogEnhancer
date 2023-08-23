@@ -1303,33 +1303,6 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coordinates.
-        /// </summary>
-        public static string KeyBinding_Utilities_HiddenCursorSetting_Coordinates {
-            get {
-                return ResourceManager.GetString("KeyBinding_Utilities_HiddenCursorSetting_Coordinates", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hidden cursor location setting.
-        /// </summary>
-        public static string KeyBinding_Utilities_HiddenCursorSetting_Title {
-            get {
-                return ResourceManager.GetString("KeyBinding_Utilities_HiddenCursorSetting_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Y Coordinate.
-        /// </summary>
-        public static string KeyBinding_Utilities_HiddenCursorSetting_YCoordinate {
-            get {
-                return ResourceManager.GetString("KeyBinding_Utilities_HiddenCursorSetting_YCoordinate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Hide cursor on manual selection.
         /// </summary>
         public static string KeyBinding_Utilities_HideCursorOnManualClick {
