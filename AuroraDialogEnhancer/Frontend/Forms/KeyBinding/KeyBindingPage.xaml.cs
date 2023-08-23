@@ -47,20 +47,18 @@ public partial class KeyBindingPage
 
     private void InitializeComponentEvents()
     {
-        GameSelector.OnGameChanged                   += GameSelector_OnGameChanged;
-        ComboBoxSingleBehaviour.SelectionChanged     += ComboBoxSingleBehaviour_OnSelectionChanged;
-        ComboBoxNumericBehaviour.SelectionChanged    += ComboBoxNumericBehaviour_OnSelectionChanged;
-        ComboBoxCursorBehaviour.SelectionChanged     += ComboBoxCursorBehaviour_OnSelectionChanged;
-        ComboBoxHiddenCursorSetting.SelectionChanged += ComboBoxHiddenCursorSetting_OnSelectionChanged;
+        GameSelector.OnGameChanged                += GameSelector_OnGameChanged;
+        ComboBoxSingleBehaviour.SelectionChanged  += ComboBoxSingleBehaviour_OnSelectionChanged;
+        ComboBoxNumericBehaviour.SelectionChanged += ComboBoxNumericBehaviour_OnSelectionChanged;
+        ComboBoxCursorBehaviour.SelectionChanged  += ComboBoxCursorBehaviour_OnSelectionChanged;
     }
 
     private void UnloadComponentEvents()
     {
-        GameSelector.OnGameChanged                   -= GameSelector_OnGameChanged;
-        ComboBoxSingleBehaviour.SelectionChanged     -= ComboBoxSingleBehaviour_OnSelectionChanged;
-        ComboBoxNumericBehaviour.SelectionChanged    -= ComboBoxNumericBehaviour_OnSelectionChanged;
-        ComboBoxCursorBehaviour.SelectionChanged     -= ComboBoxCursorBehaviour_OnSelectionChanged;
-        ComboBoxHiddenCursorSetting.SelectionChanged -= ComboBoxHiddenCursorSetting_OnSelectionChanged;
+        GameSelector.OnGameChanged                -= GameSelector_OnGameChanged;
+        ComboBoxSingleBehaviour.SelectionChanged  -= ComboBoxSingleBehaviour_OnSelectionChanged;
+        ComboBoxNumericBehaviour.SelectionChanged -= ComboBoxNumericBehaviour_OnSelectionChanged;
+        ComboBoxCursorBehaviour.SelectionChanged  -= ComboBoxCursorBehaviour_OnSelectionChanged;
         foreach (CardButton cardButtonClickablePoint in ContainerClickablePoints.Children)
         {
             cardButtonClickablePoint.Click -= CardButton_ClickablePoint_OnClick;
@@ -80,9 +78,6 @@ public partial class KeyBindingPage
 
         var cursorBehaviour = ComboBoxCursorBehaviour.Items.OfType<ComboBoxItem>().First(item => (ECursorBehaviour)item.Tag == _keyBindingProfileViewModel.CursorBehaviour);
         ComboBoxCursorBehaviour.SelectedItem = cursorBehaviour;
-
-        var hiddenCursorSetting = ComboBoxHiddenCursorSetting.Items.OfType<ComboBoxItem>().First(item => (EHiddenCursorSetting)item.Tag == _keyBindingProfileViewModel.HiddenCursorSetting);
-        ComboBoxHiddenCursorSetting.SelectedItem = hiddenCursorSetting;
 
         InitializeKeyCaps();
     }
@@ -215,12 +210,6 @@ public partial class KeyBindingPage
     private void ComboBoxCursorBehaviour_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         _keyBindingProfileViewModel.CursorBehaviour = (ECursorBehaviour)((ComboBoxItem)ComboBoxCursorBehaviour.SelectedItem).Tag;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
-    }
-
-    private void ComboBoxHiddenCursorSetting_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        _keyBindingProfileViewModel.HiddenCursorSetting = (EHiddenCursorSetting)((ComboBoxItem)ComboBoxHiddenCursorSetting.SelectedItem).Tag;
         _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
     #endregion

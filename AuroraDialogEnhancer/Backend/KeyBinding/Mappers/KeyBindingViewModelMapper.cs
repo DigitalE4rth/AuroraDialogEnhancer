@@ -29,7 +29,6 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
             SingleDialogOptionBehaviour = profile.SingleDialogOptionBehaviour,
             NumericActionBehaviour      = profile.NumericActionBehaviour,
             CursorBehaviour             = profile.CursorBehaviour,
-            HiddenCursorSetting         = profile.HiddenCursorSetting,
 
             Reload      = Map(profile.Reload),
             PauseResume = Map(profile.PauseResume),

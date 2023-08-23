@@ -17,7 +17,6 @@ public class KeyBindingViewModelBackMapper : IMapper<KeyBindingProfileViewModel,
             SingleDialogOptionBehaviour = obj.SingleDialogOptionBehaviour,
             NumericActionBehaviour      = obj.NumericActionBehaviour,
             CursorBehaviour             = obj.CursorBehaviour,
-            HiddenCursorSetting         = obj.HiddenCursorSetting,
             #endregion
 
             #region General

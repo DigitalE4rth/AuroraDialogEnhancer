@@ -11,7 +11,6 @@ public abstract class KeyBindingProfileDto
     public virtual ESingleDialogOptionBehaviourDto SingleDialogOptionBehaviourDto { get; set; } = ESingleDialogOptionBehaviourDto.Highlight;
     public virtual ENumericActionBehaviourDto      NumericActionBehaviourDto      { get; set; } = ENumericActionBehaviourDto.Highlight;
     public virtual ECursorBehaviourDto             CursorBehaviourDto             { get; set; } = ECursorBehaviourDto.Hide;
-    public virtual EHiddenCursorSettingDto         HiddenCursorSettingDto         { get; set; } = EHiddenCursorSettingDto.YCoordinate;
     #endregion
 
     #region General

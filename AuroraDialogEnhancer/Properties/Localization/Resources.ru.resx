@@ -531,15 +531,6 @@
   <data name="KeyBinding_Utilities_CycleThrough" xml:space="preserve">
     <value>Циклическое пролистывание</value>
   </data>
-  <data name="KeyBinding_Utilities_HiddenCursorSetting_Coordinates" xml:space="preserve">
-    <value>Координаты</value>
-  </data>
-  <data name="KeyBinding_Utilities_HiddenCursorSetting_Title" xml:space="preserve">
-    <value>Месторасположение скрытого курсора</value>
-  </data>
-  <data name="KeyBinding_Utilities_HiddenCursorSetting_YCoordinate" xml:space="preserve">
-    <value>Y Координата</value>
-  </data>
   <data name="KeyBinding_Utilities_HideCursorOnManualClick" xml:space="preserve">
     <value>Скрывать курсор при ручном выборе</value>
   </data>

@@ -18,7 +18,6 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
             SingleDialogOptionBehaviour = (ESingleDialogOptionBehaviour) obj.SingleDialogOptionBehaviourDto,
             NumericActionBehaviour      = (ENumericActionBehaviour)      obj.NumericActionBehaviourDto,
             CursorBehaviour             = (ECursorBehaviour)             obj.CursorBehaviourDto,
-            HiddenCursorSetting         = (EHiddenCursorSetting)         obj.HiddenCursorSettingDto,
             #endregion
 
             #region General

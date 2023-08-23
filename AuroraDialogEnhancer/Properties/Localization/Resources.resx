@@ -531,15 +531,6 @@
   <data name="KeyBinding_Utilities_CycleThrough" xml:space="preserve">
     <value>Cycle through dialog options</value>
   </data>
-  <data name="KeyBinding_Utilities_HiddenCursorSetting_Coordinates" xml:space="preserve">
-    <value>Coordinates</value>
-  </data>
-  <data name="KeyBinding_Utilities_HiddenCursorSetting_Title" xml:space="preserve">
-    <value>Hidden cursor location setting</value>
-  </data>
-  <data name="KeyBinding_Utilities_HiddenCursorSetting_YCoordinate" xml:space="preserve">
-    <value>Y Coordinate</value>
-  </data>
   <data name="KeyBinding_Utilities_HideCursorOnManualClick" xml:space="preserve">
     <value>Hide cursor on manual selection</value>
   </data>

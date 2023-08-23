@@ -153,7 +153,6 @@
     <Compile Include="Backend\KeyBinding\Models\ClickablePointVm.cs" />
     <Compile Include="Backend\KeyBinding\Models\ClickablePrecisePoint.cs" />
     <Compile Include="Backend\KeyBinding\Models\ECursorBehaviour.cs" />
-    <Compile Include="Backend\KeyBinding\Models\EHiddenCursorSetting.cs" />
     <Compile Include="Backend\KeyBinding\Models\EHighMouseKey.cs" />
     <Compile Include="Backend\KeyBinding\Models\ENumericActionBehaviour.cs" />
     <Compile Include="Backend\KeyBinding\Models\ESingleDialogOptionBehaviour.cs" />

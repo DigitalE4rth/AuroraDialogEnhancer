@@ -10,7 +10,6 @@ public class KeyBindingProfileViewModel
     public ESingleDialogOptionBehaviour SingleDialogOptionBehaviour { get; set; }
     public ENumericActionBehaviour NumericActionBehaviour { get; set; }
     public ECursorBehaviour CursorBehaviour { get; set; }
-    public EHiddenCursorSetting HiddenCursorSetting { get; set; }
     #endregion
 
     #region General

@@ -3,13 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:gameSelector="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.GameSelector"
+      xmlns:keyBinding="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models"
       xmlns:local="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.KeyBinding"
       xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-      xmlns:keyBinding="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models"
       d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
       d:DesignHeight="1450"
       d:DesignWidth="800"
@@ -51,7 +51,7 @@
 
                         <woControls:ComboBox.Title>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.MoreHoriz}" Style="{StaticResource IconSmall}" />
+                                <woControls:PathIcon Data="{StaticResource Icon.MoreHoriz}" Style="{StaticResource IconMedium}" />
                             </Grid>
                         </woControls:ComboBox.Title>
 
@@ -225,34 +225,6 @@
                         </Grid>
                     </woControls:CardComboBox.RightIcon>
                 </woControls:CardComboBox>
-
-                <!--  Hidden Cursor Setting  -->
-                <woControls:CardComboBox x:Name="ComboBoxHiddenCursorSetting"
-                                         Title="{x:Static localization:Resources.KeyBinding_Utilities_HiddenCursorSetting_Title}"
-                                         MinHeight="55"
-                                         Margin="0,5,0,0"
-                                         d:SelectedIndex="1"
-                                         d:Visibility="Visible"
-                                         ContentForeground="Secondary"
-                                         Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Converter={StaticResource BooleanToVisibilityConverter}}">
-
-                    <woControls:CardComboBox.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.MyLocation}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardComboBox.LeftIcon>
-
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_HiddenCursorSetting_Coordinates}" Tag="{x:Static keyBinding:EHiddenCursorSetting.Coordinates}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_HiddenCursorSetting_YCoordinate}" Tag="{x:Static keyBinding:EHiddenCursorSetting.YCoordinate}" />
-
-                    <woControls:CardComboBox.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
-                                                 Data="{StaticResource Icon.ExpandMore}"
-                                                 Style="{StaticResource IconSmall}" />
-                        </Grid>
-                    </woControls:CardComboBox.RightIcon>
-                </woControls:CardComboBox>
             </StackPanel>
 
             <!--  General  -->
@@ -417,7 +389,7 @@
             </StackPanel>
 
             <!--  Clickable points  -->
-            <StackPanel x:Name="ContainerClickablePoints" Margin="0,0,0,25"/>
+            <StackPanel x:Name="ContainerClickablePoints" Margin="0,0,0,25" />
 
             <!--  Dialog options  -->
             <StackPanel>

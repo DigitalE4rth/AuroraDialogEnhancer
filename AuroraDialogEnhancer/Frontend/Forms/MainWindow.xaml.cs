@@ -38,7 +38,7 @@ public partial class MainWindow
     {
         Title = Assembly.GetEntryAssembly()!.GetCustomAttribute<AssemblyTitleAttribute>().Title;
 #if DEBUG
-        Title += " ● DEVELOPMENT";
+        Title += " | DEVELOPMENT";
 #endif
     }
 

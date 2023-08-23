@@ -13,7 +13,6 @@ public class KeyBindingProfile
     public virtual ESingleDialogOptionBehaviour SingleDialogOptionBehaviour { get; set; } = ESingleDialogOptionBehaviour.Highlight;
     public virtual ENumericActionBehaviour      NumericActionBehaviour      { get; set; } = ENumericActionBehaviour.Highlight;
     public virtual ECursorBehaviour             CursorBehaviour             { get; set; } = ECursorBehaviour.Hide;
-    public virtual EHiddenCursorSetting         HiddenCursorSetting         { get; set; } = EHiddenCursorSetting.YCoordinate;
     #endregion
 
     #region General
