@@ -569,9 +569,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>GOTO END
-
-rem Copy compiled l18n assemblies to alt folder
+    <PostBuildEvent>rem Copy compiled l18n assemblies to alt folder
 
 if not exist $(TargetDir)Localization mkdir $(TargetDir)Localization
 set langs=ru
@@ -581,9 +579,7 @@ for %25%25l in (%25langs%25) do (
    rmdir /s /q $(TargetDir)%25%25l
 )
 
-rmdir /s /q $(TargetDir)dll\x86 -r
-del /s /q $(TargetDir)dll\x64\opencv_videoio_ffmpeg*.dll
-
+GOTO END
 :END</PostBuildEvent>
   </PropertyGroup>
 </Project>

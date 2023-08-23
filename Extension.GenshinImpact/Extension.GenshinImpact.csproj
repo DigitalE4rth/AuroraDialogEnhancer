@@ -102,11 +102,15 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetPath)" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Genshin Impact\$(TargetFileName)"
-
+    <PostBuildEvent>set builds=Release,Debug
 set langs=ru
-for %25%25l in (%25langs%25) do (
-   xcopy "$(TargetDir)%25%25l" "$(SolutionDir)$(SolutionName)\bin\Debug\Extensions\Genshin Impact\%25%25l" /s /y /i
+
+for %25%25b in (%25builds%25) do (
+   copy /Y "$(TargetPath)" "$(SolutionDir)$(SolutionName)\bin\%25%25b\Extensions\Genshin Impact\$(TargetFileName)"
+
+   for %25%25l in (%25langs%25) do (
+      xcopy "$(TargetDir)%25%25l" "$(SolutionDir)$(SolutionName)\bin\%25%25b\Extensions\Genshin Impact\%25%25l" /s /y /i
+   )
 )
 </PostBuildEvent>
   </PropertyGroup>
