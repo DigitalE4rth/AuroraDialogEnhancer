@@ -8,6 +8,7 @@
         xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
         xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
         xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+        xmlns:utils="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.Utils"
         Title="{x:Static localization:Resources.TextInputDialog_Title}"
         d:DataContext="{d:DesignInstance d:Type=utils:TextInputResetDialogDataContext,
                                          IsDesignTimeCreatable=False}"
@@ -115,15 +116,8 @@
                                        d:Content="d:Apply"
                                        Click="Button_Default_OnClick"
                                        IsDefault="True"
+                                       Content="{Binding Path=OkButtonTitle, Mode=OneTime, TargetNullValue={x:Static localization:Resources.TextInputDialog_Apply}}"
                                        Style="{StaticResource ButtonFilled}">
-                        <TextBlock Style="{StaticResource FontStyleMedium}" Text="{Binding Path=OkButtonTitle, Mode=OneTime, TargetNullValue={x:Static localization:Resources.TextInputDialog_Apply}}">
-                            <TextBlock.Effect>
-                                <DropShadowEffect BlurRadius="5"
-                                                  Opacity="0.3"
-                                                  ShadowDepth="0"
-                                                  Color="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Shadow, Mode=OneTime}" />
-                            </TextBlock.Effect>
-                        </TextBlock>
                     </woControls:Button>
                 </UniformGrid>
             </Grid>

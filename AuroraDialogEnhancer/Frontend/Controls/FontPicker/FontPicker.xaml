@@ -269,16 +269,8 @@
                     <woControls:Button Margin="5,0,0,0"
                                        Padding="10,0"
                                        Click="Button_Apply_OnClick"
-                                       Style="{StaticResource ButtonFilled}">
-                        <TextBlock Style="{StaticResource FontStyleMedium}" Text="{x:Static localization:Resources.FontPicker_Apply}">
-                            <TextBlock.Effect>
-                                <DropShadowEffect BlurRadius="5"
-                                                  Opacity="0.3"
-                                                  ShadowDepth="0"
-                                                  Color="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Shadow, Mode=OneTime}" />
-                            </TextBlock.Effect>
-                        </TextBlock>
-                    </woControls:Button>
+                                       Content="{x:Static localization:Resources.FontPicker_Apply}"
+                                       Style="{StaticResource ButtonFilled}" />
                 </UniformGrid>
             </Grid>
         </Grid>
