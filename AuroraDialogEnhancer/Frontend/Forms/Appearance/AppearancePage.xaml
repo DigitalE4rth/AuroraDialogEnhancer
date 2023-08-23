@@ -1,15 +1,15 @@
 ﻿<Page x:Class="AuroraDialogEnhancer.Frontend.Forms.Appearance.AppearancePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:converters="clr-namespace:AuroraDialogEnhancer.Frontend.Converters"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:formatters="clr-namespace:AuroraDialogEnhancer.Frontend.Formatters"
       xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
+      xmlns:theme="clr-namespace:AuroraDialogEnhancer.AppConfig.Theme"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-      xmlns:formatters="clr-namespace:AuroraDialogEnhancer.Frontend.Formatters"
-      xmlns:converters="clr-namespace:AuroraDialogEnhancer.Frontend.Converters"
-      xmlns:theme="clr-namespace:AuroraDialogEnhancer.AppConfig.Theme"
       d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
       d:DesignHeight="450"
       d:DesignWidth="800"
@@ -36,7 +36,7 @@
 
                 <woControls:CardComboBox.LeftIcon>
                     <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                        <woControls:PathIcon Data="{StaticResource Icon.FormatPaint}" Style="{StaticResource IconLarge}" />
+                        <woControls:PathIcon Data="{StaticResource Icon.Solid.FormatPaint}" Style="{StaticResource IconLarge}" />
                     </Grid>
                 </woControls:CardComboBox.LeftIcon>
 
