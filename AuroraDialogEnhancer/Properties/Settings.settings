@@ -80,5 +80,8 @@
     <Setting Name="App_IsScreenshotsManager" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="UI_FontStyle_Title" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -9,7 +9,7 @@ namespace AuroraDialogEnhancer.Frontend.Controls.FontPicker;
 public partial class FontPicker : Window
 {
     private readonly FontPickerDataContext _fontPickerDataContext;
-    private const string DefaultSystemFont = "Segoe UI";
+    private const string DEFAULT_SYSTEM_FONT = "Segoe UI";
 
     public FontPicker()
     {
@@ -28,7 +28,7 @@ public partial class FontPicker : Window
         var systemFontFamilies = new System.Drawing.Text.InstalledFontCollection().Families;
         FontSelector.ItemsSource = systemFontFamilies.Select(ff => new FontFamily(ff.Name));
 
-        var appliedFont = string.IsNullOrEmpty(WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily) ? DefaultSystemFont : WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily;
+        var appliedFont = string.IsNullOrEmpty(WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily) ? DEFAULT_SYSTEM_FONT : WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily;
         var separatorIndex = WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily.IndexOf(", ", StringComparison.Ordinal);
         if (separatorIndex != -1)
         {
@@ -95,11 +95,14 @@ public partial class FontPicker : Window
     private void Button_Apply_OnClick(object sender, RoutedEventArgs e)
     {
         var selectedFont = ((FontFamily)FontSelector.SelectedItem).Source;
-        WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily = string.Join(", ", selectedFont, DefaultSystemFont);
+        WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily = string.Join(", ", selectedFont, DEFAULT_SYSTEM_FONT);
         WhyOrchid.Properties.Settings.Default.FontStyle_Medium = _fontPickerDataContext.FontSize;
         WhyOrchid.Properties.Settings.Default.FontStyle_Large  = _fontPickerDataContext.FontSize + 2;
         WhyOrchid.Properties.Settings.Default.FontStyle_Small  = _fontPickerDataContext.FontSize - 2;
         WhyOrchid.Properties.Settings.Default.Save();
+
+        Properties.Settings.Default.UI_FontStyle_Title = _fontPickerDataContext.FontSize + 10;
+        Properties.Settings.Default.Save();
 
         DialogResult = true;
         Close();
