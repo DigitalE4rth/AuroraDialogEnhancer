@@ -12,7 +12,7 @@
     <Grid>
         <cards:ComboBoxProfile x:Name="ComboBoxGames"
                                Padding="15,5,15,5"
-                               HorizontalContentAlignment="Center"
+                               HorizontalContentAlignment="Left"
                                d:SelectedIndex="0"
                                Style="{StaticResource ComboBoxText}">
 
