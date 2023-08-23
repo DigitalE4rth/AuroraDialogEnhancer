@@ -25,7 +25,7 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#FFD7A200")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#2cb065")]
         public string UI_ThemeInfo_AccentColor {
             get {
                 return ((string)(this["UI_ThemeInfo_AccentColor"]));

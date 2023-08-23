@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="UI_ThemeInfo_AccentColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#FFD7A200</Value>
+      <Value Profile="(Default)">#2cb065</Value>
     </Setting>
     <Setting Name="FontStyle_FontFamily" Type="System.String" Scope="User">
       <Value Profile="(Default)">Segoe UI</Value>
