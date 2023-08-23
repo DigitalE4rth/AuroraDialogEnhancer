@@ -169,10 +169,11 @@
                 </woControls:CardToggleButton>
 
                 <!--  Expert mode  -->
-                <woControls:CardToggleButton Title="{x:Static localization:Resources.Settings_ExpertMode_Title}"
+                <woControls:CardToggleButton x:Name="Toggle_ExpertMode" Title="{x:Static localization:Resources.Settings_ExpertMode_Title}"
                                              MinHeight="55"
                                              Margin="0,0,0,5"
                                              Click="ExpertMode_OnClick"
+                                             Visibility="Collapsed"
                                              Description="{x:Static localization:Resources.Settings_ExpertMode_Description}"
                                              IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Mode=OneTime}">
 

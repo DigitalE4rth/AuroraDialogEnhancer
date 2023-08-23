@@ -31,6 +31,10 @@ public partial class SettingsPage
         InitializeComboBoxLanguage();
         InitializeComboBoxMainWindowStartupState();
         InitializeComboBoxMainWindowShortcutState();
+
+#if DEBUG
+        Toggle_ExpertMode.Visibility = Visibility.Visible;
+#endif
     }
 
     #region Initialization
