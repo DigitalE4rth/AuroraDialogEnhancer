@@ -81,7 +81,7 @@ internal class SearchTemplateMapper
             var heightTo = (int)(cornerArea.Height.To * templateHeight);
             var threshold = (int) Math.Ceiling((widthTo - widthFrom) * (heightTo - heightFrom) * cornerArea.Threshold);
 
-            preciseTemplate.CornerOutlineAreas.Add(new AreaWithThreshold(widthFrom, widthTo, heightFrom, heightTo, threshold));
+            preciseTemplate.CornerOutlineAreas.Add(new ThresholdArea(widthFrom, widthTo, heightFrom, heightTo, threshold));
         }
         #endregion
 

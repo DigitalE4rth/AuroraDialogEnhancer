@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dimensions\DynamicPoint.cs" />
+    <Compile Include="Dimensions\ThresholdArea.cs" />
+    <Compile Include="Dimensions\ThresholdAreaDynamic.cs" />
     <Compile Include="KeyBindings\ClickablePointDto.cs" />
     <Compile Include="KeyBindings\ClickablePointVmDto.cs" />
     <Compile Include="KeyBindings\ECursorBehaviourDto.cs" />

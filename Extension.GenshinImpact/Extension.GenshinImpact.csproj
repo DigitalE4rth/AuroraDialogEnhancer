@@ -50,8 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dimensions\AreaWithThreshold.cs" />
-    <Compile Include="Dimensions\AreaDynamicWithThreshold.cs" />
     <Compile Include="KeyBindings\ClickablePointViewModelProvider.cs" />
     <Compile Include="KeyBindings\KeyBindingProfile.cs" />
     <Compile Include="Extension.cs" />
