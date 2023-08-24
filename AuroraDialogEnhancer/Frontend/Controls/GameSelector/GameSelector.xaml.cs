@@ -152,6 +152,7 @@ public partial class GameSelector
         switch (_hookedGameInfoProvider!.HookState)
         {
             case EHookState.Hooked:
+                pathIcon.Margin = new Thickness(1, 0, 1, 0);
                 return "Icon.Check";
             case EHookState.Warning:
             case EHookState.Error:
