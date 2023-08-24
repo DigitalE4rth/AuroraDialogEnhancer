@@ -7,16 +7,12 @@
       xmlns:local="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.KeyBinding"
       xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
       d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
       d:DesignHeight="1450"
       d:DesignWidth="800"
       mc:Ignorable="d">
-    <Page.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-    </Page.Resources>
 
     <woControls:ScrollViewer IsInnerScrollbarsArrangement="True" VerticalScrollBarVisibility="Auto">
         <StackPanel MaxWidth="800" Margin="55,22,55,25">
