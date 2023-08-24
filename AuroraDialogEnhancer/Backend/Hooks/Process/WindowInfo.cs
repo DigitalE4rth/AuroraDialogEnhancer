@@ -6,13 +6,10 @@ namespace AuroraDialogEnhancer.Backend.Hooks.Process;
 
 public class WindowInfo
 {
-    public string ClientSize { get; private set; }
-
     public WindowInfo(IntPtr handle, Rectangle clientRectangle, Rectangle windowRectangle)
     {
         Handle = handle;
         SetLocation(clientRectangle, windowRectangle);
-        ClientSize = string.Empty;
     }
 
     public void SetLocation(Rectangle clientRectangle, Rectangle windowRectangle)
@@ -59,20 +56,16 @@ public class WindowInfo
     /// </summary>
     public int TitleBarSize { get; private set; }
 
-    public bool IsMinimized => NativeMethods.IsIconic(Handle);
+    public bool IsMinimized() => NativeMethods.IsIconic(Handle);
 
     public Rectangle RelativeRightSideOfTheClient { get; set; }
 
     public Point ClientRectangleRelativePosition { get; private set; }
 
-    public void SetClientSize()
+    public string GetClientSize()
     {
-        if (IsMinimized)
-        {
-            ClientSize = Properties.Localization.Resources.WindowInfo_Minimized;
-            return;
-        }
-
-        ClientSize = ClientRectangle.Width + "x" + ClientRectangle.Height;
+        return IsMinimized()
+            ? Properties.Localization.Resources.WindowInfo_Minimized
+            : $"{ClientRectangle.Width}x{ClientRectangle.Height}";
     }
 }

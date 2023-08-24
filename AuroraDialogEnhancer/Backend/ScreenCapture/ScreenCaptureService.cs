@@ -140,6 +140,6 @@ public class ScreenCaptureService
     {
         return _hookedGameDataProvider.IsGameProcessAlive() &&
                _hookedGameDataProvider.Data!.GameWindowInfo is not null &&
-              !_hookedGameDataProvider.Data.GameWindowInfo.IsMinimized;
+              !_hookedGameDataProvider.Data.GameWindowInfo.IsMinimized();
     }
 }

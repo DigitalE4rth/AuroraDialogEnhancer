@@ -162,7 +162,7 @@ public class CoreService : IDisposable
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
-            if (_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized)
+            if (_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized())
             {
                 SetStateHooked();
             }
@@ -297,7 +297,6 @@ public class CoreService : IDisposable
 
     private void SetStateHooked()
     {
-        _hookedGameDataProvider.Data!.GameWindowInfo!.SetClientSize();
         _hookedGameDataProvider.SetStateAndNotify(EHookState.Hooked);
     }
 

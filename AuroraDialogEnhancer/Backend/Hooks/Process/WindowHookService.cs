@@ -266,7 +266,7 @@ public class WindowHookService
 
     public async Task<bool> AwaitMinimizationEndAsync(CancellationToken cancellationToken)
     {
-        if (!_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized) return true;
+        if (!_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized()) return true;
 
         SetMinimizeEndHook((uint)_hookedGameDataProvider.Data!.GameProcess!.Id);
 
@@ -275,7 +275,7 @@ public class WindowHookService
         _minimizationEndSemaphore = new SemaphoreSlim(0);
         OnMinimizeEnd += MinimizeEnd;
 
-        if (!_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized)
+        if (!_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized())
         {
             ReleaseMinimizationResources();
         }

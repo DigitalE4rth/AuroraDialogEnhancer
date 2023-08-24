@@ -160,7 +160,7 @@ public partial class HookControlPage
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Paused),
                     _defaultUiElementsProvider.GetDivider(),
-                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.WindowInfo_ClientSize + ": " + _hookedGameDataProvider.Data!.GameWindowInfo!.ClientSize)
+                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.WindowInfo_ClientSize + ": " + _hookedGameDataProvider.Data!.GameWindowInfo!.GetClientSize())
                 };  
                 break;
             case EHookState.Hooked:
@@ -169,7 +169,7 @@ public partial class HookControlPage
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Detected),
                     _defaultUiElementsProvider.GetDivider(),
-                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.WindowInfo_ClientSize + ": " + _hookedGameDataProvider.Data!.GameWindowInfo!.ClientSize)
+                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.WindowInfo_ClientSize + ": " + _hookedGameDataProvider.Data!.GameWindowInfo!.GetClientSize())
                 };
                 break;
             case EHookState.Warning:
