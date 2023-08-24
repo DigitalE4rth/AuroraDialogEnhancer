@@ -50,6 +50,7 @@
                                              BorderThickness="0"
                                              IsMenu="True"
                                              PopUpPlacementMode="Bottom"
+                                             PopupVerticalOffset="3"
                                              SelectionChanged="ComboBoxSettings_OnSelectionChanged">
 
                             <woControls:ComboBox.Title>
