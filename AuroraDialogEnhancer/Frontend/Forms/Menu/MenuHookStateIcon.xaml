@@ -11,12 +11,6 @@
              mc:Ignorable="d">
 
     <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" Height="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-
-        <Border x:Name="IconBackground"
-                Background="Transparent"
-                CornerRadius="50"
-                UseLayoutRounding="True" />
-
         <woControls:PathIcon x:Name="Icon"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
@@ -27,6 +21,21 @@
             <woControls:PathIcon.RenderTransform>
                 <RotateTransform />
             </woControls:PathIcon.RenderTransform>
+        </woControls:PathIcon>
+
+        <woControls:PathIcon x:Name="IconHighlight"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             d:Data="{StaticResource Icon.Solid.CircleCheck}"
+                             Opacity="0.2"
+                             UseLayoutRounding="True"
+                             Visibility="Collapsed">
+            <woControls:PathIcon.Foreground>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="Transparent" />
+                    <GradientStop Offset="1" Color="Black" />
+                </LinearGradientBrush>
+            </woControls:PathIcon.Foreground>
         </woControls:PathIcon>
     </Grid>
 </UserControl>

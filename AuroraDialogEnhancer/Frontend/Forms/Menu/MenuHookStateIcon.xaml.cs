@@ -42,23 +42,24 @@ public partial class MenuHookStateIcon
         }
 
         string? icon;
-        IconBackground.Background = Brushes.Transparent;
-        Icon.Foreground           = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_OnSurface));
-        Icon.Margin               = new Thickness(0);
+        Icon.Foreground          = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_OnSurface));
+        Icon.Margin              = new Thickness(0);
+        IconHighlight.Visibility = Visibility.Collapsed;
 
         switch (_hookedGameInfoProvider!.HookState)
         {
             case EHookState.Hooked:
                 icon = "Icon.Solid.CircleCheck";
-                Icon.Foreground           = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Primary));
-                Icon.Margin               = new Thickness(0);
+                Icon.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Primary));
+                Icon.Margin     = new Thickness(0);
+                IconHighlight.Visibility = Visibility.Visible;
                 break;
             case EHookState.Warning:
             case EHookState.Error:
-                icon = "Icon.PriorityHigh";
-                IconBackground.Background = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Error));
-                Icon.Foreground           = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_OnError));
-                Icon.Margin               = new Thickness(0,2,0,2);
+                icon = "Icon.Solid.Error";
+                Icon.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Error));
+                Icon.Margin     = new Thickness(0);
+                IconHighlight.Visibility = Visibility.Visible;
                 break;
             case EHookState.Paused:
                 icon = "Icon.Pause";
@@ -74,9 +75,10 @@ public partial class MenuHookStateIcon
                 break;
         }
 
-        Icon.Data = icon is null
-            ? new PathGeometry()
-            : (PathGeometry) Application.Current.Resources[icon];
+        var iconData = icon is null ? new PathGeometry() : (PathGeometry) Application.Current.Resources[icon];
+
+        Icon.Data = iconData;
+        IconHighlight.Data = iconData;
 
         if (_hookedGameInfoProvider.HookState is not (EHookState.Search or EHookState.Canceled)) return;
         _isSpinnerAnimationRunning = true;
