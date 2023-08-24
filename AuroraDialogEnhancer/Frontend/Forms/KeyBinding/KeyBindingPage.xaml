@@ -47,6 +47,7 @@
                                          Background="Transparent"
                                          BorderThickness="0"
                                          IsMenu="True"
+                                         PopUpPlacementMode="Bottom"
                                          SelectionChanged="ComboBoxSettings_OnSelectionChanged">
 
                         <woControls:ComboBox.Title>

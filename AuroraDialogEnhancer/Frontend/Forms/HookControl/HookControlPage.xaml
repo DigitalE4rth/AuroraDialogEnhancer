@@ -49,6 +49,7 @@
                                              d:Background="LightGray"
                                              Background="Transparent"
                                              BorderThickness="0"
+                                             PopUpPlacementMode="Bottom"
                                              IsMenu="True"
                                              SelectionChanged="ComboBoxSettings_OnSelectionChanged">
 
