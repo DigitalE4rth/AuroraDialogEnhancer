@@ -34,41 +34,26 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
+                <!-- ADE -->
                 <Grid Grid.Row="0"
                       Height="46"
-                      HorizontalAlignment="Left">
+                      Margin="17.5,0">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <!--<woControls:PathIcon Grid.Column="0"
-                                         Margin="10"
-                                         Data="{StaticResource Icon.AutoAwesome}"
-                                         Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
-                                         Opacity="1" />
-
-                    <woControls:PathIcon Grid.Column="0"
-                                         Margin="10"
-                                         Data="{StaticResource Icon.AutoAwesome}"
-                                         Opacity="0.2">
-                        <woControls:PathIcon.Foreground>
-                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                <GradientStop Color="Transparent" />
-                                <GradientStop Offset="0.58" Color="Transparent" />
-                                <GradientStop Offset="1" Color="White" />
-                            </LinearGradientBrush>
-                        </woControls:PathIcon.Foreground>
-                    </woControls:PathIcon>-->
-
+                    <!-- A -->
                     <TextBlock Grid.Column="0"
-                               Margin="17.5,0,0,0"
+                               Margin="0,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
                                FontWeight="Bold"
                                Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
                                Text="A" />
 
+                    <!-- DE -->
                     <TextBlock Grid.Column="1"
                                Margin="0,0,10,0"
                                VerticalAlignment="Center"
@@ -76,6 +61,28 @@
                                FontWeight="Bold"
                                Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
                                Text="DE" />
+
+
+                    <!-- Icon -->
+                    <woControls:PathIcon Grid.Column="2"
+                                         HorizontalAlignment="Right"
+                                         Data="{StaticResource Icon.Aurora}"
+                                         Opacity="1"
+                                         Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                                         Style="{StaticResource IconLarge}" />
+
+                    <woControls:PathIcon Grid.Column="2"
+                                         HorizontalAlignment="Right"
+                                         Data="{StaticResource Icon.Aurora}"
+                                         Opacity="0.3"
+                                         Style="{StaticResource IconLarge}">
+                        <woControls:PathIcon.Foreground>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <GradientStop Color="Transparent" />
+                                <GradientStop Offset="1" Color="Black" />
+                            </LinearGradientBrush>
+                        </woControls:PathIcon.Foreground>
+                    </woControls:PathIcon>
                 </Grid>
 
                 <Border Grid.Row="1"
