@@ -85,13 +85,13 @@ public partial class GameSelector
         var previousContent = (GameSelectorContent) _processingComboBoxItem!.Content;
         previousContent.StopAnimation();
 
-        if (_hookedGameInfoProvider!.Id is null)
+        if (_hookedGameInfoProvider!.HookState is EHookState.None or EHookState.Canceled)
         {
             previousContent.Icon.Data = new PathGeometry();
             return;
         }
 
-        if (!_hookedGameInfoProvider.Id.Equals(Properties.Settings.Default.UI_HookSettings_SelectedGameId, StringComparison.Ordinal))
+        if (!_hookedGameInfoProvider.Id!.Equals(Properties.Settings.Default.UI_HookSettings_SelectedGameId, StringComparison.Ordinal))
         {
             previousContent.Icon.Data = new PathGeometry();
         }
