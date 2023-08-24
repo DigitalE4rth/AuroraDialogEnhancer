@@ -149,7 +149,7 @@ public partial class GameSelector
     private string? GetIconAndSetMargins(PathIcon pathIcon)
     {
         pathIcon.Margin = new Thickness(0);
-        LeftIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Large;
+        pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Large;
         switch (_hookedGameInfoProvider!.HookState)
         {
             case EHookState.Hooked:
@@ -157,10 +157,10 @@ public partial class GameSelector
                 return "Icon.Check";
             case EHookState.Warning:
             case EHookState.Error:
-                LeftIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
+                pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
                 return "Icon.Exclamation";
             case EHookState.Paused:
-                LeftIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
+                pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
                 return "Icon.Pause";
             case EHookState.Search:
             case EHookState.Canceled:
