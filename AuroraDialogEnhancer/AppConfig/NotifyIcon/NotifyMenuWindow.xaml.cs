@@ -135,16 +135,17 @@ public partial class NotifyMenuWindow
 
     private string? GetIconAndSetMargins(PathIcon pathIcon)
     {
-        pathIcon.Margin = new Thickness(0);
+        pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Large;
         switch (_hookedGameDataProvider.HookState)
         {
             case EHookState.Hooked:
                 return "Icon.Check";
             case EHookState.Warning:
             case EHookState.Error:
+                pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
                 return "Icon.PriorityHigh";
             case EHookState.Paused:
-                pathIcon.Margin = new Thickness(3, 0, 3, 0);
+                pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
                 return "Icon.Pause";
             case EHookState.Search:
             case EHookState.Canceled:

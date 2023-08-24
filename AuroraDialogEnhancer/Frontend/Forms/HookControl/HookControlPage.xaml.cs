@@ -116,6 +116,7 @@ public partial class HookControlPage
 
     private void SetHookInfoText()
     {
+        PathIconHookInfoRight.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
         if (_hookedGameDataProvider.Id != Properties.Settings.Default.UI_HookSettings_SelectedGameId)
         {
             PathIconHookInfoRight.Data = (PathGeometry) Application.Current.Resources["Icon.PlayArrow"];
@@ -138,6 +139,7 @@ public partial class HookControlPage
                 break;
             case EHookState.Error:
                 iconName = "Icon.Exclamation";
+                PathIconHookInfoRight.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
                 hookContent = new List<UIElement>
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Error), 
@@ -182,6 +184,7 @@ public partial class HookControlPage
                 };
                 break;
             default:
+                PathIconHookInfoRight.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
                 iconName = "Icon.Exclamation";
                 hookContent = new List<UIElement> { _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_AppException) };
                 break;

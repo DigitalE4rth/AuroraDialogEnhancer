@@ -42,8 +42,8 @@ public partial class MenuHookStateIcon
         }
 
         string? icon;
-        Icon.Foreground          = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_OnSurface));
-        Icon.Margin              = new Thickness(0);
+        Icon.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_OnSurface));
+        Icon.Height     = Icon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Large;
         IconHighlight.Visibility = Visibility.Collapsed;
 
         switch (_hookedGameInfoProvider!.HookState)
@@ -51,19 +51,17 @@ public partial class MenuHookStateIcon
             case EHookState.Hooked:
                 icon = "Icon.Solid.CircleCheck";
                 Icon.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Primary));
-                Icon.Margin     = new Thickness(0);
                 IconHighlight.Visibility = Visibility.Visible;
                 break;
             case EHookState.Warning:
             case EHookState.Error:
                 icon = "Icon.Solid.Error";
                 Icon.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Error));
-                Icon.Margin     = new Thickness(0);
                 IconHighlight.Visibility = Visibility.Visible;
                 break;
             case EHookState.Paused:
                 icon = "Icon.Pause";
-                Icon.Margin = new Thickness(3, 0, 3, 0);
+                Icon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
                 break;
             case EHookState.Search:
             case EHookState.Canceled:
