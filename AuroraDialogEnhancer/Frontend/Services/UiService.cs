@@ -35,13 +35,13 @@ public class UiService
 
         _pageTypesDictionary = new Dictionary<EPageType, Type>
         {
-            { EPageType.Appearance,     typeof(AppearancePage)     },
-            { EPageType.HookSettings,   typeof(HookControlPage)    },
-            { EPageType.KeyBinding,     typeof(KeyBindingPage)     },
-            { EPageType.Settings,       typeof(SettingsPage)       },
-            { EPageType.About,          typeof(AboutPage)          },
-            { EPageType.PresetsEditor,  typeof(PresetsEditorPage)  },
-            { EPageType.Debug,          typeof(DebugPage)          },
+            { EPageType.Appearance,     typeof(AppearancePage)        },
+            { EPageType.HookSettings,   typeof(HookControlPage)       },
+            { EPageType.KeyBinding,     typeof(KeyBindingPage)        },
+            { EPageType.Settings,       typeof(SettingsPage)          },
+            { EPageType.About,          typeof(AboutPage)             },
+            { EPageType.PresetsEditor,  typeof(PresetsEditorPage)     },
+            { EPageType.Debug,          typeof(DebugPage)             },
             { EPageType.MissingPresets, typeof(MissingExtensionsPage) }
         };
     }
