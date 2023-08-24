@@ -56,7 +56,7 @@
                                VerticalAlignment="Center"
                                FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
                                FontWeight="Bold"
-                               Opacity="0.2"
+                               Opacity="0.15"
                                Text="A">
                         <TextBlock.Foreground>
                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
