@@ -85,8 +85,8 @@
                     <!--  Game Selector  -->
                     <gameSelector:GameSelector x:Name="GameSelector"
                                                Grid.Column="1"
-                                               HorizontalAlignment="Right"
-                                               Margin="0,0,0,5" />
+                                               Margin="0,0,0,5"
+                                               HorizontalAlignment="Right" />
                 </Grid>
 
                 <!--  Hook control  -->
