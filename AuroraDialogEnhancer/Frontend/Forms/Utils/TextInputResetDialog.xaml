@@ -6,9 +6,9 @@
         xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
+        xmlns:utils="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.Utils"
         xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
         xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-        xmlns:utils="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.Utils"
         Title="{x:Static localization:Resources.TextInputDialog_Title}"
         d:DataContext="{d:DesignInstance d:Type=utils:TextInputResetDialogDataContext,
                                          IsDesignTimeCreatable=False}"
@@ -78,8 +78,9 @@
                                    Height="30"
                                    Margin="5,0,0,0"
                                    d:Visibility="Visible"
+                                   BorderThickness="1"
                                    Click="Button_Reset_OnClick"
-                                   Style="{StaticResource ButtonSecondary}"
+                                   Style="{StaticResource ButtonTonal}"
                                    ToolTip="{x:Static localization:Resources.TextInputDialog_Reset}"
                                    Visibility="Collapsed">
                     <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
@@ -115,10 +116,9 @@
                                        Padding="10,5"
                                        d:Content="d:Apply"
                                        Click="Button_Default_OnClick"
-                                       IsDefault="True"
                                        Content="{Binding Path=OkButtonTitle, Mode=OneTime, TargetNullValue={x:Static localization:Resources.TextInputDialog_Apply}}"
-                                       Style="{StaticResource ButtonFilled}">
-                    </woControls:Button>
+                                       IsDefault="True"
+                                       Style="{StaticResource ButtonFilled}" />
                 </UniformGrid>
             </Grid>
         </Grid>

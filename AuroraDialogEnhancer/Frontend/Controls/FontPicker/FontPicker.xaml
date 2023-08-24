@@ -70,7 +70,7 @@
                             Grid.Row="1"
                             Margin="10,0"
                             HorizontalContentAlignment="Stretch"
-                            Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Secondary, Mode=OneTime}"
+                            Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Surface, Mode=OneTime}"
                             ScrollbarBackground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
                             Style="{StaticResource CardListBox}">
             <ListBox.ItemTemplate>
@@ -166,7 +166,7 @@
                                        BorderThickness="0,1,1,1"
                                        Click="Button_DecreaseFontSize_OnClick"
                                        CornerRadius="0"
-                                       Style="{StaticResource ButtonSecondary}">
+                                       Style="{StaticResource ButtonTonal}">
                         <woControls:Button.FocusVisualStyle>
                             <Style>
                                 <Setter Property="Control.Template">
@@ -194,7 +194,7 @@
                                        Margin="0,1,0,1"
                                        BorderThickness="0,1,1,1"
                                        Click="Button_IncreaseFontSize_OnClick"
-                                       Style="{StaticResource ButtonSecondary}">
+                                       Style="{StaticResource ButtonTonal}">
 
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
                             <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"

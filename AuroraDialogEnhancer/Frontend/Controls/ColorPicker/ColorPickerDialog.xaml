@@ -177,7 +177,8 @@
                                Padding="10,0"
                                HorizontalContentAlignment="Stretch"
                                Click="Button_ColorSwitcher_OnClick"
-                               Style="{StaticResource ButtonSecondary}">
+                               BorderThickness="1"
+                               Style="{StaticResource ButtonTonal}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

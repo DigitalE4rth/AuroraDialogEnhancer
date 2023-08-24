@@ -1,14 +1,12 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using AuroraDialogEnhancer.Frontend.Controls.ColorPicker.Controls;
-using AuroraDialogEnhancer.Frontend.Controls.ColorPicker.Formatters;
 
 namespace AuroraDialogEnhancer.Frontend.Controls.ColorPicker;
 
 public partial class ColorPickerDialog : Window
 {
     private readonly ColorPickerViewModel _colorPickerViewModel;
-    private readonly HexValueFormatter _hexValueFormatter;
 
     public Color SelectedColor => _colorPickerViewModel.Color;
 
@@ -20,7 +18,6 @@ public partial class ColorPickerDialog : Window
     {
         InitializeComponent();
 
-        _hexValueFormatter = new HexValueFormatter();
         _colorPickerViewModel = new ColorPickerViewModel
         {
             Color = color
