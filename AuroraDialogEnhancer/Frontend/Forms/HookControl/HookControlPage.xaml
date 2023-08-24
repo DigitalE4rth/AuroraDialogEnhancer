@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:cards="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.Cards"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:extensions="clr-namespace:AuroraDialogEnhancer.Backend.Extensions"
       xmlns:game="clr-namespace:AuroraDialogEnhancer.Backend.Hooks.Game"
       xmlns:gameSelector="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.GameSelector"
       xmlns:hookControl="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.HookControl"
@@ -45,12 +44,12 @@
 
                         <woControls:ComboBox Grid.Column="1"
                                              Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
-                                             Margin="5,0,0,5"
+                                             Margin="3,0,0,5"
                                              d:Background="LightGray"
                                              Background="Transparent"
                                              BorderThickness="0"
-                                             PopUpPlacementMode="Bottom"
                                              IsMenu="True"
+                                             PopUpPlacementMode="Bottom"
                                              SelectionChanged="ComboBoxSettings_OnSelectionChanged">
 
                             <woControls:ComboBox.Title>

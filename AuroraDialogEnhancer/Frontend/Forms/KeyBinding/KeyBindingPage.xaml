@@ -38,7 +38,7 @@
 
                     <woControls:ComboBox Grid.Column="1"
                                          Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
-                                         Margin="5,0,0,5"
+                                         Margin="3,0,0,5"
                                          d:Background="LightGray"
                                          Background="Transparent"
                                          BorderThickness="0"
