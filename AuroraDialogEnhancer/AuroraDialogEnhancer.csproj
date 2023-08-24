@@ -409,7 +409,7 @@
     <Compile Include="Frontend\Forms\Utils\TextInputResetDialog.xaml.cs">
       <DependentUpon>TextInputResetDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frontend\Services\KeyCapsService.cs" />
+    <Compile Include="Frontend\Forms\KeyBinding\KeyCapsService.cs" />
     <Compile Include="Backend\Extensions\ExtensionConfigViewModel.cs" />
     <Compile Include="Properties\DefaultSettings.Designer.cs">
       <AutoGen>True</AutoGen>

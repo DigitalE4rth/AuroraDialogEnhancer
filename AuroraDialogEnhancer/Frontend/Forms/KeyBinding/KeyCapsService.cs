@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Frontend.Providers;
 
-namespace AuroraDialogEnhancer.Frontend.Services;
+namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding;
 
 public class KeyCapsService
 {
