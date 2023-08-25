@@ -126,8 +126,14 @@
   <data name="About_Consultant" xml:space="preserve">
     <value>consultant</value>
   </data>
-  <data name="About_CreativeSociety_Description" xml:space="preserve">
-    <value>This project would not have been possible without this goal in mind</value>
+  <data name="About_Contributors" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="About_CreativeSociety_Description_1" xml:space="preserve">
+    <value>Kind international project</value>
+  </data>
+  <data name="About_CreativeSociety_Description_2" xml:space="preserve">
+    <value>Human Life is the Highest Value</value>
   </data>
   <data name="About_CreativeSociety_Link" xml:space="preserve">
     <value>https://creativesociety.com</value>
@@ -135,14 +141,11 @@
   <data name="About_CreativeSociety_Title" xml:space="preserve">
     <value>Creative Society</value>
   </data>
-  <data name="About_EnglishTranslation" xml:space="preserve">
-    <value>English translation</value>
-  </data>
-  <data name="About_Gratitude" xml:space="preserve">
-    <value>Gratitude</value>
-  </data>
   <data name="About_LibrariesAndResources" xml:space="preserve">
     <value>Libraries and Resources</value>
+  </data>
+  <data name="About_ModifiedVersion" xml:space="preserve">
+    <value>Modified</value>
   </data>
   <data name="About_PreRelease" xml:space="preserve">
     <value>Pre-release</value>
@@ -155,6 +158,18 @@
   </data>
   <data name="About_ThankYou" xml:space="preserve">
     <value>Thank you, thank you, thank you!</value>
+  </data>
+  <data name="About_Translation_Dutch" xml:space="preserve">
+    <value>Dutch translation</value>
+  </data>
+  <data name="About_Translation_English" xml:space="preserve">
+    <value>English translation</value>
+  </data>
+  <data name="About_Translation_German" xml:space="preserve">
+    <value>German translation</value>
+  </data>
+  <data name="About_Translation_Ukranian" xml:space="preserve">
+    <value>Ukranian translation</value>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
     <value>User interface</value>
@@ -507,11 +522,11 @@
   <data name="KeyBinding_Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
-  <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
-    <value>Reset</value>
-  </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
     <value>Clear</value>
+  </data>
+  <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
+    <value>Reset</value>
   </data>
   <data name="KeyBinding_Utilities" xml:space="preserve">
     <value>Utilities</value>

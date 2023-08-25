@@ -88,11 +88,29 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This project would not have been possible without this goal in mind.
+        ///   Looks up a localized string similar to Contributors.
         /// </summary>
-        public static string About_CreativeSociety_Description {
+        public static string About_Contributors {
             get {
-                return ResourceManager.GetString("About_CreativeSociety_Description", resourceCulture);
+                return ResourceManager.GetString("About_Contributors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kind international project.
+        /// </summary>
+        public static string About_CreativeSociety_Description_1 {
+            get {
+                return ResourceManager.GetString("About_CreativeSociety_Description_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Human Life is the Highest Value.
+        /// </summary>
+        public static string About_CreativeSociety_Description_2 {
+            get {
+                return ResourceManager.GetString("About_CreativeSociety_Description_2", resourceCulture);
             }
         }
         
@@ -115,29 +133,20 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English translation.
-        /// </summary>
-        public static string About_EnglishTranslation {
-            get {
-                return ResourceManager.GetString("About_EnglishTranslation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gratitude.
-        /// </summary>
-        public static string About_Gratitude {
-            get {
-                return ResourceManager.GetString("About_Gratitude", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Libraries and Resources.
         /// </summary>
         public static string About_LibrariesAndResources {
             get {
                 return ResourceManager.GetString("About_LibrariesAndResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modified.
+        /// </summary>
+        public static string About_ModifiedVersion {
+            get {
+                return ResourceManager.GetString("About_ModifiedVersion", resourceCulture);
             }
         }
         
@@ -174,6 +183,42 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         public static string About_ThankYou {
             get {
                 return ResourceManager.GetString("About_ThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dutch translation.
+        /// </summary>
+        public static string About_Translation_Dutch {
+            get {
+                return ResourceManager.GetString("About_Translation_Dutch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English translation.
+        /// </summary>
+        public static string About_Translation_English {
+            get {
+                return ResourceManager.GetString("About_Translation_English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to German translation.
+        /// </summary>
+        public static string About_Translation_German {
+            get {
+                return ResourceManager.GetString("About_Translation_German", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ukranian translation.
+        /// </summary>
+        public static string About_Translation_Ukranian {
+            get {
+                return ResourceManager.GetString("About_Translation_Ukranian", resourceCulture);
             }
         }
         

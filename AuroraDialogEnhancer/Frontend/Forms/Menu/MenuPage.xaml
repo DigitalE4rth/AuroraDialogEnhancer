@@ -76,26 +76,48 @@
                                Text="DE" />
 
                     <!--  Icon  -->
-                    <woControls:PathIcon Grid.Column="2"
-                                         HorizontalAlignment="Right"
-                                         Data="{StaticResource Icon.Aurora}"
-                                         Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
-                                         Opacity="1"
-                                         Style="{StaticResource IconLarge}" />
+                    <Grid Grid.Column="2" HorizontalAlignment="Right">
+                        <Grid.ToolTip>
+                            <Grid Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
 
-                    <woControls:PathIcon Grid.Column="2"
-                                         HorizontalAlignment="Right"
-                                         Data="{StaticResource Icon.Aurora}"
-                                         Opacity="0.3"
-                                         Style="{StaticResource IconLarge}"
-                                         ToolTip="(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧">
-                        <woControls:PathIcon.Foreground>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Color="Transparent" />
-                                <GradientStop Offset="1" Color="Black" />
-                            </LinearGradientBrush>
-                        </woControls:PathIcon.Foreground>
-                    </woControls:PathIcon>
+                                <woControls:PathIcon Grid.Row="0"
+                                                     Data="{StaticResource Icon.Regular.Circle}"
+                                                     Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
+                                                     Style="{StaticResource IconLarge}" />
+
+                                <woControls:PathIcon Grid.Row="1"
+                                                     Data="{StaticResource Icon.Regular.Brightness3}"
+                                                     Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
+                                                     Style="{StaticResource IconLarge}">
+                                    <woControls:PathIcon.LayoutTransform>
+                                        <TransformGroup>
+                                            <RotateTransform Angle="90" />
+                                        </TransformGroup>
+                                    </woControls:PathIcon.LayoutTransform>
+                                </woControls:PathIcon>
+                            </Grid>
+                        </Grid.ToolTip>
+
+                        <woControls:PathIcon Data="{StaticResource Icon.Aurora}"
+                                             Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                                             Opacity="1"
+                                             Style="{StaticResource IconLarge}" />
+
+                        <woControls:PathIcon Data="{StaticResource Icon.Aurora}"
+                                             Opacity="0.3"
+                                             Style="{StaticResource IconLarge}">
+                            <woControls:PathIcon.Foreground>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="Transparent" />
+                                    <GradientStop Offset="1" Color="Black" />
+                                </LinearGradientBrush>
+                            </woControls:PathIcon.Foreground>
+                        </woControls:PathIcon>
+                    </Grid>
                 </Grid>
 
                 <Border Grid.Row="1"

@@ -126,23 +126,26 @@
   <data name="About_Consultant" xml:space="preserve">
     <value>консультант</value>
   </data>
-  <data name="About_CreativeSociety_Description" xml:space="preserve">
-    <value>Этот проект был бы невозможен без данной цели</value>
+  <data name="About_Contributors" xml:space="preserve">
+    <value>Соавторы</value>
+  </data>
+  <data name="About_CreativeSociety_Description_1" xml:space="preserve">
+    <value>Добрый международный проект</value>
+  </data>
+  <data name="About_CreativeSociety_Description_2" xml:space="preserve">
+    <value>Человеческая жизнь - высшая ценность</value>
   </data>
   <data name="About_CreativeSociety_Link" xml:space="preserve">
-    <value>https://creative-society.ru</value>
+    <value>https://creativesociety.com/ru</value>
   </data>
   <data name="About_CreativeSociety_Title" xml:space="preserve">
     <value>Созидательное Общество</value>
   </data>
-  <data name="About_EnglishTranslation" xml:space="preserve">
-    <value>Перевод на английский</value>
-  </data>
-  <data name="About_Gratitude" xml:space="preserve">
-    <value>Благодарности</value>
-  </data>
   <data name="About_LibrariesAndResources" xml:space="preserve">
     <value>Библиотеки и ресурсы</value>
+  </data>
+  <data name="About_ModifiedVersion" xml:space="preserve">
+    <value>Изменённая</value>
   </data>
   <data name="About_PreRelease" xml:space="preserve">
     <value>Пре-релиз</value>
@@ -155,6 +158,18 @@
   </data>
   <data name="About_ThankYou" xml:space="preserve">
     <value>Спасибо, спасибо, спасибо!</value>
+  </data>
+  <data name="About_Translation_Dutch" xml:space="preserve">
+    <value>Перевод на Голландский</value>
+  </data>
+  <data name="About_Translation_English" xml:space="preserve">
+    <value>Перевод на Английский</value>
+  </data>
+  <data name="About_Translation_German" xml:space="preserve">
+    <value>Перевод на Немецкий</value>
+  </data>
+  <data name="About_Translation_Ukranian" xml:space="preserve">
+    <value>Перевод на Укранский</value>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
     <value>Пользовательский интерфейс</value>
@@ -507,11 +522,11 @@
   <data name="KeyBinding_Profile" xml:space="preserve">
     <value>Профиль</value>
   </data>
-  <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
-    <value>Сбросить</value>
-  </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
     <value>Очистить</value>
+  </data>
+  <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
+    <value>Сбросить</value>
   </data>
   <data name="KeyBinding_Utilities" xml:space="preserve">
     <value>Утилиты</value>

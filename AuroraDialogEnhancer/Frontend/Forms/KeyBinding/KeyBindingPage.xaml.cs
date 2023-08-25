@@ -6,7 +6,6 @@ using System.Windows.Media;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
-using AuroraDialogEnhancer.Frontend.Services;
 using Microsoft.Extensions.DependencyInjection;
 using WhyOrchid.Controls;
 using WhyOrchid.Controls.Config;
