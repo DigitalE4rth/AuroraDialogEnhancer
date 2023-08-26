@@ -1,6 +1,6 @@
-﻿namespace AuroraDialogEnhancer.AppConfig.AutoUpdater;
+﻿using System;
 
-using System;
+namespace AuroraDialogEnhancer.AppConfig.AutoUpdater;
 
 public class AutoUpdaterService : IDisposable
 {
