@@ -1,4 +1,5 @@
-﻿using AuroraDialogEnhancer.AppConfig.Config;
+﻿using AuroraDialogEnhancer.AppConfig.AutoUpdater;
+using AuroraDialogEnhancer.AppConfig.Config;
 using AuroraDialogEnhancer.AppConfig.Localization;
 using AuroraDialogEnhancer.AppConfig.NotifyIcon;
 using AuroraDialogEnhancer.AppConfig.Theme;
@@ -45,6 +46,7 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddSingleton<NotifyIconService>();
         serviceCollection.AddTransient<NotifyMenuWindow>();
         serviceCollection.AddTransient<ColorThemeService>();
+        serviceCollection.AddSingleton<AutoUpdaterService>();
         #endregion
 
         #region BackEnd

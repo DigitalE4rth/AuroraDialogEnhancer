@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using AuroraDialogEnhancer.AppConfig.AutoUpdater;
 using AuroraDialogEnhancer.AppConfig.Localization;
 using AuroraDialogEnhancer.AppConfig.NotifyIcon;
 using AuroraDialogEnhancer.AppConfig.Theme;
@@ -17,6 +18,7 @@ namespace AuroraDialogEnhancer.AppConfig.Config;
 
 public class AppConfig : IDisposable
 {
+    private readonly AutoUpdaterService    _autoUpdaterService;
     private readonly CoreService           _coreService;
     private readonly CultureService        _cultureService;
     private readonly NotifyIconService     _notifyIconService;
@@ -24,13 +26,15 @@ public class AppConfig : IDisposable
     private readonly SingleInstanceService _singleInstanceService;
     private readonly UiService             _uiService;
 
-    public AppConfig(CoreService           coreService,
+    public AppConfig(AutoUpdaterService    autoUpdaterService,
+                     CoreService           coreService,
                      CultureService        cultureService,
                      NotifyIconService     notifyIconService,
                      ExtensionsLoader      extensionsLoader,
                      UiService             uiService,
                      SingleInstanceService singleInstanceService)
     {
+        _autoUpdaterService    = autoUpdaterService;
         _coreService           = coreService;
         _cultureService        = cultureService;
         _notifyIconService     = notifyIconService;
@@ -48,6 +52,7 @@ public class AppConfig : IDisposable
         InitializeColorTheme();
         _notifyIconService.Initialize();
         _uiService.SetInitialPage();
+        _autoUpdaterService.Initialize();
 
         var startupProfileId = GetArgumentProfileId(startupEventArgs);
         StartMainWindowIfNecessary(!string.IsNullOrEmpty(startupProfileId));
@@ -143,5 +148,6 @@ public class AppConfig : IDisposable
         _uiService.DisposeMainWindow();
         _coreService.Dispose();
         _notifyIconService.Dispose();
+        _autoUpdaterService.Dispose();
     }
 }
