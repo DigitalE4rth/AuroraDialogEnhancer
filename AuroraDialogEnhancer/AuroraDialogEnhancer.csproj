@@ -564,7 +564,9 @@
   <ItemGroup>
     <Resource Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Updater.exe" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rem Copy compiled l18n assemblies to alt folder

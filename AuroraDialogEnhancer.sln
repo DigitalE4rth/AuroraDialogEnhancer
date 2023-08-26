@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension.HonkaiStarRail", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhyOrchid", "..\WhyOrchid\WhyOrchid\WhyOrchid.csproj", "{D2125A32-F6AA-4344-B1DC-2174135FD7F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipExtractor", "ZipExtractor\ZipExtractor.csproj", "{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
