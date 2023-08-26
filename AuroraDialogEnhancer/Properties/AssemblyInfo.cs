@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Aurora Works")]
 [assembly: AssemblyProduct("AuroraDialogEnhancer")]
-[assembly: AssemblyCopyright("Copyright © 2023")]
+[assembly: AssemblyCopyright("Copyright © 2023 Aurora Works")]
 [assembly: AssemblyTrademark("ADE")]
 [assembly: AssemblyCulture("")]
 

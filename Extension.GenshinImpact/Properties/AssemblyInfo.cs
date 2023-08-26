@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Aurora Works")]
 [assembly: AssemblyProduct("Preset.GenshinImpact")]
-[assembly: AssemblyCopyright("Copyright © 2023")]
+[assembly: AssemblyCopyright("Copyright © 2023 Aurora Works")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
