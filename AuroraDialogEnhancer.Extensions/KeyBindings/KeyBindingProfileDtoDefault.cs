@@ -4,7 +4,7 @@ namespace AuroraDialogEnhancerExtensions.KeyBindings;
 public abstract class KeyBindingProfileDtoDefault : KeyBindingProfileDto
 {
     #region General
-    public override List<List<GenericKeyDto>> PauseResume { get; set; } = new() { new List<GenericKeyDto> { new KeyboardKeyDto(192) } }; // ~
+    public override List<List<GenericKeyDto>> PauseResume { get; set; } = new() { new List<GenericKeyDto> { new KeyboardKeyDto(19) } }; // Pause
     public override List<List<GenericKeyDto>> Reload      { get; set; } = new() { new List<GenericKeyDto> { new KeyboardKeyDto(116) } }; // F5
     public override List<List<GenericKeyDto>> Screenshot  { get; set; } = new() { new List<GenericKeyDto> { new KeyboardKeyDto(123) } }; // F12
     #endregion

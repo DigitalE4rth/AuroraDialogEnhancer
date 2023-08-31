@@ -30,7 +30,7 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
     {
         new ClickablePointDto("autoplay", new List<List<GenericKeyDto>>
         {
-            new() { new KeyboardKeyDto(19) } // Pause
+            new() { new KeyboardKeyDto(192) } // ~
         })
     };
 }
