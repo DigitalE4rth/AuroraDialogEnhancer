@@ -350,23 +350,23 @@ namespace AuroraDialogEnhancer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00:00:00")]
-        public global::System.TimeSpan AutoUpdater_Frequency {
+        public global::System.TimeSpan Updater_Frequency {
             get {
-                return ((global::System.TimeSpan)(this["AutoUpdater_Frequency"]));
+                return ((global::System.TimeSpan)(this["Updater_Frequency"]));
             }
             set {
-                this["AutoUpdater_Frequency"] = value;
+                this["Updater_Frequency"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime AutoUpdater_LastUpdateCheckTime {
+        public global::System.DateTime Updater_LastUpdateCheckTime {
             get {
-                return ((global::System.DateTime)(this["AutoUpdater_LastUpdateCheckTime"]));
+                return ((global::System.DateTime)(this["Updater_LastUpdateCheckTime"]));
             }
             set {
-                this["AutoUpdater_LastUpdateCheckTime"] = value;
+                this["Updater_LastUpdateCheckTime"] = value;
             }
         }
         
@@ -385,12 +385,24 @@ namespace AuroraDialogEnhancer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Earth\\Desktop\\Update.xml")]
-        public string AutoUpdate_UpdateInfoUri {
+        public string Update_UpdateInfoUri {
             get {
-                return ((string)(this["AutoUpdate_UpdateInfoUri"]));
+                return ((string)(this["Update_UpdateInfoUri"]));
             }
             set {
-                this["AutoUpdate_UpdateInfoUri"] = value;
+                this["Update_UpdateInfoUri"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Update_IsUpdateRequired {
+            get {
+                return ((bool)(this["Update_IsUpdateRequired"]));
+            }
+            set {
+                this["Update_IsUpdateRequired"] = value;
             }
         }
     }

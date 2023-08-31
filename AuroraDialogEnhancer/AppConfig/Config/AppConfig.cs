@@ -47,16 +47,17 @@ public class AppConfig : IDisposable
     {
         if (!IsApplicationInstanceUnique(startupEventArgs)) return false;
 
+        _autoUpdaterService.UpgradeSettings();
         _cultureService.Initialize();
         _extensionsLoader.Initialize();
         InitializeColorTheme();
         _notifyIconService.Initialize();
         _uiService.SetInitialPage();
-        _autoUpdaterService.Initialize();
 
         var startupProfileId = GetArgumentProfileId(startupEventArgs);
         StartMainWindowIfNecessary(!string.IsNullOrEmpty(startupProfileId));
         StartAutoDetectionByLaunchArgument(startupProfileId);
+        _autoUpdaterService.CheckForUpdateAuto();
         return true;
     }
 

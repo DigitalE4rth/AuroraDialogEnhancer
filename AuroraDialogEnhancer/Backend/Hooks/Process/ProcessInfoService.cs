@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.External;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Process;
+
 public class ProcessInfoService
 {
     private readonly HookedGameDataProvider _hookedGameDataProvider;
-    private readonly ProcessStartService    _processStartService;
 
-    public ProcessInfoService(HookedGameDataProvider hookedGameDataProvider,
-                              ProcessStartService    processStartService)
+    public ProcessInfoService(HookedGameDataProvider hookedGameDataProvider)
     {
         _hookedGameDataProvider = hookedGameDataProvider;
-        _processStartService    = processStartService;
     }
 
     public async Task AutoDetectProcessAsync(ExtensionConfig extensionConfig, CancellationTokenSource cancellationTokenSource)
@@ -47,7 +47,12 @@ public class ProcessInfoService
 
         var isProcessPresent = IsProcessPresent(targetProcessName, targetProcessLocation);
         if (isProcessPresent || string.IsNullOrEmpty(targetProcessLocation)) return;
-        _processStartService.StartProcess(targetProcessLocation);
+        System.Diagnostics.Process.Start(new ProcessStartInfo
+        {
+            Arguments = targetProcessLocation,
+            UseShellExecute = true,
+            FileName = Global.StringConstants.ExplorerName
+        });
     }
 
     /// <summary>

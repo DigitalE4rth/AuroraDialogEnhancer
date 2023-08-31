@@ -83,17 +83,20 @@
     <Setting Name="UI_FontStyle_Title" Type="System.Double" Scope="User">
       <Value Profile="(Default)">24</Value>
     </Setting>
-    <Setting Name="AutoUpdater_Frequency" Type="System.TimeSpan" Scope="User">
+    <Setting Name="Updater_Frequency" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00</Value>
     </Setting>
-    <Setting Name="AutoUpdater_LastUpdateCheckTime" Type="System.DateTime" Scope="User">
+    <Setting Name="Updater_LastUpdateCheckTime" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">
       <Value Profile="(Default)">Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0</Value>
     </Setting>
-    <Setting Name="AutoUpdate_UpdateInfoUri" Type="System.String" Scope="User">
+    <Setting Name="Update_UpdateInfoUri" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Users\Earth\Desktop\Update.xml</Value>
+    </Setting>
+    <Setting Name="Update_IsUpdateRequired" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

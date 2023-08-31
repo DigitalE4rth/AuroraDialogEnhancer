@@ -53,7 +53,7 @@ public partial class DebugPage
 
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
     {
-        _updaterService.StartManual();
+        _updaterService.CheckForUpdateManual();
         //_resolutionsTest.ForEach(path => Count($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{path}.png"));
         //Count();
     }

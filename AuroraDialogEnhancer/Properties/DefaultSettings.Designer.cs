@@ -82,5 +82,17 @@ namespace AuroraDialogEnhancer.Properties {
                 this["AutoUpdate_UpdateInfoUri"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("--profile")]
+        public string StartupArgument_Profile {
+            get {
+                return ((string)(this["StartupArgument_Profile"]));
+            }
+            set {
+                this["StartupArgument_Profile"] = value;
+            }
+        }
     }
 }

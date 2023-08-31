@@ -27,22 +27,31 @@ public class AutoUpdaterService
         _uiService = uiService;
     }
 
-    public void Initialize()
+    public void UpgradeSettings()
     {
-        CheckForUpdate();
+        if (!Properties.Settings.Default.Update_IsUpdateRequired) return;
+        Properties.Settings.Default.Upgrade();
+        WhyOrchid.Properties.Settings.Default.Upgrade();
+
+        Properties.Settings.Default.Update_IsUpdateRequired = false;
+        Properties.Settings.Default.Save();
     }
 
-    private void CheckForUpdate()
+    public void CheckForUpdateAuto()
     {
-        if (Properties.Settings.Default.AutoUpdater_Frequency == TimeSpan.Zero ||
-            Properties.Settings.Default.AutoUpdater_LastUpdateCheckTime + Properties.Settings.Default.AutoUpdater_Frequency > DateTime.Now) return;
+        if (Properties.Settings.Default.Updater_Frequency == TimeSpan.Zero ||
+            Properties.Settings.Default.Updater_LastUpdateCheckTime + Properties.Settings.Default.Updater_Frequency > DateTime.Now) return;
 
-        StartAuto();
+        Start(false, true);
     }
 
-    public void StartManual() => Start(true, false);
+    public void CheckForUpdateManual() => Start(true, false);
 
-    public void StartAuto() => Start(false, true);
+    public void SetUpdateFrequency(TimeSpan timeSpan)
+    {
+        Properties.Settings.Default.Updater_Frequency = timeSpan;
+        Properties.Settings.Default.Save();
+    }
 
     private void Start(bool isReportErrors, bool isSilentCheck)
     {
@@ -79,7 +88,7 @@ public class AutoUpdaterService
 
         if (isUpdated)
         {
-            Properties.Settings.Default.AutoUpdater_LastUpdateCheckTime = DateTime.Now;
+            Properties.Settings.Default.Updater_LastUpdateCheckTime = DateTime.Now;
             Properties.Settings.Default.Save();
         }
 
@@ -114,7 +123,7 @@ public class AutoUpdaterService
 
     private UpdateInfo GetUpdateInfo()
     {
-        var updateUri = new Uri(Properties.Settings.Default.AutoUpdate_UpdateInfoUri);
+        var updateUri = new Uri(Properties.Settings.Default.Update_UpdateInfoUri);
 
         UpdateInfo args;
         using (var client = new AdeWebClient())
