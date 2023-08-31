@@ -130,7 +130,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppConfig\AutoUpdater\AutoUpdaterService.cs" />
+    <Compile Include="AppConfig\Updater\ArgumentProcessingService.cs" />
+    <Compile Include="AppConfig\Updater\AutoUpdaterService.cs" />
+    <Compile Include="AppConfig\Updater\AdeWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AppConfig\Updater\UpdateDownloadDialog.xaml.cs">
+      <DependentUpon>UpdateDownloadDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfig\Updater\IPersistenceProvider.cs" />
+    <Compile Include="AppConfig\Updater\SettingsPersistenceProvider.cs" />
+    <Compile Include="AppConfig\Updater\UpdateInfo.cs" />
+    <Compile Include="AppConfig\Updater\UpdateDialog.xaml.cs">
+      <DependentUpon>UpdateDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppConfig\Config\SingleInstanceService.cs" />
     <Compile Include="AppConfig\Config\SingleInstanceEventArgs.cs" />
     <Compile Include="AppConfig\Database\EntityRepository.cs" />
@@ -265,6 +278,14 @@
     <Compile Include="Frontend\Controls\Cards\KeyCap.cs" />
     <Compile Include="Frontend\Converters\BorderThicknessToMarginConverter.cs" />
     <Compile Include="Frontend\Forms\HookControl\HookSettingsDataContext.cs" />
+    <Page Include="AppConfig\Updater\UpdateDownloadDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppConfig\Updater\UpdateDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AppConfig\NotifyIcon\NotifyGameContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -418,6 +439,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>DefaultSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Properties\InternalResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InternalResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Localization\Resources.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -504,6 +530,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\InternalResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>InternalResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Localization\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -565,7 +595,7 @@
     <Resource Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Updater.exe" />
+    <None Include="Resources\Updater.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

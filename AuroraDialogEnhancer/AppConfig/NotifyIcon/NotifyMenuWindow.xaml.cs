@@ -94,7 +94,7 @@ public partial class NotifyMenuWindow
     {
         _latestGameId = (string) ((Button) sender).Tag;
 
-        if (!_uiService.IsMainWindowExist)
+        if (!_uiService.IsMainWindowShown())
         {
             Properties.Settings.Default.UI_HookSettings_SelectedGameId = _latestGameId;
             Properties.Settings.Default.Save();

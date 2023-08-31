@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About_Acknowledgements" xml:space="preserve">
+    <value>Special Thanks</value>
+  </data>
   <data name="About_AllOfYou" xml:space="preserve">
     <value>All of you, guys</value>
   </data>
@@ -125,9 +128,6 @@
   </data>
   <data name="About_Consultant" xml:space="preserve">
     <value>consultant</value>
-  </data>
-  <data name="About_Contributors" xml:space="preserve">
-    <value>Contributors</value>
   </data>
   <data name="About_CreativeSociety_Description_1" xml:space="preserve">
     <value>Kind international project</value>
@@ -141,11 +141,14 @@
   <data name="About_CreativeSociety_Title" xml:space="preserve">
     <value>Creative Society</value>
   </data>
+  <data name="About_LeadDeveloper" xml:space="preserve">
+    <value>Lead developer</value>
+  </data>
   <data name="About_LibrariesAndResources" xml:space="preserve">
     <value>Libraries and Resources</value>
   </data>
   <data name="About_ModifiedVersion" xml:space="preserve">
-    <value>Modified</value>
+    <value>Modified versions</value>
   </data>
   <data name="About_PreRelease" xml:space="preserve">
     <value>Pre-release</value>
@@ -245,6 +248,51 @@
   </data>
   <data name="Appearance_ZoomLevel_Title" xml:space="preserve">
     <value>Zoom level</value>
+  </data>
+  <data name="AutoUpdate_Changelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="AutoUpdate_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="AutoUpdate_CurrentIsLatestVersion" xml:space="preserve">
+    <value>You have the latest version: {0}</value>
+  </data>
+  <data name="AutoUpdate_CurrentVersion" xml:space="preserve">
+    <value>Current version: {0}</value>
+  </data>
+  <data name="AutoUpdate_DownloadSpeed" xml:space="preserve">
+    <value>Downloading at</value>
+  </data>
+  <data name="AutoUpdate_DownloadSpeed_Seconds" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="AutoUpdate_Failed_Message" xml:space="preserve">
+    <value>There is a problem reaching update server. Please check your internet connection and try again later.</value>
+  </data>
+  <data name="AutoUpdate_Failed_Title" xml:space="preserve">
+    <value>Update Check Failed</value>
+  </data>
+  <data name="AutoUpdate_NewVersionAvailable" xml:space="preserve">
+    <value>A new version available: {0}</value>
+  </data>
+  <data name="AutoUpdate_UnableToDetermineFileName" xml:space="preserve">
+    <value>Unable to determine the filename of the update file!</value>
+  </data>
+  <data name="AutoUpdate_Unavailable_Message" xml:space="preserve">
+    <value>There is a problem reaching update server. Please check your internet connection and try again later.</value>
+  </data>
+  <data name="AutoUpdate_Unavailable_Title" xml:space="preserve">
+    <value>Update Unavailable</value>
+  </data>
+  <data name="AutoUpdate_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="AutoUpdate_WindowTitle" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="AutoUpdate_WindowTitle_Download" xml:space="preserve">
+    <value>Downloading an update</value>
   </data>
   <data name="ColorPickerDialog_Apply" xml:space="preserve">
     <value>Apply</value>
@@ -725,10 +773,6 @@
   </data>
   <data name="TriggerEditor_Triggers" xml:space="preserve">
     <value>Triggers</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Updater" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\Resources\Updater.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WindowInfo_ClientSize" xml:space="preserve">
     <value>Client size</value>

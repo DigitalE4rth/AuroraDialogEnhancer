@@ -24,8 +24,6 @@ public class UiService
     private readonly Dictionary<EPageType, Type> _pageTypesDictionary;
     private Frame? _mainFrame;
 
-    public bool IsMainWindowExist => _mainWindow is not null;
-
     public EPageType CurrentPage { get; private set; } 
 
     public UiService()
@@ -68,6 +66,8 @@ public class UiService
             return _mainWindow;
         }
     }
+
+    public bool IsMainWindowShown() => _mainWindow is not null;
 
     public void ShowMainWindow(bool isProfileShortcutLaunch = false)
     {

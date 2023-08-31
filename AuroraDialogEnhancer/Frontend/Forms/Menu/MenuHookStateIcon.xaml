@@ -10,8 +10,7 @@
              d:DesignWidth="50"
              mc:Ignorable="d">
 
-    <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
-          Height="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+    <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" Height="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
         <woControls:PathIcon x:Name="Icon"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"

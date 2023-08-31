@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using AuroraDialogEnhancer.AppConfig.AutoUpdater;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
+using AuroraDialogEnhancer.AppConfig.Updater;
 using AuroraDialogEnhancer.Backend.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -53,7 +53,7 @@ public partial class DebugPage
 
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
     {
-        _updaterService.Start();
+        _updaterService.StartManual();
         //_resolutionsTest.ForEach(path => Count($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{path}.png"));
         //Count();
     }

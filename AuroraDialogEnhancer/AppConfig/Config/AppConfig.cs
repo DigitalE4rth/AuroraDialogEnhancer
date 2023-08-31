@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using AuroraDialogEnhancer.AppConfig.AutoUpdater;
 using AuroraDialogEnhancer.AppConfig.Localization;
 using AuroraDialogEnhancer.AppConfig.NotifyIcon;
 using AuroraDialogEnhancer.AppConfig.Theme;
+using AuroraDialogEnhancer.AppConfig.Updater;
 using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Frontend.Generics;
@@ -105,7 +105,7 @@ public class AppConfig : IDisposable
     {
         if (isProfileShortcutStartup)
         {
-            if (_uiService.IsMainWindowExist || (EWindowState) Properties.Settings.Default.UI_MainWindow_State_Shortcut == EWindowState.SystemTray) return;
+            if (_uiService.IsMainWindowShown() || (EWindowState) Properties.Settings.Default.UI_MainWindow_State_Shortcut == EWindowState.SystemTray) return;
             Application.Current.Dispatcher.Invoke(() => _uiService.ShowMainWindow(true));
             return;
         }
@@ -138,7 +138,7 @@ public class AppConfig : IDisposable
     {
         _singleInstanceService.Dispose();
         Process.Start(Statics.Global.Locations.AssemblyExe);
-        Application.Current.Shutdown();
+        Application.Current.Dispatcher.Invoke(Application.Current.Shutdown, DispatcherPriority.Send);
     }
 
     public void Dispose()

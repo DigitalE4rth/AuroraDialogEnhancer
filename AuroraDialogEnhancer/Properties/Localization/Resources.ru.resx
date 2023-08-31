@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About_Acknowledgements" xml:space="preserve">
+    <value>Благодарности</value>
+  </data>
   <data name="About_AllOfYou" xml:space="preserve">
     <value>Всем вам, друзья</value>
   </data>
@@ -125,9 +128,6 @@
   </data>
   <data name="About_Consultant" xml:space="preserve">
     <value>консультант</value>
-  </data>
-  <data name="About_Contributors" xml:space="preserve">
-    <value>Соавторы</value>
   </data>
   <data name="About_CreativeSociety_Description_1" xml:space="preserve">
     <value>Добрый международный проект</value>
@@ -141,11 +141,14 @@
   <data name="About_CreativeSociety_Title" xml:space="preserve">
     <value>Созидательное Общество</value>
   </data>
+  <data name="About_LeadDeveloper" xml:space="preserve">
+    <value>Главный разработчик</value>
+  </data>
   <data name="About_LibrariesAndResources" xml:space="preserve">
     <value>Библиотеки и ресурсы</value>
   </data>
   <data name="About_ModifiedVersion" xml:space="preserve">
-    <value>Изменённая</value>
+    <value>Изменённые версии</value>
   </data>
   <data name="About_PreRelease" xml:space="preserve">
     <value>Пре-релиз</value>
@@ -245,6 +248,51 @@
   </data>
   <data name="Appearance_ZoomLevel_Title" xml:space="preserve">
     <value>Масштабирование</value>
+  </data>
+  <data name="AutoUpdate_Changelog" xml:space="preserve">
+    <value>Список изменений</value>
+  </data>
+  <data name="AutoUpdate_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="AutoUpdate_CurrentIsLatestVersion" xml:space="preserve">
+    <value>У вас последняя версия: {0}</value>
+  </data>
+  <data name="AutoUpdate_CurrentVersion" xml:space="preserve">
+    <value>Текущая версия: {0}</value>
+  </data>
+  <data name="AutoUpdate_DownloadSpeed" xml:space="preserve">
+    <value>Скорость</value>
+  </data>
+  <data name="AutoUpdate_DownloadSpeed_Seconds" xml:space="preserve">
+    <value>сек</value>
+  </data>
+  <data name="AutoUpdate_Failed_Message" xml:space="preserve">
+    <value>Проблема связана с сервером обновлений. Проверьте подключение к Интернету и повторите попытку позже.</value>
+  </data>
+  <data name="AutoUpdate_Failed_Title" xml:space="preserve">
+    <value>Ошибка обновления</value>
+  </data>
+  <data name="AutoUpdate_NewVersionAvailable" xml:space="preserve">
+    <value>Доступна новая версия: {0}</value>
+  </data>
+  <data name="AutoUpdate_UnableToDetermineFileName" xml:space="preserve">
+    <value>Невозможно определить имя файла обновления!</value>
+  </data>
+  <data name="AutoUpdate_Unavailable_Message" xml:space="preserve">
+    <value>Проблема связана с сервером обновлений. Проверьте подключение к Интернету и повторите попытку позже.</value>
+  </data>
+  <data name="AutoUpdate_Unavailable_Title" xml:space="preserve">
+    <value>Обновление недоступно</value>
+  </data>
+  <data name="AutoUpdate_Update" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="AutoUpdate_WindowTitle" xml:space="preserve">
+    <value>Обновление</value>
+  </data>
+  <data name="AutoUpdate_WindowTitle_Download" xml:space="preserve">
+    <value>Загрузка обновленя</value>
   </data>
   <data name="ColorPickerDialog_Apply" xml:space="preserve">
     <value>Применить</value>

@@ -1,8 +1,8 @@
-﻿using AuroraDialogEnhancer.AppConfig.AutoUpdater;
-using AuroraDialogEnhancer.AppConfig.Config;
+﻿using AuroraDialogEnhancer.AppConfig.Config;
 using AuroraDialogEnhancer.AppConfig.Localization;
 using AuroraDialogEnhancer.AppConfig.NotifyIcon;
 using AuroraDialogEnhancer.AppConfig.Theme;
+using AuroraDialogEnhancer.AppConfig.Updater;
 using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Extensions;
@@ -131,6 +131,8 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddTransient<SettingsPage>();
 
         serviceCollection.AddTransient<AboutPage>();
+        serviceCollection.AddTransient<UpdateDialog>();
+        serviceCollection.AddTransient<UpdateDownloadDialog>();
 
         serviceCollection.AddTransient<MissingExtensionsPage>();
 

@@ -58,5 +58,29 @@ namespace AuroraDialogEnhancer.Properties {
                 this["FontStyle_FontSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0")]
+        public string WebClient_UserAgent {
+            get {
+                return ((string)(this["WebClient_UserAgent"]));
+            }
+            set {
+                this["WebClient_UserAgent"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Earth\\Desktop\\Update.xml")]
+        public string AutoUpdate_UpdateInfoUri {
+            get {
+                return ((string)(this["AutoUpdate_UpdateInfoUri"]));
+            }
+            set {
+                this["AutoUpdate_UpdateInfoUri"] = value;
+            }
+        }
     }
 }

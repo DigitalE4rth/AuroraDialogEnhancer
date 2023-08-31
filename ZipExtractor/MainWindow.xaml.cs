@@ -17,6 +17,7 @@ public partial class MainWindow
 {
     private readonly StringBuilder _logBuilder = new();
     private BackgroundWorker? _backgroundWorker;
+    private bool _isSuccess;
 
     public MainWindow()
     {
@@ -84,6 +85,7 @@ public partial class MainWindow
         _backgroundWorker.DoWork += (_, eventArgs) =>
         {
             foreach (var process in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(currentExe)))
+            {
                 try
                 {
                     if (process.MainModule is { FileName: not null } && process.MainModule.FileName.Equals(currentExe))
@@ -98,6 +100,7 @@ public partial class MainWindow
                 {
                     Debug.WriteLine(exception.Message);
                 }
+            }
 
             _logBuilder.AppendLine("BackgroundWorker started successfully.");
 
@@ -132,8 +135,7 @@ public partial class MainWindow
 
                     foreach (var directory in directoryInfo.GetDirectories())
                     {
-                        _logBuilder.AppendLine(
-                            $"Removing a directory located at \"{directory.FullName}\" and all its contents.");
+                        _logBuilder.AppendLine($"Removing a directory located at \"{directory.FullName}\" and all its contents.");
                         _backgroundWorker.ReportProgress(0, string.Format(Properties.Resources.Removing, directory.FullName));
                         directory.Delete(true);
                     }
@@ -223,14 +225,14 @@ public partial class MainWindow
 
                                 Application.Current.Dispatcher.Invoke(() => 
                                 { 
-                                    var dialog = new Dialog();
-                                    dialog.Initialize(this,
+                                    var errorDialog = new ErrorDialog();
+                                    errorDialog.Initialize(this,
                                         $"{lockingProcess.ProcessName} {Properties.Resources.FileStillInUseMessage_1}{Environment.NewLine}{Environment.NewLine}{filePath}{Environment.NewLine}{Environment.NewLine}{Properties.Resources.FileStillInUseMessage_2}",
                                         Properties.Resources.FileStillInUseCaption,
                                         Properties.Resources.Retry,
                                         Properties.Resources.Cancel);
 
-                                    if (dialog.ShowDialog() != true)
+                                    if (errorDialog.ShowDialog() != true)
                                     {
                                         result = false;
                                     }
@@ -249,6 +251,16 @@ public partial class MainWindow
 
                     _logBuilder.AppendLine($"{currentFile} [{progress}%]");
                 }
+
+                archive.Dispose();
+                File.Delete(zipPath);
+                _logBuilder.AppendLine("Deleting an update zip file.");
+
+                _isSuccess = true;
+            }
+            catch (Exception exception)
+            {
+                _logBuilder.AppendLine($"{exception.Message}{Environment.NewLine}{exception.InnerException?.Message}");
             }
             finally
             {
@@ -285,22 +297,18 @@ public partial class MainWindow
                 }
 
                 TextStatus.Text = @"Finished";
+
                 try
                 {
-                    var executablePath = string.IsNullOrWhiteSpace(updatedExe)
-                        ? currentExe
-                        : Path.Combine(extractionPath, updatedExe);
+                    var executablePath = string.IsNullOrWhiteSpace(updatedExe) ? currentExe : Path.Combine(extractionPath, updatedExe);
                     var processStartInfo = new ProcessStartInfo(executablePath);
-                    if (!string.IsNullOrEmpty(commandLineArgs))
-                    {
-                        processStartInfo.Arguments = commandLineArgs;
-                    }
+                    if (!string.IsNullOrEmpty(commandLineArgs)) { processStartInfo.Arguments = commandLineArgs; }
 
                     Process.Start(processStartInfo);
 
                     _logBuilder.AppendLine("Successfully launched the updated application.");
                 }
-                catch (Win32Exception exception)
+                catch (Win32Exception exception) 
                 {
                     if (exception.NativeErrorCode != 1223)
                     {
@@ -315,19 +323,18 @@ public partial class MainWindow
 
                 Application.Current.Dispatcher.Invoke(() => 
                 {
-                    var dialog = new Dialog();
-                    dialog.Initialize(this,
+                    var errorDialog = new ErrorDialog();
+                    errorDialog.Initialize(this,
                         exception.Message,
                         exception.GetType().ToString(),
                         Properties.Resources.Ok,
                         string.Empty);
 
-                    dialog.Show();
+                    errorDialog.Show();
                 });
             }
             finally
             {
-                _logBuilder.AppendLine();
                 Application.Current.Shutdown();
             }
         };
@@ -339,7 +346,10 @@ public partial class MainWindow
     {
         Closing -= MainWindow_Closing;
         _backgroundWorker?.CancelAsync();
+        _backgroundWorker?.Dispose();
         _logBuilder.AppendLine();
-        File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Updater.log"), _logBuilder.ToString());
+
+        if (_isSuccess) return;
+        File.WriteAllText(Path.Combine(AppContext.BaseDirectory, "Update.log"), _logBuilder.ToString());
     }
 }

@@ -1,12 +1,12 @@
 ﻿<Window x:Class="AuroraDialogEnhancer.Frontend.Forms.Utils.InfoDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:AuroraDialogEnhancer.Frontend.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
         xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
         xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-        xmlns:converters="clr-namespace:AuroraDialogEnhancer.Frontend.Converters"
         Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
         RenderOptions.BitmapScalingMode="NearestNeighbor"
         WindowStartupLocation="CenterOwner"
@@ -103,8 +103,7 @@
                                        d:Content="d:Ok"
                                        Click="Button_Default_OnClick"
                                        IsDefault="True"
-                                       Style="{StaticResource ButtonFilled}">
-                    </woControls:Button>
+                                       Style="{StaticResource ButtonFilled}" />
                 </UniformGrid>
             </Grid>
         </Grid>

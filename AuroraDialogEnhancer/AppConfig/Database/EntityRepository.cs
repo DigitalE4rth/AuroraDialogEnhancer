@@ -19,7 +19,7 @@ public abstract class EntityRepository<T> where T : class, new()
         {
             new InfoDialogBuilder()
                 .SetWindowTitle(Properties.Localization.Resources.EntityRepository_Error_Read)
-                .SetMessage(e.Message + Environment.NewLine + e.InnerException?.Message)
+                .SetMessage($"{e.Message}{Environment.NewLine}{e.InnerException?.Message}")
                 .SetTypeError()
                 .ShowDialog();
         }
@@ -37,7 +37,7 @@ public abstract class EntityRepository<T> where T : class, new()
         {
             new InfoDialogBuilder()
                 .SetWindowTitle(Properties.Localization.Resources.EntityRepository_Error_Write)
-                .SetMessage(e.Message + Environment.NewLine + e.InnerException?.Message)
+                .SetMessage($"{e.Message}{Environment.NewLine}{e.InnerException?.Message}")
                 .SetTypeError()
                 .ShowDialog();
         }

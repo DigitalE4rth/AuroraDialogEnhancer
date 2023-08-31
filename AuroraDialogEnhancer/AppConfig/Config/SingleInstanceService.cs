@@ -10,7 +10,7 @@ namespace AuroraDialogEnhancer.AppConfig.Config;
 
 public sealed class SingleInstanceService : IDisposable
 {
-    private const byte NotifyInstanceMessageType = 1;
+    private const byte NOTIFY_INSTANCE_MESSAGE_TYPE = 1;
 
     private readonly string   _applicationId;
     private readonly string   _pipeName;
@@ -98,7 +98,7 @@ public sealed class SingleInstanceService : IDisposable
             StartNamedPipeServer();
 
             using var binaryReader = new BinaryReader(server);
-            if (binaryReader.ReadByte() != NotifyInstanceMessageType) return;
+            if (binaryReader.ReadByte() != NOTIFY_INSTANCE_MESSAGE_TYPE) return;
 
             var processId = binaryReader.ReadInt32();
             var argCount = binaryReader.ReadInt32();
@@ -152,7 +152,7 @@ public sealed class SingleInstanceService : IDisposable
             using var ms = new MemoryStream();
             using (var binaryWriter = new BinaryWriter(ms))
             {
-                binaryWriter.Write(NotifyInstanceMessageType);
+                binaryWriter.Write(NOTIFY_INSTANCE_MESSAGE_TYPE);
                 binaryWriter.Write(GetCurrentProcessId());
                 binaryWriter.Write(args.Length);
                 foreach (var arg in args)

@@ -77,31 +77,6 @@
 
                     <!--  Icon  -->
                     <Grid Grid.Column="2" HorizontalAlignment="Right">
-                        <Grid.ToolTip>
-                            <Grid Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-
-                                <woControls:PathIcon Grid.Row="0"
-                                                     Data="{StaticResource Icon.Regular.Circle}"
-                                                     Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
-                                                     Style="{StaticResource IconLarge}" />
-
-                                <woControls:PathIcon Grid.Row="1"
-                                                     Data="{StaticResource Icon.Regular.Brightness3}"
-                                                     Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
-                                                     Style="{StaticResource IconLarge}">
-                                    <woControls:PathIcon.LayoutTransform>
-                                        <TransformGroup>
-                                            <RotateTransform Angle="90" />
-                                        </TransformGroup>
-                                    </woControls:PathIcon.LayoutTransform>
-                                </woControls:PathIcon>
-                            </Grid>
-                        </Grid.ToolTip>
-
                         <woControls:PathIcon Data="{StaticResource Icon.Aurora}"
                                              Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
                                              Opacity="1"

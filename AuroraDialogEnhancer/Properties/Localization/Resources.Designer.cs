@@ -61,6 +61,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Special Thanks.
+        /// </summary>
+        public static string About_Acknowledgements {
+            get {
+                return ResourceManager.GetString("About_Acknowledgements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All of you, guys.
         /// </summary>
         public static string About_AllOfYou {
@@ -84,15 +93,6 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         public static string About_Consultant {
             get {
                 return ResourceManager.GetString("About_Consultant", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Contributors.
-        /// </summary>
-        public static string About_Contributors {
-            get {
-                return ResourceManager.GetString("About_Contributors", resourceCulture);
             }
         }
         
@@ -133,6 +133,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lead developer.
+        /// </summary>
+        public static string About_LeadDeveloper {
+            get {
+                return ResourceManager.GetString("About_LeadDeveloper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Libraries and Resources.
         /// </summary>
         public static string About_LibrariesAndResources {
@@ -142,7 +151,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Modified.
+        ///   Looks up a localized string similar to Modified versions.
         /// </summary>
         public static string About_ModifiedVersion {
             get {
@@ -444,6 +453,141 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         public static string Appearance_ZoomLevel_Title {
             get {
                 return ResourceManager.GetString("Appearance_ZoomLevel_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changelog.
+        /// </summary>
+        public static string AutoUpdate_Changelog {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Changelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string AutoUpdate_Close {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have the latest version: {0}.
+        /// </summary>
+        public static string AutoUpdate_CurrentIsLatestVersion {
+            get {
+                return ResourceManager.GetString("AutoUpdate_CurrentIsLatestVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current version: {0}.
+        /// </summary>
+        public static string AutoUpdate_CurrentVersion {
+            get {
+                return ResourceManager.GetString("AutoUpdate_CurrentVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading at.
+        /// </summary>
+        public static string AutoUpdate_DownloadSpeed {
+            get {
+                return ResourceManager.GetString("AutoUpdate_DownloadSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sec.
+        /// </summary>
+        public static string AutoUpdate_DownloadSpeed_Seconds {
+            get {
+                return ResourceManager.GetString("AutoUpdate_DownloadSpeed_Seconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a problem reaching update server. Please check your internet connection and try again later..
+        /// </summary>
+        public static string AutoUpdate_Failed_Message {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Failed_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Check Failed.
+        /// </summary>
+        public static string AutoUpdate_Failed_Title {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Failed_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new version available: {0}.
+        /// </summary>
+        public static string AutoUpdate_NewVersionAvailable {
+            get {
+                return ResourceManager.GetString("AutoUpdate_NewVersionAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to determine the filename of the update file!.
+        /// </summary>
+        public static string AutoUpdate_UnableToDetermineFileName {
+            get {
+                return ResourceManager.GetString("AutoUpdate_UnableToDetermineFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a problem reaching update server. Please check your internet connection and try again later..
+        /// </summary>
+        public static string AutoUpdate_Unavailable_Message {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Unavailable_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Unavailable.
+        /// </summary>
+        public static string AutoUpdate_Unavailable_Title {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Unavailable_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string AutoUpdate_Update {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string AutoUpdate_WindowTitle {
+            get {
+                return ResourceManager.GetString("AutoUpdate_WindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading an update.
+        /// </summary>
+        public static string AutoUpdate_WindowTitle_Download {
+            get {
+                return ResourceManager.GetString("AutoUpdate_WindowTitle_Download", resourceCulture);
             }
         }
         
@@ -1884,16 +2028,6 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         public static string TriggerEditor_Triggers {
             get {
                 return ResourceManager.GetString("TriggerEditor_Triggers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Updater {
-            get {
-                object obj = ResourceManager.GetObject("Updater", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         

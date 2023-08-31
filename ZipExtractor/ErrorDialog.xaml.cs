@@ -1,19 +1,12 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Updater;
 
-public partial class Dialog : Window
+public partial class ErrorDialog
 {
-    public Dialog()
+    public ErrorDialog()
     {
         InitializeComponent();
-    }
-
-    [STAThread]
-    public override void BeginInit()
-    {
-        base.BeginInit();
     }
 
     public void Initialize(Window owner, string text, string caption, string confirmButtonText, string cancelButtonText)
@@ -33,7 +26,6 @@ public partial class Dialog : Window
         {
             ButtonCancel.Visibility = Visibility.Collapsed;
         }
-
     }
 
     private void ButtonConfirm_OnClick(object sender, RoutedEventArgs e)

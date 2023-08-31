@@ -1,0 +1,86 @@
+﻿<Window x:Class="AuroraDialogEnhancer.AppConfig.Updater.UpdateDownloadDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:AuroraDialogEnhancer.Frontend.Converters"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
+        xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
+        xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+        Title="{x:Static localization:Resources.AutoUpdate_WindowTitle_Download}"
+        Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
+        RenderOptions.BitmapScalingMode="NearestNeighbor"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        mc:Ignorable="d">
+    <Window.Resources>
+        <converters:WindowScaleAdjuster x:Key="WindowScaleAdjuster" />
+    </Window.Resources>
+    <Window.Width>
+        <Binding Converter="{StaticResource WindowScaleAdjuster}"
+                 ConverterParameter="450"
+                 Mode="OneTime"
+                 Path="Width"
+                 RelativeSource="{RelativeSource Self}" />
+    </Window.Width>
+
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.LayoutTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="{Binding Source={x:Static properties:Settings.Default}, Path=UI_Scale, Mode=OneTime}" ScaleY="{Binding Source={x:Static properties:Settings.Default}, Path=UI_Scale, Mode=OneTime}" />
+            </TransformGroup>
+        </Grid.LayoutTransform>
+
+        <Grid Margin="10,5,10,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <woControls:PathIcon x:Name="PathIcon"
+                                 Grid.Column="0"
+                                 Width="50"
+                                 Height="50"
+                                 Margin="0,5,15,0"
+                                 VerticalAlignment="Top"
+                                 Data="{StaticResource Icon.Regular.CloudDownload}"
+                                 Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface}" />
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0"
+                               Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
+                               Text="{x:Static localization:Resources.AutoUpdate_DownloadSpeed}" />
+
+                    <TextBlock Grid.Column="1" Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}">
+                        <Run Text=":" />
+                        <Run x:Name="TextSpeed" d:Text="d:0 KiB" /><Run Text="/" /><Run Text="{x:Static localization:Resources.AutoUpdate_DownloadSpeed_Seconds}" />
+                    </TextBlock>
+
+                    <TextBlock x:Name="TextSize"
+                               Grid.Column="2"
+                               HorizontalAlignment="Right"
+                               d:Text="d:Size/Size"
+                               Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
+                </Grid>
+
+                <ProgressBar x:Name="ProgressBar"
+                             Grid.Row="1"
+                             MinHeight="25" />
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Window>

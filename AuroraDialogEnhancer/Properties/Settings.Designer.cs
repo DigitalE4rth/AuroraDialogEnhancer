@@ -346,5 +346,52 @@ namespace AuroraDialogEnhancer.Properties {
                 this["UI_FontStyle_Title"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00")]
+        public global::System.TimeSpan AutoUpdater_Frequency {
+            get {
+                return ((global::System.TimeSpan)(this["AutoUpdater_Frequency"]));
+            }
+            set {
+                this["AutoUpdater_Frequency"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime AutoUpdater_LastUpdateTime {
+            get {
+                return ((global::System.DateTime)(this["AutoUpdater_LastUpdateTime"]));
+            }
+            set {
+                this["AutoUpdater_LastUpdateTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0")]
+        public string WebClient_UserAgent {
+            get {
+                return ((string)(this["WebClient_UserAgent"]));
+            }
+            set {
+                this["WebClient_UserAgent"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Earth\\Desktop\\Update.xml")]
+        public string AutoUpdate_UpdateInfoUri {
+            get {
+                return ((string)(this["AutoUpdate_UpdateInfoUri"]));
+            }
+            set {
+                this["AutoUpdate_UpdateInfoUri"] = value;
+            }
+        }
     }
 }
