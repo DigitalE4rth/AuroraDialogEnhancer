@@ -178,7 +178,15 @@ public partial class SettingsPage
         _uiService.ReloadUi();
     }
 
-    private void Button_OpenApplicationFolder_OnClick(object sender, RoutedEventArgs e) => Process.Start(Global.StringConstants.ExplorerName, AppContext.BaseDirectory);
+    private void Button_OpenApplicationFolder_OnClick(object sender, RoutedEventArgs e)
+    {
+        Process.Start(new ProcessStartInfo
+        {
+            Arguments = AppContext.BaseDirectory,
+            UseShellExecute = true,
+            FileName = Global.StringConstants.ExplorerName
+        });
+    }
     #endregion
 
     #region Cleanup

@@ -295,6 +295,7 @@ public partial class HookControlPage
         Process.Start(new ProcessStartInfo
         {
             Arguments = _hookSettingsDataContext.ExtensionConfig.ScreenShotsLocation,
+            UseShellExecute = true,
             FileName = Global.StringConstants.ExplorerName
         });
     }
@@ -327,7 +328,7 @@ public partial class HookControlPage
             RestoreDirectory = true,
             DefaultExt       = "lnk",
             Title            = Properties.Localization.Resources.FileDialog_Shortcut_Title,
-            FileName         = _hookSettingsDataContext!.ExtensionConfig.Config.Name + " " + "(ADE)",
+            FileName         = $"{_hookSettingsDataContext!.ExtensionConfig.Config.Name} (ADE)",
             Filter           = $"lnk {Properties.Localization.Resources.FileDialog_Files} (*.lnk)|*.lnk|{Properties.Localization.Resources.FileDialog_AllFiles} (*.*)|*.*"
         };
 

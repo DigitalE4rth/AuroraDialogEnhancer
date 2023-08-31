@@ -169,6 +169,7 @@ public partial class NotifyMenuWindow
         Process.Start(new ProcessStartInfo
         {
             Arguments = screenshotsFolder,
+            UseShellExecute = true,
             FileName = Global.StringConstants.ExplorerName
         });
 

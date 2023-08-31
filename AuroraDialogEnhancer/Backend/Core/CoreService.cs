@@ -270,8 +270,12 @@ public class CoreService : IDisposable
 
         foreach (var id in _screenCaptureService.CapturedGames)
         {
-            var screenshotsLocation = _extensionConfigService.GetScreenshotsLocation(id);
-            Process.Start(new ProcessStartInfo(Global.StringConstants.ExplorerName, screenshotsLocation));
+            Process.Start(new ProcessStartInfo
+            {
+                Arguments = _extensionConfigService.GetScreenshotsLocation(id),
+                UseShellExecute = true,
+                FileName = Global.StringConstants.ExplorerName
+            });
         }
 
         _screenCaptureService.CapturedGames.Clear();
