@@ -691,7 +691,7 @@
     <value>Открывать папку со скриншотами при выходе из игры</value>
   </data>
   <data name="Settings_SettingsFolder" xml:space="preserve">
-    <value>Папка настроек</value>
+    <value>Папка с настройками</value>
   </data>
   <data name="Settings_StartMinimized" xml:space="preserve">
     <value>Запускать свёрнутым</value>
