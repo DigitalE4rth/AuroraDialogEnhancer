@@ -86,6 +86,7 @@
                     <!--  Game Selector  -->
                     <gameSelector:GameSelector x:Name="GameSelector"
                                                Grid.Column="1"
+                                               MinWidth="190"
                                                Margin="0,0,0,5"
                                                HorizontalAlignment="Right" />
                 </Grid>
