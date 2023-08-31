@@ -20,7 +20,7 @@ public class NotifyIconService
         };
 
         _notifyIcon.Click       += NotifyIcon_OnClick;
-        _notifyIcon.DoubleClick += _notifyIcon_DoubleClick;
+        _notifyIcon.DoubleClick += NotifyIcon_DoubleClick;
     }
 
     public void Initialize()
@@ -35,7 +35,7 @@ public class NotifyIconService
         notifyWindow.Activate();
     }
 
-    private void _notifyIcon_DoubleClick(object sender, System.EventArgs e)
+    private void NotifyIcon_DoubleClick(object sender, System.EventArgs e)
     {
         _uiService.ShowMainWindow();
     }
@@ -43,7 +43,7 @@ public class NotifyIconService
     public void Dispose()
     {
         _notifyIcon.Click       -= NotifyIcon_OnClick;
-        _notifyIcon.DoubleClick -= _notifyIcon_DoubleClick;
+        _notifyIcon.DoubleClick -= NotifyIcon_DoubleClick;
         _notifyIcon.Dispose();
     }
 }

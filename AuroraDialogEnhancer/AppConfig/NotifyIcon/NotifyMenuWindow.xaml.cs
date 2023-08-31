@@ -34,13 +34,14 @@ public partial class NotifyMenuWindow
     private Button? _processingButton;
     private string  _latestGameId;
 
-
     public NotifyMenuWindow(CoreService            coreService,
                             ExtensionConfigService extensionConfigService,
                             ExtensionsProvider     extensionProvider,
                             HookedGameDataProvider hookedGameDataProvider,
                             UiService              uiService)
     {
+        Unloaded += NotifyMenuWindow_Unloaded;
+
         _coreService            = coreService;
         _extensionConfigService = extensionConfigService;
         _hookedGameDataProvider = hookedGameDataProvider;
@@ -50,8 +51,6 @@ public partial class NotifyMenuWindow
         _latestGameId           = Properties.Settings.Default.UI_HookSettings_SelectedGameId;
 
         InitializeComponent();
-
-        Unloaded += NotifyMenuWindow_Unloaded;
         InitializeGameButtons();
     }
 
