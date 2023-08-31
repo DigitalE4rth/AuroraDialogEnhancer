@@ -334,8 +334,8 @@ public partial class HookControlPage
         if (dialog.ShowDialog() != DialogResult.OK) return;
         
         IWshShortcut shortcut     = new WshShell().CreateShortcut(dialog.FileName);
-        shortcut.Arguments        = Global.StringConstants.ProfileAutoStartArgument + " " + _hookSettingsDataContext!.ExtensionConfig.Config.Id;
-        shortcut.Description      = "ADE Profile:" + " " + _hookSettingsDataContext.ExtensionConfig.Config.Name;
+        shortcut.Arguments        = $"{Properties.DefaultSettings.Default.StartupArgument_Profile} {_hookSettingsDataContext!.ExtensionConfig.Config.Id}";
+        shortcut.Description      = $"ADE Profile: {_hookSettingsDataContext.ExtensionConfig.Config.Name}";
         shortcut.TargetPath       = Global.Locations.AssemblyExe;
         shortcut.WorkingDirectory = Global.Locations.AssemblyFolder;
         shortcut.IconLocation     = Global.Locations.AssemblyExe;
