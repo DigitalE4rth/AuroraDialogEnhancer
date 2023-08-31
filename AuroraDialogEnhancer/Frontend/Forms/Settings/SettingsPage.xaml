@@ -1,7 +1,6 @@
 ﻿<Page x:Class="AuroraDialogEnhancer.Frontend.Forms.Settings.SettingsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:cards="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.Cards"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:generics="clr-namespace:AuroraDialogEnhancer.Frontend.Generics"
       xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
@@ -169,13 +168,14 @@
                 </woControls:CardToggleButton>
 
                 <!--  Expert mode  -->
-                <woControls:CardToggleButton x:Name="Toggle_ExpertMode" Title="{x:Static localization:Resources.Settings_ExpertMode_Title}"
+                <woControls:CardToggleButton x:Name="Toggle_ExpertMode"
+                                             Title="{x:Static localization:Resources.Settings_ExpertMode_Title}"
                                              MinHeight="55"
                                              Margin="0,0,0,5"
                                              Click="ExpertMode_OnClick"
-                                             Visibility="Collapsed"
                                              Description="{x:Static localization:Resources.Settings_ExpertMode_Description}"
-                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Mode=OneTime}">
+                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Mode=OneTime}"
+                                             Visibility="Collapsed">
 
                     <woControls:CardToggleButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -187,8 +187,27 @@
                 <!--  Application Folder  -->
                 <woControls:CardButton Title="{x:Static localization:Resources.Settings_ApplicationFolder}"
                                        MinHeight="55"
-                                       Margin="0,0,0,0"
+                                       Margin="0,0,0,5"
                                        Click="Button_OpenApplicationFolder_OnClick"
+                                       ContentForeground="Secondary">
+
+                    <woControls:CardButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.FolderOpen}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardButton.LeftIcon>
+
+                    <woControls:CardButton.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                        </Grid>
+                    </woControls:CardButton.RightIcon>
+                </woControls:CardButton>
+
+                <!--  Application Settings  -->
+                <woControls:CardButton Title="{x:Static localization:Resources.Settings_SettingsFolder}"
+                                       MinHeight="55"
+                                       Click="Button_OpenApplicationSettingsFolder_OnClick"
                                        ContentForeground="Secondary">
 
                     <woControls:CardButton.LeftIcon>

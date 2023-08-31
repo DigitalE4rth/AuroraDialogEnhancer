@@ -1780,6 +1780,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings folder.
+        /// </summary>
+        public static string Settings_SettingsFolder {
+            get {
+                return ResourceManager.GetString("Settings_SettingsFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start minimized.
         /// </summary>
         public static string Settings_StartMinimized {

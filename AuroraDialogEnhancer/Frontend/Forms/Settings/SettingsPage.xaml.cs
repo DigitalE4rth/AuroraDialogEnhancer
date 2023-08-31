@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -183,6 +184,20 @@ public partial class SettingsPage
         Process.Start(new ProcessStartInfo
         {
             Arguments = AppContext.BaseDirectory,
+            UseShellExecute = true,
+            FileName = Global.StringConstants.ExplorerName
+        });
+    }
+
+    private void Button_OpenApplicationSettingsFolder_OnClick(object sender, RoutedEventArgs e)
+    {
+        const ConfigurationUserLevel level = ConfigurationUserLevel.PerUserRoamingAndLocal;
+        var configuration = ConfigurationManager.OpenExeConfiguration(level);
+        var configurationDirectory = Path.GetDirectoryName(configuration.FilePath);
+
+        Process.Start(new ProcessStartInfo
+        {
+            Arguments = configurationDirectory,
             UseShellExecute = true,
             FileName = Global.StringConstants.ExplorerName
         });

@@ -690,6 +690,9 @@
   <data name="Settings_ScreenshotsManager_Title" xml:space="preserve">
     <value>Open screenshots folder on game exit</value>
   </data>
+  <data name="Settings_SettingsFolder" xml:space="preserve">
+    <value>Settings folder</value>
+  </data>
   <data name="Settings_StartMinimized" xml:space="preserve">
     <value>Start minimized</value>
   </data>
