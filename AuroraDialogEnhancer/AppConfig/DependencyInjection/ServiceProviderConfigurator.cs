@@ -74,7 +74,6 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddSingleton<MouseHookManagerService>();
 
         serviceCollection.AddSingleton<ProcessInfoService>();
-        serviceCollection.AddSingleton<ProcessStartService>();
         serviceCollection.AddSingleton<WindowHookService>();
         #endregion
 

@@ -139,7 +139,6 @@
       <DependentUpon>UpdateDownloadDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppConfig\Updater\IPersistenceProvider.cs" />
-    <Compile Include="AppConfig\Updater\SettingsPersistenceProvider.cs" />
     <Compile Include="AppConfig\Updater\UpdateInfo.cs" />
     <Compile Include="AppConfig\Updater\UpdateDialog.xaml.cs">
       <DependentUpon>UpdateDialog.xaml</DependentUpon>
@@ -389,7 +388,6 @@
     <Compile Include="Backend\Core\CoreService.cs" />
     <Compile Include="Backend\Hooks\Game\EHookState.cs" />
     <Compile Include="Backend\Hooks\Mouse\LowLevelMouseHookStruct.cs" />
-    <Compile Include="Backend\Hooks\Process\ProcessStartService.cs" />
     <Compile Include="Backend\KeyBinding\Interpreters\KeyboardKeyInterpreterService.cs" />
     <Compile Include="Backend\KeyBinding\Interpreters\KeyInterpreterService.cs" />
     <Compile Include="Backend\Hooks\Mouse\MouseEmulationService.cs" />
