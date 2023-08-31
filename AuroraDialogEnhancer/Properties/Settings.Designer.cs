@@ -361,12 +361,12 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime AutoUpdater_LastUpdateTime {
+        public global::System.DateTime AutoUpdater_LastUpdateCheckTime {
             get {
-                return ((global::System.DateTime)(this["AutoUpdater_LastUpdateTime"]));
+                return ((global::System.DateTime)(this["AutoUpdater_LastUpdateCheckTime"]));
             }
             set {
-                this["AutoUpdater_LastUpdateTime"] = value;
+                this["AutoUpdater_LastUpdateCheckTime"] = value;
             }
         }
         

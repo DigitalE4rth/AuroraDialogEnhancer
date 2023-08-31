@@ -86,7 +86,7 @@
     <Setting Name="AutoUpdater_Frequency" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:00:00</Value>
     </Setting>
-    <Setting Name="AutoUpdater_LastUpdateTime" Type="System.DateTime" Scope="User">
+    <Setting Name="AutoUpdater_LastUpdateCheckTime" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">

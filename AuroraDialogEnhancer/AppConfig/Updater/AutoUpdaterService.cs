@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AuroraDialogEnhancer.AppConfig.Updater;
 
-public class AutoUpdaterService : IDisposable
+public class AutoUpdaterService
 {
     private readonly UiService _uiService;
     private readonly bool      _isRunUpdateAsAdmin = true;
@@ -29,14 +29,22 @@ public class AutoUpdaterService : IDisposable
 
     public void Initialize()
     {
+        CheckForUpdate();
+    }
+
+    private void CheckForUpdate()
+    {
+        if (Properties.Settings.Default.AutoUpdater_Frequency == TimeSpan.Zero ||
+            Properties.Settings.Default.AutoUpdater_LastUpdateCheckTime + Properties.Settings.Default.AutoUpdater_Frequency > DateTime.Now) return;
+
         StartAuto();
     }
 
-    public void StartManual() => Start(true);
+    public void StartManual() => Start(true, false);
 
-    public void StartAuto() => Start(false);
+    public void StartAuto() => Start(false, true);
 
-    private void Start(bool isReportErrors)
+    private void Start(bool isReportErrors, bool isSilentCheck)
     {
         if (_isRunning) return;
         _isRunning = true;
@@ -52,15 +60,26 @@ public class AutoUpdaterService : IDisposable
             return;
         }
         
-        Task.Run(() => StartAsync(isReportErrors));
+        Task.Run(() => StartAsync(isReportErrors, isSilentCheck));
     }
 
-    private void StartAsync(bool isReportErrors)
+    private void StartAsync(bool isReportErrors, bool isSilentCheck)
     {
         try
         {
             var updateInfo = GetUpdateInfo();
-            StartUpdate(updateInfo, isReportErrors);
+            var (isUpdated, isSuccess) = StartUpdate(updateInfo, isReportErrors, isSilentCheck);
+
+            if (isSuccess)
+            {
+                Properties.Settings.Default.AutoUpdater_LastUpdateCheckTime = DateTime.Now;
+                Properties.Settings.Default.Save();
+            }
+
+            if (isUpdated)
+            {
+                Application.Current.Dispatcher.Invoke(Application.Current.Shutdown, DispatcherPriority.Send);
+            }
         }
         catch (Exception e)
         {
@@ -70,12 +89,11 @@ public class AutoUpdaterService : IDisposable
         _isRunning = false;
     }
 
-    private void StartUpdate(UpdateInfo updateInfo, bool isReportErrors)
+    private (bool, bool) StartUpdate(UpdateInfo updateInfo, bool isReportErrors, bool isSilentCheck)
     {
         if (updateInfo.IsUpdateAvailable)
         {
-            Application.Current.Dispatcher.Invoke(() => ShowUpdateDialog(updateInfo));
-            return;
+            return Application.Current.Dispatcher.Invoke(() => ShowUpdateDialog(updateInfo, isSilentCheck));
         }
 
         if (isReportErrors)
@@ -88,13 +106,15 @@ public class AutoUpdaterService : IDisposable
                     .ShowDialog()
             );
         }
+
+        return (false, false);
     }
 
     private UpdateInfo GetUpdateInfo()
     {
         var updateUri = new Uri(Properties.Settings.Default.AutoUpdate_UpdateInfoUri);
 
-        UpdateInfo? args;
+        UpdateInfo args;
         using (var client = new AdeWebClient())
         {
             var downloadString = client.DownloadString(updateUri);
@@ -142,6 +162,32 @@ public class AutoUpdaterService : IDisposable
             );
     }
 
+    private (bool, bool) ShowUpdateDialog(UpdateInfo updateInfo, bool isSilentCheck)
+    {
+        if (isSilentCheck && !updateInfo.IsUpdateAvailable)
+        {
+            return (false, true);
+        }
+
+        var updateDialog = AppServices.ServiceProvider.GetRequiredService<UpdateDialog>();
+        if (_uiService.IsMainWindowShown())
+        {
+            updateDialog.Owner = _uiService.GetMainWindow();
+        }
+        else
+        {
+            updateDialog.Title = $"{Global.AssemblyInfo.Name} | {Properties.Localization.Resources.AutoUpdate_WindowTitle}";
+            updateDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+        updateDialog.Initialize(updateInfo);
+
+        if (updateDialog.ShowDialog() != true) return (false, true);
+
+        if (ShowDownloadUpdateDialog(updateInfo) == false) return (false, true);
+
+        return (true, true);
+    }
+
     private bool ShowDownloadUpdateDialog(UpdateInfo updateInfo)
     {
         var downloadDialog = AppServices.ServiceProvider.GetRequiredService<UpdateDownloadDialog>();
@@ -159,32 +205,6 @@ public class AutoUpdaterService : IDisposable
         return downloadDialog.ShowDialog() == true;
     }
 
-    private void ShowUpdateDialog(UpdateInfo updateInfo)
-    {
-        var updateDialog = AppServices.ServiceProvider.GetRequiredService<UpdateDialog>();
-        if (_uiService.IsMainWindowShown())
-        {
-            updateDialog.Owner = _uiService.GetMainWindow();
-        }
-        else
-        {
-            updateDialog.Title = $"{Global.AssemblyInfo.Name} | {Properties.Localization.Resources.AutoUpdate_WindowTitle}";
-            updateDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-        }
-        updateDialog.Initialize(updateInfo);
-
-        if (!updateInfo.IsUpdateAvailable)
-        {
-            updateDialog.ShowDialog();
-            return;
-        }
-
-        if (updateDialog.ShowDialog() != true) return;
-
-        if (ShowDownloadUpdateDialog(updateInfo) == false) return;
-        Application.Current.Dispatcher.Invoke(Application.Current.Shutdown, DispatcherPriority.Send);
-    }
-
     private string TranslateUri(Uri baseUri, string url)
     {
         if (string.IsNullOrEmpty(url) || !Uri.IsWellFormedUriString(url, UriKind.Relative)) return url;
@@ -197,9 +217,5 @@ public class AutoUpdaterService : IDisposable
         }
 
         return url;
-    }
-
-    public void Dispose()
-    {
     }
 }

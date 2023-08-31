@@ -148,6 +148,5 @@ public class AppConfig : IDisposable
         _uiService.DisposeMainWindow();
         _coreService.Dispose();
         _notifyIconService.Dispose();
-        _autoUpdaterService.Dispose();
     }
 }

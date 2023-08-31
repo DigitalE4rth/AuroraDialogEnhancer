@@ -18,21 +18,21 @@ public class SettingsPersistenceProvider : IPersistenceProvider
 
     public DateTime? GetLastUpdateTime()
     {
-        return Properties.Settings.Default.AutoUpdater_LastUpdateTime == DateTime.MinValue
+        return Properties.Settings.Default.AutoUpdater_LastUpdateCheckTime == DateTime.MinValue
             ? null
-            : Properties.Settings.Default.AutoUpdater_LastUpdateTime;
+            : Properties.Settings.Default.AutoUpdater_LastUpdateCheckTime;
     }
 
     public void SetLastUpdateTime(DateTime? lastUpdateTime)
     {
         if (lastUpdateTime is null)
         {
-            Properties.Settings.Default.AutoUpdater_LastUpdateTime = DateTime.MinValue;
+            Properties.Settings.Default.AutoUpdater_LastUpdateCheckTime = DateTime.MinValue;
             Properties.Settings.Default.Save();
             return;
         }
 
-        Properties.Settings.Default.AutoUpdater_LastUpdateTime = (DateTime) lastUpdateTime;
+        Properties.Settings.Default.AutoUpdater_LastUpdateCheckTime = (DateTime) lastUpdateTime;
         Properties.Settings.Default.Save();
     }
 }
