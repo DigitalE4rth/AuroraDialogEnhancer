@@ -7,11 +7,11 @@
         xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
         xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
         xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+        Title="{x:Static localization:Resources.AutoUpdate_WindowTitle}"
         Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
         RenderOptions.BitmapScalingMode="NearestNeighbor"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterOwner"
-        Title="{x:Static localization:Resources.AutoUpdate_WindowTitle}"
         mc:Ignorable="d">
 
     <Grid RenderTransformOrigin="0.5,0.5">
@@ -114,7 +114,7 @@
                                        Margin="5,0,0,0"
                                        Padding="10,5"
                                        Click="Button_Cancel_OnClick"
-                                       Content="{x:Static localization:Resources.AutoUpdate_Close}"
+                                       Content="{x:Static localization:Resources.AutoUpdate_Cancel}"
                                        IsCancel="True"
                                        Style="{StaticResource ButtonSecondary}" />
 

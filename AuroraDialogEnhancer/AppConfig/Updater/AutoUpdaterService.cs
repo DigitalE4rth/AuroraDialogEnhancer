@@ -27,7 +27,7 @@ public class AutoUpdaterService
         _uiService = uiService;
     }
 
-    public void UpgradeSettings()
+    public void EnsureUpgradedSettings()
     {
         if (!Properties.Settings.Default.Update_IsUpdateRequired) return;
         Properties.Settings.Default.Upgrade();
@@ -74,25 +74,25 @@ public class AutoUpdaterService
 
     private void StartAsync(bool isReportErrors, bool isSilentCheck)
     {
-        var (isUpdated, isSuccess) = (false, false);
+        var (isSucess, isUpdated) = (false, false);
 
         try
         {
             var updateInfo = GetUpdateInfo();
-            (isUpdated, isSuccess) = StartUpdate(updateInfo, isReportErrors, isSilentCheck);
+            (isSucess, isUpdated) = StartUpdate(updateInfo, isReportErrors, isSilentCheck);
         }
         catch (Exception e)
         {
             ShowError(e, isReportErrors);
         }
 
-        if (isUpdated)
+        if (isSucess)
         {
             Properties.Settings.Default.Updater_LastUpdateCheckTime = DateTime.Now;
             Properties.Settings.Default.Save();
         }
 
-        if (isSuccess)
+        if (isUpdated)
         {
             Application.Current.Dispatcher.Invoke(Application.Current.Shutdown, DispatcherPriority.Send);
         }
@@ -177,7 +177,7 @@ public class AutoUpdaterService
     {
         if (isSilentCheck && !updateInfo.IsUpdateAvailable)
         {
-            return (false, true);
+            return (true, false);
         }
 
         var updateDialog = AppServices.ServiceProvider.GetRequiredService<UpdateDialog>();
@@ -192,9 +192,8 @@ public class AutoUpdaterService
         }
         updateDialog.Initialize(updateInfo);
 
-        if (updateDialog.ShowDialog() != true) return (false, true);
-
-        if (ShowDownloadUpdateDialog(updateInfo) == false) return (false, true);
+        if (updateDialog.ShowDialog() != true) return (true, false);
+        if (ShowDownloadUpdateDialog(updateInfo) != true) return (true, false);
 
         return (true, true);
     }

@@ -52,7 +52,7 @@ public partial class UpdateDialog
         TextNewVersion.Text        = string.Format(Properties.Localization.Resources.AutoUpdate_NewVersionAvailable, _updateInfo.Version);
         TextCurrentVersion.Text    = string.Format(Properties.Localization.Resources.AutoUpdate_CurrentVersion, Global.AssemblyInfo.Version);
         TextBlockHyperlink.ToolTip = _updateInfo.ChangelogUri;
-        ButtonPrimary.Content      = Properties.Localization.Resources.AutoUpdate_Update;
+        ButtonPrimary.Content      = Properties.Localization.Resources.AutoUpdate_Update_Verb;
         ButtonPrimary.Click       += Button_Default_Update_OnClick;
     }
 

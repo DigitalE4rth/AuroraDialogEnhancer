@@ -249,6 +249,9 @@
   <data name="Appearance_ZoomLevel_Title" xml:space="preserve">
     <value>Zoom level</value>
   </data>
+  <data name="AutoUpdate_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="AutoUpdate_Changelog" xml:space="preserve">
     <value>Changelog</value>
   </data>
@@ -285,7 +288,10 @@
   <data name="AutoUpdate_Unavailable_Title" xml:space="preserve">
     <value>Update Unavailable</value>
   </data>
-  <data name="AutoUpdate_Update" xml:space="preserve">
+  <data name="AutoUpdate_Update_Sub" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="AutoUpdate_Update_Verb" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="AutoUpdate_WindowTitle" xml:space="preserve">

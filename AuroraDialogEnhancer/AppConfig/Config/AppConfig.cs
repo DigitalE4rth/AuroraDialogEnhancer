@@ -47,7 +47,7 @@ public class AppConfig : IDisposable
     {
         if (!IsApplicationInstanceUnique(startupEventArgs)) return false;
 
-        _autoUpdaterService.UpgradeSettings();
+        _autoUpdaterService.EnsureUpgradedSettings();
         _cultureService.Initialize();
         _extensionsLoader.Initialize();
         InitializeColorTheme();

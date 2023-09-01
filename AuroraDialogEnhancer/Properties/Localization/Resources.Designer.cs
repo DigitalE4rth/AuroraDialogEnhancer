@@ -457,6 +457,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string AutoUpdate_Cancel {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changelog.
         /// </summary>
         public static string AutoUpdate_Changelog {
@@ -567,9 +576,18 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
-        public static string AutoUpdate_Update {
+        public static string AutoUpdate_Update_Sub {
             get {
-                return ResourceManager.GetString("AutoUpdate_Update", resourceCulture);
+                return ResourceManager.GetString("AutoUpdate_Update_Sub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string AutoUpdate_Update_Verb {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Update_Verb", resourceCulture);
             }
         }
         
