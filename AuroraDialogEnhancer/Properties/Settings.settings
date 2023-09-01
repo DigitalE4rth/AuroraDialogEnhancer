@@ -83,8 +83,8 @@
     <Setting Name="UI_FontStyle_Title" Type="System.Double" Scope="User">
       <Value Profile="(Default)">24</Value>
     </Setting>
-    <Setting Name="Updater_Frequency" Type="System.TimeSpan" Scope="User">
-      <Value Profile="(Default)">00:00:00</Value>
+    <Setting Name="Updater_Frequency" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="Updater_LastUpdateCheckTime" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />

@@ -39,19 +39,16 @@ public class AutoUpdaterService
 
     public void CheckForUpdateAuto()
     {
-        if (Properties.Settings.Default.Updater_Frequency == TimeSpan.Zero ||
-            Properties.Settings.Default.Updater_LastUpdateCheckTime + Properties.Settings.Default.Updater_Frequency > DateTime.Now) return;
+        if (Properties.Settings.Default.Updater_Frequency == (int) EUpdateFrequency.None) return;
+
+        var mapper = new UpdateFrequencyMapper();
+        var updateFrequency = mapper.Map((EUpdateFrequency) Properties.Settings.Default.Updater_Frequency);
+        if (Properties.Settings.Default.Updater_LastUpdateCheckTime + updateFrequency > DateTime.Now) return;
 
         Start(false, true);
     }
 
     public void CheckForUpdateManual() => Start(true, false);
-
-    public void SetUpdateFrequency(TimeSpan timeSpan)
-    {
-        Properties.Settings.Default.Updater_Frequency = timeSpan;
-        Properties.Settings.Default.Save();
-    }
 
     private void Start(bool isReportErrors, bool isSilentCheck)
     {

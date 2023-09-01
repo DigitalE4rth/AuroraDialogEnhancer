@@ -6,6 +6,7 @@
       xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:statics="clr-namespace:AuroraDialogEnhancer.AppConfig.Statics"
+      xmlns:updater="clr-namespace:AuroraDialogEnhancer.AppConfig.Updater"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
       Title="AboutPage"
@@ -15,12 +16,66 @@
       mc:Ignorable="d">
 
     <woControls:ScrollViewer IsInnerScrollbarsArrangement="True" VerticalScrollBarVisibility="Auto">
-        <StackPanel MaxWidth="800" Margin="55,25">
+        <StackPanel MaxWidth="800" Margin="55,22,55,25">
 
             <!--  Version info  -->
             <StackPanel Margin="0,0,0,25">
+
                 <!--  Title  -->
-                <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.About_VersionInfo}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0"
+                               VerticalAlignment="Bottom"
+                               Style="{StaticResource CardTitle}"
+                               Text="{x:Static localization:Resources.About_VersionInfo}" />
+
+                    <StackPanel Grid.Column="1"
+                                Margin="0,0,0,5"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+
+                        <woControls:ComboBox x:Name="ComboBoxUpdateFrequency" Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                                             Margin="0,0,5,0"
+                                             IsMenu="True"
+                                             ToolTip="{x:Static localization:Resources.About_Update_Frequency_ToolTip}"
+                                             PopUpPlacementMode="Bottom"
+                                             PopupVerticalOffset="3">
+
+                            <woControls:ComboBox.Title>
+                                <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                    <woControls:PathIcon x:Name="PathIconUpdateFrequency" Data="{StaticResource I.R.Notifications}" Margin="0,0,1,0" Style="{StaticResource IconMedium}" />
+                                </Grid>
+                            </woControls:ComboBox.Title>
+
+                            <ComboBoxItem Content="{x:Static localization:Resources.About_Update_Frequency_Weekly}" Tag="{x:Static updater:EUpdateFrequency.Weekly}" />
+                            <ComboBoxItem Content="{x:Static localization:Resources.About_Update_Frequency_EveryTwoWeeks}" Tag="{x:Static updater:EUpdateFrequency.EveryTwoWeeks}" />
+                            <ComboBoxItem Content="{x:Static localization:Resources.About_Update_Frequency_Monthly}" Tag="{x:Static updater:EUpdateFrequency.Monthly}" />
+                            <ComboBoxItem Content="{x:Static localization:Resources.About_Update_Frequency_None}" Tag="{x:Static updater:EUpdateFrequency.None}" />
+
+                        </woControls:ComboBox>
+
+                        <woControls:Button Padding="15,5"
+                                           HorizontalContentAlignment="Stretch"
+                                           BorderBrush="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OutlineVariant, Mode=OneTime}"
+                                           BorderThickness="1"
+                                           Click="Button_Update_OnClick"
+                                           Style="{StaticResource ButtonTonal}">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" Margin="0,1,10,0">
+                                    <woControls:PathIcon Data="{StaticResource Icon.RotateLeft}" Style="{StaticResource IconMedium}" />
+                                </Grid>
+
+                                <TextBlock Style="{StaticResource FontStyleMedium}" Text="{x:Static localization:Resources.About_Update_Update_Sub}" />
+                            </StackPanel>
+                        </woControls:Button>
+                    </StackPanel>
+                </Grid>
 
                 <woControls:CardButton Title="Aurora Dialog Enhancer"
                                        MinHeight="55"

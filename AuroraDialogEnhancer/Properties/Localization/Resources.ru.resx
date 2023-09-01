@@ -174,6 +174,24 @@
   <data name="About_Translation_Ukranian" xml:space="preserve">
     <value>Перевод на Укранский</value>
   </data>
+  <data name="About_Update_Frequency_EveryTwoWeeks" xml:space="preserve">
+    <value>Раз в две недели</value>
+  </data>
+  <data name="About_Update_Frequency_Monthly" xml:space="preserve">
+    <value>Раз в месяц</value>
+  </data>
+  <data name="About_Update_Frequency_None" xml:space="preserve">
+    <value>Не проверять</value>
+  </data>
+  <data name="About_Update_Frequency_ToolTip" xml:space="preserve">
+    <value>Частота проверки обновлений</value>
+  </data>
+  <data name="About_Update_Frequency_Weekly" xml:space="preserve">
+    <value>Раз в неделю</value>
+  </data>
+  <data name="About_Update_Update_Sub" xml:space="preserve">
+    <value>Обновление</value>
+  </data>
   <data name="About_UserInterface" xml:space="preserve">
     <value>Пользовательский интерфейс</value>
   </data>
@@ -287,9 +305,6 @@
   </data>
   <data name="AutoUpdate_Unavailable_Title" xml:space="preserve">
     <value>Обновление недоступно</value>
-  </data>
-  <data name="AutoUpdate_Update_Sub" xml:space="preserve">
-    <value>Обновление</value>
   </data>
   <data name="AutoUpdate_Update_Verb" xml:space="preserve">
     <value>Обновить</value>

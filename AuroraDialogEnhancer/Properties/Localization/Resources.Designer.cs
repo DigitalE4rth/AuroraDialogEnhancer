@@ -232,6 +232,60 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Every two weeks.
+        /// </summary>
+        public static string About_Update_Frequency_EveryTwoWeeks {
+            get {
+                return ResourceManager.GetString("About_Update_Frequency_EveryTwoWeeks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Every month.
+        /// </summary>
+        public static string About_Update_Frequency_Monthly {
+            get {
+                return ResourceManager.GetString("About_Update_Frequency_Monthly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t check.
+        /// </summary>
+        public static string About_Update_Frequency_None {
+            get {
+                return ResourceManager.GetString("About_Update_Frequency_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates check frequency.
+        /// </summary>
+        public static string About_Update_Frequency_ToolTip {
+            get {
+                return ResourceManager.GetString("About_Update_Frequency_ToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Once a week.
+        /// </summary>
+        public static string About_Update_Frequency_Weekly {
+            get {
+                return ResourceManager.GetString("About_Update_Frequency_Weekly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string About_Update_Update_Sub {
+            get {
+                return ResourceManager.GetString("About_Update_Update_Sub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User interface.
         /// </summary>
         public static string About_UserInterface {
@@ -570,15 +624,6 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         public static string AutoUpdate_Unavailable_Title {
             get {
                 return ResourceManager.GetString("AutoUpdate_Unavailable_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update.
-        /// </summary>
-        public static string AutoUpdate_Update_Sub {
-            get {
-                return ResourceManager.GetString("AutoUpdate_Update_Sub", resourceCulture);
             }
         }
         

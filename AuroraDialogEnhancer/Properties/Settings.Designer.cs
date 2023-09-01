@@ -349,10 +349,10 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00")]
-        public global::System.TimeSpan Updater_Frequency {
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int Updater_Frequency {
             get {
-                return ((global::System.TimeSpan)(this["Updater_Frequency"]));
+                return ((int)(this["Updater_Frequency"]));
             }
             set {
                 this["Updater_Frequency"] = value;
