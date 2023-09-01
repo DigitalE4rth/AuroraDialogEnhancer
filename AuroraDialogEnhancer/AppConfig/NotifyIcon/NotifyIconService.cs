@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Windows.Forms;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.Frontend.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,7 @@ public class NotifyIconService
 
     private void NotifyIcon_OnClick(object sender, System.EventArgs e)
     {
+        if (((MouseEventArgs)e).Button == MouseButtons.Left) return;
         var notifyWindow = AppServices.ServiceProvider.GetRequiredService<NotifyMenuWindow>();
         notifyWindow.Show();
         notifyWindow.Activate();
