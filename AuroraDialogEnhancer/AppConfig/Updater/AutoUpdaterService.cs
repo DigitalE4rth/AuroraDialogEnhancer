@@ -74,19 +74,19 @@ public class AutoUpdaterService
 
     private void StartAsync(bool isReportErrors, bool isSilentCheck)
     {
-        var (isSucess, isUpdated) = (false, false);
+        var (isSucсess, isUpdated) = (false, false);
 
         try
         {
             var updateInfo = GetUpdateInfo();
-            (isSucess, isUpdated) = StartUpdate(updateInfo, isReportErrors, isSilentCheck);
+            (isSucсess, isUpdated) = StartUpdate(updateInfo, isReportErrors, isSilentCheck);
         }
         catch (Exception e)
         {
             ShowError(e, isReportErrors);
         }
 
-        if (isSucess)
+        if (isSucсess)
         {
             Properties.Settings.Default.Updater_LastUpdateCheckTime = DateTime.Now;
             Properties.Settings.Default.Save();
