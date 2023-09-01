@@ -14,7 +14,9 @@ public class AdeWebClient : WebClient
     public AdeWebClient()
     {
         CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-        Headers[HttpRequestHeader.UserAgent] = Properties.Settings.Default.WebClient_UserAgent;
+        Headers[HttpRequestHeader.UserAgent] = string.IsNullOrEmpty(Properties.Settings.Default.WebClient_UserAgent)
+            ? Properties.DefaultSettings.Default.WebClient_UserAgent
+            : Properties.Settings.Default.WebClient_UserAgent;
     }
 
     /// <inheritdoc />
