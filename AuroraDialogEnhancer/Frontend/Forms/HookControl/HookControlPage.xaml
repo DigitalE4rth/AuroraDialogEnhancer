@@ -24,7 +24,7 @@
             <StackPanel Margin="0,0,0,25">
 
                 <!--  Title  /  Game ribbon  -->
-                <Grid Margin="0,0,0,0">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -55,7 +55,7 @@
 
                             <woControls:ComboBox.Title>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                    <woControls:PathIcon Data="{StaticResource Icon.MoreHoriz}" Style="{StaticResource IconMedium}" />
+                                    <woControls:PathIcon Data="{StaticResource I.S.MoreHorizontal}" Style="{StaticResource IconMedium}" />
                                 </Grid>
                             </woControls:ComboBox.Title>
 

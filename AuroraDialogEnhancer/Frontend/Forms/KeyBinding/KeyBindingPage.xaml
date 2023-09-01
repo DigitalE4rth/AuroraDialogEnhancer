@@ -49,7 +49,7 @@
 
                         <woControls:ComboBox.Title>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.MoreHoriz}" Style="{StaticResource IconMedium}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.MoreHorizontal}" Style="{StaticResource IconMedium}" />
                             </Grid>
                         </woControls:ComboBox.Title>
 
