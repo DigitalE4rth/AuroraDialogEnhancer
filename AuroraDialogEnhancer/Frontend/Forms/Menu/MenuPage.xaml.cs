@@ -6,13 +6,17 @@ using WhyOrchid.Controls;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Menu;
 
-public partial class MenuPage : Page
+public partial class MenuPage
 {
-    public Action<EPageType>? OnMenuItemChecked;
+    public Action<EPageType>? MenuItemChecked;
 
     public MenuPage()
     {
         InitializeComponent();
+
+#if DEBUG
+        ContainerWip.Visibility = Visibility.Visible;
+#endif
     }
 
     public void SetCheckedItem(EPageType pageType)
@@ -22,5 +26,5 @@ public partial class MenuPage : Page
         targetButton.IsChecked = true;
     }
 
-    private void MenuItem_OnChecked(object sender, RoutedEventArgs e) => OnMenuItemChecked?.Invoke((EPageType) ((MenuButton) sender).Tag);
+    private void MenuItem_OnChecked(object sender, RoutedEventArgs e) => MenuItemChecked?.Invoke((EPageType) ((MenuButton) sender).Tag);
 }

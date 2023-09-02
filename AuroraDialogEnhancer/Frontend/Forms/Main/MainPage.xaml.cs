@@ -30,7 +30,7 @@ public partial class MainPage : Page
         FrameMain.NavigationService.RemoveBackEntry();
 
         menuPage.SetCheckedItem(_uiService.CurrentPage);
-        menuPage.OnMenuItemChecked = OnMenuItemChecked;
+        menuPage.MenuItemChecked = OnMenuItemChecked;
     }
 
     private void InitializeMainPage() => _uiService.Navigate(_uiService.CurrentPage);

@@ -227,7 +227,10 @@
                         </woControls:MenuStateButton.IconInactive>
                     </woControls:MenuStateButton>
 
-                    <StackPanel d:Visibility="Visible" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <!--  Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Converter={StaticResource BooleanToVisibilityConverter}}"  -->
+                    <StackPanel x:Name="ContainerWip"
+                                d:Visibility="Visible"
+                                Visibility="Collapsed">
 
                         <Border Height="1"
                                 Margin="5,2,5,5"
