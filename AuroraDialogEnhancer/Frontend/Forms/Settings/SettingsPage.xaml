@@ -11,9 +11,12 @@
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
       Title="Settings"
       d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
-      d:DesignHeight="850"
+      d:DesignHeight="900"
       d:DesignWidth="800"
       mc:Ignorable="d">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Page.Resources>
 
     <woControls:ScrollViewer IsInnerScrollbarsArrangement="True" VerticalScrollBarVisibility="Auto">
         <StackPanel MaxWidth="800" Margin="55,25,55,25">
@@ -168,14 +171,13 @@
                 </woControls:CardToggleButton>
 
                 <!--  Expert mode  -->
-                <woControls:CardToggleButton x:Name="Toggle_ExpertMode"
+                <woControls:CardToggleButton x:Name="ToggleExpertMode"
                                              Title="{x:Static localization:Resources.Settings_ExpertMode_Title}"
                                              MinHeight="55"
                                              Margin="0,0,0,5"
                                              Click="ExpertMode_OnClick"
                                              Description="{x:Static localization:Resources.Settings_ExpertMode_Description}"
-                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Mode=OneTime}"
-                                             Visibility="Collapsed">
+                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Mode=OneTime}">
 
                     <woControls:CardToggleButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -224,6 +226,62 @@
                 </woControls:CardButton>
 
             </StackPanel>
+
+            <!--  Internet  -->
+            <StackPanel Margin="0,25,0,0"
+                        d:Visibility="Visible"
+                        Visibility="{Binding Source={x:Static properties:Settings.Default}, Converter={StaticResource BooleanToVisibilityConverter}, Path=App_IsExpertMode, Mode=OneTime}">
+                <!--  Title  -->
+                <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.Settings_Internet}" />
+
+                <!--  User Agent  -->
+                <woControls:CardButton x:Name="CardButtonUserAgent"
+                                       Title="{x:Static localization:Resources.Settings_UserAgent}"
+                                       MinHeight="55"
+                                       Margin="0,0,0,5"
+                                       Click="Button_SetUserAgent_OnClick"
+                                       ContentForeground="Secondary"
+                                       Description="{Binding Source={x:Static properties:Settings.Default}, Path=WebClient_UserAgent, Mode=OneTime}">
+
+                    <woControls:CardButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.S.Desktop}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardButton.LeftIcon>
+
+                    <woControls:CardButton.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.Edit}" Style="{StaticResource IconSmall}" />
+
+                        </Grid>
+                    </woControls:CardButton.RightIcon>
+                </woControls:CardButton>
+
+                <!--  Update server  -->
+                <woControls:CardButton x:Name="CardButtonUpdateServer"
+                                       Title="{x:Static localization:Resources.Settings_Update_AppServer}"
+                                       MinHeight="55"
+                                       Margin="0,0,0,5"
+                                       Click="Button_SetUpdateServer_OnClick"
+                                       ContentForeground="Secondary"
+                                       Description="{Binding Source={x:Static properties:Settings.Default}, Path=Update_UpdateServerUri, Mode=OneTime}">
+
+                    <woControls:CardButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.S.Server}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardButton.LeftIcon>
+
+                    <woControls:CardButton.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource Icon.Edit}" Style="{StaticResource IconSmall}" />
+
+                        </Grid>
+                    </woControls:CardButton.RightIcon>
+                </woControls:CardButton>
+            </StackPanel>
+
         </StackPanel>
+
     </woControls:ScrollViewer>
 </Page>

@@ -120,7 +120,11 @@ public class AutoUpdaterService
 
     private UpdateInfo GetUpdateInfo()
     {
-        var updateUri = new Uri(Properties.Settings.Default.Update_UpdateInfoUri);
+        var updateServer = string.IsNullOrEmpty(Properties.Settings.Default.Update_UpdateServerUri)
+            ? Properties.DefaultSettings.Default.Update_UpdateServerUri
+            : Properties.Settings.Default.Update_UpdateServerUri;
+
+        var updateUri = new Uri(updateServer);
 
         UpdateInfo args;
         using (var client = new AdeWebClient())

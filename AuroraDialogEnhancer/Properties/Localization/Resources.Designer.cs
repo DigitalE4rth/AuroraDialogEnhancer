@@ -1807,6 +1807,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Internet.
+        /// </summary>
+        public static string Settings_Internet {
+            get {
+                return ResourceManager.GetString("Settings_Internet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Settings_Language {
@@ -1902,6 +1911,24 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         public static string Settings_UnloadUi_Title {
             get {
                 return ResourceManager.GetString("Settings_UnloadUi_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update server.
+        /// </summary>
+        public static string Settings_Update_AppServer {
+            get {
+                return ResourceManager.GetString("Settings_Update_AppServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default user agent.
+        /// </summary>
+        public static string Settings_UserAgent {
+            get {
+                return ResourceManager.GetString("Settings_UserAgent", resourceCulture);
             }
         }
         

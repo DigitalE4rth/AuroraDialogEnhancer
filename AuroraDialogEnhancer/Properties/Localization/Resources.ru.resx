@@ -691,13 +691,16 @@
     <value>Сворачивать вместо закрытия</value>
   </data>
   <data name="Settings_ExpertMode_Description" xml:space="preserve">
-    <value>Экспериментальный функционал</value>
+    <value>Продвинутый функционал</value>
   </data>
   <data name="Settings_ExpertMode_Title" xml:space="preserve">
     <value>Экспертный режим</value>
   </data>
   <data name="Settings_General" xml:space="preserve">
     <value>Общие</value>
+  </data>
+  <data name="Settings_Internet" xml:space="preserve">
+    <value>Интернет</value>
   </data>
   <data name="Settings_Language" xml:space="preserve">
     <value>Язык</value>
@@ -731,6 +734,12 @@
   </data>
   <data name="Settings_UnloadUi_Title" xml:space="preserve">
     <value>Выгружать интерфейс</value>
+  </data>
+  <data name="Settings_Update_AppServer" xml:space="preserve">
+    <value>Сервер обновлений</value>
+  </data>
+  <data name="Settings_UserAgent" xml:space="preserve">
+    <value>User agent по умолчанию</value>
   </data>
   <data name="Settings_Utils" xml:space="preserve">
     <value>Утилиты</value>

@@ -139,7 +139,6 @@
     <Compile Include="AppConfig\Updater\UpdateDownloadDialog.xaml.cs">
       <DependentUpon>UpdateDownloadDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppConfig\Updater\IPersistenceProvider.cs" />
     <Compile Include="AppConfig\Updater\UpdateFrequencyMapper.cs" />
     <Compile Include="AppConfig\Updater\UpdateInfo.cs" />
     <Compile Include="AppConfig\Updater\UpdateDialog.xaml.cs">

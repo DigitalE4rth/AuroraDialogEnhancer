@@ -372,7 +372,7 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string WebClient_UserAgent {
             get {
                 return ((string)(this["WebClient_UserAgent"]));
@@ -384,13 +384,13 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Earth\\Desktop\\Update.xml")]
-        public string Update_UpdateInfoUri {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Update_UpdateServerUri {
             get {
-                return ((string)(this["Update_UpdateInfoUri"]));
+                return ((string)(this["Update_UpdateServerUri"]));
             }
             set {
-                this["Update_UpdateInfoUri"] = value;
+                this["Update_UpdateServerUri"] = value;
             }
         }
         

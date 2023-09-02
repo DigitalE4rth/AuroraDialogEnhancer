@@ -32,10 +32,7 @@ public partial class SettingsPage
         InitializeComboBoxLanguage();
         InitializeComboBoxMainWindowStartupState();
         InitializeComboBoxMainWindowShortcutState();
-
-#if DEBUG
-        Toggle_ExpertMode.Visibility = Visibility.Visible;
-#endif
+        InitializeDescriptionFallback();
     }
 
     #region Initialization
@@ -59,7 +56,6 @@ public partial class SettingsPage
         ComboBoxShortcutWindowState.SelectionChanged += ComboBoxShortcutWindowState_OnSelectionChanged;
     }
     #endregion
-
 
     #region General
     private void ComboBoxLanguages_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -167,7 +163,6 @@ public partial class SettingsPage
     }
     #endregion
 
-
     #region Utilities
     private void ExpertMode_OnClick(object sender, RoutedEventArgs e)
     {
@@ -204,6 +199,73 @@ public partial class SettingsPage
     }
     #endregion
 
+    #region Internet
+    private void InitializeDescriptionFallback()
+    {
+        if (string.IsNullOrEmpty(Properties.Settings.Default.WebClient_UserAgent))
+        {
+            CardButtonUserAgent.Description = Properties.DefaultSettings.Default.WebClient_UserAgent;
+        }
+
+        if (string.IsNullOrEmpty(Properties.Settings.Default.Update_UpdateServerUri))
+        {
+            CardButtonUpdateServer.Description = Properties.DefaultSettings.Default.Update_UpdateServerUri;
+        }
+    }
+
+    private void Button_SetUserAgent_OnClick(object sender, RoutedEventArgs e)
+    {
+        var dialog = new TextInputResetDialog(new TextInputResetDialogDataContext
+        {
+            TextBoxTitle = Properties.Localization.Resources.Settings_UserAgent,
+            TextContent  = string.IsNullOrEmpty(Properties.Settings.Default.WebClient_UserAgent) ? Properties.DefaultSettings.Default.WebClient_UserAgent : Properties.Settings.Default.WebClient_UserAgent,
+            ResetContent = Properties.DefaultSettings.Default.WebClient_UserAgent
+        })
+        {
+            Owner = Application.Current.MainWindow,
+        };
+
+        if (dialog.ShowDialog() != true) return;
+
+        Properties.Settings.Default.WebClient_UserAgent = dialog.Result!.Equals(Properties.DefaultSettings.Default.WebClient_UserAgent) ? string.Empty : dialog.Result;
+        Properties.Settings.Default.Save();
+
+        if (string.IsNullOrEmpty(dialog.Result))
+        {
+            ((CardButton)sender).Description = Properties.DefaultSettings.Default.WebClient_UserAgent;
+            return;
+        }
+
+        ((CardButton) sender).Description = dialog.Result!;
+    }
+
+    private void Button_SetUpdateServer_OnClick(object sender, RoutedEventArgs e)
+    {
+        var dialog = new TextInputResetDialog(new TextInputResetDialogDataContext
+        {
+            TextBoxTitle = Properties.Localization.Resources.Settings_Update_AppServer,
+            TextContent  = string.IsNullOrEmpty(Properties.Settings.Default.Update_UpdateServerUri) ? Properties.DefaultSettings.Default.Update_UpdateServerUri : Properties.Settings.Default.Update_UpdateServerUri,
+            ResetContent = Properties.DefaultSettings.Default.Update_UpdateServerUri
+        })
+        {
+            Owner = Application.Current.MainWindow,
+        };
+
+        if (dialog.ShowDialog() != true) return;
+
+        Properties.Settings.Default.Update_UpdateServerUri = dialog.Result!.Equals(Properties.DefaultSettings.Default.Update_UpdateServerUri) ? string.Empty : dialog.Result;
+        Properties.Settings.Default.Save();
+
+        if (string.IsNullOrEmpty(dialog.Result))
+        {
+            ((CardButton)sender).Description = Properties.DefaultSettings.Default.WebClient_UserAgent;
+            return;
+        }
+
+        ((CardButton) sender).Description = dialog.Result!;
+    }
+    #endregion
+    
     #region Cleanup
     private void SettingsPage_Unloaded(object sender, RoutedEventArgs e)
     {

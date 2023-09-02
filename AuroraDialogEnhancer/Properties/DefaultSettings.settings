@@ -14,7 +14,7 @@
     <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">
       <Value Profile="(Default)">Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0</Value>
     </Setting>
-    <Setting Name="AutoUpdate_UpdateInfoUri" Type="System.String" Scope="User">
+    <Setting Name="Update_UpdateServerUri" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Users\Earth\Desktop\Update.xml</Value>
     </Setting>
     <Setting Name="StartupArgument_Profile" Type="System.String" Scope="User">

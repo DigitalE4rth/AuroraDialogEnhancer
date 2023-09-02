@@ -74,12 +74,12 @@ namespace AuroraDialogEnhancer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Earth\\Desktop\\Update.xml")]
-        public string AutoUpdate_UpdateInfoUri {
+        public string Update_UpdateServerUri {
             get {
-                return ((string)(this["AutoUpdate_UpdateInfoUri"]));
+                return ((string)(this["Update_UpdateServerUri"]));
             }
             set {
-                this["AutoUpdate_UpdateInfoUri"] = value;
+                this["Update_UpdateServerUri"] = value;
             }
         }
         
