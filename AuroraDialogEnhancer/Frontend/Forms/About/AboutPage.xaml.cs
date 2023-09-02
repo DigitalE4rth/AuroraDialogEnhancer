@@ -21,8 +21,31 @@ public partial class AboutPage
         _autoUpdaterService = autoUpdaterService;
         _extensionsProvider = extensionsProvider;
         InitializeComponent();
-        InitializeExtensions();
+        // ToDo: Enable/Rewrite for two or more extensions. One extension doesn't look pretty in UI
+        //InitializeExtensions();
         InitializeComboBoxUpdateFrequency();
+    }
+
+    private void InitializeExtensions()
+    {
+        var isLeft = true;
+        var leftExtensions = new List<ExtensionViewModel>();
+        var rightExtensions = new List<ExtensionViewModel>();
+        foreach (var extension in _extensionsProvider.ExtensionsDictionary.Values)
+        {
+            if (isLeft)
+            {
+                leftExtensions.Add(new ExtensionViewModel(extension));
+                isLeft = false;
+                continue;
+            }
+
+            rightExtensions.Add(new ExtensionViewModel(extension));
+            isLeft = true;
+        }
+
+        ContainerExtensionsLeft.ItemsSource = leftExtensions;
+        ContainerExtensionsRight.ItemsSource = rightExtensions;
     }
 
     private void InitializeComboBoxUpdateFrequency()
@@ -49,28 +72,6 @@ public partial class AboutPage
         PathIconUpdateFrequency.Data = updateFrequency == EUpdateFrequency.None
             ? (PathGeometry)Application.Current.Resources["I.R.NotificationsOff"]
             : (PathGeometry)Application.Current.Resources["I.R.Notifications"];
-    }
-
-    private void InitializeExtensions()
-    {
-        var isLeft = true;
-        var leftExtensions = new List<ExtensionViewModel>();
-        var rightExtensions = new List<ExtensionViewModel>();
-        foreach (var extension in _extensionsProvider.ExtensionsDictionary!.Values)
-        {
-            if (isLeft)
-            {
-                leftExtensions.Add(new ExtensionViewModel(extension));
-                isLeft = false;
-                continue;
-            }
-
-            rightExtensions.Add(new ExtensionViewModel(extension));
-            isLeft = true;
-        }
-
-        ContainerExtensionsLeft.ItemsSource = leftExtensions;
-        ContainerExtensionsRight.ItemsSource = rightExtensions;
     }
 
     private void Button_Link_OnClick(object sender, RoutedEventArgs e)
