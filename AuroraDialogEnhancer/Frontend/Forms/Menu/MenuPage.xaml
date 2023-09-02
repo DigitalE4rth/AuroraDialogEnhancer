@@ -56,12 +56,12 @@
                                VerticalAlignment="Center"
                                FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
                                FontWeight="Bold"
-                               Opacity="0.15"
+                               Opacity="0.12"
                                Text="A">
                         <TextBlock.Foreground>
                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                 <GradientStop Offset="0" Color="Transparent" />
-                                <GradientStop Offset="1" Color="Black" />
+                                <GradientStop Offset="1" Color="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Surface, Mode=OneTime}" />
                             </LinearGradientBrush>
                         </TextBlock.Foreground>
                     </TextBlock>
@@ -83,12 +83,12 @@
                                              Style="{StaticResource IconLarge}" />
 
                         <woControls:PathIcon Data="{StaticResource Icon.Aurora}"
-                                             Opacity="0.3"
+                                             Opacity="0.2"
                                              Style="{StaticResource IconLarge}">
                             <woControls:PathIcon.Foreground>
                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                     <GradientStop Color="Transparent" />
-                                    <GradientStop Offset="1" Color="Black" />
+                                    <GradientStop Offset="1" Color="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Surface, Mode=OneTime}" />
                                 </LinearGradientBrush>
                             </woControls:PathIcon.Foreground>
                         </woControls:PathIcon>
