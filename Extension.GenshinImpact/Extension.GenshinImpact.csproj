@@ -58,6 +58,7 @@
     <Compile Include="Extension.cs" />
     <Compile Include="ClickablePoints\ClickableScreenPointsProvider.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileProvider.cs" />
+    <Compile Include="Location\LocationProvider.cs" />
     <Compile Include="Presets\PresetData.cs" />
     <Compile Include="Properties\Resources.ru.Designer.cs">
       <AutoGen>True</AutoGen>

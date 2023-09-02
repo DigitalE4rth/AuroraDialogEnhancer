@@ -70,6 +70,27 @@
                                         <Grid Grid.Column="0"
                                               Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
                                               Margin="0,0,10,0">
+                                            <woControls:PathIcon Data="{StaticResource I.R.Location}" Style="{StaticResource IconMedium}" />
+                                        </Grid>
+
+                                        <TextBlock Grid.Column="1"
+                                                   VerticalAlignment="Center"
+                                                   Text="{x:Static localization:Resources.HookSettings_Settings_Action_Locate}" />
+                                    </Grid>
+                                </ComboBoxItem.Content>
+                            </ComboBoxItem>
+
+                            <ComboBoxItem Padding="10,0,15,0">
+                                <ComboBoxItem.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0"
+                                              Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
+                                              Margin="0,0,10,0">
                                             <woControls:PathIcon Data="{StaticResource Icon.RotateLeft}" Style="{StaticResource IconMedium}" />
                                         </Grid>
 
@@ -263,7 +284,8 @@
                                        d:Description="d: C:\Games\Genshin Impact\ScreenShots\"
                                        Click="Button_ScreenShotsLocation_OnClick"
                                        ContentForeground="Secondary"
-                                       Description="{Binding Path=ExtensionConfig.ScreenShotsLocation}">
+                                       Description="{Binding Path=ExtensionConfig.ScreenShotsLocation}"
+                                       ToolTip="{Binding Path=ExtensionConfig.ScreenShotsLocation}">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">

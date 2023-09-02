@@ -453,6 +453,9 @@
   <data name="HookSettings_Profile" xml:space="preserve">
     <value>Профиль</value>
   </data>
+  <data name="HookSettings_Settings_Action_Locate" xml:space="preserve">
+    <value>Обнаружить</value>
+  </data>
   <data name="HookSettings_Settings_Action_Reset" xml:space="preserve">
     <value>Сбросить</value>
   </data>

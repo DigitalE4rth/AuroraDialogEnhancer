@@ -1069,6 +1069,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Locate.
+        /// </summary>
+        public static string HookSettings_Settings_Action_Locate {
+            get {
+                return ResourceManager.GetString("HookSettings_Settings_Action_Locate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string HookSettings_Settings_Action_Reset {
@@ -1780,7 +1789,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Experimental features.
+        ///   Looks up a localized string similar to Advanced features.
         /// </summary>
         public static string Settings_ExpertMode_Description {
             get {

@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
+using AuroraDialogEnhancerExtensions.Location;
+using Extension.HonkaiStarRail.Location;
 
 namespace Extension.HonkaiStarRail;
 
@@ -17,6 +19,8 @@ public sealed class Extension : ExtensionDto
     public override string Version { get; protected set; } = typeof(Extension).Assembly.GetName().Version.ToString();
 
     public override string Link { get; protected set; } = "https://github.com/DigitalE4rth/AuroraDialogEnhancer";
+
+    public override ILocationProvider GetLocationProvider() => new LocationProvider();
 
     public override ExtensionConfigDto GetConfig() => new("HonkaiStarRail", "launcher");
 

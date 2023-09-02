@@ -2,8 +2,10 @@
 using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.Location;
 using AuroraDialogEnhancerExtensions.Proxy;
 using Extension.GenshinImpact.KeyBindings;
+using Extension.GenshinImpact.Location;
 using Extension.GenshinImpact.Presets;
 
 namespace Extension.GenshinImpact;
@@ -22,9 +24,11 @@ public sealed class Extension : ExtensionDto
 
     public override string Link { get; protected set; } = "https://github.com/DigitalE4rth/AuroraDialogEnhancer";
 
+    public override Bitmap GetCover() => Properties.Resources.Cover;
+
     public override ExtensionConfigDto GetConfig() => new("GenshinImpact", "launcher");
 
-    public override Bitmap GetCover() => Properties.Resources.Cover;
+    public override ILocationProvider GetLocationProvider() => new LocationProvider();
 
     public override IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProvider();
 

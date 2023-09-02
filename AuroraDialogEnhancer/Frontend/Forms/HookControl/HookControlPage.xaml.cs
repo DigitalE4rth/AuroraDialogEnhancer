@@ -68,9 +68,45 @@ public partial class HookControlPage
 
     private void ComboBoxSettings_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (((WhyOrchid.Controls.ComboBox)sender).SelectedIndex == -1) return;
+        var selectedIndex = ((WhyOrchid.Controls.ComboBox)sender).SelectedIndex;
+        if (selectedIndex == -1) return;
         ((WhyOrchid.Controls.ComboBox)sender).SelectedIndex = -1;
 
+        switch (selectedIndex)
+        {
+            case 0:
+                LocatePaths();
+                break;
+            case 1:
+                ResetConfig();
+                break;
+        }
+    }
+
+    private void LocatePaths()
+    {
+        var locationProvider = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetLocationProvider();
+
+        if (!string.IsNullOrEmpty(locationProvider.GamePath))
+        {
+            _hookSettingsDataContext!.ExtensionConfig.GameLocation = locationProvider.GamePath;
+        }
+
+        if (!string.IsNullOrEmpty(locationProvider.LauncherPath))
+        {
+            _hookSettingsDataContext!.ExtensionConfig.LauncherLocation = locationProvider.LauncherPath;
+        }
+
+        if (!string.IsNullOrEmpty(locationProvider.ScreenshotsFolderPath))
+        {
+            _hookSettingsDataContext!.ExtensionConfig.ScreenShotsLocation = locationProvider.ScreenshotsFolderPath;
+        }
+
+        _extensionConfigService.SaveAndRestartHookIfNecessary(_hookSettingsDataContext!.ExtensionConfig.Config);
+    }
+
+    private void ResetConfig()
+    {
         _extensionConfigService.SaveDefault(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
 
         SettingsPage_Unloaded(this, new RoutedEventArgs());

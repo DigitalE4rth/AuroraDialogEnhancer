@@ -2,6 +2,7 @@
 using System.Drawing;
 using AuroraDialogEnhancerExtensions.Content;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.Location;
 using AuroraDialogEnhancerExtensions.Proxy;
 
 namespace AuroraDialogEnhancerExtensions;
@@ -23,6 +24,8 @@ public abstract class ExtensionDto
     public virtual Bitmap GetCover() => new(0,0);
 
     public virtual ExtensionConfigDto GetConfig() => new();
+
+    public virtual ILocationProvider GetLocationProvider() => new LocationProviderEmpty();
 
     public virtual IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProviderEmpty();
 

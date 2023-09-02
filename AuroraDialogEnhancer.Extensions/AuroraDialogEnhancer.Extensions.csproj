@@ -66,6 +66,8 @@
     <Compile Include="KeyBindings\KeyBindingProfileProviderEmpty.cs" />
     <Compile Include="KeyBindings\KeyboardKeyDto.cs" />
     <Compile Include="KeyBindings\MouseKeyDto.cs" />
+    <Compile Include="Location\ILocationProvider.cs" />
+    <Compile Include="Location\LocationProviderEmpty.cs" />
     <Compile Include="Proxy\DialogOptionFinderEmpty.cs" />
     <Compile Include="Proxy\IPreset.cs" />
     <Compile Include="Proxy\IDialogOptionFinder.cs" />
