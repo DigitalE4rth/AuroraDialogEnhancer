@@ -132,7 +132,7 @@
     </ApplicationDefinition>
     <Compile Include="AppConfig\Updater\ArgumentProcessingService.cs" />
     <Compile Include="AppConfig\Updater\AutoUpdaterService.cs" />
-    <Compile Include="AppConfig\Updater\AdeWebClient.cs">
+    <Compile Include="AppConfig\WebClient\AdeWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="AppConfig\Updater\EUpdateFrequency.cs" />
@@ -596,6 +596,7 @@
   <ItemGroup>
     <None Include="Resources\Updater.exe" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rem Copy compiled l18n assemblies to alt folder

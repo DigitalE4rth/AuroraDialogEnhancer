@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.AppConfig.Statics;
+using AuroraDialogEnhancer.AppConfig.WebClient;
 using AuroraDialogEnhancer.Frontend.Forms.Utils;
 using AuroraDialogEnhancer.Frontend.Services;
 using Microsoft.Extensions.DependencyInjection;

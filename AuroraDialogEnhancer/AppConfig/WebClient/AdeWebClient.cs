@@ -2,9 +2,9 @@
 using System.Net;
 using System.Net.Cache;
 
-namespace AuroraDialogEnhancer.AppConfig.Updater;
+namespace AuroraDialogEnhancer.AppConfig.WebClient;
 
-public class AdeWebClient : WebClient
+public class AdeWebClient : System.Net.WebClient
 {
     /// <summary>
     /// Response Uri after any redirects.

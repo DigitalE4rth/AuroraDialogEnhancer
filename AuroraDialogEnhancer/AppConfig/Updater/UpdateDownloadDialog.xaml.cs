@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using AuroraDialogEnhancer.AppConfig.Statics;
+using AuroraDialogEnhancer.AppConfig.WebClient;
 using AuroraDialogEnhancer.Frontend.Forms.Utils;
 
 namespace AuroraDialogEnhancer.AppConfig.Updater;
