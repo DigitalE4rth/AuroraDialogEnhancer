@@ -133,18 +133,6 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("yyyMMddHHmmss")]
-        public string App_Screenshot_DateTimeFormat {
-            get {
-                return ((string)(this["App_Screenshot_DateTimeFormat"]));
-            }
-            set {
-                this["App_Screenshot_DateTimeFormat"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string UI_HookSettings_SelectedGameId {
             get {

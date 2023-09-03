@@ -29,9 +29,6 @@
     <Setting Name="App_CurrentCulture" Type="System.String" Scope="User">
       <Value Profile="(Default)">auto</Value>
     </Setting>
-    <Setting Name="App_Screenshot_DateTimeFormat" Type="System.String" Scope="User">
-      <Value Profile="(Default)">yyyMMddHHmmss</Value>
-    </Setting>
     <Setting Name="UI_HookSettings_SelectedGameId" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
