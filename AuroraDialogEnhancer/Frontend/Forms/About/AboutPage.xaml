@@ -532,6 +532,7 @@
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
 
+                <!-- Font icons -->
                 <Grid Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -580,52 +581,24 @@
                     </woControls:CardButton>
                 </Grid>
 
-                <Grid Margin="0,0,0,5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+                <!-- Icon -->
+                <woControls:CardButton Title="{x:Static localization:Resources.About_ApplicationIcon}"
+                                       MinHeight="55"
+                                       Click="Button_Link_OnClick"
+                                       Tag="https://svgmix.com/item/zQWr2M/aurora">
 
-                    <woControls:CardButton Title="{x:Static localization:Resources.About_ApplicationIcon}"
-                                           Grid.Column="0"
-                                           MinHeight="55"
-                                           Margin="0,0,5,0"
-                                           Click="Button_Link_OnClick"
-                                           Tag="https://www.flaticon.com/free-icon/moon_1916619">
+                    <woControls:CardButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.R.Aurora}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardButton.LeftIcon>
 
-                        <woControls:CardButton.LeftIcon>
-                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource I.S.Moon}" Style="{StaticResource IconLarge}" />
-                            </Grid>
-                        </woControls:CardButton.LeftIcon>
-
-                        <woControls:CardButton.RightIcon>
-                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                            </Grid>
-                        </woControls:CardButton.RightIcon>
-                    </woControls:CardButton>
-
-                    <woControls:CardButton Title="{x:Static localization:Resources.About_ApplicationIcon}"
-                                           Grid.Column="1"
-                                           MinHeight="55"
-                                           Click="Button_Link_OnClick"
-                                           Tag="https://svgmix.com/item/zQWr2M/aurora">
-
-                        <woControls:CardButton.LeftIcon>
-                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource I.R.Aurora}" Style="{StaticResource IconLarge}" />
-                            </Grid>
-                        </woControls:CardButton.LeftIcon>
-
-                        <woControls:CardButton.RightIcon>
-                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                            </Grid>
-                        </woControls:CardButton.RightIcon>
-                    </woControls:CardButton>
-                </Grid>
-
+                    <woControls:CardButton.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                        </Grid>
+                    </woControls:CardButton.RightIcon>
+                </woControls:CardButton>
             </StackPanel>
         </StackPanel>
     </woControls:ScrollViewer>
