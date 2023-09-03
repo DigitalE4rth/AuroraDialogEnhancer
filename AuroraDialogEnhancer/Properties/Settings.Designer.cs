@@ -325,7 +325,7 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool App_IsScreenshotsManager {
             get {
                 return ((bool)(this["App_IsScreenshotsManager"]));

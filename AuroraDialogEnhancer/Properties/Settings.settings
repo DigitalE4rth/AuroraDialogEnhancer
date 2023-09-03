@@ -78,7 +78,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="App_IsScreenshotsManager" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="UI_FontStyle_Title" Type="System.Double" Scope="User">
       <Value Profile="(Default)">24</Value>
