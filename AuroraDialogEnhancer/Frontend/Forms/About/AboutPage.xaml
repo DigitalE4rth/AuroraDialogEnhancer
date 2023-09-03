@@ -38,16 +38,20 @@
                                 HorizontalAlignment="Right"
                                 Orientation="Horizontal">
 
-                        <woControls:ComboBox x:Name="ComboBoxUpdateFrequency" Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                        <woControls:ComboBox x:Name="ComboBoxUpdateFrequency"
+                                             Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
                                              Margin="0,0,5,0"
                                              IsMenu="True"
-                                             ToolTip="{x:Static localization:Resources.About_Update_Frequency_ToolTip}"
                                              PopUpPlacementMode="Bottom"
-                                             PopupVerticalOffset="3">
+                                             PopupVerticalOffset="3"
+                                             ToolTip="{x:Static localization:Resources.About_Update_Frequency_ToolTip}">
 
                             <woControls:ComboBox.Title>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                    <woControls:PathIcon x:Name="PathIconUpdateFrequency" Data="{StaticResource I.R.Notifications}" Margin="0,0,1,0" Style="{StaticResource IconMedium}" />
+                                    <woControls:PathIcon x:Name="PathIconUpdateFrequency"
+                                                         Margin="0,0,1,0"
+                                                         Data="{StaticResource I.R.Notifications}"
+                                                         Style="{StaticResource IconMedium}" />
                                 </Grid>
                             </woControls:ComboBox.Title>
 

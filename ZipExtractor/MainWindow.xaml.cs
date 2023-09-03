@@ -177,8 +177,7 @@ public partial class MainWindow
                                     throw new ArgumentNullException($"parentDirectory is null for \"{filePath}\"!");
                                 }
 
-                                using (Stream destination = File.Open(filePath, FileMode.OpenOrCreate, FileAccess.Write,
-                                           FileShare.None))
+                                using (Stream destination = File.Open(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
                                 {
                                     using var stream = entry.Open();
                                     stream.CopyTo(destination);

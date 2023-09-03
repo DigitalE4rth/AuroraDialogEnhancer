@@ -73,7 +73,7 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Earth\\Desktop\\Update.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("WIP")]
         public string Update_UpdateServerUri {
             get {
                 return ((string)(this["Update_UpdateServerUri"]));

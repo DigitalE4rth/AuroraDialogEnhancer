@@ -110,8 +110,7 @@ public partial class UpdateDownloadDialog
 
             File.Move(_tempFile, tempPath);
 
-            var installerPath = Path.Combine(Path.GetDirectoryName(tempPath) ?? throw new InvalidOperationException(),
-                "Updater.exe");
+            var installerPath = Path.Combine(Path.GetDirectoryName(tempPath) ?? throw new InvalidOperationException(), "Updater.exe");
             File.WriteAllBytes(installerPath, Properties.InternalResources.Updater);
 
             var arguments = new Collection<string>
