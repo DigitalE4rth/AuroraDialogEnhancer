@@ -235,8 +235,8 @@ public partial class AppearancePage
             mainFont = mainFont.Substring(0, indexOfFallback);
         }
 
-        var isMainFontDefault = mainFont == Properties.DefaultSettings.Default.FontStyle_FontFamily;
-        var isFontSizeDefault = Math.Abs(Properties.DefaultSettings.Default.FontStyle_FontSize - WhyOrchid.Properties.Settings.Default.FontStyle_Medium) == 0;
+        var isMainFontDefault = mainFont == Properties.DefaultSettings.Default.UI_FontStyle_FontFamily;
+        var isFontSizeDefault = Math.Abs(Properties.DefaultSettings.Default.UI_FontStyle_FontSize - WhyOrchid.Properties.Settings.Default.FontStyle_Medium) == 0;
 
         if (isMainFontDefault && isFontSizeDefault) return;
         ButtonFontRestore.Visibility = Visibility.Visible;
@@ -244,10 +244,10 @@ public partial class AppearancePage
 
     private void Button_RestoreFont_OnClick(object sender, RoutedEventArgs e)
     {
-        WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily = Properties.DefaultSettings.Default.FontStyle_FontFamily;
-        WhyOrchid.Properties.Settings.Default.FontStyle_Medium = Properties.DefaultSettings.Default.FontStyle_FontSize;
-        WhyOrchid.Properties.Settings.Default.FontStyle_Large  = Properties.DefaultSettings.Default.FontStyle_FontSize + 2;
-        WhyOrchid.Properties.Settings.Default.FontStyle_Small  = Properties.DefaultSettings.Default.FontStyle_FontSize - 2;
+        WhyOrchid.Properties.Settings.Default.FontStyle_FontFamily = Properties.DefaultSettings.Default.UI_FontStyle_FontFamily;
+        WhyOrchid.Properties.Settings.Default.FontStyle_Medium = Properties.DefaultSettings.Default.UI_FontStyle_FontSize;
+        WhyOrchid.Properties.Settings.Default.FontStyle_Large  = Properties.DefaultSettings.Default.UI_FontStyle_FontSize + 2;
+        WhyOrchid.Properties.Settings.Default.FontStyle_Small  = Properties.DefaultSettings.Default.UI_FontStyle_FontSize - 2;
         WhyOrchid.Properties.Settings.Default.Save();
         _uiService.ReloadUi();
         e.Handled = true;

@@ -25,6 +25,42 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("--profile")]
+        public string App_StartupArgument_Profile {
+            get {
+                return ((string)(this["App_StartupArgument_Profile"]));
+            }
+            set {
+                this["App_StartupArgument_Profile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Segoe UI")]
+        public string UI_FontStyle_FontFamily {
+            get {
+                return ((string)(this["UI_FontStyle_FontFamily"]));
+            }
+            set {
+                this["UI_FontStyle_FontFamily"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("14")]
+        public double UI_FontStyle_FontSize {
+            get {
+                return ((double)(this["UI_FontStyle_FontSize"]));
+            }
+            set {
+                this["UI_FontStyle_FontSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("#2cb065")]
         public string UI_ThemeInfo_AccentColor {
             get {
@@ -32,42 +68,6 @@ namespace AuroraDialogEnhancer.Properties {
             }
             set {
                 this["UI_ThemeInfo_AccentColor"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Segoe UI")]
-        public string FontStyle_FontFamily {
-            get {
-                return ((string)(this["FontStyle_FontFamily"]));
-            }
-            set {
-                this["FontStyle_FontFamily"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("14")]
-        public double FontStyle_FontSize {
-            get {
-                return ((double)(this["FontStyle_FontSize"]));
-            }
-            set {
-                this["FontStyle_FontSize"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0")]
-        public string WebClient_UserAgent {
-            get {
-                return ((string)(this["WebClient_UserAgent"]));
-            }
-            set {
-                this["WebClient_UserAgent"] = value;
             }
         }
         
@@ -85,13 +85,13 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("--profile")]
-        public string StartupArgument_Profile {
+        [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0")]
+        public string WebClient_UserAgent {
             get {
-                return ((string)(this["StartupArgument_Profile"]));
+                return ((string)(this["WebClient_UserAgent"]));
             }
             set {
-                this["StartupArgument_Profile"] = value;
+                this["WebClient_UserAgent"] = value;
             }
         }
     }

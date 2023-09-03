@@ -60,7 +60,7 @@ public partial class GameSelector
             ComboBoxGames.Items.Add(comboBoxItem);
         }
 
-        _comboBoxItemsByGameId!.TryGetValue(Properties.Settings.Default.UI_HookSettings_SelectedGameId!, out var initialItem);
+        _comboBoxItemsByGameId!.TryGetValue(Properties.Settings.Default.App_HookSettings_SelectedGameId!, out var initialItem);
         initialItem ??= _comboBoxItemsByGameId.Values.First();
         _processingComboBoxItem = initialItem;
         ComboBoxGames.SelectedItem = initialItem;
@@ -91,7 +91,7 @@ public partial class GameSelector
             return;
         }
 
-        if (!_hookedGameInfoProvider.Id!.Equals(Properties.Settings.Default.UI_HookSettings_SelectedGameId, StringComparison.Ordinal))
+        if (!_hookedGameInfoProvider.Id!.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
         {
             previousContent.Icon.Data = new PathGeometry();
         }
@@ -116,7 +116,7 @@ public partial class GameSelector
         }
 
         if (_hookedGameInfoProvider!.Id is not null &&
-            !_hookedGameInfoProvider.Id.Equals(Properties.Settings.Default.UI_HookSettings_SelectedGameId, StringComparison.Ordinal))
+            !_hookedGameInfoProvider.Id.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
         {
             LeftIcon.Margin = new Thickness(0);
             LeftIcon.Data = (PathGeometry) Application.Current.Resources["Icon.VitalSigns"];
@@ -138,7 +138,7 @@ public partial class GameSelector
         var selectedItem = (ComboBoxItem) ComboBoxGames.SelectedItem;
         var selectedGameId = (string) selectedItem.Tag;
 
-        Properties.Settings.Default.UI_HookSettings_SelectedGameId = selectedGameId;
+        Properties.Settings.Default.App_HookSettings_SelectedGameId = selectedGameId;
         Properties.Settings.Default.Save();
 
         ComboBoxGames.CustomContent = ((GameSelectorContent) selectedItem.Content).TextContent.Text;

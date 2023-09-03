@@ -78,7 +78,7 @@ public class KeyBindingProfileService
         Save(id, profiles);
 
         if (!_hookedGameDataProvider.IsExtenstionConfigPresent() ||
-            !_hookedGameDataProvider.Data!.ExtensionConfig!.Id.Equals(Properties.Settings.Default.UI_HookSettings_SelectedGameId, StringComparison.Ordinal))
+            !_hookedGameDataProvider.Data!.ExtensionConfig!.Id.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
         {
             return;
         }

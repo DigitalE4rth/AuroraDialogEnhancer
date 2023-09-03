@@ -48,7 +48,7 @@ public partial class NotifyMenuWindow
         _extensionProvider      = extensionProvider;
         _uiService              = uiService;
         _buttonsByGameId        = new Dictionary<string, Button>();
-        _latestGameId           = Properties.Settings.Default.UI_HookSettings_SelectedGameId;
+        _latestGameId           = Properties.Settings.Default.App_HookSettings_SelectedGameId;
 
         InitializeComponent();
         InitializeGameButtons();
@@ -81,7 +81,7 @@ public partial class NotifyMenuWindow
             SeparatorExit.Visibility = Visibility.Collapsed;
         }
 
-        _buttonsByGameId.TryGetValue(Properties.Settings.Default.UI_HookSettings_SelectedGameId!, out var initialButton);
+        _buttonsByGameId.TryGetValue(Properties.Settings.Default.App_HookSettings_SelectedGameId!, out var initialButton);
         initialButton ??= _buttonsByGameId.Values.First();
         _processingButton = initialButton;
 
@@ -95,7 +95,7 @@ public partial class NotifyMenuWindow
 
         if (!_uiService.IsMainWindowShown())
         {
-            Properties.Settings.Default.UI_HookSettings_SelectedGameId = _latestGameId;
+            Properties.Settings.Default.App_HookSettings_SelectedGameId = _latestGameId;
             Properties.Settings.Default.Save();
         }
 
@@ -116,7 +116,7 @@ public partial class NotifyMenuWindow
             return;
         }
 
-        if (!_hookedGameDataProvider.Id.Equals(Properties.Settings.Default.UI_HookSettings_SelectedGameId, StringComparison.Ordinal))
+        if (!_hookedGameDataProvider.Id.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
         {
             previousContent.Icon.Data = new PathGeometry();
         }

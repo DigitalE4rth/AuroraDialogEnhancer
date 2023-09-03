@@ -2,23 +2,23 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AuroraDialogEnhancer.Properties" GeneratedClassName="DefaultSettings">
   <Profiles />
   <Settings>
-    <Setting Name="UI_ThemeInfo_AccentColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#2cb065</Value>
+    <Setting Name="App_StartupArgument_Profile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">--profile</Value>
     </Setting>
-    <Setting Name="FontStyle_FontFamily" Type="System.String" Scope="User">
+    <Setting Name="UI_FontStyle_FontFamily" Type="System.String" Scope="User">
       <Value Profile="(Default)">Segoe UI</Value>
     </Setting>
-    <Setting Name="FontStyle_FontSize" Type="System.Double" Scope="User">
+    <Setting Name="UI_FontStyle_FontSize" Type="System.Double" Scope="User">
       <Value Profile="(Default)">14</Value>
     </Setting>
-    <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0</Value>
+    <Setting Name="UI_ThemeInfo_AccentColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#2cb065</Value>
     </Setting>
     <Setting Name="Update_UpdateServerUri" Type="System.String" Scope="User">
       <Value Profile="(Default)">WIP</Value>
     </Setting>
-    <Setting Name="StartupArgument_Profile" Type="System.String" Scope="User">
-      <Value Profile="(Default)">--profile</Value>
+    <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

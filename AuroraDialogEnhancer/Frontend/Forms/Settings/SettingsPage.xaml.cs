@@ -158,7 +158,7 @@ public partial class SettingsPage
 
     private void UnloadUi_OnClick(object sender, RoutedEventArgs e)
     {
-        Properties.Settings.Default.App_UnloadUi = (bool) ((CardToggleButton) sender).IsChecked!;
+        Properties.Settings.Default.App_IsUnloadUi = (bool) ((CardToggleButton) sender).IsChecked!;
         Properties.Settings.Default.Save();
     }
     #endregion

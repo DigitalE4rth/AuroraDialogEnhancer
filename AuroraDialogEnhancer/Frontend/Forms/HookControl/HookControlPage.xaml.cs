@@ -56,7 +56,7 @@ public partial class HookControlPage
 
     private void InitializeGames()
     {
-        var extensionConfig = _extensionConfigService.Get(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+        var extensionConfig = _extensionConfigService.Get(Properties.Settings.Default.App_HookSettings_SelectedGameId);
 
         _hookSettingsDataContext = new HookSettingsDataContext(new ExtensionConfigViewModel(extensionConfig));
         DataContext = _hookSettingsDataContext;
@@ -85,7 +85,7 @@ public partial class HookControlPage
 
     private void LocatePaths()
     {
-        var config = _extensionConfigService.UpdateLocations(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+        var config = _extensionConfigService.UpdateLocations(Properties.Settings.Default.App_HookSettings_SelectedGameId);
         if (config is null) return;
 
         _hookSettingsDataContext!.ExtensionConfig.GameLocation = config.GameLocation;
@@ -95,7 +95,7 @@ public partial class HookControlPage
 
     private void ResetConfig()
     {
-        _extensionConfigService.SaveDefault(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+        _extensionConfigService.SaveDefault(Properties.Settings.Default.App_HookSettings_SelectedGameId);
 
         SettingsPage_Unloaded(this, new RoutedEventArgs());
 
@@ -107,7 +107,7 @@ public partial class HookControlPage
     {
         ComboBoxHookLaunchType.SelectionChanged -= ComboBox_HookLaunchType_OnSelectionChanged;
 
-        _hookSettingsDataContext!.ExtensionConfig = _extensionConfigService.GerViewModel(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+        _hookSettingsDataContext!.ExtensionConfig = _extensionConfigService.GerViewModel(Properties.Settings.Default.App_HookSettings_SelectedGameId);
         ComboBoxHookLaunchType.SelectedItem = ComboBoxHookLaunchType.Items.OfType<ComboBoxItem>().First(item => (EHookLaunchType) item.Tag == _hookSettingsDataContext!.ExtensionConfig.HookLaunchType);
         SetHookInfoText();
         InitializeBackground();
@@ -117,7 +117,7 @@ public partial class HookControlPage
 
     private void InitializeBackground()
     {
-        var cover = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetCover();
+        var cover = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.App_HookSettings_SelectedGameId].GetCover();
         if (cover.Width == 0 || cover.Height == 0) return;
 
         var coverImage = _blobToBitmapImageConverter.Convert(cover);
@@ -141,7 +141,7 @@ public partial class HookControlPage
     private void SetHookInfoText()
     {
         PathIconHookInfoRight.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
-        if (_hookedGameDataProvider.Id != Properties.Settings.Default.UI_HookSettings_SelectedGameId)
+        if (_hookedGameDataProvider.Id != Properties.Settings.Default.App_HookSettings_SelectedGameId)
         {
             PathIconHookInfoRight.Data = (PathGeometry) Application.Current.Resources["Icon.PlayArrow"];
             CardButtonHookInfo.Content = _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_None);
@@ -276,7 +276,7 @@ public partial class HookControlPage
         {
             TextBoxTitle = Properties.Localization.Resources.HookSettings_ProcessName_Game,
             TextContent  = _hookSettingsDataContext!.ExtensionConfig.GameProcessName,
-            ResetContent = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetConfig().GameProcessName
+            ResetContent = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.App_HookSettings_SelectedGameId].GetConfig().GameProcessName
         })
         {
             Owner = Application.Current.MainWindow,
@@ -294,7 +294,7 @@ public partial class HookControlPage
         {
             TextBoxTitle = Properties.Localization.Resources.HookSettings_ProcessName_Launcher,
             TextContent  = _hookSettingsDataContext!.ExtensionConfig.LauncherProcessName,
-            ResetContent = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetConfig().LauncherProcessName
+            ResetContent = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.App_HookSettings_SelectedGameId].GetConfig().LauncherProcessName
         })
         {
             Owner = Application.Current.MainWindow
@@ -359,7 +359,7 @@ public partial class HookControlPage
         if (dialog.ShowDialog() != DialogResult.OK) return;
         
         IWshShortcut shortcut     = new WshShell().CreateShortcut(dialog.FileName);
-        shortcut.Arguments        = $"{Properties.DefaultSettings.Default.StartupArgument_Profile} {_hookSettingsDataContext!.ExtensionConfig.Config.Id}";
+        shortcut.Arguments        = $"{Properties.DefaultSettings.Default.App_StartupArgument_Profile} {_hookSettingsDataContext!.ExtensionConfig.Config.Id}";
         shortcut.Description      = $"ADE Profile: {_hookSettingsDataContext.ExtensionConfig.Config.Name}";
         shortcut.TargetPath       = Global.Locations.AssemblyExe;
         shortcut.WorkingDirectory = Global.Locations.AssemblyFolder;

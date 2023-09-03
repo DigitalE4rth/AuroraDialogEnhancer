@@ -85,7 +85,7 @@ public class AppConfig : IDisposable
 
         for (var i = 0; i < message.Arguments.Length; i++)
         {
-            if (message.Arguments[i].Equals(Properties.DefaultSettings.Default.StartupArgument_Profile, StringComparison.Ordinal) &&
+            if (message.Arguments[i].Equals(Properties.DefaultSettings.Default.App_StartupArgument_Profile, StringComparison.Ordinal) &&
                 message.Arguments.Length - 1 >= i + 1)
             {
                 startupProfileId = message.Arguments[i + 1];
@@ -121,7 +121,7 @@ public class AppConfig : IDisposable
 
         for (var i = 0; i < startupEventArgs.Args.Length; i++)
         {
-            if (!startupEventArgs.Args[i].Equals(Properties.DefaultSettings.Default.StartupArgument_Profile, StringComparison.Ordinal)) continue;
+            if (!startupEventArgs.Args[i].Equals(Properties.DefaultSettings.Default.App_StartupArgument_Profile, StringComparison.Ordinal)) continue;
             if (startupEventArgs.Args.Length - 1 < i + 1) return null;
             return startupEventArgs.Args[i + 1];
         }

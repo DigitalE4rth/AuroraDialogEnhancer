@@ -136,7 +136,7 @@ public partial class MainWindow
             if (Properties.Settings.Default.App_IsMinimizeToTaskBar) return;
 
             Hide();
-            if (!Properties.Settings.Default.App_UnloadUi) return;
+            if (!Properties.Settings.Default.App_IsUnloadUi) return;
 
             AppServices.ServiceProvider.GetRequiredService<UiService>().DisposeMainWindow();
             return;

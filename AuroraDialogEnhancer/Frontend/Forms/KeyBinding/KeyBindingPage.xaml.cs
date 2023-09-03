@@ -35,7 +35,7 @@ public partial class KeyBindingPage
     private void InitializeKeyBindingProfile()
     {
         UnloadComponentEvents();
-        _keyBindingProfileViewModel = _keyBindingProfileService.GetViewModel(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+        _keyBindingProfileViewModel = _keyBindingProfileService.GetViewModel(Properties.Settings.Default.App_HookSettings_SelectedGameId);
 
         InitializeClickablePointButtons();
         InitializeProfileValues();
@@ -169,11 +169,11 @@ public partial class KeyBindingPage
         switch (selectedAction)
         {
             case EKeyBindingSettingsAction.Default:
-                _keyBindingProfileService.SaveDefault(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+                _keyBindingProfileService.SaveDefault(Properties.Settings.Default.App_HookSettings_SelectedGameId);
                 break;
             case EKeyBindingSettingsAction.Clear:
             default:
-                _keyBindingProfileService.SaveEmpty(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+                _keyBindingProfileService.SaveEmpty(Properties.Settings.Default.App_HookSettings_SelectedGameId);
                 break;
         }
 
@@ -185,31 +185,31 @@ public partial class KeyBindingPage
     private void ToggleCycleThrough_OnClick(object sender, RoutedEventArgs e)
     {
         _keyBindingProfileViewModel.IsCycleThrough = (bool)ToggleCycleThrough.IsChecked!;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.App_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
     private void ToggleHideCursor_OnClick(object sender, RoutedEventArgs e)
     {
         _keyBindingProfileViewModel.IsCursorHideOnManualClick = (bool)ToggleHideCursor.IsChecked!;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.App_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
     private void ComboBoxSingleBehaviour_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         _keyBindingProfileViewModel.SingleDialogOptionBehaviour = (ESingleDialogOptionBehaviour)((ComboBoxItem)ComboBoxSingleBehaviour.SelectedItem).Tag;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.App_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
     private void ComboBoxNumericBehaviour_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         _keyBindingProfileViewModel.NumericActionBehaviour = (ENumericActionBehaviour)((ComboBoxItem)ComboBoxNumericBehaviour.SelectedItem).Tag;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.App_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
 
     private void ComboBoxCursorBehaviour_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         _keyBindingProfileViewModel.CursorBehaviour = (ECursorBehaviour)((ComboBoxItem)ComboBoxCursorBehaviour.SelectedItem).Tag;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.App_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
     }
     #endregion
 
@@ -323,7 +323,7 @@ public partial class KeyBindingPage
         RemoveDuplicates(result);
 
         actionViewModel.TriggerViewModels = result.TriggerViewModels;
-        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.UI_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.App_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
 
         InitializeProfileValues();
     }

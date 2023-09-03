@@ -50,7 +50,7 @@ public partial class AboutPage
 
     private void InitializeComboBoxUpdateFrequency()
     {
-        var item = ComboBoxUpdateFrequency.Items.OfType<ComboBoxItem>().FirstOrDefault(item => (int)item.Tag == Properties.Settings.Default.Updater_Frequency);
+        var item = ComboBoxUpdateFrequency.Items.OfType<ComboBoxItem>().FirstOrDefault(item => (int)item.Tag == Properties.Settings.Default.Update_Frequency);
         if (item is not null)
         {
             ComboBoxUpdateFrequency.SelectedItem = item;
@@ -66,7 +66,7 @@ public partial class AboutPage
     {
         var updateFrequency = (EUpdateFrequency)((ComboBoxItem)ComboBoxUpdateFrequency.SelectedItem).Tag;
 
-        Properties.Settings.Default.Updater_Frequency = (int) updateFrequency;
+        Properties.Settings.Default.Update_Frequency = (int) updateFrequency;
         Properties.Settings.Default.Save();
 
         PathIconUpdateFrequency.Data = updateFrequency == EUpdateFrequency.None

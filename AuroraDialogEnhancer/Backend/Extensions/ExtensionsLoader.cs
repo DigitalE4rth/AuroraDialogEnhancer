@@ -58,8 +58,8 @@ public class ExtensionsLoader
 
         CreateConfigIfNotExists();
 
-        if (_extensionsProvider.ExtensionsDictionary.ContainsKey(Properties.Settings.Default.UI_HookSettings_SelectedGameId)) return;
-        Properties.Settings.Default.UI_HookSettings_SelectedGameId = _extensionsProvider.ExtensionsDictionary.Keys.First();
+        if (_extensionsProvider.ExtensionsDictionary.ContainsKey(Properties.Settings.Default.App_HookSettings_SelectedGameId)) return;
+        Properties.Settings.Default.App_HookSettings_SelectedGameId = _extensionsProvider.ExtensionsDictionary.Keys.First();
         Properties.Settings.Default.Save();
     }
 

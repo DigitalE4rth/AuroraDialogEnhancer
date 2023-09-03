@@ -11,7 +11,7 @@ internal class FontFamilyWithoutFallbackFormatter : IValueConverter
         var convertedValue = (string) value;
         var indexOfFallback = convertedValue.IndexOf(", ", StringComparison.Ordinal);
 
-        if (convertedValue.Equals(Properties.DefaultSettings.Default.FontStyle_FontFamily)) return value;
+        if (convertedValue.Equals(Properties.DefaultSettings.Default.UI_FontStyle_FontFamily)) return value;
         
         return indexOfFallback == -1 
             ? value 

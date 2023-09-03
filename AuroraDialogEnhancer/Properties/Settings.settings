@@ -2,6 +2,36 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AuroraDialogEnhancer.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="App_CurrentCulture" Type="System.String" Scope="User">
+      <Value Profile="(Default)">auto</Value>
+    </Setting>
+    <Setting Name="App_HookSettings_SelectedGameId" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="App_IsCloseMinimizes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="App_IsExpertMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="App_IsMinimizeToTaskBar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="App_IsScreenshotsManager" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="App_IsStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="App_IsStartMinimized" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="App_IsUnloadUi" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="UI_FontStyle_Title" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
     <Setting Name="UI_MainWindow_Width" Type="System.Double" Scope="User">
       <Value Profile="(Default)">800</Value>
     </Setting>
@@ -17,47 +47,17 @@
     <Setting Name="UI_MainWindow_State" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="App_IsStartMinimized" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="UI_MainWindow_State_Startup" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="App_IsCloseMinimizes" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="App_IsMinimizeToTaskBar" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="App_CurrentCulture" Type="System.String" Scope="User">
-      <Value Profile="(Default)">auto</Value>
-    </Setting>
-    <Setting Name="UI_HookSettings_SelectedGameId" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="UI_MainWindow_State_Shortcut" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="UI_Scale" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="UI_ThemeInfo_Type" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="UI_ThemeInfo_Location" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="App_UnloadUi" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="App_IsExpertMode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="UI_InitialPage" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">-1</Value>
-    </Setting>
-    <Setting Name="UI_ThemeInfo_IsSystemApplicationThemeLight" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="UI_ThemeInfo_ThemeName" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="UI_ThemeInfo_SelectedColorType" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="UI_ThemeInfo_CustomThemeAccentColor" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -65,35 +65,35 @@
     <Setting Name="UI_ThemeInfo_IsCustomAccentColor" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="UI_MainWindow_State_Startup" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="UI_ThemeInfo_IsSystemApplicationThemeLight" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="UI_MainWindow_State_Shortcut" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
-    </Setting>
-    <Setting Name="App_IsStartup" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="App_IsScreenshotsManager" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="UI_FontStyle_Title" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">24</Value>
-    </Setting>
-    <Setting Name="Updater_Frequency" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
-    </Setting>
-    <Setting Name="Updater_LastUpdateCheckTime" Type="System.DateTime" Scope="User">
+    <Setting Name="UI_ThemeInfo_Location" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">
+    <Setting Name="UI_ThemeInfo_SelectedColorType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="UI_ThemeInfo_ThemeName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UI_ThemeInfo_Type" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Update_Frequency" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="Update_IsUpdateRequired" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Update_LastUpdateCheckTime" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Update_UpdateServerUri" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Update_IsUpdateRequired" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
