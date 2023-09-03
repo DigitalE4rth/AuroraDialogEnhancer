@@ -6,9 +6,9 @@ namespace Extension.HonkaiStarRail.Location;
 
 public class LocationProvider : ILocationProvider
 {
-    public string LauncherPath          { get; } = string.Empty;
-    public string GamePath              { get; } = string.Empty;
-    public string ScreenshotsFolderPath { get; } = string.Empty;
+    public string LauncherLocation          { get; } = string.Empty;
+    public string GameLocation              { get; } = string.Empty;
+    public string ScreenshotsLocation { get; } = string.Empty;
 
     public LocationProvider()
     {
@@ -30,7 +30,7 @@ public class LocationProvider : ILocationProvider
         var launcherPath = Path.Combine(installationPath, "launcher.exe");
         if (File.Exists(launcherPath))
         {
-            LauncherPath = launcherPath;
+            LauncherLocation = launcherPath;
         }
 
         const string subFolder = "Games";
@@ -38,13 +38,13 @@ public class LocationProvider : ILocationProvider
         var gameExePath = Path.Combine(installationPath, subFolder, "StarRail.exe");
         if (File.Exists(gameExePath))
         {
-            GamePath = gameExePath;
+            GameLocation = gameExePath;
         }
 
         var screenshotsFolderPath = Path.Combine(installationPath, subFolder, "StarRail_Data", "ScreenShots");
         if (Directory.Exists(screenshotsFolderPath))
         {
-            ScreenshotsFolderPath = screenshotsFolderPath;
+            ScreenshotsLocation = screenshotsFolderPath;
         }
     }
 }

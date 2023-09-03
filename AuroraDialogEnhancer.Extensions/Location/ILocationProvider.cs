@@ -2,7 +2,7 @@
 
 public interface ILocationProvider
 {
-    public string LauncherPath { get; }
-    public string GamePath { get; }
-    public string ScreenshotsFolderPath { get; }
+    public string LauncherLocation { get; }
+    public string GameLocation { get; }
+    public string ScreenshotsLocation { get; }
 }

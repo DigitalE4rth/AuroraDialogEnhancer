@@ -7,7 +7,6 @@ using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
 using AuroraDialogEnhancerExtensions;
-using AuroraDialogEnhancerExtensions.Content;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AuroraDialogEnhancer.Backend.Extensions;
@@ -37,38 +36,11 @@ public class ExtensionConfigService
         Save(new ExtensionConfigMapper().Map(extension));
     }
 
-    public void SaveAndRestartHookIfNecessary(ExtensionConfig config)
-    {
-        _extensionConfigRepository.Save(config, Path.Combine(Global.Locations.ExtensionsFolder, config.Name, Global.Locations.ExtensionConfigFileName));
-
-        if (_hookedGameDataProvider.Id is not null &&
-            _hookedGameDataProvider.Id.Equals(config.Id, StringComparison.Ordinal) &&
-            _hookedGameDataProvider.HookState is not EHookState.None)
-        {
-            Task.Run(() => AppServices.ServiceProvider.GetRequiredService<CoreService>().RestartAutoDetection(config.Id, true)).ConfigureAwait(false);
-        }
-    }
-
-    public void Save(ExtensionConfig config)
-    {
-        _extensionConfigRepository.Save(config, Path.Combine(Global.Locations.ExtensionsFolder, config.Name, Global.Locations.ExtensionConfigFileName));
-    }
-
-    public void SetScreenshotsFolderForActiveGameIfNecessary(ExtensionConfig config)
-    {
-        if (_hookedGameDataProvider.Data?.ExtensionConfig is null ||
-            !_hookedGameDataProvider.Data.ExtensionConfig.Id.Equals(config.Id, StringComparison.Ordinal)) return;
-
-        _screenCaptureService.SetScreenshotsFolder(config);
-    }
-
     public void SaveDefault(string id)
     {
         SaveAndRestartHookIfNecessary(new ExtensionConfigMapper().Map(_extensionsProvider.ExtensionsDictionary[id]));
     }
     #endregion
-
-
 
     #region Read
     public ExtensionConfig Get(string id)
@@ -95,6 +67,65 @@ public class ExtensionConfigService
     public bool Exists(string fileName)
     {
         return File.Exists(Path.Combine(Global.Locations.ExtensionsFolder, fileName, Global.Locations.ExtensionConfigFileName));
+    }
+    #endregion
+
+    #region Update
+    public void SaveAndRestartHookIfNecessary(ExtensionConfig config)
+    {
+        _extensionConfigRepository.Save(config, Path.Combine(Global.Locations.ExtensionsFolder, config.Name, Global.Locations.ExtensionConfigFileName));
+
+        if (_hookedGameDataProvider.Id is not null &&
+            _hookedGameDataProvider.Id.Equals(config.Id, StringComparison.Ordinal) &&
+            _hookedGameDataProvider.HookState is not EHookState.None)
+        {
+            Task.Run(() => AppServices.ServiceProvider.GetRequiredService<CoreService>().RestartAutoDetection(config.Id, true)).ConfigureAwait(false);
+        }
+    }
+
+    public void Save(ExtensionConfig config)
+    {
+        _extensionConfigRepository.Save(config, Path.Combine(Global.Locations.ExtensionsFolder, config.Name, Global.Locations.ExtensionConfigFileName));
+    }
+
+    public void SetScreenshotsFolderForActiveGameIfNecessary(ExtensionConfig config)
+    {
+        if (_hookedGameDataProvider.Data?.ExtensionConfig is null ||
+            !_hookedGameDataProvider.Data.ExtensionConfig.Id.Equals(config.Id, StringComparison.Ordinal)) return;
+
+        _screenCaptureService.SetScreenshotsFolder(config);
+    }
+
+    public ExtensionConfig? UpdateLocations(string id)
+    {
+        var extension = _extensionsProvider.ExtensionsDictionary[id];
+        var filePath = Path.Combine(Global.Locations.ExtensionsFolder, extension.Name, Global.Locations.ExtensionConfigFileName);
+        var config = _extensionConfigRepository.Get(filePath);
+        var locationProvider = extension.GetLocationProvider();
+
+        var isUpdated = false;
+        if (!string.IsNullOrEmpty(locationProvider.GameLocation))
+        {
+            config.GameLocation = locationProvider.GameLocation;
+            isUpdated = true;
+        }
+
+        if (!string.IsNullOrEmpty(locationProvider.LauncherLocation))
+        {
+            config.LauncherLocation = locationProvider.LauncherLocation;
+            isUpdated = true;
+        }
+
+        if (!string.IsNullOrEmpty(locationProvider.ScreenshotsLocation))
+        {
+            config.ScreenshotsLocation = locationProvider.ScreenshotsLocation;
+            isUpdated = true;
+        }
+
+        if (!isUpdated) return null;
+
+        SaveAndRestartHookIfNecessary(config);
+        return config;
     }
     #endregion
 }

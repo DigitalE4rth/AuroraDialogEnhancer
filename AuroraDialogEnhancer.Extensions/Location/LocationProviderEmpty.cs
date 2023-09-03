@@ -2,7 +2,7 @@
 
 internal class LocationProviderEmpty : ILocationProvider
 {
-    public string LauncherPath => string.Empty;
-    public string GamePath => string.Empty;
-    public string ScreenshotsFolderPath => string.Empty;
+    public string LauncherLocation => string.Empty;
+    public string GameLocation => string.Empty;
+    public string ScreenshotsLocation => string.Empty;
 }

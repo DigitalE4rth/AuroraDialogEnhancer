@@ -284,8 +284,8 @@
                                        d:Description="d: C:\Games\Genshin Impact\ScreenShots\"
                                        Click="Button_ScreenShotsLocation_OnClick"
                                        ContentForeground="Secondary"
-                                       Description="{Binding Path=ExtensionConfig.ScreenShotsLocation}"
-                                       ToolTip="{Binding Path=ExtensionConfig.ScreenShotsLocation}">
+                                       Description="{Binding Path=ExtensionConfig.ScreenshotsLocation}"
+                                       ToolTip="{Binding Path=ExtensionConfig.ScreenshotsLocation}">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">

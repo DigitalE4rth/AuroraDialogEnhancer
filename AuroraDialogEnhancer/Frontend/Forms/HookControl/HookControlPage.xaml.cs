@@ -85,24 +85,12 @@ public partial class HookControlPage
 
     private void LocatePaths()
     {
-        var locationProvider = _extensionsProvider.ExtensionsDictionary[Properties.Settings.Default.UI_HookSettings_SelectedGameId].GetLocationProvider();
+        var config = _extensionConfigService.UpdateLocations(Properties.Settings.Default.UI_HookSettings_SelectedGameId);
+        if (config is null) return;
 
-        if (!string.IsNullOrEmpty(locationProvider.GamePath))
-        {
-            _hookSettingsDataContext!.ExtensionConfig.GameLocation = locationProvider.GamePath;
-        }
-
-        if (!string.IsNullOrEmpty(locationProvider.LauncherPath))
-        {
-            _hookSettingsDataContext!.ExtensionConfig.LauncherLocation = locationProvider.LauncherPath;
-        }
-
-        if (!string.IsNullOrEmpty(locationProvider.ScreenshotsFolderPath))
-        {
-            _hookSettingsDataContext!.ExtensionConfig.ScreenShotsLocation = locationProvider.ScreenshotsFolderPath;
-        }
-
-        _extensionConfigService.SaveAndRestartHookIfNecessary(_hookSettingsDataContext!.ExtensionConfig.Config);
+        _hookSettingsDataContext!.ExtensionConfig.GameLocation = config.GameLocation;
+        _hookSettingsDataContext.ExtensionConfig.LauncherLocation = config.LauncherLocation;
+        _hookSettingsDataContext.ExtensionConfig.ScreenshotsLocation = config.ScreenshotsLocation;
     }
 
     private void ResetConfig()
@@ -323,14 +311,14 @@ public partial class HookControlPage
     #region Additional settings
     private void CardButton_OpenScreenShotsFolder(object sender, RoutedEventArgs e)
     {
-        if (!Directory.Exists(_hookSettingsDataContext!.ExtensionConfig.ScreenShotsLocation))
+        if (!Directory.Exists(_hookSettingsDataContext!.ExtensionConfig.ScreenshotsLocation))
         {
-            Directory.CreateDirectory(_hookSettingsDataContext!.ExtensionConfig.ScreenShotsLocation);
+            Directory.CreateDirectory(_hookSettingsDataContext!.ExtensionConfig.ScreenshotsLocation);
         }
 
         Process.Start(new ProcessStartInfo
         {
-            Arguments = _hookSettingsDataContext.ExtensionConfig.ScreenShotsLocation,
+            Arguments = _hookSettingsDataContext.ExtensionConfig.ScreenshotsLocation,
             UseShellExecute = true,
             FileName = Global.StringConstants.ExplorerName
         });
@@ -345,7 +333,7 @@ public partial class HookControlPage
 
         if (dialog.ShowDialog() != true) return;
 
-        _hookSettingsDataContext!.ExtensionConfig.ScreenShotsLocation = dialog.ResultPath!;
+        _hookSettingsDataContext!.ExtensionConfig.ScreenshotsLocation = dialog.ResultPath!;
         _extensionConfigService.SaveAndRestartHookIfNecessary(_hookSettingsDataContext.ExtensionConfig.Config);
         _extensionConfigService.SetScreenshotsFolderForActiveGameIfNecessary(_hookSettingsDataContext.ExtensionConfig.Config);
     }

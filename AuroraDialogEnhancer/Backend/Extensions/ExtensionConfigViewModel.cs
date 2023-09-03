@@ -45,7 +45,7 @@ public class ExtensionConfigViewModel : INotifyPropertyChanged
         }
     }
 
-    public string ScreenShotsLocation
+    public string ScreenshotsLocation
     {
         get => string.IsNullOrEmpty(Config.ScreenshotsLocation) 
             ? Path.Combine(Global.Locations.ExtensionsFolder, Config.Name, Global.Locations.ScreenshotsFolderName)
