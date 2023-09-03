@@ -94,7 +94,6 @@
 
                     <woControls:CardButton.Description>
                         <TextBlock>
-                            <Run Text="{x:Static localization:Resources.About_PreRelease}" />
                             <Run Text="{Binding Source={x:Static statics:Global.AssemblyInfo}, Path=Version, Mode=OneTime}" />
                             <Run Text="•" />
                             <Run Text="DigitalE4rth" />
