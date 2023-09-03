@@ -316,7 +316,7 @@ public class CoreService : IDisposable
         _windowHookService.Dispose();
         _keyHandlerService.Dispose();
         _hookedGameDataProvider.Dispose();
-        _screenCaptureService.SetScreenshotsFolder(null);
+        _screenCaptureService.Dispose();
 
         if (_hookedGameDataProvider.IsGameProcessAlive())
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -10,7 +11,7 @@ using Clipboard = System.Windows.Forms.Clipboard;
 
 namespace AuroraDialogEnhancer.Backend.ScreenCapture;
 
-public class ScreenCaptureService
+public class ScreenCaptureService : IDisposable
 {
     private readonly HookedGameDataProvider _hookedGameDataProvider;
     
@@ -29,6 +30,11 @@ public class ScreenCaptureService
         _lock = new object();
         _isCopyToBuffer = false;
         CapturedGames = new HashSet<string>();
+    }
+
+    public void SetNameProvider(IScreenshotNameProvider screenshotNameProvider)
+    {
+        _screenshotNameProvider = screenshotNameProvider;
     }
 
     public void SetScreenshotsFolder(ExtensionConfig? extensionConfig)
@@ -61,11 +67,6 @@ public class ScreenCaptureService
         _imagesToSaveQueue.Enqueue((_screenshotNameProvider!.GetName(), frame));
         SaveImage();
         CapturedGames.Add(_hookedGameDataProvider.Data!.ExtensionConfig!.Id);
-    }
-
-    public void SetNameProvider(IScreenshotNameProvider screenshotNameProvider)
-    {
-        _screenshotNameProvider = screenshotNameProvider;
     }
 
     private void SaveImage()
@@ -146,5 +147,11 @@ public class ScreenCaptureService
         return _hookedGameDataProvider.IsGameProcessAlive() &&
                _hookedGameDataProvider.Data!.GameWindowInfo is not null &&
               !_hookedGameDataProvider.Data.GameWindowInfo.IsMinimized();
+    }
+
+    public void Dispose()
+    {
+        SetScreenshotsFolder(null);
+        _screenshotNameProvider = null;
     }
 }
