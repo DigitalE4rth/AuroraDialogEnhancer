@@ -200,12 +200,12 @@
                         </Grid.RowDefinitions>
                         <woControls:PathIcon Grid.Row="0"
                                              Width="7"
-                                             Data="{StaticResource Icon.ExpandLess}"
+                                             Data="{StaticResource I.R.ExpandLess}"
                                              Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
 
                         <woControls:PathIcon Grid.Row="2"
                                              Width="7"
-                                             Data="{StaticResource Icon.ExpandMore}"
+                                             Data="{StaticResource I.R.ExpandMore}"
                                              Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
 
                     </Grid>

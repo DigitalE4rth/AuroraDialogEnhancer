@@ -85,7 +85,7 @@
                                    Visibility="Collapsed">
                     <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
                                          Height="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
-                                         Data="{StaticResource Icon.RotateLeft}" />
+                                         Data="{StaticResource I.S.RotateLeft}" />
 
                 </woControls:Button>
             </Grid>

@@ -19,7 +19,7 @@
             <cards:ComboBoxProfile.LeftIcon>
                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
                     <woControls:PathIcon x:Name="LeftIcon"
-                                         Data="{StaticResource Icon.Controller}"
+                                         Data="{StaticResource I.S.Controller}"
                                          RenderTransformOrigin="0.5,0.5"
                                          Style="{StaticResource IconLarge}">
                         <woControls:PathIcon.RenderTransform>
@@ -36,7 +36,7 @@
             <cards:ComboBoxProfile.RightIcon>
                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
                     <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
-                                         Data="{StaticResource Icon.ExpandMore}"
+                                         Data="{StaticResource I.R.ExpandMore}"
                                          Style="{StaticResource IconSmall}" />
                 </Grid>
             </cards:ComboBoxProfile.RightIcon>

@@ -138,17 +138,17 @@ public partial class NotifyMenuWindow
         switch (_hookedGameDataProvider.HookState)
         {
             case EHookState.Hooked:
-                return "Icon.Check";
+                return "I.S.Check";
             case EHookState.Warning:
             case EHookState.Error:
                 pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
-                return "Icon.PriorityHigh";
+                return "I.R.PriorityHigh";
             case EHookState.Paused:
                 pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
-                return "Icon.Pause";
+                return "I.S.Pause";
             case EHookState.Search:
             case EHookState.Canceled:
-                return "Icon.Spinner";
+                return "I.S.Spinner";
             case EHookState.None:
             default:
                 return null;

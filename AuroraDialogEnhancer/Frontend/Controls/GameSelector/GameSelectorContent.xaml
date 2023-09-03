@@ -23,7 +23,7 @@
 
         <Grid Grid.Column="1" Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
             <woControls:PathIcon x:Name="Icon"
-                                 d:Data="{StaticResource Icon.Close}"
+                                 d:Data="{StaticResource I.S.Close}"
                                  RenderTransformOrigin="0.5,0.5"
                                  Style="{StaticResource IconLarge}">
                 <woControls:PathIcon.RenderTransform>

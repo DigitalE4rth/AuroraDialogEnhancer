@@ -72,7 +72,7 @@
                             <StackPanel Orientation="Horizontal">
 
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" Margin="0,1,10,0">
-                                    <woControls:PathIcon Data="{StaticResource Icon.RotateLeft}" Style="{StaticResource IconMedium}" />
+                                    <woControls:PathIcon Data="{StaticResource I.S.RotateLeft}" Style="{StaticResource IconMedium}" />
                                 </Grid>
 
                                 <TextBlock Style="{StaticResource FontStyleMedium}" Text="{x:Static localization:Resources.About_Update_Update_Sub}" />
@@ -88,7 +88,7 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
@@ -103,7 +103,7 @@
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -130,13 +130,13 @@
 
                                         <woControls:CardButton.LeftIcon>
                                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                                <woControls:PathIcon Data="{StaticResource Icon.PuzzlePiece}" Style="{StaticResource IconLarge}" />
+                                                <woControls:PathIcon Data="{StaticResource I.S.PuzzlePiece}" Style="{StaticResource IconLarge}" />
                                             </Grid>
                                         </woControls:CardButton.LeftIcon>
 
                                         <woControls:CardButton.RightIcon>
                                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                                <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                                             </Grid>
                                         </woControls:CardButton.RightIcon>
                                     </woControls:CardButton>
@@ -160,13 +160,13 @@
 
                                         <woControls:CardButton.LeftIcon>
                                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                                <woControls:PathIcon Data="{StaticResource Icon.PuzzlePiece}" Style="{StaticResource IconLarge}" />
+                                                <woControls:PathIcon Data="{StaticResource I.S.PuzzlePiece}" Style="{StaticResource IconLarge}" />
                                             </Grid>
                                         </woControls:CardButton.LeftIcon>
 
                                         <woControls:CardButton.RightIcon>
                                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                                <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                                             </Grid>
                                         </woControls:CardButton.RightIcon>
                                     </woControls:CardButton>
@@ -191,13 +191,13 @@
 
                     <woControls:CardElement.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.User}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.User}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardElement.LeftIcon>
 
                     <woControls:CardElement.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.SportsBar}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.SportsBar}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardElement.RightIcon>
                 </woControls:CardElement>
@@ -219,13 +219,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -240,13 +240,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -259,13 +259,13 @@
 
                     <woControls:CardElement.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.User}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.User}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardElement.LeftIcon>
 
                     <woControls:CardElement.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.Glasses}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.Glasses}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardElement.RightIcon>
                 </woControls:CardElement>
@@ -285,13 +285,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -306,13 +306,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -327,13 +327,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -346,13 +346,13 @@
 
                     <woControls:CardElement.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.Users}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.Users}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardElement.LeftIcon>
 
                     <woControls:CardElement.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.Hearth}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.Hearth}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardElement.RightIcon>
                 </woControls:CardElement>
@@ -364,7 +364,7 @@
 
                     <woControls:CardButton.LeftIcon>
                         <woControls:PathIcon Height="45"
-                                             Data="{StaticResource Icon.CreativeSociety}"
+                                             Data="{StaticResource I.R.CreativeSociety}"
                                              Style="{StaticResource IconLarge}">
                             <woControls:PathIcon.Foreground>
                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -393,7 +393,7 @@
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
 
@@ -418,7 +418,7 @@
                           Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
                           Margin="0,0,0,7"
                           ToolTip="{x:Static localization:Resources.About_ModifiedVersion}">
-                        <woControls:PathIcon Data="{StaticResource Icon.Info}"
+                        <woControls:PathIcon Data="{StaticResource I.R.Info}"
                                              Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurfaceVariant, Mode=OneTime}"
                                              Style="{StaticResource IconMedium}" />
                     </Grid>
@@ -440,13 +440,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -467,13 +467,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -494,13 +494,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -521,13 +521,13 @@
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.GitHub}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
                         </Grid>
                     </woControls:CardButton.LeftIcon>
 
                     <woControls:CardButton.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
@@ -548,13 +548,13 @@
 
                         <woControls:CardButton.LeftIcon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Font}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.Font}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:CardButton.LeftIcon>
 
                         <woControls:CardButton.RightIcon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                             </Grid>
                         </woControls:CardButton.RightIcon>
                     </woControls:CardButton>
@@ -568,13 +568,13 @@
 
                         <woControls:CardButton.LeftIcon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Font}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.Font}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:CardButton.LeftIcon>
 
                         <woControls:CardButton.RightIcon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                             </Grid>
                         </woControls:CardButton.RightIcon>
                     </woControls:CardButton>
@@ -595,13 +595,13 @@
 
                         <woControls:CardButton.LeftIcon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Moon}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.Moon}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:CardButton.LeftIcon>
 
                         <woControls:CardButton.RightIcon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                             </Grid>
                         </woControls:CardButton.RightIcon>
                     </woControls:CardButton>
@@ -614,13 +614,13 @@
 
                         <woControls:CardButton.LeftIcon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Aurora}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.Aurora}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:CardButton.LeftIcon>
 
                         <woControls:CardButton.RightIcon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
                             </Grid>
                         </woControls:CardButton.RightIcon>
                     </woControls:CardButton>

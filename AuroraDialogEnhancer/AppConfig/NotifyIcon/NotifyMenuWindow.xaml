@@ -63,7 +63,7 @@
                         <Grid Grid.Column="0"
                               Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
                               Margin="0,0,10,0">
-                            <woControls:PathIcon Data="{StaticResource Icon.WindowRestore.Regular}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.WindowRestore}" Style="{StaticResource IconLarge}" />
                         </Grid>
 
                         <TextBlock Grid.Column="1" Text="{x:Static localization:Resources.NotifyMenu_Open}" />
@@ -85,7 +85,7 @@
                         <Grid Grid.Column="0"
                               Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
                               Margin="0,0,10,0">
-                            <woControls:PathIcon Data="{StaticResource Icon.Image}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.R.Image}" Style="{StaticResource IconLarge}" />
                         </Grid>
 
                         <TextBlock Grid.Column="1" Text="{x:Static localization:Resources.NotifyMenu_Screenshots}" />
@@ -120,7 +120,7 @@
                         <Grid Grid.Column="0"
                               Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
                               Margin="0,0,10,0">
-                            <woControls:PathIcon Data="{StaticResource Icon.DoorOpen}" Style="{StaticResource IconLarge}" />
+                            <woControls:PathIcon Data="{StaticResource I.S.DoorOpen}" Style="{StaticResource IconLarge}" />
                         </Grid>
 
                         <TextBlock Grid.Column="1" Text="{x:Static localization:Resources.NotifyMenu_Exit}" />

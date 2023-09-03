@@ -19,7 +19,7 @@
               Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}"
               Margin="-5,0,10,0">
             <woControls:PathIcon x:Name="Icon"
-                                 Data="{StaticResource Icon.Description}"
+                                 Data="{StaticResource I.R.Description}"
                                  Style="{StaticResource IconMedium}" />
         </Grid>
 

@@ -85,7 +85,7 @@
                                                  Height="14"
                                                  Margin="0,0,8,0"
                                                  VerticalAlignment="Center"
-                                                 Data="{StaticResource Icon.Add}" />
+                                                 Data="{StaticResource I.S.Add}" />
 
                             <TextBlock Grid.Column="1"
                                        VerticalAlignment="Center"
@@ -112,7 +112,7 @@
                                 Visibility="Collapsed">
                         <woControls:PathIcon Width="125"
                                              VerticalAlignment="Center"
-                                             Data="{StaticResource Icon.Solid.Keyboard}"
+                                             Data="{StaticResource I.S.Keyboard}"
                                              Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurfaceVariant}"
                                              Opacity="0.38" />
 
@@ -204,7 +204,7 @@
                                    VerticalContentAlignment="Stretch"
                                    Click="Button_StopRecording_OnClick"
                                    Style="{StaticResource ButtonText}">
-                    <woControls:PathIcon Data="{StaticResource Icon.Close}" Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnPrimary, Mode=OneTime}" />
+                    <woControls:PathIcon Data="{StaticResource I.S.Close}" Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnPrimary, Mode=OneTime}" />
                 </woControls:Button>
 
                 <TextBlock Grid.Column="0"

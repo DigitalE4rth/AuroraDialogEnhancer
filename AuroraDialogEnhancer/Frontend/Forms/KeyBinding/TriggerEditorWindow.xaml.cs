@@ -126,7 +126,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                         Content = new ComboBoxContent
                         {
                             TextContent = { Text = Properties.Localization.Resources.TriggerEditor_MoveUp },
-                            Icon = { Data = (Geometry) Application.Current.Resources["Icon.ExpandLess"] }
+                            Icon = { Data = (Geometry) Application.Current.Resources["I.R.ExpandLess"] }
                         }, 
                         MinWidth = 100.0
                     },
@@ -135,7 +135,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                         Content = new ComboBoxContent
                         {
                             TextContent = { Text = Properties.Localization.Resources.TriggerEditor_MoveDown },
-                            Icon = { Data = (Geometry) Application.Current.Resources["Icon.ExpandMore"] }
+                            Icon = { Data = (Geometry) Application.Current.Resources["I.R.ExpandMore"] }
                         }
                     },
                     new ComboBoxItem
@@ -143,7 +143,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                         Content = new ComboBoxContent
                         {
                             TextContent = { Text = Properties.Localization.Resources.TriggerEditor_Edit },
-                            Icon = { Data = (Geometry) Application.Current.Resources["Icon.Edit"] }
+                            Icon = { Data = (Geometry) Application.Current.Resources["I.S.Edit"] }
                         }
                     },
                     new ComboBoxItem
@@ -158,7 +158,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                             Icon =
                             {
                                 Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Error)),
-                                Data = (Geometry) Application.Current.Resources["Icon.TrashCan"]
+                                Data = (Geometry) Application.Current.Resources["I.S.TrashCan"]
                             }
                         }
                     }
@@ -172,7 +172,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                         {
                             Width = WhyOrchid.Properties.Settings.Default.FontStyle_Small,
                             Style = (Style) Application.Current.Resources["IconSmall"],
-                            Data  = (Geometry) Application.Current.Resources["Icon.ExpandMore"]
+                            Data  = (Geometry) Application.Current.Resources["I.R.ExpandMore"]
                         }
                     }
                 }

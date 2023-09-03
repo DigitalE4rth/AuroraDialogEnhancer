@@ -54,7 +54,7 @@
                                  Height="50"
                                  Margin="10,10,20,0"
                                  VerticalAlignment="Top"
-                                 Data="{StaticResource Icon.Info}"
+                                 Data="{StaticResource I.R.Info}"
                                  Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface}" />
 
             <woControls:TextBox x:Name="TextBoxMessage"

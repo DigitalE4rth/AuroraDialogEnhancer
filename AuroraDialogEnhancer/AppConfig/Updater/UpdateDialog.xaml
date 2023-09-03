@@ -40,7 +40,7 @@
                                  Height="50"
                                  Margin="10,5,20,15"
                                  VerticalAlignment="Top"
-                                 Data="{StaticResource Icon.NewReleases}"
+                                 Data="{StaticResource I.R.NewReleases}"
                                  Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface}" />
 
             <Grid Grid.Column="1">
@@ -90,7 +90,7 @@
                     <Grid Grid.Column="1"
                           Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
                           VerticalAlignment="Center">
-                        <woControls:PathIcon Data="{StaticResource Icon.ArrowUpRightFromSquare}" Style="{StaticResource IconSmall}" />
+                        <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconSmall}" />
                     </Grid>
                 </Grid>
             </Grid>

@@ -119,7 +119,7 @@ public partial class KeyBindingPage
                     {
                         new PathIcon
                         {
-                            Data  = (PathGeometry) Application.Current.Resources["Icon.ChevronRight"],
+                            Data  = (PathGeometry) Application.Current.Resources["I.S.ChevronRight"],
                             Style = (Style) Application.Current.Resources["IconSmall"]
                         }
                     }

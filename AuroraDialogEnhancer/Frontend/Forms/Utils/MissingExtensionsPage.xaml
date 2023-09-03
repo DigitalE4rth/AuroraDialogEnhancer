@@ -22,7 +22,7 @@
         <woControls:PathIcon Grid.Row="0"
                              Width="125"
                              VerticalAlignment="Center"
-                             Data="{StaticResource Icon.Controller}"
+                             Data="{StaticResource I.S.Controller}"
                              Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurfaceVariant}"
                              Opacity="0.38" />
 

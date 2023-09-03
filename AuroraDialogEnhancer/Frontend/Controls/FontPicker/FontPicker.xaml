@@ -61,7 +61,7 @@
             <woControls:TextBox.Icon>
                 <woControls:PathIcon Height="16"
                                      Margin="8,0,0,0"
-                                     Data="{StaticResource Icon.MagnifyingGlass}"
+                                     Data="{StaticResource I.S.MagnifyingGlass}"
                                      Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurfaceVariant, Mode=OneTime}" />
             </woControls:TextBox.Icon>
         </woControls:TextBox>
@@ -184,7 +184,7 @@
 
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
                             <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
-                                                 Data="{StaticResource Icon.ExpandMore}"
+                                                 Data="{StaticResource I.R.ExpandMore}"
                                                  Style="{StaticResource IconSmall}" />
                         </Grid>
                     </woControls:Button>
@@ -198,7 +198,7 @@
 
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
                             <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
-                                                 Data="{StaticResource Icon.ExpandLess}"
+                                                 Data="{StaticResource I.R.ExpandLess}"
                                                  Style="{StaticResource IconSmall}" />
                         </Grid>
 

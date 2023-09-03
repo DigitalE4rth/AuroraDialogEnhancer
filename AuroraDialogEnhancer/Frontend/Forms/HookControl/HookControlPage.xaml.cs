@@ -143,7 +143,7 @@ public partial class HookControlPage
         PathIconHookInfoRight.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
         if (_hookedGameDataProvider.Id != Properties.Settings.Default.App_HookSettings_SelectedGameId)
         {
-            PathIconHookInfoRight.Data = (PathGeometry) Application.Current.Resources["Icon.PlayArrow"];
+            PathIconHookInfoRight.Data = (PathGeometry) Application.Current.Resources["I.S.PlayArrow"];
             CardButtonHookInfo.Content = _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_None);
             return;
         }
@@ -154,15 +154,15 @@ public partial class HookControlPage
         switch (_hookedGameDataProvider.HookState)
         {
             case EHookState.Canceled:
-                iconName = "Icon.Spinner";
+                iconName = "I.S.Spinner";
                 hookContent = new List<UIElement> { _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Canceled) };
                 break;
             case EHookState.None:
-                iconName = "Icon.PlayArrow";
+                iconName = "I.S.PlayArrow";
                 hookContent = new List<UIElement> { _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_None) };
                 break;
             case EHookState.Error:
-                iconName = "Icon.Exclamation";
+                iconName = "I.S.Exclamation";
                 PathIconHookInfoRight.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
                 hookContent = new List<UIElement>
                 {
@@ -172,7 +172,7 @@ public partial class HookControlPage
                 };
                 break;
             case EHookState.Search:
-                iconName = "Icon.Stop";
+                iconName = "I.S.Stop";
                 hookContent = new List<UIElement>
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Search), 
@@ -181,7 +181,7 @@ public partial class HookControlPage
                 };
                 break;
             case EHookState.Paused:
-                iconName = "Icon.PlayArrow";
+                iconName = "I.S.PlayArrow";
                 hookContent = new List<UIElement>
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Paused),
@@ -190,7 +190,7 @@ public partial class HookControlPage
                 };  
                 break;
             case EHookState.Hooked:
-                iconName = "Icon.Stop";
+                iconName = "I.S.Stop";
                 hookContent = new List<UIElement>
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Detected),
@@ -199,7 +199,7 @@ public partial class HookControlPage
                 };
                 break;
             case EHookState.Warning:
-                iconName = "Icon.RotateRight";
+                iconName = "I.S.RotateRight";
                 hookContent = new List<UIElement>
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Warning),
@@ -209,7 +209,7 @@ public partial class HookControlPage
                 break;
             default:
                 PathIconHookInfoRight.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
-                iconName = "Icon.Exclamation";
+                iconName = "I.S.Exclamation";
                 hookContent = new List<UIElement> { _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_AppException) };
                 break;
         }

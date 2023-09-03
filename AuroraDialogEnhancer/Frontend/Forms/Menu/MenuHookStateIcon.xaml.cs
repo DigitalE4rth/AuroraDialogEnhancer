@@ -49,23 +49,23 @@ public partial class MenuHookStateIcon
         switch (_hookedGameInfoProvider!.HookState)
         {
             case EHookState.Hooked:
-                icon = "Icon.Solid.CircleCheck";
+                icon = "I.S.CircleCheck";
                 Icon.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Primary));
                 IconHighlight.Visibility = Visibility.Visible;
                 break;
             case EHookState.Warning:
             case EHookState.Error:
-                icon = "Icon.Solid.Error";
+                icon = "I.S.Error";
                 Icon.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Error));
                 IconHighlight.Visibility = Visibility.Visible;
                 break;
             case EHookState.Paused:
-                icon = "Icon.Pause";
+                icon = "I.S.Pause";
                 Icon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
                 break;
             case EHookState.Search:
             case EHookState.Canceled:
-                icon = "Icon.Spinner";
+                icon = "I.S.Spinner";
                 break;
             case EHookState.None:
             default:

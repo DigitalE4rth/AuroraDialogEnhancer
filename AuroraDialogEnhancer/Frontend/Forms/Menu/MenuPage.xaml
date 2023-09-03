@@ -77,12 +77,12 @@
 
                     <!--  Icon  -->
                     <Grid Grid.Column="2" HorizontalAlignment="Right">
-                        <woControls:PathIcon Data="{StaticResource Icon.Aurora}"
+                        <woControls:PathIcon Data="{StaticResource I.R.Aurora}"
                                              Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
                                              Opacity="1"
                                              Style="{StaticResource IconLarge}" />
 
-                        <woControls:PathIcon Data="{StaticResource Icon.Aurora}"
+                        <woControls:PathIcon Data="{StaticResource I.R.Aurora}"
                                              Opacity="0.2"
                                              Style="{StaticResource IconLarge}">
                             <woControls:PathIcon.Foreground>
@@ -115,13 +115,13 @@
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Solid.Cast}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.Cast}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.Icon>
 
                         <woControls:MenuStateButton.IconInactive>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Regular.Cast}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.Cast}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.IconInactive>
 
@@ -153,13 +153,13 @@
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Solid.Keyboard}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.Keyboard}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.Icon>
 
                         <woControls:MenuStateButton.IconInactive>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Regular.Keyboard}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.Keyboard}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.IconInactive>
                     </woControls:MenuStateButton>
@@ -174,13 +174,13 @@
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Solid.PhotoPrints}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.PhotoPrints}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.Icon>
 
                         <woControls:MenuStateButton.IconInactive>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Regular.PhotoPrints}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.PhotoPrints}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.IconInactive>
                     </woControls:MenuStateButton>
@@ -195,13 +195,13 @@
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Solid.Settings}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.Settings}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.Icon>
 
                         <woControls:MenuStateButton.IconInactive>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Regular.Settings}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.Settings}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.IconInactive>
                     </woControls:MenuStateButton>
@@ -216,13 +216,13 @@
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Solid.Info}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.S.Info}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.Icon>
 
                         <woControls:MenuStateButton.IconInactive>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                <woControls:PathIcon Data="{StaticResource Icon.Regular.Info}" Style="{StaticResource IconLarge}" />
+                                <woControls:PathIcon Data="{StaticResource I.R.Info}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.IconInactive>
                     </woControls:MenuStateButton>
@@ -248,13 +248,13 @@
 
                             <woControls:MenuStateButton.Icon>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                    <woControls:PathIcon Data="{StaticResource Icon.Solid.PageInfo}" Style="{StaticResource IconLarge}" />
+                                    <woControls:PathIcon Data="{StaticResource I.S.PageInfo}" Style="{StaticResource IconLarge}" />
                                 </Grid>
                             </woControls:MenuStateButton.Icon>
 
                             <woControls:MenuStateButton.IconInactive>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                    <woControls:PathIcon Data="{StaticResource Icon.Regular.PageInfo}" Style="{StaticResource IconLarge}" />
+                                    <woControls:PathIcon Data="{StaticResource I.R.PageInfo}" Style="{StaticResource IconLarge}" />
                                 </Grid>
                             </woControls:MenuStateButton.IconInactive>
                         </woControls:MenuStateButton>
@@ -270,13 +270,13 @@
 
                             <woControls:MenuStateButton.Icon>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                    <woControls:PathIcon Data="{StaticResource Icon.Solid.EmojiNature}" Style="{StaticResource IconLarge}" />
+                                    <woControls:PathIcon Data="{StaticResource I.S.EmojiNature}" Style="{StaticResource IconLarge}" />
                                 </Grid>
                             </woControls:MenuStateButton.Icon>
 
                             <woControls:MenuStateButton.IconInactive>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                    <woControls:PathIcon Data="{StaticResource Icon.Regular.EmojiNature}" Style="{StaticResource IconLarge}" />
+                                    <woControls:PathIcon Data="{StaticResource I.R.EmojiNature}" Style="{StaticResource IconLarge}" />
                                 </Grid>
                             </woControls:MenuStateButton.IconInactive>
                         </woControls:MenuStateButton>

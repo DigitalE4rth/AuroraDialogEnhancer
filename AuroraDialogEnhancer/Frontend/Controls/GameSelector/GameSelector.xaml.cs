@@ -119,13 +119,13 @@ public partial class GameSelector
             !_hookedGameInfoProvider.Id.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
         {
             LeftIcon.Margin = new Thickness(0);
-            LeftIcon.Data = (PathGeometry) Application.Current.Resources["Icon.VitalSigns"];
+            LeftIcon.Data = (PathGeometry) Application.Current.Resources["I.R.VitalSigns"];
             return;
         }
 
         var icon = GetIconAndSetMargins(LeftIcon);
         LeftIcon.Data = icon is null 
-            ? (PathGeometry) Application.Current.Resources["Icon.Controller"] 
+            ? (PathGeometry) Application.Current.Resources["I.S.Controller"] 
             : (PathGeometry) Application.Current.Resources[icon];
 
         if (_hookedGameInfoProvider!.HookState is not (EHookState.Search or EHookState.Canceled)) return;
@@ -154,17 +154,17 @@ public partial class GameSelector
         {
             case EHookState.Hooked:
                 pathIcon.Margin = new Thickness(1, 0, 1, 0);
-                return "Icon.Check";
+                return "I.S.Check";
             case EHookState.Warning:
             case EHookState.Error:
                 pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Medium;
-                return "Icon.Exclamation";
+                return "I.S.Exclamation";
             case EHookState.Paused:
                 pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
-                return "Icon.Pause";
+                return "I.S.Pause";
             case EHookState.Search:
             case EHookState.Canceled:
-                return "Icon.Spinner";
+                return "I.S.Spinner";
             case EHookState.None:
             default:
                 return null;

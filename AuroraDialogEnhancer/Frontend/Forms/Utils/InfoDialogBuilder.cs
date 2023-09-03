@@ -59,7 +59,7 @@ public class InfoDialogBuilder
 
     public InfoDialogBuilder SetTypeError()
     {
-        _infoDialogConfig.IconData = (PathGeometry) Application.Current.Resources["Icon.Warning"];
+        _infoDialogConfig.IconData = (PathGeometry) Application.Current.Resources["I.R.Warning"];
         return this;
     }
 
