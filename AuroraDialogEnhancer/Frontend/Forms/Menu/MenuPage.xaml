@@ -296,7 +296,7 @@
                                HorizontalAlignment="Center"
                                Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
                                Opacity="0.38">
-                        <Run Text="{x:Static localization:Resources.Menu_PreRelease}" />
+                        <Run Text="{x:Static localization:Resources.Menu_Version}" />
                         <Run Text="{Binding Source={x:Static statics:Global.AssemblyInfo}, Path=Version, Mode=OneTime}" />
                     </TextBlock>
 
