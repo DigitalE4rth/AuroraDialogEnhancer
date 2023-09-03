@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
+using AuroraDialogEnhancerExtensions.Screenshots;
 using Clipboard = System.Windows.Forms.Clipboard;
 
 namespace AuroraDialogEnhancer.Backend.ScreenCapture;
@@ -13,12 +13,12 @@ namespace AuroraDialogEnhancer.Backend.ScreenCapture;
 public class ScreenCaptureService
 {
     private readonly HookedGameDataProvider _hookedGameDataProvider;
-
+    
+    private IScreenshotNameProvider? _screenshotNameProvider;
     private readonly Queue<(string, Bitmap)> _imagesToSaveQueue;
     private readonly bool _isCopyToBuffer;
     private readonly object _lock;
     private string? _screenshotsFolder;
-
     public HashSet<string> CapturedGames { get; }
 
     public ScreenCaptureService(HookedGameDataProvider hookedGameDataProvider)
@@ -58,17 +58,22 @@ public class ScreenCaptureService
         var frame = CaptureClient();
         if (frame is null) return;
 
-        _imagesToSaveQueue.Enqueue((DateTime.Now.ToString(Properties.Settings.Default.App_Screenshot_DateTimeFormat), frame));
+        _imagesToSaveQueue.Enqueue((_screenshotNameProvider!.GetName(), frame));
         SaveImage();
         CapturedGames.Add(_hookedGameDataProvider.Data!.ExtensionConfig!.Id);
+    }
+
+    public void SetNameProvider(IScreenshotNameProvider screenshotNameProvider)
+    {
+        _screenshotNameProvider = screenshotNameProvider;
     }
 
     private void SaveImage()
     {
         lock (_lock)
         {
-            var (timeStamp, bitmap) = _imagesToSaveQueue.Dequeue();
-            var path = GetFilePath(timeStamp);
+            var (imageName, bitmap) = _imagesToSaveQueue.Dequeue();
+            var path = GetFilePath(imageName);
 
             bitmap.Save(path, ImageFormat.Png);
 
@@ -88,15 +93,15 @@ public class ScreenCaptureService
         }
     }
 
-    private string GetFilePath(string timestamp)
+    private string GetFilePath(string imageName)
     {
-        var path = Path.Combine(_screenshotsFolder!, $"{timestamp}.png");
+        var path = Path.Combine(_screenshotsFolder!, $"{imageName}.png");
         if (!File.Exists(path)) return path;
 
         var fileNumber = 2;
         while (File.Exists(path))
         {
-            path = Path.Combine(_screenshotsFolder!, $"{timestamp} ({fileNumber}).png");
+            path = Path.Combine(_screenshotsFolder!, $"{imageName} ({fileNumber}).png");
             fileNumber++;
         }
 

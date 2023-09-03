@@ -69,7 +69,7 @@
     <Compile Include="Location\ILocationProvider.cs" />
     <Compile Include="Location\LocationProviderEmpty.cs" />
     <Compile Include="Proxy\DialogOptionFinderEmpty.cs" />
-    <Compile Include="Proxy\IPreset.cs" />
+    <Compile Include="Proxy\PresetBase.cs" />
     <Compile Include="Proxy\IDialogOptionFinder.cs" />
     <Compile Include="Proxy\DialogOptionFinderProvider.cs" />
     <Compile Include="Dimensions\Area.cs" />
@@ -95,6 +95,8 @@
     <Compile Include="KeyBindings\ClickablePrecisePointDto.cs" />
     <Compile Include="Proxy\DialogOptionFinderData.cs" />
     <Compile Include="Proxy\PresetEmpty.cs" />
+    <Compile Include="Screenshots\IScreenshotNameProvider.cs" />
+    <Compile Include="Screenshots\ScreenshotNameProviderDefault.cs" />
     <Compile Include="Services\BitmapUtils.cs" />
   </ItemGroup>
   <ItemGroup>

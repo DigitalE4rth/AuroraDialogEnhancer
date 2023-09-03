@@ -7,7 +7,7 @@ using Extension.GenshinImpact.Services;
 
 namespace Extension.GenshinImpact.Presets;
 
-public class Preset : IPreset
+public class PresetBase : PresetBase
 {
     public DialogOptionFinderProvider GetDialogOptionFinderProvider(Size clientSize) => new DialogOptionFinderInfoMapper().Map(clientSize);
 

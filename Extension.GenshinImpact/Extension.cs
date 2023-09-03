@@ -32,5 +32,5 @@ public sealed class Extension : ExtensionDto
 
     public override IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProvider();
 
-    public override IPreset GetPreset() => new Preset();
+    public override PresetBase GetPreset() => new Preset();
 }
