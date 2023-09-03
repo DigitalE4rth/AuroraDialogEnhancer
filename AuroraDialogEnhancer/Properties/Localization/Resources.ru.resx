@@ -421,13 +421,13 @@
     <value>Настройки хука</value>
   </data>
   <data name="HookSettings_Location_Game" xml:space="preserve">
-    <value>Месторасположение игры</value>
+    <value>Расположение игры</value>
   </data>
   <data name="HookSettings_Location_Launcher" xml:space="preserve">
-    <value>Месторасположение лаунчера</value>
+    <value>Расположение лаунчера</value>
   </data>
   <data name="HookSettings_Location_Screenshots" xml:space="preserve">
-    <value>Месторасположение скриншотов</value>
+    <value>Расположение скриншотов</value>
   </data>
   <data name="HookSettings_OnLaunch_Action" xml:space="preserve">
     <value>Запускать при старте хука</value>
