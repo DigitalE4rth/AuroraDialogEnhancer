@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,195 +118,193 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Acknowledgements" xml:space="preserve">
-    <value>Special Thanks</value>
+    <value>Besonderer Dank</value>
   </data>
   <data name="About_AllOfYou" xml:space="preserve">
-    <value>All of you, guys</value>
-    <comment>Verb</comment>
+    <value>Alle von euch, Jungs</value>
   </data>
   <data name="About_ApplicationIcon" xml:space="preserve">
-    <value>Application icon</value>
+    <value>Anwendungs symbol</value>
   </data>
   <data name="About_Consultant" xml:space="preserve">
-    <value>consultant</value>
-    <comment>lower case</comment>
+    <value>berater</value>
   </data>
   <data name="About_CreativeSociety_Description_1" xml:space="preserve">
-    <value>Kind international project</value>
+    <value>Art internationales Projekt</value>
   </data>
   <data name="About_CreativeSociety_Description_2" xml:space="preserve">
-    <value>Human Life is the Highest Value</value>
+    <value>Das menschliche Leben ist der höchste Wert</value>
   </data>
   <data name="About_CreativeSociety_Link" xml:space="preserve">
-    <value>https://creativesociety.com</value>
+    <value>https://creativesociety.com/de</value>
   </data>
   <data name="About_CreativeSociety_Title" xml:space="preserve">
-    <value>Creative Society</value>
+    <value>Kreative Gesellschaft</value>
   </data>
   <data name="About_LeadDeveloper" xml:space="preserve">
-    <value>Lead developer</value>
+    <value>Hauptentwickler</value>
   </data>
   <data name="About_LibrariesAndResources" xml:space="preserve">
-    <value>Libraries and Resources</value>
+    <value>Bibliotheken und Ressourcen</value>
   </data>
   <data name="About_ModifiedVersion" xml:space="preserve">
-    <value>Modified versions</value>
+    <value>Geänderte Versionen</value>
   </data>
   <data name="About_PreRelease" xml:space="preserve">
-    <value>Pre-release</value>
+    <value>Vorabveröffentlichung</value>
   </data>
   <data name="About_SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>Besonderer Dank</value>
   </data>
   <data name="About_Tester" xml:space="preserve">
     <value>Tester</value>
   </data>
   <data name="About_ThankYou" xml:space="preserve">
-    <value>Thank you, thank you, thank you!</value>
+    <value>Vielen Dank, vielen Dank, vielen Dank!</value>
   </data>
   <data name="About_Translation_Dutch" xml:space="preserve">
-    <value>Dutch translation</value>
+    <value>Niederländische Übersetzung</value>
   </data>
   <data name="About_Translation_English" xml:space="preserve">
-    <value>English translation</value>
+    <value>Englische Übersetzung</value>
   </data>
   <data name="About_Translation_German" xml:space="preserve">
-    <value>German translation</value>
+    <value>Deutsche Übersetzung</value>
   </data>
   <data name="About_Translation_Ukranian" xml:space="preserve">
-    <value>Ukranian translation</value>
+    <value>Ukrainische Übersetzung</value>
   </data>
   <data name="About_Update_Frequency_EveryTwoWeeks" xml:space="preserve">
-    <value>Every two weeks</value>
+    <value>Alle zwei Wochen</value>
   </data>
   <data name="About_Update_Frequency_Monthly" xml:space="preserve">
-    <value>Every month</value>
+    <value>Jeden Monat</value>
   </data>
   <data name="About_Update_Frequency_None" xml:space="preserve">
-    <value>Don't check</value>
+    <value>Nicht prüfen</value>
   </data>
   <data name="About_Update_Frequency_ToolTip" xml:space="preserve">
-    <value>Updates check frequency</value>
+    <value>Häufigkeit der Aktualisierungsprüfung</value>
   </data>
   <data name="About_Update_Frequency_Weekly" xml:space="preserve">
-    <value>Once a week</value>
+    <value>Einmal pro Woche</value>
   </data>
   <data name="About_Update_Update_Sub" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
-    <value>User interface</value>
+    <value>Benutzeroberfläche</value>
   </data>
   <data name="About_Version" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="About_VersionInfo" xml:space="preserve">
-    <value>Version info</value>
+    <value>Informationen zur Version</value>
   </data>
   <data name="Appearance_AccentColor_Description" xml:space="preserve">
-    <value>Choose the application accent color</value>
+    <value>Wählen Sie die Akzentfarbe der Anwendung</value>
   </data>
   <data name="Appearance_AccentColor_RestoreDefault" xml:space="preserve">
-    <value>Restore default</value>
+    <value>Standard wiederherstellen</value>
   </data>
   <data name="Appearance_AccentColor_Title" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Akzentfarbe</value>
   </data>
   <data name="Appearance_ColorTheme_Create" xml:space="preserve">
-    <value>Create</value>
+    <value>Erstellen</value>
   </data>
   <data name="Appearance_ColorTheme_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Benutzerdefiniert</value>
   </data>
   <data name="Appearance_ColorTheme_Dark" xml:space="preserve">
-    <value>Dark</value>
+    <value>Dunkelheit</value>
   </data>
   <data name="Appearance_ColorTheme_Description" xml:space="preserve">
-    <value>Default application color scheme</value>
+    <value>Standardfarbschema der Anwendung</value>
   </data>
   <data name="Appearance_ColorTheme_Export" xml:space="preserve">
-    <value>Export</value>
+    <value>Exportieren</value>
   </data>
   <data name="Appearance_ColorTheme_Import" xml:space="preserve">
-    <value>Import</value>
+    <value>Importieren</value>
   </data>
   <data name="Appearance_ColorTheme_Light" xml:space="preserve">
-    <value>Light</value>
+    <value>Licht</value>
   </data>
   <data name="Appearance_ColorTheme_Management" xml:space="preserve">
-    <value>Theme management</value>
+    <value>Verwaltung der Themen</value>
   </data>
   <data name="Appearance_ColorTheme_System" xml:space="preserve">
     <value>System</value>
   </data>
   <data name="Appearance_ColorTheme_Title" xml:space="preserve">
-    <value>Base color scheme</value>
+    <value>Grundfarbschema</value>
   </data>
   <data name="Appearance_Cursor_Default" xml:space="preserve">
-    <value>Default</value>
+    <value>Standard</value>
   </data>
   <data name="Appearance_Cursor_Hand" xml:space="preserve">
     <value>Hand</value>
   </data>
   <data name="Appearance_Cursor_Title" xml:space="preserve">
-    <value>Interaction cursor</value>
+    <value>Interaktion Cursor</value>
   </data>
   <data name="Appearance_Error_Export" xml:space="preserve">
-    <value>Theme export error</value>
+    <value>Fehler beim Theme-Export</value>
   </data>
   <data name="Appearance_Error_Import" xml:space="preserve">
-    <value>Theme import error</value>
+    <value>Fehler beim Theme-Import</value>
   </data>
   <data name="Appearance_Font_Title" xml:space="preserve">
-    <value>Application interface font</value>
+    <value>Schriftart der Anwendungsschnittstelle</value>
   </data>
   <data name="Appearance_Title" xml:space="preserve">
-    <value>General</value>
+    <value>Allgemein</value>
   </data>
   <data name="Appearance_ZoomLevel_RestoreDefault" xml:space="preserve">
-    <value>Restore default</value>
+    <value>Standard wiederherstellen</value>
   </data>
   <data name="Appearance_ZoomLevel_Title" xml:space="preserve">
-    <value>Zoom level</value>
+    <value>Zoomstufe</value>
   </data>
   <data name="AutoUpdate_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="AutoUpdate_Changelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Änderungsliste</value>
   </data>
   <data name="AutoUpdate_Close" xml:space="preserve">
-    <value>Close</value>
+    <value>Schließen</value>
   </data>
   <data name="AutoUpdate_CurrentIsLatestVersion" xml:space="preserve">
-    <value>You have the latest version: {0}</value>
+    <value>Sie haben die neueste Version: {0}</value>
   </data>
   <data name="AutoUpdate_CurrentVersion" xml:space="preserve">
-    <value>Current version: {0}</value>
+    <value>Aktuelle Version: {0}</value>
   </data>
   <data name="AutoUpdate_DownloadSpeed" xml:space="preserve">
-    <value>Downloading at</value>
+    <value>Herunterladen unter</value>
   </data>
   <data name="AutoUpdate_DownloadSpeed_Seconds" xml:space="preserve">
-    <value>sec</value>
+    <value>sek</value>
   </data>
   <data name="AutoUpdate_Failed_Message" xml:space="preserve">
-    <value>There is a problem reaching update server. Please check your internet connection and try again later.</value>
+    <value>Es ist ein Problem beim Erreichen des Update-Servers aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es später erneut.</value>
   </data>
   <data name="AutoUpdate_Failed_Title" xml:space="preserve">
-    <value>Update Check Failed</value>
+    <value>Update-Prüfung fehlgeschlagen</value>
   </data>
   <data name="AutoUpdate_NewVersionAvailable" xml:space="preserve">
-    <value>A new version available: {0}</value>
+    <value>Eine neue Version ist verfügbar: {0}</value>
   </data>
   <data name="AutoUpdate_UnableToDetermineFileName" xml:space="preserve">
-    <value>Unable to determine the filename of the update file!</value>
+    <value>Der Dateiname der Aktualisierungsdatei kann nicht ermittelt werden!</value>
   </data>
   <data name="AutoUpdate_Unavailable_Message" xml:space="preserve">
-    <value>There is a problem reaching update server. Please check your internet connection and try again later.</value>
+    <value>Es ist ein Problem beim Erreichen des Update-Servers aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es später erneut.</value>
   </data>
   <data name="AutoUpdate_Unavailable_Title" xml:space="preserve">
-    <value>Update Unavailable</value>
+    <value>Update nicht verfügbar</value>
   </data>
   <data name="AutoUpdate_Update_Verb" xml:space="preserve">
     <value>Update</value>
@@ -315,508 +313,507 @@
     <value>Update</value>
   </data>
   <data name="AutoUpdate_WindowTitle_Download" xml:space="preserve">
-    <value>Downloading an update</value>
+    <value>Herunterladen eines updates</value>
   </data>
   <data name="ColorPickerDialog_Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Bewerbung</value>
   </data>
   <data name="ColorPickerDialog_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="ColorPickerDialog_Title" xml:space="preserve">
-    <value>Accent color picker</value>
+    <value>Auswahl der Akzentfarbe</value>
   </data>
   <data name="CoreInfoState_ClientSize_Minimized" xml:space="preserve">
-    <value>Minimized</value>
+    <value>Minimiert</value>
   </data>
   <data name="CoreInfoState_Detection_Canceled" xml:space="preserve">
-    <value>Canceling...</value>
+    <value>Absagen...</value>
   </data>
   <data name="CoreInfoState_Detection_Detected" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
   <data name="CoreInfoState_Detection_Search" xml:space="preserve">
-    <value>Search...</value>
+    <value>Suche...</value>
   </data>
   <data name="CoreInfoState_DialogMode_No" xml:space="preserve">
-    <value>No</value>
+    <value>Nein</value>
   </data>
   <data name="CoreInfoState_DialogMode_Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
   <data name="EntityRepository_Error_Read" xml:space="preserve">
-    <value>File reading error</value>
+    <value>Fehler beim lesen von dateien</value>
   </data>
   <data name="EntityRepository_Error_Write" xml:space="preserve">
-    <value>File writing error</value>
+    <value>Fehler beim schreiben der datei</value>
   </data>
   <data name="FileDialog_AllFiles" xml:space="preserve">
-    <value>All files</value>
+    <value>Alle dateien</value>
   </data>
   <data name="FileDialog_File" xml:space="preserve">
-    <value>file</value>
+    <value>datei</value>
   </data>
   <data name="FileDialog_Files" xml:space="preserve">
-    <value>files</value>
+    <value>dateien</value>
   </data>
   <data name="FileDialog_Shortcut_Title" xml:space="preserve">
-    <value>Save profile shortcut</value>
+    <value>Profilkürzel speichern</value>
   </data>
   <data name="FontPicker_Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Bewerbung</value>
   </data>
   <data name="FontPicker_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="FontPicker_FontSize" xml:space="preserve">
-    <value>Size</value>
+    <value>Größe</value>
   </data>
   <data name="FontPicker_Title" xml:space="preserve">
-    <value>Font picker</value>
+    <value>Schriftart-Auswahl</value>
   </data>
   <data name="HookSettings_AdditionalSettings" xml:space="preserve">
-    <value>Additional settings</value>
+    <value>Zusätzliche Einstellungen</value>
   </data>
   <data name="HookSettings_CreateShortcut_Description" xml:space="preserve">
-    <value>Create launch shortcut for this profile</value>
+    <value>Startverknüpfung für dieses Profil erstellen</value>
   </data>
   <data name="HookSettings_CreateShortcut_Title" xml:space="preserve">
-    <value>Create shortcut</value>
+    <value>Verknüpfung erstellen</value>
   </data>
   <data name="HookSettings_Error_Location_Game_Empty" xml:space="preserve">
-    <value>Game location is not specified</value>
+    <value>Spielort ist nicht angegeben</value>
   </data>
   <data name="HookSettings_Error_Location_Game_NotExists" xml:space="preserve">
-    <value>Game location does not exist</value>
+    <value>Spielort existiert nicht</value>
   </data>
   <data name="HookSettings_Error_Location_Launcher_Empty" xml:space="preserve">
-    <value>Launcher location is not specified</value>
+    <value>Startort ist nicht angegeben</value>
   </data>
   <data name="HookSettings_Error_Location_Launcher_NotExists" xml:space="preserve">
-    <value>Launcher location does not exist</value>
+    <value>Der Startort existiert nicht</value>
   </data>
   <data name="HookSettings_Error_Preset_IsMissing" xml:space="preserve">
-    <value>is missing</value>
+    <value>fehlt</value>
   </data>
   <data name="HookSettings_Error_Preset_Preset" xml:space="preserve">
-    <value>Preset resolution</value>
+    <value>Voreingestellte Auflösung</value>
   </data>
   <data name="HookSettings_Error_Preset_TemplateImage" xml:space="preserve">
-    <value>Image template for resolution</value>
+    <value>Bildvorlage für die Auflösung</value>
   </data>
   <data name="HookSettings_Error_ProcessName_Game" xml:space="preserve">
-    <value>Game process name is not specified</value>
+    <value>Name des Spielprozesses ist nicht angegeben</value>
   </data>
   <data name="HookSettings_Error_ProcessName_Launcher" xml:space="preserve">
-    <value>Launcher process name is not specified</value>
+    <value>Name des Startvorgangs ist nicht angegeben</value>
   </data>
   <data name="HookSettings_ExitSettings_Description" xml:space="preserve">
-    <value>Close application on game exit</value>
+    <value>Anwendung beim Beenden des Spiels schließen</value>
   </data>
   <data name="HookSettings_ExitSettings_Title" xml:space="preserve">
-    <value>Exit with the game</value>
+    <value>Beenden Sie das Spiel mit</value>
   </data>
   <data name="HookSettings_HookInfo" xml:space="preserve">
-    <value>Hook info</value>
+    <value>Haken setzen</value>
   </data>
   <data name="HookSettings_HookSettings" xml:space="preserve">
-    <value>Hook settings</value>
+    <value>Haken-Einstellungen</value>
   </data>
   <data name="HookSettings_Location_Game" xml:space="preserve">
-    <value>Game location</value>
+    <value>Standort des Spiels</value>
   </data>
   <data name="HookSettings_Location_Launcher" xml:space="preserve">
-    <value>Launcher location</value>
+    <value>Standort des Launcher</value>
   </data>
   <data name="HookSettings_Location_Screenshots" xml:space="preserve">
-    <value>Screenshots folder location</value>
+    <value>Speicherort des Screenshots-Ordners</value>
   </data>
   <data name="HookSettings_OnLaunch_Action" xml:space="preserve">
-    <value>Launch at hook start</value>
+    <value>Start am Haken Start</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Game" xml:space="preserve">
-    <value>Game</value>
+    <value>Spiel</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Launcher" xml:space="preserve">
-    <value>Launcher</value>
+    <value>Trägerrakete</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Nothing" xml:space="preserve">
-    <value>Nothing</value>
+    <value>Nichts</value>
   </data>
   <data name="HookSettings_OpenScreenShotsFolder" xml:space="preserve">
-    <value>Open screenshots folder</value>
+    <value>Ordner für Bildschirmfotos öffnen</value>
   </data>
   <data name="HookSettings_ProcessName_Game" xml:space="preserve">
-    <value>Game process name</value>
+    <value>Name des Spielprozesses</value>
   </data>
   <data name="HookSettings_ProcessName_Launcher" xml:space="preserve">
-    <value>Launcher process name</value>
+    <value>Name des Launcher-Prozesses</value>
   </data>
   <data name="HookSettings_Profile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="HookSettings_Settings_Action_Locate" xml:space="preserve">
-    <value>Locate</value>
+    <value>Suchen Sie</value>
   </data>
   <data name="HookSettings_Settings_Action_Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Zurücksetzen</value>
   </data>
   <data name="HookSettings_State_AppException" xml:space="preserve">
-    <value>Something went wrong</value>
+    <value>Etwas ist schief gelaufen</value>
   </data>
   <data name="HookSettings_State_Canceled" xml:space="preserve">
-    <value>Cancelling</value>
+    <value>Abbestellen</value>
   </data>
   <data name="HookSettings_State_Detected" xml:space="preserve">
-    <value>Detected</value>
+    <value>Entdeckt</value>
   </data>
   <data name="HookSettings_State_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Fehler</value>
   </data>
   <data name="HookSettings_State_None" xml:space="preserve">
     <value>Start</value>
   </data>
   <data name="HookSettings_State_Paused" xml:space="preserve">
-    <value>Paused</value>
+    <value>Pausiert</value>
   </data>
   <data name="HookSettings_State_Search" xml:space="preserve">
-    <value>Searching</value>
+    <value>Suche auf</value>
   </data>
   <data name="HookSettings_State_Search_PressToStop" xml:space="preserve">
-    <value>Press to stop the search</value>
+    <value>Drücken Sie, um die Suche zu beenden</value>
   </data>
   <data name="HookSettings_State_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Warnung</value>
   </data>
   <data name="HookSettings_Warning_UnappliedChanges" xml:space="preserve">
-    <value>The changes will be applied after restarting the hook</value>
+    <value>Die Änderungen werden nach einem Neustart des Hooks übernommen</value>
   </data>
   <data name="InfoDialog_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="InfoDialog_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Fehler</value>
   </data>
   <data name="InfoDialog_Info" xml:space="preserve">
-    <value>Info</value>
+    <value>Infos</value>
   </data>
   <data name="InfoDialog_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="InfoDialog_SomethingWentWrong" xml:space="preserve">
-    <value>Something went wrong</value>
+    <value>Etwas ist schief gelaufen</value>
   </data>
   <data name="KeyBindAction_DialogOption" xml:space="preserve">
-    <value>Dialog option</value>
+    <value>Option Dialog</value>
   </data>
   <data name="KeyBindAction_ManualDialogMode" xml:space="preserve">
-    <value>Manual dialog mode</value>
+    <value>Manueller Dialogmodus</value>
   </data>
   <data name="KeyBindAction_Next" xml:space="preserve">
-    <value>Next</value>
+    <value>Weiter</value>
   </data>
   <data name="KeyBindAction_Previous" xml:space="preserve">
-    <value>Previous</value>
+    <value>Vorherige</value>
   </data>
   <data name="KeyBindAction_ScreenShot" xml:space="preserve">
-    <value>Screenshot</value>
+    <value>Bildschirmfoto</value>
   </data>
   <data name="KeyBindAction_Select" xml:space="preserve">
-    <value>Select</value>
+    <value>Wählen Sie</value>
   </data>
   <data name="KeyBinding_Control" xml:space="preserve">
-    <value>Controls</value>
+    <value>Kontrolliert</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
-    <value>Auto-play</value>
+    <value>Automatische Wiedergabe</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
-    <value>Fullscreen pop-up click</value>
+    <value>Vollbild pop-up klick</value>
   </data>
   <data name="KeyBinding_Control_HideUi" xml:space="preserve">
-    <value>Hide UI</value>
+    <value>UI ausblenden</value>
   </data>
   <data name="KeyBinding_Control_Next" xml:space="preserve">
-    <value>Next</value>
+    <value>Weiter</value>
   </data>
   <data name="KeyBinding_Control_Previous" xml:space="preserve">
-    <value>Previous</value>
+    <value>Vorherige</value>
   </data>
   <data name="KeyBinding_Control_Select" xml:space="preserve">
-    <value>Select</value>
+    <value>Wählen Sie</value>
   </data>
   <data name="KeyBinding_General" xml:space="preserve">
-    <value>General</value>
+    <value>Allgemein</value>
   </data>
   <data name="KeyBinding_General_HideCursor" xml:space="preserve">
-    <value>Hide cursor</value>
+    <value>Cursor ausblenden</value>
   </data>
   <data name="KeyBinding_General_PauseResume" xml:space="preserve">
-    <value>Pause/Resume hook</value>
+    <value>Pause/Fortsetzen haken</value>
   </data>
   <data name="KeyBinding_General_Reload" xml:space="preserve">
-    <value>Reload hook</value>
+    <value>Haken nachladen</value>
   </data>
   <data name="KeyBinding_General_Screenshot" xml:space="preserve">
-    <value>Screenshot</value>
+    <value>Bildschirmfoto</value>
   </data>
   <data name="KeyBinding_Numeric" xml:space="preserve">
-    <value>Dialog option selection</value>
+    <value>Auswahl der Dialogoptionen</value>
   </data>
   <data name="KeyBinding_Numeric_Eighth" xml:space="preserve">
-    <value>Eighth</value>
+    <value>Achte</value>
   </data>
   <data name="KeyBinding_Numeric_Fifth" xml:space="preserve">
-    <value>Fifth</value>
+    <value>Fünfte</value>
   </data>
   <data name="KeyBinding_Numeric_First" xml:space="preserve">
-    <value>First</value>
+    <value>Erste</value>
   </data>
   <data name="KeyBinding_Numeric_Fourth" xml:space="preserve">
-    <value>Fourth</value>
+    <value>Vierte</value>
   </data>
   <data name="KeyBinding_Numeric_Ninth" xml:space="preserve">
-    <value>Ninth</value>
+    <value>Neunte</value>
   </data>
   <data name="KeyBinding_Numeric_Second" xml:space="preserve">
-    <value>Second</value>
+    <value>Zweite</value>
   </data>
   <data name="KeyBinding_Numeric_Seventh" xml:space="preserve">
-    <value>Seventh</value>
+    <value>Siebte</value>
   </data>
   <data name="KeyBinding_Numeric_Sixth" xml:space="preserve">
-    <value>Sixth</value>
+    <value>Sechste</value>
   </data>
   <data name="KeyBinding_Numeric_Tenth" xml:space="preserve">
-    <value>Tenth</value>
+    <value>Zehnte</value>
   </data>
   <data name="KeyBinding_Numeric_Third" xml:space="preserve">
-    <value>Third</value>
+    <value>Dritte</value>
   </data>
   <data name="KeyBinding_Profile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Klar</value>
   </data>
   <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Zurücksetzen</value>
   </data>
   <data name="KeyBinding_Utilities" xml:space="preserve">
-    <value>Utilities</value>
+    <value>Versorgungsunternehmen</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour" xml:space="preserve">
-    <value>Cursor behaviour</value>
+    <value>Verhalten des Cursors</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Hide" xml:space="preserve">
-    <value>Hide</value>
+    <value>Ausblenden</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_HideAfterSelection" xml:space="preserve">
-    <value>Hide after selection</value>
+    <value>Nach Auswahl ausblenden</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Nothing" xml:space="preserve">
-    <value>Nothing</value>
+    <value>Nichts</value>
   </data>
   <data name="KeyBinding_Utilities_CycleThrough" xml:space="preserve">
-    <value>Cycle through dialog options</value>
+    <value>Dialogoptionen durchlaufen</value>
   </data>
   <data name="KeyBinding_Utilities_HideCursorOnManualClick" xml:space="preserve">
-    <value>Hide cursor on manual selection</value>
+    <value>Cursor bei manueller Auswahl ausblenden</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour" xml:space="preserve">
-    <value>Numeric action behaviour</value>
+    <value>Numerisches Aktionsverhalten</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Highlight" xml:space="preserve">
-    <value>Highlighting</value>
+    <value>Hervorhebung</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Select" xml:space="preserve">
-    <value>Select</value>
+    <value>Wählen</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour" xml:space="preserve">
-    <value>Single dialog option behavior</value>
+    <value>Verhalten der einzelnen Dialogoptionen</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight" xml:space="preserve">
-    <value>Any action highlights only</value>
+    <value>Jede Aktion markiert nur</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Select" xml:space="preserve">
-    <value>Any action selects</value>
+    <value>Jede Aktion wählt</value>
   </data>
   <data name="Language_Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automatisch</value>
   </data>
   <data name="Language_Name" xml:space="preserve">
-    <value>English</value>
-    <comment>this language name</comment>
+    <value>Deutsch</value>
   </data>
   <data name="Menu_About" xml:space="preserve">
-    <value>About</value>
+    <value>Über</value>
   </data>
   <data name="Menu_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Erscheinungsbild</value>
   </data>
   <data name="Menu_DebugMode" xml:space="preserve">
-    <value>Debugging</value>
+    <value>Fehlersuche</value>
   </data>
   <data name="Menu_HookControl" xml:space="preserve">
-    <value>Hook controls</value>
+    <value>Haken-Kontrollen</value>
   </data>
   <data name="Menu_KeyBindings" xml:space="preserve">
-    <value>Key bindings</value>
+    <value>Tastenbelegung</value>
   </data>
   <data name="Menu_PreRelease" xml:space="preserve">
-    <value>Pre-release</value>
+    <value>Vorabveröffentlichung</value>
   </data>
   <data name="Menu_Presets" xml:space="preserve">
-    <value>Presets</value>
+    <value>Voreinstellungen</value>
   </data>
   <data name="Menu_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Einstellungen</value>
   </data>
   <data name="Menu_Version" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="MissingExtensions_Description" xml:space="preserve">
-    <value>Add game extensions and restart the application</value>
+    <value>Spielerweiterungen hinzufügen und die Anwendung neu starten</value>
   </data>
   <data name="MissingExtensions_Title" xml:space="preserve">
-    <value>Extensions are missing</value>
+    <value>Es fehlen Erweiterungen</value>
   </data>
   <data name="NotifyMenu_Exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Ausfahrt</value>
   </data>
   <data name="NotifyMenu_Open" xml:space="preserve">
-    <value>Open</value>
+    <value>Öffnen Sie</value>
   </data>
   <data name="NotifyMenu_Screenshots" xml:space="preserve">
     <value>Screenshots</value>
   </data>
   <data name="Settings_ApplicationFolder" xml:space="preserve">
-    <value>Application folder</value>
+    <value>Bewerbungsmappe</value>
   </data>
   <data name="Settings_CloseMinimizes" xml:space="preserve">
-    <value>Close minimizes</value>
+    <value>Schließen minimiert</value>
   </data>
   <data name="Settings_ExpertMode_Description" xml:space="preserve">
-    <value>Advanced features</value>
+    <value>Erweiterte Funktionen</value>
   </data>
   <data name="Settings_ExpertMode_Title" xml:space="preserve">
-    <value>Expert mode</value>
+    <value>Experten-Modus</value>
   </data>
   <data name="Settings_General" xml:space="preserve">
-    <value>General</value>
+    <value>Allgemein</value>
   </data>
   <data name="Settings_Internet" xml:space="preserve">
     <value>Internet</value>
   </data>
   <data name="Settings_Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Sprache</value>
   </data>
   <data name="Settings_MinimizeToTaskBar" xml:space="preserve">
-    <value>Minimize to taskbar</value>
+    <value>In die Taskleiste minimieren</value>
   </data>
   <data name="Settings_ScreenshotsManager_Description" xml:space="preserve">
-    <value>Will open only if screenshots have been taken</value>
+    <value>Öffnet sich nur, wenn Bildschirmfotos gemacht wurden</value>
   </data>
   <data name="Settings_ScreenshotsManager_Title" xml:space="preserve">
-    <value>Open screenshots folder on game exit</value>
+    <value>Ordner für Bildschirmfotos beim Beenden des Spiels öffnen</value>
   </data>
   <data name="Settings_SettingsFolder" xml:space="preserve">
-    <value>Settings folder</value>
+    <value>Ordner Einstellungen</value>
   </data>
   <data name="Settings_StartMinimized" xml:space="preserve">
-    <value>Start minimized</value>
+    <value>Start minimiert</value>
   </data>
   <data name="Settings_Startup" xml:space="preserve">
-    <value>Run on Windows start-up</value>
+    <value>Beim Start von Windows ausführen</value>
   </data>
   <data name="Settings_Startup_Exception_Delete" xml:space="preserve">
-    <value>Failed to delete shortcut</value>
+    <value>Verknüpfung konnte nicht gelöscht werden</value>
   </data>
   <data name="Settings_Startup_Exception_Save" xml:space="preserve">
-    <value>Failed to create shortcut</value>
+    <value>Verknüpfung konnte nicht erstellt werden</value>
   </data>
   <data name="Settings_UnloadUi_Description" xml:space="preserve">
-    <value>Unload UI when minimized to save memory</value>
+    <value>UI entladen, wenn minimiert, um Speicher zu sparen</value>
   </data>
   <data name="Settings_UnloadUi_Title" xml:space="preserve">
-    <value>Unload UI</value>
+    <value>UI entladen</value>
   </data>
   <data name="Settings_Update_AppServer" xml:space="preserve">
-    <value>Update server</value>
+    <value>Server aktualisieren</value>
   </data>
   <data name="Settings_UserAgent" xml:space="preserve">
-    <value>Default user agent</value>
+    <value>Standard Benutzer Agent</value>
   </data>
   <data name="Settings_Utils" xml:space="preserve">
-    <value>Utilities</value>
+    <value>Versorgungsunternehmen</value>
   </data>
   <data name="Settings_WindowsState_Default" xml:space="preserve">
-    <value>Default</value>
+    <value>Standard</value>
   </data>
   <data name="Settings_WindowsState_Main_Title" xml:space="preserve">
-    <value>Window state on startup</value>
+    <value>Zustand des Fensters beim Starten</value>
   </data>
   <data name="Settings_WindowsState_Shortcut_Title" xml:space="preserve">
-    <value>Window state on shortcut startup</value>
+    <value>Fensterstatus beim Starten der Verknüpfung</value>
   </data>
   <data name="Settings_WindowsState_SystemTray" xml:space="preserve">
-    <value>System tray</value>
+    <value>Systemablage</value>
   </data>
   <data name="Settings_WindowsState_TaskBar" xml:space="preserve">
-    <value>Task bar</value>
+    <value>Taskleiste</value>
   </data>
   <data name="TextInputDialog_Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Bewerbung</value>
   </data>
   <data name="TextInputDialog_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="TextInputDialog_Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Zurücksetzen</value>
   </data>
   <data name="TextInputDialog_Title" xml:space="preserve">
-    <value>Editing</value>
+    <value>Bearbeitung von</value>
   </data>
   <data name="TriggerEditor_AddNew" xml:space="preserve">
-    <value>Add new</value>
+    <value>Neu hinzufügen</value>
   </data>
   <data name="TriggerEditor_Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Bewerbung</value>
   </data>
   <data name="TriggerEditor_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="TriggerEditor_Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Löschen</value>
   </data>
   <data name="TriggerEditor_Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Bearbeiten</value>
   </data>
   <data name="TriggerEditor_EmptyTriggers" xml:space="preserve">
-    <value>There's nothing here yet</value>
+    <value>Hier gibt es noch nichts</value>
   </data>
   <data name="TriggerEditor_MoveDown" xml:space="preserve">
-    <value>Move down</value>
+    <value>Nach unten gehen</value>
   </data>
   <data name="TriggerEditor_MoveUp" xml:space="preserve">
-    <value>Move up</value>
+    <value>Nachrücken</value>
   </data>
   <data name="TriggerEditor_RecordingMessage_Part1" xml:space="preserve">
-    <value>Press any key to assign it to this action, or press</value>
+    <value>Drücken Sie eine beliebige Taste, um sie dieser Aktion zuzuweisen, oder drücken Sie</value>
   </data>
   <data name="TriggerEditor_RecordingMessage_Part2" xml:space="preserve">
-    <value>to cancel</value>
+    <value>zu stornieren</value>
   </data>
   <data name="TriggerEditor_Title" xml:space="preserve">
-    <value>Trigger editor</value>
+    <value>Auslöser editor</value>
   </data>
   <data name="TriggerEditor_Triggers" xml:space="preserve">
-    <value>Triggers</value>
+    <value>Auslöser</value>
   </data>
   <data name="WindowInfo_ClientSize" xml:space="preserve">
-    <value>Client size</value>
+    <value>Größe des Kunden</value>
   </data>
   <data name="WindowInfo_Minimized" xml:space="preserve">
-    <value>Minimized</value>
+    <value>Minimiert</value>
   </data>
 </root>

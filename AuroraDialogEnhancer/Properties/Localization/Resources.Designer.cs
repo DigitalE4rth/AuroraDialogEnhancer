@@ -898,7 +898,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resolution preset.
+        ///   Looks up a localized string similar to Preset resolution.
         /// </summary>
         public static string HookSettings_Error_Preset_Preset {
             get {

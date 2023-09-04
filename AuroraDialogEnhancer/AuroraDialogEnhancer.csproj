@@ -533,6 +533,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>InternalResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Localization\Resources.de.resx" />
+    <EmbeddedResource Include="Properties\Localization\Resources.nl.resx" />
     <EmbeddedResource Include="Properties\Localization\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -543,6 +545,7 @@
       <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Localization\Resources.uk.resx" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DefaultSettings.settings">
@@ -602,7 +605,7 @@
     <PostBuildEvent>rem Copy compiled l18n assemblies to alt folder
 
 if not exist $(TargetDir)Localization mkdir $(TargetDir)Localization
-set langs=ru
+set langs=de, nl, ru, uk
 
 for %25%25l in (%25langs%25) do (
    xcopy $(TargetDir)%25%25l $(TargetDir)Localization\%25%25l\ /s /y /i

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,384 +118,382 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Acknowledgements" xml:space="preserve">
-    <value>Special Thanks</value>
+    <value>Speciale dank</value>
   </data>
   <data name="About_AllOfYou" xml:space="preserve">
-    <value>All of you, guys</value>
-    <comment>Verb</comment>
+    <value>Jullie allemaal, jongens</value>
   </data>
   <data name="About_ApplicationIcon" xml:space="preserve">
-    <value>Application icon</value>
+    <value>Programikon</value>
   </data>
   <data name="About_Consultant" xml:space="preserve">
-    <value>consultant</value>
-    <comment>lower case</comment>
+    <value>konsulent</value>
   </data>
   <data name="About_CreativeSociety_Description_1" xml:space="preserve">
-    <value>Kind international project</value>
+    <value>Soort internationaal project</value>
   </data>
   <data name="About_CreativeSociety_Description_2" xml:space="preserve">
-    <value>Human Life is the Highest Value</value>
+    <value>Het menselijk leven is de hoogste waarde</value>
   </data>
   <data name="About_CreativeSociety_Link" xml:space="preserve">
-    <value>https://creativesociety.com</value>
+    <value>https://creativesociety.com/nl</value>
   </data>
   <data name="About_CreativeSociety_Title" xml:space="preserve">
-    <value>Creative Society</value>
+    <value>Creatieve Maatschappij</value>
   </data>
   <data name="About_LeadDeveloper" xml:space="preserve">
-    <value>Lead developer</value>
+    <value>Hoofdontwikkelaar</value>
   </data>
   <data name="About_LibrariesAndResources" xml:space="preserve">
-    <value>Libraries and Resources</value>
+    <value>Bibliotheken en bronnen</value>
   </data>
   <data name="About_ModifiedVersion" xml:space="preserve">
-    <value>Modified versions</value>
+    <value>Aangepaste versies</value>
   </data>
   <data name="About_PreRelease" xml:space="preserve">
     <value>Pre-release</value>
   </data>
   <data name="About_SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+    <value>Speciale dank</value>
   </data>
   <data name="About_Tester" xml:space="preserve">
     <value>Tester</value>
   </data>
   <data name="About_ThankYou" xml:space="preserve">
-    <value>Thank you, thank you, thank you!</value>
+    <value>Dank u, dank u, dank u!</value>
   </data>
   <data name="About_Translation_Dutch" xml:space="preserve">
-    <value>Dutch translation</value>
+    <value>Nederlandse vertaling</value>
   </data>
   <data name="About_Translation_English" xml:space="preserve">
-    <value>English translation</value>
+    <value>Engelse vertaling</value>
   </data>
   <data name="About_Translation_German" xml:space="preserve">
-    <value>German translation</value>
+    <value>Duitse vertaling</value>
   </data>
   <data name="About_Translation_Ukranian" xml:space="preserve">
-    <value>Ukranian translation</value>
+    <value>Oekraïense vertaling</value>
   </data>
   <data name="About_Update_Frequency_EveryTwoWeeks" xml:space="preserve">
-    <value>Every two weeks</value>
+    <value>Om de twee weken</value>
   </data>
   <data name="About_Update_Frequency_Monthly" xml:space="preserve">
-    <value>Every month</value>
+    <value>Elke maand</value>
   </data>
   <data name="About_Update_Frequency_None" xml:space="preserve">
-    <value>Don't check</value>
+    <value>Niet controleren</value>
   </data>
   <data name="About_Update_Frequency_ToolTip" xml:space="preserve">
-    <value>Updates check frequency</value>
+    <value>Frequentie updates controleren</value>
   </data>
   <data name="About_Update_Frequency_Weekly" xml:space="preserve">
-    <value>Once a week</value>
+    <value>Eenmaal per week</value>
   </data>
   <data name="About_Update_Update_Sub" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
-    <value>User interface</value>
+    <value>Gebruikersinterface</value>
   </data>
   <data name="About_Version" xml:space="preserve">
-    <value>Version</value>
+    <value>Versie</value>
   </data>
   <data name="About_VersionInfo" xml:space="preserve">
-    <value>Version info</value>
+    <value>Versie-info</value>
   </data>
   <data name="Appearance_AccentColor_Description" xml:space="preserve">
-    <value>Choose the application accent color</value>
+    <value>Kies de accentkleur voor de applicatie</value>
   </data>
   <data name="Appearance_AccentColor_RestoreDefault" xml:space="preserve">
-    <value>Restore default</value>
+    <value>Standaardinstellingen herstellen</value>
   </data>
   <data name="Appearance_AccentColor_Title" xml:space="preserve">
-    <value>Accent color</value>
+    <value>Accentkleur</value>
   </data>
   <data name="Appearance_ColorTheme_Create" xml:space="preserve">
-    <value>Create</value>
+    <value>Maak</value>
   </data>
   <data name="Appearance_ColorTheme_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Aangepast</value>
   </data>
   <data name="Appearance_ColorTheme_Dark" xml:space="preserve">
-    <value>Dark</value>
+    <value>Donker</value>
   </data>
   <data name="Appearance_ColorTheme_Description" xml:space="preserve">
-    <value>Default application color scheme</value>
+    <value>Standaard kleurenschema toepassing</value>
   </data>
   <data name="Appearance_ColorTheme_Export" xml:space="preserve">
-    <value>Export</value>
+    <value>Exporteer</value>
   </data>
   <data name="Appearance_ColorTheme_Import" xml:space="preserve">
-    <value>Import</value>
+    <value>Importeren</value>
   </data>
   <data name="Appearance_ColorTheme_Light" xml:space="preserve">
-    <value>Light</value>
+    <value>Licht</value>
   </data>
   <data name="Appearance_ColorTheme_Management" xml:space="preserve">
-    <value>Theme management</value>
+    <value>Thema beheer</value>
   </data>
   <data name="Appearance_ColorTheme_System" xml:space="preserve">
-    <value>System</value>
+    <value>Systeem</value>
   </data>
   <data name="Appearance_ColorTheme_Title" xml:space="preserve">
-    <value>Base color scheme</value>
+    <value>Basiskleurenschema</value>
   </data>
   <data name="Appearance_Cursor_Default" xml:space="preserve">
-    <value>Default</value>
+    <value>Standaard</value>
   </data>
   <data name="Appearance_Cursor_Hand" xml:space="preserve">
     <value>Hand</value>
   </data>
   <data name="Appearance_Cursor_Title" xml:space="preserve">
-    <value>Interaction cursor</value>
+    <value>Interactiecursor</value>
   </data>
   <data name="Appearance_Error_Export" xml:space="preserve">
-    <value>Theme export error</value>
+    <value>Fout bij exporteren thema</value>
   </data>
   <data name="Appearance_Error_Import" xml:space="preserve">
-    <value>Theme import error</value>
+    <value>Fout bij importeren thema</value>
   </data>
   <data name="Appearance_Font_Title" xml:space="preserve">
-    <value>Application interface font</value>
+    <value>Toepassingsinterface lettertype</value>
   </data>
   <data name="Appearance_Title" xml:space="preserve">
-    <value>General</value>
+    <value>Algemeen</value>
   </data>
   <data name="Appearance_ZoomLevel_RestoreDefault" xml:space="preserve">
-    <value>Restore default</value>
+    <value>Standaardinstellingen herstellen</value>
   </data>
   <data name="Appearance_ZoomLevel_Title" xml:space="preserve">
-    <value>Zoom level</value>
+    <value>Zoomniveau</value>
   </data>
   <data name="AutoUpdate_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annuleren</value>
   </data>
   <data name="AutoUpdate_Changelog" xml:space="preserve">
     <value>Changelog</value>
   </data>
   <data name="AutoUpdate_Close" xml:space="preserve">
-    <value>Close</value>
+    <value>Sluit</value>
   </data>
   <data name="AutoUpdate_CurrentIsLatestVersion" xml:space="preserve">
-    <value>You have the latest version: {0}</value>
+    <value>Je hebt de laatste versie: {0}</value>
   </data>
   <data name="AutoUpdate_CurrentVersion" xml:space="preserve">
-    <value>Current version: {0}</value>
+    <value>Huidige versie: {0}</value>
   </data>
   <data name="AutoUpdate_DownloadSpeed" xml:space="preserve">
-    <value>Downloading at</value>
+    <value>Downloaden bij</value>
   </data>
   <data name="AutoUpdate_DownloadSpeed_Seconds" xml:space="preserve">
-    <value>sec</value>
+    <value>tweede</value>
   </data>
   <data name="AutoUpdate_Failed_Message" xml:space="preserve">
-    <value>There is a problem reaching update server. Please check your internet connection and try again later.</value>
+    <value>Er is een probleem met het bereiken van de updateserver. Controleer je internetverbinding en probeer het later nog eens.</value>
   </data>
   <data name="AutoUpdate_Failed_Title" xml:space="preserve">
-    <value>Update Check Failed</value>
+    <value>Updatecontrole mislukt</value>
   </data>
   <data name="AutoUpdate_NewVersionAvailable" xml:space="preserve">
-    <value>A new version available: {0}</value>
+    <value>Een nieuwe versie beschikbaar: {0}</value>
   </data>
   <data name="AutoUpdate_UnableToDetermineFileName" xml:space="preserve">
-    <value>Unable to determine the filename of the update file!</value>
+    <value>Kan de bestandsnaam van het updatebestand niet bepalen!</value>
   </data>
   <data name="AutoUpdate_Unavailable_Message" xml:space="preserve">
-    <value>There is a problem reaching update server. Please check your internet connection and try again later.</value>
+    <value>Er is een probleem met het bereiken van de updateserver. Controleer je internetverbinding en probeer het later nog eens.</value>
   </data>
   <data name="AutoUpdate_Unavailable_Title" xml:space="preserve">
-    <value>Update Unavailable</value>
+    <value>Opdatering Ikke Tilgængelig</value>
   </data>
   <data name="AutoUpdate_Update_Verb" xml:space="preserve">
-    <value>Update</value>
+    <value>Opdatering</value>
   </data>
   <data name="AutoUpdate_WindowTitle" xml:space="preserve">
-    <value>Update</value>
+    <value>Opdatering</value>
   </data>
   <data name="AutoUpdate_WindowTitle_Download" xml:space="preserve">
-    <value>Downloading an update</value>
+    <value>Henter en opdatering</value>
   </data>
   <data name="ColorPickerDialog_Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Anvende</value>
   </data>
   <data name="ColorPickerDialog_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annullere</value>
   </data>
   <data name="ColorPickerDialog_Title" xml:space="preserve">
-    <value>Accent color picker</value>
+    <value>Accent farvevælger</value>
   </data>
   <data name="CoreInfoState_ClientSize_Minimized" xml:space="preserve">
-    <value>Minimized</value>
+    <value>Minimere</value>
   </data>
   <data name="CoreInfoState_Detection_Canceled" xml:space="preserve">
-    <value>Canceling...</value>
+    <value>Støjreducerende...</value>
   </data>
   <data name="CoreInfoState_Detection_Detected" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
   <data name="CoreInfoState_Detection_Search" xml:space="preserve">
-    <value>Search...</value>
+    <value>Søge...</value>
   </data>
   <data name="CoreInfoState_DialogMode_No" xml:space="preserve">
-    <value>No</value>
+    <value>Ingen</value>
   </data>
   <data name="CoreInfoState_DialogMode_Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Ja</value>
   </data>
   <data name="EntityRepository_Error_Read" xml:space="preserve">
-    <value>File reading error</value>
+    <value>Fejl ved læsning af filer</value>
   </data>
   <data name="EntityRepository_Error_Write" xml:space="preserve">
     <value>File writing error</value>
   </data>
   <data name="FileDialog_AllFiles" xml:space="preserve">
-    <value>All files</value>
+    <value>Alle filer</value>
   </data>
   <data name="FileDialog_File" xml:space="preserve">
-    <value>file</value>
+    <value>fil</value>
   </data>
   <data name="FileDialog_Files" xml:space="preserve">
-    <value>files</value>
+    <value>fil</value>
   </data>
   <data name="FileDialog_Shortcut_Title" xml:space="preserve">
-    <value>Save profile shortcut</value>
+    <value>Gem profil genvej</value>
   </data>
   <data name="FontPicker_Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Anvende</value>
   </data>
   <data name="FontPicker_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annullere</value>
   </data>
   <data name="FontPicker_FontSize" xml:space="preserve">
-    <value>Size</value>
+    <value>Størrelse</value>
   </data>
   <data name="FontPicker_Title" xml:space="preserve">
     <value>Font picker</value>
   </data>
   <data name="HookSettings_AdditionalSettings" xml:space="preserve">
-    <value>Additional settings</value>
+    <value>Yderligere indstillinger</value>
   </data>
   <data name="HookSettings_CreateShortcut_Description" xml:space="preserve">
-    <value>Create launch shortcut for this profile</value>
+    <value>Opret startgenvej til denne profil</value>
   </data>
   <data name="HookSettings_CreateShortcut_Title" xml:space="preserve">
-    <value>Create shortcut</value>
+    <value>Opret genvej</value>
   </data>
   <data name="HookSettings_Error_Location_Game_Empty" xml:space="preserve">
-    <value>Game location is not specified</value>
+    <value>Spil placering er ikke specificeret</value>
   </data>
   <data name="HookSettings_Error_Location_Game_NotExists" xml:space="preserve">
-    <value>Game location does not exist</value>
+    <value>Spil placering findes ikke</value>
   </data>
   <data name="HookSettings_Error_Location_Launcher_Empty" xml:space="preserve">
-    <value>Launcher location is not specified</value>
+    <value>Launcher placering er ikke angivet</value>
   </data>
   <data name="HookSettings_Error_Location_Launcher_NotExists" xml:space="preserve">
-    <value>Launcher location does not exist</value>
+    <value>Launcher placering findes ikke</value>
   </data>
   <data name="HookSettings_Error_Preset_IsMissing" xml:space="preserve">
-    <value>is missing</value>
+    <value>mangler</value>
   </data>
   <data name="HookSettings_Error_Preset_Preset" xml:space="preserve">
-    <value>Preset resolution</value>
+    <value>Forudindstillet opløsning</value>
   </data>
   <data name="HookSettings_Error_Preset_TemplateImage" xml:space="preserve">
-    <value>Image template for resolution</value>
+    <value>Billedskabelon til opløsning</value>
   </data>
   <data name="HookSettings_Error_ProcessName_Game" xml:space="preserve">
-    <value>Game process name is not specified</value>
+    <value>Spil proces navn er ikke angivet</value>
   </data>
   <data name="HookSettings_Error_ProcessName_Launcher" xml:space="preserve">
-    <value>Launcher process name is not specified</value>
+    <value>Launcher proces navn er ikke angivet</value>
   </data>
   <data name="HookSettings_ExitSettings_Description" xml:space="preserve">
-    <value>Close application on game exit</value>
+    <value>Luk ansøgning om spilafgang</value>
   </data>
   <data name="HookSettings_ExitSettings_Title" xml:space="preserve">
-    <value>Exit with the game</value>
+    <value>Afslut med spillet</value>
   </data>
   <data name="HookSettings_HookInfo" xml:space="preserve">
-    <value>Hook info</value>
+    <value>Krog info</value>
   </data>
   <data name="HookSettings_HookSettings" xml:space="preserve">
-    <value>Hook settings</value>
+    <value>Krog indstillinger</value>
   </data>
   <data name="HookSettings_Location_Game" xml:space="preserve">
-    <value>Game location</value>
+    <value>Spil placering</value>
   </data>
   <data name="HookSettings_Location_Launcher" xml:space="preserve">
-    <value>Launcher location</value>
+    <value>Launcher placering</value>
   </data>
   <data name="HookSettings_Location_Screenshots" xml:space="preserve">
-    <value>Screenshots folder location</value>
+    <value>Skærmbillede mappe placering</value>
   </data>
   <data name="HookSettings_OnLaunch_Action" xml:space="preserve">
-    <value>Launch at hook start</value>
+    <value>Start ved krog start</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Game" xml:space="preserve">
-    <value>Game</value>
+    <value>Spil</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Launcher" xml:space="preserve">
     <value>Launcher</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Nothing" xml:space="preserve">
-    <value>Nothing</value>
+    <value>Intet</value>
   </data>
   <data name="HookSettings_OpenScreenShotsFolder" xml:space="preserve">
-    <value>Open screenshots folder</value>
+    <value>Åbn skærmbilleder mappe</value>
   </data>
   <data name="HookSettings_ProcessName_Game" xml:space="preserve">
-    <value>Game process name</value>
+    <value>Spil proces navn</value>
   </data>
   <data name="HookSettings_ProcessName_Launcher" xml:space="preserve">
-    <value>Launcher process name</value>
+    <value>Launcher proces navn</value>
   </data>
   <data name="HookSettings_Profile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="HookSettings_Settings_Action_Locate" xml:space="preserve">
-    <value>Locate</value>
+    <value>Finde</value>
   </data>
   <data name="HookSettings_Settings_Action_Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Nulstille</value>
   </data>
   <data name="HookSettings_State_AppException" xml:space="preserve">
-    <value>Something went wrong</value>
+    <value>Noget gik galt</value>
   </data>
   <data name="HookSettings_State_Canceled" xml:space="preserve">
     <value>Cancelling</value>
   </data>
   <data name="HookSettings_State_Detected" xml:space="preserve">
-    <value>Detected</value>
+    <value>Opdage</value>
   </data>
   <data name="HookSettings_State_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Fejl</value>
   </data>
   <data name="HookSettings_State_None" xml:space="preserve">
-    <value>Start</value>
+    <value>Starte</value>
   </data>
   <data name="HookSettings_State_Paused" xml:space="preserve">
-    <value>Paused</value>
+    <value>Pause</value>
   </data>
   <data name="HookSettings_State_Search" xml:space="preserve">
-    <value>Searching</value>
+    <value>Søgning</value>
   </data>
   <data name="HookSettings_State_Search_PressToStop" xml:space="preserve">
-    <value>Press to stop the search</value>
+    <value>Tryk for at stoppe søgningen</value>
   </data>
   <data name="HookSettings_State_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Advarsel</value>
   </data>
   <data name="HookSettings_Warning_UnappliedChanges" xml:space="preserve">
-    <value>The changes will be applied after restarting the hook</value>
+    <value>Ændringerne vil blive anvendt efter genstart af krogen</value>
   </data>
   <data name="InfoDialog_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annullere</value>
   </data>
   <data name="InfoDialog_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Fejl</value>
   </data>
   <data name="InfoDialog_Info" xml:space="preserve">
     <value>Info</value>
@@ -504,319 +502,318 @@
     <value>Ok</value>
   </data>
   <data name="InfoDialog_SomethingWentWrong" xml:space="preserve">
-    <value>Something went wrong</value>
+    <value>Noget gik galt</value>
   </data>
   <data name="KeyBindAction_DialogOption" xml:space="preserve">
-    <value>Dialog option</value>
+    <value>Dialog mulighed</value>
   </data>
   <data name="KeyBindAction_ManualDialogMode" xml:space="preserve">
-    <value>Manual dialog mode</value>
+    <value>Manuel dialogtilstand</value>
   </data>
   <data name="KeyBindAction_Next" xml:space="preserve">
-    <value>Next</value>
+    <value>Næste</value>
   </data>
   <data name="KeyBindAction_Previous" xml:space="preserve">
-    <value>Previous</value>
+    <value>Tidligere</value>
   </data>
   <data name="KeyBindAction_ScreenShot" xml:space="preserve">
-    <value>Screenshot</value>
+    <value>Skærmbillede</value>
   </data>
   <data name="KeyBindAction_Select" xml:space="preserve">
-    <value>Select</value>
+    <value>Vælge</value>
   </data>
   <data name="KeyBinding_Control" xml:space="preserve">
-    <value>Controls</value>
+    <value>Styre</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
-    <value>Auto-play</value>
+    <value>Auto afspelen</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
-    <value>Fullscreen pop-up click</value>
+    <value>Fullscreen pop up klik</value>
   </data>
   <data name="KeyBinding_Control_HideUi" xml:space="preserve">
-    <value>Hide UI</value>
+    <value>UI verbergen</value>
   </data>
   <data name="KeyBinding_Control_Next" xml:space="preserve">
-    <value>Next</value>
+    <value>Volgende</value>
   </data>
   <data name="KeyBinding_Control_Previous" xml:space="preserve">
-    <value>Previous</value>
+    <value>Vorige</value>
   </data>
   <data name="KeyBinding_Control_Select" xml:space="preserve">
-    <value>Select</value>
+    <value>Selecteer</value>
   </data>
   <data name="KeyBinding_General" xml:space="preserve">
-    <value>General</value>
+    <value>Almindelig</value>
   </data>
   <data name="KeyBinding_General_HideCursor" xml:space="preserve">
-    <value>Hide cursor</value>
+    <value>Skjul markør</value>
   </data>
   <data name="KeyBinding_General_PauseResume" xml:space="preserve">
-    <value>Pause/Resume hook</value>
+    <value>Pause/Genoptag krog</value>
   </data>
   <data name="KeyBinding_General_Reload" xml:space="preserve">
-    <value>Reload hook</value>
+    <value>Reload krog</value>
   </data>
   <data name="KeyBinding_General_Screenshot" xml:space="preserve">
-    <value>Screenshot</value>
+    <value>Skærmbillede</value>
   </data>
   <data name="KeyBinding_Numeric" xml:space="preserve">
-    <value>Dialog option selection</value>
+    <value>Valg af dialogmulighed</value>
   </data>
   <data name="KeyBinding_Numeric_Eighth" xml:space="preserve">
-    <value>Eighth</value>
+    <value>Ottende</value>
   </data>
   <data name="KeyBinding_Numeric_Fifth" xml:space="preserve">
-    <value>Fifth</value>
+    <value>Femte</value>
   </data>
   <data name="KeyBinding_Numeric_First" xml:space="preserve">
-    <value>First</value>
+    <value>Første</value>
   </data>
   <data name="KeyBinding_Numeric_Fourth" xml:space="preserve">
-    <value>Fourth</value>
+    <value>Fjerde</value>
   </data>
   <data name="KeyBinding_Numeric_Ninth" xml:space="preserve">
-    <value>Ninth</value>
+    <value>Niende</value>
   </data>
   <data name="KeyBinding_Numeric_Second" xml:space="preserve">
-    <value>Second</value>
+    <value>Anden</value>
   </data>
   <data name="KeyBinding_Numeric_Seventh" xml:space="preserve">
-    <value>Seventh</value>
+    <value>Syvende</value>
   </data>
   <data name="KeyBinding_Numeric_Sixth" xml:space="preserve">
-    <value>Sixth</value>
+    <value>Sjette</value>
   </data>
   <data name="KeyBinding_Numeric_Tenth" xml:space="preserve">
-    <value>Tenth</value>
+    <value>Tiende</value>
   </data>
   <data name="KeyBinding_Numeric_Third" xml:space="preserve">
-    <value>Third</value>
+    <value>Tredje</value>
   </data>
   <data name="KeyBinding_Profile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Rydde</value>
   </data>
   <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Nulstille</value>
   </data>
   <data name="KeyBinding_Utilities" xml:space="preserve">
-    <value>Utilities</value>
+    <value>Utility</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour" xml:space="preserve">
-    <value>Cursor behaviour</value>
+    <value>Markøradfærd</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Hide" xml:space="preserve">
-    <value>Hide</value>
+    <value>Skjule</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_HideAfterSelection" xml:space="preserve">
-    <value>Hide after selection</value>
+    <value>Skjul efter valg</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Nothing" xml:space="preserve">
-    <value>Nothing</value>
+    <value>Intet</value>
   </data>
   <data name="KeyBinding_Utilities_CycleThrough" xml:space="preserve">
-    <value>Cycle through dialog options</value>
+    <value>Gå gennem dialogindstillinger</value>
   </data>
   <data name="KeyBinding_Utilities_HideCursorOnManualClick" xml:space="preserve">
-    <value>Hide cursor on manual selection</value>
+    <value>Skjul markøren ved manuelt valg</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour" xml:space="preserve">
-    <value>Numeric action behaviour</value>
+    <value>Numerisk handlingsadfærd</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Highlight" xml:space="preserve">
-    <value>Highlighting</value>
+    <value>Fremhæve</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Select" xml:space="preserve">
-    <value>Select</value>
+    <value>Vælge</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour" xml:space="preserve">
-    <value>Single dialog option behavior</value>
+    <value>Enkelt dialog option adfærd</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight" xml:space="preserve">
-    <value>Any action highlights only</value>
+    <value>Enhver handling fremhæver kun</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Select" xml:space="preserve">
-    <value>Any action selects</value>
+    <value>Enhver handling vælger</value>
   </data>
   <data name="Language_Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automatisk</value>
   </data>
   <data name="Language_Name" xml:space="preserve">
-    <value>English</value>
-    <comment>this language name</comment>
+    <value>Dutch</value>
   </data>
   <data name="Menu_About" xml:space="preserve">
-    <value>About</value>
+    <value>Om</value>
   </data>
   <data name="Menu_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Udseende</value>
   </data>
   <data name="Menu_DebugMode" xml:space="preserve">
     <value>Debugging</value>
   </data>
   <data name="Menu_HookControl" xml:space="preserve">
-    <value>Hook controls</value>
+    <value>Krog kontrol</value>
   </data>
   <data name="Menu_KeyBindings" xml:space="preserve">
-    <value>Key bindings</value>
+    <value>Nøglebindinger</value>
   </data>
   <data name="Menu_PreRelease" xml:space="preserve">
     <value>Pre-release</value>
   </data>
   <data name="Menu_Presets" xml:space="preserve">
-    <value>Presets</value>
+    <value>Forudindstilling</value>
   </data>
   <data name="Menu_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Indstilling</value>
   </data>
   <data name="Menu_Version" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="MissingExtensions_Description" xml:space="preserve">
-    <value>Add game extensions and restart the application</value>
+    <value>Tilføj spiludvidelser og genstart programmet</value>
   </data>
   <data name="MissingExtensions_Title" xml:space="preserve">
-    <value>Extensions are missing</value>
+    <value>Udvidelser mangler</value>
   </data>
   <data name="NotifyMenu_Exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Afslutte</value>
   </data>
   <data name="NotifyMenu_Open" xml:space="preserve">
-    <value>Open</value>
+    <value>Åbne</value>
   </data>
   <data name="NotifyMenu_Screenshots" xml:space="preserve">
-    <value>Screenshots</value>
+    <value>Skærmbillede</value>
   </data>
   <data name="Settings_ApplicationFolder" xml:space="preserve">
-    <value>Application folder</value>
+    <value>Programmappe</value>
   </data>
   <data name="Settings_CloseMinimizes" xml:space="preserve">
-    <value>Close minimizes</value>
+    <value>Luk minimerer</value>
   </data>
   <data name="Settings_ExpertMode_Description" xml:space="preserve">
-    <value>Advanced features</value>
+    <value>Avancerede funktioner</value>
   </data>
   <data name="Settings_ExpertMode_Title" xml:space="preserve">
-    <value>Expert mode</value>
+    <value>Eksperttilstand</value>
   </data>
   <data name="Settings_General" xml:space="preserve">
-    <value>General</value>
+    <value>Almindelig</value>
   </data>
   <data name="Settings_Internet" xml:space="preserve">
     <value>Internet</value>
   </data>
   <data name="Settings_Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Sprog</value>
   </data>
   <data name="Settings_MinimizeToTaskBar" xml:space="preserve">
-    <value>Minimize to taskbar</value>
+    <value>Minimer til proceslinjen</value>
   </data>
   <data name="Settings_ScreenshotsManager_Description" xml:space="preserve">
-    <value>Will open only if screenshots have been taken</value>
+    <value>Åbnes kun, hvis der er taget skærmbilleder</value>
   </data>
   <data name="Settings_ScreenshotsManager_Title" xml:space="preserve">
-    <value>Open screenshots folder on game exit</value>
+    <value>Åbn skærmbilleder mappe på spil udgang</value>
   </data>
   <data name="Settings_SettingsFolder" xml:space="preserve">
-    <value>Settings folder</value>
+    <value>Indstillinger mappe</value>
   </data>
   <data name="Settings_StartMinimized" xml:space="preserve">
-    <value>Start minimized</value>
+    <value>Start minimeret</value>
   </data>
   <data name="Settings_Startup" xml:space="preserve">
-    <value>Run on Windows start-up</value>
+    <value>Kør på vinduer opstart</value>
   </data>
   <data name="Settings_Startup_Exception_Delete" xml:space="preserve">
-    <value>Failed to delete shortcut</value>
+    <value>Kunne ikke slette genvej</value>
   </data>
   <data name="Settings_Startup_Exception_Save" xml:space="preserve">
-    <value>Failed to create shortcut</value>
+    <value>Kunne ikke oprette genvej</value>
   </data>
   <data name="Settings_UnloadUi_Description" xml:space="preserve">
-    <value>Unload UI when minimized to save memory</value>
+    <value>Losse UI når minimeret for at spare hukommelse</value>
   </data>
   <data name="Settings_UnloadUi_Title" xml:space="preserve">
-    <value>Unload UI</value>
+    <value>Aflæsning UI</value>
   </data>
   <data name="Settings_Update_AppServer" xml:space="preserve">
-    <value>Update server</value>
+    <value>Opdateringsserver</value>
   </data>
   <data name="Settings_UserAgent" xml:space="preserve">
-    <value>Default user agent</value>
+    <value>Standard bruger agent</value>
   </data>
   <data name="Settings_Utils" xml:space="preserve">
-    <value>Utilities</value>
+    <value>Utility</value>
   </data>
   <data name="Settings_WindowsState_Default" xml:space="preserve">
-    <value>Default</value>
+    <value>Standard</value>
   </data>
   <data name="Settings_WindowsState_Main_Title" xml:space="preserve">
-    <value>Window state on startup</value>
+    <value>Vindue tilstand ved opstart</value>
   </data>
   <data name="Settings_WindowsState_Shortcut_Title" xml:space="preserve">
-    <value>Window state on shortcut startup</value>
+    <value>Vindue tilstand på genvej opstart</value>
   </data>
   <data name="Settings_WindowsState_SystemTray" xml:space="preserve">
-    <value>System tray</value>
+    <value>Systembakke</value>
   </data>
   <data name="Settings_WindowsState_TaskBar" xml:space="preserve">
-    <value>Task bar</value>
+    <value>Proceslinje</value>
   </data>
   <data name="TextInputDialog_Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Anvende</value>
   </data>
   <data name="TextInputDialog_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annullere</value>
   </data>
   <data name="TextInputDialog_Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Nulstille</value>
   </data>
   <data name="TextInputDialog_Title" xml:space="preserve">
-    <value>Editing</value>
+    <value>Redigering</value>
   </data>
   <data name="TriggerEditor_AddNew" xml:space="preserve">
-    <value>Add new</value>
+    <value>Tilføj nyt</value>
   </data>
   <data name="TriggerEditor_Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>Anvende</value>
   </data>
   <data name="TriggerEditor_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Annullere</value>
   </data>
   <data name="TriggerEditor_Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Slette</value>
   </data>
   <data name="TriggerEditor_Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Redigere</value>
   </data>
   <data name="TriggerEditor_EmptyTriggers" xml:space="preserve">
-    <value>There's nothing here yet</value>
+    <value>Der er ikke noget her endnu</value>
   </data>
   <data name="TriggerEditor_MoveDown" xml:space="preserve">
-    <value>Move down</value>
+    <value>Flyt ned</value>
   </data>
   <data name="TriggerEditor_MoveUp" xml:space="preserve">
-    <value>Move up</value>
+    <value>Flyt op</value>
   </data>
   <data name="TriggerEditor_RecordingMessage_Part1" xml:space="preserve">
-    <value>Press any key to assign it to this action, or press</value>
+    <value>Tryk på en vilkårlig tast for at tildele den til denne handling, eller tryk på</value>
   </data>
   <data name="TriggerEditor_RecordingMessage_Part2" xml:space="preserve">
-    <value>to cancel</value>
+    <value>annullere</value>
   </data>
   <data name="TriggerEditor_Title" xml:space="preserve">
-    <value>Trigger editor</value>
+    <value>Udløse editor</value>
   </data>
   <data name="TriggerEditor_Triggers" xml:space="preserve">
-    <value>Triggers</value>
+    <value>Udløse</value>
   </data>
   <data name="WindowInfo_ClientSize" xml:space="preserve">
-    <value>Client size</value>
+    <value>Klient størrelse</value>
   </data>
   <data name="WindowInfo_Minimized" xml:space="preserve">
-    <value>Minimized</value>
+    <value>Minimere</value>
   </data>
 </root>
