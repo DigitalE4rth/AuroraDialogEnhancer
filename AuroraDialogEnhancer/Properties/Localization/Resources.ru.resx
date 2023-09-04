@@ -292,7 +292,7 @@
     <value>Проблема связана с сервером обновлений. Проверьте подключение к Интернету и повторите попытку позже.</value>
   </data>
   <data name="AutoUpdate_Failed_Title" xml:space="preserve">
-    <value>Ошибка обновления</value>
+    <value>Ошибка при обновлении</value>
   </data>
   <data name="AutoUpdate_NewVersionAvailable" xml:space="preserve">
     <value>Доступна новая версия: {0}</value>
@@ -397,7 +397,7 @@
     <value>отсутсвует</value>
   </data>
   <data name="HookSettings_Error_Preset_Preset" xml:space="preserve">
-    <value>Конфигурация для разрешения</value>
+    <value>Разрешение пресета</value>
   </data>
   <data name="HookSettings_Error_Preset_TemplateImage" xml:space="preserve">
     <value>Шаблон изображения для разрешения</value>
@@ -493,7 +493,7 @@
     <value>Отмена</value>
   </data>
   <data name="InfoDialog_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Ошибка</value>
   </data>
   <data name="InfoDialog_Info" xml:space="preserve">
     <value>Инфо</value>
@@ -673,7 +673,7 @@
     <value>Версия</value>
   </data>
   <data name="MissingExtensions_Description" xml:space="preserve">
-    <value>Добавьте игровые рачширения и перезапустите приложение</value>
+    <value>Добавьте игровые расширения и перезапустите приложение</value>
   </data>
   <data name="MissingExtensions_Title" xml:space="preserve">
     <value>Расширения отсутствуют</value>
@@ -811,7 +811,7 @@
     <value>Триггеры</value>
   </data>
   <data name="WindowInfo_ClientSize" xml:space="preserve">
-    <value>Рарешение клиента</value>
+    <value>Разрешение клиента</value>
   </data>
   <data name="WindowInfo_Minimized" xml:space="preserve">
     <value>Свёрнуто</value>
