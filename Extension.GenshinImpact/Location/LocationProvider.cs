@@ -6,8 +6,8 @@ namespace Extension.GenshinImpact.Location;
 
 public class LocationProvider : ILocationProvider
 {
-    public string LauncherLocation          { get; } = string.Empty;
-    public string GameLocation              { get; } = string.Empty;
+    public string LauncherLocation    { get; } = string.Empty;
+    public string GameLocation        { get; } = string.Empty;
     public string ScreenshotsLocation { get; } = string.Empty;
 
     public LocationProvider()
@@ -15,10 +15,12 @@ public class LocationProvider : ILocationProvider
         string installationPath;
         try
         {
-            installationPath = Microsoft.Win32.Registry.GetValue(
+            var value = Microsoft.Win32.Registry.GetValue(
                 @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Genshin Impact",
                 "InstallPath",
-                string.Empty).ToString();
+                string.Empty);
+
+            installationPath = value is null ? string.Empty : value.ToString();
         }
         catch (Exception)
         {
