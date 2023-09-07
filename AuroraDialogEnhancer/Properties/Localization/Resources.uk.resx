@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Acknowledgements" xml:space="preserve">
-    <value>Особлива подяка</value>
+    <value>Подяка</value>
   </data>
   <data name="About_AllOfYou" xml:space="preserve">
-    <value>Всім вам, хлопці</value>
+    <value>Всім вам, хлопці та дівчата</value>
   </data>
   <data name="About_ApplicationIcon" xml:space="preserve">
     <value>Значок програми</value>
@@ -133,7 +133,7 @@
     <value>Добрий міжнародний проект</value>
   </data>
   <data name="About_CreativeSociety_Description_2" xml:space="preserve">
-    <value>Людське життя-це найвища цінність</value>
+    <value>Людське життя - найвища цінність</value>
   </data>
   <data name="About_CreativeSociety_Link" xml:space="preserve">
     <value>https://creativesociety.com/uk</value>
@@ -142,10 +142,10 @@
     <value>Благотворче суспільство</value>
   </data>
   <data name="About_LeadDeveloper" xml:space="preserve">
-    <value>Провідний розробник</value>
+    <value>Головний розробник</value>
   </data>
   <data name="About_LibrariesAndResources" xml:space="preserve">
-    <value>Бібліотеки та Ресурси</value>
+    <value>Бібліотеки та ресурси</value>
   </data>
   <data name="About_ModifiedVersion" xml:space="preserve">
     <value>Змінені версії</value>
@@ -157,10 +157,10 @@
     <value>Особлива подяка</value>
   </data>
   <data name="About_Tester" xml:space="preserve">
-    <value>Тестер</value>
+    <value>Тестувальник</value>
   </data>
   <data name="About_ThankYou" xml:space="preserve">
-    <value>Спасибі вам, спасибі вам, спасибі вам!</value>
+    <value>Дякую, дякую, дякую!</value>
   </data>
   <data name="About_Translation_Dutch" xml:space="preserve">
     <value>Переклад на голландську</value>
@@ -175,10 +175,10 @@
     <value>Переклад на українську</value>
   </data>
   <data name="About_Update_Frequency_EveryTwoWeeks" xml:space="preserve">
-    <value>Кожні два тижні</value>
+    <value>Раз на два тижні</value>
   </data>
   <data name="About_Update_Frequency_Monthly" xml:space="preserve">
-    <value>Кожен місяць</value>
+    <value>Раз в місяць</value>
   </data>
   <data name="About_Update_Frequency_None" xml:space="preserve">
     <value>Не перевіряти</value>
@@ -199,10 +199,10 @@
     <value>Версія</value>
   </data>
   <data name="About_VersionInfo" xml:space="preserve">
-    <value>Інформація про версію</value>
+    <value>Інформація про версії</value>
   </data>
   <data name="Appearance_AccentColor_Description" xml:space="preserve">
-    <value>Виберіть колір акценту програми</value>
+    <value>Вибір акцентного кольору програми</value>
   </data>
   <data name="Appearance_AccentColor_RestoreDefault" xml:space="preserve">
     <value>Відновити значення за замовчуванням</value>
@@ -214,13 +214,13 @@
     <value>Створити</value>
   </data>
   <data name="Appearance_ColorTheme_Custom" xml:space="preserve">
-    <value>Користувальницькі</value>
+    <value>Користувальницька</value>
   </data>
   <data name="Appearance_ColorTheme_Dark" xml:space="preserve">
     <value>Темна</value>
   </data>
   <data name="Appearance_ColorTheme_Description" xml:space="preserve">
-    <value>Колірна схема програми за замовчуванням</value>
+    <value>Схема кольорів програми за замовчуванням</value>
   </data>
   <data name="Appearance_ColorTheme_Export" xml:space="preserve">
     <value>Експорт</value>
@@ -232,13 +232,13 @@
     <value>Світла</value>
   </data>
   <data name="Appearance_ColorTheme_Management" xml:space="preserve">
-    <value>Керування темами</value>
+    <value>Управління темою</value>
   </data>
   <data name="Appearance_ColorTheme_System" xml:space="preserve">
-    <value>Система</value>
+    <value>Системна</value>
   </data>
   <data name="Appearance_ColorTheme_Title" xml:space="preserve">
-    <value>Базова кольорова гама</value>
+    <value>Основна тема</value>
   </data>
   <data name="Appearance_Cursor_Default" xml:space="preserve">
     <value>За замовчуванням</value>
@@ -262,10 +262,10 @@
     <value>Загальні</value>
   </data>
   <data name="Appearance_ZoomLevel_RestoreDefault" xml:space="preserve">
-    <value>Відновити за замовчуванням</value>
+    <value>Відновити значення за замовчуванням</value>
   </data>
   <data name="Appearance_ZoomLevel_Title" xml:space="preserve">
-    <value>Рівень масштабування</value>
+    <value>Масштабування</value>
   </data>
   <data name="AutoUpdate_Cancel" xml:space="preserve">
     <value>Відміна</value>
@@ -283,7 +283,7 @@
     <value>Поточна версія: {0}</value>
   </data>
   <data name="AutoUpdate_DownloadSpeed" xml:space="preserve">
-    <value>Завантаження за</value>
+    <value>Швидкість</value>
   </data>
   <data name="AutoUpdate_DownloadSpeed_Seconds" xml:space="preserve">
     <value>сек</value>
@@ -307,7 +307,7 @@
     <value>Оновлення недоступно</value>
   </data>
   <data name="AutoUpdate_Update_Verb" xml:space="preserve">
-    <value>Оновлення</value>
+    <value>Оновити</value>
   </data>
   <data name="AutoUpdate_WindowTitle" xml:space="preserve">
     <value>Оновлення</value>
@@ -325,7 +325,7 @@
     <value>Вибір акцентного кольору</value>
   </data>
   <data name="CoreInfoState_ClientSize_Minimized" xml:space="preserve">
-    <value>Мінімізовано</value>
+    <value>Згорнуто</value>
   </data>
   <data name="CoreInfoState_Detection_Canceled" xml:space="preserve">
     <value>Відміна...</value>
@@ -349,7 +349,7 @@
     <value>Помилка запису файлу</value>
   </data>
   <data name="FileDialog_AllFiles" xml:space="preserve">
-    <value>Всі файли</value>
+    <value>Усі файли</value>
   </data>
   <data name="FileDialog_File" xml:space="preserve">
     <value>файл</value>
@@ -358,7 +358,7 @@
     <value>файли</value>
   </data>
   <data name="FileDialog_Shortcut_Title" xml:space="preserve">
-    <value>Зберегти ярлик профілю</value>
+    <value>Збереження ярлика профілю</value>
   </data>
   <data name="FontPicker_Apply" xml:space="preserve">
     <value>Застосувати</value>
@@ -382,82 +382,82 @@
     <value>Створити ярлик</value>
   </data>
   <data name="HookSettings_Error_Location_Game_Empty" xml:space="preserve">
-    <value>Місце гри не вказано</value>
+    <value>Розташування гри не вказано</value>
   </data>
   <data name="HookSettings_Error_Location_Game_NotExists" xml:space="preserve">
-    <value>Місце гри не існує</value>
+    <value>Розташування гри не існує</value>
   </data>
   <data name="HookSettings_Error_Location_Launcher_Empty" xml:space="preserve">
-    <value>Місце лаунчера не вказано</value>
+    <value>Розташування лаунчера не вказано</value>
   </data>
   <data name="HookSettings_Error_Location_Launcher_NotExists" xml:space="preserve">
-    <value>Місце лаунчера не існує</value>
+    <value>Розташування лаунчера не існує</value>
   </data>
   <data name="HookSettings_Error_Preset_IsMissing" xml:space="preserve">
     <value>відсутнє</value>
   </data>
   <data name="HookSettings_Error_Preset_Preset" xml:space="preserve">
-    <value>Дозвіл пресета</value>
+    <value>Роздільна здатність пресету</value>
   </data>
   <data name="HookSettings_Error_Preset_TemplateImage" xml:space="preserve">
-    <value>Шаблон зображення пресета</value>
+    <value>Шаблон зображення для роздільної здатності</value>
   </data>
   <data name="HookSettings_Error_ProcessName_Game" xml:space="preserve">
-    <value>Ім'я ігрового процесу не вказано</value>
+    <value>Назва процесу гри не вказана</value>
   </data>
   <data name="HookSettings_Error_ProcessName_Launcher" xml:space="preserve">
-    <value>Ім'я процесу лаунчера не вказано</value>
+    <value>Назва процесу лаунчера не вказана</value>
   </data>
   <data name="HookSettings_ExitSettings_Description" xml:space="preserve">
     <value>Закрийте програму після виходу з гри</value>
   </data>
   <data name="HookSettings_ExitSettings_Title" xml:space="preserve">
-    <value>Вихід із грою</value>
+    <value>Виходити разом із грою</value>
   </data>
   <data name="HookSettings_HookInfo" xml:space="preserve">
-    <value>Інформація про гачок</value>
+    <value>Стан хука</value>
   </data>
   <data name="HookSettings_HookSettings" xml:space="preserve">
-    <value>Налаштування гачка</value>
+    <value>Налаштування хука</value>
   </data>
   <data name="HookSettings_Location_Game" xml:space="preserve">
-    <value>Місце гри</value>
+    <value>Розташування гри</value>
   </data>
   <data name="HookSettings_Location_Launcher" xml:space="preserve">
-    <value>Місце лаунчера</value>
+    <value>Розташування лаунчера</value>
   </data>
   <data name="HookSettings_Location_Screenshots" xml:space="preserve">
-    <value>Розташування папки зі знімками екрана</value>
+    <value>Розташування скріншотів</value>
   </data>
   <data name="HookSettings_OnLaunch_Action" xml:space="preserve">
-    <value>Запуск при зачепленні</value>
+    <value>Запускати при старті хука</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Game" xml:space="preserve">
     <value>Гра</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Launcher" xml:space="preserve">
-    <value>Лаунчера</value>
+    <value>Лаунчер</value>
   </data>
   <data name="HookSettings_OnLaunch_Type_Nothing" xml:space="preserve">
     <value>Нічого</value>
   </data>
   <data name="HookSettings_OpenScreenShotsFolder" xml:space="preserve">
-    <value>Відкрити папку зі знімками екрана</value>
+    <value>Відкрити папку зі скріншотами</value>
   </data>
   <data name="HookSettings_ProcessName_Game" xml:space="preserve">
-    <value>Ім'я ігрового процесу</value>
+    <value>Назва процесу гри</value>
   </data>
   <data name="HookSettings_ProcessName_Launcher" xml:space="preserve">
-    <value>Ім'я процесу лаунчера</value>
+    <value>Назва процесу лаунчера</value>
   </data>
   <data name="HookSettings_Profile" xml:space="preserve">
     <value>Профіль</value>
   </data>
   <data name="HookSettings_Settings_Action_Locate" xml:space="preserve">
-    <value>Знайти</value>
+    <value>Виявити</value>
   </data>
   <data name="HookSettings_Settings_Action_Reset" xml:space="preserve">
-    <value>Перезавантаження</value>
+    <value>Скинувши</value>
   </data>
   <data name="HookSettings_State_AppException" xml:space="preserve">
     <value>Щось пішло не так</value>
@@ -472,22 +472,22 @@
     <value>Помилка</value>
   </data>
   <data name="HookSettings_State_None" xml:space="preserve">
-    <value>Старт</value>
+    <value>Запустити</value>
   </data>
   <data name="HookSettings_State_Paused" xml:space="preserve">
-    <value>Пауза</value>
+    <value>Зупинено</value>
   </data>
   <data name="HookSettings_State_Search" xml:space="preserve">
     <value>Пошук</value>
   </data>
   <data name="HookSettings_State_Search_PressToStop" xml:space="preserve">
-    <value>Натисніть, щоб зупинити пошук</value>
+    <value>Натисніть щоб зупинити</value>
   </data>
   <data name="HookSettings_State_Warning" xml:space="preserve">
     <value>Попередження</value>
   </data>
   <data name="HookSettings_Warning_UnappliedChanges" xml:space="preserve">
-    <value>Зміни будуть застосовані після перезапуску гака</value>
+    <value>Зміни будуть застосовані після перезапуску хука</value>
   </data>
   <data name="InfoDialog_Cancel" xml:space="preserve">
     <value>Відміна</value>
@@ -499,7 +499,7 @@
     <value>Інформація</value>
   </data>
   <data name="InfoDialog_Ok" xml:space="preserve">
-    <value>Добре</value>
+    <value>Ок</value>
   </data>
   <data name="InfoDialog_SomethingWentWrong" xml:space="preserve">
     <value>Щось пішло не так</value>
@@ -517,7 +517,7 @@
     <value>Попередній</value>
   </data>
   <data name="KeyBindAction_ScreenShot" xml:space="preserve">
-    <value>Знімок екрана</value>
+    <value>Скріншот</value>
   </data>
   <data name="KeyBindAction_Select" xml:space="preserve">
     <value>Вибрати</value>
@@ -526,7 +526,7 @@
     <value>Керування</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
-    <value>Автовідтворення</value>
+    <value>Авто-відтворення</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Натискання на повноекранне спливаюче вікно</value>
@@ -550,13 +550,13 @@
     <value>Сховати курсор</value>
   </data>
   <data name="KeyBinding_General_PauseResume" xml:space="preserve">
-    <value>Пауза/Відновлення гачка</value>
+    <value>Зупинити/Відновити хук</value>
   </data>
   <data name="KeyBinding_General_Reload" xml:space="preserve">
-    <value>Перезавантажити гачок</value>
+    <value>Перезапустити хук</value>
   </data>
   <data name="KeyBinding_General_Screenshot" xml:space="preserve">
-    <value>Знімок екрана</value>
+    <value>Скріншот</value>
   </data>
   <data name="KeyBinding_Numeric" xml:space="preserve">
     <value>Вибір варіанту діалогу</value>
@@ -595,10 +595,10 @@
     <value>Профіль</value>
   </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Очистити</value>
   </data>
   <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
-    <value>Перезавантажити</value>
+    <value>Скинути</value>
   </data>
   <data name="KeyBinding_Utilities" xml:space="preserve">
     <value>Утиліти</value>
@@ -607,34 +607,34 @@
     <value>Поведінка курсору</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Hide" xml:space="preserve">
-    <value>Сховати</value>
+    <value>Ховати</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_HideAfterSelection" xml:space="preserve">
-    <value>Сховати після вибору</value>
+    <value>Ховати після вибору</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Nothing" xml:space="preserve">
     <value>Нічого</value>
   </data>
   <data name="KeyBinding_Utilities_CycleThrough" xml:space="preserve">
-    <value>Циклічно переглядайте опції діалогу</value>
+    <value>Циклічне гортання</value>
   </data>
   <data name="KeyBinding_Utilities_HideCursorOnManualClick" xml:space="preserve">
-    <value>Сховати курсор при ручному виборі</value>
+    <value>Приховувати курсор під час ручного вибору</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour" xml:space="preserve">
     <value>Поведінка числових дій</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Highlight" xml:space="preserve">
-    <value>Виділення</value>
+    <value>Підсвічування</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Select" xml:space="preserve">
     <value>Вибрати</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour" xml:space="preserve">
-    <value>Поведінка окремої опції діалогу</value>
+    <value>Поведінка при одному варіанті діалогу</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight" xml:space="preserve">
-    <value>Будь-яка дія тільки виділяє</value>
+    <value>Будь-яка дія виділяє</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Select" xml:space="preserve">
     <value>Будь-яка дія вибирає</value>
@@ -646,7 +646,7 @@
     <value>Українська</value>
   </data>
   <data name="Menu_About" xml:space="preserve">
-    <value>Про</value>
+    <value>Про програму</value>
   </data>
   <data name="Menu_Appearance" xml:space="preserve">
     <value>Зовнішній вигляд</value>
@@ -655,10 +655,10 @@
     <value>Налагодження</value>
   </data>
   <data name="Menu_HookControl" xml:space="preserve">
-    <value>Керування гачком</value>
+    <value>Управління хуком</value>
   </data>
   <data name="Menu_KeyBindings" xml:space="preserve">
-    <value>Прив'язки клавіш</value>
+    <value>Прив'язка клавіш</value>
   </data>
   <data name="Menu_PreRelease" xml:space="preserve">
     <value>Пре-реліз</value>
@@ -667,13 +667,13 @@
     <value>Пресети</value>
   </data>
   <data name="Menu_Settings" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Налаштування</value>
   </data>
   <data name="Menu_Version" xml:space="preserve">
     <value>Версія</value>
   </data>
   <data name="MissingExtensions_Description" xml:space="preserve">
-    <value>Додайте розширення гри та перезапустіть програму</value>
+    <value>Додайте ігрові розширення та перезапустіть програму</value>
   </data>
   <data name="MissingExtensions_Title" xml:space="preserve">
     <value>Розширення відсутні</value>
@@ -685,7 +685,7 @@
     <value>Відкрити</value>
   </data>
   <data name="NotifyMenu_Screenshots" xml:space="preserve">
-    <value>Знімки екрану</value>
+    <value>Скріншоти</value>
   </data>
   <data name="Settings_ApplicationFolder" xml:space="preserve">
     <value>Папка програми</value>
@@ -709,22 +709,22 @@
     <value>Мова</value>
   </data>
   <data name="Settings_MinimizeToTaskBar" xml:space="preserve">
-    <value>Згорнути на панель завдань</value>
+    <value>Згортати в панель завдань</value>
   </data>
   <data name="Settings_ScreenshotsManager_Description" xml:space="preserve">
-    <value>Відкриється лише в тому випадку, якщо були зроблені скріншоти</value>
+    <value>Відкриється лише якщо були зроблені скріншоти</value>
   </data>
   <data name="Settings_ScreenshotsManager_Title" xml:space="preserve">
-    <value>Відкрийте папку зі скріншотами при виході з гри</value>
+    <value>Відкривати папку зі скріншотами під час виходу з гри</value>
   </data>
   <data name="Settings_SettingsFolder" xml:space="preserve">
-    <value>Папка налаштувань</value>
+    <value>Папка з налаштуваннями</value>
   </data>
   <data name="Settings_StartMinimized" xml:space="preserve">
-    <value>Початок згорнутий</value>
+    <value>Запускати згорнутим</value>
   </data>
   <data name="Settings_Startup" xml:space="preserve">
-    <value>Запускати під час запуску Windows</value>
+    <value>Запускати разом із Windows</value>
   </data>
   <data name="Settings_Startup_Exception_Delete" xml:space="preserve">
     <value>Не вдалося видалити ярлик</value>
@@ -733,13 +733,13 @@
     <value>Не вдалося створити ярлик</value>
   </data>
   <data name="Settings_UnloadUi_Description" xml:space="preserve">
-    <value>Вивантажувати інтерфейс при згортанні для економії пам'яті</value>
+    <value>Вивантажувати інтерфейс при мінімізації для збереження пам'яті</value>
   </data>
   <data name="Settings_UnloadUi_Title" xml:space="preserve">
-    <value>Вивантажити інтерфейс</value>
+    <value>Вивантажувати інтерфейс</value>
   </data>
   <data name="Settings_Update_AppServer" xml:space="preserve">
-    <value>Сервер оновлення</value>
+    <value>Сервер оновлень</value>
   </data>
   <data name="Settings_UserAgent" xml:space="preserve">
     <value>User agent за замовчуванням</value>
@@ -751,10 +751,10 @@
     <value>За замовчуванням</value>
   </data>
   <data name="Settings_WindowsState_Main_Title" xml:space="preserve">
-    <value>Стан вікна при запуску</value>
+    <value>Стан вікна під час запуску програми</value>
   </data>
   <data name="Settings_WindowsState_Shortcut_Title" xml:space="preserve">
-    <value>Стан вікна при запуску ярлика</value>
+    <value>Стан вікна під час запуску ярлика профілю</value>
   </data>
   <data name="Settings_WindowsState_SystemTray" xml:space="preserve">
     <value>Системний трей</value>
@@ -769,7 +769,7 @@
     <value>Відміна</value>
   </data>
   <data name="TextInputDialog_Reset" xml:space="preserve">
-    <value>Перезавантажити</value>
+    <value>Скинути</value>
   </data>
   <data name="TextInputDialog_Title" xml:space="preserve">
     <value>Редагування</value>
@@ -781,7 +781,7 @@
     <value>Застосувати</value>
   </data>
   <data name="TriggerEditor_Cancel" xml:space="preserve">
-    <value>Відмінити</value>
+    <value>Скасувати</value>
   </data>
   <data name="TriggerEditor_Delete" xml:space="preserve">
     <value>Видалити</value>
@@ -793,16 +793,16 @@
     <value>Тут ще нічого немає</value>
   </data>
   <data name="TriggerEditor_MoveDown" xml:space="preserve">
-    <value>Вниз</value>
+    <value>Опустити вниз</value>
   </data>
   <data name="TriggerEditor_MoveUp" xml:space="preserve">
-    <value>Догори</value>
+    <value>Підняти вгору</value>
   </data>
   <data name="TriggerEditor_RecordingMessage_Part1" xml:space="preserve">
-    <value>Натисніть будь-яку клавішу, щоб призначити її цій дії, або натисніть</value>
+    <value>Натисніть на кнопку, щоб призначити її для обраної дії, або натисніть</value>
   </data>
   <data name="TriggerEditor_RecordingMessage_Part2" xml:space="preserve">
-    <value>щоб відмінити</value>
+    <value>для скасування</value>
   </data>
   <data name="TriggerEditor_Title" xml:space="preserve">
     <value>Редактор тригерів</value>
@@ -811,9 +811,9 @@
     <value>Тригери</value>
   </data>
   <data name="WindowInfo_ClientSize" xml:space="preserve">
-    <value>Розмір клієнта</value>
+    <value>Роздільна здатність клієнта</value>
   </data>
   <data name="WindowInfo_Minimized" xml:space="preserve">
-    <value>Мінімізовано</value>
+    <value>Згорнуто</value>
   </data>
 </root>
