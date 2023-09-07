@@ -119,10 +119,11 @@
   </resheader>
   <data name="About_Acknowledgements" xml:space="preserve">
     <value>Special Thanks</value>
+    <comment>Section title</comment>
   </data>
   <data name="About_AllOfYou" xml:space="preserve">
     <value>All of you, guys and gals</value>
-    <comment>Verb</comment>
+    <comment>Verb (To whom thanks are given)</comment>
   </data>
   <data name="About_ApplicationIcon" xml:space="preserve">
     <value>Application icon</value>
@@ -148,6 +149,7 @@
   </data>
   <data name="About_LibrariesAndResources" xml:space="preserve">
     <value>Libraries and Resources</value>
+    <comment>Section title</comment>
   </data>
   <data name="About_ModifiedVersion" xml:space="preserve">
     <value>Modified versions</value>
@@ -160,6 +162,7 @@
   </data>
   <data name="About_Tester" xml:space="preserve">
     <value>Tester</value>
+    <comment>Application tester</comment>
   </data>
   <data name="About_ThankYou" xml:space="preserve">
     <value>Thank you, thank you, thank you!</value>
@@ -193,6 +196,7 @@
   </data>
   <data name="About_Update_Update_Sub" xml:space="preserve">
     <value>Update</value>
+    <comment>Subject</comment>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
     <value>User interface</value>
@@ -202,6 +206,7 @@
   </data>
   <data name="About_VersionInfo" xml:space="preserve">
     <value>Version info</value>
+    <comment>Section title</comment>
   </data>
   <data name="Appearance_AccentColor_Description" xml:space="preserve">
     <value>Choose the application accent color</value>
@@ -220,6 +225,7 @@
   </data>
   <data name="Appearance_ColorTheme_Dark" xml:space="preserve">
     <value>Dark</value>
+    <comment>Theme type</comment>
   </data>
   <data name="Appearance_ColorTheme_Description" xml:space="preserve">
     <value>Default application color scheme</value>
@@ -232,12 +238,14 @@
   </data>
   <data name="Appearance_ColorTheme_Light" xml:space="preserve">
     <value>Light</value>
+    <comment>Theme type</comment>
   </data>
   <data name="Appearance_ColorTheme_Management" xml:space="preserve">
     <value>Theme management</value>
   </data>
   <data name="Appearance_ColorTheme_System" xml:space="preserve">
     <value>System</value>
+    <comment>Theme type</comment>
   </data>
   <data name="Appearance_ColorTheme_Title" xml:space="preserve">
     <value>Base color scheme</value>
@@ -250,6 +258,7 @@
   </data>
   <data name="Appearance_Cursor_Title" xml:space="preserve">
     <value>Interaction cursor</value>
+    <comment>Cursor type ^</comment>
   </data>
   <data name="Appearance_Error_Export" xml:space="preserve">
     <value>Theme export error</value>
@@ -262,12 +271,14 @@
   </data>
   <data name="Appearance_Title" xml:space="preserve">
     <value>General</value>
+    <comment>Section title</comment>
   </data>
   <data name="Appearance_ZoomLevel_RestoreDefault" xml:space="preserve">
     <value>Restore default</value>
   </data>
   <data name="Appearance_ZoomLevel_Title" xml:space="preserve">
     <value>Zoom level</value>
+    <comment>UI Scale</comment>
   </data>
   <data name="AutoUpdate_Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -285,7 +296,7 @@
     <value>Current version: {0}</value>
   </data>
   <data name="AutoUpdate_DownloadSpeed" xml:space="preserve">
-    <value>Downloading at</value>
+    <value>Download speed</value>
   </data>
   <data name="AutoUpdate_DownloadSpeed_Seconds" xml:space="preserve">
     <value>sec</value>
@@ -295,6 +306,7 @@
   </data>
   <data name="AutoUpdate_Failed_Title" xml:space="preserve">
     <value>Update Check Failed</value>
+    <comment>Window title</comment>
   </data>
   <data name="AutoUpdate_NewVersionAvailable" xml:space="preserve">
     <value>A new version available: {0}</value>
@@ -307,12 +319,15 @@
   </data>
   <data name="AutoUpdate_Unavailable_Title" xml:space="preserve">
     <value>Update Unavailable</value>
+    <comment>Window title</comment>
   </data>
   <data name="AutoUpdate_Update_Verb" xml:space="preserve">
     <value>Update</value>
+    <comment>Verb</comment>
   </data>
   <data name="AutoUpdate_WindowTitle" xml:space="preserve">
     <value>Update</value>
+    <comment>Subject</comment>
   </data>
   <data name="AutoUpdate_WindowTitle_Download" xml:space="preserve">
     <value>Downloading an update</value>
@@ -337,6 +352,7 @@
   </data>
   <data name="CoreInfoState_Detection_Search" xml:space="preserve">
     <value>Search...</value>
+    <comment>Search is in progress</comment>
   </data>
   <data name="CoreInfoState_DialogMode_No" xml:space="preserve">
     <value>No</value>
@@ -361,6 +377,7 @@
   </data>
   <data name="FileDialog_Shortcut_Title" xml:space="preserve">
     <value>Save profile shortcut</value>
+    <comment>Application shortcut with arguments</comment>
   </data>
   <data name="FontPicker_Apply" xml:space="preserve">
     <value>Apply</value>
@@ -394,15 +411,18 @@
   </data>
   <data name="HookSettings_Error_Location_Launcher_NotExists" xml:space="preserve">
     <value>Launcher location does not exist</value>
+    <comment>Preset is missing</comment>
   </data>
   <data name="HookSettings_Error_Preset_IsMissing" xml:space="preserve">
     <value>is missing</value>
   </data>
   <data name="HookSettings_Error_Preset_Preset" xml:space="preserve">
     <value>Preset resolution</value>
+    <comment>Preset screen resolution</comment>
   </data>
   <data name="HookSettings_Error_Preset_TemplateImage" xml:space="preserve">
     <value>Image template for resolution</value>
+    <comment>Screen resolution</comment>
   </data>
   <data name="HookSettings_Error_ProcessName_Game" xml:space="preserve">
     <value>Game process name is not specified</value>
@@ -436,9 +456,11 @@
   </data>
   <data name="HookSettings_OnLaunch_Type_Game" xml:space="preserve">
     <value>Game</value>
+    <comment>Game exe</comment>
   </data>
   <data name="HookSettings_OnLaunch_Type_Launcher" xml:space="preserve">
     <value>Launcher</value>
+    <comment>Game launcher</comment>
   </data>
   <data name="HookSettings_OnLaunch_Type_Nothing" xml:space="preserve">
     <value>Nothing</value>
@@ -454,18 +476,22 @@
   </data>
   <data name="HookSettings_Profile" xml:space="preserve">
     <value>Profile</value>
+    <comment>Game profile</comment>
   </data>
   <data name="HookSettings_Settings_Action_Locate" xml:space="preserve">
     <value>Locate</value>
+    <comment>Locate installed game exe file paths</comment>
   </data>
   <data name="HookSettings_Settings_Action_Reset" xml:space="preserve">
     <value>Reset</value>
+    <comment>Verb</comment>
   </data>
   <data name="HookSettings_State_AppException" xml:space="preserve">
     <value>Something went wrong</value>
   </data>
   <data name="HookSettings_State_Canceled" xml:space="preserve">
     <value>Cancelling</value>
+    <comment>Operation cancelling</comment>
   </data>
   <data name="HookSettings_State_Detected" xml:space="preserve">
     <value>Detected</value>
@@ -475,6 +501,7 @@
   </data>
   <data name="HookSettings_State_None" xml:space="preserve">
     <value>Start</value>
+    <comment>Verb</comment>
   </data>
   <data name="HookSettings_State_Paused" xml:space="preserve">
     <value>Paused</value>
@@ -514,93 +541,118 @@
   </data>
   <data name="KeyBindAction_Next" xml:space="preserve">
     <value>Next</value>
+    <comment>Selecting the next option</comment>
   </data>
   <data name="KeyBindAction_Previous" xml:space="preserve">
     <value>Previous</value>
+    <comment>Selecting the previous option</comment>
   </data>
   <data name="KeyBindAction_ScreenShot" xml:space="preserve">
     <value>Screenshot</value>
   </data>
   <data name="KeyBindAction_Select" xml:space="preserve">
     <value>Select</value>
+    <comment>Selecting the current option</comment>
   </data>
   <data name="KeyBinding_Control" xml:space="preserve">
     <value>Controls</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
     <value>Auto-play</value>
+    <comment>Subject</comment>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Fullscreen pop-up click</value>
   </data>
   <data name="KeyBinding_Control_HideUi" xml:space="preserve">
     <value>Hide UI</value>
+    <comment>Verb</comment>
   </data>
   <data name="KeyBinding_Control_Next" xml:space="preserve">
     <value>Next</value>
+    <comment>Selecting the next option</comment>
   </data>
   <data name="KeyBinding_Control_Previous" xml:space="preserve">
     <value>Previous</value>
+    <comment>Selecting the previous option</comment>
   </data>
   <data name="KeyBinding_Control_Select" xml:space="preserve">
     <value>Select</value>
+    <comment>Selecting the current option</comment>
   </data>
   <data name="KeyBinding_General" xml:space="preserve">
     <value>General</value>
+    <comment>General settings</comment>
   </data>
   <data name="KeyBinding_General_HideCursor" xml:space="preserve">
     <value>Hide cursor</value>
+    <comment>Verb</comment>
   </data>
   <data name="KeyBinding_General_PauseResume" xml:space="preserve">
     <value>Pause/Resume hook</value>
+    <comment>Verb</comment>
   </data>
   <data name="KeyBinding_General_Reload" xml:space="preserve">
     <value>Reload hook</value>
+    <comment>Verb</comment>
   </data>
   <data name="KeyBinding_General_Screenshot" xml:space="preserve">
     <value>Screenshot</value>
+    <comment>Take screenshot</comment>
   </data>
   <data name="KeyBinding_Numeric" xml:space="preserve">
     <value>Dialog option selection</value>
   </data>
   <data name="KeyBinding_Numeric_Eighth" xml:space="preserve">
     <value>Eighth</value>
+    <comment>Dialogue option number by number (Adjective)</comment>
   </data>
   <data name="KeyBinding_Numeric_Fifth" xml:space="preserve">
     <value>Fifth</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Numeric_First" xml:space="preserve">
     <value>First</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Numeric_Fourth" xml:space="preserve">
     <value>Fourth</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Numeric_Ninth" xml:space="preserve">
     <value>Ninth</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Numeric_Second" xml:space="preserve">
     <value>Second</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Numeric_Seventh" xml:space="preserve">
     <value>Seventh</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Numeric_Sixth" xml:space="preserve">
     <value>Sixth</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Numeric_Tenth" xml:space="preserve">
     <value>Tenth</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Numeric_Third" xml:space="preserve">
     <value>Third</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
     <value>Clear</value>
+    <comment>Verb</comment>
   </data>
   <data name="KeyBinding_Settings_Action_Reset" xml:space="preserve">
     <value>Reset</value>
+    <comment>Verb</comment>
   </data>
   <data name="KeyBinding_Utilities" xml:space="preserve">
     <value>Utilities</value>
@@ -610,49 +662,60 @@
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Hide" xml:space="preserve">
     <value>Hide</value>
+    <comment>Infinitive verb</comment>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_HideAfterSelection" xml:space="preserve">
     <value>Hide after selection</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Nothing" xml:space="preserve">
     <value>Nothing</value>
+    <comment>^</comment>
   </data>
   <data name="KeyBinding_Utilities_CycleThrough" xml:space="preserve">
     <value>Cycle through dialog options</value>
   </data>
   <data name="KeyBinding_Utilities_HideCursorOnManualClick" xml:space="preserve">
     <value>Hide cursor on manual selection</value>
+    <comment>Infinitive verb</comment>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour" xml:space="preserve">
     <value>Numeric action behaviour</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Highlight" xml:space="preserve">
     <value>Highlighting</value>
+    <comment>Numerical action will perform</comment>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Select" xml:space="preserve">
-    <value>Select</value>
+    <value>Selection</value>
+    <comment>Numerical actions will perform</comment>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour" xml:space="preserve">
     <value>Single dialog option behavior</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight" xml:space="preserve">
     <value>Any action highlights</value>
+    <comment>How will the actions behave</comment>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Select" xml:space="preserve">
     <value>Any action selects</value>
+    <comment>^</comment>
   </data>
   <data name="Language_Automatic" xml:space="preserve">
     <value>Automatic</value>
+    <comment>Automatically selected language</comment>
   </data>
   <data name="Language_Name" xml:space="preserve">
     <value>English</value>
-    <comment>this language name</comment>
+    <comment>This language name</comment>
   </data>
   <data name="Menu_About" xml:space="preserve">
     <value>About</value>
+    <comment>Section title - About application</comment>
   </data>
   <data name="Menu_Appearance" xml:space="preserve">
     <value>Appearance</value>
+    <comment>Application appearance</comment>
   </data>
   <data name="Menu_DebugMode" xml:space="preserve">
     <value>Debugging</value>
@@ -683,9 +746,11 @@
   </data>
   <data name="NotifyMenu_Exit" xml:space="preserve">
     <value>Exit</value>
+    <comment>Action to exit the application</comment>
   </data>
   <data name="NotifyMenu_Open" xml:space="preserve">
     <value>Open</value>
+    <comment>Action to open application window</comment>
   </data>
   <data name="NotifyMenu_Screenshots" xml:space="preserve">
     <value>Screenshots</value>
@@ -695,6 +760,7 @@
   </data>
   <data name="Settings_CloseMinimizes" xml:space="preserve">
     <value>Close minimizes</value>
+    <comment>Close button behaviour</comment>
   </data>
   <data name="Settings_ExpertMode_Description" xml:space="preserve">
     <value>Advanced features</value>
@@ -704,6 +770,7 @@
   </data>
   <data name="Settings_General" xml:space="preserve">
     <value>General</value>
+    <comment>General settings</comment>
   </data>
   <data name="Settings_Internet" xml:space="preserve">
     <value>Internet</value>
@@ -713,6 +780,7 @@
   </data>
   <data name="Settings_MinimizeToTaskBar" xml:space="preserve">
     <value>Minimize to taskbar</value>
+    <comment>Minimization button behaviour</comment>
   </data>
   <data name="Settings_ScreenshotsManager_Description" xml:space="preserve">
     <value>Will open only if screenshots have been taken</value>
@@ -725,6 +793,7 @@
   </data>
   <data name="Settings_StartMinimized" xml:space="preserve">
     <value>Start minimized</value>
+    <comment>Startup window state</comment>
   </data>
   <data name="Settings_Startup" xml:space="preserve">
     <value>Run on Windows start-up</value>
@@ -740,9 +809,11 @@
   </data>
   <data name="Settings_UnloadUi_Title" xml:space="preserve">
     <value>Unload UI</value>
+    <comment>Infinitive verb</comment>
   </data>
   <data name="Settings_Update_AppServer" xml:space="preserve">
     <value>Update server</value>
+    <comment>Subject</comment>
   </data>
   <data name="Settings_UserAgent" xml:space="preserve">
     <value>Default user agent</value>
@@ -773,6 +844,7 @@
   </data>
   <data name="TextInputDialog_Reset" xml:space="preserve">
     <value>Reset</value>
+    <comment>Verb</comment>
   </data>
   <data name="TextInputDialog_Title" xml:space="preserve">
     <value>Editing</value>

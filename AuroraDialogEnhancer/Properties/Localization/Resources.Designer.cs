@@ -556,7 +556,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading at.
+        ///   Looks up a localized string similar to Download speed.
         /// </summary>
         public static string AutoUpdate_DownloadSpeed {
             get {
@@ -1591,7 +1591,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select.
+        ///   Looks up a localized string similar to Selection.
         /// </summary>
         public static string KeyBinding_Utilities_NumericActionBehaviour_Select {
             get {
