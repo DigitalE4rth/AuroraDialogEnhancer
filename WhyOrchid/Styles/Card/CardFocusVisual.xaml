@@ -1,0 +1,175 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:WhyOrchid.Converters"
+                    xmlns:properties="clr-namespace:WhyOrchid.Properties">
+
+    <converters:CornerRadiusConverter x:Key="CornerRadiusConverter" />
+
+    <Style x:Key="TopCardFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            BorderThickness="3"
+                            Opacity="0.38">
+                        <Border.CornerRadius>
+                            <MultiBinding Converter="{StaticResource CornerRadiusConverter}" Mode="OneTime">
+                                <Binding Mode="OneTime"
+                                         Path="UI_CardCornerRadius"
+                                         Source="{x:Static properties:Settings.Default}" />
+                                <Binding Mode="OneTime"
+                                         Path="UI_CardCornerRadius"
+                                         Source="{x:Static properties:Settings.Default}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                            </MultiBinding>
+                        </Border.CornerRadius>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TopLeftCardFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            BorderThickness="3"
+                            Opacity="0.38">
+                        <Border.CornerRadius>
+                            <MultiBinding Converter="{StaticResource CornerRadiusConverter}" Mode="OneTime">
+                                <Binding Mode="OneTime"
+                                         Path="UI_CardCornerRadius"
+                                         Source="{x:Static properties:Settings.Default}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                            </MultiBinding>
+                        </Border.CornerRadius>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TopRightCardFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            BorderThickness="3"
+                            Opacity="0.38">
+                        <Border.CornerRadius>
+                            <MultiBinding Converter="{StaticResource CornerRadiusConverter}" Mode="OneTime">
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime"
+                                         Path="UI_CardCornerRadius"
+                                         Source="{x:Static properties:Settings.Default}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                            </MultiBinding>
+                        </Border.CornerRadius>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CardButtonFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            BorderThickness="3"
+                            Opacity="0.38" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BottomCardFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            BorderThickness="3"
+                            Opacity="0.38">
+                        <Border.CornerRadius>
+                            <MultiBinding Converter="{StaticResource CornerRadiusConverter}" Mode="OneTime">
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime"
+                                         Path="UI_CardCornerRadius"
+                                         Source="{x:Static properties:Settings.Default}" />
+                                <Binding Mode="OneTime"
+                                         Path="UI_CardCornerRadius"
+                                         Source="{x:Static properties:Settings.Default}" />
+                            </MultiBinding>
+                        </Border.CornerRadius>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BottomLeftCardFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            BorderThickness="3"
+                            Opacity="0.38">
+                        <Border.CornerRadius>
+                            <MultiBinding Converter="{StaticResource CornerRadiusConverter}" Mode="OneTime">
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime"
+                                         Path="UI_CardCornerRadius"
+                                         Source="{x:Static properties:Settings.Default}" />
+                            </MultiBinding>
+                        </Border.CornerRadius>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BottomRightCardFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            BorderThickness="3"
+                            Opacity="0.38">
+                        <Border.CornerRadius>
+                            <MultiBinding Converter="{StaticResource CornerRadiusConverter}">
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                                <Binding Mode="OneTime"
+                                         Path="UI_CardCornerRadius"
+                                         Source="{x:Static properties:Settings.Default}" />
+                                <Binding Mode="OneTime" Source="{x:Null}" />
+                            </MultiBinding>
+                        </Border.CornerRadius>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SingleCardFocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            BorderThickness="3"
+                            CornerRadius="{Binding Source={x:Static properties:Settings.Default}, Path=UI_CardCornerRadius, Mode=OneTime}"
+                            Opacity="0.38" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

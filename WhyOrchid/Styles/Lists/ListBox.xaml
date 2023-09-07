@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WhyOrchid.Controls"
+                    xmlns:properties="clr-namespace:WhyOrchid.Properties">
+
+    <Style x:Key="CardListBox" TargetType="{x:Type controls:ListBox}">
+        <Setter Property="BorderBrush" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_SurfaceVariant, Mode=OneTime}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="CornerRadius" Value="{Binding Source={x:Static properties:Settings.Default}, Path=UI_ButtonCornerRadius, Mode=OneTime}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ListBox}">
+                    <Grid>
+                        <Border CornerRadius="{TemplateBinding CornerRadius}">
+                            <Grid>
+                                <Border x:Name="BorderWrapper"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="{TemplateBinding CornerRadius}" />
+
+                                <Border>
+                                    <Border.OpacityMask>
+                                        <VisualBrush Visual="{Binding Source={x:Reference BorderWrapper}}" />
+                                    </Border.OpacityMask>
+
+                                    <controls:ScrollViewer x:Name="ScrollViewer"
+                                                           Padding="{TemplateBinding Padding}"
+                                                           Focusable="False"
+                                                           ScrollbarBackground="{TemplateBinding ScrollbarBackground}">
+                                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </controls:ScrollViewer>
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="BorderWrapper" Property="Opacity" Value="0.38" />
+                        </Trigger>
+
+                        <Trigger SourceName="ScrollViewer" Property="ScrollViewer.ComputedVerticalScrollBarVisibility" Value="Visible">
+                            <Setter TargetName="ScrollViewer" Property="VerticalScrollBorderThickness" Value="1,0,0,0" />
+                            <Setter TargetName="ScrollViewer" Property="Margin" Value="0,0,1,0" />
+                        </Trigger>
+
+                        <Trigger SourceName="ScrollViewer" Property="ScrollViewer.ComputedHorizontalScrollBarVisibility" Value="Visible">
+                            <Setter TargetName="ScrollViewer" Property="HorizontalScrollBorderThickness" Value="0,1,0,0" />
+                            <Setter TargetName="ScrollViewer" Property="Margin" Value="0,0,0,1" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="True" />
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

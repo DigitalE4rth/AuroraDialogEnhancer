@@ -1,0 +1,108 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WhyOrchid.Controls"
+                    xmlns:properties="clr-namespace:WhyOrchid.Properties">
+
+    <Style x:Key="FocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Interaction, Mode=OneTime}" CornerRadius="{Binding Source={x:Static properties:Settings.Default}, Path=UI_ButtonCornerRadius, Mode=OneTime}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ToggleButtonText" TargetType="{x:Type controls:ToggleButton}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Cursor" Value="{Binding Source={x:Static properties:Settings.Default}, Path=UI_CursorType, Mode=OneTime}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}" />
+        <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ToggleButton}">
+                    <Grid>
+                        <!--  Hover overlay  -->
+                        <Border x:Name="HoverOverlay"
+                                Background="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Interaction, Mode=OneTime}"
+                                CornerRadius="{Binding Source={x:Static properties:Settings.Default}, Path=UI_ButtonCornerRadius, Mode=OneTime}"
+                                Opacity="0" />
+
+                        <!--  Click overlay  -->
+                        <Border x:Name="ToggleOverlay"
+                                Background="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Interaction, Mode=OneTime}"
+                                CornerRadius="{Binding Source={x:Static properties:Settings.Default}, Path=UI_ButtonCornerRadius, Mode=OneTime}"
+                                Opacity="0" />
+
+                        <!--  Content  -->
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextBlock.FontWeight="Medium" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="ToggleButton.Loaded">
+                            <SkipStoryboardToFill BeginStoryboardName="CheckedStoryboard" />
+                            <SkipStoryboardToFill BeginStoryboardName="UnCheckedStoryboard" />
+                        </EventTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ContentPresenter" Property="TextBlock.Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
+                            <Setter TargetName="HoverOverlay" Property="Opacity" Value="0.38" />
+                        </Trigger>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="HoverOverlay"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     From="0"
+                                                     To="1"
+                                                     Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="HoverOverlay"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     From="1"
+                                                     To="0"
+                                                     Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Checked">
+                            <BeginStoryboard x:Name="CheckedStoryboard">
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="ToggleOverlay"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     From="0"
+                                                     To="1"
+                                                     Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Unchecked">
+                            <BeginStoryboard x:Name="UnCheckedStoryboard">
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="ToggleOverlay"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     From="1"
+                                                     To="0"
+                                                     Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

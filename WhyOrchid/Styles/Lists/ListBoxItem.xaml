@@ -1,0 +1,121 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:properties="clr-namespace:WhyOrchid.Properties">
+
+    <Style x:Key="FocusVisualStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Interaction, Mode=OneTime}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type ListBoxItem}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="Cursor" Value="{Binding Source={x:Static properties:Settings.Default}, Path=UI_CursorType, Mode=OneTime}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Background" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Primary, Mode=OneTime}" />
+        <Setter Property="BorderBrush" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid>
+                        <Border x:Name="CheckedOverlay"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Opacity="0"
+                                SnapsToDevicePixels="true" />
+
+                        <Border x:Name="HoverOverlay"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Interaction, Mode=OneTime}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Opacity="0"
+                                SnapsToDevicePixels="true" />
+
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+
+                        <EventTrigger RoutedEvent="ListBoxItem.Loaded">
+                            <SkipStoryboardToFill BeginStoryboardName="CheckedStoryboard" />
+                            <SkipStoryboardToFill BeginStoryboardName="UnCheckedStoryboard" />
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="HoverOverlay"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     From="0"
+                                                     To="1"
+                                                     Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="HoverOverlay"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     From="1"
+                                                     To="0"
+                                                     Duration="0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="CheckedStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CheckedOverlay"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0"
+                                                         To="0.5"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="UnCheckedStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="CheckedOverlay"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_OnPrimary, Mode=OneTime}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.38" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

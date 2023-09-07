@@ -573,13 +573,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WhyOrchid\WhyOrchid\WhyOrchid.csproj">
-      <Project>{d2125a32-f6aa-4344-b1dc-2174135fd7f2}</Project>
-      <Name>WhyOrchid</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AuroraDialogEnhancer.Extensions\AuroraDialogEnhancer.Extensions.csproj">
       <Project>{6bd3b68a-e65e-4b61-83c0-0f9f047986a6}</Project>
       <Name>AuroraDialogEnhancer.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WhyOrchid\WhyOrchid.csproj">
+      <Project>{d2125a32-f6aa-4344-b1dc-2174135fd7f2}</Project>
+      <Name>WhyOrchid</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

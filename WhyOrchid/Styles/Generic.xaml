@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WhyOrchid">
+    <ResourceDictionary.MergedDictionaries>
+
+        <!--  Button  -->
+        <ResourceDictionary Source="Button/ButtonFilled.xaml" />
+        <ResourceDictionary Source="Button/ButtonMenu.xaml" />
+        <ResourceDictionary Source="Button/ButtonMenuState.xaml" />
+        <ResourceDictionary Source="Button/ButtonOutlined.xaml" />
+        <ResourceDictionary Source="Button/ButtonText.xaml" />
+        <ResourceDictionary Source="Button/ButtonTonal.xaml" />
+        <ResourceDictionary Source="Button/ToggleButtonOutlined.xaml" />
+        <ResourceDictionary Source="Button/ToggleButtonText.xaml" />
+
+        <!--  Card  -->
+        <ResourceDictionary Source="Card/CardButton.xaml" />
+        <ResourceDictionary Source="Card/CardDropDown.xaml" />
+        <ResourceDictionary Source="Card/CardDropDownItem.xaml" />
+        <ResourceDictionary Source="Card/CardComboBox.xaml" />
+        <ResourceDictionary Source="Card/CardElement.xaml" />
+        <ResourceDictionary Source="Card/CardToggleButton.xaml" />
+        <ResourceDictionary Source="Card/CardElevated.xaml" />
+        <ResourceDictionary Source="Card/CardOutlined.xaml" />
+        <ResourceDictionary Source="Card/CardFocusVisual.xaml" />
+
+        <!--  Combo Box  -->
+        <ResourceDictionary Source="ComboBox/ComboBox.xaml" />
+        <ResourceDictionary Source="ComboBox/ComboBoxItem.xaml" />
+
+        <!--  Check boxes  -->
+        <ResourceDictionary Source="CheckBox/CheckBoxToggleSwitch.xaml" />
+
+        <!--  Lists  -->
+        <ResourceDictionary Source="Lists/ListBox.xaml" />
+        <ResourceDictionary Source="Lists/ListBoxItem.xaml" />
+
+        <!--  Radio buttons  -->
+        <ResourceDictionary Source="RadioButtons/RadioButtonTonal.xaml" />
+
+        <!--  Scroll  -->
+        <ResourceDictionary Source="Scroll/ScrollBar.xaml" />
+        <ResourceDictionary Source="Scroll/ScrollViewer.xaml" />
+
+        <!--  Slider  -->
+        <ResourceDictionary Source="Slider/Slider.xaml" />
+
+        <!--  Text  -->
+        <ResourceDictionary Source="Text/Label.xaml" />
+        <ResourceDictionary Source="Text/TextBlock.xaml" />
+        <ResourceDictionary Source="Text/TextBox.xaml" />
+
+        <!--  Tooltip  -->
+        <ResourceDictionary Source="Tooltip/Tooltip.xaml" />
+
+        <!--  Utils  -->
+        <ResourceDictionary Source="Utils/Separator.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

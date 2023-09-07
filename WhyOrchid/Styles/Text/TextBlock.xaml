@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:properties="clr-namespace:WhyOrchid.Properties">
+
+    <Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStyle_FontFamily, Mode=OneTime}" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}" />
+    </Style>
+
+    <Style x:Key="FontStyleLarge"
+           BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" />
+    </Style>
+
+    <Style x:Key="FontStyleMedium"
+           BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}" />
+    </Style>
+
+    <Style x:Key="FontStyleSmall"
+           BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}" />
+    </Style>
+
+    <Style x:Key="FontStyleTitleLarge"
+           BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+
+    <Style x:Key="FontStyleTitleMedium"
+           BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+
+    <Style x:Key="FontStyleTitleSmall"
+           BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}" />
+        <Setter Property="FontWeight" Value="Medium" />
+    </Style>
+
+</ResourceDictionary>

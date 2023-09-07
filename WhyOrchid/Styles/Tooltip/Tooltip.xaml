@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:properties="clr-namespace:WhyOrchid.Properties">
+
+    <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="HasDropShadow" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border Name="Border"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Surface, Mode=OneTime}"
+                            BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Outline, Mode=OneTime}"
+                            BorderThickness="1">
+
+                        <ContentPresenter Margin="4"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          TextElement.Foreground="{Binding Source={x:Static properties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="CornerRadius" Value="{Binding Source={x:Static properties:Settings.Default}, Path=UI_ButtonCornerRadius, Mode=OneTime}" />
+                            <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="True" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:properties="clr-namespace:WhyOrchid.Properties">
+    <Style x:Key="CardElevated" TargetType="{x:Type Border}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="CornerRadius" Value="{Binding Source={x:Static properties:Settings.Default}, Path=UI_CardCornerRadius, Mode=OneTime}" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="10"
+                                  Opacity="0.1"
+                                  ShadowDepth="0"
+                                  Color="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Shadow, Mode=OneTime}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

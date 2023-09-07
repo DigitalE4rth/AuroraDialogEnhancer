@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:properties="clr-namespace:WhyOrchid.Properties">
+
+    <Style x:Key="Divider" TargetType="{x:Type Separator}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="BorderBrush" Value="{Binding Source={x:Static properties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+</ResourceDictionary>

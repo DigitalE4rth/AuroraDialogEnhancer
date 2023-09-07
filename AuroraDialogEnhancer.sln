@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension.GenshinImpact", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension.HonkaiStarRail", "Extension.HonkaiStarRail\Extension.HonkaiStarRail.csproj", "{7D9A56F8-1533-4EF1-B000-0671482BECC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhyOrchid", "..\WhyOrchid\WhyOrchid\WhyOrchid.csproj", "{D2125A32-F6AA-4344-B1DC-2174135FD7F2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipExtractor", "ZipExtractor\ZipExtractor.csproj", "{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhyOrchid", "WhyOrchid\WhyOrchid.csproj", "{D2125A32-F6AA-4344-B1DC-2174135FD7F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,20 +37,20 @@ Global
 		{7D9A56F8-1533-4EF1-B000-0671482BECC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D9A56F8-1533-4EF1-B000-0671482BECC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D9A56F8-1533-4EF1-B000-0671482BECC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8878A4BB-6DDB-4847-9496-68EDAF4BFC11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2125A32-F6AA-4344-B1DC-2174135FD7F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_SortFileContentOnSave = True
 		SolutionGuid = {C935B261-2F57-4E4C-AF1B-648A6A766E84}
+		RESX_SortFileContentOnSave = True
 	EndGlobalSection
 EndGlobal
