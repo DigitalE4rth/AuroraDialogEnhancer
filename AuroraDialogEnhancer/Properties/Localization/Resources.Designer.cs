@@ -70,7 +70,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All of you, guys.
+        ///   Looks up a localized string similar to All of you, guys and gals.
         /// </summary>
         public static string About_AllOfYou {
             get {
