@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ using Application = System.Windows.Application;
 using Button = WhyOrchid.Controls.Button;
 using Control = System.Windows.Forms.Control;
 using HorizontalAlignment = System.Windows.HorizontalAlignment;
+using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
 namespace AuroraDialogEnhancer.AppConfig.NotifyIcon;
     
@@ -183,31 +186,39 @@ public partial class NotifyMenuWindow
 
     protected override Size ArrangeOverride(Size arrangeBounds)
     {
+        var matrix = PresentationSource.FromVisual(this)!.CompositionTarget.TransformFromDevice;
+        var adaptedMousePoint = matrix.Transform(new Point(Control.MousePosition.X, Control.MousePosition.Y));
+        
         var activeScreen = Screen.FromPoint(Control.MousePosition);
+        var adaptedLeftTop = matrix.Transform(new Point(activeScreen.WorkingArea.Left, activeScreen.WorkingArea.Top));
+        var adaptedRightBottom = matrix.Transform(new Point(activeScreen.WorkingArea.Right, activeScreen.WorkingArea.Bottom));
+        
+        var adaptedWorkingArea = new Rectangle(
+            (int) adaptedLeftTop.X,
+            (int) adaptedLeftTop.Y,
+            (int) (adaptedRightBottom.X - adaptedLeftTop.X),
+            (int) (adaptedRightBottom.Y - adaptedLeftTop.Y));
 
-        double xPositionToSet = Control.MousePosition.X;
-        double yPositionToSet = Control.MousePosition.Y;
-
-        if (xPositionToSet + arrangeBounds.Width > activeScreen.WorkingArea.Width + activeScreen.WorkingArea.X &&
-            xPositionToSet - activeScreen.WorkingArea.X - arrangeBounds.Width > 0)
+        if (adaptedMousePoint.X + arrangeBounds.Width > adaptedWorkingArea.Width + adaptedWorkingArea.X &&
+            adaptedMousePoint.Y - adaptedWorkingArea.X - arrangeBounds.Width > 0)
         {
-            xPositionToSet -= arrangeBounds.Width;
-            Left = xPositionToSet + Container.Margin.Right;
+            adaptedMousePoint.X -= arrangeBounds.Width;
+            Left = adaptedMousePoint.X + Container.Margin.Right;
         }
         else
         {
-            Left = xPositionToSet - Container.Margin.Left;
+            Left = adaptedMousePoint.X - Container.Margin.Left;
         }
 
-        if (yPositionToSet + arrangeBounds.Height > activeScreen.WorkingArea.Height + activeScreen.WorkingArea.Y &&
-            yPositionToSet - activeScreen.WorkingArea.Y - arrangeBounds.Height > 0)
+        if (adaptedMousePoint.Y + arrangeBounds.Height > adaptedWorkingArea.Height + adaptedWorkingArea.Y &&
+            adaptedMousePoint.Y - adaptedWorkingArea.Y - arrangeBounds.Height > 0)
         {
-            yPositionToSet -= arrangeBounds.Height;
-            Top = yPositionToSet + Container.Margin.Bottom;
+            adaptedMousePoint.Y -= arrangeBounds.Height;
+            Top = adaptedMousePoint.Y + Container.Margin.Bottom;
         }
         else
         {
-            Top = yPositionToSet - Container.Margin.Top;
+            Top = adaptedMousePoint.Y - Container.Margin.Top;
         }
 
         return base.ArrangeOverride(arrangeBounds);
