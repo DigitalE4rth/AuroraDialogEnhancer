@@ -21,7 +21,13 @@
         WindowStyle="None"
         mc:Ignorable="d">
 
-    <Grid>
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.LayoutTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="{Binding Source={x:Static properties:Settings.Default}, Path=UI_Scale, Mode=OneTime}" ScaleY="{Binding Source={x:Static properties:Settings.Default}, Path=UI_Scale, Mode=OneTime}" />
+            </TransformGroup>
+        </Grid.LayoutTransform>
+
         <Border Background="Transparent"
                 MouseDown="Shadow_OnMouseDown"
                 StylusDown="Shadow_OnStylusDown"
