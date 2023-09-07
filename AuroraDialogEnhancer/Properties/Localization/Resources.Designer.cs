@@ -1609,7 +1609,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Any action highlights only.
+        ///   Looks up a localized string similar to Any action highlights.
         /// </summary>
         public static string KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight {
             get {

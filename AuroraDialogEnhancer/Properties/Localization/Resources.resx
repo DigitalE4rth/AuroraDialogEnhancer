@@ -636,7 +636,7 @@
     <value>Single dialog option behavior</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight" xml:space="preserve">
-    <value>Any action highlights only</value>
+    <value>Any action highlights</value>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour_Select" xml:space="preserve">
     <value>Any action selects</value>
