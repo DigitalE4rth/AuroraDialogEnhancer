@@ -121,7 +121,7 @@
     <value>Благодарности</value>
   </data>
   <data name="About_AllOfYou" xml:space="preserve">
-    <value>Всем вам, друзья</value>
+    <value>Всем вам, ребята и девчата</value>
   </data>
   <data name="About_ApplicationIcon" xml:space="preserve">
     <value>Иконка приложения</value>
@@ -382,16 +382,16 @@
     <value>Создать ярлык</value>
   </data>
   <data name="HookSettings_Error_Location_Game_Empty" xml:space="preserve">
-    <value>Месторасположение игры не указано</value>
+    <value>Расположение игры не указано</value>
   </data>
   <data name="HookSettings_Error_Location_Game_NotExists" xml:space="preserve">
-    <value>Месторасположение игры не существует</value>
+    <value>Расположение игры не существует</value>
   </data>
   <data name="HookSettings_Error_Location_Launcher_Empty" xml:space="preserve">
-    <value>Месторасположение лаунчера не указано</value>
+    <value>Расположение лаунчера не указано</value>
   </data>
   <data name="HookSettings_Error_Location_Launcher_NotExists" xml:space="preserve">
-    <value>Месторасположение лаунчера не существует</value>
+    <value>Расположение лаунчера не существует</value>
   </data>
   <data name="HookSettings_Error_Preset_IsMissing" xml:space="preserve">
     <value>отсутсвует</value>
@@ -526,7 +526,7 @@
     <value>Управление</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
-    <value>Автоматическое воспроизведение</value>
+    <value>Авто-воспроизведение</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Нажатие на полноэкранное всплывающее окно</value>
