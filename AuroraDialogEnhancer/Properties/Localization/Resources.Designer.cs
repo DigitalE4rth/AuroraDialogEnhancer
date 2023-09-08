@@ -709,7 +709,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search....
+        ///   Looks up a localized string similar to Searching....
         /// </summary>
         public static string CoreInfoState_Detection_Search {
             get {

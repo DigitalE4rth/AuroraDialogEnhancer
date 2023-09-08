@@ -351,8 +351,8 @@
     <value>Yes</value>
   </data>
   <data name="CoreInfoState_Detection_Search" xml:space="preserve">
-    <value>Search...</value>
-    <comment>Search is in progress</comment>
+    <value>Searching...</value>
+    
   </data>
   <data name="CoreInfoState_DialogMode_No" xml:space="preserve">
     <value>No</value>
