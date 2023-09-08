@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyCompany("Aurora Works")]
 [assembly: AssemblyProduct("AuroraDialogEnhancer")]
 [assembly: AssemblyCopyright("Copyright © 2023 Aurora Works")]
-[assembly: AssemblyTrademark("ADE")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
