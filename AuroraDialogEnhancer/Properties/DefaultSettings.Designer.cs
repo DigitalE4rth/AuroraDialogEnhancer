@@ -73,7 +73,8 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("WIP")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/update-info/U" +
+            "pdateInfo.xml")]
         public string Update_UpdateServerUri {
             get {
                 return ((string)(this["Update_UpdateServerUri"]));

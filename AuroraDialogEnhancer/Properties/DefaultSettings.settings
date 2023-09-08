@@ -15,7 +15,7 @@
       <Value Profile="(Default)">#2cb065</Value>
     </Setting>
     <Setting Name="Update_UpdateServerUri" Type="System.String" Scope="User">
-      <Value Profile="(Default)">WIP</Value>
+      <Value Profile="(Default)">https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/update-info/UpdateInfo.xml</Value>
     </Setting>
     <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">
       <Value Profile="(Default)">Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/110.0</Value>

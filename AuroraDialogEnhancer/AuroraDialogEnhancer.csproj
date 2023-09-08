@@ -532,6 +532,7 @@
     <EmbeddedResource Include="Properties\InternalResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>InternalResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Localization\Resources.de.resx" />
     <EmbeddedResource Include="Properties\Localization\Resources.nl.resx" />
