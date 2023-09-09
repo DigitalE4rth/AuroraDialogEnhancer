@@ -10,7 +10,14 @@ public class CultureProvider
     private const string AUTO_TAG = "auto";
 
     private readonly Dictionary<string, CultureInfo> _cultureInfosDict;
-    private readonly List<string> _supportedLanguages = new() { "en-US", "de-DE", "nl-NL", "ru-RU", "uk-UK" };
+    private readonly List<string> _supportedLanguages = new()
+    {
+        "en-US", 
+        // "de-DE", 
+        "nl-NL", 
+        "ru-RU", 
+        "uk-UK"
+    };
 
     public CultureProvider()
     {
