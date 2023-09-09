@@ -182,7 +182,7 @@
                 <!--  Title  -->
                 <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.About_Acknowledgements}" />
 
-                <woControls:CardElement Title="Eric Scofield"
+                <!--<woControls:CardElement Title="Eric Scofield"
                                         MinHeight="55"
                                         Margin="0,0,0,5"
                                         Description="{x:Static localization:Resources.About_Translation_German}"
@@ -199,7 +199,7 @@
                             <woControls:PathIcon Data="{StaticResource I.S.SportsBar}" Style="{StaticResource IconMedium}" />
                         </Grid>
                     </woControls:CardElement.RightIcon>
-                </woControls:CardElement>
+                </woControls:CardElement>-->
 
                 <woControls:CardButton Title="Meowmaniac"
                                        MinHeight="55"
