@@ -233,8 +233,7 @@ There are so many ideas, but very little time and energy... + I couldn’t have 
 
 ### 🥰 Acknowledgements
 
-* **Eric Scofield** - German translation. Thank you for being such a pure German patriot and Monster Hunter fan!(⁠ ⁠≧⁠Д⁠≦⁠)🍻(⁠≧⁠▽⁠≦⁠).
-* [Meowmaniac](https://github.com/Meowmaniac) - Testing, criticism, Dutch translation. Thanks for listening to me whining and constantly testing all the janky code. Sorry for the bug that took up all the space on your hard drive)))0) /^._.^\ฅ🔪
+* [Meowmaniac](https://github.com/Meowmaniac) - Testing, criticism. Thanks for listening to me whining and constantly testing all the janky code. Sorry for the bug that took up all the space on your hard drive)))0) /^._.^\ฅ🔪
 * [NDS](https://github.com/nestdimon) - Criticism, architectural consulting, whine listening. Thank you for your time, opportunities and support. Thank you, I mean it...(((*°▽°*)八(*°▽°*)))♪
 * **Tortuga** - Testing, whine listening. Thank you for testing the program at least at the very end of development) Someday we will all get together again and play DnD... Someday (⁠ ⁠≧⁠Д⁠≦⁠)🏰🎲🐲(⁠≧⁠▽⁠≦⁠)
 * [Vobraz](https://github.com/Vobraz) - OpenCV consulting, criticism. This guy even rebuilt OpenCV for me, reducing the original size of the program from 60 MB to 24 MB... I asked him a lot of questions to understand the intricacies of the work, but in the end, having studied everything, I wrote my own super lightweight version of OpenCV, which is why the application size became... 2 MB. Well... It happened) Anyway, thanks, you're awesome! 🤩💯🔥ヾ(⌐■_■)ノ♪
@@ -340,7 +339,7 @@ Globalists? Yes. Sounds unrealistic and unfeasible? But the more support there i
 Currently there is no need for financial support. I do have a full time job, and while it's not much, it's manageable.
 
 <details>
-  <summary>Me irl</summary>
+  <summary>Literally me</summary>
   <div align="center">
     <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/honest_work_meme.jpg" />
   </div>
