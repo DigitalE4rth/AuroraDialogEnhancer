@@ -13,7 +13,7 @@ This application fixes this issue by means of extensions, individually developed
 Also, usage of this software cannot cause your account to be banned in any games you play. *([more in this section](#%EF%B8%8F-how-it-all-works))*.
 
 <details>
-  <summary>❓Why and what for? Using Genshin Impact as an Example</summary>
+  <summary>❓ Why and what for? Using Genshin Impact as an Example</summary>
   </br>
     <div>
       <ul>
@@ -334,7 +334,7 @@ The goal of Creative Society is to bring human life to the forefront legislative
 
 Globalists? Yes. Sounds unrealistic and unfeasible? But the more support there is, the faster it will come true. All that is asked of you is to read about it and tell others. Now that you know about this project, half of the work is done, and whether to support it or not is a personal matter for everyone, although I would really like to finally live in a world where there is peace and justice...
 
-## 🪙 Project support
+## 💸 Project support
 
 Currently there is no need for financial support. I do have a full time job, and while it's not much, it's manageable.
 
