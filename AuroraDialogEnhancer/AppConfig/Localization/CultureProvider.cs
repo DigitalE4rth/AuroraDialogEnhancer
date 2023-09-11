@@ -23,7 +23,7 @@ public class CultureProvider
     {
         _cultureInfosDict = new Dictionary<string, CultureInfo>
         { 
-            { AUTO_TAG, new CultureInfo(AUTO_TAG, $"{Properties.Localization.Resources.ResourceManager.GetString(AUTO_TAG_RESOURCE_NAME, System.Globalization.CultureInfo.InstalledUICulture)} ({Properties.Localization.Resources.ResourceManager.GetString(RESOURCE_VARIABLE_NAME, System.Globalization.CultureInfo.CurrentUICulture)})") }
+            { AUTO_TAG, new CultureInfo(AUTO_TAG, $"{Properties.Localization.Resources.ResourceManager.GetString(AUTO_TAG_RESOURCE_NAME, System.Globalization.CultureInfo.CurrentUICulture)} ({Properties.Localization.Resources.ResourceManager.GetString(RESOURCE_VARIABLE_NAME, System.Globalization.CultureInfo.CurrentUICulture)})") }
         };
 
         _supportedLanguages.ForEach(tag => _cultureInfosDict.Add(tag, new CultureInfo(tag, Properties.Localization.Resources.ResourceManager.GetString(RESOURCE_VARIABLE_NAME, new System.Globalization.CultureInfo(tag))!)));
