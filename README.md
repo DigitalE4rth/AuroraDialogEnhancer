@@ -10,7 +10,7 @@
 
 Most games have the ability to select dialog options using mouse wheel or keyboard buttons, but some games either don't have this feature or it is implemented poorly.
 This application fixes this issue by means of extensions, individually developed for each game, thus extending the game functionality.
-Also, usage of this software cannot cause your account to be banned in any games you play. *([more in this section](#%EF%B8%8F-how-it-all-works))*.
+Also, usage of this software cannot cause your account to be banned in any games you play *([more in this section](#%EF%B8%8F-how-it-all-works))*.
 
 <details>
   <summary>❓ Why and what for? Using Genshin Impact as an Example</summary>
@@ -174,7 +174,7 @@ Some only respond to obviously unintended game behavior by allowing memory reads
 It would have been ten times easier to implement such an approach, adding a injectable library as well.
 But since this violates license agreement of some games, and there is a risk of getting banned, the application itself was developed to function as an intermediary that works with extensions, where the developers of those take responsibility for it.
 
-Since each game is unique in its protection, each extension uses its own approach to bypass these limitations (if any), for example, Genshin Impact uses on-screen image processing.
+Since each game is unique in its protection, each extension uses its own approach to bypass these limitations (*if any*), for example, Genshin Impact uses on-screen image processing.
 Therefore, for this game it is absolutely (*99.9%*) safe.
 Can you get banned in a game for taking a screenshot?
 No. The developer has been using and testing this application for over a year.
@@ -197,7 +197,7 @@ In addition, use of scripts like [AutoHotKey](https://www.autohotkey.com) is all
 
 ### 🔑 Why are administrator privileges required?
 
-The application uses system calls to the **kernel32.dll** and **user32.dll** libraries to search for game process and window, capture keyboard and mouse button presses, determine the focus, size and state of the game window, determine the state of the cursor, and work with the registry (*search for paths of installed games*). This functionality cannot be implemented without administrator privileges in the desktop application. If the application was in a form of an embedded library for the game (see above), this would not be the case.
+The application uses system calls to the **kernel32.dll** and **user32.dll** libraries to search for game process and window, capture keyboard and mouse button presses, determine the focus, size and state of the game window, determine the state of the cursor, and work with the registry (*search for paths of installed games*). This functionality cannot be implemented without administrator privileges in the desktop application. If the application was in a form of an embedded library for the game (*see above*), this would not be the case.
 
 ### 🗺️ Development roadmap
 
@@ -234,7 +234,7 @@ There are so many ideas, but very little time and energy... + I couldn’t have 
 ### 🥰 Acknowledgements
 
 * [Meowmaniac](https://github.com/Meowmaniac) - Testing, criticism. Thanks for listening to me whining and constantly testing all the janky code. Sorry for the bug that took up all the space on your hard drive)))0) /^._.^\ฅ🔪
-* [NDS](https://github.com/nestdimon) - Criticism, architectural consulting, whine listening. Thank you for your time, opportunities and support. Thank you, I mean it...(((*°▽°*)八(*°▽°*)))♪
+* [NDS](https://github.com/nestdimon) - Criticism, architectural consulting, whine listening. Thank you for your time, opportunities and support. Thank you, I mean it... (((*°▽°*)八(*°▽°*)))♪
 * **Tortuga** - Testing, whine listening. Thank you for testing the program at least at the very end of development) Someday we will all get together again and play DnD... Someday (⁠ ⁠≧⁠Д⁠≦⁠)🏰🎲🐲(⁠≧⁠▽⁠≦⁠)
 * [Vobraz](https://github.com/Vobraz) - OpenCV consulting, criticism. This guy even rebuilt OpenCV for me, reducing the original size of the program from 60 MB to 24 MB... I asked him a lot of questions to understand the intricacies of the work, but in the end, having studied everything, I wrote my own super lightweight version of OpenCV, which is why the application size became... 2 MB. Well... It happened) Anyway, thanks, you're awesome! 🤩💯🔥ヾ(⌐■_■)ノ♪
 * [WertQj](https://github.com/WertQj) - English translator and editor, translation quality control. Perhaps, as you said, I could handle everything myself, but it would have taken much longer. In any case, thank you, and not only for the translation, friend! ↜₍^  -༝-^₎
