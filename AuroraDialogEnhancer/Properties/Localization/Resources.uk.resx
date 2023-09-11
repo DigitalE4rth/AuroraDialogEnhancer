@@ -189,8 +189,8 @@
   <data name="About_Update_Frequency_Weekly" xml:space="preserve">
     <value>Раз на тиждень</value>
   </data>
-  <data name="About_Update_Update_Sub" xml:space="preserve">
-    <value>Оновлення</value>
+  <data name="About_Update_Update_Verb" xml:space="preserve">
+    <value>Перевірити оновлення</value>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
     <value>Інтерфейс користувача</value>

@@ -277,11 +277,11 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update.
+        ///   Looks up a localized string similar to Check for updates.
         /// </summary>
-        public static string About_Update_Update_Sub {
+        public static string About_Update_Update_Verb {
             get {
-                return ResourceManager.GetString("About_Update_Update_Sub", resourceCulture);
+                return ResourceManager.GetString("About_Update_Update_Verb", resourceCulture);
             }
         }
         
@@ -1519,7 +1519,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cursor behaviour.
+        ///   Looks up a localized string similar to Cursor behavior.
         /// </summary>
         public static string KeyBinding_Utilities_CursorBehaviour {
             get {
@@ -1573,7 +1573,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Numeric action behaviour.
+        ///   Looks up a localized string similar to Numeric action behavior.
         /// </summary>
         public static string KeyBinding_Utilities_NumericActionBehaviour {
             get {
@@ -1582,7 +1582,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Highlighting.
+        ///   Looks up a localized string similar to Highlights.
         /// </summary>
         public static string KeyBinding_Utilities_NumericActionBehaviour_Highlight {
             get {
@@ -1591,7 +1591,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selection.
+        ///   Looks up a localized string similar to Selects.
         /// </summary>
         public static string KeyBinding_Utilities_NumericActionBehaviour_Select {
             get {

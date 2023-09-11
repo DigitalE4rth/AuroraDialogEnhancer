@@ -75,7 +75,7 @@
                                     <woControls:PathIcon Data="{StaticResource I.S.RotateLeft}" Style="{StaticResource IconMedium}" />
                                 </Grid>
 
-                                <TextBlock Style="{StaticResource FontStyleMedium}" Text="{x:Static localization:Resources.About_Update_Update_Sub}" />
+                                <TextBlock Style="{StaticResource FontStyleMedium}" Text="{x:Static localization:Resources.About_Update_Update_Verb}" />
                             </StackPanel>
                         </woControls:Button>
                     </StackPanel>
@@ -201,141 +201,165 @@
                     </woControls:CardElement.RightIcon>
                 </woControls:CardElement>-->
 
-                <woControls:CardButton Title="Meowmaniac"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Tag="https://github.com/Meowmaniac"
-                                       ToolTip="/^._.^\ฅ🔪">
+                <Grid Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                    <woControls:CardButton.Description>
-                        <TextBlock>
-                            <Run Text="{x:Static localization:Resources.About_Tester}" />
-                            <Run Text="•" />
-                            <Run Text="{x:Static localization:Resources.About_Translation_Dutch}" />
-                        </TextBlock>
-                    </woControls:CardButton.Description>
+                    <woControls:CardButton Title="Meowmaniac"
+                                           Grid.Column="0"
+                                           MinHeight="55"
+                                           Margin="0,0,5,0"
+                                           Click="Button_Link_OnClick"
+                                           Tag="https://github.com/Meowmaniac"
+                                           ToolTip="/^._.^\ฅ🔪">
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                        <woControls:CardButton.Description>
+                            <TextBlock>
+                                <Run Text="{x:Static localization:Resources.About_Tester}" />
+                                <!--<Run Text="•" />
+                                <Run Text="{x:Static localization:Resources.About_Translation_Dutch}" />-->
+                            </TextBlock>
+                        </woControls:CardButton.Description>
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
 
-                <woControls:CardButton Title="NDS"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Description="{x:Static localization:Resources.About_SpecialThanks}"
-                                       Tag="https://github.com/nestdimon"
-                                       ToolTip="(((*°▽°*)八(*°▽°*)))♪">
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                    <woControls:CardButton Title="NDS"
+                                           Grid.Column="1"
+                                           MinHeight="55"
+                                           Click="Button_Link_OnClick"
+                                           Description="{x:Static localization:Resources.About_SpecialThanks}"
+                                           Tag="https://github.com/nestdimon"
+                                           ToolTip="(((*°▽°*)八(*°▽°*)))♪">
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
 
-                <woControls:CardElement Title="Tortuga"
-                                        MinHeight="55"
-                                        Margin="0,0,0,5"
-                                        Description="{x:Static localization:Resources.About_Tester}"
-                                        ToolTip="(⁠ ⁠≧⁠Д⁠≦⁠)🏰🎲🐲(⁠≧⁠▽⁠≦⁠)">
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
+                </Grid>
 
-                    <woControls:CardElement.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.User}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardElement.LeftIcon>
+                <Grid Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                    <woControls:CardElement.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.Glasses}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardElement.RightIcon>
-                </woControls:CardElement>
+                    <woControls:CardElement Title="Tortuga"
+                                            Grid.Column="0"
+                                            MinHeight="55"
+                                            Margin="0,0,5,0"
+                                            Description="{x:Static localization:Resources.About_Tester}"
+                                            ToolTip="(⁠ ⁠≧⁠Д⁠≦⁠)🏰🎲🐲(⁠≧⁠▽⁠≦⁠)">
 
-                <woControls:CardButton Title="Vobraz"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Tag="https://github.com/Vobraz"
-                                       ToolTip="🤩💯🔥ヾ(⌐■_■)ノ♪">
+                        <woControls:CardElement.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.User}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardElement.LeftIcon>
 
-                    <woControls:CardButton.Description>
-                        <TextBlock>
-                            <Run Text="OpenCV " /><Run Text="{x:Static localization:Resources.About_Consultant}" />
-                        </TextBlock>
-                    </woControls:CardButton.Description>
+                        <woControls:CardElement.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.Glasses}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardElement.RightIcon>
+                    </woControls:CardElement>
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                    <woControls:CardButton Title="Vobraz"
+                                           Grid.Column="1"
+                                           MinHeight="55"
+                                           Click="Button_Link_OnClick"
+                                           Tag="https://github.com/Vobraz"
+                                           ToolTip="🤩💯🔥ヾ(⌐■_■)ノ♪">
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                        <woControls:CardButton.Description>
+                            <TextBlock>
+                                <Run Text="OpenCV " /><Run Text="{x:Static localization:Resources.About_Consultant}" />
+                            </TextBlock>
+                        </woControls:CardButton.Description>
 
-                <woControls:CardButton Title="WertQj"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Description="{x:Static localization:Resources.About_Translation_English}"
-                                       Tag="https://github.com/WertQj"
-                                       ToolTip="↜₍^  -༝-^₎">
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
+                </Grid>
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                <Grid Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                <woControls:CardButton Title="ZloeZlo"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Description="{x:Static localization:Resources.About_Translation_Ukranian}"
-                                       Tag="https://github.com/zloezzlo"
-                                       ToolTip=".⭐ ˖🦉‧₊˚ ☾.">
+                    <woControls:CardButton Title="WertQj"
+                                           Grid.Column="0"
+                                           MinHeight="55"
+                                           Margin="0,0,5,0"
+                                           Click="Button_Link_OnClick"
+                                           Description="{x:Static localization:Resources.About_Translation_English}"
+                                           Tag="https://github.com/WertQj"
+                                           ToolTip="↜₍^  -༝-^₎">
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
+
+                    <woControls:CardButton Title="ZloeZlo"
+                                           Grid.Column="1"
+                                           MinHeight="55"
+                                           Click="Button_Link_OnClick"
+                                           Description="{x:Static localization:Resources.About_Translation_Ukranian}"
+                                           Tag="https://github.com/zloezzlo"
+                                           ToolTip=".⭐ ˖🦉‧₊˚ ☾.">
+
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
+
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
+                </Grid>
 
                 <woControls:CardElement Title="{x:Static localization:Resources.About_AllOfYou}"
                                         MinHeight="55"
@@ -423,115 +447,131 @@
                     </Grid>
                 </Grid>
 
-                <woControls:CardButton Title="AutoUpdater.NET"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Tag="https://github.com/ravibpatel/AutoUpdater.NET">
+                <Grid Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                    <woControls:CardButton.Description>
-                        <TextBlock>
-                            <Run Text="1.8.4" />
-                            <Run Text="•" />
-                            <Run Text="ravibpatel " />
-                        </TextBlock>
-                    </woControls:CardButton.Description>
+                    <woControls:CardButton Title="AutoUpdater.NET"
+                                           Grid.Column="0"
+                                           MinHeight="55"
+                                           Margin="0,0,5,0"
+                                           Click="Button_Link_OnClick"
+                                           Tag="https://github.com/ravibpatel/AutoUpdater.NET">
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                        <woControls:CardButton.Description>
+                            <TextBlock>
+                                <Run Text="1.8.4" />
+                                <Run Text="•" />
+                                <Run Text="ravibpatel " />
+                            </TextBlock>
+                        </woControls:CardButton.Description>
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
 
-                <woControls:CardButton Title="NonInvasiveKeyboardHook"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Tag="https://github.com/kfirprods/NonInvasiveKeyboardHook">
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
 
-                    <woControls:CardButton.Description>
-                        <TextBlock>
-                            <Run Text="2.1.1" />
-                            <Run Text="•" />
-                            <Run Text="kfirprods" />
-                        </TextBlock>
-                    </woControls:CardButton.Description>
+                    <woControls:CardButton Title="NonInvasiveKeyboardHook"
+                                           Grid.Column="1"
+                                           MinHeight="55"
+                                           Click="Button_Link_OnClick"
+                                           Tag="https://github.com/kfirprods/NonInvasiveKeyboardHook">
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                        <woControls:CardButton.Description>
+                            <TextBlock>
+                                <Run Text="2.1.1" />
+                                <Run Text="•" />
+                                <Run Text="kfirprods" />
+                            </TextBlock>
+                        </woControls:CardButton.Description>
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
 
-                <woControls:CardButton Title="Why Orchid"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Tag="https://github.com/DigitalE4rth/WhyOrchid">
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
+                </Grid>
 
-                    <woControls:CardButton.Description>
-                        <TextBlock>
-                            <Run Text="1.0.0" />
-                            <Run Text="•" />
-                            <Run Text="DigitalE4rth" />
-                        </TextBlock>
-                    </woControls:CardButton.Description>
+                <Grid Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                    <woControls:CardButton Title="Why Orchid"
+                                           Grid.Column="0"
+                                           MinHeight="55"
+                                           Margin="0,0,5,0"
+                                           Click="Button_Link_OnClick"
+                                           Tag="https://github.com/DigitalE4rth/WhyOrchid">
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                        <woControls:CardButton.Description>
+                            <TextBlock>
+                                <Run Text="1.0.0" />
+                                <Run Text="•" />
+                                <Run Text="DigitalE4rth" />
+                            </TextBlock>
+                        </woControls:CardButton.Description>
 
-                <woControls:CardButton Title="Wpf color picker"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="Button_Link_OnClick"
-                                       Tag="https://github.com/dsafa/wpf-color-picker">
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
 
-                    <woControls:CardButton.Description>
-                        <TextBlock>
-                            <Run Text="1.3.0" />
-                            <Run Text="•" />
-                            <Run Text="dsafa" />
-                        </TextBlock>
-                    </woControls:CardButton.Description>
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
 
-                    <woControls:CardButton.LeftIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
-                        </Grid>
-                    </woControls:CardButton.LeftIcon>
+                    <woControls:CardButton Title="Wpf color picker"
+                                           Grid.Column="1"
+                                           MinHeight="55"
+                                           Click="Button_Link_OnClick"
+                                           Tag="https://github.com/dsafa/wpf-color-picker">
 
-                    <woControls:CardButton.RightIcon>
-                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
-                        </Grid>
-                    </woControls:CardButton.RightIcon>
-                </woControls:CardButton>
+                        <woControls:CardButton.Description>
+                            <TextBlock>
+                                <Run Text="1.3.0" />
+                                <Run Text="•" />
+                                <Run Text="dsafa" />
+                            </TextBlock>
+                        </woControls:CardButton.Description>
 
-                <!-- Font icons -->
+                        <woControls:CardButton.LeftIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.S.GitHub}" Style="{StaticResource IconLarge}" />
+                            </Grid>
+                        </woControls:CardButton.LeftIcon>
+
+                        <woControls:CardButton.RightIcon>
+                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                <woControls:PathIcon Data="{StaticResource I.R.ArrowUpRightFromSquare}" Style="{StaticResource IconMedium}" />
+                            </Grid>
+                        </woControls:CardButton.RightIcon>
+                    </woControls:CardButton>
+                </Grid>
+
+                <!--  Font icons  -->
                 <Grid Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -580,7 +620,7 @@
                     </woControls:CardButton>
                 </Grid>
 
-                <!-- Icon -->
+                <!--  Icon  -->
                 <woControls:CardButton Title="{x:Static localization:Resources.About_ApplicationIcon}"
                                        MinHeight="55"
                                        Click="Button_Link_OnClick"

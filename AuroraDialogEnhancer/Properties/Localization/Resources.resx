@@ -194,8 +194,8 @@
   <data name="About_Update_Frequency_Weekly" xml:space="preserve">
     <value>Once a week</value>
   </data>
-  <data name="About_Update_Update_Sub" xml:space="preserve">
-    <value>Update</value>
+  <data name="About_Update_Update_Verb" xml:space="preserve">
+    <value>Check for updates</value>
     <comment>Subject</comment>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
@@ -658,7 +658,7 @@
     <value>Utilities</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour" xml:space="preserve">
-    <value>Cursor behaviour</value>
+    <value>Cursor behavior</value>
   </data>
   <data name="KeyBinding_Utilities_CursorBehaviour_Hide" xml:space="preserve">
     <value>Hide</value>
@@ -680,14 +680,14 @@
     <comment>Infinitive verb</comment>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour" xml:space="preserve">
-    <value>Numeric action behaviour</value>
+    <value>Numeric action behavior</value>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Highlight" xml:space="preserve">
-    <value>Highlighting</value>
+    <value>Highlights</value>
     <comment>Numerical action will perform</comment>
   </data>
   <data name="KeyBinding_Utilities_NumericActionBehaviour_Select" xml:space="preserve">
-    <value>Selection</value>
+    <value>Selects</value>
     <comment>Numerical actions will perform</comment>
   </data>
   <data name="KeyBinding_Utilities_SingleDialogOptionBehaviour" xml:space="preserve">

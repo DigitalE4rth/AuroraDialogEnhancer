@@ -189,7 +189,7 @@
   <data name="About_Update_Frequency_Weekly" xml:space="preserve">
     <value>Einmal pro Woche</value>
   </data>
-  <data name="About_Update_Update_Sub" xml:space="preserve">
+  <data name="About_Update_Update_Verb" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
