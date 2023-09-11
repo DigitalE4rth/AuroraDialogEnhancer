@@ -72,25 +72,30 @@ public class AutoUpdaterService
 
     private void StartAsync(bool isReportErrors, bool isSilentCheck)
     {
-        var (isSuccess, isUpdated) = (false, false);
-
+        UpdateResult? updateResult = null;
         try
         {
             var updateInfo = GetUpdateInfo();
-            (isSuccess, isUpdated) = StartUpdate(updateInfo, isReportErrors, isSilentCheck);
+            updateResult = StartUpdate(updateInfo, isReportErrors, isSilentCheck);
         }
         catch (Exception e)
         {
             ShowError(e, isReportErrors);
         }
 
-        if (isSuccess)
+        if (updateResult is null)
+        {
+            _isRunning = false;
+            return;
+        }
+
+        if (updateResult.IsChecked && updateResult.IsSuccess)
         {
             Properties.Settings.Default.Update_LastUpdateCheckTime = DateTime.Now;
             Properties.Settings.Default.Save();
         }
 
-        if (isUpdated)
+        if (updateResult.IsUpdated)
         {
             Application.Current.Dispatcher.Invoke(Application.Current.Shutdown, DispatcherPriority.Send);
         }
@@ -98,14 +103,11 @@ public class AutoUpdaterService
         _isRunning = false;
     }
 
-    private (bool, bool) StartUpdate(UpdateInfo updateInfo, bool isReportErrors, bool isSilentCheck)
+    private UpdateResult StartUpdate(UpdateInfo updateInfo, bool isReportErrors, bool isSilentCheck)
     {
-        if (updateInfo.IsUpdateAvailable)
-        {
-            return Application.Current.Dispatcher.Invoke(() => ShowUpdateDialog(updateInfo, isSilentCheck));
-        }
+        var updateResult = Application.Current.Dispatcher.Invoke(() => ShowUpdateDialog(updateInfo, isSilentCheck));
 
-        if (isReportErrors)
+        if (isReportErrors && !updateResult.IsChecked && !updateResult.IsSuccess)
         {
             Application.Current.Dispatcher.Invoke(() =>
                 new InfoDialogBuilder()
@@ -116,7 +118,7 @@ public class AutoUpdaterService
             );
         }
 
-        return (false, false);
+        return updateResult;
     }
 
     private UpdateInfo GetUpdateInfo()
@@ -175,11 +177,11 @@ public class AutoUpdaterService
             );
     }
 
-    private (bool, bool) ShowUpdateDialog(UpdateInfo updateInfo, bool isSilentCheck)
+    private UpdateResult ShowUpdateDialog(UpdateInfo updateInfo, bool isSilentCheck)
     {
         if (isSilentCheck && !updateInfo.IsUpdateAvailable)
         {
-            return (true, false);
+            return new UpdateResult(true, false, true);
         }
 
         var updateDialog = AppServices.ServiceProvider.GetRequiredService<UpdateDialog>();
@@ -194,10 +196,10 @@ public class AutoUpdaterService
         }
         updateDialog.Initialize(updateInfo);
 
-        if (updateDialog.ShowDialog() != true) return (true, false);
-        if (ShowDownloadUpdateDialog(updateInfo) != true) return (true, false);
+        if (updateDialog.ShowDialog() != true) return new UpdateResult(true, false, true);
+        if (ShowDownloadUpdateDialog(updateInfo) != true) return new UpdateResult(true, false, true);
 
-        return (true, true);
+        return new UpdateResult(true, true, true);
     }
 
     private bool ShowDownloadUpdateDialog(UpdateInfo updateInfo)

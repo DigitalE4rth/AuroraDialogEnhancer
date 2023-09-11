@@ -132,6 +132,7 @@
     </ApplicationDefinition>
     <Compile Include="AppConfig\Updater\ArgumentProcessingService.cs" />
     <Compile Include="AppConfig\Updater\AutoUpdaterService.cs" />
+    <Compile Include="AppConfig\Updater\UpdateResult.cs" />
     <Compile Include="AppConfig\WebClient\AdeWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
