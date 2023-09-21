@@ -39,7 +39,7 @@ public class NotifyIconService
 
     private void NotifyIcon_DoubleClick(object sender, System.EventArgs e)
     {
-        _uiService.ShowMainWindow();
+        _uiService.ShowMainWindow(true);
     }
 
     public void Dispose()

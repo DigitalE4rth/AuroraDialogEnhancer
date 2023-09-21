@@ -107,7 +107,7 @@ public class AppConfig : IDisposable
         if (isProfileShortcutStartup)
         {
             if (_uiService.IsMainWindowShown() || (EWindowState) Properties.Settings.Default.UI_MainWindow_State_Shortcut == EWindowState.SystemTray) return;
-            Application.Current.Dispatcher.Invoke(() => _uiService.ShowMainWindow(true));
+            Application.Current.Dispatcher.Invoke(() => _uiService.ShowMainWindow(false, true));
             return;
         }
 
