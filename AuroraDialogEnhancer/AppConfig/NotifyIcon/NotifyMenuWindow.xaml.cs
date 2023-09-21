@@ -158,7 +158,7 @@ public partial class NotifyMenuWindow
         }
     }
 
-    private void Button_OpenMainWindow_OnClick(object sender, RoutedEventArgs e) => _uiService.ShowMainWindow();
+    private void Button_OpenMainWindow_OnClick(object sender, RoutedEventArgs e) => _uiService.ShowMainWindow(true);
 
     private void Button_Screenshots_OnClick(object sender, RoutedEventArgs e)
     {

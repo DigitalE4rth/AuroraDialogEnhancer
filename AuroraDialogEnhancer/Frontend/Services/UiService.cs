@@ -69,14 +69,14 @@ public class UiService
 
     public bool IsMainWindowShown() => _mainWindow is not null;
 
-    public void ShowMainWindow(bool isProfileShortcutLaunch = false)
+    public void ShowMainWindow(bool isNotifyIconLaunch = false, bool isProfileShortcutLaunch = false)
     {
         lock (_mainWindowLock)
         {
             if (_mainWindow is null)
             {
                 _mainWindow = AppServices.ServiceProvider.GetRequiredService<MainWindow>();
-                _mainWindow!.Initialize(isProfileShortcutLaunch);
+                _mainWindow!.Initialize(isNotifyIconLaunch, isProfileShortcutLaunch);
                 return;
             }
 
