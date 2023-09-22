@@ -18,10 +18,10 @@ public partial class MainWindow
     }
 
     #region Initialization
-    public void Initialize(bool isNotifyIconLaunch = false, bool isProfileShortcutLaunch = false)
+    public void Initialize(bool isForceShow = false, bool isProfileShortcutLaunch = false)
     {
         InitializeSettings();
-        InitializeState(isNotifyIconLaunch, isProfileShortcutLaunch);
+        InitializeState(isForceShow, isProfileShortcutLaunch);
         InitializeEvents();
         InitializeFrames();
     }
@@ -61,13 +61,15 @@ public partial class MainWindow
         Height = Properties.Settings.Default.UI_MainWindow_Height;
     }
 
-    private void InitializeState(bool isNotifyIconLaunch = false, bool isShortcutLaunch = false)
+    private void InitializeState(bool isForceShow = false, bool isShortcutLaunch = false)
     {
-        if (isNotifyIconLaunch)
+        if (isForceShow)
         {
             WindowState = (WindowState) Properties.Settings.Default.UI_MainWindow_State;
+            Topmost = true;
             Show();
             Activate();
+            Topmost = false;
             return;
         }
 
@@ -85,8 +87,10 @@ public partial class MainWindow
         }
 
         WindowState = (WindowState) Properties.Settings.Default.UI_MainWindow_State;
+        Topmost = true;
         Show();
         Activate();
+        Topmost = false;
     }
     #endregion
 

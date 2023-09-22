@@ -99,7 +99,7 @@ public class AppConfig : IDisposable
             return;
         }
 
-        Application.Current.Dispatcher.Invoke(() => _uiService.ShowMainWindow());
+        Application.Current.Dispatcher.Invoke(() => _uiService.ShowMainWindow(true));
     }
 
     private void StartMainWindowIfNecessary(bool isProfileShortcutStartup = false)
