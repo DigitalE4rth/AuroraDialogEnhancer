@@ -13,7 +13,6 @@ using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
-using AuroraDialogEnhancerExtensions.KeyBindings;
 using Microsoft.Extensions.DependencyInjection;
 using Cursor = System.Windows.Forms.Cursor;
 using Point  = System.Drawing.Point;

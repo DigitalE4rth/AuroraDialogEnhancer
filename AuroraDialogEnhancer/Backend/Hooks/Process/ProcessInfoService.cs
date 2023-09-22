@@ -70,7 +70,6 @@ public class ProcessInfoService
             ExtensionConfig = extensionConfig,
             GameProcess = targetProcess
         };
-
         ApplyMainWindowInfo(targetProcess.MainWindowHandle);
 
         // Manual focus call workaround to handle initial focused window on focus hook.

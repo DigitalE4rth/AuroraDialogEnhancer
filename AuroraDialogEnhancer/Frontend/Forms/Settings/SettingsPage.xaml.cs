@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using AuroraDialogEnhancer.AppConfig.Localization;
@@ -11,7 +10,6 @@ using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Frontend.Forms.Utils;
 using AuroraDialogEnhancer.Frontend.Generics;
 using AuroraDialogEnhancer.Frontend.Services;
-using Microsoft.Win32;
 using WhyOrchid.Controls;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Settings;
@@ -95,52 +93,28 @@ public partial class SettingsPage
 
     private void Button_SetStartup_OnClick(object sender, RoutedEventArgs e)
     {
+        var shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), $"{Global.AssemblyInfo.Name}.vbs");
         var isChecked = (bool) ((CardToggleButton) sender).IsChecked!;
 
         if (isChecked)
         {
-            try
+            using (var streamWriter = new StreamWriter(shortcutPath))
             {
-                var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-                key!.SetValue(Assembly.GetExecutingAssembly().GetName().Name, Global.Locations.AssemblyExe);
-                Properties.Settings.Default.App_IsStartup = true;
-                Properties.Settings.Default.Save();
+                streamWriter.Write(
+                    @"Set WshShell = CreateObject(""WScript.Shell"" )" + Environment.NewLine +
+                    @$"WshShell.Run """"""{Global.Locations.AssemblyExe}"""""", 0" + Environment.NewLine +
+                    "Set WshShell = Nothing");
             }
-            catch (Exception exception)
-            {
-                ((CardToggleButton) sender).IsChecked = false;
-                Properties.Settings.Default.App_IsStartup = false;
-                Properties.Settings.Default.Save();
 
-                new InfoDialogBuilder()
-                    .SetWindowTitle(Properties.Localization.Resources.Settings_Startup_Exception_Save)
-                    .SetMessage($"{exception.Message}{Environment.NewLine}{exception.InnerException?.Message}")
-                    .SetTypeError()
-                    .ShowDialog();
-            }
+            Properties.Settings.Default.App_IsStartup = isChecked;
+            Properties.Settings.Default.Save();
 
             return;
         }
 
-        try
-        {
-            var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-            key!.DeleteValue(Assembly.GetExecutingAssembly().GetName().Name);
-            Properties.Settings.Default.App_IsStartup = false;
-            Properties.Settings.Default.Save();
-        }
-        catch (Exception exception)
-        {
-            ((CardToggleButton) sender).IsChecked = false;
-            Properties.Settings.Default.App_IsStartup = false;
-            Properties.Settings.Default.Save();
-
-            new InfoDialogBuilder()
-                .SetWindowTitle(Properties.Localization.Resources.Settings_Startup_Exception_Delete)
-                .SetMessage($"{exception.Message}{Environment.NewLine}{exception.InnerException?.Message}")
-                .SetTypeError()
-                .ShowDialog();
-        }
+        File.Delete(shortcutPath);
+        Properties.Settings.Default.App_IsStartup = isChecked;
+        Properties.Settings.Default.Save();
     }
 
     private void Button_ScreenshotManager_OnClick(object sender, RoutedEventArgs e)
