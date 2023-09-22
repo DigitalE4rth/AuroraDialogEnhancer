@@ -799,10 +799,10 @@
     <value>Run on Windows start-up</value>
   </data>
   <data name="Settings_Startup_Exception_Delete" xml:space="preserve">
-    <value>Failed to delete shortcut</value>
+    <value>Failed to delete startup setting</value>
   </data>
   <data name="Settings_Startup_Exception_Save" xml:space="preserve">
-    <value>Failed to create shortcut</value>
+    <value>Failed to create startup setting</value>
   </data>
   <data name="Settings_UnloadUi_Description" xml:space="preserve">
     <value>Unload UI when minimized to save memory</value>

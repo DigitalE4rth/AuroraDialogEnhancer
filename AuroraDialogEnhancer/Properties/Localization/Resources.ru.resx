@@ -727,10 +727,10 @@
     <value>Запускать вместе с Windows</value>
   </data>
   <data name="Settings_Startup_Exception_Delete" xml:space="preserve">
-    <value>Ошибка при удалении ярлыка</value>
+    <value>Ошибка при удалении настройки автозапуска</value>
   </data>
   <data name="Settings_Startup_Exception_Save" xml:space="preserve">
-    <value>Ошибка при создании ярлыка</value>
+    <value>Ошибка при создании настройки автозапуска</value>
   </data>
   <data name="Settings_UnloadUi_Description" xml:space="preserve">
     <value>Выгружать интерфейс при минимизации для сохранения памяти</value>
