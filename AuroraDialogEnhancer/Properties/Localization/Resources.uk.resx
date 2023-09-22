@@ -727,10 +727,10 @@
     <value>Запускати разом із Windows</value>
   </data>
   <data name="Settings_Startup_Exception_Delete" xml:space="preserve">
-    <value>Не вдалося видалити ярлик</value>
+    <value>Помилка під час видалення налаштування автозапуску</value>
   </data>
   <data name="Settings_Startup_Exception_Save" xml:space="preserve">
-    <value>Не вдалося створити ярлик</value>
+    <value>Помилка під час створення налаштування автозапуску</value>
   </data>
   <data name="Settings_UnloadUi_Description" xml:space="preserve">
     <value>Вивантажувати інтерфейс при мінімізації для збереження пам'яті</value>

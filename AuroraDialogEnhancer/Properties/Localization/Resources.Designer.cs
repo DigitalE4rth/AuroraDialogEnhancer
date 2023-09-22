@@ -1888,7 +1888,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to delete shortcut.
+        ///   Looks up a localized string similar to Failed to delete startup setting.
         /// </summary>
         public static string Settings_Startup_Exception_Delete {
             get {
@@ -1897,7 +1897,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to create shortcut.
+        ///   Looks up a localized string similar to Failed to create startup setting.
         /// </summary>
         public static string Settings_Startup_Exception_Save {
             get {
