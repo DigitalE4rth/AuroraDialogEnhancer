@@ -12,7 +12,7 @@ public class CultureService
     public void Initialize()
     {
         if (Properties.Settings.Default.App_CurrentCulture.Equals("auto")
-            && !CultureProvider.IsCultureSupported(System.Globalization.CultureInfo.InstalledUICulture.IetfLanguageTag))
+            && !CultureProvider.IsCultureSupported(System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag))
         {
             SetLanguage("en-US");
             return;
@@ -28,7 +28,7 @@ public class CultureService
     private void SetLanguage(string ietfLanguageTag)
     {
         var cultureInfo = ietfLanguageTag.Equals("auto")
-            ? System.Globalization.CultureInfo.InstalledUICulture
+            ? System.Globalization.CultureInfo.CurrentUICulture
             : new System.Globalization.CultureInfo(ietfLanguageTag);
 
         System.Globalization.CultureInfo.CurrentCulture   = cultureInfo;
