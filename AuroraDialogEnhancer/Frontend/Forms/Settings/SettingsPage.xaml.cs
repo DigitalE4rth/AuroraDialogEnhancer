@@ -103,6 +103,8 @@ public partial class SettingsPage
             {
                 var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
                 key!.SetValue(Assembly.GetExecutingAssembly().GetName().Name, Global.Locations.AssemblyExe);
+                Properties.Settings.Default.App_IsStartup = true;
+                Properties.Settings.Default.Save();
             }
             catch (Exception exception)
             {
@@ -124,6 +126,8 @@ public partial class SettingsPage
         {
             var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
             key!.DeleteValue(Assembly.GetExecutingAssembly().GetName().Name);
+            Properties.Settings.Default.App_IsStartup = false;
+            Properties.Settings.Default.Save();
         }
         catch (Exception exception)
         {
