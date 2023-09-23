@@ -197,7 +197,7 @@ In addition, use of scripts like [AutoHotKey](https://www.autohotkey.com) is all
 
 ### 🔑 Why are administrator privileges required?
 
-The application uses system calls to the **kernel32.dll** and **user32.dll** libraries to search for game process and window, capture keyboard and mouse button presses, determine the focus, size and state of the game window, determine the state of the cursor, and work with the registry (*search for paths of installed games*). This functionality cannot be implemented without administrator privileges in the desktop application. If the application was in a form of an embedded library for the game (*see above*), this would not be the case.
+This application intercepts keyboard and mouse events to respond to their click events, but due to Microsoft [restrictions](https://learn.microsoft.com/en-us/previous-versions/dotnet/articles/bb625963(v=msdn.10)?redirectedfrom=MSDN#user-interface-privilege-isolation-uipi-and-integrity), applications with lower privileges cannot intercept events of applications with higher privileges. And since Genshin Impact only works with administrator privileges, application privileges must match. Nothing you can do about this.
 
 ### 🗺️ Development roadmap
 
