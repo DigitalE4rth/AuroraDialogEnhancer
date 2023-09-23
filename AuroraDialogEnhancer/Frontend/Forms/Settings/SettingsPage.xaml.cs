@@ -93,26 +93,52 @@ public partial class SettingsPage
 
     private void Button_SetStartup_OnClick(object sender, RoutedEventArgs e)
     {
-        var shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), $"{Global.AssemblyInfo.Name}.vbs");
         var isChecked = (bool) ((CardToggleButton) sender).IsChecked!;
+
+        var process = new Process();
+        var processStartInfo = new ProcessStartInfo
+        {
+            FileName = "powershell.exe",
+            RedirectStandardInput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            Verb = "runas"
+        };
+
+        process.StartInfo = processStartInfo;
+        process.Start();
+
+        const string taskName = "\"Aurora Dialog Enhancer Startup\"";
 
         if (isChecked)
         {
-            using (var streamWriter = new StreamWriter(shortcutPath))
+            using (var streamWriter = process.StandardInput)
             {
-                streamWriter.Write(
-                    @"Set WshShell = CreateObject(""WScript.Shell"" )" + Environment.NewLine +
-                    @$"WshShell.Run """"""{Global.Locations.AssemblyExe}"""""", 0" + Environment.NewLine +
-                    "Set WshShell = Nothing");
+                streamWriter.WriteLine($"$taskname = {taskName}");
+                streamWriter.WriteLine("$taskpath = \"Microsoft\\Windows\\Startup\"");
+                streamWriter.WriteLine($"$action = New-ScheduledTaskAction -Execute \"{Global.Locations.AssemblyExe}\"");
+                streamWriter.WriteLine("$trigger = New-ScheduledTaskTrigger -AtLogon -User $env:USERNAME");
+                streamWriter.WriteLine("$principal = New-ScheduledTaskPrincipal -RunLevel Highest -UserID $env:USERNAME");
+                streamWriter.WriteLine("$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit \"00:00:00\"");
+                streamWriter.WriteLine("$task = New-ScheduledTask -Action $action -Principal $principal -Trigger $trigger -Settings $settings");
+                streamWriter.WriteLine("Register-ScheduledTask -TaskName $taskname -TaskPath $taskpath -InputObject $task -ErrorAction SilentlyContinue");
             }
 
+            process.WaitForExit();
+            process.Dispose();
             Properties.Settings.Default.App_IsStartup = isChecked;
             Properties.Settings.Default.Save();
 
             return;
         }
 
-        File.Delete(shortcutPath);
+        using (var streamWriter = process.StandardInput)
+        {
+            streamWriter.WriteLine($"Unregister-ScheduledTask -TaskName {taskName} -Confirm:$false -ErrorAction SilentlyContinue");
+        }
+
+        process.WaitForExit();
+        process.Dispose();
         Properties.Settings.Default.App_IsStartup = isChecked;
         Properties.Settings.Default.Save();
     }
