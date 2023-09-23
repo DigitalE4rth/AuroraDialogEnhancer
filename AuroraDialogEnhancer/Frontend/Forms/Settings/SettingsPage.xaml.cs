@@ -114,6 +114,7 @@ public partial class SettingsPage
         {
             using (var streamWriter = process.StandardInput)
             {
+                streamWriter.WriteLine($"Unregister-ScheduledTask -TaskName {taskName} -Confirm:$false -ErrorAction SilentlyContinue");
                 streamWriter.WriteLine($"$taskname = {taskName}");
                 streamWriter.WriteLine("$taskpath = \"Microsoft\\Windows\\Startup\"");
                 streamWriter.WriteLine($"$action = New-ScheduledTaskAction -Execute \"{Global.Locations.AssemblyExe}\"");
