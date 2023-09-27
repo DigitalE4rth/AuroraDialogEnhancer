@@ -26,7 +26,7 @@ public class WindowHookService
     /// <summary>
     /// Delegate of focus change hook.
     /// </summary>
-    private readonly NativeMethods.WinEventDelegate _focusDelegate;
+    private NativeMethods.WinEventDelegate _focusDelegate;
 
     /// <summary>
     /// Target window pointer.
@@ -68,7 +68,7 @@ public class WindowHookService
         _processInfoService     = processInfoService;
         _hookedGameDataProvider = hookedGameDataProvider;
 
-        _focusDelegate       = FocusChangedHook;
+        _focusDelegate       = InitialFocusHook;
         _minimizeEndDelegate = OnMinimizeEndHook;
         _locationDelegate    = LocationChangedHook;
     }
@@ -87,11 +87,15 @@ public class WindowHookService
 
     public void InitializeFocusHook()
     {
+        // Tracking the event focusing the window by mouse click helps somewhat with this
+        // bug if Unity game is in windowed mode
+        // https://github.com/DigitalE4rth/AuroraDialogEnhancer/issues/9
+
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
             _focusChangedHookPointer = NativeMethods.SetWinEventHook(
                 NativeMethods.EVENT_SYSTEM_FOREGROUND, 
-                NativeMethods.EVENT_SYSTEM_FOREGROUND, 
+                NativeMethods.EVENT_SYSTEM_CAPTURESTART, 
                 IntPtr.Zero, 
                 _focusDelegate, 
                 0, 
@@ -102,6 +106,52 @@ public class WindowHookService
         IsTargetWindowFocused = IsTargetWindowForeground(NativeMethods.GetForegroundWindow());
 
         OnFocusChanged?.Invoke(this, IsTargetWindowFocused);
+    }
+
+    private void InitialFocusHook(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
+    {
+        if (IsTargetWindowFocused && IsTargetWindowForeground(hwnd) == false)
+        {
+            IsTargetWindowFocused = false;
+            OnFocusChanged?.Invoke(this, false);
+            return;
+        }
+
+        if (IsTargetWindowFocused == false && IsTargetWindowForeground(hwnd) == false) return;
+
+        UnSetFocusHook();
+        _focusDelegate = FocusChangedHook;
+        System.Windows.Application.Current.Dispatcher.Invoke(() =>
+        {
+            _focusChangedHookPointer = NativeMethods.SetWinEventHook(
+                NativeMethods.EVENT_SYSTEM_FOREGROUND,
+                NativeMethods.EVENT_SYSTEM_FOREGROUND,
+                IntPtr.Zero, 
+                _focusDelegate,
+                0,
+                0,
+                NativeMethods.WINEVENT_OUTOFCONTEXT | NativeMethods.WINEVENT_SKIPOWNPROCESS | NativeMethods.WINEVENT_SKIPOWNTHREAD);
+        }, DispatcherPriority.Normal);
+
+        IsTargetWindowFocused = true;
+        OnFocusChanged?.Invoke(this, true);
+    }
+
+    private void FocusChangedHook(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
+    {
+        var isForeground = IsTargetWindowForeground(hwnd);
+
+        switch (IsTargetWindowFocused)
+        {
+            case true when !isForeground:
+                IsTargetWindowFocused = false;
+                OnFocusChanged?.Invoke(null, false);
+                return;
+            case false when isForeground:
+                IsTargetWindowFocused = true;
+                OnFocusChanged?.Invoke(null, true);
+                break;
+        }
     }
 
     public void SendFocusedEvent()
@@ -121,23 +171,9 @@ public class WindowHookService
             NativeMethods.UnhookWinEvent(_focusChangedHookPointer);
             _focusChangedHookPointer = IntPtr.Zero;
         }, DispatcherPriority.Normal);
-    }
 
-    private void FocusChangedHook(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
-    {
-        var isForeground = IsTargetWindowForeground(hwnd);
-
-        switch (IsTargetWindowFocused)
-        {
-            case true when !isForeground:
-                IsTargetWindowFocused = false;
-                OnFocusChanged?.Invoke(null, false);
-                return;
-            case false when isForeground:
-                IsTargetWindowFocused = true;
-                OnFocusChanged?.Invoke(null, true);
-                break;
-        }
+        // Ensure
+        IsTargetWindowFocused = false;
     }
     #endregion
 
