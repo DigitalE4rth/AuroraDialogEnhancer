@@ -26,7 +26,7 @@ public class WindowHookService
     /// <summary>
     /// Delegate of focus change hook.
     /// </summary>
-    private NativeMethods.WinEventDelegate? _focusDelegate;
+    private readonly NativeMethods.WinEventDelegate _focusDelegate;
 
     /// <summary>
     /// Target window pointer.
@@ -68,51 +68,38 @@ public class WindowHookService
         _processInfoService     = processInfoService;
         _hookedGameDataProvider = hookedGameDataProvider;
 
+        _focusDelegate       = FocusChangedHook;
         _minimizeEndDelegate = OnMinimizeEndHook;
         _locationDelegate    = LocationChangedHook;
     }
 
     #region Focus
-    private bool IsTargetWindowForeground()
-    {
-        var activatedHandle = NativeMethods.GetForegroundWindow();
-        if (activatedHandle == IntPtr.Zero)
-        {
-            return false;
-        }
+    private bool IsTargetWindowForeground() => IsTargetWindowForeground(NativeMethods.GetForegroundWindow());
 
+    private bool IsTargetWindowForeground(IntPtr focusedWindowHandle)
+    {
         if (_hookedGameDataProvider.Data?.GameProcess is null) return false;
 
-        var procId = _hookedGameDataProvider.Data.GameProcess.Id;
-        NativeMethods.GetWindowThreadProcessId(activatedHandle, out var activeProcId);
+        NativeMethods.GetWindowThreadProcessId(focusedWindowHandle, out var activeProcId);
 
-        return activeProcId == procId;
+        return activeProcId == _hookedGameDataProvider.Data.GameProcess.Id;
     }
 
-    /// <summary>
-    /// Sets up target window focus hook.
-    /// </summary>
-    /// <remarks>
-    /// If, after launching the exe file of the game, focus on any other window, then after the game window is displayed,
-    /// with subsequent focus on the game window using the taskbar, the hook says that the focus gets explorer and not the game.
-    /// And only the subsequent refocusing, by pressing the alt-tab buttons twice, gives the hook information that the game has received focus.
-    /// <br/><br/>
-    /// I was unable to fully understand the reasons for this behavior,
-    /// so I increased the initial range of hook messages in order to receive messages not only about focusing,
-    /// but also about whether the window captured the mouse cursor.
-    /// <br/><br/>
-    /// And only after determining that the game has really received focus, you can reduce the range of messages,
-    /// because the mouse cursor capture event reports every click on the mouse buttons.
-    /// </remarks>
     public void InitializeFocusHook()
     {
-        _focusDelegate = InitialFocusHook;
-        IsTargetWindowFocused = IsTargetWindowForeground();
-
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
-            _focusChangedHookPointer = NativeMethods.SetWinEventHook(NativeMethods.EVENT_SYSTEM_FOREGROUND, NativeMethods.EVENT_SYSTEM_CAPTURESTART, IntPtr.Zero, _focusDelegate, 0, 0, NativeMethods.WINEVENT_OUTOFCONTEXT);
+            _focusChangedHookPointer = NativeMethods.SetWinEventHook(
+                NativeMethods.EVENT_SYSTEM_FOREGROUND, 
+                NativeMethods.EVENT_SYSTEM_FOREGROUND, 
+                IntPtr.Zero, 
+                _focusDelegate, 
+                0, 
+                0, 
+                NativeMethods.WINEVENT_OUTOFCONTEXT | NativeMethods.WINEVENT_SKIPOWNPROCESS | NativeMethods.WINEVENT_SKIPOWNTHREAD);
         }, DispatcherPriority.Normal);
+
+        IsTargetWindowFocused = IsTargetWindowForeground(NativeMethods.GetForegroundWindow());
 
         OnFocusChanged?.Invoke(this, IsTargetWindowFocused);
     }
@@ -123,9 +110,6 @@ public class WindowHookService
         OnFocusChanged?.Invoke(this, IsTargetWindowFocused);
     }
 
-    /// <summary>
-    /// Un-sets target window focus hook.
-    /// </summary>
     private void UnSetFocusHook()
     {
         IsTargetWindowFocused = false;
@@ -139,49 +123,19 @@ public class WindowHookService
         }, DispatcherPriority.Normal);
     }
 
-    /// <summary>
-    /// Focus changed delegate.
-    /// </summary>
-    /// <remarks>See <see cref="NativeMethods.SetWinEventHook"/></remarks>
-    private void InitialFocusHook(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
-    {
-        if (IsTargetWindowFocused && IsTargetWindowForeground() == false)
-        {
-            IsTargetWindowFocused = false;
-            OnFocusChanged?.Invoke(this, false);
-            return;
-        }
-
-        if (IsTargetWindowFocused == false && IsTargetWindowForeground() == false) return;
-
-        UnSetFocusHook();
-        IsTargetWindowFocused = true;
-        _focusDelegate = FocusChangedHook;
-        System.Windows.Application.Current.Dispatcher.Invoke(() =>
-        {
-            _focusChangedHookPointer = NativeMethods.SetWinEventHook(NativeMethods.EVENT_SYSTEM_FOREGROUND, NativeMethods.EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, _focusDelegate, 0, 0, NativeMethods.WINEVENT_OUTOFCONTEXT);
-        }, DispatcherPriority.Normal);
-
-        OnFocusChanged?.Invoke(this, true);
-    }
-
-    /// <summary>
-    /// Focus changed delegate.
-    /// </summary>
-    /// <remarks>See <see cref="NativeMethods.SetWinEventHook"/></remarks>
     private void FocusChangedHook(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
     {
-        var isForeground = IsTargetWindowForeground();
+        var isForeground = IsTargetWindowForeground(hwnd);
 
         switch (IsTargetWindowFocused)
         {
             case true when !isForeground:
-                OnFocusChanged?.Invoke(null, false);
                 IsTargetWindowFocused = false;
+                OnFocusChanged?.Invoke(null, false);
                 return;
             case false when isForeground:
-                OnFocusChanged?.Invoke(null, true);
                 IsTargetWindowFocused = true;
+                OnFocusChanged?.Invoke(null, true);
                 break;
         }
     }
@@ -194,22 +148,21 @@ public class WindowHookService
         SetLocationHook((uint)_hookedGameDataProvider.Data!.GameProcess!.Id);
     }
 
-    /// <summary>
-    /// Sets up target window location hook.
-    /// </summary>
     private void SetLocationHook(uint processId)
     {
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
-            _locationChangedHookPointer = NativeMethods.SetWinEventHook(NativeMethods.EVENT_SYSTEM_MOVESIZEEND,
-                NativeMethods.EVENT_SYSTEM_MOVESIZEEND, IntPtr.Zero, _locationDelegate, processId, 0,
-                NativeMethods.WINEVENT_OUTOFCONTEXT);
+            _locationChangedHookPointer = NativeMethods.SetWinEventHook(
+                NativeMethods.EVENT_SYSTEM_MOVESIZEEND,
+                NativeMethods.EVENT_SYSTEM_MOVESIZEEND, 
+                IntPtr.Zero, 
+                _locationDelegate, 
+                processId, 
+                0,
+                NativeMethods.WINEVENT_OUTOFCONTEXT | NativeMethods.WINEVENT_SKIPOWNPROCESS | NativeMethods.WINEVENT_SKIPOWNTHREAD);
         }, DispatcherPriority.Normal);
     }
 
-    /// <summary>
-    /// Un-sets target window location hook.
-    /// </summary>
     private void UnSetLocationHook()
     {
         if (_locationChangedHookPointer == IntPtr.Zero) return;
@@ -221,10 +174,6 @@ public class WindowHookService
         }, DispatcherPriority.Normal);
     }
 
-    /// <summary>
-    /// Location changed delegate.
-    /// </summary>
-    /// <remarks>See <see cref="NativeMethods.SetWinEventHook"/></remarks>
     private void LocationChangedHook(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
     {
         if (_targetWindowPointer == IntPtr.Zero) return;
@@ -235,16 +184,18 @@ public class WindowHookService
 
 
     #region Minimization
-    /// <summary>
-    /// Sets up target window minimization end hook.
-    /// </summary>
     private void SetMinimizeEndHook(uint processId)
     {
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
-            _minimizeEndHookPointer = NativeMethods.SetWinEventHook(NativeMethods.EVENT_SYSTEM_MINIMIZEEND,
-                NativeMethods.EVENT_SYSTEM_MINIMIZEEND, IntPtr.Zero, _minimizeEndDelegate, processId, 0,
-                NativeMethods.WINEVENT_OUTOFCONTEXT);
+            _minimizeEndHookPointer = NativeMethods.SetWinEventHook(
+                NativeMethods.EVENT_SYSTEM_MINIMIZEEND,
+                NativeMethods.EVENT_SYSTEM_MINIMIZEEND, 
+                IntPtr.Zero, 
+                _minimizeEndDelegate, 
+                processId, 
+                0,
+                NativeMethods.WINEVENT_OUTOFCONTEXT | NativeMethods.WINEVENT_SKIPOWNPROCESS | NativeMethods.WINEVENT_SKIPOWNTHREAD);
         }, DispatcherPriority.Normal);
     }
 
@@ -259,9 +210,6 @@ public class WindowHookService
         }, DispatcherPriority.Normal);
     }
 
-    /// <summary>
-    /// Un-sets target window minimization end hook.
-    /// </summary>
     private void OnMinimizeEndHook(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime) => OnMinimizeEnd?.Invoke(this, null);
 
     public async Task<bool> AwaitMinimizationEndAsync(CancellationToken cancellationToken)
@@ -293,16 +241,8 @@ public class WindowHookService
         return true;
     }
 
-    /// <summary>
-    /// Captures minimization end event.
-    /// </summary>
-    /// <param name="sender">Event sender.</param>
-    /// <param name="e">Event args.</param>
     private void MinimizeEnd(object sender, EventArgs e) => ReleaseMinimizationResources();
 
-    /// <summary>
-    /// Releases minimization resources and <see cref="_minimizationEndSemaphore"/>.
-    /// </summary>
     private void ReleaseMinimizationResources()
     {
         OnMinimizeEnd -= MinimizeEnd;
@@ -320,9 +260,6 @@ public class WindowHookService
         UnSetMinimizeEndHook();
     }
 
-    /// <summary>
-    /// Cleans up resources.
-    /// </summary>
     public void Dispose()
     {
         _minimizationEndSemaphore?.Dispose();
