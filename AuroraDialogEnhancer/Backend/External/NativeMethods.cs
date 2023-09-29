@@ -29,14 +29,14 @@ public class NativeMethods
     public const uint EVENT_SYSTEM_FOREGROUND = 0x0003;
 
     /// <summary>
-    /// A window has received mouse capture. This event is sent by the system, never by servers.
-    /// </summary>
-    public const uint EVENT_SYSTEM_CAPTURESTART = 0x0008;
-
-    /// <summary>
     /// The movement or resizing of a window has finished. This event is sent by the system, never by servers.
     /// </summary>
     public const uint EVENT_SYSTEM_MOVESIZEEND = 0x000B;
+
+    /// <summary>
+    /// A window object is about to be minimized. This event is sent by the system, never by servers.
+    /// </summary>
+    public const uint EVENT_SYSTEM_MINIMIZESTART = 0x0016;
 
     /// <summary>
     /// A window object is about to be restored. This event is sent by the system, never by servers.

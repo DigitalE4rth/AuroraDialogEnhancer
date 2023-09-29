@@ -52,9 +52,9 @@ public abstract class KeyboardHookManagerServiceBase
     {
         _modifierKeysProvider = modifierKeysProvider;
         _registeredKeyBinds   = new Dictionary<KeyBindStruct, Action>();
-        DownKeys         = new HashSet<int>();
-        DownModifierKeys = new SortedSet<int>();
-        _modifiersLock   = new object();
+        DownKeys              = new HashSet<int>();
+        DownModifierKeys      = new SortedSet<int>();
+        _modifiersLock        = new object();
     }
 
     /// <summary>
@@ -99,7 +99,7 @@ public abstract class KeyboardHookManagerServiceBase
 
     public void RegisterHotKeys(IEnumerable<int> virtualKeyCodes, Action action)
     {
-        var regularKeys = new List<int>();
+        var regularKeys  = new List<int>();
         var modifierKeys = new List<int>();
 
         foreach (var virtualKeyCode in virtualKeyCodes)

@@ -56,7 +56,7 @@ public class WindowInfo
     /// </summary>
     public int TitleBarSize { get; private set; }
 
-    public bool IsMinimized() => NativeMethods.IsIconic(Handle);
+    public bool GetMinimizationState() => NativeMethods.IsIconic(Handle);
 
     public Rectangle RelativeRightSideOfTheClient { get; set; }
 
@@ -64,7 +64,7 @@ public class WindowInfo
 
     public string GetClientSize()
     {
-        return IsMinimized()
+        return GetMinimizationState()
             ? Properties.Localization.Resources.WindowInfo_Minimized
             : $"{ClientRectangle.Width}x{ClientRectangle.Height}";
     }

@@ -162,13 +162,14 @@ public class CoreService : IDisposable
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
-            if (_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized())
+            if (_hookedGameDataProvider.Data!.GameWindowInfo!.GetMinimizationState())
             {
                 SetStateHooked();
             }
 
             if (!await _windowHookService.AwaitMinimizationEndAsync(_cancellationTokenSource!.Token)) return;
 
+            _windowHookService.InitializeMinimizationHook();
             _windowHookService.InitializeWindowLocationHook();
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
