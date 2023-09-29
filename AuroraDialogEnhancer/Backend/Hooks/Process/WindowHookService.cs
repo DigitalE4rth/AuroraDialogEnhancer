@@ -180,6 +180,8 @@ public class WindowHookService
 
     private void SetMinimizeEndHook(uint processId)
     {
+        _minimizationDelegate = OnMinimizeEndHook;
+
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
             _minimizationHookPointer = NativeMethods.SetWinEventHook(
