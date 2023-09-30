@@ -128,6 +128,8 @@ public class WindowHookService
         }, DispatcherPriority.Normal);
     }
 
+    // Unity bug semi-fix
+    // https://github.com/DigitalE4rth/AuroraDialogEnhancer/issues/9
     private bool IsFocused(IntPtr windowHandler)
     {
         if (IsMinimized && IsTargetWindowForeground(windowHandler)) return false;
