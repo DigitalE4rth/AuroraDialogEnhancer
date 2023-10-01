@@ -12,40 +12,30 @@ Most games have the ability to select dialog options using mouse wheel or keyboa
 This application fixes this issue by means of extensions, individually developed for each game, thus extending the game functionality.
 Also, usage of this software cannot cause your account to be banned in any games you play *([more in this section](#%EF%B8%8F-how-it-all-works))*.
 
-<details>
-  <summary>❓ Why and what for? Using Genshin Impact as an Example</summary>
+<div align="center">
+  <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/ade_ingame_example.gif" />
   </br>
-    <div>
-      <ul>
-        <li>Why can't you choose a dialog option using mouse wheel, the same way you would when selecting which item you want to place in your inventory?</li>
-        <li>Why can you pick up an item with the <code>f</code> button, but the dialog can <b>only</b> selected with the mouse cursor?</li>
-        <li>Why is the cursor always in the center of the screen at the beginning of dialogs and cutscenes?</li>
-        <li>Why can't you take screenshots in cutscenes and dialogs?</li>
-      </ul>
-      <p>If you have ever asked such questions, then this application is for you.</p>
-    </div>
-</details>
+  <i>Now, by using a keyboard and mouse wheel, dialog options can go brrrrrrrrrrrrrrrr</i>
+</div>
 
-<details>
-  <summary>📺 Usage demonstration</summary>
-    <div align="center">
-      <h4>Now, by using a keyboard and mouse wheel, dialog options can go brrrrrrrrrrrrrrrr</h4>
-      <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/ade_ingame_example.gif" />
-    </div>
-    <div align="center">
-      <h4>Long Youtube demonstration video</h4>
-      <a href="https://youtube.com/video/ch2GWBYqNSE" target="_blank"><img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/youtube_thumbnail.jpg" alt="Aurora Dialog Enhancer | Long demonstration" />
-    </div>
-</details>
+## ❓ Why and what for? Using Genshin Impact as an Example
+- Why can't you choose a dialog option using mouse wheel, the same way you would when selecting which item you want to place in your inventory?
+- Why can you pick up an item with the <code>f</code> button, but the dialog can <b>only</b> selected with the mouse cursor?
+- Why is the cursor always in the center of the screen at the beginning of dialogs and cutscenes?
+- Why can't you take screenshots in cutscenes and dialogs?
+  
+> If you have ever asked such questions, then this application is for you.
 
-<details>
-	<summary>🖼️ Screenshots</summary>
+## 📺 [YouTube](https://youtube.com/video/ch2GWBYqNSE) usage demonstration video
+<div>
+  <a href="https://youtube.com/video/ch2GWBYqNSE" target="_blank"><img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/youtube_thumbnail.jpg" alt="Aurora Dialog Enhancer | Long demonstration" />
+</div>
 
-  <div align="center">
-    <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/app_screenshot_01.jpg" />
-    <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/app_screenshot_02.jpg" />
-  </div>
-</details>
+## 🖼️ Screenshots
+<div>
+  <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/app_screenshot_01.jpg" />
+  <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/app_screenshot_02.jpg" />
+</div>
 
 ## 📖 Key features
 
@@ -70,7 +60,7 @@ As the development progressed, more and more features were added to the applicat
 
 The application is modular, and works with extensions individually developed for each game. Each extension is treated as a game profile, allowing you to fine-tune it.
 
-To get it all going just [download the application](https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases), run it and hit a big fancy `Start` button. That's it.
+To get it all going just [**download the application**](https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases), run it and hit a big fancy `Start` button. That's it.
 
 And if you want to know more about other features, you can check them out below.
 
@@ -179,19 +169,19 @@ Therefore, for this game it is absolutely (*99.9%*) safe.
 Can you get banned in a game for taking a screenshot?
 No. The developer has been using and testing this application for over a year.
 He gives you his quality assurance - everything possible was done for it to be legal, not violating game's license agreement.
-In addition, use of scripts like [AutoHotKey](https://www.autohotkey.com) is allowed in almost all games.
+In addition, use of scripts like [**AutoHotKey**](https://www.autohotkey.com) is allowed in almost all games.
 
-<details>
-	<summary>How it works in detail for Genshin Impact</summary>
-  </br>
-  <div>
-    <p>First we need to determine whether the game is in dialog mode. To do this, each time a registered action is performed in the program, we check whether the cursor is displayed (and when characters move, it is not displayed), whether an NPC is speaking to the character (for this we take a screenshot of a small area at the bottom of the game's window, and we determine the presence of NPC name by unique color range), and only after that a screenshot is taken of the limited area in which the dialog bubbles should be located. Then they are compared with a mathematically specified template.</p>
-    <p>Having taken screenshots of all possible screen resolutions in the game, patterns were derived to mathematically define where dialog bubbles are located, i.e. how the size of the game window defines their location and size. After that, the template is then programmatically set based on the contour lines of the dialog bubbles, brightness transition, icon presence, etc.</p>
-    <p>Long-term testing showed that this approach works for all game resolutions, starting from 800x600, and that the dynamically calculated formula gives a match result of 98%.</p>
-    <p>Which means that in incredibly rare cases the application may find an extra dialog option or miss an existing one. If this happens, all you have to do is press <code>f5</code> to perform the search again. It is also worth knowing that the search does not work with an already highlighted dialog option, i.e. when the mouse cursor is on it.</p>
-    <p>The developer and testers were happy with the end result, I hope you will be happy with it too.</p>
-  </div>
-</details>
+> <details>
+> 	<summary>How it works in detail for Genshin Impact</summary>
+>   </br>
+>   <div>
+>     <p>First we need to determine whether the game is in dialog mode. To do this, each time a registered action is performed in the program, we check whether the cursor is displayed (and when characters move, it is not displayed), whether an NPC is speaking to the character (for this we take a screenshot of a small area at the bottom of the game's window, and we determine the presence of NPC name by unique color range), and only after that a screenshot is taken of the limited area in which the dialog bubbles should be located. Then they are compared with a mathematically specified template.</p>
+>     <p>Having taken screenshots of all possible screen resolutions in the game, patterns were derived to mathematically define where dialog bubbles are located, i.e. how the size of the game window defines their location and size. After that, the template is then programmatically set based on the contour lines of the dialog bubbles, brightness transition, icon presence, etc.</p>
+>     <p>Long-term testing showed that this approach works for all game resolutions, starting from 800x600, and that the dynamically calculated formula gives a match result of 98%.</p>
+>     <p>Which means that in incredibly rare cases the application may find an extra dialog option or miss an existing one. If this happens, all you have to do is press <code>f5</code> to perform the search again. It is also worth knowing that the search does not work with an already highlighted dialog option, i.e. when the mouse cursor is on it.</p>
+>     <p>The developer and testers were happy with the end result, I hope you will be happy with it too.</p>
+>   </div>
+> </details>
 
 **See also**: [*Why I had to give up on OpenCV*](https://github.com/DigitalE4rth/AuroraDialogEnhancer/discussions/7)
 
@@ -224,21 +214,21 @@ I can’t say what kind of response this will yield in the future, but as a prog
 This the third project out of ten that I started, that has saw the release.
 There are so many ideas, but very little time and energy... + I couldn’t have done it without the help and support of all my beloved friends, so a huge thank you to you all 💖
 
-<details>
-  <summary>Well, I hope you enjoy it, i did my utmost best...</summary>
-  <div align="center">
-    <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/i_did_my_besht_meme.jpg" />
-  </div>
-</details>
+> <details>
+>   <summary>Well, I hope you enjoy it, i did my utmost best...</summary>
+>   <div align="center">
+>     <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/i_did_my_besht_meme.jpg" />
+>   </div>
+> </details>
 
 ### 🥰 Acknowledgements
 
-* [Meowmaniac](https://github.com/Meowmaniac) - Testing, criticism. Thanks for listening to me whining and constantly testing all the janky code. Sorry for the bug that took up all the space on your hard drive)))0) /^._.^\ฅ🔪
-* [NDS](https://github.com/nestdimon) - Criticism, architectural consulting, whine listening. Thank you for your time, opportunities and support. Thank you, I mean it... (((*°▽°*)八(*°▽°*)))♪
+* [**Meowmaniac**](https://github.com/Meowmaniac) - Testing, criticism. Thanks for listening to me whining and constantly testing all the janky code. Sorry for the bug that took up all the space on your hard drive)))0) /^._.^\ฅ🔪
+* [**NDS**](https://github.com/nestdimon) - Criticism, architectural consulting, whine listening. Thank you for your time, opportunities and support. Thank you, I mean it... (((*°▽°*)八(*°▽°*)))♪
 * **Tortuga** - Testing, whine listening. Thank you for testing the program at least at the very end of development) Someday we will all get together again and play DnD... Someday (⁠ ⁠≧⁠Д⁠≦⁠)🏰🎲🐲(⁠≧⁠▽⁠≦⁠)
-* [Vobraz](https://github.com/Vobraz) - OpenCV consulting, criticism. This guy even rebuilt OpenCV for me, reducing the original size of the program from 60 MB to 24 MB... I asked him a lot of questions to understand the intricacies of the work, but in the end, having studied everything, I wrote my own super lightweight version of OpenCV, which is why the application size became... 2 MB. Well... It happened) Anyway, thanks, you're awesome! 🤩💯🔥ヾ(⌐■_■)ノ♪
-* [WertQj](https://github.com/WertQj) - English translator and editor, translation quality control. Perhaps, as you said, I could handle everything myself, but it would have taken much longer. In any case, thank you, and not only for the translation, friend! ↜₍^  -༝-^₎
-* [ZloeZlo](https://github.com/zloezzlo) - Ukrainian translation, translation quality control. I know it was a joke *(translation into Ukrainian)*, but you still managed it. Thank you) .⭐ ˖🦉‧₊˚ ☾.
+* [**Vobraz**](https://github.com/Vobraz) - OpenCV consulting, criticism. This guy even rebuilt OpenCV for me, reducing the original size of the program from 60 MB to 24 MB... I asked him a lot of questions to understand the intricacies of the work, but in the end, having studied everything, I wrote my own super lightweight version of OpenCV, which is why the application size became... 2 MB. Well... It happened) Anyway, thanks, you're awesome! 🤩💯🔥ヾ(⌐■_■)ノ♪
+* [**WertQj**](https://github.com/WertQj) - English translator and editor, translation quality control. Perhaps, as you said, I could handle everything myself, but it would have taken much longer. ↜₍^  -༝-^₎ In any case, thank you, and not only for the translation, friend! 
+* [**ZloeZlo**](https://github.com/zloezzlo) - Ukrainian translation, translation quality control. I know it was a joke *(translation into Ukrainian)*, but you still managed it. Thank you) .⭐ ˖🦉‧₊˚ ☾.
 * Special thanks to **all of you**, users of this application, for your use, criticism, feedback and discussion. This is very valuable. You are the best, I love you all.
 * （づ￣3￣）づ╭❤️～
 
@@ -254,17 +244,17 @@ There are so many ideas, but very little time and energy... + I couldn’t have 
 Although the application uses all the libraries listed below, at least 80% of each library had to be rewritten to optimize them for specific tasks, reducing the space they take up as well...
 Very little remains from the original versions, but, none the less, I would like to thank the developers for their work, ideas and open source code.
 
-* [AutoUpdater.NET](https://github.com/ravibpatel/AutoUpdater.NET) - I don't know guys, it doesn't seem to me that using WebView2 is necessary for your library. And why is everything `static` everywhere? I don't understand... But thanks anyway.
-* [NonInvasiveKeyboardHook](NonInvasiveKeyboardHook) - A unique idea of setting, tracking and responding to key combinations. Very cool, but I rewrote everything for my needs, + added support for mouse buttons. Thank you.
-* [Why Orchid](https://github.com/DigitalE4rth/WhyOrchid) - Oh, this one's mine. Pure WPF, nothing extra, which makes it very lightweight. I want to rewrite most of it in the future, so I don’t recommend relying on its release versions - edit the code yourself if you decide to use it.
-* [WPF Color Picker](https://github.com/dsafa/wpf-color-picker) - A powerful color picker. So UWP has a built-in one, but WPF doesn’t? Thanks again Microsoft. To the author for this lib as well, even though I rewrote everything).
-* [Google Fonts](https://fonts.google.com/icons) - SVG icons and pictograms.
-* [Font Awesome](https://fontawesome.com) - SVG icons and pictograms.
-* [Application icon](https://svgmix.com/item/zQWr2M/aurora) - Northern lights.
+* [**AutoUpdater.NET**](https://github.com/ravibpatel/AutoUpdater.NET) - I don't know guys, it doesn't seem to me that using WebView2 is necessary for your library. And why is everything `static` everywhere? I don't understand... But thanks anyway.
+* [**NonInvasiveKeyboardHook**](NonInvasiveKeyboardHook) - A unique idea of setting, tracking and responding to key combinations. Very cool, but I rewrote everything for my needs, + added support for mouse buttons. Thank you.
+* [**Why Orchid**](https://github.com/DigitalE4rth/WhyOrchid) - Oh, this one's mine. Pure WPF, nothing extra, which makes it very lightweight. I want to rewrite most of it in the future, so I don’t recommend relying on its release versions - edit the code yourself if you decide to use it.
+* [**WPF Color Picker**](https://github.com/dsafa/wpf-color-picker) - A powerful color picker. So UWP has a built-in one, but WPF doesn’t? Thanks again Microsoft. To the author for this lib as well, even though I rewrote everything).
+* [**Google Fonts**](https://fonts.google.com/icons) - SVG icons and pictograms.
+* [**Font Awesome**](https://fontawesome.com) - SVG icons and pictograms.
+* [**Application icon**](https://svgmix.com/item/zQWr2M/aurora) - Northern lights.
 
 ## 💖 Creative society
 
-One of the weighty and important reasons why the application was released was to notify as many people as possible about [Creative Society](https://creativesociety.com) project.
+One of the weighty and important reasons why the application was released was to notify as many people as possible about [**Creative Society**](https://creativesociety.com) project.
 I would not have put as much effort into improving the usability and quality of the application if I had not counted on its popularization and distribution...
 What is CS and why is it so important not only for me, but for everyone in general? Well, the answer is simple:
 
@@ -275,23 +265,24 @@ This is important for me because for a third of my life now I have been living i
 For you, just as for me, CS is that global way out of all crises, and not just wars, it is also a way to fight natural disasters.
 
 There is a saying: 
->"If a scientist cannot explain to a 5-year-old child what he does, then he is a fraud."
+> "If a scientist cannot explain to a 5-year-old child what he does, then he is a fraud."
 
 The goal of Creative Society is to bring human life to the forefront legislatively, by adopting 8 principles in all countries of the world that will support and ensure that:
 
 <details>
 	<summary><b>8 Pillars of the Creative Society</b></summary>
-  <h4>The 8 Pillars of the Creative Society are what people from all over the world desire. These are the fundamental values of the Creative Society that can become the basis of international law and legislation in all countries through a lawful expression of people's will at the world referendum.</h4>
+  </br>
+  <b>The 8 Pillars of the Creative Society are what people from all over the world desire. These are the fundamental values of the Creative Society that can become the basis of international law and legislation in all countries through a lawful expression of people's will at the world referendum.</b>
   <div>
-    <b>1. Human Life</b>
+    <h3>1. Human Life</h2>
     <p>Human life is the highest value. Life of any Human has to be protected as one's own. The goal of society is to ensure and guarantee the value of each Human's life. There is not and never can there be anything else more valuable than a Human's life. If one Human is valuable, then all People are valuable!</p>
   </div>
   <div>
-    <b>2. Human Freedom</b>
+    <h3>2. Human Freedom</h3>
     <p>Every human is born with the right to be a Human being. All People are born free and equal. Everyone has the right to choose. There can be no one and nothing on Earth superior to a Human, his freedom and rights. The implementation of Human rights and freedoms must not violate the rights and freedoms of others.</p>
   </div>
   <div>
-    <b>3. Human Safety</b>
+    <h3>3. Human Safety</h3>
     <p>No one and nothing in society has the right to create threats to the life and freedom of a Human!</p>
     <p>Every Human is guaranteed free provision of essential life necessities, including food, housing, medical care, education and full social security.</p>
     <p>Scientific, industrial and technological activities of the society should be aimed exclusively at improving the quality of human life.</p>
@@ -299,35 +290,35 @@ The goal of Creative Society is to bring human life to the forefront legislative
     <p>The security of Human and society from any kind of threats is ensured by the unified global service that deals with emergency situations.</p>
   </div>
   <div>
-    <b>4. Transparency and openness of information for all</b>
+    <h3>4. Transparency and openness of information for all</h3>
     <p>Every Human has the right to receive reliable information about the movement and distribution of public funds. Each Human has access to information about the status of implementation of the society’s decisions.</p>
     <p>The mass media belong exclusively to the society and reflect information truthfully, openly, and honestly.</p>
   </div>
   <div>
-    <b>5. The creative ideology</b>
+    <h3>5. The creative ideology</h3>
     <p>Ideology should be aimed at popularizing the best human qualities and stopping everything that is directed against a Human. The main priority is the priority of humanity, high spiritual and moral aspirations of a Human, humanness, virtue, mutual respect and strengthening of friendship.</p>
     <p>Creating conditions for the development and education of a Human with a capital “H”, cultivating moral values in each person and society.</p>
     <p>Prohibition of propaganda of violence, condemnation and denunciation of any form of division, aggression, and anti-humane manifestations.</p>
   </div>
   <div>
-    <b>6. Development of Personality</b>
+    <h3>6. Development of Personality</h3>
     <p>Every person in the Creative society has the right to comprehensive development and personal fulfillment.</p>
     <p>Education should be free and equally accessible to all. Creating conditions and expanding opportunities for a Human to implement his or her creative abilities and talents.</p>
   </div>
   <div>
-    <b>7. Justice and equality</b>
+    <h3>7. Justice and equality</h3>
     <p>All natural resources belong to Humans and are fairly distributed among all people. Monopolization of resources and their irrational use is prohibited. These resources are fairly distributed among the citizens of the entire Earth.</p>
     <p>A Human is guaranteed employment if he or she so desires. Pay for an identical position, specialty, or profession should be the same all over the world.</p>
     <p>Everyone has the right to private property and income, however within the limits of the individual's capitalization amount set by the society.</p>
   </div>
   <div>
-    <b>8. Self-governing society</b>
+    <h3>8. Self-governing society</h3>
     <p>The concept of "power" in the Creative society is absent, since the responsibility for society as a whole, its development, living conditions and harmonious format, lies with each Human.</p>
     <p>Everyone has the right to participate in the management of the affairs of the Creative Society and in the adoption of laws aimed at improving Human life.</p>
     <p>The solution of socially important, socially significant, and economic issues that affect the quality of a Human’s life is submitted for public discussion and voting (referendum).</p>
   </div>
   <div>
-    <b>Note to the 8 Pillars</b>
+    <h3>Note to the 8 Pillars</h3>
     <p>In the Creative Society, thanks to the introduction of a new model of economy and new technologies, there will be no need to use money. Therefore, certain provisions of the 8 Pillars of the Creative Society, which proceed from the existence of monetary relations, will be relevant only in the transition period to the Creative Society.</p>
   </div>
 </details>
@@ -338,12 +329,12 @@ Globalists? Yes. Sounds unrealistic and unfeasible? But the more support there i
 
 Currently there is no need for financial support. I do have a full time job, and while it's not much, it's manageable.
 
-<details>
-  <summary>Literally me</summary>
-  <div align="center">
-    <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/honest_work_meme.jpg" />
-  </div>
-</details>
+> <details>
+>   <summary>Literally me</summary>
+>   <div align="center">
+>     <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/honest_work_meme.jpg" />
+>   </div>
+> </details>
 
 The best thing you can do with your money, if you don't know how to spend it, is to spread the word about Creative Society. This is more essential right now 💖.
 
