@@ -132,13 +132,11 @@ public class WindowHookService
     // https://github.com/DigitalE4rth/AuroraDialogEnhancer/issues/9
     private bool IsFocused(IntPtr windowHandler)
     {
-        if (IsMinimized && IsTargetWindowForeground(windowHandler)) return false;
         return !IsMinimized && IsTargetWindowForeground(windowHandler);
     }
 
     private bool IsFocused()
     {
-        if (IsMinimized && IsTargetWindowForeground()) return false;
         return !IsMinimized && IsTargetWindowForeground();
     }
     #endregion
