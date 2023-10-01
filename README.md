@@ -254,6 +254,12 @@ Very little remains from the original versions, but, none the less, I would like
 
 ## 💖 Creative society
 
+<div align="center">
+  <a href="https://creativesociety.com" target="_blank">
+    <img width="125px" height="125px" src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/creative_society_logo.svg" />
+  </a>
+</div>
+
 One of the weighty and important reasons why the application was released was to notify as many people as possible about [**Creative Society**](https://creativesociety.com) project.
 I would not have put as much effort into improving the usability and quality of the application if I had not counted on its popularization and distribution...
 What is CS and why is it so important not only for me, but for everyone in general? Well, the answer is simple:
