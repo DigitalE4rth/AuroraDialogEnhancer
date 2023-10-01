@@ -30,4 +30,16 @@ public class KeyCap : Control
         typeof(CornerRadius),
         typeof(KeyCap),
         new PropertyMetadata(default));
+
+    public double BackgroundOpacity
+    {
+        get => (double)GetValue(BackgroundOpacityProperty);
+        set => SetValue(BackgroundOpacityProperty, value);
+    }
+
+    public static readonly DependencyProperty BackgroundOpacityProperty = DependencyProperty.Register(
+        "BackgroundOpacity",
+        typeof(double),
+        typeof(KeyCap),
+        new PropertyMetadata(default));
 }

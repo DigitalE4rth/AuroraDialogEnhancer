@@ -221,6 +221,7 @@
                                   Background="#ffffff"
                                   BorderBrush="#dcdcdc"
                                   Content="Esc"
+                                  BackgroundOpacity="1"
                                   Foreground="#3c3c3c" />
                     <Run BaselineAlignment="Center" Text="{x:Static localization:Resources.TriggerEditor_RecordingMessage_Part2}" />
                 </TextBlock>

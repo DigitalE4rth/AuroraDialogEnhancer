@@ -13,7 +13,8 @@ internal class DefaultUiElementsProvider
         Margin            = new Thickness(10, 5, 10, 5),
         Height            = 20,
         VerticalAlignment = VerticalAlignment.Center,
-        Background        = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_Outline))
+        Background        = new SolidColorBrush((Color) ColorConverter.ConvertFromString(WhyOrchid.Properties.Settings.Default.Color_InverseSurface)),
+        Opacity           = 0.1
     };
 
     public TextBlock GetTextBlock(string? text) => new()
