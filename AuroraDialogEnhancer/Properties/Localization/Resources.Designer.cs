@@ -277,7 +277,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check for updates.
+        ///   Looks up a localized string similar to Update.
         /// </summary>
         public static string About_Update_Update_Verb {
             get {

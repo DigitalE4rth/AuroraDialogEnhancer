@@ -195,7 +195,7 @@
     <value>Once a week</value>
   </data>
   <data name="About_Update_Update_Verb" xml:space="preserve">
-    <value>Check for updates</value>
+    <value>Update</value>
     <comment>Subject</comment>
   </data>
   <data name="About_UserInterface" xml:space="preserve">
