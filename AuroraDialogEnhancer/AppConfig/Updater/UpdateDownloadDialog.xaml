@@ -66,7 +66,7 @@
 
                     <TextBlock Grid.Column="1" Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}">
                         <Run Text=":" />
-                        <Run x:Name="TextSpeed" d:Text="d:0 KiB" /><Run Text="/" /><Run Text="{x:Static localization:Resources.AutoUpdate_DownloadSpeed_Seconds}" />
+                        <Run x:Name="TextSpeed" Text="0 KiB" /><Run Text="/" /><Run Text="{x:Static localization:Resources.AutoUpdate_DownloadSpeed_Seconds}" />
                     </TextBlock>
 
                     <TextBlock x:Name="TextSize"
