@@ -144,7 +144,7 @@ public class WindowHookService
     #region Minimization
     public void InitializeMinimizationHook()
     {
-        IsMinimized = _hookedGameDataProvider.Data!.GameWindowInfo!.GetMinimizationState();
+        IsMinimized = _hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized();
         _minimizationDelegate = MinimizationChangedHook;
 
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
@@ -172,7 +172,7 @@ public class WindowHookService
                 OnFocusChanged?.Invoke(this, IsFocused(hwnd));
                 return;
             default:
-                IsMinimized = _hookedGameDataProvider.Data!.GameWindowInfo!.GetMinimizationState();
+                IsMinimized = _hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized();
                 OnFocusChanged?.Invoke(this, IsFocused(hwnd));
                 break;
         }
@@ -211,7 +211,7 @@ public class WindowHookService
 
     public async Task<bool> AwaitMinimizationEndAsync(CancellationToken cancellationToken)
     {
-        if (!_hookedGameDataProvider.Data!.GameWindowInfo!.GetMinimizationState()) return true;
+        if (!_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized()) return true;
 
         SetMinimizeEndHook((uint)_hookedGameDataProvider.Data!.GameProcess!.Id);
 
@@ -220,7 +220,7 @@ public class WindowHookService
         _minimizationEndSemaphore = new SemaphoreSlim(0);
         OnMinimizeEnd += MinimizeEnd;
 
-        if (!_hookedGameDataProvider.Data!.GameWindowInfo!.GetMinimizationState())
+        if (!_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized())
         {
             ReleaseMinimizationResources();
         }
