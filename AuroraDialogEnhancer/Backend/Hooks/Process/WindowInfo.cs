@@ -6,11 +6,29 @@ namespace AuroraDialogEnhancer.Backend.Hooks.Process;
 
 public class WindowInfo
 {
+    private readonly IntPtr _handle;
+
+    public Rectangle WindowRectangle { get; private set; }
+
+    public Rectangle ClientRectangle { get; private set; }
+
+    public int TitleBarSize { get; private set; }
+
+    public int BorderSize { get; private set; }
+
+    public int BottomYPoint { get; private set; }
+
+    public Rectangle RelativeRightSideOfTheClient { get; set; }
+
+    public Point ClientRectangleRelativePosition { get; private set; }
+
     public WindowInfo(IntPtr handle, Rectangle clientRectangle, Rectangle windowRectangle)
     {
-        Handle = handle;
+        _handle = handle;
         SetLocation(clientRectangle, windowRectangle);
     }
+
+    public bool IsMinimized() => NativeMethods.IsIconic(_handle);
 
     public void SetLocation(Rectangle clientRectangle, Rectangle windowRectangle)
     {
@@ -26,46 +44,15 @@ public class WindowInfo
         RelativeRightSideOfTheClient = new Rectangle(ClientRectangle.Width / 2, 0, ClientRectangle.Width / 2, ClientRectangle.Height);
     }
 
-    private IntPtr Handle { get; }
-
-    /// <summary>
-    /// Target window client rectangle.
-    /// </summary>
-    /// <remarks>
-    /// Actual window size without borders and title bar.
-    /// </remarks>
-    public Rectangle ClientRectangle { get; private set; }
-
-    public int BottomYPoint { get; private set; }
-
-    /// <summary>
-    /// Target window rectangle.
-    /// </summary>
-    /// <remarks>
-    /// Relative size to the screen X=0, Y=0 coordinates, with window's title bar and borders.
-    /// </remarks>
-    public Rectangle WindowRectangle { get; private set; }
-
-    /// <summary>
-    /// The size of one window border.
-    /// </summary>
-    public int BorderSize { get; private set; }
-
-    /// <summary>
-    /// The size of the window title bar.
-    /// </summary>
-    public int TitleBarSize { get; private set; }
-
-    public bool GetMinimizationState() => NativeMethods.IsIconic(Handle);
-
-    public Rectangle RelativeRightSideOfTheClient { get; set; }
-
-    public Point ClientRectangleRelativePosition { get; private set; }
-
     public string GetClientSize()
     {
-        return GetMinimizationState()
-            ? Properties.Localization.Resources.WindowInfo_Minimized
+        if (!ClientRectangle.Size.IsEmpty)
+        {
+            return $"{ClientRectangle.Width}x{ClientRectangle.Height}";
+        }
+
+        return IsMinimized() 
+            ? Properties.Localization.Resources.WindowInfo_Minimized 
             : $"{ClientRectangle.Width}x{ClientRectangle.Height}";
     }
 }
