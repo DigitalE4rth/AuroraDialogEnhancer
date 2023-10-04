@@ -1,4 +1,5 @@
 ﻿using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 

@@ -2,6 +2,10 @@
 using System.Linq;
 using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 using AuroraDialogEnhancerExtensions.KeyBindings;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
@@ -34,6 +38,18 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
             ClickablePoints = Map(obj.ClickablePoints),
             #endregion
 
+            #region Scripts
+            AutoSkip = new AutoSkip
+            {
+                Id                    = obj.AutoSkipDto.Id,
+                ActivationKeys        = Map(obj.AutoSkipDto.ActivationKeys),
+                AutoSkipType          = (EAutoSkipType) obj.AutoSkipDto.AutoSkipType,
+                SkipKeys              = Map(obj.AutoSkipDto.SkipKeys),
+                Delay                 = obj.AutoSkipDto.Delay,
+                IsDoubleClickRequired = obj.AutoSkipDto.IsDoubleClickRequired
+            },
+            #endregion
+
             #region Controls
             One   = Map(obj.One),
             Two   = Map(obj.Two),
@@ -59,18 +75,14 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
 
     private List<GenericKey> Map(List<GenericKeyDto> genericKeyExtList)
     {
-        var result = new List<GenericKey>();
-        foreach (var genericKeyExt in genericKeyExtList)
-        {
-            if (genericKeyExt.GetType() == typeof(KeyboardKeyDto))
-            {
-                result.Add(new KeyboardKey(genericKeyExt.KeyCode));
-                continue;
-            }
-            result.Add(new MouseKey(genericKeyExt.KeyCode));
-        }
+        return genericKeyExtList.Select(Map).ToList();
+    }
 
-        return result;
+    private GenericKey Map(GenericKeyDto genericKeyExt)
+    {
+        return genericKeyExt.GetType() == typeof(KeyboardKeyDto)
+            ? new KeyboardKey(genericKeyExt.KeyCode)
+            : new MouseKey(genericKeyExt.KeyCode);
     }
 
     private List<ClickablePoint> Map(IEnumerable<ClickablePointDto> listOfClickablePoints)

@@ -1,4 +1,4 @@
-﻿namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
+﻿namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 
 public enum EHighMouseKey
 {

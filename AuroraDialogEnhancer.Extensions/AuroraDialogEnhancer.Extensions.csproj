@@ -52,8 +52,10 @@
     <Compile Include="Dimensions\DynamicPoint.cs" />
     <Compile Include="Dimensions\ThresholdArea.cs" />
     <Compile Include="Dimensions\ThresholdAreaDynamic.cs" />
+    <Compile Include="KeyBindings\AutoSkipDto.cs" />
     <Compile Include="KeyBindings\ClickablePointDto.cs" />
     <Compile Include="KeyBindings\ClickablePointVmDto.cs" />
+    <Compile Include="KeyBindings\EAutoSkipTypeDto.cs" />
     <Compile Include="KeyBindings\ECursorBehaviourDto.cs" />
     <Compile Include="KeyBindings\EHiddenCursorSettingDto.cs" />
     <Compile Include="KeyBindings\EHighMouseKeyDto.cs" />

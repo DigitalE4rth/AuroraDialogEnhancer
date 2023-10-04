@@ -164,25 +164,32 @@
     <Compile Include="Backend\Generics\IMapper.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameData.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameDataProvider.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Keys\SplitKeyStruct.cs" />
+    <Compile Include="Backend\KeyHandler\KeyHandlerAutoSkip.cs" />
+    <Compile Include="Backend\PeripheralEmulators\KeyboardEmulationService.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\ClickablePrecisePointMapper.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ClickablePoint.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ClickablePointVm.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ClickablePrecisePoint.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ECursorBehaviour.cs" />
-    <Compile Include="Backend\KeyBinding\Models\EHighMouseKey.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ENumericActionBehaviour.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ESingleDialogOptionBehaviour.cs" />
-    <Compile Include="Backend\KeyBinding\Models\GenericKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkipViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkip.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePoint.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePointVm.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePrecisePoint.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\EAutoSkipType.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Behaviour\ECursorBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Behaviour\EHighMouseKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Behaviour\ENumericActionBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Behaviour\ESingleDialogOptionBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Keys\GenericKey.cs" />
     <Compile Include="Backend\KeyBinding\Models\KeyBindingProfile.cs" />
     <Compile Include="Backend\KeyBinding\KeyBindingProfileService.cs" />
-    <Compile Include="Backend\KeyBinding\Models\KeyboardKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Keys\KeyboardKey.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingExtensionMapper.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelBackMapper.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelMapper.cs" />
     <Compile Include="Backend\ComputerVision\ComputerVisionPresetService.cs" />
     <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
-    <Compile Include="Backend\KeyBinding\Models\MouseKey.cs" />
-    <Compile Include="Backend\KeyBinding\Models\TriggerViewModelComparer.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Keys\MouseKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ViewModels\TriggerViewModelComparer.cs" />
+    <Compile Include="Backend\ScriptHandlers\ScriptHandlerService.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
     <Compile Include="Frontend\Controls\ColorPicker\ColorPickerDialog.xaml.cs">
@@ -392,13 +399,13 @@
     <Compile Include="Backend\Hooks\Mouse\LowLevelMouseHookStruct.cs" />
     <Compile Include="Backend\KeyBinding\Interpreters\KeyboardKeyInterpreterService.cs" />
     <Compile Include="Backend\KeyBinding\Interpreters\KeyInterpreterService.cs" />
-    <Compile Include="Backend\Hooks\Mouse\MouseEmulationService.cs" />
+    <Compile Include="Backend\PeripheralEmulators\MouseEmulationService.cs" />
     <Compile Include="Backend\Hooks\Mouse\MouseHookManagerServiceBase.cs" />
     <Compile Include="Backend\Hooks\Process\WindowInfo.cs" />
-    <Compile Include="Backend\KeyBinding\Models\KeyBindingProfileViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ViewModels\KeyBindingProfileViewModel.cs" />
     <Compile Include="Backend\KeyBinding\KeyBindingProfileRepository.cs" />
     <Compile Include="Backend\KeyBinding\Interpreters\MouseKeyInterpreterService.cs" />
-    <Compile Include="Backend\KeyBinding\Models\TriggerViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ViewModels\TriggerViewModel.cs" />
     <Compile Include="Backend\Extensions\ExtensionsProvider.cs" />
     <Compile Include="Backend\KeyHandler\DialogOptionCursorPositionInfo.cs" />
     <Compile Include="Backend\KeyHandler\CursorPositioningService.cs" />
@@ -450,7 +457,7 @@
       <DependentUpon>Resources.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="AppConfig\NotifyIcon\NotifyIconService.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ActionViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ViewModels\ActionViewModel.cs" />
     <Compile Include="Frontend\Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -1,5 +1,5 @@
 ﻿using AuroraDialogEnhancer.Backend.Generics;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
 using AuroraDialogEnhancerExtensions.KeyBindings;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;

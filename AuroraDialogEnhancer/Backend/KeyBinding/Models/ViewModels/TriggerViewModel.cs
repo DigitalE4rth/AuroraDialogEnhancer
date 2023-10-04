@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 
-namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
+namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 
 public class TriggerViewModel
 {

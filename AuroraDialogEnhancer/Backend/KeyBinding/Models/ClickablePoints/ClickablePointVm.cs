@@ -1,4 +1,6 @@
-﻿namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
+﻿using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
+
+namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
 
 public class ClickablePointVm
 {

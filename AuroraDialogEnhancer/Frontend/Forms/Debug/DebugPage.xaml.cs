@@ -1,8 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.AppConfig.Updater;
 using AuroraDialogEnhancer.Backend.Extensions;
+using AuroraDialogEnhancer.Backend.Hooks.Mouse;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
+using AuroraDialogEnhancer.Backend.PeripheralEmulators;
+using AuroraDialogEnhancer.Backend.ScriptHandlers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
@@ -10,6 +17,8 @@ namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
 public partial class DebugPage
 {
     private readonly AutoUpdaterService _updaterService;
+
+    private readonly ScriptHandlerService _scriptHandlerService;
     //private readonly GameCvDialogOptionFinder _gameCvDialogOptionFinder;
     private readonly List<string> _resolutionsTest = new List<string>()
     {
@@ -43,17 +52,22 @@ public partial class DebugPage
         "2560x1440",
     };
 
-    public DebugPage(AutoUpdaterService updaterService)
+    public DebugPage(AutoUpdaterService updaterService, ScriptHandlerService scriptHandlerService)
     {
         _updaterService = updaterService;
+        _scriptHandlerService = scriptHandlerService;
 
         //_gameCvDialogOptionFinder = new GameCvDialogOptionFinder();
         InitializeComponent();
+
+        _scriptHandlerService.RegisterAction("a", new List<GenericKey>{new KeyboardKey(0xA2), new KeyboardKey(65)});
     }
 
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
     {
-        _updaterService.CheckForUpdateManual();
+        Task.Delay(2000).Wait();
+        _scriptHandlerService.DoAction("a");
+        //_updaterService.CheckForUpdateManual();
         //_resolutionsTest.ForEach(path => Count($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{path}.png"));
         //Count();
     }

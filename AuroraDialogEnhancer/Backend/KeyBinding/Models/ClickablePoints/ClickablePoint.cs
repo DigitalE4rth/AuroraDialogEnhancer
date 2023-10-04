@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 
-namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
+namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
 
 [Serializable]
 [XmlType("ClickablePoint")]

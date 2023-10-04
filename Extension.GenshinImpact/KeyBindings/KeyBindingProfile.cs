@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.KeyBindings;
 
 namespace Extension.GenshinImpact.KeyBindings;
@@ -33,4 +34,14 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
             new() { new KeyboardKeyDto(192) } // ~
         })
     };
+
+    public override AutoSkipDto AutoSkipDto { get; set; } = new
+    (
+        "autoskip",
+        new List<List<GenericKeyDto>> { new() { new KeyboardKeyDto(187) } }, // =
+        EAutoSkipTypeDto.Everything,
+        new List<GenericKeyDto> { new KeyboardKeyDto(32) }, // Space
+        400,
+        true
+    );
 }

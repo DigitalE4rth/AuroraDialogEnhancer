@@ -9,6 +9,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+      xmlns:behaviour="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour"
       d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
       d:DesignHeight="1450"
       d:DesignWidth="800"
@@ -162,8 +163,8 @@
                         </Grid>
                     </woControls:CardComboBox.LeftIcon>
 
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight}" Tag="{x:Static keyBinding:ESingleDialogOptionBehaviour.Highlight}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_SingleDialogOptionBehaviour_Select}" Tag="{x:Static keyBinding:ESingleDialogOptionBehaviour.Select}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight}" Tag="{x:Static behaviour:ESingleDialogOptionBehaviour.Highlight}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_SingleDialogOptionBehaviour_Select}" Tag="{x:Static behaviour:ESingleDialogOptionBehaviour.Select}" />
 
                     <woControls:CardComboBox.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
@@ -188,8 +189,8 @@
                         </Grid>
                     </woControls:CardComboBox.LeftIcon>
 
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_NumericActionBehaviour_Highlight}" Tag="{x:Static keyBinding:ENumericActionBehaviour.Highlight}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_NumericActionBehaviour_Select}" Tag="{x:Static keyBinding:ENumericActionBehaviour.Select}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_NumericActionBehaviour_Highlight}" Tag="{x:Static behaviour:ENumericActionBehaviour.Highlight}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_NumericActionBehaviour_Select}" Tag="{x:Static behaviour:ENumericActionBehaviour.Select}" />
 
                     <woControls:CardComboBox.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
@@ -213,9 +214,9 @@
                         </Grid>
                     </woControls:CardComboBox.LeftIcon>
 
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_Hide}" Tag="{x:Static keyBinding:ECursorBehaviour.Hide}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_HideAfterSelection}" Tag="{x:Static keyBinding:ECursorBehaviour.HideAfterSelection}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_Nothing}" Tag="{x:Static keyBinding:ECursorBehaviour.Nothing}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_Hide}" Tag="{x:Static behaviour:ECursorBehaviour.Hide}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_HideAfterSelection}" Tag="{x:Static behaviour:ECursorBehaviour.HideAfterSelection}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_Nothing}" Tag="{x:Static behaviour:ECursorBehaviour.Nothing}" />
 
                     <woControls:CardComboBox.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
 
@@ -35,6 +39,10 @@ public class KeyBindingProfile
     public virtual List<List<GenericKey>> Next            { get; set; } = new();
     [XmlArrayItem(ElementName = "ListOfClickablePoint")] 
     public virtual List<ClickablePoint>   ClickablePoints { get; set; } = new();
+    #endregion
+
+    #region Scripts
+    public virtual AutoSkip AutoSkip { get; set; } = new();
     #endregion
 
     #region Numeric

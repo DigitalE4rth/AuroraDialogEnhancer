@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AuroraDialogEnhancer.Backend.KeyBinding.Models;
+namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 
 public class TriggerViewModelComparer : IEqualityComparer<TriggerViewModel>
 {

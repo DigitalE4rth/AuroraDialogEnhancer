@@ -4,6 +4,10 @@ using System.Linq;
 using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 using AuroraDialogEnhancerExtensions.KeyBindings;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
@@ -40,6 +44,16 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
             Next            = Map(profile.Next),
             ClickablePoints = Map(profile.ClickablePoints, clickablePointsVmDto),
 
+            AutoSkip = new AutoSkipViewModel
+            {
+                Id                    = profile.AutoSkip.Id,
+                ActivationKeys        = Map(profile.AutoSkip.ActivationKeys),
+                AutoSkipType          = profile.AutoSkip.AutoSkipType,
+                SkipKeys              = Map(profile.AutoSkip.SkipKeys),
+                Delay                 = profile.AutoSkip.Delay,
+                IsDoubleClickRequired = profile.AutoSkip.IsDoubleClickRequired
+            },
+
             One   = Map(profile.One),
             Two   = Map(profile.Two),
             Three = Map(profile.Three),
@@ -56,6 +70,11 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
     private ActionViewModel Map(IEnumerable<List<GenericKey>> lowActions)
     {
         return new ActionViewModel(lowActions.Select(rawKeys => new TriggerViewModel(rawKeys, _keyInterpreterService.InterpretKeys(rawKeys))).ToList());
+    }
+
+    private TriggerViewModel Map(List<GenericKey> lowActions)
+    {
+        return new TriggerViewModel(lowActions, _keyInterpreterService.InterpretKeys(lowActions));
     }
 
     private Dictionary<string, ClickablePointVm> Map(IEnumerable<ClickablePoint> clickablePoints, IReadOnlyCollection<ClickablePointVmDto> clickablePointsVm)

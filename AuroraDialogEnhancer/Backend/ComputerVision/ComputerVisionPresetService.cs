@@ -49,7 +49,7 @@ public class ComputerVisionPresetService
             var mappedPoints = clickablePoints.Select(clickablePointMapper.Map).ToList();
             _keyHandlerService.InitializeClickablePoints(mappedPoints);
         }
-        
+
         return (true, string.Empty);
     }
 }

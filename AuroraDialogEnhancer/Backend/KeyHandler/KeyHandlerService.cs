@@ -12,14 +12,19 @@ using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
+using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
+using AuroraDialogEnhancer.Backend.ScriptHandlers;
 using Microsoft.Extensions.DependencyInjection;
 using Cursor = System.Windows.Forms.Cursor;
 using Point  = System.Drawing.Point;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 
-public class KeyHandlerService : IDisposable
+public partial class KeyHandlerService : IDisposable
 {
     private readonly CursorPositioningService      _cursorPositioningService;
     private readonly CursorVisibilityStateProvider _cursorVisibilityStateProvider;
@@ -30,6 +35,7 @@ public class KeyHandlerService : IDisposable
     private readonly MouseHookManagerService       _mouseHookManagerService;
     private readonly ComputerVisionService         _computerVisionService;
     private readonly ScreenCaptureService          _screenCaptureService;
+    private readonly ScriptHandlerService          _scriptHandlerService;
     private readonly WindowHookService             _windowHookService;
 
     private KeyBindingProfile? _keyBindingProfile;
@@ -57,6 +63,7 @@ public class KeyHandlerService : IDisposable
                              MouseHookManagerService       mouseHookManagerService,
                              ComputerVisionService         computerVisionService,
                              ScreenCaptureService          screenCaptureService,
+                             ScriptHandlerService          scriptHandlerService,
                              WindowHookService             windowHookService)
     {
         _cursorPositioningService      = cursorPositioningService;
@@ -68,6 +75,7 @@ public class KeyHandlerService : IDisposable
         _computerVisionService         = computerVisionService;
         _keyBindingProfileService      = keyBindingProfileService;
         _screenCaptureService          = screenCaptureService;
+        _scriptHandlerService          = scriptHandlerService;
         _windowHookService             = windowHookService;
 
         _clickablePoints      = new Dictionary<string, Point>(0);
@@ -130,6 +138,13 @@ public class KeyHandlerService : IDisposable
         _keyboardHookManagerService.Stop();
         _mouseHookManagerService.Stop();
         _currentDialogOptions.Clear();
+        StopScripts();
+    }
+
+    public void StopScripts()
+    {
+        _isAutoSkip = false;
+        _isAutoSkipChoicePending = false;
     }
 
     private void InitializeKeyBinds()
@@ -161,6 +176,7 @@ public class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.Ten,   OnTenPress);
         Register(_keyBindingProfile.ClickablePoints);
 
+        RegisterAutoSkip(_keyBindingProfile.AutoSkip);
         _mouseHookManagerService.RegisterPrimaryClick(OnMousePrimaryClick);
     }
 
@@ -261,6 +277,8 @@ public class KeyHandlerService : IDisposable
         _cursorPositioningService.Hide();
         _isProcessing = false;
     }
+
+
     #endregion
 
     #region Control actions
@@ -392,7 +410,7 @@ public class KeyHandlerService : IDisposable
         Cursor.Position = _cursorPositioningService.GetAbsoluteFromRelativePoint(relativeLocation);
 
         _isPrimarySuppressed = true;
-        _mouseEmulationService.DoMouseClick();
+        _mouseEmulationService.DoPrimaryClick();
         Task.Delay(50).Wait();
         Cursor.Position = cursorPositionTemp;
 
@@ -442,8 +460,14 @@ public class KeyHandlerService : IDisposable
             _currentDialogOptions.Clear();
 
             _isPrimarySuppressed = true;
-            _mouseEmulationService.DoMouseClick();
+            _mouseEmulationService.DoPrimaryClick();
             Task.Delay(50).Wait();
+
+            if (_isAutoSkipChoicePending)
+            {
+                OnAutoSkip();
+                return;
+            }
 
             if (_keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Nothing) return;
             _cursorPositioningService.Hide();
@@ -462,6 +486,12 @@ public class KeyHandlerService : IDisposable
 
         _cursorPositioningService.ApplyRelative(_currentDialogOptions[upCursorPosition.HighlightedIndex]);
         _currentDialogOptions.Clear();
+
+        if (_isAutoSkipChoicePending)
+        {
+            OnAutoSkip();
+            return;
+        }
 
         if (_keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Nothing || !_keyBindingProfile.IsCursorHideOnManualClick) return;
         Task.Delay(50).Wait();
@@ -609,7 +639,8 @@ public class KeyHandlerService : IDisposable
     public void Dispose()
     {
         _windowHookService.OnFocusChanged -= OnWindowFocusChanged;
-        _clickablePoints = new Dictionary<string, Point>(0);
+        _clickablePoints.Clear();
+        _scriptHandlerService.Dispose();
         StopPeripheryHook();
     }
 }

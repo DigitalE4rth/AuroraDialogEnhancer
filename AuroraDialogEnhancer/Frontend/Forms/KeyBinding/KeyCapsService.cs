@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 using AuroraDialogEnhancer.Frontend.Providers;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding;
