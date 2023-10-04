@@ -135,14 +135,15 @@ public partial class KeyHandlerService : IDisposable
 
     public void StopPeripheryHook()
     {
+        StopScripts();
         _keyboardHookManagerService.Stop();
         _mouseHookManagerService.Stop();
         _currentDialogOptions.Clear();
-        StopScripts();
     }
 
     public void StopScripts()
     {
+        _autoSkipCancelTokenSource?.Cancel();
         _isAutoSkip = false;
         _isAutoSkipChoicePending = false;
     }
