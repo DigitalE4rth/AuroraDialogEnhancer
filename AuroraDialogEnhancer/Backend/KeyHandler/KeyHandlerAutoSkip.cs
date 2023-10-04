@@ -35,7 +35,11 @@ public partial class KeyHandlerService
     {
         _isAutoSkip = !_isAutoSkip;
 
-        if (!_isAutoSkip || !_computerVisionService.IsDialogMode()) return;
+        if (!_isAutoSkip || !_computerVisionService.IsDialogMode())
+        {
+            _isAutoSkip = false;
+            return;
+        }
 
         _isAutoSkipChoicePending = false;
         _cursorPositioningService.Hide();
@@ -49,28 +53,22 @@ public partial class KeyHandlerService
         _autoSkipCancelTokenSource?.Dispose();
         _autoSkipCancelTokenSource = new CancellationTokenSource();
 
-        bool IsCancellationRequested()
+        bool IsCancellationRequired()
         {
-            if (!_autoSkipCancelTokenSource.Token.IsCancellationRequested) return false;
+            if (_cursorVisibilityStateProvider.IsVisible() &&
+                !_autoSkipCancelTokenSource.Token.IsCancellationRequested) return false;
 
             tcs.SetResult(false);
             _autoSkipCancelTokenSource.Dispose();
             _autoSkipCancelTokenSource = null;
+            _isAutoSkipChoicePending = false;
             _isAutoSkip = false;
             return true;
         }
 
-        while (_isAutoSkip && !_autoSkipCancelTokenSource.Token.IsCancellationRequested)
+        while (_isAutoSkip)
         {
-            if (!_cursorVisibilityStateProvider.IsVisible())
-            {
-                tcs.SetResult(false);
-                _isAutoSkip = false;
-                break;
-            }
-
-            if (IsCancellationRequested()) break;
-
+            if (IsCancellationRequired()) break;
             if (!IsDialogOptionsPresent())
             {
                 _skipClickDelegate!.Invoke();
@@ -78,12 +76,12 @@ public partial class KeyHandlerService
                 continue;
             }
 
-            if (IsCancellationRequested()) break;
-
+            if (IsCancellationRequired()) break;
             if (_skipDialogDelegate!.Invoke()) continue;
 
             tcs.SetResult(true);
-            _isAutoSkip = false;
+            _isAutoSkip              = false;
+            _isAutoSkipChoicePending = false;
             break;
         }
 
@@ -99,7 +97,7 @@ public partial class KeyHandlerService
     private void DoAutoSkipDoubleClick()
     {
         _scriptHandlerService.DoAction(_keyBindingProfile!.AutoSkip.Id);
-        Task.Delay(50).Wait();
+        Task.Delay(110).Wait();
         _scriptHandlerService.DoAction(_keyBindingProfile.AutoSkip.Id);
     }
 
