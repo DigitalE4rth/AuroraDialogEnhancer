@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 using Cursor = System.Windows.Forms.Cursor;
@@ -13,7 +12,6 @@ public partial class KeyHandlerService
     private bool        _isAutoSkipChoicePending;
     private Action?     _skipClickDelegate;
     private Func<bool>? _skipDialogDelegate;
-    private CancellationTokenSource? _autoSkipCancelTokenSource;
 
     private void RegisterAutoSkip(AutoSkip autoSkip)
     {
@@ -49,26 +47,10 @@ public partial class KeyHandlerService
 
     private Task AutoSkipCycleTask()
     {
-        var tcs = new TaskCompletionSource<bool>();
-        _autoSkipCancelTokenSource?.Dispose();
-        _autoSkipCancelTokenSource = new CancellationTokenSource();
-
-        bool IsCancellationRequired()
-        {
-            if (_cursorVisibilityStateProvider.IsVisible() &&
-                !_autoSkipCancelTokenSource.Token.IsCancellationRequested) return false;
-
-            tcs.SetResult(false);
-            _autoSkipCancelTokenSource.Dispose();
-            _autoSkipCancelTokenSource = null;
-            _isAutoSkipChoicePending = false;
-            _isAutoSkip = false;
-            return true;
-        }
-
+        var taskCompletionSource = new TaskCompletionSource<bool>();
         while (_isAutoSkip)
         {
-            if (IsCancellationRequired()) break;
+            if (IsAutoSkipCancellationRequired(taskCompletionSource)) break;
             if (!IsDialogOptionsPresent())
             {
                 _skipClickDelegate!.Invoke();
@@ -76,16 +58,26 @@ public partial class KeyHandlerService
                 continue;
             }
 
-            if (IsCancellationRequired()) break;
+            if (IsAutoSkipCancellationRequired(taskCompletionSource)) break;
             if (_skipDialogDelegate!.Invoke()) continue;
 
-            tcs.SetResult(true);
+            taskCompletionSource.SetResult(true);
             _isAutoSkip              = false;
             _isAutoSkipChoicePending = false;
             break;
         }
 
-        return tcs.Task;
+        return taskCompletionSource.Task;
+    }
+
+    private bool IsAutoSkipCancellationRequired(TaskCompletionSource<bool> taskCompletionSource)
+    {
+        if (_cursorVisibilityStateProvider.IsVisible() || _isAutoSkip) return false;
+
+        _isAutoSkipChoicePending = false;
+        _isAutoSkip = false;
+        taskCompletionSource.SetResult(false);
+        return true;
     }
 
     private void DoAutoSkipSingleClick()

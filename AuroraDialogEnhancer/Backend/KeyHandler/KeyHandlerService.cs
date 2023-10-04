@@ -96,6 +96,7 @@ public partial class KeyHandlerService : IDisposable
         StopPeripheryHook();
         _keyboardHookManagerService.UnRegisterAll();
         _mouseHookManagerService.UnRegisterAll();
+        _scriptHandlerService.UnRegisterAll();
         InitializeKeyBinds();
         StartPeripheryHook();
     }
@@ -143,7 +144,6 @@ public partial class KeyHandlerService : IDisposable
 
     public void StopScripts()
     {
-        _autoSkipCancelTokenSource?.Cancel();
         _isAutoSkip = false;
         _isAutoSkipChoicePending = false;
     }
@@ -161,9 +161,9 @@ public partial class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.Screenshot,   OnScreenshot);
         Register(_keyBindingProfile.HideCursor,   OnHideCursor);
 
-        Register(_keyBindingProfile.Select,          OnSelectPress);
-        Register(_keyBindingProfile.Next,            OnNextPress);
-        Register(_keyBindingProfile.Previous,        OnPreviousPress);
+        Register(_keyBindingProfile.Select,   OnSelectPress);
+        Register(_keyBindingProfile.Next,     OnNextPress);
+        Register(_keyBindingProfile.Previous, OnPreviousPress);
 
         Register(_keyBindingProfile.One,   OnOnePress);
         Register(_keyBindingProfile.Two,   OnTwoPress);
@@ -178,6 +178,7 @@ public partial class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.ClickablePoints);
 
         RegisterAutoSkip(_keyBindingProfile.AutoSkip);
+
         _mouseHookManagerService.RegisterPrimaryClick(OnMousePrimaryClick);
     }
 
@@ -243,6 +244,7 @@ public partial class KeyHandlerService : IDisposable
     {
         if (_isPaused)
         {
+            StopScripts();
             UnRegister(_keyBindingProfile!.PauseResume);
             RegisterKeyBinds();
 
@@ -278,8 +280,6 @@ public partial class KeyHandlerService : IDisposable
         _cursorPositioningService.Hide();
         _isProcessing = false;
     }
-
-
     #endregion
 
     #region Control actions
