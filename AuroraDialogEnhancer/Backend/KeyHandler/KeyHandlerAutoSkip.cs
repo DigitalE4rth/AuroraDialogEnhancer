@@ -17,9 +17,9 @@ public partial class KeyHandlerService
     {
         if (autoSkip.Delay == 0 || autoSkip.ActivationKeys.Count == 0) return;
 
-        _skipClickDelegate  = _keyBindingProfile!.AutoSkip.IsDoubleClickRequired 
-            ? DoAutoSkipDoubleClick 
-            : DoAutoSkipSingleClick;
+        _skipClickDelegate = _keyBindingProfile!.AutoSkip.DoubleClickDelay == 0
+            ? DoAutoSkipSingleClick
+            : DoAutoSkipDoubleClick;
 
         _skipDialogDelegate = _keyBindingProfile.AutoSkip.AutoSkipType == EAutoSkipType.Everything 
             ? DoAutoSkipSkipEverything 
@@ -83,13 +83,12 @@ public partial class KeyHandlerService
     private void DoAutoSkipSingleClick()
     {
         _scriptHandlerService.DoAction(_keyBindingProfile!.AutoSkip.Id);
-        Task.Delay(50).Wait();
     }
 
     private void DoAutoSkipDoubleClick()
     {
         _scriptHandlerService.DoAction(_keyBindingProfile!.AutoSkip.Id);
-        Task.Delay(110).Wait();
+        Task.Delay(_keyBindingProfile.AutoSkip.DoubleClickDelay).Wait();
         _scriptHandlerService.DoAction(_keyBindingProfile.AutoSkip.Id);
     }
 

@@ -46,12 +46,12 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
 
             AutoSkip = new AutoSkipViewModel
             {
-                Id                    = profile.AutoSkip.Id,
-                ActivationKeys        = Map(profile.AutoSkip.ActivationKeys),
-                AutoSkipType          = profile.AutoSkip.AutoSkipType,
-                SkipKeys              = Map(profile.AutoSkip.SkipKeys),
-                Delay                 = profile.AutoSkip.Delay,
-                IsDoubleClickRequired = profile.AutoSkip.IsDoubleClickRequired
+                Id               = profile.AutoSkip.Id,
+                ActivationKeys   = Map(profile.AutoSkip.ActivationKeys),
+                AutoSkipType     = profile.AutoSkip.AutoSkipType,
+                SkipKeys         = Map(profile.AutoSkip.SkipKeys),
+                Delay            = profile.AutoSkip.Delay,
+                DoubleClickDelay = profile.AutoSkip.DoubleClickDelay
             },
 
             One   = Map(profile.One),

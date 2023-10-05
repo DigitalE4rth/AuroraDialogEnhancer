@@ -42,6 +42,6 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
         EAutoSkipTypeDto.Everything,
         new List<GenericKeyDto> { new KeyboardKeyDto(32) }, // Space
         400,
-        true
+        125
     );
 }

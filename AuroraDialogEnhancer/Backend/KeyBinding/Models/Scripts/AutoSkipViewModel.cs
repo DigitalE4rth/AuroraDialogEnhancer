@@ -16,7 +16,7 @@ public class AutoSkipViewModel
 
     public int Delay { get; set; }
 
-    public bool IsDoubleClickRequired { get; set; }
+    public int DoubleClickDelay { get; set; }
 
 
     public AutoSkipViewModel(string id,
@@ -24,23 +24,21 @@ public class AutoSkipViewModel
                              EAutoSkipType    autoSkipType,
                              TriggerViewModel skipKeys,
                              int              delay,
-                             bool             isDoubleClickRequired)
+                             int              doubleClickDelay)
     {
-        Id                    = id;
-        ActivationKeys        = activationKeys;
-        AutoSkipType          = autoSkipType;
-        SkipKeys              = skipKeys;
-        Delay                 = delay;
-        IsDoubleClickRequired = isDoubleClickRequired;
+        Id               = id;
+        ActivationKeys   = activationKeys;
+        AutoSkipType     = autoSkipType;
+        SkipKeys         = skipKeys;
+        Delay            = delay;
+        DoubleClickDelay = doubleClickDelay;
     }
 
     public AutoSkipViewModel()
     {
-        Id                    = Guid.NewGuid().ToString();
-        ActivationKeys        = new ActionViewModel(new List<TriggerViewModel>(0));
-        AutoSkipType          = EAutoSkipType.Partial;
-        SkipKeys              = new TriggerViewModel();
-        Delay                 = 0;
-        IsDoubleClickRequired = false;
+        Id             = Guid.NewGuid().ToString();
+        ActivationKeys = new ActionViewModel(new List<TriggerViewModel>(0));
+        AutoSkipType   = EAutoSkipType.Partial;
+        SkipKeys       = new TriggerViewModel();
     }
 }

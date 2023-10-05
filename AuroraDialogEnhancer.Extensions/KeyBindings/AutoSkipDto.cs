@@ -15,30 +15,28 @@ public class AutoSkipDto
 
     public int Delay { get; set; }
 
-    public bool IsDoubleClickRequired { get; set; }
+    public int DoubleClickDelay { get; set; }
 
     public AutoSkipDto(string id,
                        List<List<GenericKeyDto>> activationKeys,
                        EAutoSkipTypeDto          autoSkipType,
                        List<GenericKeyDto>       skipKeys,
                        int                       delay,
-                       bool                      isDoubleClickRequired)
+                       int                       doubleClickDelay)
     {
-        Id                    = id;
-        ActivationKeys        = activationKeys;
-        AutoSkipType          = autoSkipType;
-        SkipKeys              = skipKeys;
-        Delay                 = delay;
-        IsDoubleClickRequired = isDoubleClickRequired;
+        Id               = id;
+        ActivationKeys   = activationKeys;
+        AutoSkipType     = autoSkipType;
+        SkipKeys         = skipKeys;
+        Delay            = delay;
+        DoubleClickDelay = doubleClickDelay;
     }
 
     public AutoSkipDto()
     {
-        Id                    = Guid.NewGuid().ToString();
-        ActivationKeys        = new List<List<GenericKeyDto>>(0);
-        AutoSkipType          = EAutoSkipTypeDto.Partial;
-        SkipKeys              = new List<GenericKeyDto> { new KeyboardKeyDto(32) };
-        Delay                 = 0;
-        IsDoubleClickRequired = false;
+        Id             = Guid.NewGuid().ToString();
+        ActivationKeys = new List<List<GenericKeyDto>>(0);
+        AutoSkipType   = EAutoSkipTypeDto.Everything;
+        SkipKeys       = new List<GenericKeyDto> { new KeyboardKeyDto(32) };
     }
 }

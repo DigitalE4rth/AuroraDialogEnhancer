@@ -17,30 +17,28 @@ public class AutoSkip
 
     public int Delay { get; set; }
 
-    public bool IsDoubleClickRequired { get; set; }
+    public int DoubleClickDelay { get; set; }
 
     public AutoSkip(string                 id,
                     List<List<GenericKey>> activationKeys,
                     EAutoSkipType          autoSkipType,
                     List<GenericKey>       skipKeys,
                     int                    delay,
-                    bool                   isDoubleClickRequired)
+                    int                    doubleClickDelay)
     {
-        Id                    = id;
-        ActivationKeys        = activationKeys;
-        AutoSkipType          = autoSkipType;
-        SkipKeys              = skipKeys;
-        Delay                 = delay;
-        IsDoubleClickRequired = isDoubleClickRequired;
+        Id               = id;
+        ActivationKeys   = activationKeys;
+        AutoSkipType     = autoSkipType;
+        SkipKeys         = skipKeys;
+        Delay            = delay;
+        DoubleClickDelay = doubleClickDelay;
     }
 
     public AutoSkip()
     {
-        Id                    = Guid.NewGuid().ToString();
-        ActivationKeys        = new List<List<GenericKey>>(0);
-        AutoSkipType          = EAutoSkipType.Partial;
-        SkipKeys              = new List<GenericKey>(0);
-        Delay                 = 0;
-        IsDoubleClickRequired = false;
+        Id             = Guid.NewGuid().ToString();
+        ActivationKeys = new List<List<GenericKey>>(0);
+        AutoSkipType   = EAutoSkipType.Everything;
+        SkipKeys       = new List<GenericKey>(0);
     }
 }
