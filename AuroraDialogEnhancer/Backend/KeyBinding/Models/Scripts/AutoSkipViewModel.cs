@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 
 public class AutoSkipViewModel
 {
-    public string Id { get; set; }
-
     public ActionViewModel ActivationKeys { get; set; }
 
     public EAutoSkipType AutoSkipType { get; set; }
@@ -16,27 +13,27 @@ public class AutoSkipViewModel
 
     public int Delay { get; set; }
 
+    public bool IsDoubleClickDelay { get; set; }
+
     public int DoubleClickDelay { get; set; }
 
-
-    public AutoSkipViewModel(string id,
-                             ActionViewModel  activationKeys,
+    public AutoSkipViewModel(ActionViewModel  activationKeys,
                              EAutoSkipType    autoSkipType,
                              TriggerViewModel skipKeys,
                              int              delay,
+                             bool             isDoubleClickDelay,
                              int              doubleClickDelay)
     {
-        Id               = id;
-        ActivationKeys   = activationKeys;
-        AutoSkipType     = autoSkipType;
-        SkipKeys         = skipKeys;
-        Delay            = delay;
-        DoubleClickDelay = doubleClickDelay;
+        ActivationKeys     = activationKeys;
+        AutoSkipType       = autoSkipType;
+        SkipKeys           = skipKeys;
+        Delay              = delay;
+        IsDoubleClickDelay = isDoubleClickDelay;
+        DoubleClickDelay   = doubleClickDelay;
     }
 
     public AutoSkipViewModel()
     {
-        Id             = Guid.NewGuid().ToString();
         ActivationKeys = new ActionViewModel(new List<TriggerViewModel>(0));
         AutoSkipType   = EAutoSkipType.Partial;
         SkipKeys       = new TriggerViewModel();

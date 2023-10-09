@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.Backend.KeyBinding;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -155,6 +154,8 @@ public partial class KeyBindingPage
         _keyCapsService.SetKeyCaps(CardButtonNine,  _keyBindingProfileViewModel.Nine);
         _keyCapsService.SetKeyCaps(CardButtonTen,   _keyBindingProfileViewModel.Ten);
 
+        _keyCapsService.SetKeyCaps(CardButtonAutoSkip, _keyBindingProfileViewModel.AutoSkip.ActivationKeys);
+
         foreach (CardButton cardButton in ContainerClickablePoints.Children)
         {
             _keyCapsService.SetKeyCaps(cardButton, _keyBindingProfileViewModel.ClickablePoints[(string)cardButton.Tag].ActionViewModel);
@@ -260,6 +261,13 @@ public partial class KeyBindingPage
     }
     #endregion
 
+    #region Scripts
+    private void CardButton_AutoSkip_OnClick(object sender, RoutedEventArgs e)
+    {
+        
+    }
+    #endregion
+
     #region Numeric
     private void CardButton_First_OnClick(object sender, RoutedEventArgs e)
     {
@@ -351,6 +359,8 @@ public partial class KeyBindingPage
         RemoveDuplicates(_keyBindingProfileViewModel.Eight, sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Nine,  sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Ten,   sourceVm);
+
+        RemoveDuplicates(_keyBindingProfileViewModel.AutoSkip.ActivationKeys, sourceVm);
 
         foreach (CardButton cardButton in ContainerClickablePoints.Children)
         {

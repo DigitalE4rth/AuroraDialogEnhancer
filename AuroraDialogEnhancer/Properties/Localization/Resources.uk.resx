@@ -522,6 +522,9 @@
   <data name="KeyBindAction_Select" xml:space="preserve">
     <value>Вибрати</value>
   </data>
+  <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
+    <value>Автопропуск</value>
+  </data>
   <data name="KeyBinding_Control" xml:space="preserve">
     <value>Керування</value>
   </data>
@@ -593,6 +596,9 @@
   </data>
   <data name="KeyBinding_Profile" xml:space="preserve">
     <value>Профіль</value>
+  </data>
+  <data name="KeyBinding_Scripts" xml:space="preserve">
+    <value>Скрипти</value>
   </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
     <value>Очистити</value>

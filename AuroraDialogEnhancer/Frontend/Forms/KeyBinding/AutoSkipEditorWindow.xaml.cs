@@ -10,13 +10,14 @@ using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 using AuroraDialogEnhancer.Frontend.Controls.Cards;
 using WhyOrchid.Controls;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
 {
-    public partial class TriggerEditorWindow
+    public partial class AutoSkipEditorWindow
     {
         private readonly KeyboardHookManagerRecordService _keyboardHookManagerRecordService;
         private readonly KeyCapsService                   _keyCapsService;
@@ -28,15 +29,16 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         private ActionViewModel                  _actionViewModelSnapshot;
         private TriggerViewModel                 _processingTrigger;
         private CardDropDownWithArtificialFocus? _processingCardDropDown;
+        private AutoSkipViewModel?               _autoSkipViewModel;
         private bool _isRecording;
         private bool _isCardButtonPristine;
         private readonly object _focusLock;
 
-        public TriggerEditorWindow(KeyboardHookManagerRecordService hookManagerRecordServiceBase,
-                                   KeyCapsService                   keyCapsService,
-                                   KeyInterpreterService            keyInterpreterService, 
-                                   ModifierKeysProvider             modifierKeysProvider,
-                                   MouseHookManagerRecordService    mouseHookManagerRecordService)
+        public AutoSkipEditorWindow(KeyboardHookManagerRecordService hookManagerRecordServiceBase,
+                                    KeyCapsService                   keyCapsService,
+                                    KeyInterpreterService            keyInterpreterService, 
+                                    ModifierKeysProvider             modifierKeysProvider,
+                                    MouseHookManagerRecordService    mouseHookManagerRecordService)
         {
             _keyboardHookManagerRecordService = hookManagerRecordServiceBase;
             _keyCapsService                   = keyCapsService;
@@ -60,17 +62,18 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         }
 
         #region Initialization
-        public void Initialize(string cardButtonTitle, ActionViewModel actionViewModel)
+        public void Initialize(string cardButtonTitle, ActionViewModel actionViewModel, AutoSkipViewModel autoSkipViewModel)
         {
+            _autoSkipViewModel       = autoSkipViewModel;
             _actionViewModelSnapshot = new ActionViewModel(actionViewModel);
             TextBlockActionName.Text = cardButtonTitle;
             InitializeTriggers();
         }
 
-        public ActionViewModel GetResult()
+        public (ActionViewModel, AutoSkipViewModel) GetResult()
         {
             _actionViewModelSnapshot.TriggerViewModels = _actionViewModelSnapshot.TriggerViewModels.Distinct(new TriggerViewModelComparer()).ToList();
-            return _actionViewModelSnapshot;
+            return (_actionViewModelSnapshot, _autoSkipViewModel!);
         }
 
         private void TriggerEditorWindow_Activated(object sender, EventArgs e)
@@ -97,7 +100,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
         {
             if (_actionViewModelSnapshot.TriggerViewModels.Count == 0)
             {
-                StackPanelNoTriggers.Visibility  = Visibility.Visible;
                 return;
             }
 
@@ -109,8 +111,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                 _cardDropDownButtonsDictionary.Add(cardDropDown, triggerViewModel);
                 UniformGridTriggers.Children.Add(cardDropDown);
             });
-
-            SetCardPositionStyles();
         }
 
         private CardDropDownWithArtificialFocus GenerateCardDropDown(TriggerViewModel triggerViewModel)
@@ -217,12 +217,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
 
             cardButton.SelectedIndex = -1;
         }
-
-        private void SetCardPositionStyles()
-        {
-            if (_actionViewModelSnapshot.TriggerViewModels.Count != 0) return;
-            StackPanelNoTriggers.Visibility = Visibility.Visible;
-        }
         #endregion
 
         #region Main actions
@@ -231,11 +225,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             Keyboard.ClearFocus();
 
             _isCardButtonPristine = true;
-
-            if (_actionViewModelSnapshot.TriggerViewModels.Count == 0)
-            {
-                StackPanelNoTriggers.Visibility = Visibility.Collapsed;
-            }
 
             var triggerViewModel = new TriggerViewModel();
             _actionViewModelSnapshot.TriggerViewModels.Add(triggerViewModel);
@@ -250,7 +239,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             UniformGridTriggers.Children.Add(cardDropDown);
             cardDropDown.IsArtificiallyFocused = true;
 
-            SetCardPositionStyles();
             StartRecording();
         }
 
@@ -287,7 +275,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             UniformGridTriggers.Children.Insert(index - 1, cardButton);
 
             cardButton.IsArtificiallyFocused = false;
-            SetCardPositionStyles();
         }
 
         private void ActionMoveDown(CardDropDownWithArtificialFocus cardButton)
@@ -304,7 +291,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             UniformGridTriggers.Children.Insert(index + 1, cardButton);
 
             cardButton.IsArtificiallyFocused = false;
-            SetCardPositionStyles();
         }
 
         private void ActionEdit(CardDropDownWithArtificialFocus cardButton)
@@ -326,7 +312,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             UniformGridTriggers.Children.RemoveAt(index);
 
             UniformGridTriggers.Rows = _actionViewModelSnapshot.TriggerViewModels.Count;
-            SetCardPositionStyles();
         }
         #endregion
 
@@ -447,11 +432,6 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
             {
                 ActionDelete(_processingCardDropDown);
                 _isCardButtonPristine = false;
-
-                if (_actionViewModelSnapshot.TriggerViewModels.Count == 0)
-                {
-                    StackPanelNoTriggers.Visibility = Visibility.Visible;
-                }
             }
 
             GridRecord.Visibility = Visibility.Collapsed;

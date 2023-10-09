@@ -25,7 +25,7 @@ public partial class KeyHandlerService
             ? DoAutoSkipSkipEverything 
             : DoAutoSkipPartial;
 
-        _scriptHandlerService.RegisterAction(autoSkip.Id, autoSkip.SkipKeys);
+        _scriptHandlerService.AutoClickScript.Register(autoSkip.SkipKeys);
         Register(autoSkip.ActivationKeys, OnAutoSkip);
     }
 
@@ -82,14 +82,14 @@ public partial class KeyHandlerService
 
     private void DoAutoSkipSingleClick()
     {
-        _scriptHandlerService.DoAction(_keyBindingProfile!.AutoSkip.Id);
+        _scriptHandlerService.AutoClickScript.DoAction();
     }
 
     private void DoAutoSkipDoubleClick()
     {
-        _scriptHandlerService.DoAction(_keyBindingProfile!.AutoSkip.Id);
-        Task.Delay(_keyBindingProfile.AutoSkip.DoubleClickDelay).Wait();
-        _scriptHandlerService.DoAction(_keyBindingProfile.AutoSkip.Id);
+        _scriptHandlerService.AutoClickScript.DoAction();
+        Task.Delay(_keyBindingProfile!.AutoSkip.DoubleClickDelay).Wait();
+        _scriptHandlerService.AutoClickScript.DoAction();
     }
 
     private bool DoAutoSkipPartial()

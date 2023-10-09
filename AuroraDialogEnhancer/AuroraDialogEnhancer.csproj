@@ -189,6 +189,7 @@
     <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
     <Compile Include="Backend\KeyBinding\Models\Keys\MouseKey.cs" />
     <Compile Include="Backend\KeyBinding\Models\ViewModels\TriggerViewModelComparer.cs" />
+    <Compile Include="Backend\ScriptHandlers\AutoClickScript.cs" />
     <Compile Include="Backend\ScriptHandlers\ScriptHandlerService.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
@@ -252,6 +253,9 @@
     <Compile Include="Frontend\Forms\KeyBinding\EKeyBindingSettingsAction.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\ComboBoxContent.xaml.cs">
       <DependentUpon>ComboBoxContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\KeyBinding\AutoSkipEditorWindow.xaml.cs">
+      <DependentUpon>AutoSkipEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frontend\Forms\Menu\MenuHookStateIcon.xaml.cs">
       <DependentUpon>MenuHookStateIcon.xaml</DependentUpon>
@@ -354,6 +358,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Frontend\Forms\KeyBinding\AutoSkipEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Frontend\Forms\KeyBinding\TriggerEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -451,11 +459,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InternalResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Localization\Resources.ru.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.ru.resx</DependentUpon>
-    </Compile>
     <Compile Include="AppConfig\NotifyIcon\NotifyIconService.cs" />
     <Compile Include="Backend\KeyBinding\Models\ViewModels\ActionViewModel.cs" />
     <Compile Include="Frontend\Forms\MainWindow.xaml.cs">
@@ -532,6 +535,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Localization\Resources.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Localization\Resources.uk.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.uk.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -545,16 +558,19 @@
     <EmbeddedResource Include="Properties\Localization\Resources.de.resx" />
     <EmbeddedResource Include="Properties\Localization\Resources.nl.resx" />
     <EmbeddedResource Include="Properties\Localization\Resources.resx">
+      <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Localization\Resources.ru.resx">
+      <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Localization\Resources.uk.resx" />
+    <EmbeddedResource Include="Properties\Localization\Resources.uk.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DefaultSettings.settings">

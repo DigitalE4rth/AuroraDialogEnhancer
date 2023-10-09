@@ -554,6 +554,9 @@
     <value>Select</value>
     <comment>Selecting the current option</comment>
   </data>
+  <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
+    <value>Autoskip</value>
+  </data>
   <data name="KeyBinding_Control" xml:space="preserve">
     <value>Controls</value>
   </data>
@@ -645,6 +648,9 @@
   </data>
   <data name="KeyBinding_Profile" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="KeyBinding_Scripts" xml:space="preserve">
+    <value>Scripts</value>
   </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
     <value>Clear</value>

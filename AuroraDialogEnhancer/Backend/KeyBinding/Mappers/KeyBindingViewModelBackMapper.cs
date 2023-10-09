@@ -40,12 +40,12 @@ public class KeyBindingViewModelBackMapper : IMapper<KeyBindingProfileViewModel,
             #region Scripts
             AutoSkip = new AutoSkip 
             {
-                Id               = obj.AutoSkip.Id,
-                ActivationKeys   = Map(obj.AutoSkip.ActivationKeys),
-                AutoSkipType     = obj.AutoSkip.AutoSkipType,
-                SkipKeys         = Map(obj.AutoSkip.SkipKeys),
-                Delay            = obj.AutoSkip.Delay,
-                DoubleClickDelay = obj.AutoSkip.DoubleClickDelay
+                ActivationKeys     = Map(obj.AutoSkip.ActivationKeys),
+                AutoSkipType       = obj.AutoSkip.AutoSkipType,
+                SkipKeys           = Map(obj.AutoSkip.SkipKeys),
+                Delay              = obj.AutoSkip.Delay,
+                IsDoubleClickDelay = obj.AutoSkip.IsDoubleClickDelay,
+                DoubleClickDelay   = obj.AutoSkip.DoubleClickDelay
             },
             #endregion
 

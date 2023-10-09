@@ -1294,6 +1294,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Autoskip.
+        /// </summary>
+        public static string KeyBinding_Control_AutoSkip {
+            get {
+                return ResourceManager.GetString("KeyBinding_Control_AutoSkip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fullscreen pop-up click.
         /// </summary>
         public static string KeyBinding_Control_FullScreenPopUpMouseClick {
@@ -1488,6 +1497,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         public static string KeyBinding_Profile {
             get {
                 return ResourceManager.GetString("KeyBinding_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scripts.
+        /// </summary>
+        public static string KeyBinding_Scripts {
+            get {
+                return ResourceManager.GetString("KeyBinding_Scripts", resourceCulture);
             }
         }
         

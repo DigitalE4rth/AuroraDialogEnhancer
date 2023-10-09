@@ -1,6 +1,7 @@
 ﻿<Page x:Class="AuroraDialogEnhancer.Frontend.Forms.KeyBinding.KeyBindingPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:behaviour="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:gameSelector="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.GameSelector"
       xmlns:keyBinding="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models"
@@ -9,7 +10,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
       xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-      xmlns:behaviour="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour"
       d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
       d:DesignHeight="1450"
       d:DesignWidth="800"
@@ -391,6 +391,32 @@
 
             <!--  Clickable points  -->
             <StackPanel x:Name="ContainerClickablePoints" Margin="0,0,0,25" />
+
+            <!--  Scripts  -->
+            <StackPanel x:Name="ContainerScripts" Margin="0,0,0,25">
+                <!--  Title  -->
+                <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.KeyBinding_Scripts}" />
+
+                <!--  Select  -->
+                <woControls:CardButton x:Name="CardButtonAutoSkip"
+                                       Title="{x:Static localization:Resources.KeyBinding_Control_AutoSkip}"
+                                       MinHeight="55"
+                                       Click="CardButton_AutoSkip_OnClick"
+                                       ContentForeground="Secondary">
+
+                    <woControls:CardButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.S.Forward}" Style="{StaticResource IconMedium}" />
+                        </Grid>
+                    </woControls:CardButton.LeftIcon>
+
+                    <woControls:CardButton.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.S.Settings}" Style="{StaticResource IconMedium}" />
+                        </Grid>
+                    </woControls:CardButton.RightIcon>
+                </woControls:CardButton>
+            </StackPanel>
 
             <!--  Dialog options  -->
             <StackPanel>

@@ -96,7 +96,7 @@ public partial class KeyHandlerService : IDisposable
         StopPeripheryHook();
         _keyboardHookManagerService.UnRegisterAll();
         _mouseHookManagerService.UnRegisterAll();
-        _scriptHandlerService.UnRegisterAll();
+        _scriptHandlerService.Dispose();
         InitializeKeyBinds();
         StartPeripheryHook();
     }

@@ -60,13 +60,13 @@ public partial class DebugPage
         //_gameCvDialogOptionFinder = new GameCvDialogOptionFinder();
         InitializeComponent();
 
-        _scriptHandlerService.RegisterAction("a", new List<GenericKey>{new KeyboardKey(0xA2), new KeyboardKey(65)});
+        _scriptHandlerService.AutoClickScript.Register(new List<GenericKey>{new KeyboardKey(0xA2), new KeyboardKey(65)});
     }
 
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
     {
         Task.Delay(2000).Wait();
-        _scriptHandlerService.DoAction("a");
+        _scriptHandlerService.AutoClickScript.DoAction();
         //_updaterService.CheckForUpdateManual();
         //_resolutionsTest.ForEach(path => Count($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{path}.png"));
         //Count();

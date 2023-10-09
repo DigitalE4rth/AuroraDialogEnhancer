@@ -111,8 +111,9 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddSingleton<ScreenCaptureService>();
         #endregion
 
-        #region Script Gandlers
+        #region Script Handlers
         serviceCollection.AddSingleton<ScriptHandlerService>();
+        serviceCollection.AddTransient<AutoClickScript>();
         #endregion
 
         #region Utils
