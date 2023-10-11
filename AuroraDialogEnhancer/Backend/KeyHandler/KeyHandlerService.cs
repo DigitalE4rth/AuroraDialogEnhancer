@@ -177,7 +177,7 @@ public partial class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.Ten,   OnTenPress);
         Register(_keyBindingProfile.ClickablePoints);
 
-        RegisterAutoSkip(_keyBindingProfile.AutoSkip);
+        RegisterAutoSkip(_keyBindingProfile.AutoSkipConfig);
 
         _mouseHookManagerService.RegisterPrimaryClick(OnMousePrimaryClick);
     }

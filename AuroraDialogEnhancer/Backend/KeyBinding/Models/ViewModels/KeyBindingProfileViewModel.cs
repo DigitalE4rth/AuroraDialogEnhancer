@@ -30,7 +30,7 @@ public class KeyBindingProfileViewModel
     #endregion
 
     #region Scripts
-    public AutoSkipViewModel AutoSkip;
+    public AutoSkipConfigViewModel AutoSkipConfig;
     #endregion
 
     #region Numeric
@@ -71,7 +71,7 @@ public class KeyBindingProfileViewModel
         #endregion
 
         #region Scripts
-        AutoSkip = new AutoSkipViewModel();
+        AutoSkipConfig = new AutoSkipConfigViewModel();
         #endregion
 
         #region Numeric

@@ -4,28 +4,33 @@
         xmlns:cards="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.Cards"
         xmlns:converters="clr-namespace:AuroraDialogEnhancer.Frontend.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:keyBinding="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.KeyBinding"
         xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
+        xmlns:scripts="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts"
+        xmlns:validators="clr-namespace:AuroraDialogEnhancer.Frontend.Validators"
         xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
         xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-        Title="{x:Static localization:Resources.TriggerEditor_Title}"
+        Title="{x:Static localization:Resources.KeyBinding_Control_AutoSkip}"
+        d:DataContext="{d:DesignInstance Type=keyBinding:AutoSkipDataContext}"
         Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
         RenderOptions.BitmapScalingMode="NearestNeighbor"
         mc:Ignorable="d">
     <Window.Resources>
         <converters:WindowScaleAdjuster x:Key="WindowScaleAdjuster" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
     <Window.Width>
         <Binding Converter="{StaticResource WindowScaleAdjuster}"
-                 ConverterParameter="385"
+                 ConverterParameter="470"
                  Mode="OneTime"
                  Path="Width"
                  RelativeSource="{RelativeSource Self}" />
     </Window.Width>
     <Window.Height>
         <Binding Converter="{StaticResource WindowScaleAdjuster}"
-                 ConverterParameter="300"
+                 ConverterParameter="465"
                  Mode="OneTime"
                  Path="Height"
                  RelativeSource="{RelativeSource Self}" />
@@ -44,82 +49,228 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <woControls:ScrollViewer Grid.Row="0"
+                                     IsInnerScrollbarsArrangement="True"
+                                     VerticalScrollBarVisibility="Auto">
 
-                <Grid Grid.Row="0" Margin="25,10,25,15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Column="0"
-                                VerticalAlignment="Center"
-                                Orientation="Horizontal">
+                    <Grid Grid.Row="0" Margin="25,10,25,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                        <TextBlock x:Name="TextBlockActionName"
-                                   d:Text="d:ActionName"
-                                   Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
-                                   Style="{StaticResource FontStyleTitleLarge}" />
-                    </StackPanel>
+                        <StackPanel Grid.Column="0"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
 
-                    <woControls:Button x:Name="ButtonAddTrigger"
-                                       Grid.Column="1"
-                                       Height="30"
-                                       Margin="5,0,0,0"
-                                       Padding="5,0"
-                                       VerticalAlignment="Center"
-                                       Click="Button_AddTrigger_OnClick"
-                                       Style="{StaticResource ButtonText}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{x:Static localization:Resources.TriggerEditor_Triggers}"
+                                       Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
+                                       Style="{StaticResource FontStyleTitleLarge}" />
+                        </StackPanel>
 
-                            <woControls:PathIcon Grid.Column="0"
-                                                 Width="14"
-                                                 Height="14"
-                                                 Margin="0,0,8,0"
-                                                 VerticalAlignment="Center"
-                                                 Data="{StaticResource I.S.Add}" />
+                        <woControls:Button x:Name="ButtonAddTrigger"
+                                           Grid.Column="1"
+                                           Height="30"
+                                           Margin="5,0,0,0"
+                                           Padding="5,0"
+                                           VerticalAlignment="Center"
+                                           Click="Button_AddTrigger_OnClick"
+                                           Style="{StaticResource ButtonText}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="1"
-                                       VerticalAlignment="Center"
-                                       Style="{StaticResource FontStyleTitleLarge}"
-                                       Text="{x:Static localization:Resources.TriggerEditor_AddNew}" />
-                        </Grid>
-                    </woControls:Button>
+                                <woControls:PathIcon Grid.Column="0"
+                                                     Width="14"
+                                                     Height="14"
+                                                     Margin="0,0,8,0"
+                                                     VerticalAlignment="Center"
+                                                     Data="{StaticResource I.S.Add}" />
+
+                                <TextBlock Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Style="{StaticResource FontStyleTitleLarge}"
+                                           Text="{x:Static localization:Resources.TriggerEditor_AddNew}" />
+                            </Grid>
+                        </woControls:Button>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="25,0,25,15" VerticalAlignment="Top">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <UniformGrid x:Name="UniformGridTriggers"
+                                             Grid.Row="0"
+                                             Rows="0" />
+
+                                <StackPanel Grid.Row="1">
+
+                                    <TextBlock Margin="0,15,0,15"
+                                               Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
+                                               Style="{StaticResource FontStyleTitleLarge}"
+                                               Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Config}" />
+
+                                    <!--  Action Keys  -->
+                                    <cards:CardDropDownWithArtificialFocus x:Name="CardButtonAction"
+                                                                           Title="{x:Static localization:Resources.KeyBinding_AutoSkip_Action}"
+                                                                           MinHeight="45"
+                                                                           Margin="0,0,0,5"
+                                                                           HorizontalContentAlignment="Center">
+
+                                        <cards:CardDropDownWithArtificialFocus.LeftIcon>
+                                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                                <woControls:PathIcon Data="{StaticResource I.R.Keyboard}" Style="{StaticResource IconLarge}" />
+                                            </Grid>
+                                        </cards:CardDropDownWithArtificialFocus.LeftIcon>
+
+                                        <cards:CardDropDownWithArtificialFocus.RightIcon>
+                                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                                <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
+                                                                     Data="{StaticResource I.R.ExpandMore}"
+                                                                     Style="{StaticResource IconSmall}" />
+                                            </Grid>
+                                        </cards:CardDropDownWithArtificialFocus.RightIcon>
+                                    </cards:CardDropDownWithArtificialFocus>
+
+                                    <!--  Skip Type  -->
+                                    <woControls:CardComboBox x:Name="ComboBoxSkipMode"
+                                                             Title="{x:Static localization:Resources.KeyBinding_AutoSkip_Type_Title}"
+                                                             MinHeight="45"
+                                                             Margin="0,0,0,5"
+                                                             d:SelectedIndex="0"
+                                                             ContentForeground="Secondary">
+
+                                        <woControls:CardComboBox.LeftIcon>
+                                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                                <woControls:PathIcon Data="{StaticResource I.S.List}" Style="{StaticResource IconLarge}" />
+                                            </Grid>
+                                        </woControls:CardComboBox.LeftIcon>
+
+                                        <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Type_Everything}" Tag="{x:Static scripts:EAutoSkipType.Everything}" />
+                                        <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Type_Partial}" Tag="{x:Static scripts:EAutoSkipType.Partial}" />
+
+                                        <woControls:CardComboBox.RightIcon>
+                                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                                                <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
+                                                                     Data="{StaticResource I.R.ExpandMore}"
+                                                                     Style="{StaticResource IconSmall}" />
+                                            </Grid>
+                                        </woControls:CardComboBox.RightIcon>
+                                    </woControls:CardComboBox>
+
+                                    <!--  Delay  -->
+                                    <woControls:CardElement MinHeight="45"
+                                                            Margin="0,0,0,5"
+                                                            VerticalContentAlignment="Stretch"
+                                                            ContentMargin="0">
+
+                                        <woControls:CardElement.Title>
+                                            <TextBlock>
+                                                <Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Title}" /><Run Text=" (" /><Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Milliseconds}" /><Run Text=")" />
+                                            </TextBlock>
+                                        </woControls:CardElement.Title>
+
+                                        <woControls:CardElement.LeftIcon>
+                                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                                <woControls:PathIcon Data="{StaticResource I.R.Hourglass}" Style="{StaticResource IconLarge}" />
+                                            </Grid>
+                                        </woControls:CardElement.LeftIcon>
+
+                                        <woControls:TextBox x:Name="TextElementDelay"
+                                                            MinWidth="100"
+                                                            Margin="0,2,0,2"
+                                                            VerticalContentAlignment="Center"
+                                                            d:Text="d:DELAY"
+                                                            Validation.ErrorTemplate="{x:Null}">
+
+                                            <TextBox.Resources>
+                                                <Style BasedOn="{StaticResource {x:Type woControls:TextBox}}" TargetType="{x:Type woControls:TextBox}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property="Validation.HasError" Value="true">
+                                                            <Setter Property="IsError" Value="True" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBox.Resources>
+
+                                            <woControls:TextBox.Text>
+                                                <Binding Path="Delay" UpdateSourceTrigger="PropertyChanged">
+                                                    <Binding.ValidationRules>
+                                                        <validators:UnsignedIntegerValidator />
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </woControls:TextBox.Text>
+                                        </woControls:TextBox>
+
+                                    </woControls:CardElement>
+
+                                    <!--  Double Click Delay  -->
+                                    <woControls:CardElement x:Name="ElementDoubleClickDelay"
+                                                            MinHeight="45"
+                                                            Margin="0,0,0,5"
+                                                            Padding="15,0,15,0"
+                                                            VerticalContentAlignment="Stretch"
+                                                            ContentMargin="0"
+                                                            Description="{x:Static localization:Resources.KeyBinding_AutoSkip_DoubleClickDelay_Description}"
+                                                            TitleDescriptionMargin="0"
+                                                            Visibility="{Binding Path=IsDoubleClickDelay, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                                        <woControls:CardElement.Title>
+                                            <TextBlock>
+                                                <Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_DoubleClickDelay_Title}" /><Run Text=" (" /><Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Milliseconds}" /><Run Text=")" />
+                                            </TextBlock>
+                                        </woControls:CardElement.Title>
+
+                                        <woControls:CardElement.LeftIcon>
+                                            <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                                <woControls:PathIcon Data="{StaticResource I.R.Hourglass}" Style="{StaticResource IconLarge}" />
+                                            </Grid>
+                                        </woControls:CardElement.LeftIcon>
+
+                                        <woControls:TextBox x:Name="TextElementDoubleClickDelay"
+                                                            MinWidth="100"
+                                                            Margin="0,7,0,7"
+                                                            VerticalContentAlignment="Center"
+                                                            d:Text="d:DOUBLE CLICK DELAY"
+                                                            Validation.ErrorTemplate="{x:Null}">
+
+                                            <TextBox.Resources>
+                                                <Style BasedOn="{StaticResource {x:Type woControls:TextBox}}" TargetType="{x:Type woControls:TextBox}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property="Validation.HasError" Value="true">
+                                                            <Setter Property="IsError" Value="True" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBox.Resources>
+
+                                            <woControls:TextBox.Text>
+                                                <Binding Path="DoubleClickDelay" UpdateSourceTrigger="PropertyChanged">
+                                                    <Binding.ValidationRules>
+                                                        <validators:UnsignedIntegerValidator />
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </woControls:TextBox.Text>
+                                        </woControls:TextBox>
+
+                                    </woControls:CardElement>
+
+                                </StackPanel>
+                            </Grid>
+
                 </Grid>
 
-                <Grid Grid.Row="1">
-
-                    <woControls:ScrollViewer Grid.Row="0"
-                                             IsInnerScrollbarsArrangement="True"
-                                             VerticalScrollBarVisibility="Auto">
-
-                        <Grid Margin="25,0" VerticalAlignment="Top">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <UniformGrid x:Name="UniformGridTriggers"
-                                         Grid.Row="0"
-                                         Rows="0" />
-
-                            <StackPanel Grid.Row="1" />
-                        </Grid>
-
-
-                    </woControls:ScrollViewer>
-
-
-                </Grid>
-            </Grid>
+            </woControls:ScrollViewer>
 
             <Border Grid.Row="1"
                     Height="1"

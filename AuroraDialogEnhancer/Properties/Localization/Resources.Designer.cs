@@ -1276,6 +1276,87 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Action {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Config.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Config {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ms.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Delay_Milliseconds {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Delay_Milliseconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click delay.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Delay_Title {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Delay_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For skipping the text appearance.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_DoubleClickDelay_Description {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_DoubleClickDelay_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double click delay.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_DoubleClickDelay_Title {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_DoubleClickDelay_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Everything.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Type_Everything {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Type_Everything", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Partial.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Type_Partial {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Type_Partial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip mode.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Type_Title {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Type_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Controls.
         /// </summary>
         public static string KeyBinding_Control {

@@ -5,7 +5,7 @@ using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 
 [Serializable]
-public class AutoSkip
+public class AutoSkipConfig
 {
     public List<List<GenericKey>> ActivationKeys { get; set; }
 
@@ -19,12 +19,12 @@ public class AutoSkip
 
     public int DoubleClickDelay { get; set; }
 
-    public AutoSkip(List<List<GenericKey>> activationKeys,
-                    EAutoSkipType          autoSkipType,
-                    List<GenericKey>       skipKeys,
-                    int                    delay,
-                    bool                   isDoubleClickDelay,
-                    int                    doubleClickDelay)
+    public AutoSkipConfig(List<List<GenericKey>> activationKeys,
+                          EAutoSkipType          autoSkipType,
+                          List<GenericKey>       skipKeys,
+                          int                    delay,
+                          bool                   isDoubleClickDelay,
+                          int                    doubleClickDelay)
     {
         ActivationKeys     = activationKeys;
         AutoSkipType       = autoSkipType;
@@ -34,7 +34,7 @@ public class AutoSkip
         DoubleClickDelay   = doubleClickDelay;
     }
 
-    public AutoSkip()
+    public AutoSkipConfig()
     {
         ActivationKeys = new List<List<GenericKey>>(0);
         AutoSkipType   = EAutoSkipType.Everything;

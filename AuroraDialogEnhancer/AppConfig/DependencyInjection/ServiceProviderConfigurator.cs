@@ -131,7 +131,8 @@ internal class ServiceProviderConfigurator
 
         serviceCollection.AddTransient<KeyBindingPage>();
         serviceCollection.AddTransient<TriggerEditorWindow>();
-
+        serviceCollection.AddTransient<AutoSkipEditorWindow>();
+        
         serviceCollection.AddTransient<MainPage>();
 
         serviceCollection.AddTransient<MenuPage>();

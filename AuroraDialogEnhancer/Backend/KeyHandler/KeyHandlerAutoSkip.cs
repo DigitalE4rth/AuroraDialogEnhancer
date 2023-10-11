@@ -13,20 +13,20 @@ public partial class KeyHandlerService
     private Action?     _skipClickDelegate;
     private Func<bool>? _skipDialogDelegate;
 
-    private void RegisterAutoSkip(AutoSkip autoSkip)
+    private void RegisterAutoSkip(AutoSkipConfig autoSkipConfig)
     {
-        if (autoSkip.Delay == 0 || autoSkip.ActivationKeys.Count == 0) return;
+        if (autoSkipConfig.Delay == 0 || autoSkipConfig.ActivationKeys.Count == 0) return;
 
-        _skipClickDelegate = _keyBindingProfile!.AutoSkip.DoubleClickDelay == 0
+        _skipClickDelegate = _keyBindingProfile!.AutoSkipConfig.DoubleClickDelay == 0
             ? DoAutoSkipSingleClick
             : DoAutoSkipDoubleClick;
 
-        _skipDialogDelegate = _keyBindingProfile.AutoSkip.AutoSkipType == EAutoSkipType.Everything 
+        _skipDialogDelegate = _keyBindingProfile.AutoSkipConfig.AutoSkipType == EAutoSkipType.Everything 
             ? DoAutoSkipSkipEverything 
             : DoAutoSkipPartial;
 
-        _scriptHandlerService.AutoClickScript.Register(autoSkip.SkipKeys);
-        Register(autoSkip.ActivationKeys, OnAutoSkip);
+        _scriptHandlerService.AutoClickScript.Register(autoSkipConfig.SkipKeys);
+        Register(autoSkipConfig.ActivationKeys, OnAutoSkip);
     }
 
     private void OnAutoSkip()
@@ -54,7 +54,7 @@ public partial class KeyHandlerService
             if (!IsDialogOptionsPresent())
             {
                 _skipClickDelegate!.Invoke();
-                Task.Delay(_keyBindingProfile!.AutoSkip.Delay).Wait();
+                Task.Delay(_keyBindingProfile!.AutoSkipConfig.Delay).Wait();
                 continue;
             }
 
@@ -88,7 +88,7 @@ public partial class KeyHandlerService
     private void DoAutoSkipDoubleClick()
     {
         _scriptHandlerService.AutoClickScript.DoAction();
-        Task.Delay(_keyBindingProfile!.AutoSkip.DoubleClickDelay).Wait();
+        Task.Delay(_keyBindingProfile!.AutoSkipConfig.DoubleClickDelay).Wait();
         _scriptHandlerService.AutoClickScript.DoAction();
     }
 

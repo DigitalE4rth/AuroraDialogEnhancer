@@ -554,8 +554,32 @@
     <value>Select</value>
     <comment>Selecting the current option</comment>
   </data>
-  <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
-    <value>Autoskip</value>
+  <data name="KeyBinding_AutoSkip_Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Config" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Delay_Milliseconds" xml:space="preserve">
+    <value>ms</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Delay_Title" xml:space="preserve">
+    <value>Click delay</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_DoubleClickDelay_Description" xml:space="preserve">
+    <value>For skipping the text appearance</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_DoubleClickDelay_Title" xml:space="preserve">
+    <value>Double click delay</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Type_Everything" xml:space="preserve">
+    <value>Everything</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Type_Partial" xml:space="preserve">
+    <value>Partial</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Type_Title" xml:space="preserve">
+    <value>Skip mode</value>
   </data>
   <data name="KeyBinding_Control" xml:space="preserve">
     <value>Controls</value>
@@ -563,6 +587,9 @@
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
     <value>Auto-play</value>
     <comment>Subject</comment>
+  </data>
+  <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
+    <value>Autoskip</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Fullscreen pop-up click</value>

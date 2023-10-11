@@ -522,14 +522,41 @@
   <data name="KeyBindAction_Select" xml:space="preserve">
     <value>Вибрати</value>
   </data>
-  <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
-    <value>Автопропуск</value>
+  <data name="KeyBinding_AutoSkip_Action" xml:space="preserve">
+    <value>Дія</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Config" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Delay_Milliseconds" xml:space="preserve">
+    <value>мс</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Delay_Title" xml:space="preserve">
+    <value>Затримка натискань</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_DoubleClickDelay_Description" xml:space="preserve">
+    <value>Для пропуску появи тексту</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_DoubleClickDelay_Title" xml:space="preserve">
+    <value>Затримка подвійного натискання</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Type_Everything" xml:space="preserve">
+    <value>Усе</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Type_Partial" xml:space="preserve">
+    <value>Частково</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Type_Title" xml:space="preserve">
+    <value>Режим пропуску</value>
   </data>
   <data name="KeyBinding_Control" xml:space="preserve">
     <value>Керування</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
     <value>Авто-відтворення</value>
+  </data>
+  <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
+    <value>Автопропуск</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Натискання на повноекранне спливаюче вікно</value>

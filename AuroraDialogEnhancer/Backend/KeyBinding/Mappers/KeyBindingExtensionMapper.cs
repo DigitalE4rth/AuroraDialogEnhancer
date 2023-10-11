@@ -39,7 +39,7 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
             #endregion
 
             #region Scripts
-            AutoSkip = new AutoSkip
+            AutoSkipConfig = new AutoSkipConfig
             {
                 ActivationKeys     = Map(obj.AutoSkipDto.ActivationKeys),
                 AutoSkipType       = (EAutoSkipType) obj.AutoSkipDto.AutoSkipType,

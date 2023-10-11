@@ -68,7 +68,7 @@ public partial class KeyBindingPage
     public void InitializeProfileValues()
     {
         ToggleCycleThrough.IsChecked = _keyBindingProfileViewModel.IsCycleThrough;
-        ToggleHideCursor.IsChecked = _keyBindingProfileViewModel.IsCursorHideOnManualClick;
+        ToggleHideCursor.IsChecked   = _keyBindingProfileViewModel.IsCursorHideOnManualClick;
 
         var singleBehaviour = ComboBoxSingleBehaviour.Items.OfType<ComboBoxItem>().First(item => (ESingleDialogOptionBehaviour)item.Tag == _keyBindingProfileViewModel.SingleDialogOptionBehaviour);
         ComboBoxSingleBehaviour.SelectedItem = singleBehaviour;
@@ -154,7 +154,7 @@ public partial class KeyBindingPage
         _keyCapsService.SetKeyCaps(CardButtonNine,  _keyBindingProfileViewModel.Nine);
         _keyCapsService.SetKeyCaps(CardButtonTen,   _keyBindingProfileViewModel.Ten);
 
-        _keyCapsService.SetKeyCaps(CardButtonAutoSkip, _keyBindingProfileViewModel.AutoSkip.ActivationKeys);
+        _keyCapsService.SetKeyCaps(CardButtonAutoSkip, _keyBindingProfileViewModel.AutoSkipConfig.ActivationKeys);
 
         foreach (CardButton cardButton in ContainerClickablePoints.Children)
         {
@@ -264,7 +264,19 @@ public partial class KeyBindingPage
     #region Scripts
     private void CardButton_AutoSkip_OnClick(object sender, RoutedEventArgs e)
     {
-        
+        var window = AppServices.ServiceProvider.GetRequiredService<AutoSkipEditorWindow>();
+        window.Initialize(_keyBindingProfileViewModel.AutoSkipConfig);
+
+        if (window.ShowDialog() != true) return;
+
+        var result = window.GetResult();
+
+        RemoveDuplicates(result.ActivationKeys);
+
+        _keyBindingProfileViewModel.AutoSkipConfig = result;
+        _keyBindingProfileService.SaveAndApplyIfHookIsActive(Properties.Settings.Default.App_HookSettings_SelectedGameId, _keyBindingProfileViewModel);
+
+        InitializeKeyCaps();
     }
     #endregion
 
@@ -360,7 +372,7 @@ public partial class KeyBindingPage
         RemoveDuplicates(_keyBindingProfileViewModel.Nine,  sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Ten,   sourceVm);
 
-        RemoveDuplicates(_keyBindingProfileViewModel.AutoSkip.ActivationKeys, sourceVm);
+        RemoveDuplicates(_keyBindingProfileViewModel.AutoSkipConfig.ActivationKeys, sourceVm);
 
         foreach (CardButton cardButton in ContainerClickablePoints.Children)
         {

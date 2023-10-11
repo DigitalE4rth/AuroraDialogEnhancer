@@ -42,7 +42,7 @@ public class KeyBindingProfile
     #endregion
 
     #region Scripts
-    public virtual AutoSkip AutoSkip { get; set; } = new();
+    public virtual AutoSkipConfig AutoSkipConfig { get; set; } = new();
     #endregion
 
     #region Numeric

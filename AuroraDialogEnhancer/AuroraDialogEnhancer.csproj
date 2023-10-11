@@ -168,8 +168,8 @@
     <Compile Include="Backend\KeyHandler\KeyHandlerAutoSkip.cs" />
     <Compile Include="Backend\PeripheralEmulators\KeyboardEmulationService.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\ClickablePrecisePointMapper.cs" />
-    <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkipViewModel.cs" />
-    <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkip.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkipConfigViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkipConfig.cs" />
     <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePoint.cs" />
     <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePointVm.cs" />
     <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePrecisePoint.cs" />
@@ -192,6 +192,7 @@
     <Compile Include="Backend\ScriptHandlers\AutoClickScript.cs" />
     <Compile Include="Backend\ScriptHandlers\ScriptHandlerService.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
+    <Compile Include="Frontend\Controls\Cards\CardButtonWithArtificialFocus.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
     <Compile Include="Frontend\Controls\ColorPicker\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
@@ -250,6 +251,7 @@
     <Compile Include="Frontend\Forms\Debug\DebugPage.xaml.cs">
       <DependentUpon>DebugPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frontend\Forms\KeyBinding\AutoSkipDataContext.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\EKeyBindingSettingsAction.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\ComboBoxContent.xaml.cs">
       <DependentUpon>ComboBoxContent.xaml</DependentUpon>
@@ -449,6 +451,7 @@
     </Compile>
     <Compile Include="Frontend\Forms\KeyBinding\KeyCapsService.cs" />
     <Compile Include="Backend\Extensions\ExtensionConfigViewModel.cs" />
+    <Compile Include="Frontend\Validators\UnsignedIntegerValidator.cs" />
     <Compile Include="Properties\DefaultSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -484,6 +487,10 @@
     <Page Include="Frontend\Forms\Utils\TextInputResetDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Styles\CardButtonArtificialFocus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Frontend\Styles\CardButtonWithCustomBackground.xaml">
       <Generator>MSBuild:Compile</Generator>
