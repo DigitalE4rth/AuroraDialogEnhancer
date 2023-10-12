@@ -565,7 +565,7 @@
     <value>Авто-воспроизведение</value>
   </data>
   <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
-    <value>Автопропуск</value>
+    <value>Авто пропуск</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Нажатие на полноэкранное всплывающее окно</value>

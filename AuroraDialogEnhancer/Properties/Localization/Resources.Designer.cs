@@ -1402,7 +1402,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autoskip.
+        ///   Looks up a localized string similar to Auto skip.
         /// </summary>
         public static string KeyBinding_Control_AutoSkip {
             get {

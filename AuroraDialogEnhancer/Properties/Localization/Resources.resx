@@ -598,7 +598,7 @@
     <comment>Subject</comment>
   </data>
   <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
-    <value>Autoskip</value>
+    <value>Auto skip</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Fullscreen pop-up click</value>
