@@ -16,7 +16,7 @@ public partial class KeyHandlerService
 
     private void RegisterAutoSkip(AutoSkipConfig autoSkipConfig)
     {
-        if (autoSkipConfig.ActivationKeys.Count == 0) return;
+        if (autoSkipConfig.ActivationKeys.Count == 0 || autoSkipConfig.SkipKeys.Count == 0) return;
 
         _skipClickDelegate = _keyBindingProfile!.AutoSkipConfig.DoubleClickDelay == 0
             ? DoAutoSkipSingleClick
