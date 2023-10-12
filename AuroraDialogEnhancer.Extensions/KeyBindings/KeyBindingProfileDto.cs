@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Xml.Serialization;
+using AuroraDialogEnhancerExtensions.KeyBindings.Behaviour;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
+using AuroraDialogEnhancerExtensions.KeyBindings.Scripts;
 
 namespace AuroraDialogEnhancerExtensions.KeyBindings;
 
@@ -28,7 +31,7 @@ public abstract class KeyBindingProfileDto
     #endregion
 
     #region Scripts
-    public virtual AutoSkipDto AutoSkipDto { get; set; } = new();
+    public virtual AutoSkipConfigDto AutoSkipConfigDto { get; set; } = new();
     #endregion
 
     #region Numeric

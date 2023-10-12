@@ -165,6 +165,7 @@
     <Compile Include="Backend\Hooks\Game\HookedGameData.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameDataProvider.cs" />
     <Compile Include="Backend\KeyBinding\Models\Keys\SplitKeyStruct.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\ESkipStartCondition.cs" />
     <Compile Include="Backend\KeyHandler\KeyHandlerAutoSkip.cs" />
     <Compile Include="Backend\PeripheralEmulators\KeyboardEmulationService.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\ClickablePrecisePointMapper.cs" />
@@ -173,7 +174,7 @@
     <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePoint.cs" />
     <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePointVm.cs" />
     <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePrecisePoint.cs" />
-    <Compile Include="Backend\KeyBinding\Models\Scripts\EAutoSkipType.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\ESkipMode.cs" />
     <Compile Include="Backend\KeyBinding\Models\Behaviour\ECursorBehaviour.cs" />
     <Compile Include="Backend\KeyBinding\Models\Behaviour\EHighMouseKey.cs" />
     <Compile Include="Backend\KeyBinding\Models\Behaviour\ENumericActionBehaviour.cs" />

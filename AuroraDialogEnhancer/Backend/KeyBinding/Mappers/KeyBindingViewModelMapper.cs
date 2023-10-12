@@ -8,7 +8,7 @@ using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
-using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 
@@ -47,7 +47,8 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
             AutoSkipConfig = new AutoSkipConfigViewModel
             {
                 ActivationKeys     = Map(profile.AutoSkipConfig.ActivationKeys),
-                AutoSkipType       = profile.AutoSkipConfig.AutoSkipType,
+                SkipMode           = profile.AutoSkipConfig.SkipMode,
+                StartCondition     = profile.AutoSkipConfig.StartCondition,
                 SkipKeys           = Map(profile.AutoSkipConfig.SkipKeys),
                 Delay              = profile.AutoSkipConfig.Delay,
                 IsDoubleClickDelay = profile.AutoSkipConfig.IsDoubleClickDelay,

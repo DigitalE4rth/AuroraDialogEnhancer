@@ -540,14 +540,23 @@
   <data name="KeyBinding_AutoSkip_DoubleClickDelay_Title" xml:space="preserve">
     <value>Задержка двойного нажатия</value>
   </data>
-  <data name="KeyBinding_AutoSkip_Type_Everything" xml:space="preserve">
-    <value>Всё</value>
+  <data name="KeyBinding_AutoSkip_Mode_Everything" xml:space="preserve">
+    <value>Текст и ответы</value>
   </data>
-  <data name="KeyBinding_AutoSkip_Type_Partial" xml:space="preserve">
-    <value>Частично</value>
+  <data name="KeyBinding_AutoSkip_Mode_Text" xml:space="preserve">
+    <value>Только текст</value>
   </data>
-  <data name="KeyBinding_AutoSkip_Type_Title" xml:space="preserve">
+  <data name="KeyBinding_AutoSkip_Mode_Title" xml:space="preserve">
     <value>Режим пропуска</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Cursor" xml:space="preserve">
+    <value>Отображение курсора</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Speaker" xml:space="preserve">
+    <value>Отображение имени говорящего</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Title" xml:space="preserve">
+    <value>Условие запуска</value>
   </data>
   <data name="KeyBinding_Control" xml:space="preserve">
     <value>Управление</value>

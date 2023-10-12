@@ -1,6 +1,7 @@
 ﻿using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 

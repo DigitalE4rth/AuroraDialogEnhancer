@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
 
-namespace AuroraDialogEnhancerExtensions.KeyBindings;
+namespace AuroraDialogEnhancerExtensions.KeyBindings.Models;
 
 internal class KeyBindingProfileProviderEmpty : IKeyBindingProfileProviderDto
 {

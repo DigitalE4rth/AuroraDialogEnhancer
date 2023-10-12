@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using AuroraDialogEnhancerExtensions.Content;
-using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.Models;
 using AuroraDialogEnhancerExtensions.Location;
 using AuroraDialogEnhancerExtensions.Proxy;
 

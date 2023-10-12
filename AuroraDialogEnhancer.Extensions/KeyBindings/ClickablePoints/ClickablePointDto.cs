@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
-namespace AuroraDialogEnhancerExtensions.KeyBindings;
+namespace AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
 
 public class ClickablePointDto
 {

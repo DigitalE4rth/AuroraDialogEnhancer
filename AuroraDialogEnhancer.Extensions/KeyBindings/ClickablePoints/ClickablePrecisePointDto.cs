@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace AuroraDialogEnhancerExtensions.KeyBindings;
+namespace AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
 
 public class ClickablePrecisePointDto
 {

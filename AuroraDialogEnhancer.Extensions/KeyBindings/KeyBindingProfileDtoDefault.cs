@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
 namespace AuroraDialogEnhancerExtensions.KeyBindings;
 public abstract class KeyBindingProfileDtoDefault : KeyBindingProfileDto

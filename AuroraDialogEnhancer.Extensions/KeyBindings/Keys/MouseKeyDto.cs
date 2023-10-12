@@ -1,4 +1,6 @@
-﻿namespace AuroraDialogEnhancerExtensions.KeyBindings;
+﻿using AuroraDialogEnhancerExtensions.KeyBindings.Behaviour;
+
+namespace AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
 public record MouseKeyDto : GenericKeyDto
 {

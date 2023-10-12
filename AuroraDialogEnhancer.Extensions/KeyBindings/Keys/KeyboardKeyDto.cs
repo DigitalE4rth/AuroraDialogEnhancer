@@ -1,4 +1,4 @@
-﻿namespace AuroraDialogEnhancerExtensions.KeyBindings;
+﻿namespace AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
 public record KeyboardKeyDto : GenericKeyDto
 {

@@ -9,7 +9,9 @@ public class AutoSkipConfig
 {
     public List<List<GenericKey>> ActivationKeys { get; set; }
 
-    public EAutoSkipType AutoSkipType { get; set; }
+    public ESkipMode SkipMode { get; set; }
+
+    public ESkipStartCondition StartCondition { get; set; }
 
     public List<GenericKey> SkipKeys { get; set; }
 
@@ -20,14 +22,16 @@ public class AutoSkipConfig
     public int DoubleClickDelay { get; set; }
 
     public AutoSkipConfig(List<List<GenericKey>> activationKeys,
-                          EAutoSkipType          autoSkipType,
+                          ESkipMode              skipMode,
+                          ESkipStartCondition    startCondition,
                           List<GenericKey>       skipKeys,
                           int                    delay,
                           bool                   isDoubleClickDelay,
                           int                    doubleClickDelay)
     {
         ActivationKeys     = activationKeys;
-        AutoSkipType       = autoSkipType;
+        SkipMode           = skipMode;
+        StartCondition     = startCondition;
         SkipKeys           = skipKeys;
         Delay              = delay;
         IsDoubleClickDelay = isDoubleClickDelay;
@@ -37,7 +41,8 @@ public class AutoSkipConfig
     public AutoSkipConfig()
     {
         ActivationKeys = new List<List<GenericKey>>(0);
-        AutoSkipType   = EAutoSkipType.Everything;
+        SkipMode       = ESkipMode.Everything;
+        StartCondition = ESkipStartCondition.Speaker;
         SkipKeys       = new List<GenericKey>(0);
     }
 }

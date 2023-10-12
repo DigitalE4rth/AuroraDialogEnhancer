@@ -7,6 +7,8 @@ using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 
@@ -41,12 +43,13 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
             #region Scripts
             AutoSkipConfig = new AutoSkipConfig
             {
-                ActivationKeys     = Map(obj.AutoSkipDto.ActivationKeys),
-                AutoSkipType       = (EAutoSkipType) obj.AutoSkipDto.AutoSkipType,
-                SkipKeys           = Map(obj.AutoSkipDto.SkipKeys),
-                Delay              = obj.AutoSkipDto.Delay,
-                IsDoubleClickDelay = obj.AutoSkipDto.IsDoubleClickDelay,
-                DoubleClickDelay   = obj.AutoSkipDto.DoubleClickDelay
+                ActivationKeys     = Map(obj.AutoSkipConfigDto.ActivationKeys),
+                SkipMode           = (ESkipMode) obj.AutoSkipConfigDto.SkipMode,
+                StartCondition     = (ESkipStartCondition) obj.AutoSkipConfigDto.StartCondition,
+                SkipKeys           = Map(obj.AutoSkipConfigDto.SkipKeys),
+                Delay              = obj.AutoSkipConfigDto.Delay,
+                IsDoubleClickDelay = obj.AutoSkipConfigDto.IsDoubleClickDelay,
+                DoubleClickDelay   = obj.AutoSkipConfigDto.DoubleClickDelay
             },
             #endregion
 

@@ -1312,7 +1312,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For skipping the text appearance.
+        ///   Looks up a localized string similar to To skip typewriting effect.
         /// </summary>
         public static string KeyBinding_AutoSkip_DoubleClickDelay_Description {
             get {
@@ -1330,29 +1330,56 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Everything.
+        ///   Looks up a localized string similar to Text and replies.
         /// </summary>
-        public static string KeyBinding_AutoSkip_Type_Everything {
+        public static string KeyBinding_AutoSkip_Mode_Everything {
             get {
-                return ResourceManager.GetString("KeyBinding_AutoSkip_Type_Everything", resourceCulture);
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Mode_Everything", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Partial.
+        ///   Looks up a localized string similar to Text only.
         /// </summary>
-        public static string KeyBinding_AutoSkip_Type_Partial {
+        public static string KeyBinding_AutoSkip_Mode_Text {
             get {
-                return ResourceManager.GetString("KeyBinding_AutoSkip_Type_Partial", resourceCulture);
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Mode_Text", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Skip mode.
         /// </summary>
-        public static string KeyBinding_AutoSkip_Type_Title {
+        public static string KeyBinding_AutoSkip_Mode_Title {
             get {
-                return ResourceManager.GetString("KeyBinding_AutoSkip_Type_Title", resourceCulture);
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Mode_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cursor presence.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_SkipStartCondition_Cursor {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_SkipStartCondition_Cursor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speaker name presence.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_SkipStartCondition_Speaker {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_SkipStartCondition_Speaker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start condition.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_SkipStartCondition_Title {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_SkipStartCondition_Title", resourceCulture);
             }
         }
         

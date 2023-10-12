@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.Behaviour;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
 namespace Extension.HonkaiStarRail;
 

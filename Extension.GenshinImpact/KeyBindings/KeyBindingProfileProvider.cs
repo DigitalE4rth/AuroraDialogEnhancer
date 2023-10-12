@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.Models;
 
 namespace Extension.GenshinImpact.KeyBindings;
 

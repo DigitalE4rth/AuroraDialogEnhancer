@@ -1,7 +1,7 @@
 ﻿namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 
-public enum EAutoSkipType
+public enum ESkipMode
 {
     Everything,
-    Partial
+    Text
 }

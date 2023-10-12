@@ -11,19 +11,24 @@ public partial class KeyHandlerService
     private bool        _isAutoSkip;
     private bool        _isAutoSkipChoicePending;
     private Action?     _skipClickDelegate;
+    private Func<bool>? _skipStartDelegate;
     private Func<bool>? _skipDialogDelegate;
 
     private void RegisterAutoSkip(AutoSkipConfig autoSkipConfig)
     {
-        if (autoSkipConfig.Delay == 0 || autoSkipConfig.ActivationKeys.Count == 0) return;
+        if (autoSkipConfig.ActivationKeys.Count == 0) return;
 
         _skipClickDelegate = _keyBindingProfile!.AutoSkipConfig.DoubleClickDelay == 0
             ? DoAutoSkipSingleClick
             : DoAutoSkipDoubleClick;
 
-        _skipDialogDelegate = _keyBindingProfile.AutoSkipConfig.AutoSkipType == EAutoSkipType.Everything 
+        _skipDialogDelegate = _keyBindingProfile.AutoSkipConfig.SkipMode == ESkipMode.Everything 
             ? DoAutoSkipSkipEverything 
             : DoAutoSkipPartial;
+
+        _skipStartDelegate = _keyBindingProfile.AutoSkipConfig.StartCondition == ESkipStartCondition.Speaker
+            ? _computerVisionService.IsDialogMode
+            : _cursorVisibilityStateProvider.IsVisible;
 
         _scriptHandlerService.AutoClickScript.Register(autoSkipConfig.SkipKeys);
         Register(autoSkipConfig.ActivationKeys, OnAutoSkip);
@@ -33,7 +38,7 @@ public partial class KeyHandlerService
     {
         _isAutoSkip = !_isAutoSkip;
 
-        if (!_isAutoSkip || !_computerVisionService.IsDialogMode())
+        if (!_isAutoSkip || !_skipStartDelegate!.Invoke())
         {
             _isAutoSkip = false;
             return;
@@ -80,6 +85,7 @@ public partial class KeyHandlerService
         return true;
     }
 
+    #region Skip Click
     private void DoAutoSkipSingleClick()
     {
         _scriptHandlerService.AutoClickScript.DoAction();
@@ -91,7 +97,9 @@ public partial class KeyHandlerService
         Task.Delay(_keyBindingProfile!.AutoSkipConfig.DoubleClickDelay).Wait();
         _scriptHandlerService.AutoClickScript.DoAction();
     }
+    #endregion
 
+    #region Skip Mode
     private bool DoAutoSkipPartial()
     {
         _isAutoSkipChoicePending = true;
@@ -105,4 +113,5 @@ public partial class KeyHandlerService
         _cursorPositioningService.Hide();
         return true;
     }
+    #endregion
 }

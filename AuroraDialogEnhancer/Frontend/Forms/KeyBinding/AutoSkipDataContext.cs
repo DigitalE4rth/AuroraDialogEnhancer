@@ -7,60 +7,66 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding;
 
 public class AutoSkipDataContext : INotifyPropertyChanged
 {
-    public AutoSkipConfigViewModel AutoSkipConfigViewModel { get; }
+    public AutoSkipConfigViewModel ViewModel { get; }
 
     public ActionViewModel ActivationKeys
     {
-        get => AutoSkipConfigViewModel.ActivationKeys;
-        set => AutoSkipConfigViewModel.ActivationKeys = value;
+        get => ViewModel.ActivationKeys;
+        set => ViewModel.ActivationKeys = value;
     }
 
-    public EAutoSkipType AutoSkipType
+    public ESkipMode SkipMode
     {
-        get => AutoSkipConfigViewModel.AutoSkipType;
-        set => AutoSkipConfigViewModel.AutoSkipType = value;
+        get => ViewModel.SkipMode;
+        set => ViewModel.SkipMode = value;
+    }
+
+    public ESkipStartCondition StartCondition
+    {
+        get => ViewModel.StartCondition;
+        set => ViewModel.StartCondition = value;
     }
 
     public TriggerViewModel SkipKeys
     {
-        get => AutoSkipConfigViewModel.SkipKeys;
-        set => AutoSkipConfigViewModel.SkipKeys = value;
+        get => ViewModel.SkipKeys;
+        set => ViewModel.SkipKeys = value;
     }
 
     public int Delay
     {
-        get => AutoSkipConfigViewModel.Delay;
+        get => ViewModel.Delay;
         set
         {
-            AutoSkipConfigViewModel.Delay = value;
+            ViewModel.Delay = value;
             OnPropertyChanged();
         }
     }
 
     public bool IsDoubleClickDelay
     {
-        get => AutoSkipConfigViewModel.IsDoubleClickDelay;
-        set => AutoSkipConfigViewModel.IsDoubleClickDelay = value;
+        get => ViewModel.IsDoubleClickDelay;
+        set => ViewModel.IsDoubleClickDelay = value;
     }
 
     public int DoubleClickDelay
     {
-        get => AutoSkipConfigViewModel.DoubleClickDelay;
+        get => ViewModel.DoubleClickDelay;
         set
         {
-            AutoSkipConfigViewModel.DoubleClickDelay = value;
+            ViewModel.DoubleClickDelay = value;
             OnPropertyChanged();
         }
     }
 
-    public AutoSkipDataContext(AutoSkipConfigViewModel autoSkipConfigViewModel)
+    public AutoSkipDataContext(AutoSkipConfigViewModel viewModel)
     {
-        AutoSkipConfigViewModel = autoSkipConfigViewModel;
+        ViewModel = viewModel;
     }
 
     public AutoSkipDataContext()
     {
-        AutoSkipConfigViewModel = new AutoSkipConfigViewModel();
+        ViewModel = new AutoSkipConfigViewModel();
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

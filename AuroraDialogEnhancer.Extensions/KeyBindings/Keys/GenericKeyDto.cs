@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace AuroraDialogEnhancerExtensions.KeyBindings;
+namespace AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
 [XmlType("Key")]
 [XmlInclude(typeof(KeyboardKeyDto))]

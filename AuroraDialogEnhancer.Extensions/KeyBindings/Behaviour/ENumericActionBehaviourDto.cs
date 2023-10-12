@@ -1,4 +1,4 @@
-﻿namespace AuroraDialogEnhancerExtensions.KeyBindings;
+﻿namespace AuroraDialogEnhancerExtensions.KeyBindings.Behaviour;
 
 public enum ENumericActionBehaviourDto
 {

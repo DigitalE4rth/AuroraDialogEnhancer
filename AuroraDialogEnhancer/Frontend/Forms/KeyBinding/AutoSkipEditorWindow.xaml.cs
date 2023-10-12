@@ -71,15 +71,19 @@ public partial class AutoSkipEditorWindow
         InitializeTriggers();
         SetCardActionElements();
 
-        var skipModeItem = ComboBoxSkipMode.Items.OfType<ComboBoxItem>().First(item => (EAutoSkipType)item.Tag == viewModel.AutoSkipType);
+        var skipModeItem = ComboBoxSkipMode.Items.OfType<ComboBoxItem>().First(item => (ESkipMode)item.Tag == viewModel.SkipMode);
         ComboBoxSkipMode.SelectedItem = skipModeItem;
         ComboBoxSkipMode.SelectionChanged += ComboBoxSkipMode_SelectionChanged;
+
+        var skipStartConditionItem = ComboBoxSkipStartCondition.Items.OfType<ComboBoxItem>().First(item => (ESkipStartCondition)item.Tag == viewModel.StartCondition);
+        ComboBoxSkipStartCondition.SelectedItem = skipStartConditionItem;
+        ComboBoxSkipStartCondition.SelectionChanged += ComboBoxSkipStartConditionOnSelectionChanged;
     }
 
     public AutoSkipConfigViewModel GetResult()
     {
-        _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels = _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.Distinct(new TriggerViewModelComparer()).ToList();
-        return _autoSkipDataContext.AutoSkipConfigViewModel;
+        _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels = _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.Distinct(new TriggerViewModelComparer()).ToList();
+        return _autoSkipDataContext.ViewModel;
     }
 
     private void TriggerEditorWindow_Activated(object sender, EventArgs e)
@@ -104,21 +108,26 @@ public partial class AutoSkipEditorWindow
     #region Elements
     private void ComboBoxSkipMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        _autoSkipDataContext.AutoSkipConfigViewModel.AutoSkipType = (EAutoSkipType)((ComboBoxItem)ComboBoxSkipMode.SelectedItem).Tag;
+        _autoSkipDataContext.ViewModel.SkipMode = (ESkipMode) ((ComboBoxItem) ComboBoxSkipMode.SelectedItem).Tag;
+    }
+
+    private void ComboBoxSkipStartConditionOnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        _autoSkipDataContext.ViewModel.StartCondition = (ESkipStartCondition) ((ComboBoxItem) ComboBoxSkipStartCondition.SelectedItem).Tag;
     }
     #endregion
 
     #region Triggers rendering
     private void InitializeTriggers()
     {
-        if (_autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.Count == 0)
+        if (_autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.Count == 0)
         {
             return;
         }
 
-        UniformGridTriggers.Rows = _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.Count;
+        UniformGridTriggers.Rows = _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.Count;
         UniformGridTriggers.Children.Clear();
-        _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.ForEach(triggerViewModel =>
+        _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.ForEach(triggerViewModel =>
         {
             var cardDropDown = GenerateCardDropDown(triggerViewModel);
             _cardDropDownButtonsDictionary.Add(cardDropDown, triggerViewModel);
@@ -311,7 +320,7 @@ public partial class AutoSkipEditorWindow
         _isCardButtonPristine = true;
 
         var triggerViewModel = new TriggerViewModel();
-        _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.Add(triggerViewModel);
+        _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.Add(triggerViewModel);
 
         var cardDropDown = GenerateCardDropDown(triggerViewModel);
         _cardDropDownButtonsDictionary.Add(cardDropDown, triggerViewModel);
@@ -351,9 +360,9 @@ public partial class AutoSkipEditorWindow
 
         if (index == 0) return;
 
-        var itemToShift = _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels[index];
-        _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.RemoveAt(index);
-        _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.Insert(index - 1, itemToShift);
+        var itemToShift = _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels[index];
+        _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.RemoveAt(index);
+        _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.Insert(index - 1, itemToShift);
 
         UniformGridTriggers.Children.RemoveAt(index);
         UniformGridTriggers.Children.Insert(index - 1, cardButton);
@@ -365,11 +374,11 @@ public partial class AutoSkipEditorWindow
     {
         var index = UniformGridTriggers.Children.IndexOf(cardButton);
 
-        if (index == _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.Count - 1) return;
+        if (index == _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.Count - 1) return;
 
-        var itemToShift = _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels[index];
-        _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.RemoveAt(index);
-        _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.Insert(index + 1, itemToShift);
+        var itemToShift = _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels[index];
+        _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.RemoveAt(index);
+        _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.Insert(index + 1, itemToShift);
 
         UniformGridTriggers.Children.RemoveAt(index);
         UniformGridTriggers.Children.Insert(index + 1, cardButton);
@@ -391,11 +400,11 @@ public partial class AutoSkipEditorWindow
     {
         var index = UniformGridTriggers.Children.IndexOf(cardButton);
 
-        _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.RemoveAt(index);
+        _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.RemoveAt(index);
         _cardDropDownButtonsDictionary.Remove(cardButton);
         UniformGridTriggers.Children.RemoveAt(index);
 
-        UniformGridTriggers.Rows = _autoSkipDataContext.AutoSkipConfigViewModel.ActivationKeys.TriggerViewModels.Count;
+        UniformGridTriggers.Rows = _autoSkipDataContext.ViewModel.ActivationKeys.TriggerViewModels.Count;
     }
     #endregion
 
@@ -539,8 +548,9 @@ public partial class AutoSkipEditorWindow
             cardDropDown.SelectionChanged -= CardDropDown_SelectionChanged;
         }
 
-        CardButtonAction.SelectionChanged -= CardButtonAction_SelectionChanged;
-        ComboBoxSkipMode.SelectionChanged -= ComboBoxSkipMode_SelectionChanged;
+        CardButtonAction.SelectionChanged           -= CardButtonAction_SelectionChanged;
+        ComboBoxSkipMode.SelectionChanged           -= ComboBoxSkipMode_SelectionChanged;
+        ComboBoxSkipStartCondition.SelectionChanged -= ComboBoxSkipStartConditionOnSelectionChanged;
     }
     #endregion
 }

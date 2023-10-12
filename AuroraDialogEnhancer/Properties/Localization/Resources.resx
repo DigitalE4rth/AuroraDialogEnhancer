@@ -567,19 +567,28 @@
     <value>Click delay</value>
   </data>
   <data name="KeyBinding_AutoSkip_DoubleClickDelay_Description" xml:space="preserve">
-    <value>For skipping the text appearance</value>
+    <value>To skip typewriting effect</value>
   </data>
   <data name="KeyBinding_AutoSkip_DoubleClickDelay_Title" xml:space="preserve">
     <value>Double click delay</value>
   </data>
-  <data name="KeyBinding_AutoSkip_Type_Everything" xml:space="preserve">
-    <value>Everything</value>
+  <data name="KeyBinding_AutoSkip_Mode_Everything" xml:space="preserve">
+    <value>Text and replies</value>
   </data>
-  <data name="KeyBinding_AutoSkip_Type_Partial" xml:space="preserve">
-    <value>Partial</value>
+  <data name="KeyBinding_AutoSkip_Mode_Text" xml:space="preserve">
+    <value>Text only</value>
   </data>
-  <data name="KeyBinding_AutoSkip_Type_Title" xml:space="preserve">
+  <data name="KeyBinding_AutoSkip_Mode_Title" xml:space="preserve">
     <value>Skip mode</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Cursor" xml:space="preserve">
+    <value>Cursor presence</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Speaker" xml:space="preserve">
+    <value>Speaker name presence</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Title" xml:space="preserve">
+    <value>Start condition</value>
   </data>
   <data name="KeyBinding_Control" xml:space="preserve">
     <value>Controls</value>
