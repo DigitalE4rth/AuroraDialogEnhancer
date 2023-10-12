@@ -69,7 +69,6 @@ public partial class KeyHandlerService
             taskCompletionSource.SetResult(true);
             _isAutoSkip              = false;
             _isAutoSkipChoicePending = false;
-            break;
         }
 
         return taskCompletionSource.Task;
@@ -77,10 +76,10 @@ public partial class KeyHandlerService
 
     private bool IsAutoSkipCancellationRequired(TaskCompletionSource<bool> taskCompletionSource)
     {
-        if (_cursorVisibilityStateProvider.IsVisible() || _isAutoSkip) return false;
+        if (_cursorVisibilityStateProvider.IsVisible() && _isAutoSkip) return false;
 
         _isAutoSkipChoicePending = false;
-        _isAutoSkip = false;
+        _isAutoSkip              = false;
         taskCompletionSource.SetResult(false);
         return true;
     }
