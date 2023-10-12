@@ -27,7 +27,7 @@ public partial class KeyHandlerService
             : DoAutoSkipPartial;
 
         _skipStartDelegate = _keyBindingProfile.AutoSkipConfig.StartCondition == ESkipStartCondition.Speaker
-            ? _computerVisionService.IsDialogMode
+            ? IsCursorAndSpeakerNamePresent
             : _cursorVisibilityStateProvider.IsVisible;
 
         _scriptHandlerService.AutoClickScript.Register(autoSkipConfig.SkipKeys);
@@ -96,6 +96,13 @@ public partial class KeyHandlerService
         _scriptHandlerService.AutoClickScript.DoAction();
         Task.Delay(_keyBindingProfile!.AutoSkipConfig.DoubleClickDelay).Wait();
         _scriptHandlerService.AutoClickScript.DoAction();
+    }
+    #endregion
+
+    #region Skip Start Condition
+    private bool IsCursorAndSpeakerNamePresent()
+    {
+        return _computerVisionService.IsDialogMode() && _cursorVisibilityStateProvider.IsVisible();
     }
     #endregion
 
