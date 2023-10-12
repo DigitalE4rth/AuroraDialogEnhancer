@@ -67,8 +67,6 @@ public partial class KeyHandlerService
             if (_skipDialogDelegate!.Invoke()) continue;
 
             taskCompletionSource.SetResult(true);
-            _isAutoSkip              = false;
-            _isAutoSkipChoicePending = false;
         }
 
         return taskCompletionSource.Task;
@@ -109,6 +107,7 @@ public partial class KeyHandlerService
     private bool DoAutoSkipPartial()
     {
         _isAutoSkipChoicePending = true;
+        _isAutoSkip              = false;
         return false;
     }
 
