@@ -1393,7 +1393,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto-play.
+        ///   Looks up a localized string similar to Autoplay.
         /// </summary>
         public static string KeyBinding_Control_AutoDialog {
             get {
@@ -1402,7 +1402,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto skip.
+        ///   Looks up a localized string similar to Autoskip.
         /// </summary>
         public static string KeyBinding_Control_AutoSkip {
             get {

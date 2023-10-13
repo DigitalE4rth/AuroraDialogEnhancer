@@ -562,10 +562,10 @@
     <value>Керування</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
-    <value>Авто-відтворення</value>
+    <value>Автовідтворення</value>
   </data>
   <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
-    <value>Авто пропуск</value>
+    <value>Автопропуск</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Натискання на повноекранне спливаюче вікно</value>

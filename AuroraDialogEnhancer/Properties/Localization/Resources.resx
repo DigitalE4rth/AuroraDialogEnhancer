@@ -594,11 +594,11 @@
     <value>Controls</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
-    <value>Auto-play</value>
+    <value>Autoplay</value>
     <comment>Subject</comment>
   </data>
   <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
-    <value>Auto skip</value>
+    <value>Autoskip</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Fullscreen pop-up click</value>
