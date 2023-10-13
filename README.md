@@ -80,23 +80,6 @@ In most cases, extension developers set everything up, but you can customize all
 
 In this section individual settings are specified for each `Game Profile`. Default key bindings are set by extension developers. You can `Reset` or `Clear` those settings in `Drop-down menu`.
 
-#### ⏩ Autoskip
-
-Here you can configure a script to quickly skip game dialogs:
-- `Triggers` to start/stop the script
-- Setting the `Skip action button`
-- **Script start condition**: `Cursor presence`, `Speaker name presence`
-- **Skip mode**: `Text only`, `Text and replies` (*always selects the last reply*), 
-- Delays between clicks
-
-The script stops when the following actions will occur:
-- The game hid the cursor, giving you the ability to control your character again
-- Manually pressing the `Trigger` buttons
-- Turning `Pause` on
-- Switching to another window / Collapsing the game
-
-**Note**: It will ruin your story experience, but that's what you asked for __(:з)∠)_
-
 #### Action Settings
 
 * `Hide cursor on manual selection` - after detecting dialog options, clicking on one of them will hide the cursor.
@@ -126,6 +109,23 @@ The script stops when the following actions will occur:
 
 In extensions it is possible to specify additional actions - points on the game screen where you can click to perform certain action during a dialog.
 For example, in Genshin Impact, the `Autoplay` action has been added - by clicking on the `> Auto` button in the upper left corner of the screen in a dialog.
+
+#### ⏩ Autoskip
+
+Here you can configure a script to quickly skip game dialogs:
+- `Triggers` to start/stop the script
+- Setting the `Skip action button`
+- **Script start condition**: `Cursor presence`, `Speaker name presence`
+- **Skip mode**: `Text only`, `Text and replies` (*always selects the last reply*), 
+- Delays between clicks
+
+The script stops when the following actions will occur:
+- The game hid the cursor, giving you the ability to control your character again
+- Manually pressing the `Trigger` buttons
+- Turning `Pause` on
+- Switching to another window / Collapsing the game
+
+**Note**: It will ruin your story experience, but that's what you asked for __(:з)∠)_
 
 ### 🖼️ Appearance
 
