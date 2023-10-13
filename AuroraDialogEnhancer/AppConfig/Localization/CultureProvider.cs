@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace AuroraDialogEnhancer.AppConfig.Localization;
 
@@ -21,13 +22,18 @@ public class CultureProvider
 
     public CultureProvider()
     {
+        var windowsUiCulture = System.Globalization.CultureInfo.GetCultureInfo(GetUserDefaultUILanguage());
+
         _cultureInfosDict = new Dictionary<string, CultureInfo>
         { 
-            { AUTO_TAG, new CultureInfo(AUTO_TAG, $"{Properties.Localization.Resources.ResourceManager.GetString(AUTO_TAG_RESOURCE_NAME, System.Globalization.CultureInfo.CurrentUICulture)} ({Properties.Localization.Resources.ResourceManager.GetString(RESOURCE_VARIABLE_NAME, System.Globalization.CultureInfo.CurrentUICulture)})") }
+            { AUTO_TAG, new CultureInfo(AUTO_TAG, $"{Properties.Localization.Resources.ResourceManager.GetString(AUTO_TAG_RESOURCE_NAME, windowsUiCulture)} ({Properties.Localization.Resources.ResourceManager.GetString(RESOURCE_VARIABLE_NAME, windowsUiCulture)})") }
         };
 
         _supportedLanguages.ForEach(tag => _cultureInfosDict.Add(tag, new CultureInfo(tag, Properties.Localization.Resources.ResourceManager.GetString(RESOURCE_VARIABLE_NAME, new System.Globalization.CultureInfo(tag))!)));
     }
+
+    [DllImport("Kernel32.dll", CharSet = CharSet.Auto)]
+    private static extern ushort GetUserDefaultUILanguage();
 
     public bool IsCultureSupported(string ietfLanguageTag) => _cultureInfosDict.ContainsKey(ietfLanguageTag);
 
