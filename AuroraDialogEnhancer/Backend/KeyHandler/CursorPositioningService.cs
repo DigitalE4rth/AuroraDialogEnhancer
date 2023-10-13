@@ -9,7 +9,14 @@ public class CursorPositioningService
 {
     private readonly HookedGameDataProvider _hookedGameDataProvider;
 
-    public Point CursorPosition = Point.Empty;
+    private Point _initialCursorPosition = Point.Empty;
+    private Point _cursorPosition        = Point.Empty;
+
+    public void SetInitialCursorPosition(Point cursorPosition)
+    {
+        _cursorPosition        = cursorPosition;
+        _initialCursorPosition = cursorPosition;
+    }
 
     public CursorPositioningService(HookedGameDataProvider hookedGameDataProvider)
     {
@@ -18,24 +25,29 @@ public class CursorPositioningService
 
     public void ApplyRelative(Rectangle dialogOption)
     {
-        CursorPosition = new Point(
+        _cursorPosition = new Point(
             Cursor.Position.X - _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X - dialogOption.X,
             Cursor.Position.Y - _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y - dialogOption.Y);
     }
 
     public void ApplyRelativeX(Rectangle dialogOption)
     {
-        CursorPosition = new Point(
+        _cursorPosition = new Point(
             Cursor.Position.X - _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X - dialogOption.X,
-            CursorPosition.Y);
+            _cursorPosition.Y);
     }
 
 
     public Point GetTargetCursorPlacement(Rectangle dialogOption)
     {
-        return new Point(_hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + dialogOption.X + CursorPosition.X,
-                         _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + dialogOption.Y + CursorPosition.Y);
+        return new Point(_hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + dialogOption.X + _cursorPosition.X,
+                         _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + dialogOption.Y + _cursorPosition.Y);
+    }
 
+    public Point GetDefaultTargetCursorPlacement(Rectangle dialogOption)
+    {
+        return new Point(_hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + dialogOption.X + _initialCursorPosition.X,
+            _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + dialogOption.Y + _initialCursorPosition.Y);
     }
 
     public bool IsClickedInsideClient()

@@ -5,7 +5,7 @@ namespace AuroraDialogEnhancer.Backend.PeripheralEmulators;
 
 public class KeyboardEmulationService
 {
-    [DllImport("user32.dll", SetLastError = true)]
+    [DllImport("user32.dll", SetLastError = false)]
     private static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
 
     public const int KEYEVENTF_KEYDOWN     = 0x0000; // New definition

@@ -16,9 +16,9 @@ public partial class KeyHandlerService
 
     private void RegisterAutoSkip(AutoSkipConfig autoSkipConfig)
     {
-        _skipClickDelegate = _keyBindingProfile!.AutoSkipConfig.DoubleClickDelay == 0
-            ? DoAutoSkipSingleClick
-            : DoAutoSkipDoubleClick;
+        _skipClickDelegate = _keyBindingProfile!.AutoSkipConfig.IsDoubleClickDelay
+            ? DoAutoSkipDoubleClick
+            : DoAutoSkipSingleClick;
 
         _skipDialogDelegate = _keyBindingProfile.AutoSkipConfig.SkipMode == ESkipMode.Everything 
             ? DoAutoSkipSkipEverything 
@@ -90,6 +90,7 @@ public partial class KeyHandlerService
     {
         _scriptHandlerService.AutoClickScript.DoAction();
         Task.Delay(_keyBindingProfile!.AutoSkipConfig.DoubleClickDelay).Wait();
+        if (!_cursorVisibilityStateProvider.IsVisible() || !_isAutoSkip) return;
         _scriptHandlerService.AutoClickScript.DoAction();
     }
     #endregion
@@ -111,7 +112,7 @@ public partial class KeyHandlerService
 
     private bool DoAutoSkipSkipEverything()
     {
-        Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions.Last());
+        Cursor.Position = _cursorPositioningService.GetDefaultTargetCursorPlacement(_currentDialogOptions.Last());
         HandleSelectPress(true);
         _cursorPositioningService.Hide();
         return true;
