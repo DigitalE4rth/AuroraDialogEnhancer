@@ -46,6 +46,6 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
         new List<GenericKeyDto> { new KeyboardKeyDto(32) }, // Space
         400,
         true,
-        550
+        540
     );
 }

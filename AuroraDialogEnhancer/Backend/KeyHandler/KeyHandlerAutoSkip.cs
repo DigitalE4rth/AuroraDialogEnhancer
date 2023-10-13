@@ -90,7 +90,11 @@ public partial class KeyHandlerService
     {
         _scriptHandlerService.AutoClickScript.DoAction();
         Task.Delay(_keyBindingProfile!.AutoSkipConfig.DoubleClickDelay).Wait();
-        if (!_cursorVisibilityStateProvider.IsVisible() || !_isAutoSkip) return;
+
+        if (!_cursorVisibilityStateProvider.IsVisible() ||
+            !_isAutoSkip ||
+            IsDialogOptionsPresent()) return;
+
         _scriptHandlerService.AutoClickScript.DoAction();
     }
     #endregion
