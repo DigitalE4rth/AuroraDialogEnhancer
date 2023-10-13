@@ -22,7 +22,7 @@ public class CultureProvider
 
     public CultureProvider()
     {
-        var windowsUiCulture = System.Globalization.CultureInfo.GetCultureInfo(GetUserDefaultUILanguage());
+        var windowsUiCulture = GetSystemCultureInfo();
 
         _cultureInfosDict = new Dictionary<string, CultureInfo>
         { 
@@ -34,6 +34,11 @@ public class CultureProvider
 
     [DllImport("Kernel32.dll", CharSet = CharSet.Auto)]
     private static extern ushort GetUserDefaultUILanguage();
+
+    public System.Globalization.CultureInfo GetSystemCultureInfo()
+    {
+        return System.Globalization.CultureInfo.GetCultureInfo(GetUserDefaultUILanguage());
+    }
 
     public bool IsCultureSupported(string ietfLanguageTag) => _cultureInfosDict.ContainsKey(ietfLanguageTag);
 

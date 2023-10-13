@@ -28,7 +28,7 @@ public class CultureService
     private void SetLanguage(string ietfLanguageTag)
     {
         var cultureInfo = ietfLanguageTag.Equals("auto")
-            ? System.Globalization.CultureInfo.CurrentUICulture
+            ? CultureProvider.GetSystemCultureInfo()
             : new System.Globalization.CultureInfo(ietfLanguageTag);
 
         System.Globalization.CultureInfo.CurrentCulture   = cultureInfo;
