@@ -219,9 +219,9 @@
                     <cards:KeyCap Height="20"
                                   Margin="5,0"
                                   Background="#ffffff"
+                                  BackgroundOpacity="1"
                                   BorderBrush="#dcdcdc"
                                   Content="Esc"
-                                  BackgroundOpacity="1"
                                   Foreground="#3c3c3c" />
                     <Run BaselineAlignment="Center" Text="{x:Static localization:Resources.TriggerEditor_RecordingMessage_Part2}" />
                 </TextBlock>

@@ -1,6 +1,7 @@
 ﻿<Page x:Class="AuroraDialogEnhancer.Frontend.Forms.KeyBinding.KeyBindingPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:behaviour="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:gameSelector="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.GameSelector"
       xmlns:keyBinding="clr-namespace:AuroraDialogEnhancer.Backend.KeyBinding.Models"
@@ -162,8 +163,8 @@
                         </Grid>
                     </woControls:CardComboBox.LeftIcon>
 
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight}" Tag="{x:Static keyBinding:ESingleDialogOptionBehaviour.Highlight}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_SingleDialogOptionBehaviour_Select}" Tag="{x:Static keyBinding:ESingleDialogOptionBehaviour.Select}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_SingleDialogOptionBehaviour_Highlight}" Tag="{x:Static behaviour:ESingleDialogOptionBehaviour.Highlight}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_SingleDialogOptionBehaviour_Select}" Tag="{x:Static behaviour:ESingleDialogOptionBehaviour.Select}" />
 
                     <woControls:CardComboBox.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
@@ -188,8 +189,8 @@
                         </Grid>
                     </woControls:CardComboBox.LeftIcon>
 
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_NumericActionBehaviour_Highlight}" Tag="{x:Static keyBinding:ENumericActionBehaviour.Highlight}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_NumericActionBehaviour_Select}" Tag="{x:Static keyBinding:ENumericActionBehaviour.Select}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_NumericActionBehaviour_Highlight}" Tag="{x:Static behaviour:ENumericActionBehaviour.Highlight}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_NumericActionBehaviour_Select}" Tag="{x:Static behaviour:ENumericActionBehaviour.Select}" />
 
                     <woControls:CardComboBox.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
@@ -213,9 +214,9 @@
                         </Grid>
                     </woControls:CardComboBox.LeftIcon>
 
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_Hide}" Tag="{x:Static keyBinding:ECursorBehaviour.Hide}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_HideAfterSelection}" Tag="{x:Static keyBinding:ECursorBehaviour.HideAfterSelection}" />
-                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_Nothing}" Tag="{x:Static keyBinding:ECursorBehaviour.Nothing}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_Hide}" Tag="{x:Static behaviour:ECursorBehaviour.Hide}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_HideAfterSelection}" Tag="{x:Static behaviour:ECursorBehaviour.HideAfterSelection}" />
+                    <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_Utilities_CursorBehaviour_Nothing}" Tag="{x:Static behaviour:ECursorBehaviour.Nothing}" />
 
                     <woControls:CardComboBox.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
@@ -390,6 +391,32 @@
 
             <!--  Clickable points  -->
             <StackPanel x:Name="ContainerClickablePoints" Margin="0,0,0,25" />
+
+            <!--  Scripts  -->
+            <StackPanel x:Name="ContainerScripts" Margin="0,0,0,25">
+                <!--  Title  -->
+                <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.KeyBinding_Scripts}" />
+
+                <!--  Select  -->
+                <woControls:CardButton x:Name="CardButtonAutoSkip"
+                                       Title="{x:Static localization:Resources.KeyBinding_Control_AutoSkip}"
+                                       MinHeight="55"
+                                       Click="CardButton_AutoSkip_OnClick"
+                                       ContentForeground="Secondary">
+
+                    <woControls:CardButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.S.Forward}" Style="{StaticResource IconMedium}" />
+                        </Grid>
+                    </woControls:CardButton.LeftIcon>
+
+                    <woControls:CardButton.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.S.Settings}" Style="{StaticResource IconMedium}" />
+                        </Grid>
+                    </woControls:CardButton.RightIcon>
+                </woControls:CardButton>
+            </StackPanel>
 
             <!--  Dialog options  -->
             <StackPanel>

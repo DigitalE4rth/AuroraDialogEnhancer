@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
 using AuroraDialogEnhancerExtensions.Screenshots;
 
 namespace AuroraDialogEnhancerExtensions.Proxy;

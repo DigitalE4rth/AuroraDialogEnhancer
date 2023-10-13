@@ -2,6 +2,10 @@
 using System.Linq;
 using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 
@@ -33,6 +37,19 @@ public class KeyBindingViewModelBackMapper : IMapper<KeyBindingProfileViewModel,
             ClickablePoints = Map(obj.ClickablePoints),
             #endregion
 
+            #region Scripts
+            AutoSkipConfig = new AutoSkipConfig 
+            {
+                ActivationKeys     = Map(obj.AutoSkipConfig.ActivationKeys),
+                SkipMode           = obj.AutoSkipConfig.SkipMode,
+                StartCondition     = obj.AutoSkipConfig.StartCondition,
+                SkipKeys           = Map(obj.AutoSkipConfig.SkipKeys),
+                Delay              = obj.AutoSkipConfig.Delay,
+                IsDoubleClickDelay = obj.AutoSkipConfig.IsDoubleClickDelay,
+                DoubleClickDelay   = obj.AutoSkipConfig.DoubleClickDelay
+            },
+            #endregion
+
             #region Numeric
             One   = Map(obj.One),
             Two   = Map(obj.Two),
@@ -51,6 +68,11 @@ public class KeyBindingViewModelBackMapper : IMapper<KeyBindingProfileViewModel,
     private List<List<GenericKey>> Map(ActionViewModel actionViewModel)
     {
         return actionViewModel.TriggerViewModels.Select(tvm => tvm.KeyCodes).ToList();
+    }
+
+    private List<GenericKey> Map(TriggerViewModel triggerViewModel)
+    {
+        return triggerViewModel.KeyCodes.ToList();
     }
 
     private List<ClickablePoint> Map(Dictionary<string, ClickablePointVm> clickablePointsVm)

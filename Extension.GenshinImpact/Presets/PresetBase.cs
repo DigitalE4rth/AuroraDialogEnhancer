@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
 using AuroraDialogEnhancerExtensions.Proxy;
 using Extension.GenshinImpact.ClickablePoints;
 using Extension.GenshinImpact.Services;

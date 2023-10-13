@@ -1,5 +1,4 @@
 ﻿using AuroraDialogEnhancerExtensions.Dimensions;
-using Extension.GenshinImpact.Dimensions;
 using System.Collections.Generic;
 
 namespace Extension.GenshinImpact.Templates;

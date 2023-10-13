@@ -14,7 +14,9 @@ using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 using AuroraDialogEnhancer.Backend.KeyHandler;
+using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
+using AuroraDialogEnhancer.Backend.ScriptHandlers;
 using AuroraDialogEnhancer.Backend.Utils;
 using AuroraDialogEnhancer.Frontend.Forms;
 using AuroraDialogEnhancer.Frontend.Forms.About;
@@ -50,13 +52,20 @@ internal class ServiceProviderConfigurator
         #endregion
 
         #region BackEnd
+        #region Computer Vision
+        serviceCollection.AddSingleton<ComputerVisionService>();
+        serviceCollection.AddTransient<ComputerVisionPresetService>();
+        #endregion
+
         #region Core
         serviceCollection.AddSingleton<CoreService>();
         #endregion
 
-        #region ExtensionConfig
+        #region Extensions
         serviceCollection.AddSingleton<ExtensionConfigRepository>();
         serviceCollection.AddSingleton<ExtensionConfigService>();
+        serviceCollection.AddSingleton<ExtensionsProvider>();
+        serviceCollection.AddSingleton<ExtensionsLoader>();
         #endregion
 
         #region HookedGameInfo
@@ -93,18 +102,18 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddSingleton<KeyHandlerService>();
         #endregion
 
-        #region OpenCv
-        serviceCollection.AddSingleton<ComputerVisionService>();
-        serviceCollection.AddTransient<ComputerVisionPresetService>();
-        #endregion
-
-        #region Presets
-        serviceCollection.AddSingleton<ExtensionsProvider>();
-        serviceCollection.AddSingleton<ExtensionsLoader>();
+        #region Peripheral Emulators
+        serviceCollection.AddSingleton<KeyboardEmulationService>();
+        serviceCollection.AddSingleton<MouseEmulationService>();
         #endregion
 
         #region Screen capture
         serviceCollection.AddSingleton<ScreenCaptureService>();
+        #endregion
+
+        #region Script Handlers
+        serviceCollection.AddSingleton<ScriptHandlerService>();
+        serviceCollection.AddTransient<AutoClickScript>();
         #endregion
 
         #region Utils
@@ -122,7 +131,8 @@ internal class ServiceProviderConfigurator
 
         serviceCollection.AddTransient<KeyBindingPage>();
         serviceCollection.AddTransient<TriggerEditorWindow>();
-
+        serviceCollection.AddTransient<AutoSkipEditorWindow>();
+        
         serviceCollection.AddTransient<MainPage>();
 
         serviceCollection.AddTransient<MenuPage>();

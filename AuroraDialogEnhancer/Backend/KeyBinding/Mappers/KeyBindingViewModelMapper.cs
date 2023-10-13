@@ -4,7 +4,11 @@ using System.Linq;
 using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
-using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 
@@ -40,6 +44,17 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
             Next            = Map(profile.Next),
             ClickablePoints = Map(profile.ClickablePoints, clickablePointsVmDto),
 
+            AutoSkipConfig = new AutoSkipConfigViewModel
+            {
+                ActivationKeys     = Map(profile.AutoSkipConfig.ActivationKeys),
+                SkipMode           = profile.AutoSkipConfig.SkipMode,
+                StartCondition     = profile.AutoSkipConfig.StartCondition,
+                SkipKeys           = Map(profile.AutoSkipConfig.SkipKeys),
+                Delay              = profile.AutoSkipConfig.Delay,
+                IsDoubleClickDelay = profile.AutoSkipConfig.IsDoubleClickDelay,
+                DoubleClickDelay   = profile.AutoSkipConfig.DoubleClickDelay
+            },
+
             One   = Map(profile.One),
             Two   = Map(profile.Two),
             Three = Map(profile.Three),
@@ -56,6 +71,11 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
     private ActionViewModel Map(IEnumerable<List<GenericKey>> lowActions)
     {
         return new ActionViewModel(lowActions.Select(rawKeys => new TriggerViewModel(rawKeys, _keyInterpreterService.InterpretKeys(rawKeys))).ToList());
+    }
+
+    private TriggerViewModel Map(List<GenericKey> lowActions)
+    {
+        return new TriggerViewModel(lowActions, _keyInterpreterService.InterpretKeys(lowActions));
     }
 
     private Dictionary<string, ClickablePointVm> Map(IEnumerable<ClickablePoint> clickablePoints, IReadOnlyCollection<ClickablePointVmDto> clickablePointsVm)

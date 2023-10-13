@@ -1,6 +1,4 @@
-﻿using AuroraDialogEnhancerExtensions.Dimensions;
-
-namespace Extension.GenshinImpact.Dimensions;
+﻿namespace AuroraDialogEnhancerExtensions.Dimensions;
 
 public class ThresholdArea : Area
 {

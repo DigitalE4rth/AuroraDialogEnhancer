@@ -52,20 +52,22 @@
     <Compile Include="Dimensions\DynamicPoint.cs" />
     <Compile Include="Dimensions\ThresholdArea.cs" />
     <Compile Include="Dimensions\ThresholdAreaDynamic.cs" />
-    <Compile Include="KeyBindings\ClickablePointDto.cs" />
-    <Compile Include="KeyBindings\ClickablePointVmDto.cs" />
-    <Compile Include="KeyBindings\ECursorBehaviourDto.cs" />
-    <Compile Include="KeyBindings\EHiddenCursorSettingDto.cs" />
-    <Compile Include="KeyBindings\EHighMouseKeyDto.cs" />
-    <Compile Include="KeyBindings\ENumericActionBehaviourDto.cs" />
-    <Compile Include="KeyBindings\ESingleDialogOptionBehaviourDto.cs" />
-    <Compile Include="KeyBindings\GenericKeyDto.cs" />
+    <Compile Include="KeyBindings\Scripts\AutoSkipConfigDto.cs" />
+    <Compile Include="KeyBindings\ClickablePoints\ClickablePointDto.cs" />
+    <Compile Include="KeyBindings\ClickablePoints\ClickablePointVmDto.cs" />
+    <Compile Include="KeyBindings\Scripts\ESkipModeDto.cs" />
+    <Compile Include="KeyBindings\Behaviour\ECursorBehaviourDto.cs" />
+    <Compile Include="KeyBindings\Behaviour\EHighMouseKeyDto.cs" />
+    <Compile Include="KeyBindings\Behaviour\ENumericActionBehaviourDto.cs" />
+    <Compile Include="KeyBindings\Behaviour\ESingleDialogOptionBehaviourDto.cs" />
+    <Compile Include="KeyBindings\Keys\GenericKeyDto.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileDto.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileDtoDefault.cs" />
-    <Compile Include="KeyBindings\IKeyBindingProfileProviderDto.cs" />
-    <Compile Include="KeyBindings\KeyBindingProfileProviderEmpty.cs" />
-    <Compile Include="KeyBindings\KeyboardKeyDto.cs" />
-    <Compile Include="KeyBindings\MouseKeyDto.cs" />
+    <Compile Include="KeyBindings\Models\IKeyBindingProfileProviderDto.cs" />
+    <Compile Include="KeyBindings\Models\KeyBindingProfileProviderEmpty.cs" />
+    <Compile Include="KeyBindings\Keys\KeyboardKeyDto.cs" />
+    <Compile Include="KeyBindings\Keys\MouseKeyDto.cs" />
+    <Compile Include="KeyBindings\Scripts\ESkipStartConditionDto.cs" />
     <Compile Include="Location\ILocationProvider.cs" />
     <Compile Include="Location\LocationProviderEmpty.cs" />
     <Compile Include="Proxy\DialogOptionFinderEmpty.cs" />
@@ -80,7 +82,7 @@
     <Compile Include="Dimensions\RangeBase.cs" />
     <Compile Include="Dimensions\RangeDynamic.cs" />
     <Compile Include="Dimensions\ColorRange.cs" />
-    <Compile Include="KeyBindings\KeyBindingProfileDtoEmpty.cs" />
+    <Compile Include="KeyBindings\Models\KeyBindingProfileDtoEmpty.cs" />
     <Compile Include="Dimensions\Region.cs" />
     <Compile Include="Dimensions\Rgba.cs" />
     <Compile Include="Content\ExtensionConfigDto.cs" />
@@ -92,7 +94,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Presets.resx</DependentUpon>
     </Compile>
-    <Compile Include="KeyBindings\ClickablePrecisePointDto.cs" />
+    <Compile Include="KeyBindings\ClickablePoints\ClickablePrecisePointDto.cs" />
     <Compile Include="Proxy\DialogOptionFinderData.cs" />
     <Compile Include="Proxy\PresetEmpty.cs" />
     <Compile Include="Screenshots\IScreenshotNameProvider.cs" />

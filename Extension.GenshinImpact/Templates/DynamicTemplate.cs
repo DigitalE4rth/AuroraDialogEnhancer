@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.Dimensions;
-using Extension.GenshinImpact.Dimensions;
 
 namespace Extension.GenshinImpact.Templates;
 

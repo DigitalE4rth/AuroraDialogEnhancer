@@ -2,6 +2,7 @@
 using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.Models;
 using AuroraDialogEnhancerExtensions.Location;
 using AuroraDialogEnhancerExtensions.Proxy;
 using Extension.GenshinImpact.KeyBindings;

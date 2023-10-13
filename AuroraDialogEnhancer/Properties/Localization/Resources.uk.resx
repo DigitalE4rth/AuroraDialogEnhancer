@@ -522,11 +522,50 @@
   <data name="KeyBindAction_Select" xml:space="preserve">
     <value>Вибрати</value>
   </data>
+  <data name="KeyBinding_AutoSkip_Action" xml:space="preserve">
+    <value>Дія</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Config" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Delay_Milliseconds" xml:space="preserve">
+    <value>мс</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Delay_Title" xml:space="preserve">
+    <value>Затримка натискань</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_DoubleClickDelay_Description" xml:space="preserve">
+    <value>Для пропуску появи тексту</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_DoubleClickDelay_Title" xml:space="preserve">
+    <value>Затримка подвійного натискання</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Mode_Everything" xml:space="preserve">
+    <value>Текст та відповіді</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Mode_Text" xml:space="preserve">
+    <value>Тільки текст</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Mode_Title" xml:space="preserve">
+    <value>Режим пропуску</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Cursor" xml:space="preserve">
+    <value>Відображення курсору</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Speaker" xml:space="preserve">
+    <value>Відображення імені мовця</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_SkipStartCondition_Title" xml:space="preserve">
+    <value>Умова запуску</value>
+  </data>
   <data name="KeyBinding_Control" xml:space="preserve">
     <value>Керування</value>
   </data>
   <data name="KeyBinding_Control_AutoDialog" xml:space="preserve">
-    <value>Авто-відтворення</value>
+    <value>Автовідтворення</value>
+  </data>
+  <data name="KeyBinding_Control_AutoSkip" xml:space="preserve">
+    <value>Автопропуск</value>
   </data>
   <data name="KeyBinding_Control_FullScreenPopUpMouseClick" xml:space="preserve">
     <value>Натискання на повноекранне спливаюче вікно</value>
@@ -593,6 +632,9 @@
   </data>
   <data name="KeyBinding_Profile" xml:space="preserve">
     <value>Профіль</value>
+  </data>
+  <data name="KeyBinding_Scripts" xml:space="preserve">
+    <value>Скрипти</value>
   </data>
   <data name="KeyBinding_Settings_Action_Clear" xml:space="preserve">
     <value>Очистити</value>

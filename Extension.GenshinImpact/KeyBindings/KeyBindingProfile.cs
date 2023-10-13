@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.KeyBindings;
+using AuroraDialogEnhancerExtensions.KeyBindings.Behaviour;
+using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
+using AuroraDialogEnhancerExtensions.KeyBindings.Scripts;
 
 namespace Extension.GenshinImpact.KeyBindings;
 
@@ -33,4 +37,15 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
             new() { new KeyboardKeyDto(192) } // ~
         })
     };
+
+    public override AutoSkipConfigDto AutoSkipConfigDto { get; set; } = new
+    (
+        new List<List<GenericKeyDto>> { new() { new KeyboardKeyDto(187) } }, // =
+        ESkipModeDto.Everything,
+        ESkipStartConditionDto.Speaker,
+        new List<GenericKeyDto> { new KeyboardKeyDto(32) }, // Space
+        400,
+        true,
+        540
+    );
 }

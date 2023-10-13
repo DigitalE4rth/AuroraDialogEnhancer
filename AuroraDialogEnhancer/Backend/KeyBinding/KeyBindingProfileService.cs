@@ -6,6 +6,7 @@ using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 using AuroraDialogEnhancer.Backend.KeyHandler;
 using AuroraDialogEnhancerExtensions;
 using Microsoft.Extensions.DependencyInjection;

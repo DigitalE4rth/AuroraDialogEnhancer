@@ -164,26 +164,36 @@
     <Compile Include="Backend\Generics\IMapper.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameData.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameDataProvider.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Keys\SplitKeyStruct.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\ESkipStartCondition.cs" />
+    <Compile Include="Backend\KeyHandler\KeyHandlerAutoSkip.cs" />
+    <Compile Include="Backend\PeripheralEmulators\KeyboardEmulationService.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\ClickablePrecisePointMapper.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ClickablePoint.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ClickablePointVm.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ClickablePrecisePoint.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ECursorBehaviour.cs" />
-    <Compile Include="Backend\KeyBinding\Models\EHighMouseKey.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ENumericActionBehaviour.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ESingleDialogOptionBehaviour.cs" />
-    <Compile Include="Backend\KeyBinding\Models\GenericKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkipConfigViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkipConfig.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePoint.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePointVm.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ClickablePoints\ClickablePrecisePoint.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Scripts\ESkipMode.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Behaviour\ECursorBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Behaviour\EHighMouseKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Behaviour\ENumericActionBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Behaviour\ESingleDialogOptionBehaviour.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Keys\GenericKey.cs" />
     <Compile Include="Backend\KeyBinding\Models\KeyBindingProfile.cs" />
     <Compile Include="Backend\KeyBinding\KeyBindingProfileService.cs" />
-    <Compile Include="Backend\KeyBinding\Models\KeyboardKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Keys\KeyboardKey.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingExtensionMapper.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelBackMapper.cs" />
     <Compile Include="Backend\KeyBinding\Mappers\KeyBindingViewModelMapper.cs" />
     <Compile Include="Backend\ComputerVision\ComputerVisionPresetService.cs" />
     <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
-    <Compile Include="Backend\KeyBinding\Models\MouseKey.cs" />
-    <Compile Include="Backend\KeyBinding\Models\TriggerViewModelComparer.cs" />
+    <Compile Include="Backend\KeyBinding\Models\Keys\MouseKey.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ViewModels\TriggerViewModelComparer.cs" />
+    <Compile Include="Backend\ScriptHandlers\AutoClickScript.cs" />
+    <Compile Include="Backend\ScriptHandlers\ScriptHandlerService.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
+    <Compile Include="Frontend\Controls\Cards\CardButtonWithArtificialFocus.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
     <Compile Include="Frontend\Controls\ColorPicker\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
@@ -242,9 +252,13 @@
     <Compile Include="Frontend\Forms\Debug\DebugPage.xaml.cs">
       <DependentUpon>DebugPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frontend\Forms\KeyBinding\AutoSkipDataContext.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\EKeyBindingSettingsAction.cs" />
     <Compile Include="Frontend\Forms\KeyBinding\ComboBoxContent.xaml.cs">
       <DependentUpon>ComboBoxContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frontend\Forms\KeyBinding\AutoSkipEditorWindow.xaml.cs">
+      <DependentUpon>AutoSkipEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frontend\Forms\Menu\MenuHookStateIcon.xaml.cs">
       <DependentUpon>MenuHookStateIcon.xaml</DependentUpon>
@@ -347,6 +361,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Frontend\Forms\KeyBinding\AutoSkipEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Frontend\Forms\KeyBinding\TriggerEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -392,13 +410,13 @@
     <Compile Include="Backend\Hooks\Mouse\LowLevelMouseHookStruct.cs" />
     <Compile Include="Backend\KeyBinding\Interpreters\KeyboardKeyInterpreterService.cs" />
     <Compile Include="Backend\KeyBinding\Interpreters\KeyInterpreterService.cs" />
-    <Compile Include="Backend\Hooks\Mouse\MouseEmulationService.cs" />
+    <Compile Include="Backend\PeripheralEmulators\MouseEmulationService.cs" />
     <Compile Include="Backend\Hooks\Mouse\MouseHookManagerServiceBase.cs" />
     <Compile Include="Backend\Hooks\Process\WindowInfo.cs" />
-    <Compile Include="Backend\KeyBinding\Models\KeyBindingProfileViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ViewModels\KeyBindingProfileViewModel.cs" />
     <Compile Include="Backend\KeyBinding\KeyBindingProfileRepository.cs" />
     <Compile Include="Backend\KeyBinding\Interpreters\MouseKeyInterpreterService.cs" />
-    <Compile Include="Backend\KeyBinding\Models\TriggerViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ViewModels\TriggerViewModel.cs" />
     <Compile Include="Backend\Extensions\ExtensionsProvider.cs" />
     <Compile Include="Backend\KeyHandler\DialogOptionCursorPositionInfo.cs" />
     <Compile Include="Backend\KeyHandler\CursorPositioningService.cs" />
@@ -434,6 +452,7 @@
     </Compile>
     <Compile Include="Frontend\Forms\KeyBinding\KeyCapsService.cs" />
     <Compile Include="Backend\Extensions\ExtensionConfigViewModel.cs" />
+    <Compile Include="Frontend\Validators\UnsignedIntegerValidator.cs" />
     <Compile Include="Properties\DefaultSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -444,13 +463,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InternalResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Localization\Resources.ru.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.ru.resx</DependentUpon>
-    </Compile>
     <Compile Include="AppConfig\NotifyIcon\NotifyIconService.cs" />
-    <Compile Include="Backend\KeyBinding\Models\ActionViewModel.cs" />
+    <Compile Include="Backend\KeyBinding\Models\ViewModels\ActionViewModel.cs" />
     <Compile Include="Frontend\Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -474,6 +488,10 @@
     <Page Include="Frontend\Forms\Utils\TextInputResetDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frontend\Styles\CardButtonArtificialFocus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Frontend\Styles\CardButtonWithCustomBackground.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -525,6 +543,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Localization\Resources.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Localization\Resources.uk.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.uk.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -538,16 +566,19 @@
     <EmbeddedResource Include="Properties\Localization\Resources.de.resx" />
     <EmbeddedResource Include="Properties\Localization\Resources.nl.resx" />
     <EmbeddedResource Include="Properties\Localization\Resources.resx">
+      <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Localization\Resources.ru.resx">
+      <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Localization\Resources.uk.resx" />
+    <EmbeddedResource Include="Properties\Localization\Resources.uk.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DefaultSettings.settings">
