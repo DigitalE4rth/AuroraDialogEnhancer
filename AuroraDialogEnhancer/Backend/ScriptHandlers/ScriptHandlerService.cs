@@ -11,6 +11,8 @@ public class ScriptHandlerService : IDisposable
         AutoClickScript = autoClickScript;
     }
 
+    public void UnRegisterAll() => AutoClickScript.UnRegister();
+
     public void Dispose()
     {
         AutoClickScript.Dispose();

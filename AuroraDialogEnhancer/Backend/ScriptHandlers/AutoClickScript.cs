@@ -28,6 +28,8 @@ public class AutoClickScript : IDisposable
 
     public void Register(List<GenericKey> keyList)
     {
+        if (keyList.Count == 0) return;
+        
         // Mouse
         if (keyList.Count == 1 && keyList[0].GetType() == typeof(MouseKey))
         {
