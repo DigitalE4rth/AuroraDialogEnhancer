@@ -1,10 +1,37 @@
 <div align="center">
-  <h1><img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/ade_logo.png" width="35px" height="35px" style="margin-bottom: -3px;" /> Aurora Dialog Enhancer</h1>
+  <h1><img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/ade_logo.png" width="35px" height="35px" style="max-width: 100%;" /> Aurora Dialog Enhancer</h1>
 </div>
 
-<p align="center">
-    【English | <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/README-Russian.md">Русский</a>】
-</p>
+<div align="center">
+  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer">
+    <img src="https://img.shields.io/badge/🌍_Readme_Languages:-f6f8fa" /> 
+  </a>
+  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer">
+    <img src="https://img.shields.io/badge/English-EN-blue" /> 
+  </a>
+  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/README-Russian.md">
+    <img src="https://img.shields.io/badge/Русский-RU-gray" />
+  </a>
+</div>
+
+<div align="center">
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases">
+      <img src="https://img.shields.io/github/downloads/DigitalE4rth/AuroraDialogEnhancer/total" />
+    </a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.3.1">
+      <img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/v1.0.3.1/total" />
+    </a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/DigitalE4rth/AuroraDialogEnhancer" />
+    </a>
+    <a href="https://gamebanana.com/tools/14968" target="_blank">
+      <img src="https://img.shields.io/badge/GameBanana-🍌-gray" />
+    </a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/tree/main#-creative-society">
+      <img src="https://img.shields.io/badge/Creative_Society-💖-gray" />
+    </a>
+</div>
+</br>
 
 **ADE** - is an application that extends the functionality of dialog interactions in various games.
 
