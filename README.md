@@ -1,5 +1,5 @@
 <div align="center">
-  <h1><img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/ade_logo.png" width="35px" height="35px" style="max-width: 100%;" /> Aurora Dialog Enhancer</h1>
+  <h1><img src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/ade_logo.png" width="35px" height="35px" style="max-width: 100%;" /> Aurora Dialog Enhancer</h1>
 </div>
 
 <div align="center">
@@ -24,7 +24,7 @@ This application fixes this issue by means of extensions, individually developed
 Also, usage of this software cannot cause your account to be banned in any games you play *([more in this section](#%EF%B8%8F-how-it-all-works))*.
 
 <div align="center">
-  <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/ade_ingame_example.gif" />
+  <img src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/ade_ingame_example.gif" />
   </br>
   <i>Now, by using a keyboard and mouse wheel, dialog options can go brrrrrrrrrrrrrrrr</i>
 </div>
@@ -39,13 +39,13 @@ Also, usage of this software cannot cause your account to be banned in any games
 
 ## 📺 [YouTube](https://youtube.com/video/ch2GWBYqNSE) usage demonstration video
 <div>
-  <a href="https://youtube.com/video/ch2GWBYqNSE" target="_blank"><img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/youtube_thumbnail.jpg" alt="Aurora Dialog Enhancer | Long demonstration" />
+  <a href="https://youtube.com/video/ch2GWBYqNSE" target="_blank"><img src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/youtube_thumbnail.jpg" alt="Aurora Dialog Enhancer | Long demonstration" />
 </div>
 
 ## 🖼️ Screenshots
 <div>
-  <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/app_screenshot_01.jpg" />
-  <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/app_screenshot_02.jpg" />
+  <img src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/app_screenshot_01.jpg" />
+  <img src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/app_screenshot_02.jpg" />
 </div>
 
 ## 📖 Key features
@@ -245,7 +245,7 @@ There are so many ideas, but very little time and energy... + I couldn’t have 
 > <details>
 >   <summary>Well, I hope you enjoy it, i did my utmost best...</summary>
 >   <div align="center">
->     <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/i_did_my_besht_meme.jpg" />
+>     <img src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/i_did_my_besht_meme.jpg" />
 >   </div>
 > </details>
 
@@ -284,7 +284,7 @@ Very little remains from the original versions, but, none the less, I would like
 
 <div align="center">
   <a href="https://creativesociety.com" target="_blank">
-    <img width="125px" height="125px" src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/creative_society_logo.svg" />
+    <img width="125px" height="125px" src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/creative_society_logo.svg" />
   </a>
 </div>
 
@@ -366,7 +366,7 @@ Currently there is no need for financial support. I do have a full time job, and
 > <details>
 >   <summary>Literally me</summary>
 >   <div align="center">
->     <img src="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/honest_work_meme.jpg" />
+>     <img src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/honest_work_meme.jpg" />
 >   </div>
 > </details>
 
