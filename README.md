@@ -3,33 +3,17 @@
 </div>
 
 <div align="center">
-  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer">
-    <img src="https://img.shields.io/badge/🌍_Readme_Languages:-f6f8fa" /> 
-  </a>
-  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer">
-    <img src="https://img.shields.io/badge/English-EN-blue" /> 
-  </a>
-  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/README-Russian.md">
-    <img src="https://img.shields.io/badge/Русский-RU-gray" />
-  </a>
+  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer"><img src="https://img.shields.io/badge/🌍_Readme_Languages:-f6f8fa" /></a>
+  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer"><img src="https://img.shields.io/badge/English-EN-blue" /></a>
+  <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/readme-resources/README-Russian.md"><img src="https://img.shields.io/badge/Русский-RU-gray" /></a>
 </div>
 
 <div align="center">
-    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases">
-      <img src="https://img.shields.io/github/downloads/DigitalE4rth/AuroraDialogEnhancer/total" />
-    </a>
-    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.3.1">
-      <img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/v1.0.3.1/total" />
-    </a>
-    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/DigitalE4rth/AuroraDialogEnhancer" />
-    </a>
-    <a href="https://gamebanana.com/tools/14968" target="_blank">
-      <img src="https://img.shields.io/badge/GameBanana-🍌-gray" />
-    </a>
-    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/tree/main#-creative-society">
-      <img src="https://img.shields.io/badge/Creative_Society-💖-gray" />
-    </a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases"><img src="https://img.shields.io/github/downloads/DigitalE4rth/AuroraDialogEnhancer/total" /></a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.3.1"><img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/v1.0.3.1/total" /></a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/main/LICENSE"><img src="https://img.shields.io/github/license/DigitalE4rth/AuroraDialogEnhancer" /></a>
+    <a href="https://gamebanana.com/tools/14968" target="_blank"><img src="https://img.shields.io/badge/GameBanana-🍌-gray" /></a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/tree/main#-creative-society"><img src="https://img.shields.io/badge/Creative_Society-💖-gray" /></a>
 </div>
 </br>
 
