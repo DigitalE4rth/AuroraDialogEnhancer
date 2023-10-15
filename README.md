@@ -56,6 +56,7 @@ Also, usage of this software cannot cause your account to be banned in any games
 * Cycling through dialog options
 * Cursor hiding
 * Screenshots saving
+* Dialog auto skipping
 * And much more
 
 ## 💻 System requirements
