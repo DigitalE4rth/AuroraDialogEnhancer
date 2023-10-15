@@ -61,7 +61,7 @@ Also, usage of this software cannot cause your account to be banned in any games
 ## 💻 System requirements
 
 * Windows 7 (x64) and up
-* Screen aspect ratio 16:9 or 16:10 *([Others are in development](https://github.com/DigitalE4rth/AuroraDialogEnhancer/issues/36))*
+* Screen aspect ratio 16:9 or 16:10 *([others are in development](https://github.com/DigitalE4rth/AuroraDialogEnhancer/issues/36))*
 * Administrator privileges *([see here as to why](#-why-are-administrator-privileges-required))*
 * 2 MB of free space
 * .NET Framework 4.8 *([built in Windows by default](https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies#net-framework-48))*
