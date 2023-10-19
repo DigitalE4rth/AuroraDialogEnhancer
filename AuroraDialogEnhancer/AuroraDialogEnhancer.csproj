@@ -192,6 +192,7 @@
     <Compile Include="Backend\KeyBinding\Models\ViewModels\TriggerViewModelComparer.cs" />
     <Compile Include="Backend\ScriptHandlers\AutoClickScript.cs" />
     <Compile Include="Backend\ScriptHandlers\ScriptHandlerService.cs" />
+    <Compile Include="Backend\SoundPlayback\SoundPlaybackService.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithArtificialFocus.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />
@@ -632,7 +633,9 @@
   <ItemGroup>
     <None Include="Resources\Updater.exe" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\screenshot.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rem Copy compiled l18n assemblies to alt folder

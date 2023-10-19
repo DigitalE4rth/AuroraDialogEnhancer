@@ -6,6 +6,7 @@ using System.IO;
 using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
+using AuroraDialogEnhancer.Backend.SoundPlayback;
 using AuroraDialogEnhancerExtensions.Screenshots;
 using Clipboard = System.Windows.Forms.Clipboard;
 
@@ -14,6 +15,7 @@ namespace AuroraDialogEnhancer.Backend.ScreenCapture;
 public class ScreenCaptureService : IDisposable
 {
     private readonly HookedGameDataProvider _hookedGameDataProvider;
+    private readonly SoundPlaybackService _soundPlaybackService;
     
     private IScreenshotNameProvider? _screenshotNameProvider;
     private readonly Queue<(string, Bitmap)> _imagesToSaveQueue;
@@ -22,9 +24,11 @@ public class ScreenCaptureService : IDisposable
     private string? _screenshotsFolder;
     public HashSet<string> CapturedGames { get; }
 
-    public ScreenCaptureService(HookedGameDataProvider hookedGameDataProvider)
+    public ScreenCaptureService(HookedGameDataProvider hookedGameDataProvider, 
+                                SoundPlaybackService   soundPlaybackService)
     {
         _hookedGameDataProvider = hookedGameDataProvider;
+        _soundPlaybackService   = soundPlaybackService;
 
         _imagesToSaveQueue = new Queue<(string, Bitmap)>();
         _lock = new object();
@@ -77,6 +81,11 @@ public class ScreenCaptureService : IDisposable
             var path = GetFilePath(imageName);
 
             bitmap.Save(path, ImageFormat.Png);
+
+            if (Properties.Settings.Default.App_IsScreenshotSound)
+            {
+                _soundPlaybackService.PlaySound(Properties.InternalResources.screenshot);
+            }
 
             if (_isCopyToBuffer)
             {

@@ -393,5 +393,17 @@ namespace AuroraDialogEnhancer.Properties {
                 this["WebClient_UserAgent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool App_IsScreenshotSound {
+            get {
+                return ((bool)(this["App_IsScreenshotSound"]));
+            }
+            set {
+                this["App_IsScreenshotSound"] = value;
+            }
+        }
     }
 }

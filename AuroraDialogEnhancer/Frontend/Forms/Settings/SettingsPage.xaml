@@ -170,6 +170,20 @@
                     </woControls:CardToggleButton.LeftIcon>
                 </woControls:CardToggleButton>
 
+                <!--  Screenshot sound playback  -->
+                <woControls:CardToggleButton Title="{x:Static localization:Resources.Settings_Screenshots_SoundPlayback_Title}"
+                                             MinHeight="55"
+                                             Margin="0,0,0,5"
+                                             Click="Button_ScreenshotSoundPlayback_OnClick"
+                                             IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsScreenshotSound, Mode=OneTime}">
+
+                    <woControls:CardToggleButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.S.Music}" Style="{StaticResource IconLarge}" />
+                        </Grid>
+                    </woControls:CardToggleButton.LeftIcon>
+                </woControls:CardToggleButton>
+
                 <!--  Expert mode  -->
                 <woControls:CardToggleButton x:Name="ToggleExpertMode"
                                              Title="{x:Static localization:Resources.Settings_ExpertMode_Title}"

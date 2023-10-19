@@ -1969,6 +1969,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When a screenshot is taken, play a sound.
+        /// </summary>
+        public static string Settings_Screenshots_SoundPlayback_Title {
+            get {
+                return ResourceManager.GetString("Settings_Screenshots_SoundPlayback_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Will open only if screenshots have been taken.
         /// </summary>
         public static string Settings_ScreenshotsManager_Description {

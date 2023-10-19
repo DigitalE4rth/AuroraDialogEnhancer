@@ -106,7 +106,7 @@ public class CoreService : IDisposable
         _keyHandlerService.OnPauseSwitch();
         return true;
     }
-
+    
     private async Task<bool> CancelAndDetermineIfNeedToStart(string? gameId, bool restart)
     {
         if (_hookedGameDataProvider.Id is null) return true;

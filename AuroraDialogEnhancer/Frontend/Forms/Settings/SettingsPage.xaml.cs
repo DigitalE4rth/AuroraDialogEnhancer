@@ -150,6 +150,12 @@ public partial class SettingsPage
         Properties.Settings.Default.Save();
     }
 
+    private void Button_ScreenshotSoundPlayback_OnClick(object sender, RoutedEventArgs e)
+    {
+        Properties.Settings.Default.App_IsScreenshotSound = (bool)((CardToggleButton)sender).IsChecked!;
+        Properties.Settings.Default.Save();
+    }
+
     private void UnloadUi_OnClick(object sender, RoutedEventArgs e)
     {
         Properties.Settings.Default.App_IsUnloadUi = (bool) ((CardToggleButton) sender).IsChecked!;

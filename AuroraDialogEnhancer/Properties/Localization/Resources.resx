@@ -830,6 +830,9 @@
   <data name="Settings_ScreenshotsManager_Title" xml:space="preserve">
     <value>Open screenshots folder on game exit</value>
   </data>
+  <data name="Settings_Screenshots_SoundPlayback_Title" xml:space="preserve">
+    <value>When a screenshot is taken, play a sound</value>
+  </data>
   <data name="Settings_SettingsFolder" xml:space="preserve">
     <value>Settings folder</value>
   </data>

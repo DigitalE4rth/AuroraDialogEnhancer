@@ -17,6 +17,7 @@ using AuroraDialogEnhancer.Backend.KeyHandler;
 using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
 using AuroraDialogEnhancer.Backend.ScriptHandlers;
+using AuroraDialogEnhancer.Backend.SoundPlayback;
 using AuroraDialogEnhancer.Backend.Utils;
 using AuroraDialogEnhancer.Frontend.Forms;
 using AuroraDialogEnhancer.Frontend.Forms.About;
@@ -114,6 +115,10 @@ internal class ServiceProviderConfigurator
         #region Script Handlers
         serviceCollection.AddSingleton<ScriptHandlerService>();
         serviceCollection.AddTransient<AutoClickScript>();
+        #endregion
+
+        #region SoundPlayback
+        serviceCollection.AddTransient<SoundPlaybackService>();
         #endregion
 
         #region Utils
