@@ -77,9 +77,18 @@
     </Compile>
     <Compile Include="ClickablePoints\DynamicPointTemplate.cs" />
     <Compile Include="ClickablePoints\PointTemplate.cs" />
+    <Compile Include="Templates\DynamicTemplate3P5.cs" />
+    <Compile Include="Templates\DynamicTemplate2P4.cs" />
+    <Compile Include="Templates\DynamicTemplate2P38.cs" />
+    <Compile Include="Templates\DynamicTemplate2P37.cs" />
+    <Compile Include="Templates\DynamicTemplate2P35.cs" />
+    <Compile Include="Templates\DynamicTemplate2P33.cs" />
+    <Compile Include="Templates\DynamicTemplateBase.cs" />
+    <Compile Include="Templates\DynamicTemplate1P77.cs" />
+    <Compile Include="Templates\DynamicTemplateFactory.cs" />
     <Compile Include="Templates\SearchTemplateMapper.cs" />
     <Compile Include="Services\DialogOptionFinder.cs" />
-    <Compile Include="Templates\DynamicTemplate.cs" />
+    <Compile Include="Templates\DynamicTemplate2P30.cs" />
     <Compile Include="Templates\PreciseTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
