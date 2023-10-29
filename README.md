@@ -10,7 +10,7 @@
 
 <div align="center">
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases"><img src="https://img.shields.io/github/downloads/DigitalE4rth/AuroraDialogEnhancer/total" /></a>
-    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.3.1"><img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/v1.0.3.1/total" /></a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.4.0"><img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/latest/total" /></a>
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/main/LICENSE"><img src="https://img.shields.io/github/license/DigitalE4rth/AuroraDialogEnhancer" /></a>
     <a href="https://gamebanana.com/tools/14968" target="_blank"><img src="https://img.shields.io/badge/GameBanana-🍌-gray" /></a>
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/tree/main#-creative-society"><img src="https://img.shields.io/badge/Creative_Society-💖-gray" /></a>
@@ -62,7 +62,6 @@ Also, usage of this software cannot cause your account to be banned in any games
 ## 💻 System requirements
 
 * Windows 7 (x64) and up
-* Screen aspect ratio 16:9 or 16:10 *([others are in development](https://github.com/DigitalE4rth/AuroraDialogEnhancer/issues/36))*
 * Administrator privileges *([see here as to why](#-why-are-administrator-privileges-required))*
 * 2 MB of free space
 * .NET Framework 4.8 *([built in Windows by default](https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies#net-framework-48))*
