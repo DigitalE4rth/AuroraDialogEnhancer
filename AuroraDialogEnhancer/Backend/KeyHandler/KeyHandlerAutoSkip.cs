@@ -116,7 +116,7 @@ public partial class KeyHandlerService
 
     private bool DoAutoSkipSkipEverything()
     {
-        Cursor.Position = _cursorPositioningService.GetDefaultTargetCursorPlacement(_currentDialogOptions.Last());
+        Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions.Last());
         HandleSelectPress(true);
         _cursorPositioningService.Hide();
         return true;

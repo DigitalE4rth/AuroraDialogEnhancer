@@ -47,7 +47,7 @@ public class CursorPositioningService
     public Point GetDefaultTargetCursorPlacement(Rectangle dialogOption)
     {
         return new Point(_hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + dialogOption.X + _initialCursorPosition.X,
-            _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + dialogOption.Y + _initialCursorPosition.Y);
+                         _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + dialogOption.Y + _initialCursorPosition.Y);
     }
 
     public bool IsClickedInsideClient()
