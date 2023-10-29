@@ -21,6 +21,8 @@ public class DynamicTemplate2P30 : DynamicTemplateBase
 
     public override double OutlineAreaHeight => 0.9375;
 
+    public override RangeDynamic VerticalOutlineSearchRangeX => new(0, 0.12);
+
     public override List<ThresholdAreaDynamic> CornerOutlineAreas => new()
     {
         // Upper

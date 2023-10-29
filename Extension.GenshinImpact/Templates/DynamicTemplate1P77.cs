@@ -12,7 +12,7 @@ public class DynamicTemplate1P77 : DynamicTemplateBase
 
     public override AreaDynamic TemplateSearchArea => new(0.66, 0.692, 0, 1);
 
-    public override double DialogOptionWidth => 0.29;
+    public override double DialogOptionWidth => 0.295;
 
     public override double DialogOptionHeight => 0.033;
 

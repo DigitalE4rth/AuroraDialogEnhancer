@@ -9,9 +9,9 @@ public class DynamicTemplate2P35 : DynamicTemplateBase
 
     public override double TemplateHeight => 0.025;
 
-    public override AreaDynamic TemplateSearchArea => new(0.66, 0.685, 0, 1);
+    public override AreaDynamic TemplateSearchArea => new(0.66092, 0.686, 0, 1);
 
-    public override double DialogOptionWidth => 0.23;
+    public override double DialogOptionWidth => 0.225;
 
     public override double DialogOptionHeight => 0.025;
 
@@ -24,11 +24,11 @@ public class DynamicTemplate2P35 : DynamicTemplateBase
     public override List<ThresholdAreaDynamic> CornerOutlineAreas => new()
     {
         // Upper
-        new ThresholdAreaDynamic(0.225, 0.3, 0.085, 0.165, 0.07),
-        new ThresholdAreaDynamic(0.15, 0.225, 0.15, 0.23, 0.07),
+        new ThresholdAreaDynamic(0.225, 0.3, 0.07, 0.155, 0.07),
+        new ThresholdAreaDynamic(0.15, 0.22, 0.135, 0.225, 0.07),
         
         // Bottom
-        new ThresholdAreaDynamic(0.225, 0.28, 0.75, 0.85, 0.07),
-        new ThresholdAreaDynamic(0.15, 0.225, 0.69, 0.75, 0.07),
+        new ThresholdAreaDynamic(0.225, 0.28, 0.78, 0.862, 0.07),
+        new ThresholdAreaDynamic(0.15, 0.225, 0.72, 0.79, 0.07)
     };
 }

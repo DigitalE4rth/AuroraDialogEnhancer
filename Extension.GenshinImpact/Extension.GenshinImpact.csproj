@@ -66,6 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.ru.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\DialogOptionFinderDebug.cs" />
     <Compile Include="Services\DialogOptionFinderInfoMapper.cs" />
     <Compile Include="ClickablePoints\ClickablePointsMapper.cs" />
     <Compile Include="Presets\PresetBase.cs" />
@@ -77,9 +78,16 @@
     </Compile>
     <Compile Include="ClickablePoints\DynamicPointTemplate.cs" />
     <Compile Include="ClickablePoints\PointTemplate.cs" />
-    <Compile Include="Templates\DynamicTemplate3P5.cs" />
+    <Compile Include="Templates\DynamicTemplate1P5.cs" />
+    <Compile Include="Templates\DynamicTemplate1P33.cs" />
+    <Compile Include="Templates\DynamicTemplate1P25.cs" />
+    <Compile Include="Templates\DynamicTemplate1P66.cs" />
+    <Compile Include="Templates\DynamicTemplate1P60.cs" />
+    <Compile Include="Templates\DynamicTemplate2P3888.cs" />
+    <Compile Include="Templates\DynamicTemplate3P2.cs" />
+    <Compile Include="Templates\DynamicTemplate3P55.cs" />
     <Compile Include="Templates\DynamicTemplate2P4.cs" />
-    <Compile Include="Templates\DynamicTemplate2P38.cs" />
+    <Compile Include="Templates\DynamicTemplate2P3880.cs" />
     <Compile Include="Templates\DynamicTemplate2P37.cs" />
     <Compile Include="Templates\DynamicTemplate2P35.cs" />
     <Compile Include="Templates\DynamicTemplate2P33.cs" />
