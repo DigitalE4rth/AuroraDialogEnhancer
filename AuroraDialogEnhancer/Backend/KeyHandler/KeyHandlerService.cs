@@ -512,7 +512,9 @@ public partial class KeyHandlerService : IDisposable
             _isProcessing = true;
         }
         
-        if (_isWindowFocused && _cursorVisibilityStateProvider.IsVisible())
+        if (_isWindowFocused 
+            && _cursorVisibilityStateProvider.IsVisible()
+            && _cursorPositioningService.IsClickedInsideClient())
         {
             return true;
         }
