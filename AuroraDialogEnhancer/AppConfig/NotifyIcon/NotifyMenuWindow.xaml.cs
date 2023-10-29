@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,10 +8,10 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
+using AuroraDialogEnhancer.Backend.Utils;
 using AuroraDialogEnhancer.Frontend.Services;
 using WhyOrchid.Controls;
 using Application = System.Windows.Application;
@@ -162,19 +160,7 @@ public partial class NotifyMenuWindow
 
     private void Button_Screenshots_OnClick(object sender, RoutedEventArgs e)
     {
-        var screenshotsFolder = _extensionConfigService.GetScreenshotsLocation(_latestGameId);
-        if (!Directory.Exists(screenshotsFolder))
-        {
-            Directory.CreateDirectory(screenshotsFolder);
-        }
-
-        Process.Start(new ProcessStartInfo
-        {
-            Arguments = screenshotsFolder,
-            UseShellExecute = true,
-            FileName = Global.StringConstants.ExplorerName
-        });
-
+        new FolderProcessStartService().Open(_extensionConfigService.GetScreenshotsLocation(_latestGameId));
         CloseNotifyMenuWindow();
     }
 

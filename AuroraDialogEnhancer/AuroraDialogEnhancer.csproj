@@ -193,6 +193,7 @@
     <Compile Include="Backend\ScriptHandlers\AutoClickScript.cs" />
     <Compile Include="Backend\ScriptHandlers\ScriptHandlerService.cs" />
     <Compile Include="Backend\SoundPlayback\SoundPlaybackService.cs" />
+    <Compile Include="Backend\Utils\FolderProcessStartService.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithArtificialFocus.cs" />
     <Compile Include="Frontend\Controls\Cards\ComboBoxProfile.cs" />

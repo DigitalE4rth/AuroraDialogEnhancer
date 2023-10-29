@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.KeyHandler;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
+using AuroraDialogEnhancer.Backend.Utils;
 
 namespace AuroraDialogEnhancer.Backend.Core;
 
@@ -271,12 +270,7 @@ public class CoreService : IDisposable
 
         foreach (var id in _screenCaptureService.CapturedGames)
         {
-            Process.Start(new ProcessStartInfo
-            {
-                Arguments = _extensionConfigService.GetScreenshotsLocation(id),
-                UseShellExecute = true,
-                FileName = Global.StringConstants.ExplorerName
-            });
+            new FolderProcessStartService().Open(_extensionConfigService.GetScreenshotsLocation(id!));
         }
 
         _screenCaptureService.CapturedGames.Clear();

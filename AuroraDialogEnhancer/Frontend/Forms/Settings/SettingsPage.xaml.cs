@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using AuroraDialogEnhancer.AppConfig.Localization;
 using AuroraDialogEnhancer.AppConfig.Statics;
+using AuroraDialogEnhancer.Backend.Utils;
 using AuroraDialogEnhancer.Frontend.Forms.Utils;
 using AuroraDialogEnhancer.Frontend.Generics;
 using AuroraDialogEnhancer.Frontend.Services;
@@ -176,12 +177,7 @@ public partial class SettingsPage
 
     private void Button_OpenApplicationFolder_OnClick(object sender, RoutedEventArgs e)
     {
-        Process.Start(new ProcessStartInfo
-        {
-            Arguments = AppContext.BaseDirectory,
-            UseShellExecute = true,
-            FileName = Global.StringConstants.ExplorerName
-        });
+        new FolderProcessStartService().Open(AppContext.BaseDirectory);
     }
 
     private void Button_OpenApplicationSettingsFolder_OnClick(object sender, RoutedEventArgs e)
@@ -190,12 +186,11 @@ public partial class SettingsPage
         var configuration = ConfigurationManager.OpenExeConfiguration(level);
         var configurationDirectory = Path.GetDirectoryName(configuration.FilePath);
 
-        Process.Start(new ProcessStartInfo
-        {
-            Arguments = configurationDirectory,
-            UseShellExecute = true,
-            FileName = Global.StringConstants.ExplorerName
-        });
+        if (configurationDirectory is null) return;
+        
+        var processStartService = new FolderProcessStartService();
+        if (processStartService.ShowFolderIfOpened(configurationDirectory)) return;
+        processStartService.StartProcess(configurationDirectory);
     }
     #endregion
 

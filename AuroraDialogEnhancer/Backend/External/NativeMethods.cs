@@ -94,6 +94,23 @@ public class NativeMethods
     public static extern IntPtr SetFocus(IntPtr hWnd);
 
     /// <summary>
+    /// Sets the show state of a window without waiting for the operation to complete.
+    /// </summary>
+    /// <param name="hWnd">A handle to the window.</param>
+    /// <param name="nCmdShow">Controls how the window is to be shown. SW_RESTORE = 9</param>
+    /// <returns>If the operation was successfully started, the return value is nonzero.</returns>
+    [DllImport("user32.dll")]
+    public static extern bool ShowWindowAsync(HandleRef hWnd, int nCmdShow = 9);
+
+    /// <summary>
+    /// Brings the thread that created the specified window into the foreground and activates the window. Keyboard input is directed to the window, and various visual cues are changed for the user. The system assigns a slightly higher priority to the thread that created the foreground window than it does to other threads.
+    /// </summary>
+    /// <param name="WindowHandle">A handle to the window that should be activated and brought to the foreground.</param>
+    /// <returns>If the window was brought to the foreground, the return value is nonzero.</returns>
+    [DllImport("user32.dll")]
+    public static extern bool SetForegroundWindow(IntPtr WindowHandle);
+
+    /// <summary>
     /// Sets an event hook function for a range of events.
     /// </summary>
     /// <param name="eventMin">Specifies the event constant for the lowest event value in the range of events that are handled by the hook function. This parameter can be set to EVENT_MIN to indicate the lowest possible event value.</param>

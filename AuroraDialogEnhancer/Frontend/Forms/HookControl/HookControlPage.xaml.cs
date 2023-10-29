@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -311,17 +309,7 @@ public partial class HookControlPage
     #region Additional settings
     private void CardButton_OpenScreenShotsFolder(object sender, RoutedEventArgs e)
     {
-        if (!Directory.Exists(_hookSettingsDataContext!.ExtensionConfig.ScreenshotsLocation))
-        {
-            Directory.CreateDirectory(_hookSettingsDataContext!.ExtensionConfig.ScreenshotsLocation);
-        }
-
-        Process.Start(new ProcessStartInfo
-        {
-            Arguments = _hookSettingsDataContext.ExtensionConfig.ScreenshotsLocation,
-            UseShellExecute = true,
-            FileName = Global.StringConstants.ExplorerName
-        });
+        new FolderProcessStartService().Open(_hookSettingsDataContext!.ExtensionConfig.ScreenshotsLocation);
     }
 
     private void Button_ScreenShotsLocation_OnClick(object sender, RoutedEventArgs e)
