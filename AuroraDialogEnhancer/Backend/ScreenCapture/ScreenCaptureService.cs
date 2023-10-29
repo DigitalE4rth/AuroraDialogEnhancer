@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Threading.Tasks;
 using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
@@ -68,9 +69,17 @@ public class ScreenCaptureService : IDisposable
         var frame = CaptureClient();
         if (frame is null) return;
 
+        Task.Run(PlayCaptureSound).ConfigureAwait(false);
         _imagesToSaveQueue.Enqueue((_screenshotNameProvider!.GetName(), frame));
+
         SaveImage();
         CapturedGames.Add(_hookedGameDataProvider.Data!.ExtensionConfig!.Id);
+    }
+
+    private void PlayCaptureSound()
+    {
+        if (!Properties.Settings.Default.App_IsScreenshotSound) return;
+        _soundPlaybackService.PlaySound(Properties.InternalResources.screenshot);
     }
 
     private void SaveImage()
@@ -81,11 +90,6 @@ public class ScreenCaptureService : IDisposable
             var path = GetFilePath(imageName);
 
             bitmap.Save(path, ImageFormat.Png);
-
-            if (Properties.Settings.Default.App_IsScreenshotSound)
-            {
-                _soundPlaybackService.PlaySound(Properties.InternalResources.screenshot);
-            }
 
             if (_isCopyToBuffer)
             {
