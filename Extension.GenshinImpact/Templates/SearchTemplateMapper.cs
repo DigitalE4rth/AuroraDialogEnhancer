@@ -6,9 +6,11 @@ namespace Extension.GenshinImpact.Templates;
 
 internal class SearchTemplateMapper
 {
+    private readonly DynamicTemplateFactory _dynamicTemplateFactory = new();
+
     public PreciseTemplate Map(Size clientSize)
     {
-        var dynamicTemplate = new DynamicTemplate();
+        var dynamicTemplate = _dynamicTemplateFactory.GetTemplate(clientSize);
         var preciseTemplate = new PreciseTemplate();
 
         #region Speaker
