@@ -165,6 +165,11 @@ public class DynamicTemplateBase
     /// </remarks>
     public virtual AreaDynamic IconArea { get; } = new(0.20, 0.88, 0.11, 0.89);
 
+    public virtual List<ColorRange> IconColorRanges { get; } = new()
+    {
+        new ColorRange(new Rgba(255, 124, 95, 0), new Rgba(255, 131, 100, 0))
+    };
+
     /// <summary>
     /// The minimum percentage of matching pixels that exceeds the maximum outline color range in the icon area.
     /// </summary>

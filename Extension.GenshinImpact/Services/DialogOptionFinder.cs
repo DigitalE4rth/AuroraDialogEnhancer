@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using AuroraDialogEnhancerExtensions.Dimensions;
 using AuroraDialogEnhancerExtensions.Proxy;
 using AuroraDialogEnhancerExtensions.Services;
 using Extension.GenshinImpact.Templates;
@@ -23,19 +24,19 @@ public class DialogOptionFinder : IDialogOptionFinder
         return _bitmapUtils.CountInRange(image, _searchTemplate.SpeakerColorRange) > _searchTemplate.SpeakerNameThreshold;
     }
 
-    public List<Rectangle> GetDialogOptions(Bitmap image)
+    public List<Rectangle> GetDialogOptions(Bitmap colorImage)
     {
         var dialogOptionsList = new List<Rectangle>();
 
-        using var croppedImage = _bitmapUtils.ToGrayScale(image);
+        using var grayImage = _bitmapUtils.ToGrayScale(colorImage);
 
-        for (var x = 0; x + _searchTemplate.TemplateSearchArea.Width.Length <= croppedImage.Width; x++)
+        for (var x = 0; x + _searchTemplate.TemplateSearchArea.Width.Length - 1 <= grayImage.Width - 1; x++)
         {
             var isFoundByY = false;
-            for (var y = 0; y < croppedImage.Height; y++)
+            for (var y = 0; y <= grayImage.Height - 1; y++)
             {
                 #region Top outline
-                var (isTopFound, topOutline) = GetTopOutline(croppedImage, x, y, _searchTemplate.HorizontalOutlineThreshold);
+                var (isTopFound, topOutline) = GetTopOutline(grayImage, x, y, _searchTemplate.HorizontalOutlineThreshold);
                 if (isTopFound == false)
                 {
                     y = topOutline;
@@ -44,7 +45,7 @@ public class DialogOptionFinder : IDialogOptionFinder
                 #endregion
 
                 #region Bottom outline
-                var (isBottomFound, bottomOutline) = GetBottomOutline(croppedImage, x, topOutline, _searchTemplate.HorizontalOutlineThreshold);
+                var (isBottomFound, bottomOutline) = GetBottomOutline(grayImage, x, topOutline, _searchTemplate.HorizontalOutlineThreshold);
                 if (isBottomFound == false)
                 {
                     y = topOutline;
@@ -52,34 +53,8 @@ public class DialogOptionFinder : IDialogOptionFinder
                 }
                 #endregion
 
-                #region Icon
-                if (IsAreaBrighterThenOutline(croppedImage,
-                        x + _searchTemplate.IconArea.Width.From,
-                        topOutline + _searchTemplate.IconArea.Height.From,
-                        x + _searchTemplate.IconArea.Width.To,
-                        topOutline + _searchTemplate.IconArea.Height.To,
-                        _searchTemplate.IconAreaThreshold) == false)
-                {
-                    y = topOutline;
-                    continue;
-                }
-                #endregion
-
-                #region Empty center
-                if (IsAreaInOutlineRange(croppedImage,
-                        x + _searchTemplate.EmptyCenterArea.Width.From,
-                        topOutline + _searchTemplate.EmptyCenterArea.Height.From,
-                        x + _searchTemplate.EmptyCenterArea.Width.To,
-                        topOutline + _searchTemplate.EmptyCenterArea.Height.To,
-                        _searchTemplate.EmptyCenterAreaThreshold))
-                {
-                    y = topOutline;
-                    continue;
-                }
-                #endregion
-
                 #region Left outline
-                var leftOutline = GetXOutline(croppedImage,
+                var leftOutline = GetXOutline(grayImage,
                     x + _searchTemplate.VerticalOutlineSearchRangeX.From,
                     y + _searchTemplate.VerticalOutlineSearchRangeY.From,
                     x + _searchTemplate.VerticalOutlineSearchRangeX.To,
@@ -93,12 +68,40 @@ public class DialogOptionFinder : IDialogOptionFinder
                 #endregion
 
                 #region Corners
-                if (_searchTemplate.CornerOutlineAreas.All(cornerArea => IsAreaInOutlineRange(image,
-                        x + cornerArea.Width.From,
-                        topOutline + cornerArea.Height.From,
-                        x + cornerArea.Width.To,
-                        topOutline + cornerArea.Height.To,
-                        cornerArea.Threshold)) == false)
+                if (_searchTemplate.CornerOutlineAreas.All(cornerArea => 
+                        IsAreaInOutlineRange(grayImage,
+                            x + cornerArea.Width.From,
+                            topOutline + cornerArea.Height.From,
+                            x + cornerArea.Width.To,
+                            topOutline + cornerArea.Height.To,
+                            cornerArea.Threshold)) == false)
+                {
+                    y = topOutline;
+                    continue;
+                }
+                #endregion
+
+                #region Icon
+                if ((IsAreaBrighterThenOutline(grayImage,
+                        x + _searchTemplate.IconArea.Width.From,
+                        topOutline + _searchTemplate.IconArea.Height.From,
+                        x + _searchTemplate.IconArea.Width.To,
+                        topOutline + _searchTemplate.IconArea.Height.To,
+                        _searchTemplate.IconAreaThreshold) == false || 
+                     IsAreaInOutlineRange(grayImage,
+                         x + _searchTemplate.EmptyCenterArea.Width.From,
+                         topOutline + _searchTemplate.EmptyCenterArea.Height.From,
+                         x + _searchTemplate.EmptyCenterArea.Width.To,
+                         topOutline + _searchTemplate.EmptyCenterArea.Height.To,
+                         _searchTemplate.EmptyCenterAreaThreshold))
+                    &&
+                    IsIconAreaWithinColorRange(colorImage, 
+                        _searchTemplate.IconColorRanges,
+                        x + _searchTemplate.IconArea.Width.From,
+                        topOutline + _searchTemplate.IconArea.Height.From,
+                        x + _searchTemplate.IconArea.Width.To,
+                        topOutline + _searchTemplate.IconArea.Height.To,
+                        _searchTemplate.IconAreaThreshold) == false)
                 {
                     y = topOutline;
                     continue;
@@ -118,7 +121,9 @@ public class DialogOptionFinder : IDialogOptionFinder
                 isFoundByY = true;
             }
 
-            x = isFoundByY ? x + _searchTemplate.TemplateSearchArea.Width.Length - 1 : x + _searchTemplate.VerticalOutlineSearchRangeX.Length - 1;
+            x = isFoundByY 
+                ? x + _searchTemplate.TemplateSearchArea.Width.Length - 1 
+                : x + _searchTemplate.VerticalOutlineSearchRangeX.Length - 1;
         }
 
         return dialogOptionsList;
@@ -128,7 +133,7 @@ public class DialogOptionFinder : IDialogOptionFinder
     private (bool, int) GetTopOutline(Bitmap image, int x, int y, int threshold)
     {
         var maxSearchPoint = y + _searchTemplate.TopOutlineSearchRangeY.To;
-        if (maxSearchPoint >= image.Height) return (false, maxSearchPoint);
+        if (maxSearchPoint > image.Height - 1) return (false, maxSearchPoint);
 
         var firstOutline = GetYOutline(image,
             x + _searchTemplate.HorizontalOutlineSearchRangeX.From,
@@ -159,7 +164,7 @@ public class DialogOptionFinder : IDialogOptionFinder
     private (bool, int) GetBottomOutline(Bitmap image, int x, int y, int threshold)
     {
         var maxSearchPoint = y + _searchTemplate.BottomOutlineSearchRangeY.To;
-        if (maxSearchPoint >= image.Height) return (false, maxSearchPoint);
+        if (maxSearchPoint > image.Height - 1) return (false, maxSearchPoint);
 
         var firstOutlinePosition = GetYOutline(image,
             x + _searchTemplate.HorizontalOutlineSearchRangeX.From,
@@ -283,6 +288,11 @@ public class DialogOptionFinder : IDialogOptionFinder
         }
 
         return resultPoints >= threshold;
+    }
+
+    private bool IsIconAreaWithinColorRange(Bitmap image, IEnumerable<ColorRange> ranges, int x, int y, int maxX, int maxY, int threshold)
+    {
+        return ranges.FirstOrDefault(range => _bitmapUtils.CountInRange(image, range, x, y, maxX, maxY) >= threshold) is not null;
     }
 
     private bool IsAreaInOutlineRange(Bitmap image, int x, int y, int maxX, int maxY, int threshold)

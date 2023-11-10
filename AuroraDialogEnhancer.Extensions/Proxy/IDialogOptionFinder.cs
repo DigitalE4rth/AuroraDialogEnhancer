@@ -7,5 +7,5 @@ public interface IDialogOptionFinder
 {
     public bool IsDialogMode(Bitmap image);
 
-    public List<Rectangle> GetDialogOptions(Bitmap image);
+    public List<Rectangle> GetDialogOptions(Bitmap colorImage);
 }

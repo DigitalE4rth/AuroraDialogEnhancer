@@ -33,6 +33,20 @@ public class BitmapUtils
         return image.GetPixel(x, y).R > channelRange.High;
     }
 
+    public int CountInRange(Bitmap image, ColorRange colorRange, int x, int y, int maxX, int maxY)
+    {
+        var count = 0;
+        for (var xo = x; xo <= maxX; xo++)
+        {
+            for (var yo = y; yo <= maxY; yo++)
+            {
+                if (IsWithinRange(image, xo, yo, colorRange)) count++;
+            }
+        }
+
+        return count;
+    }
+
     public int CountInRange(Bitmap image, ColorRange colorRange)
     {
         var count = 0;

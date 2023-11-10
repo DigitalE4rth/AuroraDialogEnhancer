@@ -146,6 +146,8 @@ public class PreciseTemplate
     /// </remarks>
     public Area IconArea = new();
 
+    public List<ColorRange> IconColorRanges = new(0);
+
     /// <summary>
     /// The minimum number of matching pixels that exceeds the maximum outline color range in the icon area.
     /// </summary>

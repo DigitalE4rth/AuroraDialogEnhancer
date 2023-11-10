@@ -11,6 +11,7 @@ internal class SearchTemplateMapper
     public PreciseTemplate Map(Size clientSize)
     {
         var dynamicTemplate = _dynamicTemplateFactory.GetTemplate(clientSize);
+
         var preciseTemplate = new PreciseTemplate();
 
         #region Speaker
@@ -92,6 +93,8 @@ internal class SearchTemplateMapper
             (int)(templateWidth * dynamicTemplate.IconArea.Width.To),
             (int)(preciseTemplate.OutlineAreaHeight * dynamicTemplate.IconArea.Height.From),
             (int)(preciseTemplate.OutlineAreaHeight * dynamicTemplate.IconArea.Height.To));
+
+        preciseTemplate.IconColorRanges = dynamicTemplate.IconColorRanges;
 
         preciseTemplate.IconAreaThreshold = (int)(preciseTemplate.IconArea.Width.Length * preciseTemplate.IconArea.Height.Length * dynamicTemplate.IconAreaThreshold);
 
