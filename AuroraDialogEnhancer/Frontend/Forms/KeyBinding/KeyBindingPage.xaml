@@ -318,7 +318,7 @@
             </StackPanel>
 
             <!--  Controls  -->
-            <StackPanel>
+            <StackPanel Margin="0,0,0,25">
                 <!--  Title  -->
                 <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.KeyBinding_Control}" />
 
@@ -389,8 +389,13 @@
                 </woControls:CardButton>
             </StackPanel>
 
-            <!--  Clickable points  -->
-            <StackPanel x:Name="ContainerClickablePoints" Margin="0,0,0,25" />
+            <!--  Interaction points  -->
+            <StackPanel x:Name="ContainerInteractionPointsUi" Margin="0,0,0,25">
+                <!--  Title  -->
+                <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.KeyBinding_InteractionPoints}" />
+
+                <StackPanel x:Name="ContainerInteractionPointElements" />
+            </StackPanel>
 
             <!--  Scripts  -->
             <StackPanel x:Name="ContainerScripts" Margin="0,0,0,25">

@@ -53,8 +53,8 @@
     <Compile Include="Dimensions\ThresholdArea.cs" />
     <Compile Include="Dimensions\ThresholdAreaDynamic.cs" />
     <Compile Include="KeyBindings\Scripts\AutoSkipConfigDto.cs" />
-    <Compile Include="KeyBindings\ClickablePoints\ClickablePointDto.cs" />
-    <Compile Include="KeyBindings\ClickablePoints\ClickablePointVmDto.cs" />
+    <Compile Include="KeyBindings\InteractionPoints\InteractionPointDto.cs" />
+    <Compile Include="KeyBindings\InteractionPoints\InteractionPointVmDto.cs" />
     <Compile Include="KeyBindings\Scripts\ESkipModeDto.cs" />
     <Compile Include="KeyBindings\Behaviour\ECursorBehaviourDto.cs" />
     <Compile Include="KeyBindings\Behaviour\EHighMouseKeyDto.cs" />
@@ -94,7 +94,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Presets.resx</DependentUpon>
     </Compile>
-    <Compile Include="KeyBindings\ClickablePoints\ClickablePrecisePointDto.cs" />
+    <Compile Include="KeyBindings\InteractionPoints\InteractionPrecisePointDto.cs" />
     <Compile Include="Proxy\DialogOptionFinderData.cs" />
     <Compile Include="Proxy\PresetEmpty.cs" />
     <Compile Include="Screenshots\IScreenshotNameProvider.cs" />

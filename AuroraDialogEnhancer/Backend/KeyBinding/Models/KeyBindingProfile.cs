@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 
@@ -32,13 +32,16 @@ public class KeyBindingProfile
 
     #region Controls
     [XmlArrayItem(ElementName = "ListOfKeys")] 
-    public virtual List<List<GenericKey>> Select          { get; set; } = new();
+    public virtual List<List<GenericKey>> Select   { get; set; } = new();
     [XmlArrayItem(ElementName = "ListOfKeys")] 
-    public virtual List<List<GenericKey>> Previous        { get; set; } = new();
+    public virtual List<List<GenericKey>> Previous { get; set; } = new();
     [XmlArrayItem(ElementName = "ListOfKeys")] 
-    public virtual List<List<GenericKey>> Next            { get; set; } = new();
-    [XmlArrayItem(ElementName = "ListOfClickablePoint")] 
-    public virtual List<ClickablePoint>   ClickablePoints { get; set; } = new();
+    public virtual List<List<GenericKey>> Next     { get; set; } = new();
+    #endregion
+
+    #region Interaction Points
+    [XmlArrayItem(ElementName = "ListOfInteractionPoints")] 
+    public virtual List<InteractionPoint> InteractionPoints { get; set; } = new();
     #endregion
 
     #region Scripts

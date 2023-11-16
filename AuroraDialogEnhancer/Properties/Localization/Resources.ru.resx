@@ -597,6 +597,9 @@
   <data name="KeyBinding_General_Screenshot" xml:space="preserve">
     <value>Скриншот</value>
   </data>
+  <data name="KeyBinding_InteractionPoints" xml:space="preserve">
+    <value>Интерактивные точки</value>
+  </data>
   <data name="KeyBinding_Numeric" xml:space="preserve">
     <value>Выбор варианта диалога</value>
   </data>

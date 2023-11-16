@@ -2,7 +2,7 @@
 using System.Linq;
 using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
@@ -31,10 +31,13 @@ public class KeyBindingViewModelBackMapper : IMapper<KeyBindingProfileViewModel,
             #endregion
 
             #region Controls
-            Select          = Map(obj.Select),
-            Previous        = Map(obj.Previous),
-            Next            = Map(obj.Next),
-            ClickablePoints = Map(obj.ClickablePoints),
+            Select   = Map(obj.Select),
+            Previous = Map(obj.Previous),
+            Next     = Map(obj.Next),
+            #endregion
+
+            #region Interaction Points
+            InteractionPoints = Map(obj.InteractionPoints),
             #endregion
 
             #region Scripts
@@ -75,8 +78,8 @@ public class KeyBindingViewModelBackMapper : IMapper<KeyBindingProfileViewModel,
         return triggerViewModel.KeyCodes.ToList();
     }
 
-    private List<ClickablePoint> Map(Dictionary<string, ClickablePointVm> clickablePointsVm)
+    private List<InteractionPoint> Map(Dictionary<string, InteractionPointVm> interactionPointsVm)
     {
-        return clickablePointsVm.Select(vm => new ClickablePoint(vm.Value.Id, Map(vm.Value.ActionViewModel))).ToList();
+        return interactionPointsVm.Select(vm => new InteractionPoint(vm.Value.Id, Map(vm.Value.ActionViewModel))).ToList();
     }
 }

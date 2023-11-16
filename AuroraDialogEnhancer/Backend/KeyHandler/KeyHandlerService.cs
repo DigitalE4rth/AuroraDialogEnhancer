@@ -13,7 +13,7 @@ using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
@@ -43,7 +43,7 @@ public partial class KeyHandlerService : IDisposable
     private List<Rectangle> _currentDialogOptions;
     private Point           _primaryDownPoint;
     private Point           _primaryUpPoint;
-    private Dictionary<string, Point> _clickablePoints;
+    private Dictionary<string, Point> _interactionPoints;
 
     private bool _isWindowFocused;
     private bool _isProcessing;
@@ -78,7 +78,7 @@ public partial class KeyHandlerService : IDisposable
         _scriptHandlerService          = scriptHandlerService;
         _windowHookService             = windowHookService;
 
-        _clickablePoints      = new Dictionary<string, Point>(0);
+        _interactionPoints    = new Dictionary<string, Point>(0);
         _currentDialogOptions = new List<Rectangle>(0);
         _focusLock      = new object();
         _processingLock = new object();
@@ -86,9 +86,9 @@ public partial class KeyHandlerService : IDisposable
     }
 
     #region Initializing
-    public void InitializeClickablePoints(List<ClickablePrecisePoint> clickablePoints)
+    public void InitializeInteractionPoints(List<InteractionPrecisePoint> interactionPoints)
     {
-        _clickablePoints = clickablePoints.ToDictionary(point => point.Id, point => point.Point);
+        _interactionPoints = interactionPoints.ToDictionary(point => point.Id, point => point.Point);
     }
 
     public void ApplyKeyBinds()
@@ -175,7 +175,7 @@ public partial class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.Eight, OnEightPress);
         Register(_keyBindingProfile.Nine,  OnNinePress);
         Register(_keyBindingProfile.Ten,   OnTenPress);
-        Register(_keyBindingProfile.ClickablePoints);
+        Register(_keyBindingProfile.InteractionPoints);
 
         RegisterAutoSkip(_keyBindingProfile.AutoSkipConfig);
 
@@ -196,24 +196,24 @@ public partial class KeyHandlerService : IDisposable
         }
     }
 
-    private void Register(List<ClickablePoint> clickablePoints)
+    private void Register(List<InteractionPoint> interactionPoints)
     {
-        foreach (var clickablePoint in clickablePoints)
+        foreach (var interactionPoint in interactionPoints)
         {
-            foreach (var genericKeys in clickablePoint.Keys)
+            foreach (var genericKeys in interactionPoint.Keys)
             {
                 if (genericKeys.Count == 1 && genericKeys[0].GetType() == typeof(MouseKey))
                 {
                     _mouseHookManagerService.RegisterHotKey(
                         genericKeys[0].KeyCode, 
-                        () => { ClickCursor(_clickablePoints[clickablePoint.Id]); });
+                        () => { ClickCursor(_interactionPoints[interactionPoint.Id]); });
 
                     continue;
                 }
 
                 _keyboardHookManagerService.RegisterHotKeys(
                     genericKeys.Select(key => key.KeyCode), 
-                    () => { ClickCursor(_clickablePoints[clickablePoint.Id]); });
+                    () => { ClickCursor(_interactionPoints[interactionPoint.Id]); });
             }
         }
     }
@@ -642,7 +642,7 @@ public partial class KeyHandlerService : IDisposable
     public void Dispose()
     {
         _windowHookService.OnFocusChanged -= OnWindowFocusChanged;
-        _clickablePoints.Clear();
+        _interactionPoints.Clear();
         _scriptHandlerService.Dispose();
         StopPeripheryHook();
     }

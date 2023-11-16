@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.KeyBindings;
 using AuroraDialogEnhancerExtensions.KeyBindings.Behaviour;
-using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.InteractionPoints;
 using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
 namespace Extension.HonkaiStarRail;
@@ -29,9 +29,9 @@ public sealed class KeyBindingProfileDto : KeyBindingProfileDtoDefault
         new List<GenericKeyDto> { new KeyboardKeyDto(86) } // V
     };
 
-    public override List<ClickablePointDto> ClickablePoints { get; set; } = new()
+    public override List<InteractionPointDto> InteractionPoints { get; set; } = new()
     {
-        new ClickablePointDto("autoplay", new List<List<GenericKeyDto>>
+        new InteractionPointDto("autoplay", new List<List<GenericKeyDto>>
         {
             new() { new KeyboardKeyDto(192) } // ~
         })

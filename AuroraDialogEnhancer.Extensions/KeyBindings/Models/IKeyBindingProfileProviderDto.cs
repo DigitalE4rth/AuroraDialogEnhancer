@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.InteractionPoints;
 
 namespace AuroraDialogEnhancerExtensions.KeyBindings.Models;
 
@@ -7,5 +7,5 @@ public interface IKeyBindingProfileProviderDto
 {
     public KeyBindingProfileDto GetKeyBindingProfileDto();
 
-    public List<ClickablePointVmDto> GetClickablePointsVmDto();
+    public List<InteractionPointVmDto> GetInteractionPointsVmDto();
 }

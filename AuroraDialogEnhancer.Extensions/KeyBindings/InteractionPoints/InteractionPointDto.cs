@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
-namespace AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+namespace AuroraDialogEnhancerExtensions.KeyBindings.InteractionPoints;
 
-public class ClickablePointDto
+public class InteractionPointDto
 {
     public string Id { get; }
 
     public List<List<GenericKeyDto>> Keys { get; }
 
-    public ClickablePointDto(string id, List<List<GenericKeyDto>> keys)
+    public InteractionPointDto(string id, List<List<GenericKeyDto>> keys)
     {
         Id = id;
         Keys = keys;
     }
 
-    public ClickablePointDto()
+    public InteractionPointDto()
     {
         Id = Guid.NewGuid().ToString();
         Keys = new List<List<GenericKeyDto>>();

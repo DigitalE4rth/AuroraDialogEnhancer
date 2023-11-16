@@ -2,6 +2,7 @@
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyHandler;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
 
@@ -42,12 +43,12 @@ public class ComputerVisionPresetService
         _screenCaptureService.SetNameProvider(preset.GetScreenshotNameProvider());
         _cursorPositioningService.SetInitialCursorPosition(dialogOptionFinderProvider.Data.InitialCursorPosition);
 
-        var clickablePoints = preset.GetClickablePoints(clientSize);
-        if (clickablePoints is not null)
+        var interactionPoints = preset.GetInteractionPoints(clientSize);
+        if (interactionPoints.Any())
         {
-            var clickablePointMapper = new ClickablePrecisePointMapper();
-            var mappedPoints = clickablePoints.Select(clickablePointMapper.Map).ToList();
-            _keyHandlerService.InitializeClickablePoints(mappedPoints);
+            var mapper = new InteractionPrecisePointMapper();
+            var mappedPoints = interactionPoints.Select(mapper.Map).ToList();
+            _keyHandlerService.InitializeInteractionPoints(mappedPoints);
         }
 
         return (true, string.Empty);

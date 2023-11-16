@@ -4,15 +4,15 @@ using System.Linq;
 using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
-using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.InteractionPoints;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 
-public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<ClickablePointVmDto>), KeyBindingProfileViewModel>
+public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<InteractionPointVmDto>), KeyBindingProfileViewModel>
 {
     private readonly KeyInterpreterService _keyInterpreterService;
 
@@ -21,10 +21,10 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
         _keyInterpreterService = keyInterpreterService;
     }
 
-    public KeyBindingProfileViewModel Map((KeyBindingProfile, List<ClickablePointVmDto>) obj)
+    public KeyBindingProfileViewModel Map((KeyBindingProfile, List<InteractionPointVmDto>) obj)
     {
         var profile = obj.Item1;
-        var clickablePointsVmDto = obj.Item2;
+        var interactionPointsVmDto = obj.Item2;
 
         return new KeyBindingProfileViewModel
         {
@@ -39,10 +39,11 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
             Screenshot  = Map(profile.Screenshot),
             HideCursor  = Map(profile.HideCursor),
 
-            Previous        = Map(profile.Previous),
-            Select          = Map(profile.Select),
-            Next            = Map(profile.Next),
-            ClickablePoints = Map(profile.ClickablePoints, clickablePointsVmDto),
+            Previous = Map(profile.Previous),
+            Select   = Map(profile.Select),
+            Next     = Map(profile.Next),
+
+            InteractionPoints = Map(profile.InteractionPoints, interactionPointsVmDto),
 
             AutoSkipConfig = new AutoSkipConfigViewModel
             {
@@ -78,12 +79,12 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Clicka
         return new TriggerViewModel(lowActions, _keyInterpreterService.InterpretKeys(lowActions));
     }
 
-    private Dictionary<string, ClickablePointVm> Map(IEnumerable<ClickablePoint> clickablePoints, IReadOnlyCollection<ClickablePointVmDto> clickablePointsVm)
+    private Dictionary<string, InteractionPointVm> Map(IEnumerable<InteractionPoint> interactionPoints, IReadOnlyCollection<InteractionPointVmDto> interactionPointsVm)
     {
-        return (from point in clickablePoints
-                from vmPoint in clickablePointsVm
+        return (from point in interactionPoints
+                from vmPoint in interactionPointsVm
                 where point.Id.Equals(vmPoint.Id, StringComparison.Ordinal)
-                select new ClickablePointVm(
+                select new InteractionPointVm(
                     point.Id,
                     vmPoint.Name,
                     vmPoint.Description,

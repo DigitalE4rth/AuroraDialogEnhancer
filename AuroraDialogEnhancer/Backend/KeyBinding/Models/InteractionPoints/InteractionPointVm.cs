@@ -1,8 +1,8 @@
 ﻿using AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 
-namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 
-public class ClickablePointVm
+public class InteractionPointVm
 {
     public string Id          { get; }
                               
@@ -14,7 +14,7 @@ public class ClickablePointVm
 
     public ActionViewModel ActionViewModel { get; }
 
-    public ClickablePointVm(string id, string name, string description, string pathIcon, ActionViewModel actionViewModel)
+    public InteractionPointVm(string id, string name, string description, string pathIcon, ActionViewModel actionViewModel)
     {
         Id              = id;
         Name            = name;

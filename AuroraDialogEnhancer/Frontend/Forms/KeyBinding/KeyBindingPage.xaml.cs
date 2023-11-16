@@ -38,7 +38,7 @@ public partial class KeyBindingPage
         UnloadComponentEvents();
         _keyBindingProfileViewModel = _keyBindingProfileService.GetViewModel(Properties.Settings.Default.App_HookSettings_SelectedGameId);
 
-        InitializeClickablePointButtons();
+        InitializeInteractionPointButtons();
         InitializeProfileValues();
         InitializeComponentEvents();
     }
@@ -59,9 +59,9 @@ public partial class KeyBindingPage
         ComboBoxSingleBehaviour.SelectionChanged  -= ComboBoxSingleBehaviour_OnSelectionChanged;
         ComboBoxNumericBehaviour.SelectionChanged -= ComboBoxNumericBehaviour_OnSelectionChanged;
         ComboBoxCursorBehaviour.SelectionChanged  -= ComboBoxCursorBehaviour_OnSelectionChanged;
-        foreach (CardButton cardButtonClickablePoint in ContainerClickablePoints.Children)
+        foreach (CardButton cardButtonInteractionPoint in ContainerInteractionPointElements.Children)
         {
-            cardButtonClickablePoint.Click -= CardButton_ClickablePoint_OnClick;
+            cardButtonInteractionPoint.Click -= CardButton_InteractionPoint_OnClick;
         }
     }
 
@@ -82,23 +82,27 @@ public partial class KeyBindingPage
         InitializeKeyCaps();
     }
 
-    private void InitializeClickablePointButtons()
+    private void InitializeInteractionPointButtons()
     {
-        foreach (CardButton cardButtonClickablePoint in ContainerClickablePoints.Children)
-        {
-            cardButtonClickablePoint.Click -= CardButton_ClickablePoint_OnClick;
-        }
-        ContainerClickablePoints.Children.Clear();
+        ContainerInteractionPointsUi.Visibility = _keyBindingProfileViewModel.InteractionPoints.Any() 
+            ? Visibility.Visible
+            : Visibility.Collapsed;
 
-        foreach (var clickablePointVm in _keyBindingProfileViewModel.ClickablePoints.Values)
+        foreach (CardButton cardButtonInteractionPoint in ContainerInteractionPointElements.Children)
+        {
+            cardButtonInteractionPoint.Click -= CardButton_InteractionPoint_OnClick;
+        }
+        ContainerInteractionPointElements.Children.Clear();
+
+        foreach (var ipVm in _keyBindingProfileViewModel.InteractionPoints.Values)
         {
             var button = new CardButton
             {
-                Title             = clickablePointVm.Name,
-                Description       = clickablePointVm.Description,
+                Title             = ipVm.Name,
+                Description       = ipVm.Description,
                 MinHeight         = 55,
                 Margin            = new Thickness(0,5,0,0),
-                Tag               = clickablePointVm.Id,
+                Tag               = ipVm.Id,
                 ContentForeground = ECardButtonContentForeground.Secondary,
                 LeftIcon          = new Grid
                 {
@@ -108,7 +112,7 @@ public partial class KeyBindingPage
                         new PathIcon
                         {
                             Width = WhyOrchid.Properties.Settings.Default.FontStyle_Medium,
-                            Data  = Geometry.Parse(clickablePointVm.PathIcon),
+                            Data  = Geometry.Parse(ipVm.PathIcon),
                             Style = (Style) Application.Current.Resources["IconMedium"]
                         }
                     }
@@ -127,8 +131,8 @@ public partial class KeyBindingPage
                 },
             };
 
-            button.Click += CardButton_ClickablePoint_OnClick;
-            ContainerClickablePoints.Children.Add(button);
+            button.Click += CardButton_InteractionPoint_OnClick;
+            ContainerInteractionPointElements.Children.Add(button);
         }
     }
 
@@ -156,9 +160,9 @@ public partial class KeyBindingPage
 
         _keyCapsService.SetKeyCaps(CardButtonAutoSkip, _keyBindingProfileViewModel.AutoSkipConfig.ActivationKeys);
 
-        foreach (CardButton cardButton in ContainerClickablePoints.Children)
+        foreach (CardButton cardButton in ContainerInteractionPointElements.Children)
         {
-            _keyCapsService.SetKeyCaps(cardButton, _keyBindingProfileViewModel.ClickablePoints[(string)cardButton.Tag].ActionViewModel);
+            _keyCapsService.SetKeyCaps(cardButton, _keyBindingProfileViewModel.InteractionPoints[(string)cardButton.Tag].ActionViewModel);
         }
     }
 
@@ -254,10 +258,10 @@ public partial class KeyBindingPage
         EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Next);
     }
 
-    private void CardButton_ClickablePoint_OnClick(object sender, RoutedEventArgs e)
+    private void CardButton_InteractionPoint_OnClick(object sender, RoutedEventArgs e)
     {
         var button = (CardButton)sender;
-        EditActionViewModel(button, _keyBindingProfileViewModel.ClickablePoints[(string)button.Tag].ActionViewModel);
+        EditActionViewModel(button, _keyBindingProfileViewModel.InteractionPoints[(string)button.Tag].ActionViewModel);
     }
     #endregion
 
@@ -374,9 +378,9 @@ public partial class KeyBindingPage
 
         RemoveDuplicates(_keyBindingProfileViewModel.AutoSkipConfig.ActivationKeys, sourceVm);
 
-        foreach (CardButton cardButton in ContainerClickablePoints.Children)
+        foreach (CardButton cardButton in ContainerInteractionPointElements.Children)
         {
-            RemoveDuplicates( _keyBindingProfileViewModel.ClickablePoints[(string)cardButton.Tag].ActionViewModel, sourceVm);
+            RemoveDuplicates( _keyBindingProfileViewModel.InteractionPoints[(string)cardButton.Tag].ActionViewModel, sourceVm);
         }
     }
 

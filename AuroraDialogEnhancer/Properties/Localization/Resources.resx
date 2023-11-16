@@ -639,6 +639,9 @@
     <value>Screenshot</value>
     <comment>Take screenshot</comment>
   </data>
+  <data name="KeyBinding_InteractionPoints" xml:space="preserve">
+    <value>Interaction points</value>
+  </data>
   <data name="KeyBinding_Numeric" xml:space="preserve">
     <value>Dialog option selection</value>
   </data>

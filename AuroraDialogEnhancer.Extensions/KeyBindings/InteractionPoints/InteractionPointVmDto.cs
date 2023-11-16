@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+namespace AuroraDialogEnhancerExtensions.KeyBindings.InteractionPoints;
 
-public class ClickablePointVmDto
+public class InteractionPointVmDto
 {
     public string Id { get; }
 
@@ -12,7 +12,7 @@ public class ClickablePointVmDto
 
     public string PathIcon { get; }
 
-    public ClickablePointVmDto(string id, string name, string description, string pathIcon)
+    public InteractionPointVmDto(string id, string name, string description, string pathIcon)
     {
         Id = id;
         Name = name;
@@ -20,7 +20,7 @@ public class ClickablePointVmDto
         PathIcon = pathIcon;
     }
 
-    public ClickablePointVmDto(string id, string name, string pathIcon)
+    public InteractionPointVmDto(string id, string name, string pathIcon)
     {
         Id = id;
         Name = name;
@@ -28,7 +28,7 @@ public class ClickablePointVmDto
         PathIcon = pathIcon;
     }
 
-    public ClickablePointVmDto()
+    public InteractionPointVmDto()
     {
         Id = Guid.NewGuid().ToString();
         Name = "ERROR_KEY_HAS_NO_NAME";

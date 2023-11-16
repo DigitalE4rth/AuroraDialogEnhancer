@@ -54,10 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeyBindings\ClickablePointViewModelProvider.cs" />
+    <Compile Include="InteractionPoints\InteractionPointViewModelProvider.cs" />
     <Compile Include="KeyBindings\KeyBindingProfile.cs" />
     <Compile Include="Extension.cs" />
-    <Compile Include="ClickablePoints\ClickableScreenPointsProvider.cs" />
+    <Compile Include="InteractionPoints\InteractionScreenPointsProvider.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileProvider.cs" />
     <Compile Include="Location\LocationProvider.cs" />
     <Compile Include="Presets\PresetData.cs" />
@@ -68,7 +68,7 @@
     </Compile>
     <Compile Include="Services\DialogOptionFinderDebug.cs" />
     <Compile Include="Services\DialogOptionFinderInfoMapper.cs" />
-    <Compile Include="ClickablePoints\ClickablePointsMapper.cs" />
+    <Compile Include="InteractionPoints\InteractionPointsMapper.cs" />
     <Compile Include="Presets\PresetBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -76,8 +76,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ClickablePoints\DynamicPointTemplate.cs" />
-    <Compile Include="ClickablePoints\PointTemplate.cs" />
+    <Compile Include="InteractionPoints\DynamicPointTemplate.cs" />
+    <Compile Include="InteractionPoints\PointTemplate.cs" />
     <Compile Include="Templates\DynamicTemplate1P5.cs" />
     <Compile Include="Templates\DynamicTemplate1P33.cs" />
     <Compile Include="Templates\DynamicTemplate1P25.cs" />

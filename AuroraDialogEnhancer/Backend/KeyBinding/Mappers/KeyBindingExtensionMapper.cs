@@ -3,11 +3,11 @@ using System.Linq;
 using AuroraDialogEnhancer.Backend.Generics;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 using AuroraDialogEnhancerExtensions.KeyBindings;
-using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.InteractionPoints;
 using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
@@ -34,10 +34,13 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
             #endregion
 
             #region Controls
-            Select          = Map(obj.Select),
-            Previous        = Map(obj.Previous),
-            Next            = Map(obj.Next),
-            ClickablePoints = Map(obj.ClickablePoints),
+            Select   = Map(obj.Select),
+            Previous = Map(obj.Previous),
+            Next     = Map(obj.Next),
+            #endregion
+
+            #region Interaction Points
+            InteractionPoints = Map(obj.InteractionPoints),
             #endregion
 
             #region Scripts
@@ -88,8 +91,8 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
             : new MouseKey(genericKeyExt.KeyCode);
     }
 
-    private List<ClickablePoint> Map(IEnumerable<ClickablePointDto> listOfClickablePoints)
+    private List<InteractionPoint> Map(IEnumerable<InteractionPointDto> interactionPointsList)
     {
-        return listOfClickablePoints.Select(pointDto => new ClickablePoint(pointDto.Id, Map(pointDto.Keys))).ToList();
+        return interactionPointsList.Select(pointDto => new InteractionPoint(pointDto.Id, Map(pointDto.Keys))).ToList();
     }
 }

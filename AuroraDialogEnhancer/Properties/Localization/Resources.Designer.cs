@@ -1501,6 +1501,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interaction points.
+        /// </summary>
+        public static string KeyBinding_InteractionPoints {
+            get {
+                return ResourceManager.GetString("KeyBinding_InteractionPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dialog option selection.
         /// </summary>
         public static string KeyBinding_Numeric {

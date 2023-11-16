@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
-using AuroraDialogEnhancer.Backend.KeyBinding.Models.ClickablePoints;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
@@ -26,7 +26,10 @@ public class KeyBindingProfileViewModel
     public ActionViewModel Select;
     public ActionViewModel Previous;
     public ActionViewModel Next;
-    public Dictionary<string, ClickablePointVm> ClickablePoints;
+    #endregion
+
+    #region Interaction Points
+    public Dictionary<string, InteractionPointVm> InteractionPoints;
     #endregion
 
     #region Scripts
@@ -64,10 +67,13 @@ public class KeyBindingProfileViewModel
         #endregion
 
         #region Controls
-        Select          = new ActionViewModel(new List<TriggerViewModel>());
-        Previous        = new ActionViewModel(new List<TriggerViewModel>());
-        Next            = new ActionViewModel(new List<TriggerViewModel>());
-        ClickablePoints = new Dictionary<string, ClickablePointVm>();
+        Select   = new ActionViewModel(new List<TriggerViewModel>());
+        Previous = new ActionViewModel(new List<TriggerViewModel>());
+        Next     = new ActionViewModel(new List<TriggerViewModel>());
+        #endregion
+
+        #region Interaction Points
+        InteractionPoints = new Dictionary<string, InteractionPointVm>();
         #endregion
 
         #region Scripts

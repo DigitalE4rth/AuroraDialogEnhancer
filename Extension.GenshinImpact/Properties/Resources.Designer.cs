@@ -61,21 +61,39 @@ namespace Extension.GenshinImpact.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autoplay.
-        /// </summary>
-        internal static string ClickablePoint_AutoPlay_Name {
-            get {
-                return ResourceManager.GetString("ClickablePoint_AutoPlay_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Cover {
             get {
                 object obj = ResourceManager.GetObject("Cover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autoplay.
+        /// </summary>
+        internal static string InteractionPoint_AutoPlay_Name {
+            get {
+                return ResourceManager.GetString("InteractionPoint_AutoPlay_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Handles the &quot;Click to continue&quot; pop-up.
+        /// </summary>
+        internal static string InteractionPoint_FullScreenPopUp_Description {
+            get {
+                return ResourceManager.GetString("InteractionPoint_FullScreenPopUp_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full screen pop-up.
+        /// </summary>
+        internal static string InteractionPoint_FullScreenPopUp_Name {
+            get {
+                return ResourceManager.GetString("InteractionPoint_FullScreenPopUp_Name", resourceCulture);
             }
         }
     }

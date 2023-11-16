@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.KeyBindings.Behaviour;
-using AuroraDialogEnhancerExtensions.KeyBindings.ClickablePoints;
+using AuroraDialogEnhancerExtensions.KeyBindings.InteractionPoints;
 using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
 using AuroraDialogEnhancerExtensions.KeyBindings.Scripts;
 
@@ -24,10 +24,13 @@ public abstract class KeyBindingProfileDto
     #endregion
 
     #region Controls
-    public virtual List<List<GenericKeyDto>> Select          { get; set; } = new(0);
-    public virtual List<List<GenericKeyDto>> Previous        { get; set; } = new(0);
-    public virtual List<List<GenericKeyDto>> Next            { get; set; } = new(0);
-    public virtual List<ClickablePointDto>   ClickablePoints { get; set; } = new(0);
+    public virtual List<List<GenericKeyDto>> Select            { get; set; } = new(0);
+    public virtual List<List<GenericKeyDto>> Previous          { get; set; } = new(0);
+    public virtual List<List<GenericKeyDto>> Next              { get; set; } = new(0);
+    #endregion
+
+    #region Interaction Points
+    public virtual List<InteractionPointDto> InteractionPoints { get; set; } = new(0);
     #endregion
 
     #region Scripts
