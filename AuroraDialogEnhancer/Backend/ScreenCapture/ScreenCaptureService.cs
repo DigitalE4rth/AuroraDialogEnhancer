@@ -148,7 +148,7 @@ public class ScreenCaptureService : IDisposable
 
     private Bitmap Capture(Rectangle rectangle)
     {
-        var bitmap = new Bitmap(rectangle.Width, rectangle.Height);
+        var bitmap = new Bitmap(rectangle.Width, rectangle.Height, PixelFormat.Format32bppRgb);
         using var graphics = Graphics.FromImage(bitmap);
         graphics.CopyFromScreen(rectangle.X, rectangle.Y, 0, 0, bitmap.Size);
 
