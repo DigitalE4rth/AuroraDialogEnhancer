@@ -58,7 +58,7 @@ public partial class KeyHandlerService
         }
 
         _autoSkipCts     = new CancellationTokenSource();
-        _runningSkipTask = Task.Run(_skipTaskLoopDelegate!);
+        _runningSkipTask = Task.Run(() => _skipTaskLoopDelegate!);
     }
 
     #region Loops ~OoOoOoOo
