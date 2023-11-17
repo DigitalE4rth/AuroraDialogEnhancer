@@ -1312,29 +1312,20 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To skip typewriting effect.
-        /// </summary>
-        public static string KeyBinding_AutoSkip_DoubleClickDelay_Description {
-            get {
-                return ResourceManager.GetString("KeyBinding_AutoSkip_DoubleClickDelay_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Double click delay.
-        /// </summary>
-        public static string KeyBinding_AutoSkip_DoubleClickDelay_Title {
-            get {
-                return ResourceManager.GetString("KeyBinding_AutoSkip_DoubleClickDelay_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Text and replies.
         /// </summary>
         public static string KeyBinding_AutoSkip_Mode_Everything {
             get {
                 return ResourceManager.GetString("KeyBinding_AutoSkip_Mode_Everything", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replies only.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Mode_Replies {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Mode_Replies", resourceCulture);
             }
         }
         
@@ -1353,6 +1344,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         public static string KeyBinding_AutoSkip_Mode_Title {
             get {
                 return ResourceManager.GetString("KeyBinding_AutoSkip_Mode_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reply scan delay.
+        /// </summary>
+        public static string KeyBinding_AutoSkip_Reply_Scan_Delay_Title {
+            get {
+                return ResourceManager.GetString("KeyBinding_AutoSkip_Reply_Scan_Delay_Title", resourceCulture);
             }
         }
         

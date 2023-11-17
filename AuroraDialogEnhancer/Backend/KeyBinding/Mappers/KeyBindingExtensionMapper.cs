@@ -46,13 +46,14 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
             #region Scripts
             AutoSkipConfig = new AutoSkipConfig
             {
-                ActivationKeys     = Map(obj.AutoSkipConfigDto.ActivationKeys),
-                SkipMode           = (ESkipMode) obj.AutoSkipConfigDto.SkipMode,
-                StartCondition     = (ESkipStartCondition) obj.AutoSkipConfigDto.StartCondition,
-                SkipKeys           = Map(obj.AutoSkipConfigDto.SkipKeys),
-                Delay              = obj.AutoSkipConfigDto.Delay,
-                IsDoubleClickDelay = obj.AutoSkipConfigDto.IsDoubleClickDelay,
-                DoubleClickDelay   = obj.AutoSkipConfigDto.DoubleClickDelay
+                ActivationKeys    = Map(obj.AutoSkipConfigDto.ActivationKeys),
+                SkipMode          = (ESkipMode) obj.AutoSkipConfigDto.SkipMode,
+                StartCondition    = (ESkipStartCondition) obj.AutoSkipConfigDto.StartCondition,
+                SkipKeys          = Map(obj.AutoSkipConfigDto.SkipKeys),
+                ScanDelayRegular  = obj.AutoSkipConfigDto.ScanDelayRegular,
+                ClickDelayRegular = obj.AutoSkipConfigDto.ClickDelayRegular,
+                ScanDelayReply    = obj.AutoSkipConfigDto.ScanDelayReply,
+                ClickDelayReply   = obj.AutoSkipConfigDto.ClickDelayReply
             },
             #endregion
 

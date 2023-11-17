@@ -19,7 +19,6 @@
         mc:Ignorable="d">
     <Window.Resources>
         <converters:WindowScaleAdjuster x:Key="WindowScaleAdjuster" />
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
     <Window.Width>
         <Binding Converter="{StaticResource WindowScaleAdjuster}"
@@ -186,6 +185,7 @@
 
                                 <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Mode_Everything}" Tag="{x:Static scripts:ESkipMode.Everything}" />
                                 <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Mode_Text}" Tag="{x:Static scripts:ESkipMode.Text}" />
+                                <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Mode_Replies}" Tag="{x:Static scripts:ESkipMode.Replies}" />
 
                                 <woControls:CardComboBox.RightIcon>
                                     <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
@@ -196,102 +196,195 @@
                                 </woControls:CardComboBox.RightIcon>
                             </woControls:CardComboBox>
 
-                            <!--  Delay  -->
-                            <woControls:CardElement MinHeight="45"
-                                                    Margin="0,0,0,5"
-                                                    VerticalContentAlignment="Stretch"
-                                                    ContentMargin="0">
+                            <StackPanel x:Name="ContainerSkipRegular">
+                                <!--  Scan Delay  -->
+                                <woControls:CardElement MinHeight="45"
+                                                        Margin="0,0,0,5"
+                                                        VerticalContentAlignment="Stretch"
+                                                        ContentMargin="0">
 
-                                <woControls:CardElement.Title>
-                                    <TextBlock>
-                                        <Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Title}" /><Run Text=" (" /><Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Milliseconds}" /><Run Text=")" />
-                                    </TextBlock>
-                                </woControls:CardElement.Title>
+                                    <woControls:CardElement.Title>
+                                        <TextBlock>
+                                            <Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Reply_Scan_Delay_Title}" /><Run Text=" (" /><Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Milliseconds}" /><Run Text=")" />
+                                        </TextBlock>
+                                    </woControls:CardElement.Title>
 
-                                <woControls:CardElement.LeftIcon>
-                                    <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                        <woControls:PathIcon Data="{StaticResource I.R.Hourglass}" Style="{StaticResource IconLarge}" />
-                                    </Grid>
-                                </woControls:CardElement.LeftIcon>
+                                    <woControls:CardElement.LeftIcon>
+                                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                            <woControls:PathIcon Data="{StaticResource I.R.Hourglass}" Style="{StaticResource IconLarge}" />
+                                        </Grid>
+                                    </woControls:CardElement.LeftIcon>
 
-                                <woControls:TextBox x:Name="TextElementDelay"
-                                                    MinWidth="100"
-                                                    Margin="0,2,0,2"
-                                                    VerticalContentAlignment="Center"
-                                                    d:Text="d:DELAY"
-                                                    Validation.ErrorTemplate="{x:Null}">
+                                    <woControls:TextBox x:Name="InputScanDelayEverything"
+                                                        MinWidth="100"
+                                                        Margin="0,2,0,2"
+                                                        VerticalContentAlignment="Center"
+                                                        d:Text="d:SCAN_DELAY"
+                                                        Validation.ErrorTemplate="{x:Null}">
 
-                                    <TextBox.Resources>
-                                        <Style BasedOn="{StaticResource {x:Type woControls:TextBox}}" TargetType="{x:Type woControls:TextBox}">
-                                            <Style.Triggers>
-                                                <Trigger Property="Validation.HasError" Value="true">
-                                                    <Setter Property="IsError" Value="True" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBox.Resources>
+                                        <TextBox.Resources>
+                                            <Style BasedOn="{StaticResource {x:Type woControls:TextBox}}" TargetType="{x:Type woControls:TextBox}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Validation.HasError" Value="true">
+                                                        <Setter Property="IsError" Value="True" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Resources>
 
-                                    <woControls:TextBox.Text>
-                                        <Binding Path="Delay" UpdateSourceTrigger="PropertyChanged">
-                                            <Binding.ValidationRules>
-                                                <validators:UnsignedIntegerValidator />
-                                            </Binding.ValidationRules>
-                                        </Binding>
-                                    </woControls:TextBox.Text>
-                                </woControls:TextBox>
+                                        <woControls:TextBox.Text>
+                                            <Binding Path="ScanDelayRegular" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <validators:UnsignedIntegerValidator />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </woControls:TextBox.Text>
+                                    </woControls:TextBox>
 
-                            </woControls:CardElement>
+                                </woControls:CardElement>
 
-                            <!--  Double Click Delay  -->
-                            <woControls:CardElement x:Name="ElementDoubleClickDelay"
-                                                    MinHeight="45"
-                                                    Margin="0,0,0,5"
-                                                    Padding="15,0,15,0"
-                                                    VerticalContentAlignment="Stretch"
-                                                    ContentMargin="0"
-                                                    Description="{x:Static localization:Resources.KeyBinding_AutoSkip_DoubleClickDelay_Description}"
-                                                    TitleDescriptionMargin="0"
-                                                    Visibility="{Binding Path=IsDoubleClickDelay, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <!--  Click Delay  -->
+                                <woControls:CardElement MinHeight="45"
+                                                        Margin="0,0,0,5"
+                                                        VerticalContentAlignment="Stretch"
+                                                        ContentMargin="0">
 
-                                <woControls:CardElement.Title>
-                                    <TextBlock>
-                                        <Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_DoubleClickDelay_Title}" /><Run Text=" (" /><Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Milliseconds}" /><Run Text=")" />
-                                    </TextBlock>
-                                </woControls:CardElement.Title>
+                                    <woControls:CardElement.Title>
+                                        <TextBlock>
+                                            <Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Title}" /><Run Text=" (" /><Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Milliseconds}" /><Run Text=")" />
+                                        </TextBlock>
+                                    </woControls:CardElement.Title>
 
-                                <woControls:CardElement.LeftIcon>
-                                    <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                        <woControls:PathIcon Data="{StaticResource I.R.Hourglass}" Style="{StaticResource IconLarge}" />
-                                    </Grid>
-                                </woControls:CardElement.LeftIcon>
+                                    <woControls:CardElement.LeftIcon>
+                                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                            <woControls:PathIcon Data="{StaticResource I.R.Hourglass}" Style="{StaticResource IconLarge}" />
+                                        </Grid>
+                                    </woControls:CardElement.LeftIcon>
 
-                                <woControls:TextBox x:Name="TextElementDoubleClickDelay"
-                                                    MinWidth="100"
-                                                    Margin="0,7,0,7"
-                                                    VerticalContentAlignment="Center"
-                                                    d:Text="d:DOUBLE CLICK DELAY"
-                                                    Validation.ErrorTemplate="{x:Null}">
+                                    <woControls:TextBox x:Name="InputClickDelayEverything"
+                                                        MinWidth="100"
+                                                        Margin="0,2,0,2"
+                                                        VerticalContentAlignment="Center"
+                                                        d:Text="d:CLICK_DELAY"
+                                                        Validation.ErrorTemplate="{x:Null}">
 
-                                    <TextBox.Resources>
-                                        <Style BasedOn="{StaticResource {x:Type woControls:TextBox}}" TargetType="{x:Type woControls:TextBox}">
-                                            <Style.Triggers>
-                                                <Trigger Property="Validation.HasError" Value="true">
-                                                    <Setter Property="IsError" Value="True" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBox.Resources>
+                                        <TextBox.Resources>
+                                            <Style BasedOn="{StaticResource {x:Type woControls:TextBox}}" TargetType="{x:Type woControls:TextBox}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Validation.HasError" Value="true">
+                                                        <Setter Property="IsError" Value="True" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Resources>
 
-                                    <woControls:TextBox.Text>
-                                        <Binding Path="DoubleClickDelay" UpdateSourceTrigger="PropertyChanged">
-                                            <Binding.ValidationRules>
-                                                <validators:UnsignedIntegerValidator />
-                                            </Binding.ValidationRules>
-                                        </Binding>
-                                    </woControls:TextBox.Text>
-                                </woControls:TextBox>
+                                        <woControls:TextBox.Text>
+                                            <Binding Path="ClickDelayRegular" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <validators:UnsignedIntegerValidator />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </woControls:TextBox.Text>
+                                    </woControls:TextBox>
 
-                            </woControls:CardElement>
+                                </woControls:CardElement>
+                            </StackPanel>
+
+                            <StackPanel x:Name="ContainerSkipReplies">
+                                <!--  Scan Delay  -->
+                                <woControls:CardElement MinHeight="45"
+                                                        Margin="0,0,0,5"
+                                                        VerticalContentAlignment="Stretch"
+                                                        ContentMargin="0">
+
+                                    <woControls:CardElement.Title>
+                                        <TextBlock>
+                                            <Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Reply_Scan_Delay_Title}" /><Run Text=" (" /><Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Milliseconds}" /><Run Text=")" />
+                                        </TextBlock>
+                                    </woControls:CardElement.Title>
+
+                                    <woControls:CardElement.LeftIcon>
+                                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                            <woControls:PathIcon Data="{StaticResource I.R.Hourglass}" Style="{StaticResource IconLarge}" />
+                                        </Grid>
+                                    </woControls:CardElement.LeftIcon>
+
+                                    <woControls:TextBox x:Name="InputScanDelayReplies"
+                                                        MinWidth="100"
+                                                        Margin="0,2,0,2"
+                                                        VerticalContentAlignment="Center"
+                                                        d:Text="d:SCAN_DELAY_REPLIES"
+                                                        Validation.ErrorTemplate="{x:Null}">
+
+                                        <TextBox.Resources>
+                                            <Style BasedOn="{StaticResource {x:Type woControls:TextBox}}" TargetType="{x:Type woControls:TextBox}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Validation.HasError" Value="true">
+                                                        <Setter Property="IsError" Value="True" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Resources>
+
+                                        <woControls:TextBox.Text>
+                                            <Binding Path="ScanDelayReply" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <validators:UnsignedIntegerValidator />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </woControls:TextBox.Text>
+                                    </woControls:TextBox>
+
+                                </woControls:CardElement>
+
+                                <!--  Click Delay  -->
+                                <woControls:CardElement MinHeight="45"
+                                                        Margin="0,0,0,5"
+                                                        Padding="15,0,15,0"
+                                                        VerticalContentAlignment="Stretch"
+                                                        ContentMargin="0"
+                                                        TitleDescriptionMargin="0">
+
+                                    <woControls:CardElement.Title>
+                                        <TextBlock>
+                                            <Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Title}" /><Run Text=" (" /><Run Text="{x:Static localization:Resources.KeyBinding_AutoSkip_Delay_Milliseconds}" /><Run Text=")" />
+                                        </TextBlock>
+                                    </woControls:CardElement.Title>
+
+                                    <woControls:CardElement.LeftIcon>
+                                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                            <woControls:PathIcon Data="{StaticResource I.R.Hourglass}" Style="{StaticResource IconLarge}" />
+                                        </Grid>
+                                    </woControls:CardElement.LeftIcon>
+
+                                    <woControls:TextBox x:Name="InputClickDelayReplies"
+                                                        MinWidth="100"
+                                                        Margin="0,7,0,7"
+                                                        VerticalContentAlignment="Center"
+                                                        d:Text="d:CLICK_DELAY_REPLIES"
+                                                        Validation.ErrorTemplate="{x:Null}">
+
+                                        <TextBox.Resources>
+                                            <Style BasedOn="{StaticResource {x:Type woControls:TextBox}}" TargetType="{x:Type woControls:TextBox}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Validation.HasError" Value="true">
+                                                        <Setter Property="IsError" Value="True" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Resources>
+
+                                        <woControls:TextBox.Text>
+                                            <Binding Path="ClickDelayReply" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <validators:UnsignedIntegerValidator />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </woControls:TextBox.Text>
+                                    </woControls:TextBox>
+
+                                </woControls:CardElement>
+                            </StackPanel>
 
                         </StackPanel>
                     </Grid>

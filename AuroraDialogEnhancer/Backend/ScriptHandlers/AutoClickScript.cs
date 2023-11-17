@@ -22,8 +22,8 @@ public class AutoClickScript : IDisposable
                            ModifierKeysProvider     modifierKeysProvider)
     {
         _keyboardEmulationService = keyboardEmulationService;
-        _mouseEmulationService = mouseEmulationService;
-        _modifierKeysProvider = modifierKeysProvider;
+        _mouseEmulationService    = mouseEmulationService;
+        _modifierKeysProvider     = modifierKeysProvider;
     }
 
     public void Register(List<GenericKey> keyList)

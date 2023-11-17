@@ -24,9 +24,9 @@ public abstract class KeyBindingProfileDto
     #endregion
 
     #region Controls
-    public virtual List<List<GenericKeyDto>> Select            { get; set; } = new(0);
-    public virtual List<List<GenericKeyDto>> Previous          { get; set; } = new(0);
-    public virtual List<List<GenericKeyDto>> Next              { get; set; } = new(0);
+    public virtual List<List<GenericKeyDto>> Select   { get; set; } = new(0);
+    public virtual List<List<GenericKeyDto>> Previous { get; set; } = new(0);
+    public virtual List<List<GenericKeyDto>> Next     { get; set; } = new(0);
     #endregion
 
     #region Interaction Points

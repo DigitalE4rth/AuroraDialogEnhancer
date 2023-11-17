@@ -534,20 +534,20 @@
   <data name="KeyBinding_AutoSkip_Delay_Title" xml:space="preserve">
     <value>Задержка нажатий</value>
   </data>
-  <data name="KeyBinding_AutoSkip_DoubleClickDelay_Description" xml:space="preserve">
-    <value>Для пропуска появления текста</value>
-  </data>
-  <data name="KeyBinding_AutoSkip_DoubleClickDelay_Title" xml:space="preserve">
-    <value>Задержка двойного нажатия</value>
-  </data>
   <data name="KeyBinding_AutoSkip_Mode_Everything" xml:space="preserve">
     <value>Текст и ответы</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Mode_Replies" xml:space="preserve">
+    <value>Только ответы</value>
   </data>
   <data name="KeyBinding_AutoSkip_Mode_Text" xml:space="preserve">
     <value>Только текст</value>
   </data>
   <data name="KeyBinding_AutoSkip_Mode_Title" xml:space="preserve">
     <value>Режим пропуска</value>
+  </data>
+  <data name="KeyBinding_AutoSkip_Reply_Scan_Delay_Title" xml:space="preserve">
+    <value>Задержка поиска ответов</value>
   </data>
   <data name="KeyBinding_AutoSkip_SkipStartCondition_Cursor" xml:space="preserve">
     <value>Отображение курсора</value>

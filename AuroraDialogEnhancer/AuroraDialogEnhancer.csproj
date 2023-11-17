@@ -166,7 +166,7 @@
     <Compile Include="Backend\Hooks\Game\HookedGameDataProvider.cs" />
     <Compile Include="Backend\KeyBinding\Models\Keys\SplitKeyStruct.cs" />
     <Compile Include="Backend\KeyBinding\Models\Scripts\ESkipStartCondition.cs" />
-    <Compile Include="Backend\KeyHandler\KeyHandlerAutoSkip.cs" />
+    <Compile Include="Backend\KeyHandler\AutoSkipKeyHandler.cs" />
     <Compile Include="Backend\PeripheralEmulators\KeyboardEmulationService.cs" />
     <Compile Include="Backend\KeyBinding\Models\InteractionPoints\InteractionPrecisePointMapper.cs" />
     <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkipConfigViewModel.cs" />

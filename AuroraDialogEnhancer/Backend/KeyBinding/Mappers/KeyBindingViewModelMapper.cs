@@ -47,13 +47,14 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Intera
 
             AutoSkipConfig = new AutoSkipConfigViewModel
             {
-                ActivationKeys     = Map(profile.AutoSkipConfig.ActivationKeys),
-                SkipMode           = profile.AutoSkipConfig.SkipMode,
-                StartCondition     = profile.AutoSkipConfig.StartCondition,
-                SkipKeys           = Map(profile.AutoSkipConfig.SkipKeys),
-                Delay              = profile.AutoSkipConfig.Delay,
-                IsDoubleClickDelay = profile.AutoSkipConfig.IsDoubleClickDelay,
-                DoubleClickDelay   = profile.AutoSkipConfig.DoubleClickDelay
+                ActivationKeys    = Map(profile.AutoSkipConfig.ActivationKeys),
+                SkipMode          = profile.AutoSkipConfig.SkipMode,
+                StartCondition    = profile.AutoSkipConfig.StartCondition,
+                SkipKeys          = Map(profile.AutoSkipConfig.SkipKeys),
+                ScanDelayRegular  = profile.AutoSkipConfig.ScanDelayRegular,
+                ClickDelayRegular = profile.AutoSkipConfig.ClickDelayRegular,
+                ScanDelayReply    = profile.AutoSkipConfig.ScanDelayReply,
+                ClickDelayReply   = profile.AutoSkipConfig.ClickDelayReply
             },
 
             One   = Map(profile.One),
