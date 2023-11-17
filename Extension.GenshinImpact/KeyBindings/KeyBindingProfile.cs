@@ -49,7 +49,7 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
         ESkipStartConditionDto.Speaker,
         new List<GenericKeyDto> { new KeyboardKeyDto(32) }, // Space
         400,
-        400,
+        300,
         1000,
         10000
     );
