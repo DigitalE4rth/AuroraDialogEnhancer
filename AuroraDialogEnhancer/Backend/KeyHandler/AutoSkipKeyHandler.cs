@@ -126,6 +126,7 @@ public partial class KeyHandlerService
             if (AreDialogOptionsPresent())
             {
                 Task.Delay(_keyBindingProfile!.AutoSkipConfig.ClickDelayReply).Wait(_autoSkipCts!.Token);
+                if (IsAutoSkipCancellationRequired()) break;
                 DoClickLastReply();
                 continue;
             }
