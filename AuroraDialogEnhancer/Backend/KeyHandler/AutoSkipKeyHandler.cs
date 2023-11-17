@@ -25,7 +25,7 @@ public partial class KeyHandlerService
         _skipTaskLoopDelegate = _keyBindingProfile!.AutoSkipConfig.SkipMode switch
         {
             ESkipMode.Everything => StartAutoSkipLoopTextAndRelies,
-            ESkipMode.Reply      => StartAutoSkipLoopRepliesOnly,
+            ESkipMode.Replies    => StartAutoSkipLoopRepliesOnly,
             ESkipMode.Text       => StartAutoSkipLoopText,
             _                    => StartAutoSkipLoopTextAndRelies
         };

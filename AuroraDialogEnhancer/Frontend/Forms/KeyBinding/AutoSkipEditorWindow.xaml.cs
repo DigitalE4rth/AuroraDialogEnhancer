@@ -116,7 +116,7 @@ public partial class AutoSkipEditorWindow
     {
         switch (skipMode)
         {
-            case ESkipMode.Reply:
+            case ESkipMode.Replies:
                 ContainerSkipReplies.Visibility = Visibility.Visible;
                 ContainerSkipRegular.Visibility = Visibility.Collapsed;
                 break;
