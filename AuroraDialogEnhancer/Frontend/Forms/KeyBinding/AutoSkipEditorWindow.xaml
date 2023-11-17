@@ -185,7 +185,7 @@
 
                                 <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Mode_Everything}" Tag="{x:Static scripts:ESkipMode.Everything}" />
                                 <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Mode_Text}" Tag="{x:Static scripts:ESkipMode.Text}" />
-                                <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Mode_Replies}" Tag="{x:Static scripts:ESkipMode.Replies}" />
+                                <ComboBoxItem Content="{x:Static localization:Resources.KeyBinding_AutoSkip_Mode_Replies}" Tag="{x:Static scripts:ESkipMode.Reply}" />
 
                                 <woControls:CardComboBox.RightIcon>
                                     <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">

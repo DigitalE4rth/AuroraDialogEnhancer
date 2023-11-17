@@ -14,7 +14,6 @@ public partial class KeyHandlerService
     private Func<bool>? _skipStartDelegate;
     private Action?     _skipTaskLoopDelegate;
     private Task?       _runningSkipTask;
-    private int         _repliesScanDelay;
     private CancellationTokenSource? _autoSkipCts;
 
     private void RegisterAutoSkip(AutoSkipConfig autoSkipConfig)
@@ -23,14 +22,10 @@ public partial class KeyHandlerService
             ? IsCursorAndSpeakerNamePresent
             : _cursorVisibilityStateProvider.IsVisible;
 
-        _repliesScanDelay = _keyBindingProfile.AutoSkipConfig.SkipMode is ESkipMode.Replies
-            ? _keyBindingProfile.AutoSkipConfig.ScanDelayReply
-            : _keyBindingProfile.AutoSkipConfig.ScanDelayRegular;
-
         _skipTaskLoopDelegate = _keyBindingProfile!.AutoSkipConfig.SkipMode switch
         {
             ESkipMode.Everything => StartAutoSkipLoopTextAndRelies,
-            ESkipMode.Replies    => StartAutoSkipLoopRepliesOnly,
+            ESkipMode.Reply      => StartAutoSkipLoopRepliesOnly,
             ESkipMode.Text       => StartAutoSkipLoopText,
             _                    => StartAutoSkipLoopTextAndRelies
         };
@@ -67,13 +62,13 @@ public partial class KeyHandlerService
     }
 
     #region Loops ~OoOoOoOo
-    private bool RepliesScanLoop()
+    private bool ReplyRegularScanLoop()
     {
         while (_isAutoSkip)
         {
             if (IsAutoSkipCancellationRequired()) break;
             if (AreDialogOptionsPresent()) return true;
-            Task.Delay(_repliesScanDelay).Wait(_autoSkipCts!.Token);
+            Task.Delay(_keyBindingProfile!.AutoSkipConfig.ScanDelayRegular).Wait(_autoSkipCts!.Token);
         }
 
         return false;
@@ -81,15 +76,15 @@ public partial class KeyHandlerService
 
     private void StartAutoSkipLoopTextAndRelies()
     {
-        var repliesScanAsync = Task.Run(RepliesScanLoop).ConfigureAwait(false);
-
+        var repliesScanAsync = Task.Run(ReplyRegularScanLoop).ConfigureAwait(false);
+        
         while (_isAutoSkip)
         {
             if (IsAutoSkipCancellationRequired()) break;
             if (repliesScanAsync.GetAwaiter().IsCompleted && repliesScanAsync.GetAwaiter().GetResult())
             {
                 DoClickLastReply();
-                repliesScanAsync = Task.Run(RepliesScanLoop).ConfigureAwait(false);
+                repliesScanAsync = Task.Run(ReplyRegularScanLoop).ConfigureAwait(false);
                 continue;
             }
 
@@ -100,13 +95,12 @@ public partial class KeyHandlerService
 
     private void StartAutoSkipLoopText()
     {
-        var repliesScanAsync = Task.Run(RepliesScanLoop).ConfigureAwait(false);
+        var repliesScanAsync = Task.Run(ReplyRegularScanLoop).ConfigureAwait(false);
         var taskAwaiter = repliesScanAsync.GetAwaiter();
 
         while (_isAutoSkip)
         {
             if (IsAutoSkipCancellationRequired()) break;
-
             if (taskAwaiter.IsCompleted && taskAwaiter.GetResult())
             {
                 DoWaitForManualReplyClick();

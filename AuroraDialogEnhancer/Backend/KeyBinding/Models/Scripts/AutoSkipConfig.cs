@@ -21,7 +21,7 @@ public class AutoSkipConfig
     public int ClickDelayRegular { get; set; }
     #endregion
 
-    #region Replies
+    #region Reply
     public int ScanDelayReply { get; set; }
 
     public int ClickDelayReply { get; set; }

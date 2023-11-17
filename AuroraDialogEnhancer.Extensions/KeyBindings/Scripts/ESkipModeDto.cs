@@ -4,5 +4,5 @@ public enum ESkipModeDto
 {
     Everything,
     Text,
-    Replies
+    Reply
 }
