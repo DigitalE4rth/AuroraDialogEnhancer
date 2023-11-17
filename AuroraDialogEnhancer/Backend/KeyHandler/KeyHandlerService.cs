@@ -297,7 +297,7 @@ public partial class KeyHandlerService : IDisposable
 
     private void OnNumericPress(int selectedIndex)
     {
-        if (!CanBeExecuted() || !AreDialogOptionsPresent()) return;
+        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -350,7 +350,7 @@ public partial class KeyHandlerService : IDisposable
     #region Main
     private void OnNextPress()
     {
-        if (!CanBeExecuted() || !AreDialogOptionsPresent()) return;
+        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -369,7 +369,7 @@ public partial class KeyHandlerService : IDisposable
 
     private void OnPreviousPress()
     {
-        if (!CanBeExecuted() || !AreDialogOptionsPresent()) return;
+        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 

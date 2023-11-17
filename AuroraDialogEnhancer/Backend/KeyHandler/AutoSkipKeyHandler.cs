@@ -76,15 +76,15 @@ public partial class KeyHandlerService
 
     private void StartAutoSkipLoopTextAndRelies()
     {
-        var repliesScanAsync = Task.Run(ReplyRegularScanLoop).ConfigureAwait(false);
-        
+        var repliesScanAsync = Task.Run(ReplyRegularScanLoop);
+
         while (_isAutoSkip)
         {
             if (IsAutoSkipCancellationRequired()) break;
-            if (repliesScanAsync.GetAwaiter().IsCompleted && repliesScanAsync.GetAwaiter().GetResult())
+            if (repliesScanAsync.IsCompleted && repliesScanAsync.Result)
             {
                 DoClickLastReply();
-                repliesScanAsync = Task.Run(ReplyRegularScanLoop).ConfigureAwait(false);
+                repliesScanAsync = Task.Run(ReplyRegularScanLoop);
                 continue;
             }
 
@@ -95,13 +95,12 @@ public partial class KeyHandlerService
 
     private void StartAutoSkipLoopText()
     {
-        var repliesScanAsync = Task.Run(ReplyRegularScanLoop).ConfigureAwait(false);
-        var taskAwaiter = repliesScanAsync.GetAwaiter();
+        var repliesScanAsync = Task.Run(ReplyRegularScanLoop);
 
         while (_isAutoSkip)
         {
             if (IsAutoSkipCancellationRequired()) break;
-            if (taskAwaiter.IsCompleted && taskAwaiter.GetResult())
+            if (repliesScanAsync.IsCompleted && repliesScanAsync.Result)
             {
                 DoWaitForManualReplyClick();
                 return;
@@ -165,6 +164,7 @@ public partial class KeyHandlerService
 
     private void DoClickLastReply()
     {
+        if (!_currentDialogOptions.Any()) return;
         Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions.Last());
         HandleSelectPress(true);
         _cursorPositioningService.Hide();
