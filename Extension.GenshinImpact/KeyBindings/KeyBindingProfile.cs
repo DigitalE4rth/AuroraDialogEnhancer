@@ -51,6 +51,6 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
         400,
         400,
         1000,
-        5000
+        10000
     );
 }
