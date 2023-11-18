@@ -48,9 +48,9 @@ public partial class KeyHandlerService
         _isAutoSkipReplyPending = false;
         _cursorPositioningService.Hide();
 
-        if (_runningSkipTask is not null 
-            && !_runningSkipTask.IsCompleted 
-            && _runningSkipTask.Status == TaskStatus.Running)
+        if (_runningSkipTask is not null  &&
+            !_runningSkipTask.IsCompleted &&
+            _runningSkipTask.Status == TaskStatus.Running)
         {
             _autoSkipCts!.Cancel();
             _runningSkipTask.Wait();
@@ -111,6 +111,21 @@ public partial class KeyHandlerService
         }
     }
 
+    private void RepliesOnlyCancellationScanLoop(IAsyncResult clickDelayCts)
+    {
+        while (_isAutoSkip && !clickDelayCts.IsCompleted)
+        {
+            if (IsAutoSkipCancellationRequired())
+            {
+                _autoSkipCts!.Cancel();
+                break;
+            }
+
+            if (!_currentDialogOptions.Any()) break;
+            Task.Delay(_keyBindingProfile!.AutoSkipConfig.ScanDelayReply).Wait(_autoSkipCts!.Token);
+        }
+    }
+
     private void StartAutoSkipLoopRepliesOnly()
     {
         while (_isAutoSkip)
@@ -118,7 +133,11 @@ public partial class KeyHandlerService
             if (IsAutoSkipCancellationRequired()) break;
             if (AreDialogOptionsPresent())
             {
-                Task.Delay(_keyBindingProfile!.AutoSkipConfig.ClickDelayReply).Wait(_autoSkipCts!.Token);
+                var clickDelayTask = Task.Delay(_keyBindingProfile!.AutoSkipConfig.ClickDelayReply, _autoSkipCts!.Token);
+                var cancellationScanLoopTask = Task.Run(() => RepliesOnlyCancellationScanLoop(clickDelayTask), _autoSkipCts!.Token);
+                
+                Task.WhenAny(clickDelayTask, cancellationScanLoopTask).Wait(_autoSkipCts!.Token);
+
                 if (IsAutoSkipCancellationRequired()) break;
                 DoClickLastReply();
                 continue;
@@ -131,9 +150,9 @@ public partial class KeyHandlerService
 
     private bool IsAutoSkipCancellationRequired()
     {
-        if (_cursorVisibilityStateProvider.IsVisible() 
-            && _isAutoSkip 
-            && !_autoSkipCts?.IsCancellationRequested == true) return false;
+        if (_cursorVisibilityStateProvider.IsVisible() &&
+            _isAutoSkip &&
+            !_autoSkipCts!.IsCancellationRequested) return false;
 
         _isAutoSkipReplyPending = false;
         _isAutoSkip             = false;
@@ -159,7 +178,7 @@ public partial class KeyHandlerService
     {
         _isAutoSkipReplyPending = true;
         _isAutoSkip             = false;
-        _autoSkipCts?.Cancel();
+        _autoSkipCts!.Cancel();
     }
 
     private void DoClickLastReply()
