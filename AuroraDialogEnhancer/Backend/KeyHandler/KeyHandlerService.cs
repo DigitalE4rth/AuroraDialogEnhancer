@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -538,7 +537,8 @@ public partial class KeyHandlerService : IDisposable
 
         if (_currentDialogOptions.Any()) return true;
         
-        if (_keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Hide)
+        if (!_isAutoSkip &&
+            _keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Hide)
         {
             _cursorPositioningService.Hide();
         }
