@@ -111,9 +111,9 @@ public partial class KeyHandlerService
         }
     }
 
-    private void RepliesOnlyCancellationScanLoop(IAsyncResult clickDelayCts)
+    private void RepliesOnlyCancellationScanLoop(IAsyncResult clickDelayTask)
     {
-        while (_isAutoSkip && !clickDelayCts.IsCompleted)
+        while (_isAutoSkip && !clickDelayTask.IsCompleted)
         {
             if (IsAutoSkipCancellationRequired())
             {
