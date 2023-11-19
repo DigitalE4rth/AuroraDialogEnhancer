@@ -97,11 +97,11 @@ public class PatchService
             #endregion
 
             #region InteractionPoints
-            foreach (var defaultPoint in defaultProfile.InteractionPoints)
+            foreach (var defaultPoint in from dip in defaultProfile.InteractionPoints
+                     let uip = userProfile.InteractionPoints.FirstOrDefault(ip => ip.Id.Equals(dip.Id))
+                     where uip is null
+                     select dip)
             {
-                var userPoint = userProfile.InteractionPoints.FirstOrDefault(ip => ip.Id.Equals(defaultPoint.Id));
-                if (userPoint is not null) continue;
-
                 userProfile.InteractionPoints.Add(defaultPoint);
 
                 foreach (var defaultPointKeys in defaultPoint.ActivationKeys.ToList())
