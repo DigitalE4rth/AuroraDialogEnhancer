@@ -90,7 +90,7 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Intera
                     vmPoint.Name,
                     vmPoint.Description,
                     vmPoint.PathIcon,
-                    Map(point.Keys)))
+                    Map(point.ActivationKeys)))
             .ToDictionary(vm => vm.Id, vm => vm);
     }
 }

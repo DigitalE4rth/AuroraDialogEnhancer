@@ -9,5 +9,5 @@ internal class AssemblyInfo
 
     public Version Version => Assembly.GetExecutingAssembly().GetName().Version;
 
-    public string VersionText => Version.ToString();
+    public string VersionString => Version.ToString();
 }

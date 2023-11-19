@@ -200,19 +200,19 @@ public partial class KeyHandlerService : IDisposable
     {
         foreach (var interactionPoint in interactionPoints)
         {
-            foreach (var genericKeys in interactionPoint.Keys)
+            foreach (var activationKeys in interactionPoint.ActivationKeys)
             {
-                if (genericKeys.Count == 1 && genericKeys[0].GetType() == typeof(MouseKey))
+                if (activationKeys.Count == 1 && activationKeys[0].GetType() == typeof(MouseKey))
                 {
                     _mouseHookManagerService.RegisterHotKey(
-                        genericKeys[0].KeyCode, 
+                        activationKeys[0].KeyCode, 
                         () => { ClickCursor(_interactionPoints[interactionPoint.Id]); });
 
                     continue;
                 }
 
                 _keyboardHookManagerService.RegisterHotKeys(
-                    genericKeys.Select(key => key.KeyCode), 
+                    activationKeys.Select(key => key.KeyCode), 
                     () => { ClickCursor(_interactionPoints[interactionPoint.Id]); });
             }
         }

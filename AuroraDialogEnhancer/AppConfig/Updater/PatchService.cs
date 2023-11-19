@@ -27,7 +27,7 @@ public class PatchService
 
     public bool Patch(Version previous)
     {
-        previous = new Version();
+        previous = new Version(Properties.Settings.Default.App_CurrentVersion);
         var current = Global.AssemblyInfo.Version;
         if (previous >= current) return false;
 
@@ -102,15 +102,16 @@ public class PatchService
                 var userPoint = userProfile.InteractionPoints.FirstOrDefault(ip => ip.Id.Equals(defaultPoint.Id));
                 if (userPoint is not null) continue;
 
-                foreach (var defaultKeys in defaultPoint.Keys)
+                userProfile.InteractionPoints.Add(defaultPoint);
+
+                foreach (var defaultPointKeys in defaultPoint.ActivationKeys.ToList())
                 {
-                    if (_keyBindingProfileService.AreKeysAlreadyInUse(userKeys, defaultKeys))
+                    if (_keyBindingProfileService.AreKeysAlreadyInUse(userKeys, defaultPointKeys))
                     {
-                        defaultPoint.Keys.Remove(defaultKeys);
+                        userProfile.InteractionPoints.Last().ActivationKeys.Remove(defaultPointKeys);
                     }
 
-                    userProfile.InteractionPoints.Add(defaultPoint);
-                    userKeys.Add(defaultKeys);
+                    userKeys.Add(defaultPointKeys);
                 }
             }
             #endregion

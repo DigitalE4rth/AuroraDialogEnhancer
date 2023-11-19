@@ -52,7 +52,7 @@ public class AutoUpdaterService
 
         AppServices.ServiceProvider.GetRequiredService<PatchService>().Patch(previousVersion);
 
-        Properties.Settings.Default.App_CurrentVersion = Global.AssemblyInfo.VersionText;
+        Properties.Settings.Default.App_CurrentVersion = Global.AssemblyInfo.VersionString;
         Properties.Settings.Default.Save();
     }
 

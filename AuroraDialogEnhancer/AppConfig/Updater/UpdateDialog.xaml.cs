@@ -40,7 +40,7 @@ public partial class UpdateDialog
     private void ShowCurrentVersionInfo()
     {
         TextNewVersion.Visibility  = Visibility.Collapsed;
-        TextCurrentVersion.Text    = string.Format(Properties.Localization.Resources.AutoUpdate_CurrentIsLatestVersion, Global.AssemblyInfo.VersionText);
+        TextCurrentVersion.Text    = string.Format(Properties.Localization.Resources.AutoUpdate_CurrentIsLatestVersion, Global.AssemblyInfo.VersionString);
         GridChangelog.Visibility   = Visibility.Collapsed;
         ButtonSecondary.Visibility = Visibility.Hidden;
         ButtonPrimary.Content      = Properties.Localization.Resources.AutoUpdate_Close;
@@ -50,7 +50,7 @@ public partial class UpdateDialog
     private void ShowNewVersionInfo()
     {
         TextNewVersion.Text        = string.Format(Properties.Localization.Resources.AutoUpdate_NewVersionAvailable, _updateInfo.Version);
-        TextCurrentVersion.Text    = string.Format(Properties.Localization.Resources.AutoUpdate_CurrentVersion, Global.AssemblyInfo.VersionText);
+        TextCurrentVersion.Text    = string.Format(Properties.Localization.Resources.AutoUpdate_CurrentVersion, Global.AssemblyInfo.VersionString);
         TextBlockHyperlink.ToolTip = _updateInfo.ChangelogUri;
         ButtonPrimary.Content      = Properties.Localization.Resources.AutoUpdate_Update_Verb;
         ButtonPrimary.Click       += Button_Default_Update_OnClick;
