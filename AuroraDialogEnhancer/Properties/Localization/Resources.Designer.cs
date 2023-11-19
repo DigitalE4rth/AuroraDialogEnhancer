@@ -1348,7 +1348,7 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replies scan delay.
+        ///   Looks up a localized string similar to Reply scan delay.
         /// </summary>
         public static string KeyBinding_AutoSkip_Reply_Scan_Delay_Title {
             get {

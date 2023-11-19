@@ -33,13 +33,9 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
     public override List<InteractionPointDto> InteractionPoints { get; set; } = new()
     {
         new InteractionPointDto("autoplay", new List<List<GenericKeyDto>>
-        {
-            new() { new KeyboardKeyDto(192) }, // ~
-        }),
+        { new() { new KeyboardKeyDto(192) } }), // ~
         new InteractionPointDto("fullscreenpopup", new List<List<GenericKeyDto>>
-        {
-            new() { new KeyboardKeyDto(38) }, // Up
-        })
+        { new() { new KeyboardKeyDto(38) } }) // Up
     };
 
     public override AutoSkipConfigDto AutoSkipConfigDto { get; set; } = new

@@ -50,7 +50,7 @@ public class CursorPositioningService
                          _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + dialogOption.Y + _initialCursorPosition.Y);
     }
 
-    public bool IsClickedInsideClient()
+    public bool IsCursorInsideClient()
     {
         return Cursor.Position.X >= _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X &&
                Cursor.Position.X <= _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.X + _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangle.Width &&
