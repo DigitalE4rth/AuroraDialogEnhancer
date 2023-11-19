@@ -34,16 +34,33 @@ public partial class KeyHandlerService
         Register(autoSkipConfig.ActivationKeys, OnAutoSkip);
     }
 
-    private void OnAutoSkip()
+    private bool CanAutoSkipBeExecuted(bool isRestart)
     {
-        _isAutoSkip = !_isAutoSkip;
-
-        if (!_isAutoSkip || !_skipStartDelegate!.Invoke())
+        if (isRestart)
         {
+            if (_skipStartDelegate!.Invoke())
+            {
+                _isAutoSkip = true;
+                return true;
+            }
+
             _isAutoSkip = false;
             _autoSkipCts?.Cancel();
-            return;
+            return false;
         }
+
+        _isAutoSkip = !_isAutoSkip;
+        if (_isAutoSkip && _skipStartDelegate!.Invoke()) return true;
+
+        _isAutoSkip = false;
+        _autoSkipCts?.Cancel();
+        return false;
+    }
+
+    private void OnAutoSkip() => RunAutoSkip();
+    private void RunAutoSkip(bool isRestart = false)
+    {
+        if (!CanAutoSkipBeExecuted(isRestart)) return;
 
         _isAutoSkipReplyPending = false;
         _cursorPositioningService.Hide();
@@ -76,7 +93,7 @@ public partial class KeyHandlerService
 
     private void StartAutoSkipLoopTextAndRelies()
     {
-        var repliesScanAsync = Task.Run(ReplyRegularScanLoop);
+        var repliesScanAsync = Task.Run(ReplyRegularScanLoop, _autoSkipCts!.Token);
 
         while (_isAutoSkip)
         {
@@ -84,18 +101,19 @@ public partial class KeyHandlerService
             if (repliesScanAsync.IsCompleted && repliesScanAsync.Result)
             {
                 DoClickLastReply();
-                repliesScanAsync = Task.Run(ReplyRegularScanLoop);
+                repliesScanAsync = Task.Run(ReplyRegularScanLoop, _autoSkipCts!.Token);
                 continue;
             }
 
             DoTextSkipSingleClick();
-            Task.Delay(_keyBindingProfile!.AutoSkipConfig.ClickDelayRegular).Wait(_autoSkipCts!.Token);
+            var delayTask = Task.Delay(_keyBindingProfile!.AutoSkipConfig.ClickDelayRegular, _autoSkipCts.Token);
+            Task.WhenAny(repliesScanAsync, delayTask).Wait(_autoSkipCts.Token);
         }
     }
 
     private void StartAutoSkipLoopText()
     {
-        var repliesScanAsync = Task.Run(ReplyRegularScanLoop);
+        var repliesScanAsync = Task.Run(ReplyRegularScanLoop, _autoSkipCts!.Token);
 
         while (_isAutoSkip)
         {
@@ -107,7 +125,9 @@ public partial class KeyHandlerService
             }
 
             DoTextSkipSingleClick();
-            Task.Delay(_keyBindingProfile!.AutoSkipConfig.ClickDelayRegular).Wait(_autoSkipCts!.Token);
+
+            var delayTask = Task.Delay(_keyBindingProfile!.AutoSkipConfig.ClickDelayRegular, _autoSkipCts.Token);
+            Task.WhenAny(repliesScanAsync, delayTask).Wait(_autoSkipCts.Token);
         }
     }
 
@@ -179,6 +199,12 @@ public partial class KeyHandlerService
         _isAutoSkipReplyPending = true;
         _isAutoSkip             = false;
         _autoSkipCts!.Cancel();
+    }
+
+    private bool IsLockedByAutoSkip()
+    {
+        return _isAutoSkip && 
+               _keyBindingProfile!.AutoSkipConfig.SkipMode != ESkipMode.Replies;
     }
 
     private void DoClickLastReply()

@@ -297,7 +297,9 @@ public partial class KeyHandlerService : IDisposable
 
     private void OnNumericPress(int selectedIndex)
     {
-        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
+        if (IsLockedByAutoSkip() ||
+            !CanBeExecuted() ||
+            !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -350,7 +352,9 @@ public partial class KeyHandlerService : IDisposable
     #region Main
     private void OnNextPress()
     {
-        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
+        if (IsLockedByAutoSkip() ||
+            !CanBeExecuted() ||
+            !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -369,7 +373,9 @@ public partial class KeyHandlerService : IDisposable
 
     private void OnPreviousPress()
     {
-        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
+        if (IsLockedByAutoSkip() ||
+            !CanBeExecuted() ||
+            !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -388,7 +394,9 @@ public partial class KeyHandlerService : IDisposable
 
     private void OnSelectPress()
     {
-        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
+        if (IsLockedByAutoSkip() ||
+            !CanBeExecuted() ||
+            !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -466,7 +474,7 @@ public partial class KeyHandlerService : IDisposable
 
             if (_isAutoSkipReplyPending)
             {
-                OnAutoSkip();
+                RunAutoSkip(true);
                 return;
             }
 
@@ -490,7 +498,7 @@ public partial class KeyHandlerService : IDisposable
 
         if (_isAutoSkipReplyPending)
         {
-            OnAutoSkip();
+            RunAutoSkip(true);
             return;
         }
 
