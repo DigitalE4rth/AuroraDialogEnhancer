@@ -5,6 +5,9 @@
     <Setting Name="App_CurrentCulture" Type="System.String" Scope="User">
       <Value Profile="(Default)">auto</Value>
     </Setting>
+    <Setting Name="App_CurrentVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
     <Setting Name="App_HookSettings_SelectedGameId" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -19,6 +22,9 @@
     </Setting>
     <Setting Name="App_IsScreenshotsManager" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="App_IsScreenshotSound" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="App_IsStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -94,9 +100,6 @@
     </Setting>
     <Setting Name="WebClient_UserAgent" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="App_IsScreenshotSound" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

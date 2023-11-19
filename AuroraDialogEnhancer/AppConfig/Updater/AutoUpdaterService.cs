@@ -28,13 +28,31 @@ public class AutoUpdaterService
         _uiService = uiService;
     }
 
-    public void EnsureUpgradedSettings()
+    public bool UpdateSettings()
     {
-        if (!Properties.Settings.Default.Update_IsUpdateRequired) return;
+        if (!Properties.Settings.Default.Update_IsUpdateRequired) return false;
+
         Properties.Settings.Default.Upgrade();
         WhyOrchid.Properties.Settings.Default.Upgrade();
 
+        if (!Version.TryParse(Properties.Settings.Default.App_CurrentVersion, out _))
+        {
+            Properties.Settings.Default.App_CurrentVersion = new Version(1, 0, 0, 0).ToString();
+        }
+
         Properties.Settings.Default.Update_IsUpdateRequired = false;
+        Properties.Settings.Default.Save();
+        return true;
+    }
+
+    public void PatchKeyBindings()
+    {
+        var previousVersion = new Version(Properties.Settings.Default.App_CurrentVersion);
+        if (previousVersion >= Global.AssemblyInfo.Version) return;
+
+        AppServices.ServiceProvider.GetRequiredService<PatchService>().Patch(previousVersion);
+
+        Properties.Settings.Default.App_CurrentVersion = Global.AssemblyInfo.VersionString;
         Properties.Settings.Default.Save();
     }
 

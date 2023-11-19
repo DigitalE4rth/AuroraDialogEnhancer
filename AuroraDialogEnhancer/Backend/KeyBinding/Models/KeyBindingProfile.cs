@@ -40,7 +40,6 @@ public class KeyBindingProfile
     #endregion
 
     #region Interaction Points
-    [XmlArrayItem(ElementName = "ListOfInteractionPoints")] 
     public virtual List<InteractionPoint> InteractionPoints { get; set; } = new();
     #endregion
 

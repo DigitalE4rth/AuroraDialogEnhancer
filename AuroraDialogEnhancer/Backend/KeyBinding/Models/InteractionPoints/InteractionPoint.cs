@@ -6,19 +6,18 @@ using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 
 [Serializable]
-[XmlType("InteractionPoint")]
+[XmlType("Point")]
 public class InteractionPoint
 {
     public string Id { get; set; } = string.Empty;
 
     [XmlArrayItem(ElementName = "ListOfKeys")]
-    public List<List<GenericKey>> Keys { get; } = new();
+    public List<List<GenericKey>> ActivationKeys { get; } = new();
 
-
-    public InteractionPoint(string id, List<List<GenericKey>> keys)
+    public InteractionPoint(string id, List<List<GenericKey>> activationKeys)
     {
         Id = id;
-        Keys = keys;
+        ActivationKeys = activationKeys;
     }
 
     public InteractionPoint()

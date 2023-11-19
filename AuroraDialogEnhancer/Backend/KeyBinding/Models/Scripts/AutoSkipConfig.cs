@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 
 namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
@@ -7,6 +8,7 @@ namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
 [Serializable]
 public class AutoSkipConfig
 {
+    [XmlArrayItem(ElementName = "ListOfKeys")]
     public List<List<GenericKey>> ActivationKeys { get; set; }
 
     public ESkipMode SkipMode { get; set; }
