@@ -15,27 +15,35 @@ public class AutoSkipConfig
 
     public List<GenericKey> SkipKeys { get; set; }
 
-    public int Delay { get; set; }
+    #region Text and replies / Text
+    public int ScanDelayRegular { get; set; }
 
-    public bool IsDoubleClickDelay { get; set; }
+    public int ClickDelayRegular { get; set; }
+    #endregion
 
-    public int DoubleClickDelay { get; set; }
+    #region Replies
+    public int ScanDelayReply { get; set; }
+
+    public int ClickDelayReply { get; set; }
+    #endregion
 
     public AutoSkipConfig(List<List<GenericKey>> activationKeys,
                           ESkipMode              skipMode,
                           ESkipStartCondition    startCondition,
                           List<GenericKey>       skipKeys,
-                          int                    delay,
-                          bool                   isDoubleClickDelay,
-                          int                    doubleClickDelay)
+                          int                    scanDelayRegular,
+                          int                    clickDelayRegular,
+                          int                    scanDelayReply,
+                          int                    clickDelayReply)
     {
-        ActivationKeys     = activationKeys;
-        SkipMode           = skipMode;
-        StartCondition     = startCondition;
-        SkipKeys           = skipKeys;
-        Delay              = delay;
-        IsDoubleClickDelay = isDoubleClickDelay;
-        DoubleClickDelay   = doubleClickDelay;
+        ActivationKeys    = activationKeys;
+        SkipMode          = skipMode;
+        StartCondition    = startCondition;
+        SkipKeys          = skipKeys;
+        ScanDelayRegular  = scanDelayRegular;
+        ClickDelayRegular = clickDelayRegular;
+        ScanDelayReply    = scanDelayReply;
+        ClickDelayReply   = clickDelayReply;
     }
 
     public AutoSkipConfig()

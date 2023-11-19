@@ -145,7 +145,7 @@ public partial class KeyHandlerService : IDisposable
     public void StopScripts()
     {
         _isAutoSkip = false;
-        _isAutoSkipChoicePending = false;
+        _isAutoSkipReplyPending = false;
     }
 
     private void InitializeKeyBinds()
@@ -297,7 +297,7 @@ public partial class KeyHandlerService : IDisposable
 
     private void OnNumericPress(int selectedIndex)
     {
-        if (!CanBeExecuted() || !IsDialogOptionsPresent()) return;
+        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -350,7 +350,7 @@ public partial class KeyHandlerService : IDisposable
     #region Main
     private void OnNextPress()
     {
-        if (!CanBeExecuted() || !IsDialogOptionsPresent()) return;
+        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -369,7 +369,7 @@ public partial class KeyHandlerService : IDisposable
 
     private void OnPreviousPress()
     {
-        if (!CanBeExecuted() || !IsDialogOptionsPresent()) return;
+        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -388,7 +388,7 @@ public partial class KeyHandlerService : IDisposable
 
     private void OnSelectPress()
     {
-        if (!CanBeExecuted() || !IsDialogOptionsPresent()) return;
+        if (_isAutoSkip || !CanBeExecuted() || !AreDialogOptionsPresent()) return;
 
         var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
 
@@ -464,7 +464,7 @@ public partial class KeyHandlerService : IDisposable
             _mouseEmulationService.DoPrimaryClick();
             Task.Delay(50).Wait();
 
-            if (_isAutoSkipChoicePending)
+            if (_isAutoSkipReplyPending)
             {
                 OnAutoSkip();
                 return;
@@ -488,7 +488,7 @@ public partial class KeyHandlerService : IDisposable
         _cursorPositioningService.ApplyRelative(_currentDialogOptions[upCursorPosition.HighlightedIndex]);
         _currentDialogOptions.Clear();
 
-        if (_isAutoSkipChoicePending)
+        if (_isAutoSkipReplyPending)
         {
             OnAutoSkip();
             return;
@@ -523,7 +523,7 @@ public partial class KeyHandlerService : IDisposable
         return false;
     }
 
-    private bool IsDialogOptionsPresent()
+    private bool AreDialogOptionsPresent()
     {
         if (_currentDialogOptions.Any()) return true;
 
@@ -537,7 +537,8 @@ public partial class KeyHandlerService : IDisposable
 
         if (_currentDialogOptions.Any()) return true;
         
-        if (_keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Hide)
+        if (!_isAutoSkip &&
+            _keyBindingProfile!.CursorBehaviour == ECursorBehaviour.Hide)
         {
             _cursorPositioningService.Hide();
         }
@@ -645,5 +646,6 @@ public partial class KeyHandlerService : IDisposable
         _interactionPoints.Clear();
         _scriptHandlerService.Dispose();
         StopPeripheryHook();
+        _autoSkipCts?.Dispose();
     }
 }

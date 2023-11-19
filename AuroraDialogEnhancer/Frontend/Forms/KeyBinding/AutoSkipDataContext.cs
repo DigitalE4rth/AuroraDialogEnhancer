@@ -33,28 +33,42 @@ public class AutoSkipDataContext : INotifyPropertyChanged
         set => ViewModel.SkipKeys = value;
     }
 
-    public int Delay
+    public int ScanDelayRegular
     {
-        get => ViewModel.Delay;
+        get => ViewModel.ScanDelayRegular;
         set
         {
-            ViewModel.Delay = value;
+            ViewModel.ScanDelayRegular = value;
             OnPropertyChanged();
         }
     }
 
-    public bool IsDoubleClickDelay
+    public int ClickDelayRegular
     {
-        get => ViewModel.IsDoubleClickDelay;
-        set => ViewModel.IsDoubleClickDelay = value;
-    }
-
-    public int DoubleClickDelay
-    {
-        get => ViewModel.DoubleClickDelay;
+        get => ViewModel.ClickDelayRegular;
         set
         {
-            ViewModel.DoubleClickDelay = value;
+            ViewModel.ClickDelayRegular = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public int ScanDelayReply
+    {
+        get => ViewModel.ScanDelayReply;
+        set
+        {
+            ViewModel.ScanDelayReply = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public int ClickDelayReply
+    {
+        get => ViewModel.ClickDelayReply;
+        set
+        {
+            ViewModel.ClickDelayReply = value;
             OnPropertyChanged();
         }
     }

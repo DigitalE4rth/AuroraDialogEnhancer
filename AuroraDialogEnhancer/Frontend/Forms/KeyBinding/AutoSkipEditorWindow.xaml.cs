@@ -67,15 +67,15 @@ public partial class AutoSkipEditorWindow
         _autoSkipDataContext  = new AutoSkipDataContext(viewModelSnapShot);
         DataContext           = _autoSkipDataContext;
 
-        ElementDoubleClickDelay.Visibility = viewModel.IsDoubleClickDelay ? Visibility.Visible : Visibility.Collapsed;
         InitializeTriggers();
         SetCardActionElements();
 
-        var skipModeItem = ComboBoxSkipMode.Items.OfType<ComboBoxItem>().First(item => (ESkipMode)item.Tag == viewModel.SkipMode);
+        var skipModeItem = ComboBoxSkipMode.Items.OfType<ComboBoxItem>().First(item => (ESkipMode) item.Tag == viewModel.SkipMode);
         ComboBoxSkipMode.SelectedItem = skipModeItem;
         ComboBoxSkipMode.SelectionChanged += ComboBoxSkipMode_SelectionChanged;
+        SetContainersSkipModeVisibility(viewModel.SkipMode);
 
-        var skipStartConditionItem = ComboBoxSkipStartCondition.Items.OfType<ComboBoxItem>().First(item => (ESkipStartCondition)item.Tag == viewModel.StartCondition);
+        var skipStartConditionItem = ComboBoxSkipStartCondition.Items.OfType<ComboBoxItem>().First(item => (ESkipStartCondition) item.Tag == viewModel.StartCondition);
         ComboBoxSkipStartCondition.SelectedItem = skipStartConditionItem;
         ComboBoxSkipStartCondition.SelectionChanged += ComboBoxSkipStartConditionOnSelectionChanged;
     }
@@ -109,6 +109,24 @@ public partial class AutoSkipEditorWindow
     private void ComboBoxSkipMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         _autoSkipDataContext.ViewModel.SkipMode = (ESkipMode) ((ComboBoxItem) ComboBoxSkipMode.SelectedItem).Tag;
+        SetContainersSkipModeVisibility(_autoSkipDataContext.ViewModel.SkipMode);
+    }
+
+    private void SetContainersSkipModeVisibility(ESkipMode skipMode)
+    {
+        switch (skipMode)
+        {
+            case ESkipMode.Replies:
+                ContainerSkipReplies.Visibility = Visibility.Visible;
+                ContainerSkipRegular.Visibility = Visibility.Collapsed;
+                break;
+            case ESkipMode.Everything:
+            case ESkipMode.Text:
+            default:
+                ContainerSkipReplies.Visibility = Visibility.Collapsed;
+                ContainerSkipRegular.Visibility = Visibility.Visible;
+                break;
+        }
     }
 
     private void ComboBoxSkipStartConditionOnSelectionChanged(object sender, SelectionChangedEventArgs e)
