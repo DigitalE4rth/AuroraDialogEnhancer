@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
-using AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyHandler;
 using AuroraDialogEnhancer.Backend.ScreenCapture;

@@ -50,6 +50,7 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddTransient<NotifyMenuWindow>();
         serviceCollection.AddTransient<ColorThemeService>();
         serviceCollection.AddSingleton<AutoUpdaterService>();
+        serviceCollection.AddTransient<PatchService>();
         #endregion
 
         #region BackEnd
