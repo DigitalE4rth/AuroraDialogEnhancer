@@ -24,6 +24,7 @@ public partial class AboutPage
         // ToDo: Enable/Rewrite for two or more extensions. One extension doesn't look pretty in UI
         //InitializeExtensions();
         InitializeComboBoxUpdateFrequency();
+        _autoUpdaterService.OnUpdateAvailabilityChanged += OnUpdateAvailabilityChanged;
     }
 
     private void InitializeExtensions()
@@ -74,6 +75,11 @@ public partial class AboutPage
             : (PathGeometry)Application.Current.Resources["I.R.Notifications"];
     }
 
+    private void OnUpdateAvailabilityChanged(object sender, bool e)
+    {
+        ContainerUpdateIcon.Visibility = e ? Visibility.Visible: Visibility.Collapsed;
+    }
+
     private void Button_Link_OnClick(object sender, RoutedEventArgs e)
     {
         Process.Start((string) ((CardButton) sender).Tag);
@@ -88,6 +94,7 @@ public partial class AboutPage
     {
         Unloaded -= OnUnloaded;
         ComboBoxUpdateFrequency.SelectionChanged -= ComboBoxUpdateFrequency_SelectionChanged;
+        _autoUpdaterService.OnUpdateAvailabilityChanged -= OnUpdateAvailabilityChanged;
     }
 }
 

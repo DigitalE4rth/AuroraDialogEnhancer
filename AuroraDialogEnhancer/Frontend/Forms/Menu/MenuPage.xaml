@@ -210,7 +210,6 @@
                     <woControls:MenuStateButton MinHeight="40"
                                                 Margin="0,0,0,3"
                                                 Checked="MenuItem_OnChecked"
-                                                Content="{x:Static localization:Resources.Menu_About}"
                                                 GroupName="Menu"
                                                 Tag="{x:Static local:EPageType.About}">
 
@@ -225,6 +224,46 @@
                                 <woControls:PathIcon Data="{StaticResource I.R.Info}" Style="{StaticResource IconLarge}" />
                             </Grid>
                         </woControls:MenuStateButton.IconInactive>
+
+                        <woControls:MenuStateButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0"
+                                           VerticalAlignment="Center"
+                                           Text="{x:Static localization:Resources.Menu_About}" />
+
+                                <Grid x:Name="UpdateNotifyIcon"
+                                      Grid.Column="1"
+                                      Margin="12.5,0,0,0"
+                                      d:Visibility="Visible"
+                                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Update_IsUpdateAvailable, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                                    <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                        <woControls:PathIcon Data="{StaticResource I.R.NotificationsActive}"
+                                                             Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                                                             Opacity="1"
+                                                             Style="{StaticResource IconLarge}" />
+                                    </Grid>
+
+                                    <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                                        <woControls:PathIcon Data="{StaticResource I.R.NotificationsActive}"
+                                                             Opacity="0.2"
+                                                             Style="{StaticResource IconLarge}">
+                                            <woControls:PathIcon.Foreground>
+                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                    <GradientStop Color="Transparent" />
+                                                    <GradientStop Offset="1" Color="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Surface, Mode=OneTime}" />
+                                                </LinearGradientBrush>
+                                            </woControls:PathIcon.Foreground>
+                                        </woControls:PathIcon>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </woControls:MenuStateButton.Content>
                     </woControls:MenuStateButton>
 
                     <!--  Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Converter={StaticResource BooleanToVisibilityConverter}}"  -->

@@ -429,5 +429,17 @@ namespace AuroraDialogEnhancer.Properties {
                 this["WebClient_UserAgent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Update_IsUpdateAvailable {
+            get {
+                return ((bool)(this["Update_IsUpdateAvailable"]));
+            }
+            set {
+                this["Update_IsUpdateAvailable"] = value;
+            }
+        }
     }
 }

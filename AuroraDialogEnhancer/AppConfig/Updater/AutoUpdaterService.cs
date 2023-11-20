@@ -20,6 +20,7 @@ public class AutoUpdaterService
 {
     private readonly UiService _uiService;
     private readonly bool      _isRunUpdateAsAdmin = true;
+    public event EventHandler<bool>? OnUpdateAvailabilityChanged;
 
     private bool _isRunning;
 
@@ -41,6 +42,7 @@ public class AutoUpdaterService
         }
 
         Properties.Settings.Default.Update_IsUpdateRequired = false;
+        Properties.Settings.Default.Update_IsUpdateAvailable = false;
         Properties.Settings.Default.Save();
         return true;
     }
@@ -116,8 +118,13 @@ public class AutoUpdaterService
         if (updateResult.IsUpdated)
         {
             Application.Current.Dispatcher.Invoke(Application.Current.Shutdown, DispatcherPriority.Send);
+            _isRunning = false;
+            return;
         }
 
+        Properties.Settings.Default.Update_IsUpdateAvailable = updateResult.IsUpdateAvailable;
+        Properties.Settings.Default.Save();
+        Application.Current.Dispatcher.Invoke(() => OnUpdateAvailabilityChanged?.Invoke(this, updateResult.IsUpdateAvailable));
         _isRunning = false;
     }
 
@@ -163,7 +170,7 @@ public class AutoUpdaterService
         {
             throw new MissingFieldException();
         }
-        
+
         args.InstalledVersion  = Assembly.GetExecutingAssembly().GetName().Version;
         args.IsUpdateAvailable = new Version(args.Version) > args.InstalledVersion;
 
@@ -199,7 +206,7 @@ public class AutoUpdaterService
     {
         if (isSilentCheck && !updateInfo.IsUpdateAvailable)
         {
-            return new UpdateResult(true, false, true);
+            return new UpdateResult(true, updateInfo.IsUpdateAvailable, false, true);
         }
 
         var updateDialog = AppServices.ServiceProvider.GetRequiredService<UpdateDialog>();
@@ -214,10 +221,10 @@ public class AutoUpdaterService
         }
         updateDialog.Initialize(updateInfo);
 
-        if (updateDialog.ShowDialog() != true) return new UpdateResult(true, false, true);
-        if (ShowDownloadUpdateDialog(updateInfo) != true) return new UpdateResult(true, false, true);
+        if (updateDialog.ShowDialog() != true) return new UpdateResult(true, updateInfo.IsUpdateAvailable, false, true);
+        if (ShowDownloadUpdateDialog(updateInfo) != true) return new UpdateResult(true, updateInfo.IsUpdateAvailable, false, true);
 
-        return new UpdateResult(true, true, true);
+        return new UpdateResult(true, updateInfo.IsUpdateAvailable, true, true);
     }
 
     private bool ShowDownloadUpdateDialog(UpdateInfo updateInfo)

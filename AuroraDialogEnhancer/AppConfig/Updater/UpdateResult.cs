@@ -2,14 +2,16 @@
 
 internal class UpdateResult
 {
-    public bool IsChecked { get; set; }
-    public bool IsUpdated { get; set; }
-    public bool IsSuccess { get; set; }
+    public bool IsChecked         { get; set; }
+    public bool IsUpdateAvailable { get; set; }
+    public bool IsUpdated         { get; set; }
+    public bool IsSuccess         { get; set; }
 
-    public UpdateResult(bool isChecked, bool isUpdated, bool isSuccess)
+    public UpdateResult(bool isChecked, bool isUpdateAvailable, bool isUpdated, bool isSuccess)
     {
-        IsChecked = isChecked;
-        IsUpdated = isUpdated;
-        IsSuccess = isSuccess;
+        IsChecked         = isChecked;
+        IsUpdateAvailable = isUpdateAvailable;
+        IsUpdated         = isUpdated;
+        IsSuccess         = isSuccess;
     }
 }

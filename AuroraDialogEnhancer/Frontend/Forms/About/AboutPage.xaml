@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
       xmlns:statics="clr-namespace:AuroraDialogEnhancer.AppConfig.Statics"
       xmlns:updater="clr-namespace:AuroraDialogEnhancer.AppConfig.Updater"
       xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
@@ -14,6 +15,9 @@
       d:DesignHeight="1200"
       d:DesignWidth="800"
       mc:Ignorable="d">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Page.Resources>
 
     <woControls:ScrollViewer IsInnerScrollbarsArrangement="True" VerticalScrollBarVisibility="Auto">
         <StackPanel MaxWidth="800" Margin="55,22,55,25">
@@ -62,22 +66,46 @@
 
                         </woControls:ComboBox>
 
-                        <woControls:Button Padding="15,5"
-                                           HorizontalContentAlignment="Stretch"
-                                           BorderBrush="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OutlineVariant, Mode=OneTime}"
-                                           BorderThickness="1"
-                                           Click="Button_Update_OnClick"
-                                           Style="{StaticResource ButtonTonal}">
+                        <Grid>
+                            <woControls:Button Padding="15,5"
+                                               HorizontalContentAlignment="Stretch"
+                                               BorderBrush="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OutlineVariant, Mode=OneTime}"
+                                               BorderThickness="1"
+                                               Click="Button_Update_OnClick"
+                                               Style="{StaticResource ButtonTonal}">
 
-                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
 
-                                <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" Margin="0,1,10,0">
-                                    <woControls:PathIcon Data="{StaticResource I.S.RotateLeft}" Style="{StaticResource IconMedium}" />
-                                </Grid>
+                                    <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}" Margin="0,1,10,0">
+                                        <woControls:PathIcon Data="{StaticResource I.S.RotateLeft}" Style="{StaticResource IconMedium}" />
+                                    </Grid>
 
-                                <TextBlock Style="{StaticResource FontStyleMedium}" Text="{x:Static localization:Resources.About_Update_Update_Verb}" />
-                            </StackPanel>
-                        </woControls:Button>
+                                    <TextBlock Style="{StaticResource FontStyleMedium}" Text="{x:Static localization:Resources.About_Update_Update_Verb}" />
+                                </StackPanel>
+                            </woControls:Button>
+
+                            <Grid x:Name="ContainerUpdateIcon"
+                                  d:Visibility="Visible"
+                                  Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Update_IsUpdateAvailable, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Border Width="8"
+                                        Height="8"
+                                        Margin="0,-2,-2,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                                        CornerRadius="50"
+                                        Opacity="1" />
+
+                                <Border Width="14"
+                                        Height="14"
+                                        Margin="0,-5,-5,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                                        CornerRadius="50"
+                                        Opacity="0.5" />
+                            </Grid>
+                        </Grid>
                     </StackPanel>
                 </Grid>
 
