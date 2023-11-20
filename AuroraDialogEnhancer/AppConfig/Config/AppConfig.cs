@@ -56,7 +56,7 @@ public class AppConfig : IDisposable
         _uiService.SetInitialPage();
 
         var startupProfileId = GetArgumentProfileId(startupEventArgs);
-        StartMainWindowIfNecessary(!string.IsNullOrEmpty(startupProfileId));
+        ShowMainWindow(!string.IsNullOrEmpty(startupProfileId), isUpdated);
         StartAutoDetectionByLaunchArgument(startupProfileId);
         _autoUpdaterService.CheckForUpdateAuto();
         return true;
@@ -96,16 +96,22 @@ public class AppConfig : IDisposable
         if (!string.IsNullOrEmpty(startupProfileId))
         {
             Task.Run(() => _coreService.RestartAutoDetection(startupProfileId)).ConfigureAwait(false);
-            StartMainWindowIfNecessary(true);
+            ShowMainWindow(true);
             return;
         }
 
         Application.Current.Dispatcher.Invoke(() => _uiService.ShowMainWindow(true));
     }
 
-    private void StartMainWindowIfNecessary(bool isProfileShortcutStartup = false)
+    private void ShowMainWindow(bool isProfileStartup = false, bool isForceShow = false)
     {
-        if (isProfileShortcutStartup)
+        if (isForceShow && Properties.Settings.Default.App_IsShowMainWindowOnUpdate)
+        {
+            _uiService.ShowMainWindow(true);
+            return;
+        }
+
+        if (isProfileStartup)
         {
             if (_uiService.IsMainWindowShown() || (EWindowState) Properties.Settings.Default.UI_MainWindow_State_Shortcut == EWindowState.SystemTray) return;
             Application.Current.Dispatcher.Invoke(() => _uiService.ShowMainWindow(false, true));

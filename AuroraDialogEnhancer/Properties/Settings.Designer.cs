@@ -121,6 +121,18 @@ namespace AuroraDialogEnhancer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool App_IsShowMainWindowOnUpdate {
+            get {
+                return ((bool)(this["App_IsShowMainWindowOnUpdate"]));
+            }
+            set {
+                this["App_IsShowMainWindowOnUpdate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool App_IsStartup {
             get {
