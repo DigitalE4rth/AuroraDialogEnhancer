@@ -237,6 +237,13 @@ public partial class KeyHandlerService : IDisposable
             _keyboardHookManagerService.UnRegisterHotKeys(genericKeys.Select(key => key.KeyCode));
         }
     }
+
+    public void HideCursorOnReload()
+    {
+        if (!CanBeExecuted() || !_computerVisionService.IsDialogMode()) return;
+        _cursorPositioningService.Hide();
+        _isProcessing = false;
+    }
     #endregion
 
     #region General action

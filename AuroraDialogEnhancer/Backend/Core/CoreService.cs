@@ -56,7 +56,7 @@ public class CoreService : IDisposable
     }
 
     #region Controls
-    public async Task RestartAutoDetection(string gameId, bool restart = false)
+    public async Task RestartAutoDetection(string gameId, bool isRestart = false)
     {
         lock (_cancellingLock)
         {
@@ -70,7 +70,7 @@ public class CoreService : IDisposable
             return;
         }
 
-        var isStartAutoDetection = await CancelAndDetermineIfNeedToStart(gameId, restart);
+        var isStartAutoDetection = await CancelAndDetermineIfNeedToStart(gameId, isRestart);
         if (!isStartAutoDetection)
         {
             _isAutoDetectionRunning = false;
@@ -94,7 +94,7 @@ public class CoreService : IDisposable
             return;
         }
 
-        _autoDetectionTask = StartAutoDetection(extensionConfig);
+        _autoDetectionTask = StartAutoDetection(extensionConfig, isRestart);
         await _autoDetectionTask;
     }
 
@@ -135,7 +135,7 @@ public class CoreService : IDisposable
         return false;
     }
 
-    private async Task StartAutoDetection(ExtensionConfig extensionConfig)
+    private async Task StartAutoDetection(ExtensionConfig extensionConfig, bool isRestart)
     {
         try
         {
@@ -186,7 +186,7 @@ public class CoreService : IDisposable
             _screenCaptureService.SetScreenshotsFolder(extensionConfig);
             _keyHandlerService.ApplyKeyBinds();
             _windowHookService.SendFocusedEvent();
-
+            if (isRestart) _keyHandlerService.HideCursorOnReload();
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
             SetStateHooked();
