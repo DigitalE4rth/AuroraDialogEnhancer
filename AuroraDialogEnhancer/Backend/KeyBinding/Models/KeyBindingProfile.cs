@@ -37,6 +37,8 @@ public class KeyBindingProfile
     public virtual List<List<GenericKey>> Previous { get; set; } = new();
     [XmlArrayItem(ElementName = "ListOfKeys")] 
     public virtual List<List<GenericKey>> Next     { get; set; } = new();
+    [XmlArrayItem(ElementName = "ListOfKeys")]
+    public virtual List<List<GenericKey>> Last     { get; set; } = new();
     #endregion
 
     #region Interaction Points

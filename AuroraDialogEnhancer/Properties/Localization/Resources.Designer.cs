@@ -1429,6 +1429,15 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last.
+        /// </summary>
+        public static string KeyBinding_Control_Last {
+            get {
+                return ResourceManager.GetString("KeyBinding_Control_Last", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string KeyBinding_Control_Next {

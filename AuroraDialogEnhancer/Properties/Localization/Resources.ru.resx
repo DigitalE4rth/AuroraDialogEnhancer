@@ -573,6 +573,9 @@
   <data name="KeyBinding_Control_HideUi" xml:space="preserve">
     <value>Скрыть интерфейс</value>
   </data>
+  <data name="KeyBinding_Control_Last" xml:space="preserve">
+    <value>Последний</value>
+  </data>
   <data name="KeyBinding_Control_Next" xml:space="preserve">
     <value>Следующий</value>
   </data>

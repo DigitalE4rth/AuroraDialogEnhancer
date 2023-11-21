@@ -4,6 +4,7 @@ using System.Linq;
 using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.KeyBinding;
+using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 
 namespace AuroraDialogEnhancer.AppConfig.Updater;
 
@@ -56,23 +57,25 @@ public class PatchService
             var userProfile = _keyBindingProfileService.Get(id);
             var defaultProfile = _keyBindingProfileService.GetDefault(id);
 
-            var userKeys = _keyBindingProfileService.GetAllKeys(userProfile);
+            var allKeys = _keyBindingProfileService.GetAllKeys(userProfile);
+
+            #region Last Dialog Option
+            if (!userProfile.Last.Any())
+            {
+                AddMissingUnusedKeys(defaultProfile.Last, userProfile.Last, allKeys);
+            }
+            #endregion
 
             #region AutoSkip
             if (!userProfile.AutoSkipConfig.ActivationKeys.Any())
             {
-                foreach (var autoSkipTrigger in defaultProfile.AutoSkipConfig.ActivationKeys.Where(autoSkipTrigger =>
-                             !_keyBindingProfileService.AreKeysAlreadyInUse(userKeys, autoSkipTrigger)))
-                {
-                    userProfile.AutoSkipConfig.ActivationKeys.Add(autoSkipTrigger);
-                    userKeys.Add(autoSkipTrigger);
-                }
+                AddMissingUnusedKeys(defaultProfile.AutoSkipConfig.ActivationKeys, userProfile.AutoSkipConfig.ActivationKeys, allKeys);
             }
 
             if (!userProfile.AutoSkipConfig.SkipKeys.Any())
             {
                 userProfile.AutoSkipConfig.SkipKeys.AddRange(defaultProfile.AutoSkipConfig.SkipKeys);
-                userKeys.Add(defaultProfile.AutoSkipConfig.SkipKeys);
+                allKeys.Add(defaultProfile.AutoSkipConfig.SkipKeys);
             }
 
             if (userProfile.AutoSkipConfig.ClickDelayRegular == 0)
@@ -106,17 +109,27 @@ public class PatchService
 
                 foreach (var defaultPointKeys in defaultPoint.ActivationKeys.ToList())
                 {
-                    if (_keyBindingProfileService.AreKeysAlreadyInUse(userKeys, defaultPointKeys))
+                    if (_keyBindingProfileService.AreKeysAlreadyInUse(allKeys, defaultPointKeys))
                     {
                         userProfile.InteractionPoints.Last().ActivationKeys.Remove(defaultPointKeys);
                     }
 
-                    userKeys.Add(defaultPointKeys);
+                    allKeys.Add(defaultPointKeys);
                 }
             }
             #endregion
 
             _keyBindingProfileService.Save(id, userProfile);
+        }
+    }
+
+    private void AddMissingUnusedKeys(List<List<GenericKey>> defaultProfileKeys, List<List<GenericKey>> userProfileKeys, List<List<GenericKey>> allKeys)
+    {
+        foreach (var autoSkipTrigger in defaultProfileKeys.Where(autoSkipTrigger =>
+                     !_keyBindingProfileService.AreKeysAlreadyInUse(allKeys, autoSkipTrigger)))
+        {
+            userProfileKeys.Add(autoSkipTrigger);
+            allKeys.Add(autoSkipTrigger);
         }
     }
 }

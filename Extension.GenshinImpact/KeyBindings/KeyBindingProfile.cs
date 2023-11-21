@@ -30,6 +30,9 @@ public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
         new List<GenericKeyDto> { new KeyboardKeyDto(86) } // V
     };
 
+    public override List<List<GenericKeyDto>> Last { get; set; } = new()
+        { new List<GenericKeyDto> { new KeyboardKeyDto(27) } }; // Esc
+
     public override List<InteractionPointDto> InteractionPoints { get; set; } = new()
     {
         new InteractionPointDto("autoplay", new List<List<GenericKeyDto>>

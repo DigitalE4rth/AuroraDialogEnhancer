@@ -387,6 +387,30 @@
                         </Grid>
                     </woControls:CardButton.RightIcon>
                 </woControls:CardButton>
+
+                <!--  Last  -->
+                <woControls:CardButton x:Name="CardButtonLast"
+                                       Title="{x:Static localization:Resources.KeyBinding_Control_Last}"
+                                       MinHeight="55"
+                                       Margin="0,5,0,0"
+                                       Click="CardButton_Last_OnClick"
+                                       ContentForeground="Secondary">
+
+                    <woControls:CardButton.LeftIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
+                            <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
+                                                 Data="{StaticResource I.S.ArrowsTurn}"
+                                                 Style="{StaticResource IconMedium}" />
+                        </Grid>
+                    </woControls:CardButton.LeftIcon>
+
+                    <woControls:CardButton.RightIcon>
+                        <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
+                            <woControls:PathIcon Data="{StaticResource I.S.ChevronRight}" Style="{StaticResource IconSmall}" />
+                        </Grid>
+                    </woControls:CardButton.RightIcon>
+                </woControls:CardButton>
+
             </StackPanel>
 
             <!--  Interaction points  -->

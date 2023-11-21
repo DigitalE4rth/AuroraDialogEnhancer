@@ -42,6 +42,7 @@ public class KeyBindingViewModelMapper : IMapper<(KeyBindingProfile, List<Intera
             Previous = Map(profile.Previous),
             Select   = Map(profile.Select),
             Next     = Map(profile.Next),
+            Last     = Map(profile.Last),
 
             InteractionPoints = Map(profile.InteractionPoints, interactionPointsVmDto),
 

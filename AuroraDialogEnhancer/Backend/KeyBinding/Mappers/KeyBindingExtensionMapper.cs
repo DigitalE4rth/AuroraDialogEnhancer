@@ -37,6 +37,7 @@ public class KeyBindingExtensionMapper : IMapper<KeyBindingProfileDto, KeyBindin
             Select   = Map(obj.Select),
             Previous = Map(obj.Previous),
             Next     = Map(obj.Next),
+            Last     = Map(obj.Last),
             #endregion
 
             #region Interaction Points

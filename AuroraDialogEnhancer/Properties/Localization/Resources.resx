@@ -606,6 +606,9 @@
     <value>Hide UI</value>
     <comment>Verb</comment>
   </data>
+  <data name="KeyBinding_Control_Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
   <data name="KeyBinding_Control_Next" xml:space="preserve">
     <value>Next</value>
     <comment>Selecting the next option</comment>

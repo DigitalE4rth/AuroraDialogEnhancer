@@ -380,7 +380,9 @@ namespace AuroraDialogEnhancer.Frontend.Forms.KeyBinding
                 {
                     var lastRegularKey = regularKeys.Last();
 
-                    if (lastRegularKey == KeyInterop.VirtualKeyFromKey(Key.Escape))
+                    if (modifierKeys.Count == 1 &&
+                        modifierKeys.First() == KeyInterop.VirtualKeyFromKey(Key.LeftShift) &&
+                        lastRegularKey == KeyInterop.VirtualKeyFromKey(Key.Escape))
                     {
                         StopRecording(true);
                         ClearProcessingObjects();

@@ -146,6 +146,7 @@ public partial class KeyBindingPage
         _keyCapsService.SetKeyCaps(CardButtonSelect,     _keyBindingProfileViewModel.Select);
         _keyCapsService.SetKeyCaps(CardButtonPrevious,   _keyBindingProfileViewModel.Previous);
         _keyCapsService.SetKeyCaps(CardButtonNext,       _keyBindingProfileViewModel.Next);
+        _keyCapsService.SetKeyCaps(CardButtonLast,       _keyBindingProfileViewModel.Last);
 
         _keyCapsService.SetKeyCaps(CardButtonOne,   _keyBindingProfileViewModel.One);
         _keyCapsService.SetKeyCaps(CardButtonTwo,   _keyBindingProfileViewModel.Two);
@@ -258,6 +259,11 @@ public partial class KeyBindingPage
         EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Next);
     }
 
+    private void CardButton_Last_OnClick(object sender, RoutedEventArgs e)
+    {
+        EditActionViewModel((CardButton)sender, _keyBindingProfileViewModel.Last);
+    }
+
     private void CardButton_InteractionPoint_OnClick(object sender, RoutedEventArgs e)
     {
         var button = (CardButton)sender;
@@ -364,6 +370,7 @@ public partial class KeyBindingPage
         RemoveDuplicates(_keyBindingProfileViewModel.Select,     sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Previous,   sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Next,       sourceVm);
+        RemoveDuplicates(_keyBindingProfileViewModel.Last,       sourceVm);
 
         RemoveDuplicates(_keyBindingProfileViewModel.One,   sourceVm);
         RemoveDuplicates(_keyBindingProfileViewModel.Two,   sourceVm);

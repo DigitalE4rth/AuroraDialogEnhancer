@@ -164,6 +164,7 @@ public partial class KeyHandlerService : IDisposable
         Register(_keyBindingProfile.Select,   OnSelectPress);
         Register(_keyBindingProfile.Next,     OnNextPress);
         Register(_keyBindingProfile.Previous, OnPreviousPress);
+        Register(_keyBindingProfile.Last,     OnLastPress);
 
         Register(_keyBindingProfile.One,   OnOnePress);
         Register(_keyBindingProfile.Two,   OnTwoPress);
@@ -413,6 +414,22 @@ public partial class KeyHandlerService : IDisposable
 
         if (HandleHighlightOnNothing(cursorPosition)) return;
 
+        HandleSelectPress(true);
+
+        _isProcessing = false;
+    }
+
+    private void OnLastPress()
+    {
+        if (IsLockedByAutoSkip() ||
+            !CanBeExecuted() ||
+            !AreDialogOptionsPresent()) return;
+
+        var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
+
+        ApplyRelativeCursorPosition(cursorPosition);
+
+        Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions.Last());
         HandleSelectPress(true);
 
         _isProcessing = false;

@@ -130,6 +130,7 @@ public class KeyBindingProfileService
         union.AddRange(keyBindingProfile.Select);
         union.AddRange(keyBindingProfile.Previous);
         union.AddRange(keyBindingProfile.Next);
+        union.AddRange(keyBindingProfile.Last);
         keyBindingProfile.InteractionPoints.ForEach(point => union.AddRange(point.ActivationKeys));
         union.AddRange(keyBindingProfile.AutoSkipConfig.ActivationKeys);
         union.AddRange(keyBindingProfile.One);

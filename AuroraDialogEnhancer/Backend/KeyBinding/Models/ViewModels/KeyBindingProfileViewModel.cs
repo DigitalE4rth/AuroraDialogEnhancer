@@ -8,89 +8,45 @@ namespace AuroraDialogEnhancer.Backend.KeyBinding.Models.ViewModels;
 public class KeyBindingProfileViewModel
 {
     #region Utilities
-    public bool IsCursorHideOnManualClick { get; set; }
-    public bool IsCycleThrough { get; set; }
-    public ESingleDialogOptionBehaviour SingleDialogOptionBehaviour { get; set; }
-    public ENumericActionBehaviour NumericActionBehaviour { get; set; }
-    public ECursorBehaviour CursorBehaviour { get; set; }
+    public bool IsCursorHideOnManualClick { get; set; } = false;
+    public bool IsCycleThrough            { get; set; } = true;
+    public ESingleDialogOptionBehaviour SingleDialogOptionBehaviour { get; set; } = ESingleDialogOptionBehaviour.Highlight;
+    public ENumericActionBehaviour      NumericActionBehaviour      { get; set; } = ENumericActionBehaviour.Highlight;
+    public ECursorBehaviour             CursorBehaviour             { get; set; } = ECursorBehaviour.Hide;
     #endregion
 
     #region General
-    public ActionViewModel PauseResume;
-    public ActionViewModel Reload;
-    public ActionViewModel Screenshot;
-    public ActionViewModel HideCursor;
+    public ActionViewModel PauseResume = new(new List<TriggerViewModel>());
+    public ActionViewModel Reload      = new(new List<TriggerViewModel>());
+    public ActionViewModel Screenshot  = new(new List<TriggerViewModel>());
+    public ActionViewModel HideCursor  = new(new List<TriggerViewModel>());
     #endregion
 
     #region Controls
-    public ActionViewModel Select;
-    public ActionViewModel Previous;
-    public ActionViewModel Next;
+    public ActionViewModel Select   = new(new List<TriggerViewModel>());
+    public ActionViewModel Previous = new(new List<TriggerViewModel>());
+    public ActionViewModel Next     = new(new List<TriggerViewModel>());
+    public ActionViewModel Last     = new(new List<TriggerViewModel>());
     #endregion
 
     #region Interaction Points
-    public Dictionary<string, InteractionPointVm> InteractionPoints;
+    public Dictionary<string, InteractionPointVm> InteractionPoints = new();
     #endregion
 
     #region Scripts
-    public AutoSkipConfigViewModel AutoSkipConfig;
+    public AutoSkipConfigViewModel AutoSkipConfig = new();
     #endregion
 
     #region Numeric
-    public ActionViewModel One;
-    public ActionViewModel Two;
-    public ActionViewModel Three;
-    public ActionViewModel Four;
-    public ActionViewModel Five;
-    public ActionViewModel Six;
-    public ActionViewModel Seven;
-    public ActionViewModel Eight;
-    public ActionViewModel Nine;
-    public ActionViewModel Ten;
+    public ActionViewModel One   = new(new List<TriggerViewModel>());
+    public ActionViewModel Two   = new(new List<TriggerViewModel>());
+    public ActionViewModel Three = new(new List<TriggerViewModel>());
+    public ActionViewModel Four  = new(new List<TriggerViewModel>());
+    public ActionViewModel Five  = new(new List<TriggerViewModel>());
+    public ActionViewModel Six   = new(new List<TriggerViewModel>());
+    public ActionViewModel Seven = new(new List<TriggerViewModel>());
+    public ActionViewModel Eight = new(new List<TriggerViewModel>());
+    public ActionViewModel Nine  = new(new List<TriggerViewModel>());
+    public ActionViewModel Ten   = new(new List<TriggerViewModel>());
     #endregion
-
-    public KeyBindingProfileViewModel()
-    {
-        #region Utilities
-        IsCursorHideOnManualClick   = false;
-        IsCycleThrough              = true;
-        SingleDialogOptionBehaviour = ESingleDialogOptionBehaviour.Highlight;
-        NumericActionBehaviour      = ENumericActionBehaviour.Highlight;
-        CursorBehaviour             = ECursorBehaviour.Hide;
-        #endregion
-
-        #region General
-        PauseResume = new ActionViewModel(new List<TriggerViewModel>());
-        Reload      = new ActionViewModel(new List<TriggerViewModel>());
-        Screenshot  = new ActionViewModel(new List<TriggerViewModel>());
-        HideCursor  = new ActionViewModel(new List<TriggerViewModel>());
-        #endregion
-
-        #region Controls
-        Select   = new ActionViewModel(new List<TriggerViewModel>());
-        Previous = new ActionViewModel(new List<TriggerViewModel>());
-        Next     = new ActionViewModel(new List<TriggerViewModel>());
-        #endregion
-
-        #region Interaction Points
-        InteractionPoints = new Dictionary<string, InteractionPointVm>();
-        #endregion
-
-        #region Scripts
-        AutoSkipConfig = new AutoSkipConfigViewModel();
-        #endregion
-
-        #region Numeric
-        One   = new ActionViewModel(new List<TriggerViewModel>());
-        Two   = new ActionViewModel(new List<TriggerViewModel>());
-        Three = new ActionViewModel(new List<TriggerViewModel>());
-        Four  = new ActionViewModel(new List<TriggerViewModel>());
-        Five  = new ActionViewModel(new List<TriggerViewModel>());
-        Six   = new ActionViewModel(new List<TriggerViewModel>());
-        Seven = new ActionViewModel(new List<TriggerViewModel>());
-        Eight = new ActionViewModel(new List<TriggerViewModel>());
-        Nine  = new ActionViewModel(new List<TriggerViewModel>());
-        Ten   = new ActionViewModel(new List<TriggerViewModel>());
-        #endregion
-    }
 }
