@@ -490,10 +490,10 @@ public partial class KeyHandlerService : IDisposable
             var cursorPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
             if (cursorPosition.HighlightedIndex == -1)
             {
-                if (!_currentDialogOptions.Any()) return;
-                Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions.Last());
-                cursorPosition.HighlightedIndex = _currentDialogOptions.Count - 1;
+                _currentDialogOptions.Clear();
+                return;
             }
+            
             _cursorPositioningService.ApplyRelative(_currentDialogOptions[cursorPosition.HighlightedIndex]);
             _currentDialogOptions.Clear();
 
