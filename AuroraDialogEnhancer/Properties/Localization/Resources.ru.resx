@@ -297,6 +297,27 @@
   <data name="AutoUpdate_NewVersionAvailable" xml:space="preserve">
     <value>Доступна новая версия: {0}</value>
   </data>
+  <data name="AutoUpdate_Size_Byte" xml:space="preserve">
+    <value>Б</value>
+  </data>
+  <data name="AutoUpdate_Size_Exbibyte" xml:space="preserve">
+    <value>ЭиБ</value>
+  </data>
+  <data name="AutoUpdate_Size_Gibibyte" xml:space="preserve">
+    <value>ГиБ</value>
+  </data>
+  <data name="AutoUpdate_Size_Kibibyte" xml:space="preserve">
+    <value>КиБ</value>
+  </data>
+  <data name="AutoUpdate_Size_Mibibyte" xml:space="preserve">
+    <value>МиБ</value>
+  </data>
+  <data name="AutoUpdate_Size_Pebibyte" xml:space="preserve">
+    <value>ПиБ</value>
+  </data>
+  <data name="AutoUpdate_Size_Tebibyte" xml:space="preserve">
+    <value>ТиБ</value>
+  </data>
   <data name="AutoUpdate_UnableToDetermineFileName" xml:space="preserve">
     <value>Невозможно определить имя файла обновления!</value>
   </data>

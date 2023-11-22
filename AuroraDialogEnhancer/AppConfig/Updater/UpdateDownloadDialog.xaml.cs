@@ -22,7 +22,18 @@ public partial class UpdateDownloadDialog
     private string     _tempFile;
     private bool       _isRunUpdateAsAdmin;
 
-    public UpdateDownloadDialog()
+    private readonly string[] _sizeSuffixes =
+    {
+        Properties.Localization.Resources.AutoUpdate_Size_Byte,
+        Properties.Localization.Resources.AutoUpdate_Size_Kibibyte,
+        Properties.Localization.Resources.AutoUpdate_Size_Mibibyte,
+        Properties.Localization.Resources.AutoUpdate_Size_Gibibyte,
+        Properties.Localization.Resources.AutoUpdate_Size_Tebibyte,
+        Properties.Localization.Resources.AutoUpdate_Size_Pebibyte,
+        Properties.Localization.Resources.AutoUpdate_Size_Exbibyte
+    };
+
+public UpdateDownloadDialog()
     {
         Closing += UpdateDownloadDialog_Closing;
 
@@ -174,13 +185,12 @@ public partial class UpdateDownloadDialog
 
     private string BytesToString(long byteCount)
     {
-        string[] suf = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB" };
-        if (byteCount == 0) return "0" + suf[0];
+        if (byteCount == 0) return $"0 {_sizeSuffixes[0]}";
 
         var bytes = Math.Abs(byteCount);
         var place = Convert.ToInt32(Math.Floor(Math.Log(bytes, 1024)));
         var num = Math.Round(bytes / Math.Pow(1024, place), 1);
-        return $"{(Math.Sign(byteCount) * num).ToString(CultureInfo.InvariantCulture)} {suf[place]}";
+        return $"{(Math.Sign(byteCount) * num).ToString(CultureInfo.InvariantCulture)} {_sizeSuffixes[place]}";
     }
 
     private void UpdateDownloadDialog_Closing(object sender, CancelEventArgs e)

@@ -311,6 +311,27 @@
   <data name="AutoUpdate_NewVersionAvailable" xml:space="preserve">
     <value>A new version available: {0}</value>
   </data>
+  <data name="AutoUpdate_Size_Byte" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="AutoUpdate_Size_Exbibyte" xml:space="preserve">
+    <value>EiB</value>
+  </data>
+  <data name="AutoUpdate_Size_Gibibyte" xml:space="preserve">
+    <value>GiB</value>
+  </data>
+  <data name="AutoUpdate_Size_Kibibyte" xml:space="preserve">
+    <value>KiB</value>
+  </data>
+  <data name="AutoUpdate_Size_Mibibyte" xml:space="preserve">
+    <value>MiB</value>
+  </data>
+  <data name="AutoUpdate_Size_Pebibyte" xml:space="preserve">
+    <value>PiB</value>
+  </data>
+  <data name="AutoUpdate_Size_Tebibyte" xml:space="preserve">
+    <value>TiB</value>
+  </data>
   <data name="AutoUpdate_UnableToDetermineFileName" xml:space="preserve">
     <value>Unable to determine the filename of the update file!</value>
   </data>

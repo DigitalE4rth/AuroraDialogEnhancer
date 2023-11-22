@@ -601,6 +601,69 @@ namespace AuroraDialogEnhancer.Properties.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to B.
+        /// </summary>
+        public static string AutoUpdate_Size_Byte {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Size_Byte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EiB.
+        /// </summary>
+        public static string AutoUpdate_Size_Exbibyte {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Size_Exbibyte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GiB.
+        /// </summary>
+        public static string AutoUpdate_Size_Gibibyte {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Size_Gibibyte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KiB.
+        /// </summary>
+        public static string AutoUpdate_Size_Kibibyte {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Size_Kibibyte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MiB.
+        /// </summary>
+        public static string AutoUpdate_Size_Mibibyte {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Size_Mibibyte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PiB.
+        /// </summary>
+        public static string AutoUpdate_Size_Pebibyte {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Size_Pebibyte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TiB.
+        /// </summary>
+        public static string AutoUpdate_Size_Tebibyte {
+            get {
+                return ResourceManager.GetString("AutoUpdate_Size_Tebibyte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to determine the filename of the update file!.
         /// </summary>
         public static string AutoUpdate_UnableToDetermineFileName {
