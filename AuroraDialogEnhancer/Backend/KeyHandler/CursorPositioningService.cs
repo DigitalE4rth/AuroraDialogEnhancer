@@ -58,13 +58,9 @@ public class CursorPositioningService
                Cursor.Position.Y <= _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangle.Height;
     }
 
-    public DialogOptionCursorPositionInfo GetPositionByDialogOptions(List<Rectangle> dialogOption, Point cursorPosition = default)
+    public DialogOptionCursorPositionInfo GetPositionByDialogOptions(List<Rectangle> dialogOption) => GetPositionByDialogOptions(dialogOption, Cursor.Position);
+    public DialogOptionCursorPositionInfo GetPositionByDialogOptions(List<Rectangle> dialogOption, Point cursorPosition)
     {
-        if (cursorPosition == Point.Empty)
-        {
-            cursorPosition = Cursor.Position;
-        }
-
         var relativeCursorPosition = new Point(
             cursorPosition.X - _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X,
             cursorPosition.Y - _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y);

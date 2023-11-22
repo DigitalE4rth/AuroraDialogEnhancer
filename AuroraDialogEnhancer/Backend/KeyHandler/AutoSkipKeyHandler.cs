@@ -60,10 +60,14 @@ public partial class KeyHandlerService
     private void OnAutoSkip() => RunAutoSkip();
     private void RunAutoSkip(bool isRestart = false)
     {
-        if (!CanAutoSkipBeExecuted(isRestart)) return;
+        if (!CanBeExecuted()) return;
+        if (!CanAutoSkipBeExecuted(isRestart))
+        {
+            _isProcessing = false;
+            return;
+        }
 
         _isAutoSkipReplyPending = false;
-        _cursorPositioningService.Hide();
 
         if (_runningSkipTask is not null  &&
             !_runningSkipTask.IsCompleted &&
@@ -74,8 +78,10 @@ public partial class KeyHandlerService
             _autoSkipCts.Dispose();
         }
 
-        _autoSkipCts     = new CancellationTokenSource();
+        _cursorPositioningService.Hide();
+        _autoSkipCts = new CancellationTokenSource();
         _runningSkipTask = Task.Run(_skipTaskLoopDelegate!);
+        _isProcessing = false;
     }
 
     #region Loops ~OoOoOoOo
