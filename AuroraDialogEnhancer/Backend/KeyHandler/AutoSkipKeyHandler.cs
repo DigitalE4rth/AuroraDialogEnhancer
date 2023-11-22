@@ -194,6 +194,12 @@ public partial class KeyHandlerService
     #endregion
 
     #region Skip Mode
+    private bool IsLockedByAutoSkip()
+    {
+        return _isAutoSkip &&
+               _keyBindingProfile!.AutoSkipConfig.SkipMode != ESkipMode.Replies;
+    }
+
     private void DoWaitForManualReplyClick()
     {
         _isAutoSkipReplyPending = true;
@@ -201,18 +207,19 @@ public partial class KeyHandlerService
         _autoSkipCts!.Cancel();
     }
 
-    private bool IsLockedByAutoSkip()
-    {
-        return _isAutoSkip && 
-               _keyBindingProfile!.AutoSkipConfig.SkipMode != ESkipMode.Replies;
-    }
-
     private void DoClickLastReply()
     {
-        if (!_currentDialogOptions.Any()) return;
+        if (!CanBeExecuted()) return;
+        if (!_currentDialogOptions.Any())
+        {
+            _isProcessing = false;
+            return;
+        }
+
         Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions.Last());
         HandleSelectPress(true);
         _cursorPositioningService.Hide();
+        _isProcessing = false;
     }
     #endregion
 }
