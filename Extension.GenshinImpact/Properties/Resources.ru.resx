@@ -121,7 +121,7 @@
     <value>Автовоспроизведение</value>
   </data>
   <data name="InteractionPoint_FullScreenPopUp_Description" xml:space="preserve">
-    <value>Для окна "Нажмите чтобы продолжить"</value>
+    <value>Закрывает окно "Нажмите чтобы продолжить"</value>
   </data>
   <data name="InteractionPoint_FullScreenPopUp_Name" xml:space="preserve">
     <value>Всплывающее окно на весь экран</value>

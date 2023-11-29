@@ -80,7 +80,7 @@ namespace Extension.GenshinImpact.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Handles the &quot;Click to continue&quot; pop-up.
+        ///   Looks up a localized string similar to Closes the &quot;Click to continue&quot; pop-up.
         /// </summary>
         internal static string InteractionPoint_FullScreenPopUp_Description {
             get {

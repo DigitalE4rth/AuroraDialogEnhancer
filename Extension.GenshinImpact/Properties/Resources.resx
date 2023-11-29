@@ -125,7 +125,7 @@
     <value>Autoplay</value>
   </data>
   <data name="InteractionPoint_FullScreenPopUp_Description" xml:space="preserve">
-    <value>Handles the "Click to continue" pop-up</value>
+    <value>Closes the "Click to continue" pop-up</value>
   </data>
   <data name="InteractionPoint_FullScreenPopUp_Name" xml:space="preserve">
     <value>Full screen pop-up</value>
