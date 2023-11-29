@@ -82,7 +82,10 @@ public class ProcessInfoService
     {
         var processes = System.Diagnostics.Process.GetProcesses();
         var filteredProcesses = processes.Where(process => process.ProcessName.Equals(processName, StringComparison.Ordinal));
-        var targetProcess = filteredProcesses.FirstOrDefault(process =>
+
+        var targetProcess = location == string.Empty 
+            ? filteredProcesses.FirstOrDefault()
+            : filteredProcesses.FirstOrDefault(process =>
         {
             var processLocation = GetProcessLocation(process);
             return processLocation is not null && processLocation.Equals(location, StringComparison.Ordinal);
