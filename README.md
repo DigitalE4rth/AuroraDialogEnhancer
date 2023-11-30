@@ -10,7 +10,7 @@
 
 <div align="center">
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases"><img src="https://img.shields.io/github/downloads/DigitalE4rth/AuroraDialogEnhancer/total" /></a>
-    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.4.0"><img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/latest/total" /></a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.5.0"><img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/latest/total" /></a>
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/main/LICENSE"><img src="https://img.shields.io/github/license/DigitalE4rth/AuroraDialogEnhancer" /></a>
     <a href="https://gamebanana.com/tools/14968" target="_blank"><img src="https://img.shields.io/badge/GameBanana-🍌-gray" /></a>
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/tree/main#-creative-society"><img src="https://img.shields.io/badge/Creative_Society-💖-gray" /></a>
@@ -128,7 +128,7 @@ Here you can configure a script to quickly skip game dialogs:
 - `Triggers` to start/stop the script
 - Setting the `Skip action button`
 - **Script start condition**: `Cursor presence`, `Speaker name presence`
-- **Skip mode**: `Text only`, `Text and replies` (*always selects the last reply*), 
+- **Skip mode**: `Text only`, `Text and replies` and `Replies Only` (*always selects the last reply*), 
 - Delays between clicks
 
 The script stops when the following actions will occur:
@@ -263,10 +263,10 @@ There are so many ideas, but very little time and energy... + I couldn’t have 
 
 #### 🦄 Special thanks
 
-* Microsoft - for severely restricting my previous GitHub account just because I live, in their opinion, in the *wrong place* >:(
-* Gitee - for deleting my account after half a year without any warning.
-* Microsoft once again - for having to use GitHub with VPN, and also for dropping support for the .NET Framework and WPF, and also for the fact that you can’t roll back from Windows 11 to Windows 10.
-* JetBrains - Because they haven’t been able to fix [XAML designer for WPF](https://youtrack.jetbrains.com/issue/RIDER-81870/Wpf-Xaml-offset-between-clickable-elements-and-rendered-objects) for a year now.
+* **Microsoft** - for severely restricting my previous GitHub account just because I live, in their opinion, in the *wrong place* >:(
+* **Gitee** - for deleting my account after half a year without any warning.
+* **Microsoft** once again - for having to use GitHub with VPN, and also for dropping support for the .NET Framework and WPF, and also for the fact that you can’t roll back from Windows 11 to Windows 10.
+* **JetBrains** - Because they haven’t been able to fix [XAML designer for WPF](https://youtrack.jetbrains.com/issue/RIDER-81870/Wpf-Xaml-offset-between-clickable-elements-and-rendered-objects) for a year now.
 
 ### 🛠️ Libraries and resources
 
