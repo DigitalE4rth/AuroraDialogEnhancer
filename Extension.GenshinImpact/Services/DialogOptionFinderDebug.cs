@@ -25,12 +25,12 @@ public class DialogOptionFinderDebug : IDialogOptionFinder
         return _bitmapUtils.CountInRange(image, _searchTemplate.SpeakerColorRange) > _searchTemplate.SpeakerNameThreshold;
     }
 
-    public List<Rectangle> GetDialogOptions(Bitmap colorImage)
+    public List<Rectangle> GetDialogOptions(Bitmap image)
     {
         var dialogOptionsList = new List<Rectangle>();
         var dialogOptionsDebugList = new List<Rectangle>();
 
-        using var grayImage = _bitmapUtils.ToGrayScale(colorImage);
+        using var grayImage = _bitmapUtils.ToGrayScale(image);
         grayImage.Save("Debug/CroppedImage.png");
         for (var x = 0; x + _searchTemplate.TemplateSearchArea.Width.Length - 1 <= grayImage.Width - 1; x++)
         {
@@ -97,7 +97,7 @@ public class DialogOptionFinderDebug : IDialogOptionFinder
                         .Save("Debug/Corner_" + index + ".png");
                 }
 
-                if (_searchTemplate.CornerOutlineAreas.All(cornerArea => IsAreaInOutlineRange(colorImage,
+                if (_searchTemplate.CornerOutlineAreas.All(cornerArea => IsAreaInOutlineRange(image,
                         x + cornerArea.Width.From,
                         topOutline + cornerArea.Height.From,
                         x + cornerArea.Width.To,
@@ -139,7 +139,7 @@ public class DialogOptionFinderDebug : IDialogOptionFinder
                          topOutline + _searchTemplate.EmptyCenterArea.Height.To,
                          _searchTemplate.EmptyCenterAreaThreshold))
                     &&
-                    IsIconAreaWithinColorRange(colorImage,
+                    IsIconAreaWithinColorRange(image,
                         _searchTemplate.IconColorRanges,
                         x + _searchTemplate.IconArea.Width.From,
                         topOutline + _searchTemplate.IconArea.Height.From,
