@@ -11,10 +11,7 @@ public abstract class PresetBase
 
     public virtual DialogOptionFinderProvider GetDialogOptionFinderProvider(Size clientSize)
     {
-        return new DialogOptionFinderProvider(
-            new DialogOptionFinderEmpty(),
-            new DialogOptionFinderData(Rectangle.Empty, Rectangle.Empty,
-                new CursorPositionData(), 0.02));
+        return new DialogOptionFinderProvider(new DialogOptionFinderEmpty(), new PresetData());
     }
 
     public virtual List<InteractionPrecisePointDto> GetInteractionPoints(Size clientSize) => new(0);

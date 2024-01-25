@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
+using AuroraDialogEnhancerExtensions.Proxy;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 
@@ -19,11 +20,11 @@ public class CursorPositioningService
         _hookedGameDataProvider = hookedGameDataProvider;
     }
 
-    public void InitialCursorData(int concretePositionX, double dynamicPositionY, double cursorSmoothingPercentage)
+    public void InitialCursorData(CursorPositionConfig config)
     {
-        _dynamicCursorPositionY     = dynamicPositionY;
-        _cursorPosition             = new Point(concretePositionX, 0);
-        _cursorSmoothingPercentage = cursorSmoothingPercentage;
+        _cursorPosition            = new Point(config.InitialPositionX, 0);
+        _dynamicCursorPositionY    = config.InitialPosition.Y;
+        _cursorSmoothingPercentage = config.SmoothingPercentage;
     }
 
     public void ApplyRelative(Rectangle dialogOption)

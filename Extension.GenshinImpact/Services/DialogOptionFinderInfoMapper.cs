@@ -24,14 +24,11 @@ public class DialogOptionFinderInfoMapper
             searchTemplate.TemplateSearchArea.Width.Length,
             searchTemplate.TemplateSearchArea.Height.Length);
 
-        var presetData = new PresetData();
-        var cursorPositionData = new CursorPositionData(
-            (int)(searchTemplate.DialogOptionWidth * presetData.InitialCursorPosition.X),
-            presetData.InitialCursorPosition.Y);
-        var dialogOptionFinderData = new DialogOptionFinderData(
-            speakerNameArea, captureArea,
-            cursorPositionData, presetData.CursorSmoothingPercentage);
+        var presetConfig = new PresetConfig();
+        presetConfig.CursorPositionData.InitialPositionX = (int) (presetConfig.CursorPositionData.InitialPosition.X * searchTemplate.DialogOptionWidth);
+
+        var presetData = new PresetData(speakerNameArea, captureArea, presetConfig.CursorPositionData);
         
-        return new DialogOptionFinderProvider(dialogOptionsFinder, dialogOptionFinderData);
+        return new DialogOptionFinderProvider(dialogOptionsFinder, presetData);
     }
 }

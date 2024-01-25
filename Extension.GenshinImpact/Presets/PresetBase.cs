@@ -9,7 +9,9 @@ namespace Extension.GenshinImpact.Presets;
 
 public class Preset : PresetBase
 {
-    public override DialogOptionFinderProvider GetDialogOptionFinderProvider(Size clientSize) => new DialogOptionFinderInfoMapper().Map(clientSize);
+    public override DialogOptionFinderProvider GetDialogOptionFinderProvider(Size clientSize) 
+        => new DialogOptionFinderInfoMapper().Map(clientSize);
 
-    public override List<InteractionPrecisePointDto> GetInteractionPoints(Size clientSize) => new InteractionScreenPointsProvider().Get(clientSize);
+    public override List<InteractionPrecisePointDto> GetInteractionPoints(Size clientSize) 
+        => new InteractionScreenPointsProvider().Get(clientSize);
 }

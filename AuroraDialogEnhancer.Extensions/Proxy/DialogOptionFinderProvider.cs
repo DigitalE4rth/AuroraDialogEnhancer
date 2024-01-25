@@ -4,9 +4,9 @@ public class DialogOptionFinderProvider
 {
     public IDialogOptionFinder DialogOptionsFinder { get; }
 
-    public DialogOptionFinderData Data { get; }
+    public PresetData Data { get; }
 
-    public DialogOptionFinderProvider(IDialogOptionFinder dialogOptionsFinder, DialogOptionFinderData data)
+    public DialogOptionFinderProvider(IDialogOptionFinder dialogOptionsFinder, PresetData data)
     {
         DialogOptionsFinder = dialogOptionsFinder;
         Data = data;

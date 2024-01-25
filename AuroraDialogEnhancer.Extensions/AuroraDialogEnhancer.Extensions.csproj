@@ -95,7 +95,8 @@
       <DependentUpon>Presets.resx</DependentUpon>
     </Compile>
     <Compile Include="KeyBindings\InteractionPoints\InteractionPrecisePointDto.cs" />
-    <Compile Include="Proxy\DialogOptionFinderData.cs" />
+    <Compile Include="Proxy\PresetConfigBase.cs" />
+    <Compile Include="Proxy\PresetData.cs" />
     <Compile Include="Proxy\PresetEmpty.cs" />
     <Compile Include="Screenshots\IScreenshotNameProvider.cs" />
     <Compile Include="Screenshots\ScreenshotNameProviderDefault.cs" />

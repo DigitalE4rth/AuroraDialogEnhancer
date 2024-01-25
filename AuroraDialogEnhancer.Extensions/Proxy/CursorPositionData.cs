@@ -1,17 +1,20 @@
-﻿namespace AuroraDialogEnhancerExtensions.Proxy;
+﻿using AuroraDialogEnhancerExtensions.Dimensions;
 
-public class CursorPositionData
+namespace AuroraDialogEnhancerExtensions.Proxy;
+
+public class CursorPositionConfig
 {
-    public int    ConcreteX { get; set; }
-    public double DynamicY  { get; set; }
+    public DynamicPoint InitialPosition     { get; set; } = new();
+    public int          InitialPositionX    { get; set; }
+    public double       SmoothingPercentage { get; set; }
 
-    public CursorPositionData(int concreteX, double dynamicY)
+    public CursorPositionConfig(DynamicPoint initialPosition, double smoothingPercentage)
     {
-        ConcreteX = concreteX;
-        DynamicY  = dynamicY;
+        InitialPosition     = initialPosition;
+        SmoothingPercentage = smoothingPercentage;
     }
 
-    public CursorPositionData()
+    public CursorPositionConfig()
     {
     }
 }

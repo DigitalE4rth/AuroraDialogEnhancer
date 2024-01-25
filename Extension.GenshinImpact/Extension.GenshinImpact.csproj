@@ -60,7 +60,7 @@
     <Compile Include="InteractionPoints\InteractionScreenPointsProvider.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileProvider.cs" />
     <Compile Include="Location\LocationProvider.cs" />
-    <Compile Include="Presets\PresetData.cs" />
+    <Compile Include="Presets\PresetConfig.cs" />
     <Compile Include="Properties\Resources.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
