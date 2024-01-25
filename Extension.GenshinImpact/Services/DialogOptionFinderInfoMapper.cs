@@ -25,11 +25,10 @@ public class DialogOptionFinderInfoMapper
             searchTemplate.TemplateSearchArea.Height.Length);
 
         var presetData = new PresetData();
-        var initialCursorPosition = new Point(
-            (int) (searchTemplate.DialogOptionWidth * presetData.InitialCursorPosition.X),
-            (int)(searchTemplate.DialogOptionHeight * presetData.InitialCursorPosition.Y));
-
-        var dialogOptionFinderData = new DialogOptionFinderData(speakerNameArea, captureArea, initialCursorPosition);
+        var cursorPositionData = new CursorPositionData(
+            (int)(searchTemplate.DialogOptionWidth * presetData.InitialCursorPosition.X),
+            presetData.InitialCursorPosition.Y);
+        var dialogOptionFinderData = new DialogOptionFinderData(speakerNameArea, captureArea, cursorPositionData);
         
         return new DialogOptionFinderProvider(dialogOptionsFinder, dialogOptionFinderData);
     }

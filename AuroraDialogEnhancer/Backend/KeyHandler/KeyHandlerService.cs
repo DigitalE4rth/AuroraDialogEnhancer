@@ -659,9 +659,7 @@ public partial class KeyHandlerService : IDisposable
             return true;
         }
 
-        Cursor.Position = _cursorPositioningService.GetRelatedNormalizedPoint(
-            _currentDialogOptions[highlightedIndex],
-            _currentDialogOptions[targetIndex]);
+        Cursor.Position = _cursorPositioningService.GetRelatedNormalizedPoint(_currentDialogOptions[targetIndex]);
 
         _isProcessing = false;
         return true;
@@ -670,9 +668,7 @@ public partial class KeyHandlerService : IDisposable
     private void HighlightNext(bool direction, int highlightedIndex)
     {
         var indexedDirection = direction ? highlightedIndex + 1 : highlightedIndex - 1;
-        Cursor.Position = _cursorPositioningService.GetRelatedNormalizedPoint(
-            _currentDialogOptions[highlightedIndex],
-            _currentDialogOptions[indexedDirection]);
+        Cursor.Position = _cursorPositioningService.GetRelatedNormalizedPoint(_currentDialogOptions[indexedDirection]);
     }
     #endregion
     #endregion

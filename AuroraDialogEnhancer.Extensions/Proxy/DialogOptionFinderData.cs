@@ -4,17 +4,17 @@ namespace AuroraDialogEnhancerExtensions.Proxy;
 
 public class DialogOptionFinderData
 {
-    public Rectangle SpeakerNameArea { get; } = Rectangle.Empty;
+    public Rectangle          SpeakerNameArea;
+    public Rectangle          DialogOptionsArea;
+    public CursorPositionData CursorPositionData = new();
 
-    public Rectangle DialogOptionsArea { get; } = Rectangle.Empty;
-
-    public Point InitialCursorPosition { get; } = Point.Empty;
-
-    public DialogOptionFinderData(Rectangle speakerNameArea, Rectangle dialogOptionsArea, Point initialCursorPosition)
+    public DialogOptionFinderData(Rectangle          speakerNameArea, 
+                                  Rectangle          dialogOptionsArea, 
+                                  CursorPositionData cursorPositionData)
     {
-        SpeakerNameArea = speakerNameArea;
-        DialogOptionsArea = dialogOptionsArea;
-        InitialCursorPosition = initialCursorPosition;
+        SpeakerNameArea    = speakerNameArea;
+        DialogOptionsArea  = dialogOptionsArea;
+        CursorPositionData = cursorPositionData;
     }
 
     public DialogOptionFinderData()

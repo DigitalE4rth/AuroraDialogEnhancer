@@ -13,7 +13,7 @@ public abstract class PresetBase
     {
         return new DialogOptionFinderProvider(
             new DialogOptionFinderEmpty(),
-            new DialogOptionFinderData(Rectangle.Empty, Rectangle.Empty, Point.Empty));
+            new DialogOptionFinderData(Rectangle.Empty, Rectangle.Empty, new CursorPositionData()));
     }
 
     public virtual List<InteractionPrecisePointDto> GetInteractionPoints(Size clientSize) => new(0);
