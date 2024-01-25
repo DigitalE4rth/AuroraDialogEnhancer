@@ -12,16 +12,18 @@ public class CursorPositioningService
 
     private Point  _cursorPosition;
     private double _dynamicCursorPositionY;
+    private double _cursorSmoothingPercentage;
 
     public CursorPositioningService(HookedGameDataProvider hookedGameDataProvider)
     {
         _hookedGameDataProvider = hookedGameDataProvider;
     }
 
-    public void SetInitialCursorPosition(int concretePositionX, double dynamicPositionY)
+    public void InitialCursorData(int concretePositionX, double dynamicPositionY, double cursorSmoothingPercentage)
     {
-        _dynamicCursorPositionY = dynamicPositionY;
-        _cursorPosition = new Point(concretePositionX, 0);
+        _dynamicCursorPositionY     = dynamicPositionY;
+        _cursorPosition             = new Point(concretePositionX, 0);
+        _cursorSmoothingPercentage = cursorSmoothingPercentage;
     }
 
     public void ApplyRelative(Rectangle dialogOption)
@@ -30,7 +32,9 @@ public class CursorPositioningService
             Cursor.Position.X - _hookedGameDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X - dialogOption.X,
             Cursor.Position.Y - _hookedGameDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y   - dialogOption.Y);
 
-        _dynamicCursorPositionY = _cursorPosition.Y / ((double) dialogOption.Height - 1);
+        var newDynamicCursorPositionY = _cursorPosition.Y / ((double)dialogOption.Height - 1);
+        if (Math.Abs(_dynamicCursorPositionY - newDynamicCursorPositionY) <= _cursorSmoothingPercentage) return;
+        _dynamicCursorPositionY = newDynamicCursorPositionY;
     }
 
     public void ApplyRelativeX(Rectangle dialogOption)

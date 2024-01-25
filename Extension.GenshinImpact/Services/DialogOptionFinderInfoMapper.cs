@@ -28,7 +28,9 @@ public class DialogOptionFinderInfoMapper
         var cursorPositionData = new CursorPositionData(
             (int)(searchTemplate.DialogOptionWidth * presetData.InitialCursorPosition.X),
             presetData.InitialCursorPosition.Y);
-        var dialogOptionFinderData = new DialogOptionFinderData(speakerNameArea, captureArea, cursorPositionData);
+        var dialogOptionFinderData = new DialogOptionFinderData(
+            speakerNameArea, captureArea,
+            cursorPositionData, presetData.CursorSmoothingPercentage);
         
         return new DialogOptionFinderProvider(dialogOptionsFinder, dialogOptionFinderData);
     }

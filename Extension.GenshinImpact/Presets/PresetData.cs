@@ -1,8 +1,7 @@
-﻿using AuroraDialogEnhancerExtensions.Dimensions;
+﻿using AuroraDialogEnhancerExtensions.Proxy;
 
 namespace Extension.GenshinImpact.Presets;
 
-public class PresetData
+public class PresetData : PresetDataBase
 {
-    public DynamicPoint InitialCursorPosition { get; } = new(0.15, 0.85);
 }

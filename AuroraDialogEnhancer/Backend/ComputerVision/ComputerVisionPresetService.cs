@@ -40,9 +40,10 @@ public class ComputerVisionPresetService
 
         _computerVisionService.Initialize(dialogOptionFinderProvider);
         _screenCaptureService.SetNameProvider(preset.GetScreenshotNameProvider());
-        _cursorPositioningService.SetInitialCursorPosition(
+        _cursorPositioningService.InitialCursorData(
             dialogOptionFinderProvider.Data.CursorPositionData.ConcreteX,
-            dialogOptionFinderProvider.Data.CursorPositionData.DynamicY);
+            dialogOptionFinderProvider.Data.CursorPositionData.DynamicY,
+            dialogOptionFinderProvider.Data.CursorSmoothingPercentage);
 
         var interactionPoints = preset.GetInteractionPoints(clientSize);
         if (interactionPoints.Any())
