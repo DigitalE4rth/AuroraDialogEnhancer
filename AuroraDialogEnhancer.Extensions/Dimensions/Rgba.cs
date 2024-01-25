@@ -1,4 +1,5 @@
 ﻿namespace AuroraDialogEnhancerExtensions.Dimensions;
+
 public class Rgba
 {
     public byte R { get; set; }
