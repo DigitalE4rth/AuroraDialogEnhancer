@@ -14,6 +14,7 @@ public class CursorPositioningService
     private Point  _cursorPosition;
     private double _dynamicCursorPositionY;
     private double _cursorSmoothingPercentage;
+    private int    _hiddenCursorPositionY;
 
     public CursorPositioningService(HookedGameDataProvider hookedGameDataProvider)
     {
@@ -25,6 +26,7 @@ public class CursorPositioningService
         _cursorPosition            = new Point(config.InitialPositionX, 0);
         _dynamicCursorPositionY    = config.InitialPosition.Y;
         _cursorSmoothingPercentage = config.SmoothingPercentage;
+        _hiddenCursorPositionY     = config.HiddenCursorPositionY;
     }
 
     public void ApplyRelative(Rectangle dialogOption)
@@ -156,7 +158,10 @@ public class CursorPositioningService
     public void Hide() => HideByY();
     private void HideByY()
     {
-        Cursor.Position = Cursor.Position with { Y = _hookedGameDataProvider.Data!.GameWindowInfo!.BottomYPoint };
+        Cursor.Position = Cursor.Position with
+        {
+            Y = _hookedGameDataProvider.Data!.GameWindowInfo!.BottomYPoint - _hiddenCursorPositionY
+        };
     }
 
     public Point GetRelatedNormalizedPoint(Rectangle targetDialogOption)

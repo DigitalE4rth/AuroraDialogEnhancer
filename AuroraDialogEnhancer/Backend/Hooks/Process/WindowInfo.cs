@@ -39,7 +39,7 @@ public class WindowInfo
         TitleBarSize = (WindowRectangle.Height - WindowRectangle.Y - ClientRectangle.Height) - BorderSize;
         ClientRectangleRelativePosition = new Point(WindowRectangle.X + BorderSize, WindowRectangle.Y + TitleBarSize);
 
-        BottomYPoint = ClientRectangleRelativePosition.Y + ClientRectangle.Height - 3;
+        BottomYPoint = ClientRectangleRelativePosition.Y + ClientRectangle.Height;
 
         RelativeRightSideOfTheClient = new Rectangle(ClientRectangle.Width / 2, 0, ClientRectangle.Width / 2, ClientRectangle.Height);
     }
