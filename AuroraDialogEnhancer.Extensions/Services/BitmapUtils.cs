@@ -17,18 +17,18 @@ public class BitmapUtils
                pixel.B >= colorRange.Low.B && pixel.B <= colorRange.High.B;
     }
 
-    public bool IsWithinGrayRange(Bitmap image, int x, int y, ChannelRange channelRange)
+    public bool IsWithinChannel(Bitmap image, int x, int y, ChannelRange channelRange)
     {
         var pixel = image.GetPixel(x, y);
         return pixel.R >= channelRange.Low && pixel.R <= channelRange.High;
     }
 
-    public bool IsDarkerGrayRange(Bitmap image, int x, int y, ChannelRange channelRange)
+    public bool IsDarkerThenChannel(Bitmap image, int x, int y, ChannelRange channelRange)
     {
         return image.GetPixel(x, y).R < channelRange.Low;
     }
 
-    public bool IsBrighterGrayRange(Bitmap image, int x, int y, ChannelRange channelRange)
+    public bool IsBrighterThenChannel(Bitmap image, int x, int y, ChannelRange channelRange)
     {
         return image.GetPixel(x, y).R > channelRange.High;
     }

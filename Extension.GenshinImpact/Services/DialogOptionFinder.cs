@@ -218,7 +218,7 @@ public class DialogOptionFinder : IDialogOptionFinder
 
         for (var i = x; i < maxX; i++)
         {
-            if (_bitmapUtils.IsWithinGrayRange(image, i, y, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
+            if (_bitmapUtils.IsWithinChannel(image, i, y, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
         }
 
         return resultPoints >= threshold;
@@ -230,7 +230,7 @@ public class DialogOptionFinder : IDialogOptionFinder
 
         for (var i = x; i < maxX; i++)
         {
-            if (_bitmapUtils.IsDarkerGrayRange(image, i, y, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
+            if (_bitmapUtils.IsDarkerThenChannel(image, i, y, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
         }
 
         return resultPoints >= threshold;
@@ -269,7 +269,7 @@ public class DialogOptionFinder : IDialogOptionFinder
 
         for (var i = y; i < maxY; i++)
         {
-            if (_bitmapUtils.IsWithinGrayRange(image, x, i, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
+            if (_bitmapUtils.IsWithinChannel(image, x, i, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
         }
 
         return resultPoints >= threshold;
@@ -283,7 +283,7 @@ public class DialogOptionFinder : IDialogOptionFinder
         {
             for (var j = y; j < maxY; j++)
             {
-                if (_bitmapUtils.IsBrighterGrayRange(image, i, j, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
+                if (_bitmapUtils.IsBrighterThenChannel(image, i, j, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
             }
         }
 
@@ -303,7 +303,7 @@ public class DialogOptionFinder : IDialogOptionFinder
         {
             for (var j = y; j < maxY; j++)
             {
-                if (_bitmapUtils.IsWithinGrayRange(image, i, j, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
+                if (_bitmapUtils.IsWithinChannel(image, i, j, _searchTemplate.OutlineGrayChannelRange)) resultPoints++;
             }
         }
 
