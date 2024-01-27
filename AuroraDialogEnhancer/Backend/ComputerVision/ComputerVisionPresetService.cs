@@ -36,7 +36,7 @@ public class ComputerVisionPresetService
         var preset = presetInfo.GetPreset();
 
         var dialogOptionFinderProvider = preset.GetDialogOptionFinderProvider(clientSize);
-        if (dialogOptionFinderProvider.Data.DialogOptionsArea.IsEmpty) return (false, $"{Properties.Localization.Resources.HookSettings_Error_Preset_Preset} {clientSize.Width}x{clientSize.Height} {Properties.Localization.Resources.HookSettings_Error_Preset_IsMissing}");
+        if (dialogOptionFinderProvider.Data.DialogDetectionConfig.DialogOptionsArea.IsEmpty) return (false, $"{Properties.Localization.Resources.HookSettings_Error_Preset_Preset} {clientSize.Width}x{clientSize.Height} {Properties.Localization.Resources.HookSettings_Error_Preset_IsMissing}");
 
         _computerVisionService.Initialize(dialogOptionFinderProvider);
         _screenCaptureService.SetNameProvider(preset.GetScreenshotNameProvider());

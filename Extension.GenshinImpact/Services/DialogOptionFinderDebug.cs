@@ -20,9 +20,9 @@ public class DialogOptionFinderDebug : IDialogOptionFinder
         _bitmapUtils = new BitmapUtils();
     }
 
-    public bool IsDialogMode(Bitmap image)
+    public bool IsDialogMode(params Bitmap[] image)
     {
-        return _bitmapUtils.CountInRange(image, _searchTemplate.SpeakerColorRange) > _searchTemplate.SpeakerNameThreshold;
+        return _bitmapUtils.CountInRange(image[0], _searchTemplate.SpeakerColorRange) > _searchTemplate.SpeakerNameThreshold;
     }
 
     public List<Rectangle> GetDialogOptions(Bitmap image)

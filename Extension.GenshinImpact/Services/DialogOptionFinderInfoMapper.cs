@@ -9,26 +9,38 @@ public class DialogOptionFinderInfoMapper
 {
     public DialogOptionFinderProvider Map(Size clientSize)
     {
-        var searchTemplate = new SearchTemplateMapper().Map(clientSize);
+        var searchTemplate      = new SearchTemplateMapper().Map(clientSize);
         var dialogOptionsFinder = new DialogOptionFinder(searchTemplate);
+        var presetConfig        = new PresetConfig();
 
-        var speakerNameArea = new Rectangle(
-            searchTemplate.SpeakerNameArea.Width.From,
-            searchTemplate.SpeakerNameArea.Height.From,
-            searchTemplate.SpeakerNameArea.Width.Length,
-            searchTemplate.SpeakerNameArea.Height.Length);
+        var dialogConfig = GetDialogDetectionConfig(searchTemplate);
+        var cursorConfig = GetCursorPositionConfig(presetConfig, searchTemplate);
 
-        var captureArea = new Rectangle(
-            searchTemplate.TemplateSearchArea.Width.From,
-            searchTemplate.TemplateSearchArea.Height.From,
-            searchTemplate.TemplateSearchArea.Width.Length,
-            searchTemplate.TemplateSearchArea.Height.Length);
+        var presetData = new PresetData(dialogConfig, cursorConfig);
 
-        var presetConfig = new PresetConfig();
-        presetConfig.CursorPositionData.InitialPositionX = (int) (presetConfig.CursorPositionData.InitialPosition.X * searchTemplate.DialogOptionWidth);
-
-        var presetData = new PresetData(speakerNameArea, captureArea, presetConfig.CursorPositionData);
-        
         return new DialogOptionFinderProvider(dialogOptionsFinder, presetData);
+    }
+
+    private DialogDetectionConfig GetDialogDetectionConfig(PreciseTemplate preciseTemplate)
+    {
+        var speakerNameArea = new Rectangle(
+            preciseTemplate.SpeakerNameArea.Width.From,
+            preciseTemplate.SpeakerNameArea.Height.From,
+            preciseTemplate.SpeakerNameArea.Width.Length,
+            preciseTemplate.SpeakerNameArea.Height.Length);
+
+        var dialogOptionsArea = new Rectangle(
+            preciseTemplate.TemplateSearchArea.Width.From,
+            preciseTemplate.TemplateSearchArea.Height.From,
+            preciseTemplate.TemplateSearchArea.Width.Length,
+            preciseTemplate.TemplateSearchArea.Height.Length);
+
+        return new DialogDetectionConfig(new []{ speakerNameArea }, dialogOptionsArea);
+    }
+
+    private CursorPositionConfig GetCursorPositionConfig(PresetConfigBase presetConfig, PreciseTemplate preciseTemplate)
+    {
+        presetConfig.CursorPositionData.InitialPositionX = (int)(presetConfig.CursorPositionData.InitialPosition.X * preciseTemplate.DialogOptionWidth);
+        return presetConfig.CursorPositionData;
     }
 }

@@ -81,7 +81,7 @@ public partial class DebugPage
         //using var image = new Bitmap("C:\\Games\\Genshin Impact\\Genshin Impact game\\ScreenShot\\20230821201400.png");
         //using var image = new Bitmap("D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\1440x1080.png");
         var finder = preset.GetDialogOptionFinderProvider(image.Size);
-        using var croppedImage = GetArea(image, finder!.Data.DialogOptionsArea);
+        using var croppedImage = GetArea(image, finder.Data.DialogDetectionConfig.DialogOptionsArea);
         var dialogOptions = finder.DialogOptionsFinder.GetDialogOptions(croppedImage);
         //var result = dialogOptions.Count;
         DrawRectangles(image, dialogOptions);

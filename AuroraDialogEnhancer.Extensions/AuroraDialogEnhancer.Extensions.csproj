@@ -71,6 +71,7 @@
     <Compile Include="Location\ILocationProvider.cs" />
     <Compile Include="Location\LocationProviderEmpty.cs" />
     <Compile Include="Proxy\CursorPositionData.cs" />
+    <Compile Include="Proxy\DialogDetectionConfig.cs" />
     <Compile Include="Proxy\DialogOptionFinderEmpty.cs" />
     <Compile Include="Proxy\PresetBase.cs" />
     <Compile Include="Proxy\IDialogOptionFinder.cs" />

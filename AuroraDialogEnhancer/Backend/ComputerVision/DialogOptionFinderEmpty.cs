@@ -6,7 +6,7 @@ namespace AuroraDialogEnhancer.Backend.ComputerVision;
 
 public class DialogOptionFinderEmpty : IDialogOptionFinder
 {
-    public bool IsDialogMode(Bitmap image) => false;
+    public bool IsDialogMode(params Bitmap[] image) => false;
 
     public List<Rectangle> GetDialogOptions(Bitmap image) => new(0);
 }
