@@ -21,7 +21,7 @@ public class ComputerVisionService : IDisposable
         _screenCaptureService = screenCaptureService;
         DialogOptionFinder    = new DialogOptionFinderEmpty();
         IndicationAreas       = Array.Empty<Rectangle>();
-        _isDialogModeFunc     = IsDialogModeBase;
+        _isDialogModeFunc     = IsDialogModeSingle;
     }
 
     public void Initialize(DialogOptionFinderProvider provider)
@@ -36,7 +36,7 @@ public class ComputerVisionService : IDisposable
 
     public bool IsDialogMode() => _isDialogModeFunc();
 
-    private bool IsDialogModeBase()
+    private bool IsDialogModeSingle()
     {
         return DialogOptionFinder.IsDialogMode(_screenCaptureService.CaptureRelative(IndicationAreas[0]));
     }
