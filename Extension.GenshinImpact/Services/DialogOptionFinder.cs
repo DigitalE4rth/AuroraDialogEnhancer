@@ -12,16 +12,26 @@ public class DialogOptionFinder : IDialogOptionFinder
 {
     private readonly BitmapUtils     _bitmapUtils;
     private readonly PreciseTemplate _searchTemplate;
-    
+    private int _speakerFirstLineY;
+
     public DialogOptionFinder(PreciseTemplate searchTemplate)
     {
         _searchTemplate = searchTemplate;
-        _bitmapUtils = new BitmapUtils();
+        _bitmapUtils    = new BitmapUtils();
     }
 
     public bool IsDialogMode(params Bitmap[] image)
     {
-        return _bitmapUtils.CountInRange(image[0], _searchTemplate.SpeakerColorRange) > _searchTemplate.SpeakerNameThreshold;
+        var (firstLineY, inRangeCount) = _bitmapUtils.GetFirstLineAndCountInRange(image[0], _searchTemplate.SpeakerColorRange);
+        var isSpeakerNamePresent = inRangeCount > _searchTemplate.SpeakerNameThreshold;
+
+        if (!isSpeakerNamePresent) return false;
+
+        _speakerFirstLineY = isSpeakerNamePresent
+            ? _searchTemplate.SpeakerNameArea.Height.From + firstLineY
+            : image[1].Height;
+
+        return true;
     }
 
     public List<Rectangle> GetDialogOptions(Bitmap image)
@@ -33,7 +43,7 @@ public class DialogOptionFinder : IDialogOptionFinder
         for (var x = 0; x + _searchTemplate.TemplateSearchArea.Width.Length - 1 <= grayImage.Width - 1; x++)
         {
             var isFoundByY = false;
-            for (var y = 0; y <= grayImage.Height - 1; y++)
+            for (var y = 0; y <= _speakerFirstLineY - 1; y++)
             {
                 #region Top outline
                 var (isTopFound, topOutline) = GetTopOutline(grayImage, x, y, _searchTemplate.HorizontalOutlineThreshold);
@@ -133,7 +143,7 @@ public class DialogOptionFinder : IDialogOptionFinder
     private (bool, int) GetTopOutline(Bitmap image, int x, int y, int threshold)
     {
         var maxSearchPoint = y + _searchTemplate.TopOutlineSearchRangeY.To;
-        if (maxSearchPoint > image.Height - 1) return (false, maxSearchPoint);
+        if (maxSearchPoint > _speakerFirstLineY - 1) return (false, maxSearchPoint);
 
         var firstOutline = GetYOutline(image,
             x + _searchTemplate.HorizontalOutlineSearchRangeX.From,
@@ -164,7 +174,7 @@ public class DialogOptionFinder : IDialogOptionFinder
     private (bool, int) GetBottomOutline(Bitmap image, int x, int y, int threshold)
     {
         var maxSearchPoint = y + _searchTemplate.BottomOutlineSearchRangeY.To;
-        if (maxSearchPoint > image.Height - 1) return (false, maxSearchPoint);
+        if (maxSearchPoint > _speakerFirstLineY - 1) return (false, maxSearchPoint);
 
         var firstOutlinePosition = GetYOutline(image,
             x + _searchTemplate.HorizontalOutlineSearchRangeX.From,

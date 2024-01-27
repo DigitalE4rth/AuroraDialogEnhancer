@@ -60,6 +60,27 @@ public class BitmapUtils
 
         return count;
     }
+
+    public (int, int) GetFirstLineAndCountInRange(Bitmap image, ColorRange colorRange)
+    {
+        var firstLine = GetFirstLinePosition(image, colorRange);
+        return firstLine == -1 
+            ? (-1, 0) 
+            : (firstLine, CountInRange(image, colorRange, 0, firstLine,  image.Width - 1, image.Height - 1));
+    }
+
+    private int GetFirstLinePosition(Bitmap image, ColorRange colorRange)
+    {
+        for (var y = 0; y < image.Height; y++)
+        {
+            for (var x = 0; x < image.Width; x++)
+            {
+                if (IsWithinRange(image, x, y, colorRange)) return y;
+            }
+        }
+
+        return -1;
+    }
     #endregion
 
 
