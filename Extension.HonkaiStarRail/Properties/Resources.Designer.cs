@@ -69,5 +69,41 @@ namespace Extension.HonkaiStarRail.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autoplay.
+        /// </summary>
+        internal static string InteractionPoint_AutoPlay_Name {
+            get {
+                return ResourceManager.GetString("InteractionPoint_AutoPlay_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closes the &quot;Click to continue&quot; pop-up.
+        /// </summary>
+        internal static string InteractionPoint_FullScreenPopUp_Description {
+            get {
+                return ResourceManager.GetString("InteractionPoint_FullScreenPopUp_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full screen pop-up.
+        /// </summary>
+        internal static string InteractionPoint_FullScreenPopUp_Name {
+            get {
+                return ResourceManager.GetString("InteractionPoint_FullScreenPopUp_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide user interface.
+        /// </summary>
+        internal static string InteractionPoint_HideUi_Name {
+            get {
+                return ResourceManager.GetString("InteractionPoint_HideUi_Name", resourceCulture);
+            }
+        }
     }
 }
