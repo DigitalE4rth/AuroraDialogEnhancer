@@ -38,17 +38,27 @@ public class ComputerVisionService : IDisposable
 
     private bool IsDialogModeSingle()
     {
-        return DialogOptionFinder.IsDialogMode(_screenCaptureService.CaptureRelative(IndicationAreas[0]));
+        using var image = _screenCaptureService.CaptureRelative(IndicationAreas[0]);
+        var result = DialogOptionFinder.IsDialogMode(image);
+        return result;
     }
 
     private bool IsDialogModeMultiple()
     {
-        return DialogOptionFinder.IsDialogMode(IndicationAreas.Select(rectangle => _screenCaptureService.CaptureRelative(rectangle)).ToArray());
+        var images = IndicationAreas.Select(rectangle => _screenCaptureService.CaptureRelative(rectangle)).ToArray();
+        var result = DialogOptionFinder.IsDialogMode(images);
+        foreach (var image in images)
+        {
+            image.Dispose();
+        }
+        return result;
     }
 
     public List<Rectangle> GetDialogOptions()
     {
-        return DialogOptionFinder.GetDialogOptions(_screenCaptureService.CaptureRelative(DialogOptionsArea));
+        using var image = _screenCaptureService.CaptureRelative(DialogOptionsArea);
+        var result = DialogOptionFinder.GetDialogOptions(image);
+        return result;
     }
 
     public void Dispose()
