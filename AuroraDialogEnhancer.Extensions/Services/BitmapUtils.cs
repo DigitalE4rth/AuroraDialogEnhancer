@@ -8,7 +8,7 @@ namespace AuroraDialogEnhancerExtensions.Services;
 public class BitmapUtils
 {
     #region Color range
-    public bool IsWithinRange(Bitmap image, int x, int y, ColorRange colorRange)
+    public bool IsWithinRange(Bitmap image, ColorRange colorRange, int x, int y)
     {
         var pixel = image.GetPixel(x, y);
 
@@ -17,7 +17,7 @@ public class BitmapUtils
                pixel.B >= colorRange.Low.B && pixel.B <= colorRange.High.B;
     }
 
-    public bool IsWithinChannel(Bitmap image, int x, int y, ChannelRange channelRange)
+    public bool IsWithinChannel(Bitmap image, ChannelRange channelRange, int x, int y)
     {
         var pixel = image.GetPixel(x, y);
         return pixel.R >= channelRange.Low && pixel.R <= channelRange.High;
@@ -28,9 +28,16 @@ public class BitmapUtils
         return image.GetPixel(x, y).R < channelRange.Low;
     }
 
-    public bool IsBrighterThenChannel(Bitmap image, int x, int y, ChannelRange channelRange)
+    public bool IsBrighterThenChannel(Bitmap image, ChannelRange channelRange, int x, int y)
     {
         return image.GetPixel(x, y).R > channelRange.High;
+    }
+
+    public bool IsDarkerThenColor(Bitmap image, Rgba color, int x, int y)
+    {
+        return image.GetPixel(x, y).R < color.R &&
+               image.GetPixel(x, y).G < color.G &&
+               image.GetPixel(x, y).B < color.B;
     }
 
     public int CountInRange(Bitmap image, ColorRange colorRange, int x, int y, int maxX, int maxY)
@@ -40,7 +47,7 @@ public class BitmapUtils
         {
             for (var yo = y; yo <= maxY; yo++)
             {
-                if (IsWithinRange(image, xo, yo, colorRange)) count++;
+                if (IsWithinRange(image, colorRange, xo, yo)) count++;
             }
         }
 
@@ -54,7 +61,7 @@ public class BitmapUtils
         {
             for (var y = 0; y < image.Height; y++)
             {
-                if (IsWithinRange(image, x, y, colorRange)) count++;
+                if (IsWithinRange(image, colorRange, x, y)) count++;
             }
         }
 
@@ -75,7 +82,7 @@ public class BitmapUtils
         {
             for (var x = 0; x < image.Width; x++)
             {
-                if (IsWithinRange(image, x, y, colorRange)) return y;
+                if (IsWithinRange(image, colorRange, x, y)) return y;
             }
         }
 
