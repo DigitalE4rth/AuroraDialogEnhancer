@@ -1,21 +1,26 @@
 ﻿namespace AuroraDialogEnhancerExtensions.Dimensions;
 
-public class Rgba
+public class Rgba : IColor
 {
-    public byte R { get; set; }
+    public int Red   { get; set; }
+    public int Green { get; set; }
+    public int Blue  { get; set; }
+    public int Alpha { get; set; }
 
-    public byte G { get; set; }
-
-    public byte B { get; set; }
-
-    public byte A { get; set; }
-
-    public Rgba(byte a, byte r, byte g, byte b)
+    public Rgba(int r, byte g, byte b, int a)
     {
-        R = r;
-        G = g;
-        B = b;
-        A = a;
+        Red   = r;
+        Green = g;
+        Blue  = b;
+        Alpha = a;
+    }
+
+    public Rgba(int r, byte g, byte b)
+    {
+        Red   = r;
+        Green = g;
+        Blue  = b;
+        Alpha = 255;
     }
 
     public Rgba()

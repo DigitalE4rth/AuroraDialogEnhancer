@@ -2,12 +2,12 @@
 
 public class ChannelRange
 {
-    public byte Low { get; }
-    public byte High { get; }
+    public int Low { get; }
+    public int High { get; }
 
-    public ChannelRange(byte low, byte high)
+    public ChannelRange(int low, int high)
     {
-        Low = low;
+        Low  = low;
         High = high;
     }
 

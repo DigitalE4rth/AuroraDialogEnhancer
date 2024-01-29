@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dimensions\ColorRange.cs" />
     <Compile Include="Dimensions\DynamicPoint.cs" />
+    <Compile Include="Dimensions\Hsba.cs" />
+    <Compile Include="Dimensions\IColor.cs" />
     <Compile Include="Dimensions\ThresholdArea.cs" />
     <Compile Include="Dimensions\ThresholdAreaDynamic.cs" />
     <Compile Include="KeyBindings\Scripts\AutoSkipConfigDto.cs" />
@@ -83,7 +86,6 @@
     <Compile Include="Dimensions\Range.cs" />
     <Compile Include="Dimensions\RangeBase.cs" />
     <Compile Include="Dimensions\RangeDynamic.cs" />
-    <Compile Include="Dimensions\ColorRange.cs" />
     <Compile Include="KeyBindings\Models\KeyBindingProfileDtoEmpty.cs" />
     <Compile Include="Dimensions\Region.cs" />
     <Compile Include="Dimensions\Rgba.cs" />

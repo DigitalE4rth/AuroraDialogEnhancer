@@ -15,7 +15,7 @@ internal class SearchTemplateMapper
         var preciseTemplate = new PreciseTemplate();
 
         #region Speaker
-        preciseTemplate.SpeakerColorRange = dynamicTemplate.SpeakerColorRange;
+        preciseTemplate.SpeakerColorRangeRgb = dynamicTemplate.SpeakerColorRangeRgb;
 
         preciseTemplate.SpeakerNameArea = new Area(
             (int)(dynamicTemplate.SpeakerNameArea.Width.From * clientSize.Width),

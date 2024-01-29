@@ -1,20 +1,13 @@
 ﻿namespace AuroraDialogEnhancerExtensions.Dimensions;
 
-public class ColorRange
+public class ColorRange<T> where T : IColor
 {
-    public Rgba Low { get; set; }
+    public T Low  { get; set; }
+    public T High { get; set; }
 
-    public Rgba High { get; set; }
-
-    public ColorRange(Rgba low, Rgba high)
+    public ColorRange(T low, T high)
     {
         Low  = low;
         High = high;
-    }
-
-    public ColorRange()
-    {
-        Low = new Rgba();
-        High = new Rgba();
     }
 }

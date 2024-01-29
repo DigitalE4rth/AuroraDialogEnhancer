@@ -22,7 +22,7 @@ public class DialogOptionFinder : IDialogOptionFinder
 
     public bool IsDialogMode(params Bitmap[] image)
     {
-        var (firstLineY, inRangeCount) = _bitmapUtils.GetFirstLineAndCountInRange(image[0], _searchTemplate.SpeakerColorRange);
+        var (firstLineY, inRangeCount) = _bitmapUtils.GetFirstLineAndCountInRange(image[0], _searchTemplate.SpeakerColorRangeRgb);
         var isSpeakerNamePresent = inRangeCount > _searchTemplate.SpeakerNameThreshold;
 
         if (!isSpeakerNamePresent) return false;
@@ -300,7 +300,7 @@ public class DialogOptionFinder : IDialogOptionFinder
         return resultPoints >= threshold;
     }
 
-    private bool IsIconAreaWithinColorRange(Bitmap image, IEnumerable<ColorRange> ranges, int x, int y, int maxX, int maxY, int threshold)
+    private bool IsIconAreaWithinColorRange(Bitmap image, IEnumerable<ColorRange<Rgba>> ranges, int x, int y, int maxX, int maxY, int threshold)
     {
         return ranges.FirstOrDefault(range => _bitmapUtils.CountInRange(image, range, x, y, maxX, maxY) >= threshold) is not null;
     }
