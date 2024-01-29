@@ -20,7 +20,7 @@ internal class SearchTemplateMapper
             (int)(dynamicTemplate.DialogIndicationArea.Height.From * clientSize.Height),
             (int)(dynamicTemplate.DialogIndicationArea.Height.To * clientSize.Height));
 
-        searchTemplate.SpeakerColorRange = dynamicTemplate.SpeakerColorRange;
+        searchTemplate.SpeakerColorRangeRgb = dynamicTemplate.SpeakerColorRangeRgb;
         searchTemplate.SpeakerNameArea = new Area(
             (int)(dynamicTemplate.SpeakerNameArea.Width.From * clientSize.Width),
             (int)(dynamicTemplate.SpeakerNameArea.Width.To * clientSize.Width),
@@ -39,16 +39,15 @@ internal class SearchTemplateMapper
 
         searchTemplate.DialogOptionWidth = (int)(dynamicTemplate.DialogOptionWidth * clientSize.Width);
 
-        searchTemplate.Gap = (int) (clientSize.Width * dynamicTemplate.Gap);
+        searchTemplate.Gap = (int) (clientSize.Height * dynamicTemplate.Gap);
         searchTemplate.GapHalf = searchTemplate.Gap / 2;
         #endregion
 
         #region Icon
-        searchTemplate.IconMinLength = (int) (clientSize.Width * dynamicTemplate.IconMinLength);
-        searchTemplate.IconMaxLength = (int) (clientSize.Width * dynamicTemplate.IconMaxLength);
+        searchTemplate.IconMinLength = (int) (clientSize.Height * dynamicTemplate.IconMinLength);
+        searchTemplate.IconMaxLength = (int) (clientSize.Height * dynamicTemplate.IconMaxLength);
 
         searchTemplate.IconThreshold = dynamicTemplate.IconThreshold;
-        searchTemplate.IconTopBottomMargin = (int)(clientSize.Width * dynamicTemplate.IconTopBottomMargin);
 
         var iconHorizontalRangeFrom = (int) (clientSize.Width * dynamicTemplate.IconHorizontalRange.From);
         var iconHorizontalRangeTo   = (int) (clientSize.Width * dynamicTemplate.IconHorizontalRange.To);
@@ -70,7 +69,7 @@ internal class SearchTemplateMapper
             relatedTextHorizontalRangeFrom,
             relatedTextHorizontalRangeFrom + textHorizontalRangeLength);
 
-        searchTemplate.TextLineHeight = (int) (clientSize.Width * dynamicTemplate.TextLineHeight);
+        searchTemplate.TextLineHeight = (int) (clientSize.Height * dynamicTemplate.TextLineHeight);
         searchTemplate.TextLineHeightHalf = searchTemplate.TextLineHeight / 2;
 
         searchTemplate.TextSingleTopBottomMargin   = (int) (dynamicTemplate.TextSingleTopBottomMargin   * searchTemplate.TextLineHeight);
@@ -79,6 +78,7 @@ internal class SearchTemplateMapper
 
         #region Colors
         searchTemplate.DialogOptionColorRanges = dynamicTemplate.DialogOptionColorRanges;
+        searchTemplate.DialogOptionDimmed      = dynamicTemplate.DialogOptionDimmed;
         #endregion
 
         return searchTemplate;

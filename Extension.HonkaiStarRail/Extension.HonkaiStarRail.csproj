@@ -87,10 +87,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Screenshots\ScreenshotNameProvider.cs" />
-    <Compile Include="Services\DialogOptionFinder.cs" />
     <Compile Include="Services\DialogOptionFinderDebug.cs" />
     <Compile Include="Services\DialogOptionFinderInfoMapper.cs" />
-    <Compile Include="Templates\DynamicTemplate1P77.cs" />
+    <Compile Include="Services\DialogOptionsFinderColorBase.cs" />
+    <Compile Include="Services\DialogOptionsFinderHsb.cs" />
+    <Compile Include="Services\DialogOptionsFinderRgb.cs" />
+    <Compile Include="Templates\DynamicTemplate1P25.cs" />
     <Compile Include="Templates\DynamicTemplateBase.cs" />
     <Compile Include="Templates\DynamicTemplateFactory.cs" />
     <Compile Include="Templates\SearchTemplate.cs" />

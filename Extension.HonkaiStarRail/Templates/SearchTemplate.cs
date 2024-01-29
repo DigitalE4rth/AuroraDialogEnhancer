@@ -12,7 +12,7 @@ public class SearchTemplate
     /// <summary>
     /// The color range of the dialog indication.
     /// </summary>
-    public ColorRange[] DialogIndicationColorRange { get; set; } = Array.Empty<ColorRange>();
+    public ColorRange<Rgba>[] DialogIndicationColorRange { get; set; } = Array.Empty<ColorRange<Rgba>>();
 
     /// <summary>
     /// Area with an indication of dialogue mode
@@ -22,7 +22,7 @@ public class SearchTemplate
     /// <summary>
     /// The color range of the speaker name.
     /// </summary>
-    public ColorRange SpeakerColorRange { get; set; } = new();
+    public ColorRange<Rgba> SpeakerColorRangeRgb { get; set; } = new(new Rgba(), new Rgba());
 
     /// <summary>
     /// The speaker name area.
@@ -91,14 +91,12 @@ public class SearchTemplate
     public double IconThreshold;
 
     /// <summary>
-    /// An empty area above and below the icon.
+    /// The offset for the area in which the determination is made whether there are pixels with a color less than the icon color.
     /// </summary>
-    public int IconTopBottomMargin;
-
-    /// <summary>
-    /// The offset in pixels for the area in which the determination is made whether there are pixels with a color less than the icon color.
-    /// </summary>
-    public int IconClearAreaSearchOffset;
+    /// <value>
+    /// Percentage of the calculated icon height.
+    /// </value>
+    public double IconClearAreaSearchOffset;
     #endregion
 
     #region Text
@@ -142,6 +140,8 @@ public class SearchTemplate
 
 
     #region Colors
-    public ColorWrapper[] DialogOptionColorRanges { get; set; } = Array.Empty<ColorWrapper>();
+    public ColorWrapper<Rgba>[] DialogOptionColorRanges { get; set; } = Array.Empty<ColorWrapper<Rgba>>();
+
+    public ColorWrapper<Hsba> DialogOptionDimmed { get; set; } = new(new ColorRange<Hsba>(new Hsba(), new Hsba()), Array.Empty<ColorRange<Hsba>>());
     #endregion
 }
