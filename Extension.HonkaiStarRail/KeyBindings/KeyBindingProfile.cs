@@ -3,10 +3,11 @@ using AuroraDialogEnhancerExtensions.KeyBindings;
 using AuroraDialogEnhancerExtensions.KeyBindings.Behaviour;
 using AuroraDialogEnhancerExtensions.KeyBindings.InteractionPoints;
 using AuroraDialogEnhancerExtensions.KeyBindings.Keys;
+using AuroraDialogEnhancerExtensions.KeyBindings.Scripts;
 
-namespace Extension.HonkaiStarRail;
+namespace Extension.HonkaiStarRail.KeyBindings;
 
-public sealed class KeyBindingProfileDto : KeyBindingProfileDtoDefault
+public sealed class KeyBindingProfile : KeyBindingProfileDtoDefault
 {
     public override List<List<GenericKeyDto>> HideCursor { get; set; } = new()
         { new List<GenericKeyDto> { new KeyboardKeyDto(191) } }; // ?
@@ -29,11 +30,28 @@ public sealed class KeyBindingProfileDto : KeyBindingProfileDtoDefault
         new List<GenericKeyDto> { new KeyboardKeyDto(86) } // V
     };
 
+    public override List<List<GenericKeyDto>> Last { get; set; } = new()
+        { new List<GenericKeyDto> { new KeyboardKeyDto(27) } }; // Esc
+
     public override List<InteractionPointDto> InteractionPoints { get; set; } = new()
     {
         new InteractionPointDto("autoplay", new List<List<GenericKeyDto>>
-        {
-            new() { new KeyboardKeyDto(192) } // ~
-        })
+            { new() { new KeyboardKeyDto(219) } }), // [
+        new InteractionPointDto("hideui", new List<List<GenericKeyDto>>
+            { new() { new KeyboardKeyDto(221) } }), // ]
+        new InteractionPointDto("fullscreenpopup", new List<List<GenericKeyDto>>
+            { new() { new KeyboardKeyDto(38) } }) // Up
     };
+
+    public override AutoSkipConfigDto AutoSkipConfigDto { get; set; } = new
+    (
+        new List<List<GenericKeyDto>> { new() { new KeyboardKeyDto(187) } }, // =
+        ESkipModeDto.Everything,
+        ESkipStartConditionDto.Speaker,
+        new List<GenericKeyDto> { new KeyboardKeyDto(32) }, // Space
+        350,
+        300,
+        600,
+        10000
+    );
 }

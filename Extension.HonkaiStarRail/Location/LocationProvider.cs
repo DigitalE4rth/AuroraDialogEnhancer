@@ -6,8 +6,8 @@ namespace Extension.HonkaiStarRail.Location;
 
 public class LocationProvider : ILocationProvider
 {
-    public string LauncherLocation          { get; } = string.Empty;
-    public string GameLocation              { get; } = string.Empty;
+    public string LauncherLocation    { get; } = string.Empty;
+    public string GameLocation        { get; } = string.Empty;
     public string ScreenshotsLocation { get; } = string.Empty;
 
     public LocationProvider()

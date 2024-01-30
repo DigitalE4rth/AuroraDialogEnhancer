@@ -117,20 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Cover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="InteractionPoint_AutoPlay_Name" xml:space="preserve">
-    <value>Autoplay</value>
+    <value>Автовідтворення</value>
   </data>
   <data name="InteractionPoint_FullScreenPopUp_Description" xml:space="preserve">
-    <value>Closes the "Click to continue" pop-up</value>
+    <value>Для вікна "Натисніть щоб продовжити"</value>
   </data>
   <data name="InteractionPoint_FullScreenPopUp_Name" xml:space="preserve">
-    <value>Full screen pop-up</value>
+    <value>Спливаюче вікно на весь екран</value>
   </data>
   <data name="InteractionPoint_HideUi_Name" xml:space="preserve">
-    <value>Hide user interface</value>
+    <value>Сховати інтерфейс</value>
   </data>
 </root>

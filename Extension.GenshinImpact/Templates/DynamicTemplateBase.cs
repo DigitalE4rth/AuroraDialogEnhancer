@@ -9,7 +9,7 @@ public class DynamicTemplateBase
     /// <summary>
     /// The color range of the speaker name.
     /// </summary>
-    public virtual ColorRange SpeakerColorRange { get; } = new(new Rgba(255, 230, 170, 0), new Rgba(255, 255, 210, 10));
+    public virtual ColorRange<Rgba> SpeakerColorRangeRgb { get; } = new(new Rgba(230, 170, 0, 255), new Rgba(255, 210, 10, 255));
 
     /// <summary>
     /// The speaker name area.
@@ -165,9 +165,9 @@ public class DynamicTemplateBase
     /// </remarks>
     public virtual AreaDynamic IconArea { get; } = new(0.20, 0.88, 0.11, 0.89);
 
-    public virtual List<ColorRange> IconColorRanges { get; } = new()
+    public virtual List<ColorRange<Rgba>> IconColorRanges { get; } = new()
     {
-        new ColorRange(new Rgba(255, 124, 95, 0), new Rgba(255, 131, 100, 0))
+        new ColorRange<Rgba>(new Rgba(124, 95, 0, 255), new Rgba(131, 100, 0, 255))
     };
 
     /// <summary>

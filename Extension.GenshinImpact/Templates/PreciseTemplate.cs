@@ -9,7 +9,7 @@ public class PreciseTemplate
     /// <summary>
     /// The color range of the speaker name.
     /// </summary>
-    public ColorRange SpeakerColorRange = new(new Rgba(255, 230, 170, 0), new Rgba(255, 255, 210, 10));
+    public ColorRange<Rgba> SpeakerColorRangeRgb = new(new Rgba(230, 170, 0, 255), new Rgba(255, 210, 10, 255));
 
     /// <summary>
     /// The speaker name area
@@ -146,7 +146,7 @@ public class PreciseTemplate
     /// </remarks>
     public Area IconArea = new();
 
-    public List<ColorRange> IconColorRanges = new(0);
+    public List<ColorRange<Rgba>> IconColorRanges = new(0);
 
     /// <summary>
     /// The minimum number of matching pixels that exceeds the maximum outline color range in the icon area.

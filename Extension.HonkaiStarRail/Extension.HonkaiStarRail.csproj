@@ -69,16 +69,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeyBindingProfileDto.cs" />
     <Compile Include="Extension.cs" />
+    <Compile Include="InteractionPoints\DynamicPointTemplate.cs" />
+    <Compile Include="InteractionPoints\InteractionPointsMapper.cs" />
+    <Compile Include="InteractionPoints\InteractionPointViewModelProvider.cs" />
+    <Compile Include="InteractionPoints\InteractionScreenPointsProvider.cs" />
+    <Compile Include="InteractionPoints\PointTemplate.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfile.cs" />
+    <Compile Include="KeyBindings\KeyBindingProfileProvider.cs" />
     <Compile Include="Location\LocationProvider.cs" />
-    <Compile Include="Presets\HonkaiStarRailCvPreset.cs" />
+    <Compile Include="Presets\PresetBase.cs" />
+    <Compile Include="Presets\PresetConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Screenshots\ScreenshotNameProvider.cs" />
+    <Compile Include="Services\DialogOptionFinder.cs" />
+    <Compile Include="Services\DialogOptionFinderDebug.cs" />
+    <Compile Include="Services\DialogOptionFinderInfoMapper.cs" />
+    <Compile Include="Services\DialogOptionsFinderColorDebugBase.cs" />
+    <Compile Include="Services\DialogOptionsFinderColorBase.cs" />
+    <Compile Include="Services\DialogOptionsFinderHsbDebug.cs" />
+    <Compile Include="Services\DialogOptionsFinderHsb.cs" />
+    <Compile Include="Services\DialogOptionsFinderRgbDebug.cs" />
+    <Compile Include="Services\DialogOptionsFinderRgb.cs" />
+    <Compile Include="Templates\DynamicTemplate3P55.cs" />
+    <Compile Include="Templates\DynamicTemplate3P2.cs" />
+    <Compile Include="Templates\DynamicTemplate2P4.cs" />
+    <Compile Include="Templates\DynamicTemplate2P38.cs" />
+    <Compile Include="Templates\DynamicTemplate2P37.cs" />
+    <Compile Include="Templates\DynamicTemplate2P35.cs" />
+    <Compile Include="Templates\DynamicTemplate2P33.cs" />
+    <Compile Include="Templates\DynamicTemplate2P30.cs" />
+    <Compile Include="Templates\DynamicTemplate1P777.cs" />
+    <Compile Include="Templates\DynamicTemplate1P770.cs" />
+    <Compile Include="Templates\DynamicTemplate1P66.cs" />
+    <Compile Include="Templates\DynamicTemplate1P60.cs" />
+    <Compile Include="Templates\DynamicTemplate1P5.cs" />
+    <Compile Include="Templates\DynamicTemplate1P33.cs" />
+    <Compile Include="Templates\DynamicTemplate1P25.cs" />
+    <Compile Include="Templates\DynamicTemplateBase.cs" />
+    <Compile Include="Templates\DynamicTemplateFactory.cs" />
+    <Compile Include="Templates\SearchTemplate.cs" />
+    <Compile Include="Templates\SearchTemplateMapper.cs" />
+    <Compile Include="Utils\ColorWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cover.png" />
@@ -89,6 +126,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.ru.resx" />
+    <EmbeddedResource Include="Properties\Resources.uk.resx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -108,10 +146,11 @@
       <Name>AuroraDialogEnhancer.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>set builds=Release, Debug
-set langs=ru
+set langs=ru, uk
 
 for %25%25b in (%25builds%25) do (
    copy /Y "$(TargetPath)" "$(SolutionDir)$(SolutionName)\bin\%25%25b\Extensions\Honkai Star Rail\$(TargetFileName)"

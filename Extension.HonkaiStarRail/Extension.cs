@@ -1,8 +1,12 @@
 ﻿using System.Drawing;
 using AuroraDialogEnhancerExtensions;
 using AuroraDialogEnhancerExtensions.Content;
+using AuroraDialogEnhancerExtensions.KeyBindings.Models;
 using AuroraDialogEnhancerExtensions.Location;
+using AuroraDialogEnhancerExtensions.Proxy;
+using Extension.HonkaiStarRail.KeyBindings;
 using Extension.HonkaiStarRail.Location;
+using Extension.HonkaiStarRail.Presets;
 
 namespace Extension.HonkaiStarRail;
 
@@ -20,9 +24,13 @@ public sealed class Extension : ExtensionDto
 
     public override string Link { get; protected set; } = "https://github.com/DigitalE4rth/AuroraDialogEnhancer";
 
+    public override Bitmap GetCover() => Properties.Resources.Cover;
+
+    public override ExtensionConfigDto GetConfig() => new("StarRail", "launcher");
+
     public override ILocationProvider GetLocationProvider() => new LocationProvider();
 
-    public override ExtensionConfigDto GetConfig() => new("HonkaiStarRail", "launcher");
+    public override IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProvider();
 
-    public override Bitmap GetCover() => Properties.Resources.Cover;
+    public override PresetBase GetPreset() => new Preset();
 }
