@@ -78,6 +78,7 @@
     <Compile Include="KeyBindings\KeyBindingProfile.cs" />
     <Compile Include="KeyBindings\KeyBindingProfileProvider.cs" />
     <Compile Include="Location\LocationProvider.cs" />
+    <Compile Include="Presets\CursorConfig.cs" />
     <Compile Include="Presets\PresetBase.cs" />
     <Compile Include="Presets\PresetConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

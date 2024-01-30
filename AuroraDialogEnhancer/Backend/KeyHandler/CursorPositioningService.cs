@@ -23,13 +23,13 @@ public class CursorPositioningService
         _hookedGameDataProvider = hookedGameDataProvider;
     }
 
-    public void InitialCursorData(CursorPositionConfig config)
+    public void InitialCursorData(CursorConfigBase configBase)
     {
-        _cursorPosition         = new Point(config.InitialPositionX, 0);
-        _dynamicCursorPositionY = config.InitialPosition.Y;
-        _hiddenCursorPositionY  = config.HiddenCursorPositionY;
-        _placementSmoothness    = config.PlacementSmoothness;
-        _movementSmoothness     = config.MovementSmoothness;
+        _cursorPosition         = new Point(configBase.InitialPositionX, 0);
+        _dynamicCursorPositionY = configBase.InitialPosition.Y;
+        _hiddenCursorPositionY  = configBase.HiddenCursorPositionY;
+        _placementSmoothness    = configBase.PlacementSmoothness;
+        _movementSmoothness     = configBase.MovementSmoothness;
     }
 
     public void ApplyRelative(Rectangle dialogOption)

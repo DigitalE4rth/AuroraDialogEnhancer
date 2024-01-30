@@ -3,13 +3,13 @@
 public class PresetData
 {
     public DialogDetectionConfig DialogDetectionConfig { get; set; } = new();
-    public CursorPositionConfig  CursorPositionData    { get; set; } = new();
+    public CursorConfigBase      CursorData            { get; set; } = new CursorConfigDefault();
 
     public PresetData(DialogDetectionConfig dialogDetectionConfig,
-                      CursorPositionConfig  cursorPositionData)
+                      CursorConfigBase      cursorData)
     {
         DialogDetectionConfig = dialogDetectionConfig;
-        CursorPositionData    = cursorPositionData;
+        CursorData            = cursorData;
     }
 
     public PresetData()

@@ -14,7 +14,7 @@ public class DialogOptionFinderInfoMapper
         var presetConfig        = new PresetConfig();
 
         var dialogConfig = GetDialogDetectionConfig(searchTemplate);
-        var cursorConfig = GetCursorPositionConfig(presetConfig, searchTemplate);
+        var cursorConfig = GetCursorConfig(presetConfig, searchTemplate);
 
         var presetData = new PresetData(dialogConfig, cursorConfig);
 
@@ -38,9 +38,9 @@ public class DialogOptionFinderInfoMapper
         return new DialogDetectionConfig(new []{ speakerNameArea }, dialogOptionsArea);
     }
 
-    private CursorPositionConfig GetCursorPositionConfig(PresetConfigBase presetConfig, PreciseTemplate preciseTemplate)
+    private CursorConfigBase GetCursorConfig(PresetConfigBase presetConfig, PreciseTemplate preciseTemplate)
     {
-        presetConfig.CursorPositionData.InitialPositionX = (int)(presetConfig.CursorPositionData.InitialPosition.X * preciseTemplate.DialogOptionWidth);
-        return presetConfig.CursorPositionData;
+        presetConfig.CursorConfig.InitialPositionX = (int)(presetConfig.CursorConfig.InitialPosition.X * preciseTemplate.DialogOptionWidth);
+        return presetConfig.CursorConfig;
     }
 }
