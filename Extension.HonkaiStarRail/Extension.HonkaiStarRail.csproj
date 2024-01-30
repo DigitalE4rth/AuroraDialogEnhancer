@@ -87,11 +87,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Screenshots\ScreenshotNameProvider.cs" />
+    <Compile Include="Services\DialogOptionFinder.cs" />
     <Compile Include="Services\DialogOptionFinderDebug.cs" />
     <Compile Include="Services\DialogOptionFinderInfoMapper.cs" />
+    <Compile Include="Services\DialogOptionsFinderColorDebugBase.cs" />
     <Compile Include="Services\DialogOptionsFinderColorBase.cs" />
+    <Compile Include="Services\DialogOptionsFinderHsbDebug.cs" />
     <Compile Include="Services\DialogOptionsFinderHsb.cs" />
+    <Compile Include="Services\DialogOptionsFinderRgbDebug.cs" />
     <Compile Include="Services\DialogOptionsFinderRgb.cs" />
+    <Compile Include="Templates\DynamicTemplate3P55.cs" />
+    <Compile Include="Templates\DynamicTemplate3P2.cs" />
+    <Compile Include="Templates\DynamicTemplate2P4.cs" />
+    <Compile Include="Templates\DynamicTemplate2P38.cs" />
+    <Compile Include="Templates\DynamicTemplate2P37.cs" />
+    <Compile Include="Templates\DynamicTemplate2P35.cs" />
+    <Compile Include="Templates\DynamicTemplate2P33.cs" />
+    <Compile Include="Templates\DynamicTemplate2P30.cs" />
+    <Compile Include="Templates\DynamicTemplate1P777.cs" />
+    <Compile Include="Templates\DynamicTemplate1P770.cs" />
+    <Compile Include="Templates\DynamicTemplate1P66.cs" />
+    <Compile Include="Templates\DynamicTemplate1P60.cs" />
+    <Compile Include="Templates\DynamicTemplate1P5.cs" />
+    <Compile Include="Templates\DynamicTemplate1P33.cs" />
     <Compile Include="Templates\DynamicTemplate1P25.cs" />
     <Compile Include="Templates\DynamicTemplateBase.cs" />
     <Compile Include="Templates\DynamicTemplateFactory.cs" />

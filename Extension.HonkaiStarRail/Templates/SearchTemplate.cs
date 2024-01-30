@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using AuroraDialogEnhancerExtensions.Dimensions;
 using Extension.HonkaiStarRail.Utils;
 
@@ -8,16 +7,17 @@ namespace Extension.HonkaiStarRail.Templates;
 public class SearchTemplate
 {
     #region Dialog
-
     /// <summary>
     /// The color range of the dialog indication.
     /// </summary>
     public ColorRange<Rgba>[] DialogIndicationColorRange { get; set; } = Array.Empty<ColorRange<Rgba>>();
+    public ColorRange<Hsba>[] DialogIndicationEmptyColorRange { get; set; } = Array.Empty<ColorRange<Hsba>>();
 
     /// <summary>
     /// Area with an indication of dialogue mode
     /// </summary>
     public Area DialogIndicationArea { get; set; } = new();
+    public Area DialogIndicationAreaEmpty { get; set; } = new();
 
     /// <summary>
     /// The color range of the speaker name.

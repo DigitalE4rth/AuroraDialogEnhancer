@@ -5,9 +5,9 @@ using Extension.HonkaiStarRail.Templates;
 
 namespace Extension.HonkaiStarRail.Services;
 
-internal class DialogOptionsFinderRgb : DialogOptionsFinderBase<Rgba>
+internal class DialogOptionsFinderRgbDebug : DialogOptionsFinderDebugBase<Rgba>
 {
-    public DialogOptionsFinderRgb(BitmapUtils bitmapUtils, SearchTemplate searchTemplate) : base(bitmapUtils, searchTemplate)
+    public DialogOptionsFinderRgbDebug(BitmapUtils bitmapUtils, SearchTemplate searchTemplate) : base(bitmapUtils, searchTemplate)
     {
     }
 

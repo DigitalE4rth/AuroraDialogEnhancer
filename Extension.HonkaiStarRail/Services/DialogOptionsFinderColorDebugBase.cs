@@ -9,12 +9,12 @@ using Extension.HonkaiStarRail.Utils;
 
 namespace Extension.HonkaiStarRail.Services;
 
-internal abstract class DialogOptionsFinderBase<T> where T : IColor 
+internal abstract class DialogOptionsFinderDebugBase<T> where T : IColor 
 {
     protected readonly BitmapUtils    BitmapUtils;
     protected readonly SearchTemplate SearchTemplate;
 
-    protected DialogOptionsFinderBase(BitmapUtils bitmapUtils, SearchTemplate searchTemplate)
+    protected DialogOptionsFinderDebugBase(BitmapUtils bitmapUtils, SearchTemplate searchTemplate)
     {
         BitmapUtils    = bitmapUtils;
         SearchTemplate = searchTemplate;
@@ -25,7 +25,8 @@ internal abstract class DialogOptionsFinderBase<T> where T : IColor
         ColorWrapper<T> colorWrapper,
         ref int y,
         int maxY,
-        ICollection<Rectangle> dialogOptions)
+        ICollection<Rectangle> dialogOptions,
+        ICollection<Rectangle> dialogOptionsDebug)
     {
         #region Detect Icon
         // Top Left
@@ -87,6 +88,13 @@ internal abstract class DialogOptionsFinderBase<T> where T : IColor
         #endregion
 
         #region Result
+        // Debug
+        dialogOptionsDebug.Add(new Rectangle(
+            SearchTemplate.IconHorizontalRange.From,
+            textTopY - textTopBottomMargin,
+            image.Width - SearchTemplate.IconHorizontalRange.From - 1,
+            (textBottomY + textTopBottomMargin) - (textTopY - textTopBottomMargin)));
+
         dialogOptions.Add(new Rectangle(
             SearchTemplate.TemplateSearchArea.Width.From + SearchTemplate.IconHorizontalRange.From,
             SearchTemplate.TemplateSearchArea.Height.From + textTopY - textTopBottomMargin,

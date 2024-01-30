@@ -2,12 +2,12 @@
 
 public class Rgba : IColor
 {
-    public int Red   { get; set; }
-    public int Green { get; set; }
-    public int Blue  { get; set; }
-    public int Alpha { get; set; }
+    public byte Red   { get; set; }
+    public byte Green { get; set; }
+    public byte Blue  { get; set; }
+    public byte Alpha { get; set; }
 
-    public Rgba(int r, byte g, byte b, int a)
+    public Rgba(byte r, byte g, byte b, byte a)
     {
         Red   = r;
         Green = g;
@@ -15,7 +15,7 @@ public class Rgba : IColor
         Alpha = a;
     }
 
-    public Rgba(int r, byte g, byte b)
+    public Rgba(byte r, byte g, byte b)
     {
         Red   = r;
         Green = g;

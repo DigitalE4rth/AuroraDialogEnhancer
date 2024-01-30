@@ -14,13 +14,21 @@ internal class SearchTemplateMapper
 
         #region Dialog
         searchTemplate.DialogIndicationColorRange = dynamicTemplate.DialogIndicationColorRange;
+        searchTemplate.DialogIndicationEmptyColorRange = dynamicTemplate.DialogIndicationEmptyColorRange;
         searchTemplate.DialogIndicationArea = new Area(
             (int)(dynamicTemplate.DialogIndicationArea.Width.From * clientSize.Width),
             (int)(dynamicTemplate.DialogIndicationArea.Width.To * clientSize.Width),
             (int)(dynamicTemplate.DialogIndicationArea.Height.From * clientSize.Height),
             (int)(dynamicTemplate.DialogIndicationArea.Height.To * clientSize.Height));
 
-        searchTemplate.SpeakerColorRangeRgb = dynamicTemplate.SpeakerColorRangeRgb;
+        var emptyAreaOffset = searchTemplate.DialogIndicationArea.Width.Length * 2;
+        searchTemplate.DialogIndicationAreaEmpty = new Area(
+            searchTemplate.DialogIndicationArea.Width.From - searchTemplate.DialogIndicationArea.Width.Length - 1 - emptyAreaOffset,
+            searchTemplate.DialogIndicationArea.Width.From - 1 - emptyAreaOffset,
+            searchTemplate.DialogIndicationArea.Height.From + searchTemplate.DialogIndicationArea.Height.Length / 2,
+            searchTemplate.DialogIndicationArea.Height.From + searchTemplate.DialogIndicationArea.Height.Length * 2);
+
+        searchTemplate.SpeakerColorRangeRgb = dynamicTemplate.SpeakerColorRange;
         searchTemplate.SpeakerNameArea = new Area(
             (int)(dynamicTemplate.SpeakerNameArea.Width.From * clientSize.Width),
             (int)(dynamicTemplate.SpeakerNameArea.Width.To * clientSize.Width),
@@ -78,7 +86,7 @@ internal class SearchTemplateMapper
 
         #region Colors
         searchTemplate.DialogOptionColorRanges = dynamicTemplate.DialogOptionColorRanges;
-        searchTemplate.DialogOptionDimmed      = dynamicTemplate.DialogOptionDimmed;
+        searchTemplate.DialogOptionDimmed      = dynamicTemplate.DialogOptionMuted;
         #endregion
 
         return searchTemplate;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.AppConfig.Updater;
@@ -10,6 +11,7 @@ using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 using AuroraDialogEnhancer.Backend.ScriptHandlers;
+using AuroraDialogEnhancerExtensions.Dimensions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AuroraDialogEnhancer.Frontend.Forms.Debug;
@@ -54,13 +56,17 @@ public partial class DebugPage
 
     public DebugPage(AutoUpdaterService updaterService, ScriptHandlerService scriptHandlerService)
     {
-        _updaterService = updaterService;
-        _scriptHandlerService = scriptHandlerService;
+        //_updaterService = updaterService;
+        //_scriptHandlerService = scriptHandlerService;
 
         //_gameCvDialogOptionFinder = new GameCvDialogOptionFinder();
         InitializeComponent();
 
-        _scriptHandlerService.AutoClickScript.Register(new List<GenericKey>{new KeyboardKey(0xA2), new KeyboardKey(65)});
+        //_scriptHandlerService.AutoClickScript.Register(new List<GenericKey>{new KeyboardKey(0xA2), new KeyboardKey(65)});
+        var r = GetHsba(new Bitmap("Debug/t.png"))
+            .OrderBy(hsba => hsba.Brightness)
+            .ToList();
+        var t = r.Count;
     }
 
     private void ButtonBase_OnClick(object sender, System.Windows.RoutedEventArgs e)
@@ -70,6 +76,21 @@ public partial class DebugPage
         //_updaterService.CheckForUpdateManual();
         //_resolutionsTest.ForEach(path => Count($"D:\\Dev\\Projects\\E4rth_\\hoyo-dialog-enhancer-resources\\Raw Resolutions\\{path}.png"));
         //Count();
+    }
+
+    public List<Hsba> GetHsba(Bitmap image)
+    {
+        var r = new List<Hsba>();
+        for (var i = 0; i < image.Height; i++)
+        {
+            for (var j = 0; j < image.Width; j++)
+            {
+                var pixel = image.GetPixel(j, i);
+                r.Add(new Hsba((int) pixel.GetHue(), pixel.GetSaturation(), pixel.GetBrightness()));
+            }
+        }
+
+        return r;
     }
 
     private void Count(string path)

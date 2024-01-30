@@ -5,9 +5,9 @@ using Extension.HonkaiStarRail.Templates;
 
 namespace Extension.HonkaiStarRail.Services;
 
-internal class DialogOptionsFinderHsb : DialogOptionsFinderBase<Hsba>
+internal class DialogOptionsFinderHsbDebug : DialogOptionsFinderDebugBase<Hsba>
 {
-    public DialogOptionsFinderHsb(BitmapUtils bitmapUtils, SearchTemplate searchTemplate) : base(bitmapUtils, searchTemplate)
+    public DialogOptionsFinderHsbDebug(BitmapUtils bitmapUtils, SearchTemplate searchTemplate) : base(bitmapUtils, searchTemplate)
     {
     }
 

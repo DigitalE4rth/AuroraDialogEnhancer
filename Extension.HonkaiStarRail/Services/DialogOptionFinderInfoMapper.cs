@@ -10,8 +10,8 @@ public class DialogOptionFinderInfoMapper
     public DialogOptionFinderProvider Map(Size clientSize)
     {
         var searchTemplate      = new SearchTemplateMapper().Map(clientSize);
-        //var dialogOptionsFinder = new DialogOptionFinder(searchTemplate);
-        var dialogOptionsFinder = new DialogOptionFinderDebug(searchTemplate);
+        var dialogOptionsFinder = new DialogOptionFinder(searchTemplate);
+        //var dialogOptionsFinder = new DialogOptionFinderDebug(searchTemplate);
 
         var presetConfig = new PresetConfig();
         var dialogConfig = GetDialogDetectionConfig(searchTemplate);
@@ -30,6 +30,12 @@ public class DialogOptionFinderInfoMapper
             searchTemplate.DialogIndicationArea.Width.Length,
             searchTemplate.DialogIndicationArea.Height.Length);
 
+        var dialogIndicationAreaEmpty = new Rectangle(
+            searchTemplate.DialogIndicationAreaEmpty.Width.From,
+            searchTemplate.DialogIndicationAreaEmpty.Height.From,
+            searchTemplate.DialogIndicationAreaEmpty.Width.Length,
+            searchTemplate.DialogIndicationAreaEmpty.Height.Length);
+
         var speakerNameArea = new Rectangle(
             searchTemplate.SpeakerNameArea.Width.From,
             searchTemplate.SpeakerNameArea.Height.From,
@@ -42,7 +48,13 @@ public class DialogOptionFinderInfoMapper
             searchTemplate.TemplateSearchArea.Width.Length,
             searchTemplate.TemplateSearchArea.Height.Length);
 
-        return new DialogDetectionConfig(new [] { dialogIndicationArea, speakerNameArea }, dialogOptionsArea);
+        return new DialogDetectionConfig(new []
+        {
+            dialogIndicationArea,
+            dialogIndicationAreaEmpty, 
+            speakerNameArea
+        }, 
+            dialogOptionsArea);
     }
 
     private CursorPositionConfig GetCursorPositionConfig(PresetConfigBase presetConfig, SearchTemplate searchTemplate)

@@ -1,5 +1,4 @@
 ﻿using AuroraDialogEnhancerExtensions.Dimensions;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -13,7 +12,7 @@ public class BitmapUtils
     {
         var pixel = image.GetPixel(x, y);
         
-        return pixel.R >= colorRangeRgb.Low.Red  && pixel.R <= colorRangeRgb.High.Red &&
+        return pixel.R >= colorRangeRgb.Low.Red   && pixel.R <= colorRangeRgb.High.Red   &&
                pixel.G >= colorRangeRgb.Low.Green && pixel.G <= colorRangeRgb.High.Green &&
                pixel.B >= colorRangeRgb.Low.Blue  && pixel.B <= colorRangeRgb.High.Blue;
     }
@@ -25,9 +24,9 @@ public class BitmapUtils
         var pixelSaturation = pixel.GetSaturation();
         var pixelBrightness = pixel.GetBrightness();
 
-        return pixelHue        >= colorRangeHsb.Low.Hue  && pixelHue        <= colorRangeHsb.High.Hue  &&
+        return pixelHue        >= colorRangeHsb.Low.Hue        && pixelHue        <= colorRangeHsb.High.Hue        &&
                pixelSaturation >= colorRangeHsb.Low.Saturation && pixelSaturation <= colorRangeHsb.High.Saturation &&
-               pixelBrightness >= colorRangeHsb.Low.Brightness  && pixelBrightness <= colorRangeHsb.High.Brightness;
+               pixelBrightness >= colorRangeHsb.Low.Brightness && pixelBrightness <= colorRangeHsb.High.Brightness;
     }
 
     public bool IsWithinChannel(Bitmap image, ChannelRange channelRange, int x, int y)
@@ -58,46 +57,86 @@ public class BitmapUtils
         return image.GetPixel(x, y).GetBrightness() < color.Brightness;
     }
 
-    public int CountInRange(Bitmap image, ColorRange<Rgba> colorRangeRgb, int x, int y, int maxX, int maxY)
+    public int CountInRange(Bitmap image, ColorRange<Rgba> colorRange, int x, int y, int maxX, int maxY)
     {
         var count = 0;
         for (var xo = x; xo <= maxX; xo++)
         {
             for (var yo = y; yo <= maxY; yo++)
             {
-                if (IsWithinRange(image, colorRangeRgb, xo, yo)) count++;
+                if (IsWithinRange(image, colorRange, xo, yo)) count++;
             }
         }
 
         return count;
     }
 
-    public int CountInRange(Bitmap image, ColorRange<Hsba> colorRangeHsb, int x, int y, int maxX, int maxY)
+    public int CountInRange(Bitmap image, ColorRange<Hsba> colorRange, int x, int y, int maxX, int maxY)
     {
         var count = 0;
         for (var xo = x; xo <= maxX; xo++)
         {
             for (var yo = y; yo <= maxY; yo++)
             {
-                if (IsWithinRange(image, colorRangeHsb, xo, yo)) count++;
+                if (IsWithinRange(image, colorRange, xo, yo)) count++;
             }
         }
 
         return count;
     }
 
-    public int CountInRange(Bitmap image, ColorRange<Rgba> colorRangeRgb)
+    public int CountInRange(Bitmap image, ColorRange<Rgba> colorRange)
     {
         var count = 0;
         for (var x = 0; x < image.Width; x++)
         {
             for (var y = 0; y < image.Height; y++)
             {
-                if (IsWithinRange(image, colorRangeRgb, x, y)) count++;
+                if (IsWithinRange(image, colorRange, x, y)) count++;
             }
         }
 
         return count;
+    }
+
+    public int CountInRange(Bitmap image, ColorRange<Hsba> colorRange)
+    {
+        var count = 0;
+        for (var x = 0; x < image.Width; x++)
+        {
+            for (var y = 0; y < image.Height; y++)
+            {
+                if (IsWithinRange(image, colorRange, x, y)) count++;
+            }
+        }
+
+        return count;
+    }
+
+    public bool IsImageContainsColor(Bitmap image, ColorRange<Rgba> colorRange)
+    {
+        for (var x = 0; x < image.Width; x++)
+        {
+            for (var y = 0; y < image.Height; y++)
+            {
+                if (IsWithinRange(image, colorRange, x, y)) return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool IsImageContainsColor(Bitmap image, ColorRange<Hsba> colorRange)
+    {
+        for (var x = 0; x < image.Width; x++)
+        {
+            for (var y = 0; y < image.Height; y++)
+            {
+                if (IsWithinRange(image, colorRange, x, y)) return true;
+            }
+        }
+
+        return false;
     }
 
     public (int, int) GetFirstLineAndCountInRange(Bitmap image, ColorRange<Rgba> colorRangeRgb)
@@ -108,13 +147,41 @@ public class BitmapUtils
             : (firstLine, CountInRange(image, colorRangeRgb, 0, firstLine,  image.Width - 1, image.Height - 1));
     }
 
-    private int GetFirstLinePosition(Bitmap image, ColorRange<Rgba> colorRangeRgb)
+    public bool IsAreaContainsColor(Bitmap image, ColorRange<Rgba> colorRange, int x, int y, int maxX, int maxY)
+    {
+        for (var xo = x; xo <= maxX; xo++)
+        {
+            for (var yo = y; yo <= maxY; yo++)
+            {
+                if (IsWithinRange(image, colorRange, xo, yo)) 
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool IsAreaContainsColor(Bitmap image, ColorRange<Hsba> colorRange, int x, int y, int maxX, int maxY)
+    {
+        for (var xo = x; xo <= maxX; xo++)
+        {
+            for (var yo = y; yo <= maxY; yo++)
+            {
+                if (IsWithinRange(image, colorRange, xo, yo))
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    private int GetFirstLinePosition(Bitmap image, ColorRange<Rgba> colorRange)
     {
         for (var y = 0; y < image.Height; y++)
         {
             for (var x = 0; x < image.Width; x++)
             {
-                if (IsWithinRange(image, colorRangeRgb, x, y)) return y;
+                if (IsWithinRange(image, colorRange, x, y)) return y;
             }
         }
 
