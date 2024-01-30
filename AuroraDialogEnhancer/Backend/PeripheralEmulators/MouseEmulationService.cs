@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 
@@ -28,7 +28,7 @@ public class MouseEmulationService
     private void DoButtonClick(uint downKey, uint upKey, int dwData = 0)
     {
         mouse_event(downKey, Cursor.Position.X, Cursor.Position.Y, dwData, IntPtr.Zero);
-        Task.Delay(15).Wait();
+        Thread.Sleep(15);
         mouse_event(upKey, Cursor.Position.X, Cursor.Position.Y, dwData, IntPtr.Zero);
     }
 
