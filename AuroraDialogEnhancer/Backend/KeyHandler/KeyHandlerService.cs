@@ -241,7 +241,11 @@ public partial class KeyHandlerService : IDisposable
 
     public void HideCursorOnReload()
     {
-        if (!CanBeExecuted() || !_computerVisionService.IsDialogMode()) return;
+        if (!CanBeExecuted() || !_computerVisionService.IsDialogMode())
+        {
+            _isProcessing = false;
+            return;
+        }
         _cursorPositioningService.Hide();
         _isProcessing = false;
     }
