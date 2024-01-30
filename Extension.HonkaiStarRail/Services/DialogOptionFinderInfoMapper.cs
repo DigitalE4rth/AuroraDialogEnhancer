@@ -13,9 +13,8 @@ public class DialogOptionFinderInfoMapper
         var dialogOptionsFinder = new DialogOptionFinder(searchTemplate);
         //var dialogOptionsFinder = new DialogOptionFinderDebug(searchTemplate);
 
-        var presetConfig = new PresetConfig();
         var dialogConfig = GetDialogDetectionConfig(searchTemplate);
-        var cursorConfig = GetCursorConfig(presetConfig, searchTemplate);
+        var cursorConfig = UpdateCursorConfig(new CursorConfig(), searchTemplate);
 
         var presetData = new PresetData(dialogConfig, cursorConfig);
         
@@ -57,9 +56,9 @@ public class DialogOptionFinderInfoMapper
             dialogOptionsArea);
     }
 
-    private CursorConfigBase GetCursorConfig(PresetConfigBase presetConfig, SearchTemplate searchTemplate)
+    private CursorConfigBase UpdateCursorConfig(CursorConfigBase cursorConfig, SearchTemplate searchTemplate)
     {
-        presetConfig.CursorConfig.InitialPositionX = (int) (presetConfig.CursorConfig.InitialPosition.X * searchTemplate.DialogOptionWidth);
-        return presetConfig.CursorConfig;
+        cursorConfig.InitialPositionX = (int) (cursorConfig.InitialPosition.X * searchTemplate.DialogOptionWidth);
+        return cursorConfig;
     }
 }

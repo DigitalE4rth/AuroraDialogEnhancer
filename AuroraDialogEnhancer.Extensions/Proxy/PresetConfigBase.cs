@@ -1,6 +1,4 @@
-﻿using AuroraDialogEnhancerExtensions.Dimensions;
-
-namespace AuroraDialogEnhancerExtensions.Proxy;
+﻿namespace AuroraDialogEnhancerExtensions.Proxy;
 
 public abstract class PresetConfigBase
 {

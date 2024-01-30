@@ -2,6 +2,6 @@
 
 namespace Extension.GenshinImpact.Presets;
 
-public class PresetConfig : PresetConfigBase
+public class CursorConfig : CursorConfigBase
 {
 }
