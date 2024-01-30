@@ -352,7 +352,18 @@ public partial class KeyHandlerService : IDisposable
     {
         if (selectedIndex > _currentDialogOptions.Count - 1) return;
 
-        Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions[selectedIndex]);
+        var cursorDialogOptionPosition = _cursorPositioningService.GetPositionByDialogOptions(_currentDialogOptions);
+        var newCursorPosition = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions[selectedIndex]);
+
+        if (cursorDialogOptionPosition.ClosestLowerIndex == selectedIndex ||
+            cursorDialogOptionPosition.ClosestUpperIndex == selectedIndex)
+        {
+            _cursorPositioningService.SetCursorPositionWithAnimation(newCursorPosition);
+        }
+        else
+        {
+            Cursor.Position = newCursorPosition;
+        }
 
         if (_keyBindingProfile!.NumericActionBehaviour == ENumericActionBehaviour.Select || cursorPositionInfo.HighlightedIndex == selectedIndex)
         {
@@ -433,7 +444,18 @@ public partial class KeyHandlerService : IDisposable
 
         ApplyRelativeCursorPosition(cursorPosition);
 
-        Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions.Last());
+        var position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions.Last());
+        if (cursorPosition.ClosestLowerIndex != -1 &&
+            cursorPosition.ClosestUpperIndex != -1 &&
+            cursorPosition.ClosestLowerIndex == _currentDialogOptions.Count - 1)
+        {
+            _cursorPositioningService.SetCursorPositionWithAnimation(position);
+        }
+        else
+        {
+            Cursor.Position = position;
+        }
+
         HandleSelectPress(true);
 
         _isProcessing = false;
@@ -611,6 +633,7 @@ public partial class KeyHandlerService : IDisposable
             if (cursorPositionInfo.HighlightedIndex == -1)
             {
                 Cursor.Position = _cursorPositioningService.GetTargetCursorPlacement(_currentDialogOptions[0]);
+
                 _isProcessing = false;
                 return true;
             }
@@ -672,7 +695,8 @@ public partial class KeyHandlerService : IDisposable
     private void HighlightNext(bool direction, int highlightedIndex)
     {
         var indexedDirection = direction ? highlightedIndex + 1 : highlightedIndex - 1;
-        Cursor.Position = _cursorPositioningService.GetRelatedNormalizedPoint(_currentDialogOptions[indexedDirection]);
+        var position = _cursorPositioningService.GetRelatedNormalizedPoint(_currentDialogOptions[indexedDirection]);
+        _cursorPositioningService.SetCursorPositionWithAnimation(position);
     }
     #endregion
     #endregion

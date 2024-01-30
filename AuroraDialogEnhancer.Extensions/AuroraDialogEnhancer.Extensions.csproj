@@ -73,7 +73,7 @@
     <Compile Include="KeyBindings\Scripts\ESkipStartConditionDto.cs" />
     <Compile Include="Location\ILocationProvider.cs" />
     <Compile Include="Location\LocationProviderEmpty.cs" />
-    <Compile Include="Proxy\CursorPositionData.cs" />
+    <Compile Include="Proxy\CursorPositionConfig.cs" />
     <Compile Include="Proxy\DialogDetectionConfig.cs" />
     <Compile Include="Proxy\DialogOptionFinderEmpty.cs" />
     <Compile Include="Proxy\PresetBase.cs" />
