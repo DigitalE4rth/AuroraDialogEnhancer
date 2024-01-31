@@ -10,7 +10,7 @@
 
 <div align="center">
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases"><img src="https://img.shields.io/github/downloads/DigitalE4rth/AuroraDialogEnhancer/total" /></a>
-    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.5.0"><img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/latest/total" /></a>
+    <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/releases/tag/v1.0.6.0"><img src="https://img.shields.io/github/downloads-pre/DigitalE4rth/AuroraDialogEnhancer/latest/total" /></a>
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/blob/main/LICENSE"><img src="https://img.shields.io/github/license/DigitalE4rth/AuroraDialogEnhancer" /></a>
     <a href="https://gamebanana.com/tools/14968" target="_blank"><img src="https://img.shields.io/badge/GameBanana-🍌-gray" /></a>
     <a href="https://github.com/DigitalE4rth/AuroraDialogEnhancer/tree/main#-creative-society"><img src="https://img.shields.io/badge/Creative_Society-💖-gray" /></a>
@@ -176,10 +176,10 @@ This is an OPC (One Person Company), so the developer works alone. Thus everythi
 #### ⌚ Works like clockwork
 
 * Genshin Impact
+* Star Rail
 
 #### 🧑‍💻 In developing
 
-* Star Rail
 * Wuthering Waves
 * Project Mugen
 * Tower Of Fantasy
