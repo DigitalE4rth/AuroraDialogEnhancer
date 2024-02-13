@@ -39,7 +39,7 @@ public class DialogOptionFinder : IDialogOptionFinder
 
         _speakerNameFirstLineY = isSpeakerNamePresent
             ? _searchTemplate.SpeakerNameArea.Height.From + firstLineY
-            : image[1].Height;
+            : _searchTemplate.TemplateSearchArea.Height.To-1;
 
         return true;
     }
