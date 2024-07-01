@@ -15,8 +15,8 @@ namespace AuroraDialogEnhancer.Frontend.Controls.GameSelector;
 
 public partial class GameSelector
 {
-    private readonly ExtensionsProvider?     _extensionsProvider;
-    private readonly HookedGameDataProvider? _hookedGameInfoProvider;
+    private readonly ExtensionsProvider?  _extensionsProvider;
+    private readonly ProcessDataProvider? _hookedGameInfoProvider;
 
     private readonly Dictionary<string, ComboBoxItem>? _comboBoxItemsByGameId;
     private readonly Storyboard _spinnerStoryboard;
@@ -39,7 +39,7 @@ public partial class GameSelector
 #endif
 
         _extensionsProvider = AppServices.ServiceProvider.GetRequiredService<ExtensionsProvider>();
-        _hookedGameInfoProvider = AppServices.ServiceProvider.GetRequiredService<HookedGameDataProvider>();
+        _hookedGameInfoProvider = AppServices.ServiceProvider.GetRequiredService<ProcessDataProvider>();
         Initialize();
     }
 

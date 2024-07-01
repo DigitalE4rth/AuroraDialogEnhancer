@@ -15,11 +15,11 @@ namespace AuroraDialogEnhancer.Backend.Hooks.Process;
 
 public class ProcessInfoService
 {
-    private readonly HookedGameDataProvider _hookedGameDataProvider;
+    private readonly ProcessDataProvider _processDataProvider;
 
-    public ProcessInfoService(HookedGameDataProvider hookedGameDataProvider)
+    public ProcessInfoService(ProcessDataProvider processDataProvider)
     {
-        _hookedGameDataProvider = hookedGameDataProvider;
+        _processDataProvider = processDataProvider;
     }
 
     public async Task AutoDetectProcessAsync(ExtensionConfig extensionConfig, CancellationTokenSource cancellationTokenSource)
@@ -27,9 +27,9 @@ public class ProcessInfoService
         StartProcess(extensionConfig);
         ApplyProcessInfo(extensionConfig);
 
-        if (_hookedGameDataProvider.IsGameProcessAlive()) return;
+        if (_processDataProvider.IsGameProcessAlive()) return;
 
-        while (!_hookedGameDataProvider.IsGameProcessAlive())
+        while (!_processDataProvider.IsGameProcessAlive())
         {
             await Task.Delay(TimeSpan.FromMilliseconds(5000), cancellationTokenSource.Token);
             cancellationTokenSource.Token.ThrowIfCancellationRequested();
@@ -65,7 +65,7 @@ public class ProcessInfoService
         if (targetProcess is null) return;
 
         targetProcess.EnableRaisingEvents = true;
-        _hookedGameDataProvider.Data = new HookedGameData
+        _processDataProvider.Data = new HookedGameData
         {
             ExtensionConfig = extensionConfig,
             GameProcess = targetProcess
@@ -124,7 +124,7 @@ public class ProcessInfoService
         var clientRectangle = GetClientRectangle(mainWindowHandle);
         var windowRectangle = GetWindowRectangle(mainWindowHandle);
 
-        _hookedGameDataProvider.Data!.GameWindowInfo = new WindowInfo(mainWindowHandle, clientRectangle, windowRectangle);
+        _processDataProvider.Data!.GameWindowInfo = new WindowInfo(mainWindowHandle, clientRectangle, windowRectangle);
     }
 
     /// <summary>
@@ -200,22 +200,22 @@ public class ProcessInfoService
 
     public void SetWindowLocation()
     {
-        var currentWindowRectangle = _hookedGameDataProvider.Data!.GameWindowInfo!.WindowRectangle;
-        var newWindowRectangle = GetWindowRectangle(_hookedGameDataProvider.Data!.GameProcess!.MainWindowHandle);
-        var newClientRectangle = GetClientRectangle(_hookedGameDataProvider.Data!.GameProcess!.MainWindowHandle);
+        var currentWindowRectangle = _processDataProvider.Data!.GameWindowInfo!.WindowRectangle;
+        var newWindowRectangle = GetWindowRectangle(_processDataProvider.Data!.GameProcess!.MainWindowHandle);
+        var newClientRectangle = GetClientRectangle(_processDataProvider.Data!.GameProcess!.MainWindowHandle);
 
         if (currentWindowRectangle != newWindowRectangle)
         {
-            _hookedGameDataProvider.Data!.GameWindowInfo.SetLocation(newClientRectangle, newWindowRectangle);
+            _processDataProvider.Data!.GameWindowInfo.SetLocation(newClientRectangle, newWindowRectangle);
         }
     }
 
     public void ApplyWindowInfo()
     {
-        var clientRectangle = GetClientRectangle(_hookedGameDataProvider.Data!.GameProcess!.MainWindowHandle);
-        var windowRectangle = GetWindowRectangle(_hookedGameDataProvider.Data!.GameProcess!.MainWindowHandle);
+        var clientRectangle = GetClientRectangle(_processDataProvider.Data!.GameProcess!.MainWindowHandle);
+        var windowRectangle = GetWindowRectangle(_processDataProvider.Data!.GameProcess!.MainWindowHandle);
 
-        _hookedGameDataProvider.Data!.GameWindowInfo = new WindowInfo(_hookedGameDataProvider.Data!.GameProcess!.MainWindowHandle, clientRectangle, windowRectangle);
+        _processDataProvider.Data!.GameWindowInfo = new WindowInfo(_processDataProvider.Data!.GameProcess!.MainWindowHandle, clientRectangle, windowRectangle);
     }
 
     /// <summary>

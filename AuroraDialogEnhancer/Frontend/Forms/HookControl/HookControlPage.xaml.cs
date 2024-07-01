@@ -26,22 +26,21 @@ public partial class HookControlPage
 {
     private readonly BlobToBitmapImageConverter _blobToBitmapImageConverter;
     private readonly ExtensionConfigService     _extensionConfigService;
-    private readonly HookedGameDataProvider     _hookedGameDataProvider;
     private readonly ExtensionsProvider         _extensionsProvider;
+    private readonly ProcessDataProvider        _processDataProvider;
 
     private readonly DefaultUiElementsProvider  _defaultUiElementsProvider;
     private          HookSettingsDataContext?   _hookSettingsDataContext;
 
-    #region Startup
     public HookControlPage(BlobToBitmapImageConverter blobToBitmapImageConverter,
                            ExtensionConfigService     extensionConfigService,
-                           HookedGameDataProvider     hookedGameDataProvider, 
-                           ExtensionsProvider         extensionsProvider)
+                           ExtensionsProvider         extensionsProvider,
+                           ProcessDataProvider        processDataProvider)
     {
         _blobToBitmapImageConverter = blobToBitmapImageConverter;
         _extensionConfigService     = extensionConfigService;
-        _hookedGameDataProvider     = hookedGameDataProvider;
         _extensionsProvider         = extensionsProvider;
+        _processDataProvider        = processDataProvider;
         _defaultUiElementsProvider  = new DefaultUiElementsProvider();
 
         InitializeComponent();
@@ -52,6 +51,7 @@ public partial class HookControlPage
         InitializeBackground();
     }
 
+    #region Startup
     private void InitializeGames()
     {
         var extensionConfig = _extensionConfigService.Get(Properties.Settings.Default.App_HookSettings_SelectedGameId);
@@ -60,7 +60,7 @@ public partial class HookControlPage
         DataContext = _hookSettingsDataContext;
 
         Unloaded += SettingsPage_Unloaded;
-        _hookedGameDataProvider.OnHookStateChanged += OnHookDataStateChanged;
+        _processDataProvider.OnHookStateChanged += OnHookDataStateChanged;
         GameSelector.OnGameChanged += GameSelector_OnGameChanged;
     }
 
@@ -139,7 +139,7 @@ public partial class HookControlPage
     private void SetHookInfoText()
     {
         PathIconHookInfoRight.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Small;
-        if (_hookedGameDataProvider.Id != Properties.Settings.Default.App_HookSettings_SelectedGameId)
+        if (_processDataProvider.Id != Properties.Settings.Default.App_HookSettings_SelectedGameId)
         {
             PathIconHookInfoRight.Data = (PathGeometry) Application.Current.Resources["I.S.PlayArrow"];
             CardButtonHookInfo.Content = _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_None);
@@ -149,7 +149,7 @@ public partial class HookControlPage
         string iconName;
         List<UIElement>? hookContent;
 
-        switch (_hookedGameDataProvider.HookState)
+        switch (_processDataProvider.HookState)
         {
             case EHookState.Canceled:
                 iconName = "I.S.Spinner";
@@ -166,7 +166,7 @@ public partial class HookControlPage
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Error), 
                     _defaultUiElementsProvider.GetDivider(),
-                    _defaultUiElementsProvider.GetTextBlock(_hookedGameDataProvider.Message)
+                    _defaultUiElementsProvider.GetTextBlock(_processDataProvider.Message)
                 };
                 break;
             case EHookState.Search:
@@ -184,7 +184,7 @@ public partial class HookControlPage
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Paused),
                     _defaultUiElementsProvider.GetDivider(),
-                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.WindowInfo_ClientSize + ": " + _hookedGameDataProvider.Data!.GameWindowInfo!.GetClientSize())
+                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.WindowInfo_ClientSize + ": " + _processDataProvider.Data!.GameWindowInfo!.GetClientSize())
                 };  
                 break;
             case EHookState.Hooked:
@@ -193,7 +193,7 @@ public partial class HookControlPage
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Detected),
                     _defaultUiElementsProvider.GetDivider(),
-                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.WindowInfo_ClientSize + ": " + _hookedGameDataProvider.Data!.GameWindowInfo!.GetClientSize())
+                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.WindowInfo_ClientSize + ": " + _processDataProvider.Data!.GameWindowInfo!.GetClientSize())
                 };
                 break;
             case EHookState.Warning:
@@ -202,7 +202,7 @@ public partial class HookControlPage
                 {
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Warning),
                     _defaultUiElementsProvider.GetDivider(),
-                    _defaultUiElementsProvider.GetTextBlock(_hookedGameDataProvider.Message)
+                    _defaultUiElementsProvider.GetTextBlock(_processDataProvider.Message)
                 };
                 break;
             default:
@@ -365,7 +365,7 @@ public partial class HookControlPage
     #region Utils
     private void SetErrorMessage()
     {
-        _hookedGameDataProvider.SetStateAndNotify(EHookState.Warning, Properties.Localization.Resources.HookSettings_Warning_UnappliedChanges);
+        _processDataProvider.SetStateAndNotify(EHookState.Warning, Properties.Localization.Resources.HookSettings_Warning_UnappliedChanges);
     }
     #endregion
 
@@ -375,7 +375,7 @@ public partial class HookControlPage
         Unloaded -= SettingsPage_Unloaded;
         GameSelector.OnGameChanged -= GameSelector_OnGameChanged;
         ComboBoxHookLaunchType.SelectionChanged -= ComboBox_HookLaunchType_OnSelectionChanged;
-        _hookedGameDataProvider.OnHookStateChanged -= OnHookDataStateChanged;
+        _processDataProvider.OnHookStateChanged -= OnHookDataStateChanged;
     }
     #endregion
 }

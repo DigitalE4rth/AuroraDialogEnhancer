@@ -10,7 +10,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.Menu;
 
 public partial class MenuHookStateIcon
 {
-    private readonly HookedGameDataProvider? _hookedGameInfoProvider;
+    private readonly ProcessDataProvider? _hookedGameInfoProvider;
     private readonly Storyboard _spinnerStoryboard;
     private bool _isSpinnerAnimationRunning;
 
@@ -24,7 +24,7 @@ public partial class MenuHookStateIcon
 #if DEBUG
         if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
 #endif
-        _hookedGameInfoProvider = AppServices.ServiceProvider.GetRequiredService<HookedGameDataProvider>();
+        _hookedGameInfoProvider = AppServices.ServiceProvider.GetRequiredService<ProcessDataProvider>();
 
         SetIcon();
         Unloaded += OnUnloaded;

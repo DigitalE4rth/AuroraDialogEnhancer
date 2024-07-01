@@ -18,19 +18,19 @@ namespace AuroraDialogEnhancer.Backend.KeyBinding;
 
 public class KeyBindingProfileService
 {
-    private readonly HookedGameDataProvider        _hookedGameDataProvider;
+    private readonly ProcessDataProvider           _processDataProvider;
     private readonly KeyBindingViewModelBackMapper _viewModelBackMapper;
     private readonly KeyBindingViewModelMapper     _viewModelMapper;
     private readonly KeyBindingProfileRepository   _repository;
     private readonly ExtensionsProvider            _extensionsProvider;
 
-    public KeyBindingProfileService(HookedGameDataProvider        hookedGameDataProvider,
+    public KeyBindingProfileService(ProcessDataProvider           processDataProvider,
                                     KeyBindingViewModelBackMapper viewModelBackMapper,
                                     KeyBindingViewModelMapper     viewModelMapper,
                                     KeyBindingProfileRepository   repository,
                                     ExtensionsProvider            extensionsProvider)
     {
-        _hookedGameDataProvider = hookedGameDataProvider;
+        _processDataProvider    = processDataProvider;
         _viewModelBackMapper    = viewModelBackMapper;
         _viewModelMapper        = viewModelMapper;
         _repository             = repository;
@@ -47,9 +47,7 @@ public class KeyBindingProfileService
         Save(extension.Id, mappedProfile);
     }
     #endregion
-
-
-
+    
     #region Update
     public void Save(string id, KeyBindingProfile profile)
     {
@@ -79,8 +77,8 @@ public class KeyBindingProfileService
     {
         Save(id, profiles);
 
-        if (!_hookedGameDataProvider.IsExtenstionConfigPresent() ||
-            !_hookedGameDataProvider.Data!.ExtensionConfig!.Id.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
+        if (!_processDataProvider.IsExtenstionConfigPresent() ||
+            !_processDataProvider.Data!.ExtensionConfig!.Id.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
         {
             return;
         }
@@ -89,8 +87,6 @@ public class KeyBindingProfileService
         AppServices.ServiceProvider.GetRequiredService<KeyHandlerService>().ApplyKeyBinds();
     }
     #endregion
-
-
 
     #region Read
     public bool Exists(string gameName)

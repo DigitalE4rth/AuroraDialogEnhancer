@@ -9,7 +9,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.HookControl;
 
 internal class HookSettingsDataContext : INotifyPropertyChanged
 {
-    public HookedGameDataProvider HookedGameDataProvider { get; set; }
+    public ProcessDataProvider ProcessDataProvider { get; set; }
 
     private ExtensionConfigViewModel _extensionConfig;
 
@@ -25,7 +25,7 @@ internal class HookSettingsDataContext : INotifyPropertyChanged
 
     public HookSettingsDataContext(ExtensionConfigViewModel extensionConfig)
     {
-        HookedGameDataProvider = AppServices.ServiceProvider.GetRequiredService<HookedGameDataProvider>();
+        ProcessDataProvider = AppServices.ServiceProvider.GetRequiredService<ProcessDataProvider>();
         _extensionConfig = extensionConfig;
     }
 

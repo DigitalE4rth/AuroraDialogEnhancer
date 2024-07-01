@@ -14,17 +14,17 @@ namespace AuroraDialogEnhancer.Backend.Extensions;
 public class ExtensionConfigService
 {
     private readonly ExtensionConfigRepository _extensionConfigRepository;
-    private readonly HookedGameDataProvider    _hookedGameDataProvider;
     private readonly ExtensionsProvider        _extensionsProvider;
+    private readonly ProcessDataProvider       _processDataProvider;
     private readonly ScreenCaptureService      _screenCaptureService;
 
     public ExtensionConfigService(ExtensionConfigRepository extensionConfigRepository,
-                                  HookedGameDataProvider    hookedGameDataProvider,
+                                  ProcessDataProvider       processDataProvider,
                                   ExtensionsProvider        extensionsProvider,
                                   ScreenCaptureService      screenCaptureService)
     {
         _extensionConfigRepository = extensionConfigRepository;
-        _hookedGameDataProvider    = hookedGameDataProvider;
+        _processDataProvider       = processDataProvider;
         _extensionsProvider        = extensionsProvider;
         _screenCaptureService      = screenCaptureService;
     }
@@ -75,9 +75,9 @@ public class ExtensionConfigService
     {
         _extensionConfigRepository.Save(config, Path.Combine(Global.Locations.ExtensionsFolder, config.Name, Global.Locations.ExtensionConfigFileName));
 
-        if (_hookedGameDataProvider.Id is not null &&
-            _hookedGameDataProvider.Id.Equals(config.Id, StringComparison.Ordinal) &&
-            _hookedGameDataProvider.HookState is not EHookState.None)
+        if (_processDataProvider.Id is not null &&
+            _processDataProvider.Id.Equals(config.Id, StringComparison.Ordinal) &&
+            _processDataProvider.HookState is not EHookState.None)
         {
             Task.Run(() => AppServices.ServiceProvider.GetRequiredService<CoreService>().RestartAutoDetection(config.Id, true)).ConfigureAwait(false);
         }
@@ -90,8 +90,8 @@ public class ExtensionConfigService
 
     public void SetScreenshotsFolderForActiveGameIfNecessary(ExtensionConfig config)
     {
-        if (_hookedGameDataProvider.Data?.ExtensionConfig is null ||
-            !_hookedGameDataProvider.Data.ExtensionConfig.Id.Equals(config.Id, StringComparison.Ordinal)) return;
+        if (_processDataProvider.Data?.ExtensionConfig is null ||
+            !_processDataProvider.Data.ExtensionConfig.Id.Equals(config.Id, StringComparison.Ordinal)) return;
 
         _screenCaptureService.SetScreenshotsFolder(config);
     }

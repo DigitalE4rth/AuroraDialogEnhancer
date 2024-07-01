@@ -164,7 +164,7 @@
     <Compile Include="Backend\Extensions\ExtensionConfigMapper.cs" />
     <Compile Include="Backend\Generics\IMapper.cs" />
     <Compile Include="Backend\Hooks\Game\HookedGameData.cs" />
-    <Compile Include="Backend\Hooks\Game\HookedGameDataProvider.cs" />
+    <Compile Include="Backend\Hooks\Game\ProcessDataProvider.cs" />
     <Compile Include="Backend\KeyBinding\Models\Keys\SplitKeyStruct.cs" />
     <Compile Include="Backend\KeyBinding\Models\Scripts\ESkipStartCondition.cs" />
     <Compile Include="Backend\KeyHandler\AutoSkipKeyHandler.cs" />

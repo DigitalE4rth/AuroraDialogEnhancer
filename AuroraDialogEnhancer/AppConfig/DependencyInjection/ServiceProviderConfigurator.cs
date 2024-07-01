@@ -71,7 +71,7 @@ internal class ServiceProviderConfigurator
         #endregion
 
         #region HookedGameInfo
-        serviceCollection.AddSingleton<HookedGameDataProvider>();
+        serviceCollection.AddSingleton<ProcessDataProvider>();
         #endregion
 
         #region Hooks

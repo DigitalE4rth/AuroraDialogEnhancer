@@ -86,7 +86,7 @@ public class CoreService : IDisposable
         }
 
         var extensionConfig = _extensionConfigService.Get(gameId);
-        _hookedGameDataProvider.Id = gameId;
+        _processDataProvider.Id = gameId;
 
         if (!IsProcessInfoSpecified(extensionConfig))
         {
@@ -100,7 +100,7 @@ public class CoreService : IDisposable
 
     private bool IsResumePause()
     {
-        if (_hookedGameDataProvider.HookState is not EHookState.Paused) return false;
+        if (_processDataProvider.HookState is not EHookState.Paused) return false;
 
         _keyHandlerService.OnPauseSwitch();
         return true;
@@ -108,9 +108,9 @@ public class CoreService : IDisposable
     
     private async Task<bool> CancelAndDetermineIfNeedToStart(string? gameId, bool restart)
     {
-        if (_hookedGameDataProvider.Id is null) return true;
-        var processingGameId = string.Copy(_hookedGameDataProvider.Id);
-        var shouldRestart = (_hookedGameDataProvider.HookState is EHookState.Error or EHookState.Warning) || restart;
+        if (_processDataProvider.Id is null) return true;
+        var processingGameId = string.Copy(_processDataProvider.Id);
+        var shouldRestart = (_processDataProvider.HookState is EHookState.Error or EHookState.Warning) || restart;
 
         SetStateCancelling();
 
@@ -150,8 +150,8 @@ public class CoreService : IDisposable
 
             await _processInfoService.AutoDetectProcessAsync(extensionConfig, _cancellationTokenSource!);
 
-            _hookedGameDataProvider.Data!.GameProcess!.Exited += ProcessOnExited;
-            if (_hookedGameDataProvider.Data.GameProcess.HasExited)
+            _processDataProvider.Data!.GameProcess!.Exited += ProcessOnExited;
+            if (_processDataProvider.Data.GameProcess.HasExited)
             {
                 if (HandleProcessExited()) return;
 
@@ -161,7 +161,7 @@ public class CoreService : IDisposable
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
-            if (_hookedGameDataProvider.Data!.GameWindowInfo!.IsMinimized())
+            if (_processDataProvider.Data!.GameWindowInfo!.IsMinimized())
             {
                 SetStateHooked();
             }
@@ -173,7 +173,7 @@ public class CoreService : IDisposable
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
-            var (isSuccess, message) = _computerVisionPresetService.SetPreset(_hookedGameDataProvider.Data);
+            var (isSuccess, message) = _computerVisionPresetService.SetPreset(_processDataProvider.Data);
             if (!isSuccess)
             {
                 Dispose();
@@ -203,28 +203,28 @@ public class CoreService : IDisposable
     {
         if (string.IsNullOrEmpty(extensionConfig.GameProcessName))
         {
-            _hookedGameDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_ProcessName_Game);
+            _processDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_ProcessName_Game);
             return false;
         }
 
         switch (extensionConfig.HookLaunchType)
         {
             case EHookLaunchType.Game when string.IsNullOrEmpty(extensionConfig.GameLocation):
-                _hookedGameDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_Location_Game_Empty);
+                _processDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_Location_Game_Empty);
                 return false;
             case EHookLaunchType.Game when !File.Exists(extensionConfig.GameLocation):
-                _hookedGameDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_Location_Game_NotExists);
+                _processDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_Location_Game_NotExists);
                 return false;
             case EHookLaunchType.Game:
                 return true;
             case EHookLaunchType.Launcher when string.IsNullOrEmpty(extensionConfig.LauncherProcessName):
-                _hookedGameDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_ProcessName_Launcher);
+                _processDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_ProcessName_Launcher);
                 return false;
             case EHookLaunchType.Launcher when string.IsNullOrEmpty(extensionConfig.LauncherLocation):
-                _hookedGameDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_Location_Launcher_Empty);
+                _processDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_Location_Launcher_Empty);
                 return false;
             case EHookLaunchType.Launcher when !File.Exists(extensionConfig.LauncherLocation):
-                _hookedGameDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_Location_Launcher_NotExists);
+                _processDataProvider.SetStateAndNotify(EHookState.Error, Properties.Localization.Resources.HookSettings_Error_Location_Launcher_NotExists);
                 return false;
             case EHookLaunchType.Launcher:
                 return true;
@@ -243,17 +243,17 @@ public class CoreService : IDisposable
     {
         lock (_processingLock)
         {
-            if (_hookedGameDataProvider.IsGameProcessAlive())
+            if (_processDataProvider.IsGameProcessAlive())
             {
-                _hookedGameDataProvider.Data!.GameProcess!.Exited -= ProcessOnExited;
+                _processDataProvider.Data!.GameProcess!.Exited -= ProcessOnExited;
             }
 
-            _hookedGameDataProvider.SetStateAndNotify(EHookState.Canceled);
-            var isExitWithTheGame = _hookedGameDataProvider.IsExtenstionConfigPresent() &&
-                                    _hookedGameDataProvider.Data!.ExtensionConfig!.IsExitWithTheGame;
+            _processDataProvider.SetStateAndNotify(EHookState.Canceled);
+            var isExitWithTheGame = _processDataProvider.IsExtenstionConfigPresent() &&
+                                    _processDataProvider.Data!.ExtensionConfig!.IsExitWithTheGame;
 
             Dispose();
-            _hookedGameDataProvider.SetStateAndNotify(EHookState.None);
+            _processDataProvider.SetStateAndNotify(EHookState.None);
 
             OpenScreenshotFolders();
 
@@ -280,28 +280,28 @@ public class CoreService : IDisposable
     #region States
     private void SetStateSearch()
     {
-        _hookedGameDataProvider.SetStateAndNotify(EHookState.Search);
+        _processDataProvider.SetStateAndNotify(EHookState.Search);
     }
 
     private void SetStateNone()
     {
-        _hookedGameDataProvider.Id = null;
-        _hookedGameDataProvider.SetStateAndNotify(EHookState.None);
+        _processDataProvider.Id = null;
+        _processDataProvider.SetStateAndNotify(EHookState.None);
     }
 
     private void SetStateCancelling()
     {
-        _hookedGameDataProvider.SetStateAndNotify(EHookState.Canceled);
+        _processDataProvider.SetStateAndNotify(EHookState.Canceled);
     }
 
     private void SetStateHooked()
     {
-        _hookedGameDataProvider.SetStateAndNotify(EHookState.Hooked);
+        _processDataProvider.SetStateAndNotify(EHookState.Hooked);
     }
 
     private void SetStateError(string message)
     {
-        _hookedGameDataProvider.SetStateAndNotify(EHookState.Error, message);
+        _processDataProvider.SetStateAndNotify(EHookState.Error, message);
     }
     #endregion
 
@@ -310,12 +310,12 @@ public class CoreService : IDisposable
     {
         _windowHookService.Dispose();
         _keyHandlerService.Dispose();
-        _hookedGameDataProvider.Dispose();
+        _processDataProvider.Dispose();
         _screenCaptureService.Dispose();
 
-        if (_hookedGameDataProvider.IsGameProcessAlive())
+        if (_processDataProvider.IsGameProcessAlive())
         {
-            _hookedGameDataProvider.Data!.GameProcess!.Exited -= ProcessOnExited;
+            _processDataProvider.Data!.GameProcess!.Exited -= ProcessOnExited;
         }
 
         _cancellationTokenSource?.Dispose();

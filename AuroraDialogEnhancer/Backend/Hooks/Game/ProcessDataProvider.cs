@@ -2,7 +2,7 @@
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Game;
 
-public class HookedGameDataProvider : IDisposable
+public class ProcessDataProvider : IDisposable
 {
     public EHookState HookState { get; private set; } = EHookState.None;
 

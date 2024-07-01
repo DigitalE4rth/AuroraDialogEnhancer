@@ -28,7 +28,7 @@ public partial class NotifyMenuWindow
     private readonly CoreService            _coreService;
     private readonly ExtensionConfigService _extensionConfigService;
     private readonly ExtensionsProvider     _extensionProvider;
-    private readonly HookedGameDataProvider _hookedGameDataProvider;
+    private readonly ProcessDataProvider    _processDataProvider;
     private readonly UiService              _uiService;
 
     private readonly Dictionary<string, Button> _buttonsByGameId;
@@ -38,15 +38,15 @@ public partial class NotifyMenuWindow
     public NotifyMenuWindow(CoreService            coreService,
                             ExtensionConfigService extensionConfigService,
                             ExtensionsProvider     extensionProvider,
-                            HookedGameDataProvider hookedGameDataProvider,
+                            ProcessDataProvider    processDataProvider,
                             UiService              uiService)
     {
         Unloaded += NotifyMenuWindow_Unloaded;
 
         _coreService            = coreService;
         _extensionConfigService = extensionConfigService;
-        _hookedGameDataProvider = hookedGameDataProvider;
         _extensionProvider      = extensionProvider;
+        _processDataProvider    = processDataProvider;
         _uiService              = uiService;
         _buttonsByGameId        = new Dictionary<string, Button>();
         _latestGameId           = Properties.Settings.Default.App_HookSettings_SelectedGameId;
@@ -87,7 +87,7 @@ public partial class NotifyMenuWindow
         _processingButton = initialButton;
 
         SetHookStateIcon();
-        _hookedGameDataProvider.OnHookStateChanged += OnHookDataStateChanged;
+        _processDataProvider.OnHookStateChanged += OnHookDataStateChanged;
     }
 
     private void GameButton_Click(object sender, RoutedEventArgs e)
@@ -111,32 +111,32 @@ public partial class NotifyMenuWindow
         var previousContent = (NotifyGameContent) _processingButton!.Content;
         previousContent.StopAnimation();
 
-        if (_hookedGameDataProvider.Id is null)
+        if (_processDataProvider.Id is null)
         {
             previousContent.Icon.Data = new PathGeometry();
             return;
         }
 
-        if (!_hookedGameDataProvider.Id.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
+        if (!_processDataProvider.Id.Equals(Properties.Settings.Default.App_HookSettings_SelectedGameId, StringComparison.Ordinal))
         {
             previousContent.Icon.Data = new PathGeometry();
         }
 
-        if (_hookedGameDataProvider.Id is null) return;
-        _processingButton = _buttonsByGameId[_hookedGameDataProvider.Id];
+        if (_processDataProvider.Id is null) return;
+        _processingButton = _buttonsByGameId[_processDataProvider.Id];
         var newContent = (NotifyGameContent) _processingButton.Content;
 
         var icon = GetIconAndSetMargins(newContent.Icon);
         newContent.Icon.Data = icon is null ? new PathGeometry() : (PathGeometry) Application.Current.Resources[icon];
 
-        if (_hookedGameDataProvider.HookState is not (EHookState.Search or EHookState.Canceled)) return;
+        if (_processDataProvider.HookState is not (EHookState.Search or EHookState.Canceled)) return;
         newContent.BeginAnimation();
     }
 
     private string? GetIconAndSetMargins(PathIcon pathIcon)
     {
         pathIcon.Height = WhyOrchid.Properties.Settings.Default.FontStyle_Large;
-        switch (_hookedGameDataProvider.HookState)
+        switch (_processDataProvider.HookState)
         {
             case EHookState.Hooked:
                 return "I.S.Check";
@@ -231,6 +231,6 @@ public partial class NotifyMenuWindow
     private void NotifyMenuWindow_Unloaded(object sender, RoutedEventArgs e)
     {
         Unloaded -= NotifyMenuWindow_Unloaded;
-        _hookedGameDataProvider.OnHookStateChanged -= OnHookDataStateChanged;
+        _processDataProvider.OnHookStateChanged -= OnHookDataStateChanged;
     }
 }

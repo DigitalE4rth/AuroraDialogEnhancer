@@ -28,7 +28,7 @@ public partial class KeyHandlerService : IDisposable
 {
     private readonly CursorPositioningService      _cursorPositioningService;
     private readonly CursorVisibilityStateProvider _cursorVisibilityStateProvider;
-    private readonly HookedGameDataProvider        _hookedGameDataProvider;
+    private readonly ProcessDataProvider           _processDataProvider;
     private readonly KeyBindingProfileService      _keyBindingProfileService;
     private readonly KeyboardHookManagerService    _keyboardHookManagerService;
     private readonly MouseEmulationService         _mouseEmulationService;
@@ -56,7 +56,7 @@ public partial class KeyHandlerService : IDisposable
 
     public KeyHandlerService(CursorPositioningService      cursorPositioningService,
                              CursorVisibilityStateProvider cursorVisibilityStateProvider,
-                             HookedGameDataProvider        hookedGameDataProvider,
+                             ProcessDataProvider           processDataProvider,
                              KeyBindingProfileService      keyBindingProfileService,
                              KeyboardHookManagerService    keyboardHookManagerService,
                              MouseEmulationService         mouseEmulationService,
@@ -64,11 +64,11 @@ public partial class KeyHandlerService : IDisposable
                              ComputerVisionService         computerVisionService,
                              ScreenCaptureService          screenCaptureService,
                              ScriptHandlerService          scriptHandlerService,
-                             WindowHookService             windowHookService)
+                             WindowFocusServiceFactory     windowFocusServiceFactory)
     {
         _cursorPositioningService      = cursorPositioningService;
         _cursorVisibilityStateProvider = cursorVisibilityStateProvider;
-        _hookedGameDataProvider        = hookedGameDataProvider;
+        _processDataProvider           = processDataProvider;
         _keyboardHookManagerService    = keyboardHookManagerService;
         _mouseEmulationService         = mouseEmulationService;
         _mouseHookManagerService       = mouseHookManagerService;
@@ -150,7 +150,7 @@ public partial class KeyHandlerService : IDisposable
 
     private void InitializeKeyBinds()
     {
-        _keyBindingProfile = _keyBindingProfileService.Get(_hookedGameDataProvider.Data!.ExtensionConfig!.Id);
+        _keyBindingProfile = _keyBindingProfileService.Get(_processDataProvider.Data!.ExtensionConfig!.Id);
         RegisterKeyBinds();
     }
 
@@ -260,7 +260,7 @@ public partial class KeyHandlerService : IDisposable
             UnRegister(_keyBindingProfile!.PauseResume);
             RegisterKeyBinds();
 
-            _hookedGameDataProvider.SetStateAndNotify(EHookState.Hooked);
+            _processDataProvider.SetStateAndNotify(EHookState.Hooked);
             _isPaused = false;
             return;
         }
@@ -268,7 +268,7 @@ public partial class KeyHandlerService : IDisposable
         UnRegisterAll();
         Register(_keyBindingProfile!.PauseResume, OnPauseSwitch);
 
-        _hookedGameDataProvider.SetStateAndNotify(EHookState.Paused);
+        _processDataProvider.SetStateAndNotify(EHookState.Paused);
         _isPaused = true;
     }
 
@@ -277,7 +277,7 @@ public partial class KeyHandlerService : IDisposable
         StopPeripheryHook();
 
         Task.Run(() => AppServices.ServiceProvider.GetRequiredService<CoreService>()
-            .RestartAutoDetection(_hookedGameDataProvider.Data!.ExtensionConfig!.Id, true))
+            .RestartAutoDetection(_processDataProvider.Data!.ExtensionConfig!.Id, true))
             .ConfigureAwait(false);
     }
 
