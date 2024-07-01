@@ -361,5 +361,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-#ZipExtractor
+# ZipExtractor
 /AuroraDialogEnhancer/Resources/Updater.exe
+
+# JetBrains Rider
+.idea/
