@@ -10,6 +10,8 @@ using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
+using AuroraDialogEnhancer.Backend.Hooks.Window;
+using AuroraDialogEnhancer.Backend.Hooks.WindowGi;
 using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
@@ -84,8 +86,18 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddTransient<MouseHookManagerRecordService>();
         serviceCollection.AddSingleton<MouseHookManagerService>();
 
+        serviceCollection.AddSingleton<FocusHookGameService>();
         serviceCollection.AddSingleton<ProcessInfoService>();
-        serviceCollection.AddSingleton<WindowHookService>();
+        serviceCollection.AddSingleton<FocusHookServiceFactory>();
+        serviceCollection.AddSingleton<WindowLocationHookService>();
+        serviceCollection.AddSingleton<MinimizationEndHookService>();
+        serviceCollection.AddSingleton<MinimizationEndObserver>();
+        serviceCollection.AddSingleton<MinimizationHookService>();
+        
+        serviceCollection.AddSingleton<FocusHookGameGiService>();
+        serviceCollection.AddSingleton<FocusHookGiService>();
+        serviceCollection.AddSingleton<MinimizationHookGiService>();
+        serviceCollection.AddSingleton<KeyboardFocusHookService>();
         #endregion
 
         #region KeyBinding

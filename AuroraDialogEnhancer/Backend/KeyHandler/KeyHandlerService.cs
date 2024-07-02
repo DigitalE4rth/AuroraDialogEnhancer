@@ -9,7 +9,6 @@ using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
-using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
@@ -36,51 +35,48 @@ public partial class KeyHandlerService : IDisposable
     private readonly ComputerVisionService         _computerVisionService;
     private readonly ScreenCaptureService          _screenCaptureService;
     private readonly ScriptHandlerService          _scriptHandlerService;
-    private readonly WindowHookService             _windowHookService;
 
-    private KeyBindingProfile? _keyBindingProfile;
+    private IGameFocusService _gameFocusService;
+    private KeyBindingProfile?  _keyBindingProfile;
 
     private List<Rectangle> _currentDialogOptions;
     private Point           _primaryDownPoint;
     private Point           _primaryUpPoint;
     private Dictionary<string, Point> _interactionPoints;
-
-    private bool _isWindowFocused;
+    
     private bool _isProcessing;
     private bool _isPrimarySuppressed;
     private bool _isPaused;
 
-    private readonly object _focusLock;
     private readonly object _processingLock;
     private readonly object _mouseClickLock;
 
-    public KeyHandlerService(CursorPositioningService      cursorPositioningService,
+    public KeyHandlerService(ComputerVisionService         computerVisionService,
+                             CursorPositioningService      cursorPositioningService,
                              CursorVisibilityStateProvider cursorVisibilityStateProvider,
-                             ProcessDataProvider           processDataProvider,
+                             FocusHookServiceFactory       focusHookServiceFactory,
                              KeyBindingProfileService      keyBindingProfileService,
                              KeyboardHookManagerService    keyboardHookManagerService,
                              MouseEmulationService         mouseEmulationService,
                              MouseHookManagerService       mouseHookManagerService,
-                             ComputerVisionService         computerVisionService,
+                             ProcessDataProvider           processDataProvider,
                              ScreenCaptureService          screenCaptureService,
-                             ScriptHandlerService          scriptHandlerService,
-                             WindowFocusServiceFactory     windowFocusServiceFactory)
+                             ScriptHandlerService          scriptHandlerService)
     {
+        _computerVisionService         = computerVisionService;
         _cursorPositioningService      = cursorPositioningService;
         _cursorVisibilityStateProvider = cursorVisibilityStateProvider;
-        _processDataProvider           = processDataProvider;
+        _keyBindingProfileService      = keyBindingProfileService;
         _keyboardHookManagerService    = keyboardHookManagerService;
         _mouseEmulationService         = mouseEmulationService;
         _mouseHookManagerService       = mouseHookManagerService;
-        _computerVisionService         = computerVisionService;
-        _keyBindingProfileService      = keyBindingProfileService;
+        _processDataProvider           = processDataProvider;
         _screenCaptureService          = screenCaptureService;
         _scriptHandlerService          = scriptHandlerService;
-        _windowHookService             = windowHookService;
+        _gameFocusService              = focusHookServiceFactory.Get();
 
         _interactionPoints    = new Dictionary<string, Point>(0);
         _currentDialogOptions = new List<Rectangle>(0);
-        _focusLock      = new object();
         _processingLock = new object();
         _mouseClickLock = new object();
     }
@@ -101,40 +97,31 @@ public partial class KeyHandlerService : IDisposable
         StartPeripheryHook();
     }
 
-    public void AttachFocusHook()
+    public void AttachFocusHook(IGameFocusService gameFocusService)
     {
-        System.Windows.Application.Current.Dispatcher.Invoke(() =>
-        {
-            _windowHookService.OnFocusChanged -= OnWindowFocusChanged;
-            _windowHookService.OnFocusChanged += OnWindowFocusChanged;
-        });
+        _gameFocusService.OnFocusChanged -= GameFocusChanged;
+        _gameFocusService = gameFocusService;
+        _gameFocusService.OnFocusChanged += GameFocusChanged;
     }
 
-    private void OnWindowFocusChanged(object sender, bool e)
+    private void GameFocusChanged(object sender, bool state)
     {
-        lock (_focusLock)
+        if (state)
         {
-            if (_isWindowFocused == e) return;
-
-            if (e)
-            {
-                StartPeripheryHook();
-                _isWindowFocused = true;
-                return;
-            }
-
-            _isWindowFocused = false;
-            StopPeripheryHook();
+            StartPeripheryHook();
+            return;
         }
+
+        StopPeripheryHook();
     }
 
-    public void StartPeripheryHook()
+    private void StartPeripheryHook()
     {
         _keyboardHookManagerService.Start();
         _mouseHookManagerService.Start();
     }
 
-    public void StopPeripheryHook()
+    private void StopPeripheryHook()
     {
         StopScripts();
         _keyboardHookManagerService.Stop();
@@ -142,7 +129,7 @@ public partial class KeyHandlerService : IDisposable
         _currentDialogOptions.Clear();
     }
 
-    public void StopScripts()
+    private void StopScripts()
     {
         _isAutoSkip = false;
         _isAutoSkipReplyPending = false;
@@ -575,7 +562,7 @@ public partial class KeyHandlerService : IDisposable
             _isProcessing = true;
         }
         
-        if (_isWindowFocused &&
+        if (_gameFocusService.IsFocused &&
             _cursorVisibilityStateProvider.IsVisible() &&
             _cursorPositioningService.IsCursorInsideClient())
         {
@@ -703,7 +690,9 @@ public partial class KeyHandlerService : IDisposable
 
     public void Dispose()
     {
-        _windowHookService.OnFocusChanged -= OnWindowFocusChanged;
+        _gameFocusService.OnFocusChanged -= GameFocusChanged;
+        _gameFocusService.UnhookWinEvent();
+        
         _interactionPoints.Clear();
         _scriptHandlerService.Dispose();
         StopPeripheryHook();
