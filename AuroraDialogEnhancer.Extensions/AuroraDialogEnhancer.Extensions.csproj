@@ -71,8 +71,7 @@
     <Compile Include="KeyBindings\Keys\KeyboardKeyDto.cs" />
     <Compile Include="KeyBindings\Keys\MouseKeyDto.cs" />
     <Compile Include="KeyBindings\Scripts\ESkipStartConditionDto.cs" />
-    <Compile Include="Location\ILocationProvider.cs" />
-    <Compile Include="Location\LocationProviderEmpty.cs" />
+    <Compile Include="Location\LocationProviderBase.cs" />
     <Compile Include="Proxy\CursorConfigDefault.cs" />
     <Compile Include="Proxy\CursorConfigBase.cs" />
     <Compile Include="Proxy\DialogDetectionConfig.cs" />

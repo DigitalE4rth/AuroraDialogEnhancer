@@ -4,44 +4,26 @@ using AuroraDialogEnhancerExtensions.Location;
 
 namespace Extension.HonkaiStarRail.Location;
 
-public class LocationProvider : ILocationProvider
+public class LocationProvider : LocationProviderBase
 {
-    public string LauncherLocation    { get; } = string.Empty;
-    public string GameLocation        { get; } = string.Empty;
-    public string ScreenshotsLocation { get; } = string.Empty;
-
     public LocationProvider()
     {
-        string installationPath;
-        try
-        {
-            installationPath = Microsoft.Win32.Registry.GetValue(
-                @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Star Rail",
-                "InstallPath",
-                string.Empty).ToString();
-        }
-        catch (Exception)
-        {
-            return;
-        }
-
-        if (string.IsNullOrEmpty(installationPath)) return;
-            
-        var launcherPath = Path.Combine(installationPath, "launcher.exe");
+        var installationFolderLauncher = GetInstallationPathByRegistry(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\HYP_1_0_global", "InstallPath");
+        var launcherPath = Path.Combine(installationFolderLauncher, "launcher.exe");
         if (File.Exists(launcherPath))
         {
             LauncherLocation = launcherPath;
-        }
-
+        } 
+        
+        var installationFolderGame = GetInstallationPathByRegistry(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Star Rail", "InstallPath");
         const string subFolder = "Games";
-
-        var gameExePath = Path.Combine(installationPath, subFolder, "StarRail.exe");
-        if (File.Exists(gameExePath))
+        var gamePath = Path.Combine(installationFolderGame, subFolder, "StarRail.exe");
+        if (File.Exists(gamePath))
         {
-            GameLocation = gameExePath;
+            GameLocation = gamePath;
         }
-
-        var screenshotsFolderPath = Path.Combine(installationPath, subFolder, "StarRail_Data", "ScreenShots");
+        
+        var screenshotsFolderPath = Path.Combine(installationFolderGame, subFolder, "StarRail_Data", "ScreenShots");
         if (Directory.Exists(screenshotsFolderPath))
         {
             ScreenshotsLocation = screenshotsFolderPath;

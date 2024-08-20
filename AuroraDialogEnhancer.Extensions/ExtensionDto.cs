@@ -25,7 +25,7 @@ public abstract class ExtensionDto
 
     public virtual ExtensionConfigDto GetConfig() => new();
 
-    public virtual ILocationProvider GetLocationProvider() => new LocationProviderEmpty();
+    public virtual LocationProviderBase GetLocationProvider() => new LocationProviderEmpty();
 
     public virtual IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProviderEmpty();
 

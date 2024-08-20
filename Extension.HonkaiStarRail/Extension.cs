@@ -28,7 +28,7 @@ public sealed class Extension : ExtensionDto
 
     public override ExtensionConfigDto GetConfig() => new("StarRail", "launcher");
 
-    public override ILocationProvider GetLocationProvider() => new LocationProvider();
+    public override LocationProviderBase GetLocationProvider() => new LocationProvider();
 
     public override IKeyBindingProfileProviderDto GetKeyBindingProfileProvider() => new KeyBindingProfileProvider();
 

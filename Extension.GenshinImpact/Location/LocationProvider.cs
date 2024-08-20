@@ -1,49 +1,28 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using AuroraDialogEnhancerExtensions.Location;
 
 namespace Extension.GenshinImpact.Location;
 
-public class LocationProvider : ILocationProvider
+public class LocationProvider : LocationProviderBase
 {
-    public string LauncherLocation    { get; } = string.Empty;
-    public string GameLocation        { get; } = string.Empty;
-    public string ScreenshotsLocation { get; } = string.Empty;
-
     public LocationProvider()
     {
-        string installationPath;
-        try
-        {
-            var value = Microsoft.Win32.Registry.GetValue(
-                @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Genshin Impact",
-                "InstallPath",
-                string.Empty);
-
-            installationPath = value is null ? string.Empty : value.ToString();
-        }
-        catch (Exception)
-        {
-            return;
-        }
-
-        if (string.IsNullOrEmpty(installationPath)) return;
-            
-        var launcherPath = Path.Combine(installationPath, "launcher.exe");
+        var installationFolderLauncher = GetInstallationPathByRegistry(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\HYP_1_0_global", "InstallPath");
+        var launcherPath = Path.Combine(installationFolderLauncher, "launcher.exe");
         if (File.Exists(launcherPath))
         {
             LauncherLocation = launcherPath;
-        }
-
+        }    
+        
+        var installationFolderGame = GetInstallationPathByRegistry(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Genshin Impact", "InstallPath");
         const string subFolder = "Genshin Impact game";
-
-        var gameExePath = Path.Combine(installationPath, subFolder, "GenshinImpact.exe");
-        if (File.Exists(gameExePath))
+        var gamePath = Path.Combine(installationFolderGame, subFolder, "GenshinImpact.exe");
+        if (File.Exists(gamePath))
         {
-            GameLocation = gameExePath;
+            GameLocation = gamePath;
         }
 
-        var screenshotsFolderPath = Path.Combine(installationPath, subFolder, "ScreenShot");
+        var screenshotsFolderPath = Path.Combine(installationFolderGame, subFolder, "ScreenShot");
         if (Directory.Exists(screenshotsFolderPath))
         {
             ScreenshotsLocation = screenshotsFolderPath;
