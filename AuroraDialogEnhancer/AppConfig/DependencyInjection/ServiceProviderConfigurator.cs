@@ -81,7 +81,7 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddSingleton<KeyboardHookManagerService>();
         serviceCollection.AddSingleton<ModifierKeysProvider>();
 
-        serviceCollection.AddSingleton<CursorVisibilityStateProvider>();
+        serviceCollection.AddSingleton<CursorVisibilityProvider>();
         serviceCollection.AddSingleton<MouseEmulationService>();
         serviceCollection.AddTransient<MouseHookManagerRecordService>();
         serviceCollection.AddSingleton<MouseHookManagerService>();

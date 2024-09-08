@@ -26,7 +26,7 @@ namespace AuroraDialogEnhancer.Backend.KeyHandler;
 public partial class KeyHandlerService : IDisposable
 {
     private readonly CursorPositioningService      _cursorPositioningService;
-    private readonly CursorVisibilityStateProvider _cursorVisibilityStateProvider;
+    private readonly CursorVisibilityProvider      _cursorVisibilityProvider;
     private readonly ProcessDataProvider           _processDataProvider;
     private readonly KeyBindingProfileService      _keyBindingProfileService;
     private readonly KeyboardHookManagerService    _keyboardHookManagerService;
@@ -53,8 +53,8 @@ public partial class KeyHandlerService : IDisposable
 
     public KeyHandlerService(ComputerVisionService         computerVisionService,
                              CursorPositioningService      cursorPositioningService,
-                             CursorVisibilityStateProvider cursorVisibilityStateProvider,
                              FocusHookServiceFactory       focusHookServiceFactory,
+                             CursorVisibilityProvider      cursorVisibilityProvider,
                              KeyBindingProfileService      keyBindingProfileService,
                              KeyboardHookManagerService    keyboardHookManagerService,
                              MouseEmulationService         mouseEmulationService,
@@ -65,7 +65,7 @@ public partial class KeyHandlerService : IDisposable
     {
         _computerVisionService         = computerVisionService;
         _cursorPositioningService      = cursorPositioningService;
-        _cursorVisibilityStateProvider = cursorVisibilityStateProvider;
+        _cursorVisibilityProvider      = cursorVisibilityProvider;
         _keyBindingProfileService      = keyBindingProfileService;
         _keyboardHookManagerService    = keyboardHookManagerService;
         _mouseEmulationService         = mouseEmulationService;
@@ -563,7 +563,7 @@ public partial class KeyHandlerService : IDisposable
         }
         
         if (_gameFocusService.IsFocused &&
-            _cursorVisibilityStateProvider.IsVisible() &&
+            _cursorVisibilityProvider.IsVisible() &&
             _cursorPositioningService.IsCursorInsideClient())
         {
             return true;
