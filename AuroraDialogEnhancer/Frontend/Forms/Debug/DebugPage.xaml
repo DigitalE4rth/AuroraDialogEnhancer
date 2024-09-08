@@ -17,10 +17,6 @@
                    Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
                    Text="Not Implemented Yet" />
 
-        <Button Width="200"
-                Click="ButtonBase_OnClick"
-                Content="Magic Button 🌈" />
-
         <woControls:PathIcon x:Name="PathIcon"
                              Width="50"
                              Height="50"
