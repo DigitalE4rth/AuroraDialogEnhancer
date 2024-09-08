@@ -4,7 +4,7 @@ using AuroraDialogEnhancer.Backend.Hooks.Process;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Window;
 
-public class MinimizationHookService : ProcessHookBase
+public class MinimizationHook : ProcessHookBase
 {
     private readonly ProcessDataProvider _processDataProvider;
     
@@ -24,7 +24,7 @@ public class MinimizationHookService : ProcessHookBase
 
     public event EventHandler<bool>? OnMinimizationChanged;
 
-    public MinimizationHookService(ProcessDataProvider processDataProvider)
+    public MinimizationHook(ProcessDataProvider processDataProvider)
     {
         _processDataProvider = processDataProvider;
     }

@@ -3,7 +3,7 @@ using AuroraDialogEnhancer.Backend.Hooks.Process;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Window;
 
-public class KeyboardFocusHookService : ProcessHookBase
+public class KeyboardFocusHook : ProcessHookBase
 {
     private readonly ProcessDataProvider _processDataProvider;
     
@@ -21,7 +21,7 @@ public class KeyboardFocusHookService : ProcessHookBase
     /// </summary>
     public override uint EventMax => 0x8005;
     
-    public KeyboardFocusHookService(ProcessDataProvider processDataProvider)
+    public KeyboardFocusHook(ProcessDataProvider processDataProvider)
     {
         _processDataProvider = processDataProvider;
     }

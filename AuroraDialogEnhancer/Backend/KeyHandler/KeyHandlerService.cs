@@ -27,6 +27,7 @@ public partial class KeyHandlerService : IDisposable
 {
     private readonly CursorPositioningService      _cursorPositioningService;
     private readonly CursorVisibilityProvider      _cursorVisibilityProvider;
+    private readonly FocusHookService              _focusHookService;
     private readonly ProcessDataProvider           _processDataProvider;
     private readonly KeyBindingProfileService      _keyBindingProfileService;
     private readonly KeyboardHookManagerService    _keyboardHookManagerService;
@@ -36,7 +37,6 @@ public partial class KeyHandlerService : IDisposable
     private readonly ScreenCaptureService          _screenCaptureService;
     private readonly ScriptHandlerService          _scriptHandlerService;
 
-    private IGameFocusService _gameFocusService;
     private KeyBindingProfile?  _keyBindingProfile;
 
     private List<Rectangle> _currentDialogOptions;
@@ -53,8 +53,8 @@ public partial class KeyHandlerService : IDisposable
 
     public KeyHandlerService(ComputerVisionService         computerVisionService,
                              CursorPositioningService      cursorPositioningService,
-                             FocusHookServiceFactory       focusHookServiceFactory,
                              CursorVisibilityProvider      cursorVisibilityProvider,
+                             FocusHookService              focusHookService,
                              KeyBindingProfileService      keyBindingProfileService,
                              KeyboardHookManagerService    keyboardHookManagerService,
                              MouseEmulationService         mouseEmulationService,
@@ -66,6 +66,7 @@ public partial class KeyHandlerService : IDisposable
         _computerVisionService         = computerVisionService;
         _cursorPositioningService      = cursorPositioningService;
         _cursorVisibilityProvider      = cursorVisibilityProvider;
+        _focusHookService              = focusHookService;
         _keyBindingProfileService      = keyBindingProfileService;
         _keyboardHookManagerService    = keyboardHookManagerService;
         _mouseEmulationService         = mouseEmulationService;
@@ -73,7 +74,6 @@ public partial class KeyHandlerService : IDisposable
         _processDataProvider           = processDataProvider;
         _screenCaptureService          = screenCaptureService;
         _scriptHandlerService          = scriptHandlerService;
-        _gameFocusService              = focusHookServiceFactory.Get();
 
         _interactionPoints    = new Dictionary<string, Point>(0);
         _currentDialogOptions = new List<Rectangle>(0);
@@ -97,14 +97,14 @@ public partial class KeyHandlerService : IDisposable
         StartPeripheryHook();
     }
 
-    public void AttachFocusHook(IGameFocusService gameFocusService)
+    public void InitializeFocusHook()
     {
-        _gameFocusService.OnFocusChanged -= GameFocusChanged;
-        _gameFocusService = gameFocusService;
-        _gameFocusService.OnFocusChanged += GameFocusChanged;
+        _focusHookService.OnFocusChanged -= ApplicationFocusChanged;
+        _focusHookService.Initialize();
+        _focusHookService.OnFocusChanged += ApplicationFocusChanged;
     }
 
-    private void GameFocusChanged(object sender, bool state)
+    private void ApplicationFocusChanged(object sender, bool state)
     {
         if (state)
         {
@@ -562,7 +562,7 @@ public partial class KeyHandlerService : IDisposable
             _isProcessing = true;
         }
         
-        if (_gameFocusService.IsFocused &&
+        if (_focusHookService.IsFocused &&
             _cursorVisibilityProvider.IsVisible() &&
             _cursorPositioningService.IsCursorInsideClient())
         {
@@ -690,8 +690,8 @@ public partial class KeyHandlerService : IDisposable
 
     public void Dispose()
     {
-        _gameFocusService.OnFocusChanged -= GameFocusChanged;
-        _gameFocusService.UnhookWinEvent();
+        _focusHookService.OnFocusChanged -= ApplicationFocusChanged;
+        _focusHookService.UnhookWinEvent();
         
         _interactionPoints.Clear();
         _scriptHandlerService.Dispose();

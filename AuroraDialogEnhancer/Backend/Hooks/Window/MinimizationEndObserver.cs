@@ -6,7 +6,7 @@ using AuroraDialogEnhancer.Backend.Hooks.Process;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Window;
 
-public class MinimizationEndObserver : MinimizationEndHookService
+public class MinimizationEndObserver : MinimizationEndHook
 {
     private readonly ProcessDataProvider _processDataProvider;
     private readonly ProcessInfoService  _processInfoService;

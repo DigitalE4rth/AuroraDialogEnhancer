@@ -20,15 +20,14 @@ public class CoreService : IDisposable
 {
     private readonly ComputerVisionPresetService _computerVisionPresetService;
     private readonly ExtensionConfigService      _extensionConfigService;
-    private readonly FocusHookServiceFactory     _focusHookServiceFactory;
     private readonly KeyHandlerService           _keyHandlerService;
+    private readonly FocusHookService            _focusHookService;
     private readonly MinimizationEndObserver     _minimizationEndObserver;
-    private readonly MinimizationHookService     _minimizationHookService;
+    private readonly MinimizationHook            _minimizationHook;
     private readonly ProcessDataProvider         _processDataProvider;
     private readonly ProcessInfoService          _processInfoService;
     private readonly ScreenCaptureService        _screenCaptureService;
-    private readonly WindowLocationHookService   _windowLocationHookService;
-    private          IGameFocusService           _gameFocusService;
+    private readonly WindowLocationHook          _windowLocationHook;
 
 
     private readonly object _cancellingLock;
@@ -43,27 +42,26 @@ public class CoreService : IDisposable
 
     public CoreService(ComputerVisionPresetService computerVisionPresetService,
                        ExtensionConfigService      extensionConfigService,
-                       FocusHookServiceFactory     focusHookServiceFactory,
                        KeyHandlerService           keyHandlerService,
+                       FocusHookService            focusHookService,
                        MinimizationEndObserver     minimizationEndObserver,
-                       MinimizationHookService     minimizationHookService, 
+                       MinimizationHook            minimizationHook, 
                        ProcessDataProvider         processDataProvider,
                        ProcessInfoService          processInfoService,
                        ScreenCaptureService        screenCaptureService,
-                       WindowLocationHookService   windowLocationHookService)
+                       WindowLocationHook          windowLocationHook)
     {
         _computerVisionPresetService = computerVisionPresetService;
         _extensionConfigService      = extensionConfigService;
-        _focusHookServiceFactory     = focusHookServiceFactory;
         _keyHandlerService           = keyHandlerService;
+        _focusHookService            = focusHookService;
         _minimizationEndObserver     = minimizationEndObserver;
-        _minimizationHookService     = minimizationHookService;
+        _minimizationHook            = minimizationHook;
         _processDataProvider         = processDataProvider;
         _processInfoService          = processInfoService;
         _screenCaptureService        = screenCaptureService;
-        _windowLocationHookService   = windowLocationHookService;
-        _gameFocusService            = _focusHookServiceFactory.Get();
-        
+        _windowLocationHook          = windowLocationHook;
+
         _cancellingLock = new object();
         _processingLock = new object();
     }
@@ -159,10 +157,8 @@ public class CoreService : IDisposable
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
             
             await _processInfoService.AutoDetectProcessAsync(extensionConfig, _cancellationTokenSource!);
-            
-            _gameFocusService = _focusHookServiceFactory.Get(_processDataProvider.Id);
             _keyHandlerService.AttachFocusHook(_gameFocusService);
-            _gameFocusService.SetWinEventHook();
+            _focusHookService.SetWinEventHook();
 
             _processDataProvider.Data!.GameProcess!.Exited += ProcessOnExited;
             if (_processDataProvider.Data.GameProcess.HasExited)
@@ -182,8 +178,8 @@ public class CoreService : IDisposable
 
             if (!await _minimizationEndObserver.AwaitMinimizationEndAsync(_cancellationTokenSource!.Token)) return;
 
-            _minimizationHookService.SetWinEventHook();
-            _windowLocationHookService.SetWinEventHook();
+            _minimizationHook.SetWinEventHook();
+            _windowLocationHook.SetWinEventHook();
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
@@ -199,8 +195,8 @@ public class CoreService : IDisposable
 
             _screenCaptureService.SetScreenshotsFolder(extensionConfig);
             _keyHandlerService.ApplyKeyBinds();
-            _gameFocusService.SendFocusedEvent();
             if (isRestart) _keyHandlerService.HideCursorOnReload();
+            _focusHookService.SendFocusedEvent();
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
             SetStateHooked();
@@ -322,10 +318,10 @@ public class CoreService : IDisposable
     #region Cleanup
     private void DisposeAutoDetectionTask()
     {
-        _minimizationHookService.UnhookWinEvent();
+        _minimizationHook.UnhookWinEvent();
         _minimizationEndObserver.UnhookWinEvent();
-        _windowLocationHookService.UnhookWinEvent();
-        _gameFocusService.UnhookWinEvent();
+        _windowLocationHook.UnhookWinEvent();
+        _focusHookService.UnhookWinEvent();
 
         _keyHandlerService.Dispose();
         _processDataProvider.Dispose();

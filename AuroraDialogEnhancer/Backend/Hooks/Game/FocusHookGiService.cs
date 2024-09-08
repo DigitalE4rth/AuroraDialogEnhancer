@@ -6,13 +6,13 @@ using AuroraDialogEnhancer.Backend.Hooks.WindowGi;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Game;
 
-public class FocusHookGameGiService : IGameFocusService
+public class FocusHookGiService : IApplicationFocusService
 {
-    private readonly FocusHookGiService        _focusHookGiService;
-    private readonly KeyboardFocusHookService  _keyboardFocusHookService;
-    private readonly MinimizationHookGiService _minimizationHookGiService;
-    private readonly ProcessDataProvider       _processDataProvider;
-    private readonly ProcessInfoService        _processInfoService;
+    private readonly FocusHookGi         _focusHookGi;
+    private readonly KeyboardFocusHook   _keyboardFocusHook;
+    private readonly MinimizationHookGi  _minimizationHookGi;
+    private readonly ProcessDataProvider _processDataProvider;
+    private readonly ProcessInfoService  _processInfoService;
 
     private readonly object _lock = new {};
     private int  _foregroundCurrentId;
@@ -21,17 +21,17 @@ public class FocusHookGameGiService : IGameFocusService
 
     public bool IsFocused { get; private set; }
 
-    public FocusHookGameGiService(FocusHookGiService        focusHookGiService,
-                                  KeyboardFocusHookService  keyboardFocusHookService,
-                                  MinimizationHookGiService minimizationHookGiService,
-                                  ProcessDataProvider       processDataProvider,
-                                  ProcessInfoService        processInfoService)
+    public FocusHookGiService(FocusHookGi         focusHookGi,
+                              KeyboardFocusHook   keyboardFocusHook,
+                              MinimizationHookGi  minimizationHookGi,
+                              ProcessDataProvider processDataProvider,
+                              ProcessInfoService  processInfoService)
     {
-        _focusHookGiService        = focusHookGiService;
-        _keyboardFocusHookService  = keyboardFocusHookService;
-        _minimizationHookGiService = minimizationHookGiService;
-        _processDataProvider       = processDataProvider;
-        _processInfoService        = processInfoService;
+        _focusHookGi         = focusHookGi;
+        _keyboardFocusHook   = keyboardFocusHook;
+        _minimizationHookGi  = minimizationHookGi;
+        _processDataProvider = processDataProvider;
+        _processInfoService  = processInfoService;
     }
     
     public event EventHandler<bool>? OnFocusChanged;
@@ -56,15 +56,15 @@ public class FocusHookGameGiService : IGameFocusService
 
     public void SetWinEventHook()
     {
-        _focusHookGiService.SetWinEventHook(FocusEventHookCallback);
-        IsFocused = _focusHookGiService.IsTargetWindowForeground();
+        _focusHookGi.SetWinEventHook(FocusEventHookCallback);
+        IsFocused = _focusHookGi.IsTargetWindowForeground();
         DetectFocusAndSendEvent();
 
-        _minimizationHookGiService.SetWinEventHook(MinimizationEventHookCallback);
+        _minimizationHookGi.SetWinEventHook(MinimizationEventHookCallback);
         _isMinimized = _processDataProvider.Data!.GameWindowInfo!.IsMinimized();
         DetectFocusAndSendEvent();
         
-        _keyboardFocusHookService.SetWinEventHook(KeyboardFocusEventHookCallback);
+        _keyboardFocusHook.SetWinEventHook(KeyboardFocusEventHookCallback);
     }
 
     public void SendFocusedEvent()
@@ -82,7 +82,7 @@ public class FocusHookGameGiService : IGameFocusService
     
     private void MinimizationEventHookCallback(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
     {
-        _isMinimized = eventType == _minimizationHookGiService.EventMin;
+        _isMinimized = eventType == _minimizationHookGi.EventMin;
         DetectFocusAndSendEvent();
     }
     
@@ -93,7 +93,7 @@ public class FocusHookGameGiService : IGameFocusService
         NativeMethods.GetWindowThreadProcessId(NativeMethods.GetForegroundWindow(), out var foregroundId);
         
         if (foregroundId == _processDataProvider.Data!.GameProcess!.Id && foregroundId == _foregroundCurrentId) return;
-        _keyboardFocusHookService.UnhookWinEvent();
+        _keyboardFocusHook.UnhookWinEvent();
 
         var foregroundWindow = NativeMethods.GetForegroundWindow();
         NativeMethods.SetForegroundWindow(_processDataProvider.Data!.GameProcess!.MainWindowHandle);
@@ -109,8 +109,8 @@ public class FocusHookGameGiService : IGameFocusService
 
     public void UnhookWinEvent()
     {
-        _focusHookGiService.UnhookWinEvent();
-        _minimizationHookGiService.UnhookWinEvent();
-        _keyboardFocusHookService.UnhookWinEvent();
+        _focusHookGi.UnhookWinEvent();
+        _minimizationHookGi.UnhookWinEvent();
+        _keyboardFocusHook.UnhookWinEvent();
     }
 }

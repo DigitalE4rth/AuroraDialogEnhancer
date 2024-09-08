@@ -4,7 +4,7 @@ using AuroraDialogEnhancer.Backend.Hooks.Process;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Window;
 
-public class WindowLocationHookService : ProcessHookBase
+public class WindowLocationHook : ProcessHookBase
 {
     private readonly ProcessDataProvider _processDataProvider;
     private readonly ProcessInfoService  _processInfoService;
@@ -24,7 +24,7 @@ public class WindowLocationHookService : ProcessHookBase
 
     public event EventHandler? OnWindowLocationChanged;
     
-    public WindowLocationHookService(ProcessDataProvider processDataProvider, ProcessInfoService processInfoService)
+    public WindowLocationHook(ProcessDataProvider processDataProvider, ProcessInfoService processInfoService)
     {
         _processDataProvider = processDataProvider;
         _processInfoService  = processInfoService;

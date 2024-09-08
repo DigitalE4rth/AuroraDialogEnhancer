@@ -86,18 +86,18 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddTransient<MouseHookManagerRecordService>();
         serviceCollection.AddSingleton<MouseHookManagerService>();
 
-        serviceCollection.AddSingleton<FocusHookGameService>();
+        serviceCollection.AddSingleton<FocusHookDefaultService>();
         serviceCollection.AddSingleton<ProcessInfoService>();
-        serviceCollection.AddSingleton<FocusHookServiceFactory>();
-        serviceCollection.AddSingleton<WindowLocationHookService>();
-        serviceCollection.AddSingleton<MinimizationEndHookService>();
+        serviceCollection.AddSingleton<FocusHookService>();
+        serviceCollection.AddSingleton<WindowLocationHook>();
+        serviceCollection.AddSingleton<MinimizationEndHook>();
         serviceCollection.AddSingleton<MinimizationEndObserver>();
-        serviceCollection.AddSingleton<MinimizationHookService>();
+        serviceCollection.AddSingleton<MinimizationHook>();
         
-        serviceCollection.AddSingleton<FocusHookGameGiService>();
         serviceCollection.AddSingleton<FocusHookGiService>();
-        serviceCollection.AddSingleton<MinimizationHookGiService>();
-        serviceCollection.AddSingleton<KeyboardFocusHookService>();
+        serviceCollection.AddSingleton<FocusHookGi>();
+        serviceCollection.AddSingleton<MinimizationHookGi>();
+        serviceCollection.AddSingleton<KeyboardFocusHook>();
         #endregion
 
         #region KeyBinding

@@ -1,10 +1,11 @@
 ﻿using System;
 using AuroraDialogEnhancer.Backend.External;
+using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
 
-namespace AuroraDialogEnhancer.Backend.Hooks.Game;
+namespace AuroraDialogEnhancer.Backend.Hooks.WindowGi;
 
-public class FocusHookGameService : ProcessHookBase, IGameFocusService
+public class FocusHookGi : ProcessHookBase
 {
     private readonly ProcessDataProvider _processDataProvider;
 
@@ -20,38 +21,22 @@ public class FocusHookGameService : ProcessHookBase, IGameFocusService
     /// </summary>
     public override uint EventMax => 0x0003;
     
-    public bool IsFocused { get; private set; }
-    public event EventHandler<bool>? OnFocusChanged;
-
-    public FocusHookGameService(ProcessDataProvider processDataProvider)
+    public FocusHookGi(ProcessDataProvider processDataProvider)
     {
         _processDataProvider = processDataProvider;
-    }
-    
-    public override void SetWinEventHook()
-    {
-        base.SetWinEventHook();
-        IsFocused = IsTargetWindowForeground();
-        OnFocusChanged?.Invoke(this, IsFocused);
     }
 
     protected override void EventHookCallback(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
     {
-        IsFocused = IsTargetWindowForeground(hwnd);
-        OnFocusChanged?.Invoke(this, IsFocused);
     }
 
-    private bool IsTargetWindowForeground() => IsTargetWindowForeground(NativeMethods.GetForegroundWindow());
-
-    private bool IsTargetWindowForeground(IntPtr focusedWindowHandle)
+    public bool IsTargetWindowForeground() => IsTargetWindowForeground(NativeMethods.GetForegroundWindow());
+    public bool IsTargetWindowForeground(IntPtr focusedWindowHandle)
     {
+        if (_processDataProvider.Data?.GameProcess is null) return false;
+
         NativeMethods.GetWindowThreadProcessId(focusedWindowHandle, out var activeProcId);
-        return activeProcId == _processDataProvider.Data!.GameProcess!.Id;
-    }
 
-    public void SendFocusedEvent()
-    {
-        IsFocused = IsTargetWindowForeground();
-        OnFocusChanged?.Invoke(this, IsFocused);
+        return activeProcId == _processDataProvider.Data.GameProcess.Id;
     }
 }
