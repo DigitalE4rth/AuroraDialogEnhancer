@@ -438,7 +438,8 @@
     <Compile Include="Backend\KeyBinding\Models\ViewModels\TriggerViewModel.cs" />
     <Compile Include="Backend\Extensions\ExtensionsProvider.cs" />
     <Compile Include="Backend\KeyHandler\DialogOptionCursorPositionInfo.cs" />
-    <Compile Include="Backend\KeyHandler\CursorPositioningService.cs" />
+    <Compile Include="Backend\CursorPositioning\CursorPositionInfo.cs" />
+    <Compile Include="Backend\CursorPositioning\CursorPositioningService.cs" />
     <Compile Include="Backend\Hooks\Keyboard\KeyBindStruct.cs" />
     <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerService.cs" />
     <Compile Include="Backend\Hooks\Keyboard\ModifierKeysProvider.cs" />

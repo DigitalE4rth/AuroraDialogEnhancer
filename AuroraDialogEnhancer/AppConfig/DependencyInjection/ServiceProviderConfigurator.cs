@@ -5,6 +5,7 @@ using AuroraDialogEnhancer.AppConfig.Theme;
 using AuroraDialogEnhancer.AppConfig.Updater;
 using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Core;
+using AuroraDialogEnhancer.Backend.CursorPositioning;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.Hooks.Keyboard;

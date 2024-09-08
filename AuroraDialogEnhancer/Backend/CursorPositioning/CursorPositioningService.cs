@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancerExtensions.Proxy;
 
-namespace AuroraDialogEnhancer.Backend.KeyHandler;
+namespace AuroraDialogEnhancer.Backend.CursorPositioning;
 
 public class CursorPositioningService
 {
@@ -48,6 +48,19 @@ public class CursorPositioningService
         _cursorPosition = _cursorPosition with { X = Cursor.Position.X - _processDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X - dialogOption.X };
     }
 
+    public void ApplyRelativeCursorPosition(CursorPositionInfo cursorPositionInfo, List<Rectangle> dialogOptions)
+    {
+        if (!cursorPositionInfo.IsWithinBoundaries) return;
+
+        if (cursorPositionInfo.HighlightedIndex != -1)
+        {
+            ApplyRelative(dialogOptions[cursorPositionInfo.HighlightedIndex]);
+            return;
+        }
+
+        ApplyRelativeX(dialogOptions[0]);
+    }
+
     public Point GetTargetCursorPlacement(Rectangle dialogOption)
     {
         return new Point(_processDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X + dialogOption.X + _cursorPosition.X,
@@ -68,8 +81,8 @@ public class CursorPositioningService
                Cursor.Position.Y <= _processDataProvider.Data.GameWindowInfo.ClientRectangleRelativePosition.Y + _processDataProvider.Data.GameWindowInfo.ClientRectangle.Height;
     }
 
-    public DialogOptionCursorPositionInfo GetPositionByDialogOptions(List<Rectangle> dialogOption) => GetPositionByDialogOptions(dialogOption, Cursor.Position);
-    public DialogOptionCursorPositionInfo GetPositionByDialogOptions(List<Rectangle> dialogOption, Point cursorPosition)
+    public CursorPositionInfo GetPositionByDialogOptions(List<Rectangle> dialogOption) => GetPositionByDialogOptions(dialogOption, Cursor.Position);
+    public CursorPositionInfo GetPositionByDialogOptions(List<Rectangle> dialogOption, Point cursorPosition)
     {
         var relativeCursorPosition = new Point(
             cursorPosition.X - _processDataProvider.Data!.GameWindowInfo!.ClientRectangleRelativePosition.X,
@@ -80,7 +93,7 @@ public class CursorPositioningService
             ||
             relativeCursorPosition.X > dialogOption[0].Right)
         {
-            return new DialogOptionCursorPositionInfo(-1, -1, -1);
+            return new CursorPositionInfo(-1, -1, -1);
         }
 
         // Upper area of first
@@ -89,7 +102,7 @@ public class CursorPositioningService
             relativeCursorPosition.Y >= _processDataProvider.Data.GameWindowInfo.ClientRectangle.Top &&
             relativeCursorPosition.Y < dialogOption[0].Top)
         {
-            return new DialogOptionCursorPositionInfo(-1, -1, 0);
+            return new CursorPositionInfo(-1, -1, 0);
         }
 
         // Lower area of last
@@ -98,7 +111,7 @@ public class CursorPositioningService
             relativeCursorPosition.Y <= _processDataProvider.Data.GameWindowInfo.ClientRectangle.Bottom &&
             relativeCursorPosition.Y > dialogOption[dialogOption.Count - 1].Bottom)
         {
-            return new DialogOptionCursorPositionInfo(dialogOption.Count - 1, -1, -1);
+            return new CursorPositionInfo(dialogOption.Count - 1, -1, -1);
         }
 
         var closestUpperIndex = -1;
@@ -111,7 +124,7 @@ public class CursorPositioningService
             {
                 closestUpperIndex = highlightedIndex - 1;
                 closestLowerIndex = highlightedIndex + 1;
-                return new DialogOptionCursorPositionInfo(closestUpperIndex, highlightedIndex, closestLowerIndex);
+                return new CursorPositionInfo(closestUpperIndex, highlightedIndex, closestLowerIndex);
             }
 
             if (highlightedIndex == 0)
@@ -125,13 +138,13 @@ public class CursorPositioningService
                 closestLowerIndex = -1;
             }
 
-            return new DialogOptionCursorPositionInfo(closestUpperIndex, highlightedIndex, closestLowerIndex);
+            return new CursorPositionInfo(closestUpperIndex, highlightedIndex, closestLowerIndex);
         }
 
         closestLowerIndex = GetHighlightedIndex(dialogOption, new Point(relativeCursorPosition.X, relativeCursorPosition.Y));
         closestUpperIndex = GetHighlightedIndex(dialogOption, new Point(relativeCursorPosition.X, relativeCursorPosition.Y));
 
-        return new DialogOptionCursorPositionInfo(closestUpperIndex, highlightedIndex, closestLowerIndex);
+        return new CursorPositionInfo(closestUpperIndex, highlightedIndex, closestLowerIndex);
     }
 
     private int GetHighlightedIndex(IReadOnlyList<Rectangle> dialogOption, Point relativeCursorPosition)

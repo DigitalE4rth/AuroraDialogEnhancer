@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Core;
+using AuroraDialogEnhancer.Backend.CursorPositioning;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
@@ -311,7 +312,7 @@ public partial class KeyHandlerService : IDisposable
         _isProcessing = false;
     }
 
-    private bool HandleSingleNumericDialogOption(DialogOptionCursorPositionInfo cursorPositionInfo, int selectedIndex)
+    private bool HandleSingleNumericDialogOption(CursorPositionInfo cursorPositionInfo, int selectedIndex)
     {
         if (_currentDialogOptions.Count != 1) return false;
 
@@ -335,7 +336,7 @@ public partial class KeyHandlerService : IDisposable
         return true;
     }
 
-    private void HandleNumericSelection(DialogOptionCursorPositionInfo cursorPositionInfo, int selectedIndex)
+    private void HandleNumericSelection(CursorPositionInfo cursorPositionInfo, int selectedIndex)
     {
         if (selectedIndex > _currentDialogOptions.Count - 1) return;
 
@@ -597,7 +598,7 @@ public partial class KeyHandlerService : IDisposable
         return false;
     }
 
-    private void ApplyRelativeCursorPosition(DialogOptionCursorPositionInfo cursorPositionInfo)
+    private void ApplyRelativeCursorPosition(CursorPositionInfo cursorPositionInfo)
     {
         if (!cursorPositionInfo.IsWithinBoundaries) return;
 
@@ -649,7 +650,7 @@ public partial class KeyHandlerService : IDisposable
         return false;
     }
 
-    private bool HandleHighlightOnNothing(DialogOptionCursorPositionInfo cursorPositionInfo, int targetIndex = 0, int closestIndex = 0)
+    private bool HandleHighlightOnNothing(CursorPositionInfo cursorPositionInfo, int targetIndex = 0, int closestIndex = 0)
     {
         if (cursorPositionInfo.HighlightedIndex != -1) return false;
 

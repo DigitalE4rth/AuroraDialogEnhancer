@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AuroraDialogEnhancer.Backend.CursorPositioning;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
