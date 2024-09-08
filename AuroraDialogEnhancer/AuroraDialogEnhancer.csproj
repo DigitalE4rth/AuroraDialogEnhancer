@@ -422,7 +422,7 @@
     <Compile Include="AppConfig\Localization\CultureProvider.cs" />
     <Compile Include="AppConfig\Config\AppConfig.cs" />
     <Compile Include="Backend\Hooks\Mouse\CursorInfoStruct.cs" />
-    <Compile Include="Backend\Hooks\Mouse\CursorVisibilityStateProvider.cs" />
+    <Compile Include="Backend\Hooks\Mouse\CursorVisibilityProvider.cs" />
     <Compile Include="Backend\External\NativeMethods.cs" />
     <Compile Include="Backend\Core\CoreService.cs" />
     <Compile Include="Backend\Hooks\Game\EHookState.cs" />
