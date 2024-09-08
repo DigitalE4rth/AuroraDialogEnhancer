@@ -17,9 +17,9 @@ using AuroraDialogEnhancer.Backend.KeyBinding;
 using AuroraDialogEnhancer.Backend.KeyBinding.Interpreters;
 using AuroraDialogEnhancer.Backend.KeyBinding.Mappers;
 using AuroraDialogEnhancer.Backend.KeyHandler;
+using AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
 using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
-using AuroraDialogEnhancer.Backend.ScriptHandlers;
 using AuroraDialogEnhancer.Backend.SoundPlayback;
 using AuroraDialogEnhancer.Backend.Utils;
 using AuroraDialogEnhancer.Frontend.Forms;
@@ -115,6 +115,19 @@ internal class ServiceProviderConfigurator
         #region KeyHandler
         serviceCollection.AddSingleton<CursorPositioningService>();
         serviceCollection.AddSingleton<KeyHandlerService>();
+
+        serviceCollection.AddSingleton<KeyActionMediator>();
+
+        serviceCollection.AddSingleton<ScriptAutoClick>();
+        serviceCollection.AddSingleton<ScriptAutoSkip>();
+        serviceCollection.AddSingleton<ScriptAutoSkipUtilities>();
+
+        serviceCollection.AddSingleton<KeyActionAccessibility>();
+        serviceCollection.AddSingleton<KeyActionControls>();
+        serviceCollection.AddSingleton<KeyActionExecution>();
+        serviceCollection.AddSingleton<KeyActionRegistrar>();
+        serviceCollection.AddSingleton<KeyActionUtility>();
+        serviceCollection.AddSingleton<KeyPauseActionProvider>();
         #endregion
 
         #region Peripheral Emulators
@@ -124,11 +137,6 @@ internal class ServiceProviderConfigurator
 
         #region Screen capture
         serviceCollection.AddSingleton<ScreenCaptureService>();
-        #endregion
-
-        #region Script Handlers
-        serviceCollection.AddSingleton<ScriptHandlerService>();
-        serviceCollection.AddTransient<AutoClickScript>();
         #endregion
 
         #region SoundPlayback

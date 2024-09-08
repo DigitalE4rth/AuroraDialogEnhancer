@@ -20,8 +20,10 @@ public class CoreService : IDisposable
 {
     private readonly ComputerVisionPresetService _computerVisionPresetService;
     private readonly ExtensionConfigService      _extensionConfigService;
-    private readonly KeyHandlerService           _keyHandlerService;
     private readonly FocusHookService            _focusHookService;
+    private readonly KeyActionControls           _keyActionControls;
+    private readonly KeyActionExecution          _keyActionExecution;
+    private readonly KeyActionMediator           _keyActionMediator;
     private readonly MinimizationEndObserver     _minimizationEndObserver;
     private readonly MinimizationHook            _minimizationHook;
     private readonly ProcessDataProvider         _processDataProvider;
@@ -42,8 +44,10 @@ public class CoreService : IDisposable
 
     public CoreService(ComputerVisionPresetService computerVisionPresetService,
                        ExtensionConfigService      extensionConfigService,
-                       KeyHandlerService           keyHandlerService,
                        FocusHookService            focusHookService,
+                       KeyActionControls           keyActionControls,
+                       KeyActionExecution          keyActionExecution,
+                       KeyActionMediator           keyActionMediator,
                        MinimizationEndObserver     minimizationEndObserver,
                        MinimizationHook            minimizationHook, 
                        ProcessDataProvider         processDataProvider,
@@ -53,8 +57,10 @@ public class CoreService : IDisposable
     {
         _computerVisionPresetService = computerVisionPresetService;
         _extensionConfigService      = extensionConfigService;
-        _keyHandlerService           = keyHandlerService;
         _focusHookService            = focusHookService;
+        _keyActionControls           = keyActionControls;
+        _keyActionExecution          = keyActionExecution;
+        _keyActionMediator           = keyActionMediator;
         _minimizationEndObserver     = minimizationEndObserver;
         _minimizationHook            = minimizationHook;
         _processDataProvider         = processDataProvider;
@@ -75,7 +81,7 @@ public class CoreService : IDisposable
             _isCancellationRunning = true;
         }
 
-        if (IsResumePause())
+        if (_keyActionControls.IsResumePause())
         {
             _isCancellationRunning = false;
             return;
@@ -109,14 +115,6 @@ public class CoreService : IDisposable
         await _autoDetectionTask;
     }
 
-    private bool IsResumePause()
-    {
-        if (_processDataProvider.HookState is not EHookState.Paused) return false;
-
-        _keyHandlerService.OnPauseSwitch();
-        return true;
-    }
-    
     private async Task<bool> CancelAndDetermineIfNeedToStart(string? gameId, bool restart)
     {
         if (_processDataProvider.Id is null) return true;
@@ -157,7 +155,8 @@ public class CoreService : IDisposable
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
             
             await _processInfoService.AutoDetectProcessAsync(extensionConfig, _cancellationTokenSource!);
-            _keyHandlerService.AttachFocusHook(_gameFocusService);
+
+            _keyActionControls.InitializeFocusHook();
             _focusHookService.SetWinEventHook();
 
             _processDataProvider.Data!.GameProcess!.Exited += ProcessOnExited;
@@ -194,9 +193,9 @@ public class CoreService : IDisposable
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
             _screenCaptureService.SetScreenshotsFolder(extensionConfig);
-            _keyHandlerService.ApplyKeyBinds();
-            if (isRestart) _keyHandlerService.HideCursorOnReload();
+            _keyActionControls.ApplyKeyBinds();
             _focusHookService.SendFocusedEvent();
+            if (isRestart) _keyActionExecution.HideCursorOnReload();
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
             SetStateHooked();
@@ -323,7 +322,7 @@ public class CoreService : IDisposable
         _windowLocationHook.UnhookWinEvent();
         _focusHookService.UnhookWinEvent();
 
-        _keyHandlerService.Dispose();
+        _keyActionMediator.Dispose();
         _processDataProvider.Dispose();
         _screenCaptureService.Dispose();
 

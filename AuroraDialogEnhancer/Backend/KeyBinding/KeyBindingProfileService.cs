@@ -21,20 +21,20 @@ public class KeyBindingProfileService
     private readonly ProcessDataProvider           _processDataProvider;
     private readonly KeyBindingViewModelBackMapper _viewModelBackMapper;
     private readonly KeyBindingViewModelMapper     _viewModelMapper;
-    private readonly KeyBindingProfileRepository   _repository;
+    private readonly KeyBindingProfileRepository   _profileRepository;
     private readonly ExtensionsProvider            _extensionsProvider;
 
     public KeyBindingProfileService(ProcessDataProvider           processDataProvider,
                                     KeyBindingViewModelBackMapper viewModelBackMapper,
                                     KeyBindingViewModelMapper     viewModelMapper,
-                                    KeyBindingProfileRepository   repository,
+                                    KeyBindingProfileRepository   profileRepository,
                                     ExtensionsProvider            extensionsProvider)
     {
-        _processDataProvider    = processDataProvider;
-        _viewModelBackMapper    = viewModelBackMapper;
-        _viewModelMapper        = viewModelMapper;
-        _repository             = repository;
-        _extensionsProvider     = extensionsProvider;
+        _processDataProvider = processDataProvider;
+        _viewModelBackMapper = viewModelBackMapper;
+        _viewModelMapper     = viewModelMapper;
+        _profileRepository   = profileRepository;
+        _extensionsProvider  = extensionsProvider;
     }
 
     #region Create
@@ -54,7 +54,7 @@ public class KeyBindingProfileService
         var gameName = _extensionsProvider.ExtensionsDictionary[id].Name;
         var filePath = Path.Combine(Global.Locations.ExtensionsFolder, gameName, Global.Locations.KeyBindingProfilesFileName);
 
-        _repository.Save(profile, filePath);
+        _profileRepository.Save(profile, filePath);
     }
 
     public void SaveDefault(string id)
@@ -83,8 +83,7 @@ public class KeyBindingProfileService
             return;
         }
 
-        // ToDo: Messed up architecture щ(゜ロ゜щ)
-        AppServices.ServiceProvider.GetRequiredService<KeyHandlerService>().ApplyKeyBinds();
+        AppServices.ServiceProvider.GetRequiredService<KeyActionControls>().ApplyKeyBinds();
     }
     #endregion
 
@@ -99,7 +98,7 @@ public class KeyBindingProfileService
         var gameName = _extensionsProvider.ExtensionsDictionary[id].Name;
         var filePath = Path.Combine(Global.Locations.ExtensionsFolder, gameName, Global.Locations.KeyBindingProfilesFileName);
 
-        return _repository.Get(filePath);
+        return _profileRepository.Get(filePath);
     }
 
     public KeyBindingProfileViewModel GetViewModel(string id)

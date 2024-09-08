@@ -9,7 +9,6 @@ using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
-using AuroraDialogEnhancer.Backend.KeyHandler2.Scripts;
 using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 using AuroraDialogEnhancerExtensions.Dimensions;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,13 +1,13 @@
-﻿using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
+﻿using System;
+using System.Collections.Generic;
+using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.PeripheralEmulators;
-using System;
-using System.Collections.Generic;
 
-namespace AuroraDialogEnhancer.Backend.ScriptHandlers;
+namespace AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
 
-public class AutoClickScript : IDisposable
+public class ScriptAutoClick : IDisposable
 {
     private readonly KeyboardEmulationService _keyboardEmulationService;
     private readonly MouseEmulationService    _mouseEmulationService;
@@ -17,7 +17,7 @@ public class AutoClickScript : IDisposable
     private SplitKeyStruct? _keyStruct;
     private EHighMouseKey   _mouseKey;
 
-    public AutoClickScript(KeyboardEmulationService keyboardEmulationService,
+    public ScriptAutoClick(KeyboardEmulationService keyboardEmulationService,
                            MouseEmulationService    mouseEmulationService,
                            ModifierKeysProvider     modifierKeysProvider)
     {

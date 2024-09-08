@@ -13,19 +13,19 @@ public class ComputerVisionPresetService
     private readonly CursorPositioningService _cursorPositioningService;
     private readonly ComputerVisionService    _computerVisionService;
     private readonly ExtensionsProvider       _extensionsProvider;
-    private readonly KeyHandlerService        _keyHandlerService;
+    private readonly KeyActionRegistrar       _keyActionRegistrar;
     private readonly ScreenCaptureService     _screenCaptureService;
 
     public ComputerVisionPresetService(CursorPositioningService cursorPositioningService,
                                        ComputerVisionService    computerVisionService,
                                        ExtensionsProvider       extensionsProvider,
-                                       KeyHandlerService        keyHandlerService, 
+                                       KeyActionRegistrar       keyActionRegistrar, 
                                        ScreenCaptureService     screenCaptureService)
     {
         _cursorPositioningService = cursorPositioningService;
         _computerVisionService    = computerVisionService;
         _extensionsProvider       = extensionsProvider;
-        _keyHandlerService        = keyHandlerService;
+        _keyActionRegistrar       = keyActionRegistrar;
         _screenCaptureService     = screenCaptureService;
     }
 
@@ -48,7 +48,7 @@ public class ComputerVisionPresetService
         {
             var mapper = new InteractionPrecisePointMapper();
             var mappedPoints = interactionPoints.Select(mapper.Map).ToList();
-            _keyHandlerService.InitializeInteractionPoints(mappedPoints);
+            _keyActionRegistrar.Register(mappedPoints);
         }
 
         return (true, string.Empty);

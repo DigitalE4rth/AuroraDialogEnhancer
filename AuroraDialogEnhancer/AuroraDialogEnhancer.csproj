@@ -179,11 +179,15 @@
     <Compile Include="Backend\Hooks\Window\MinimizationHook.cs" />
     <Compile Include="Backend\KeyBinding\Models\Keys\SplitKeyStruct.cs" />
     <Compile Include="Backend\KeyBinding\Models\Scripts\ESkipStartCondition.cs" />
-    <Compile Include="Backend\KeyHandler\AutoSkipKeyHandler.cs" />
-    <Compile Include="Backend\KeyHandler\Chain\ActionHandlerBase.cs" />
-    <Compile Include="Backend\KeyHandler\Chain\ActionHandlerEmpty.cs" />
-    <Compile Include="Backend\KeyHandler\Chain\CanBeExecutedAction.cs" />
-    <Compile Include="Backend\KeyHandler\Chain\IActionHandler.cs" />
+    <Compile Include="Backend\KeyHandler\KeyActionAccessibility.cs" />
+    <Compile Include="Backend\KeyHandler\KeyPauseActionProvider.cs" />
+    <Compile Include="Backend\KeyHandler\Scripts\ScriptAutoSkip.cs" />
+    <Compile Include="Backend\KeyHandler\KeyActionControls.cs" />
+    <Compile Include="Backend\KeyHandler\KeyActionExecution.cs" />
+    <Compile Include="Backend\KeyHandler\KeyActionRegistrar.cs" />
+    <Compile Include="Backend\KeyHandler\KeyActionUtility.cs" />
+    <Compile Include="Backend\KeyHandler\KeyActionMediator.cs" />
+    <Compile Include="Backend\KeyHandler\Scripts\ScriptAutoSkipUtilities.cs" />
     <Compile Include="Backend\PeripheralEmulators\KeyboardEmulationService.cs" />
     <Compile Include="Backend\KeyBinding\Models\InteractionPoints\InteractionPrecisePointMapper.cs" />
     <Compile Include="Backend\KeyBinding\Models\Scripts\AutoSkipConfigViewModel.cs" />
@@ -207,8 +211,7 @@
     <Compile Include="Backend\Extensions\ExtensionsLoader.cs" />
     <Compile Include="Backend\KeyBinding\Models\Keys\MouseKey.cs" />
     <Compile Include="Backend\KeyBinding\Models\ViewModels\TriggerViewModelComparer.cs" />
-    <Compile Include="Backend\ScriptHandlers\AutoClickScript.cs" />
-    <Compile Include="Backend\ScriptHandlers\ScriptHandlerService.cs" />
+    <Compile Include="Backend\KeyHandler\Scripts\ScriptAutoClick.cs" />
     <Compile Include="Backend\SoundPlayback\SoundPlaybackService.cs" />
     <Compile Include="Backend\Utils\FolderProcessStartService.cs" />
     <Compile Include="Frontend\Controls\Cards\CardButtonWithCustomBackground.cs" />
@@ -442,7 +445,6 @@
     <Compile Include="Backend\Hooks\Keyboard\KeyBindStruct.cs" />
     <Compile Include="Backend\Hooks\Keyboard\KeyboardHookManagerService.cs" />
     <Compile Include="Backend\Hooks\Keyboard\ModifierKeysProvider.cs" />
-    <Compile Include="Backend\KeyHandler\KeyHandlerService.cs" />
     <Compile Include="Backend\ScreenCapture\ScreenCaptureService.cs" />
     <Compile Include="Backend\Hooks\Process\ProcessInfo.cs" />
     <Compile Include="Backend\Hooks\Process\ProcessInfoService.cs" />
@@ -653,6 +655,7 @@
   <ItemGroup>
     <None Include="Resources\screenshot.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rem Copy compiled l18n assemblies to alt folder
