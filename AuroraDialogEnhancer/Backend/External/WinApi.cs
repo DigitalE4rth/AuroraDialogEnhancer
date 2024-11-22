@@ -6,7 +6,7 @@ using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 
 namespace AuroraDialogEnhancer.Backend.External;
 
-public class NativeMethods
+public static class WinApi
 {
     /// <summary>
     /// The system ID of the flag to get the setting whether the primary mouse button has been swapped.
@@ -51,11 +51,19 @@ public class NativeMethods
     /// Sets the show state of a window without waiting for the operation to complete.
     /// </summary>
     /// <param name="hWnd">A handle to the window.</param>
-    /// <param name="nCmdShow">Controls how the window is to be shown. SW_RESTORE = 9</param>
+    /// <param name="nCmdShow">Controls how the window is to be shown.</param>
+    /// <returns>If the operation was successfully started, the return value is nonzero.</returns>
+    public static bool ShowWindowAsync(IntPtr hWnd, EShowWindowMode nCmdShow) => ShowWindowAsync(hWnd, (int) nCmdShow);
+
+    /// <summary>
+    /// Sets the show state of a window without waiting for the operation to complete.
+    /// </summary>
+    /// <param name="hWnd">A handle to the window.</param>
+    /// <param name="nCmdShow">Controls how the window is to be shown.</param>
     /// <returns>If the operation was successfully started, the return value is nonzero.</returns>
     [DllImport("user32.dll")]
-    public static extern bool ShowWindowAsync(HandleRef hWnd, int nCmdShow = 9);
-
+    private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+    
     /// <summary>
     /// Brings the thread that created the specified window into the foreground and activates the window. Keyboard input is directed to the window, and various visual cues are changed for the user. The system assigns a slightly higher priority to the thread that created the foreground window than it does to other threads.
     /// </summary>
@@ -116,9 +124,12 @@ public class NativeMethods
     /// <returns>The return value is a handle to the foreground window. The foreground window can be <see langword="null"/> in certain circumstances, such as when a window is losing activation.</returns>
     [DllImport("user32.dll")]
     public static extern IntPtr GetForegroundWindow();
+    
 
     [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
     public static extern IntPtr SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hMod, uint dwThreadId);
+    public static IntPtr SetWindowsHookEx(EHookExType idHook, HookProc lpfn, IntPtr hMod, uint dwThreadId) => SetWindowsHookEx((int) idHook, lpfn, hMod, dwThreadId);
+
     public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
 
     [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]

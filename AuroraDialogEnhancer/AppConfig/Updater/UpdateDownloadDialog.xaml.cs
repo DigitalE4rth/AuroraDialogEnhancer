@@ -48,7 +48,7 @@ public UpdateDownloadDialog()
     {
         _updateInfo         = updateInfo;
         _isRunUpdateAsAdmin = isRunUpdateAsAdmin;
-        _tempFile           = Path.Combine(Global.Locations.AssemblyFolder, "Update_Download_Part.tmp");
+        _tempFile           = Path.Combine(AppConstants.Locations.AssemblyFolder, "Update_Download_Part.tmp");
 
         _webClient.DownloadProgressChanged += OnDownloadProgressChanged;
         _webClient.DownloadFileCompleted   += OnDownloadFileCompleted;
@@ -113,7 +113,7 @@ public UpdateDownloadDialog()
                 throw new WebException(Properties.Localization.Resources.AutoUpdate_UnableToDetermineFileName);
             }
 
-            var tempPath = Path.Combine(Global.Locations.AssemblyFolder, fileName);
+            var tempPath = Path.Combine(AppConstants.Locations.AssemblyFolder, fileName);
             if (File.Exists(tempPath))
             {
                 File.Delete(tempPath);
@@ -129,11 +129,11 @@ public UpdateDownloadDialog()
                 "--input",
                 tempPath,
                 "--output",
-                Global.Locations.AssemblyFolder,
+                AppConstants.Locations.AssemblyFolder,
                 "--current-exe",
-                Global.Locations.AssemblyExe,
+                AppConstants.Locations.AssemblyExe,
                 "--updated-exe",
-                Global.Locations.AssemblyExe
+                AppConstants.Locations.AssemblyExe
             };
 
             string[] args = Environment.GetCommandLineArgs();

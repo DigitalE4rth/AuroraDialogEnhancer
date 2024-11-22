@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+namespace AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 
 public class ScriptAutoSkipUtilities : IDisposable
 {

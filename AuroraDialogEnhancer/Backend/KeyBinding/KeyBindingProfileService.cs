@@ -43,7 +43,7 @@ public class KeyBindingProfileService
         var extensionProfile = extension.GetKeyBindingProfileProvider().GetKeyBindingProfileDto();
         var mappedProfile = new KeyBindingExtensionMapper().Map(extensionProfile);
 
-        Directory.CreateDirectory(Path.Combine(Global.Locations.ExtensionsFolder, extension.Name));
+        Directory.CreateDirectory(Path.Combine(AppConstants.Locations.ExtensionsFolder, extension.Name));
         Save(extension.Id, mappedProfile);
     }
     #endregion
@@ -52,7 +52,7 @@ public class KeyBindingProfileService
     public void Save(string id, KeyBindingProfile profile)
     {
         var gameName = _extensionsProvider.ExtensionsDictionary[id].Name;
-        var filePath = Path.Combine(Global.Locations.ExtensionsFolder, gameName, Global.Locations.KeyBindingProfilesFileName);
+        var filePath = Path.Combine(AppConstants.Locations.ExtensionsFolder, gameName, AppConstants.Locations.KeyBindingProfilesFileName);
 
         _profileRepository.Save(profile, filePath);
     }
@@ -90,13 +90,13 @@ public class KeyBindingProfileService
     #region Read
     public bool Exists(string gameName)
     {
-        return File.Exists(Path.Combine(Global.Locations.ExtensionsFolder, gameName, Global.Locations.KeyBindingProfilesFileName));
+        return File.Exists(Path.Combine(AppConstants.Locations.ExtensionsFolder, gameName, AppConstants.Locations.KeyBindingProfilesFileName));
     }
 
     public KeyBindingProfile Get(string id)
     {
         var gameName = _extensionsProvider.ExtensionsDictionary[id].Name;
-        var filePath = Path.Combine(Global.Locations.ExtensionsFolder, gameName, Global.Locations.KeyBindingProfilesFileName);
+        var filePath = Path.Combine(AppConstants.Locations.ExtensionsFolder, gameName, AppConstants.Locations.KeyBindingProfilesFileName);
 
         return _profileRepository.Get(filePath);
     }

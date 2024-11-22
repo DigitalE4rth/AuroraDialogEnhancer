@@ -6,8 +6,9 @@ using System.Windows.Forms;
 using AuroraDialogEnhancer.Backend.CursorPositioning;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
+using AuroraDialogEnhancer.Backend.KeyHandler;
 
-namespace AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+namespace AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 
 public class ScriptAutoSkip : IDisposable
 {

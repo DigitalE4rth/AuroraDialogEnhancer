@@ -29,7 +29,7 @@ public abstract class MouseHookManagerServiceBase
 
     protected Action<bool, Point>? _primaryClickAction;
 
-    protected NativeMethods.HookProc? _hook;
+    protected WinApi.HookProc? _hook;
     protected IntPtr _hookId;
     protected bool _isStarted;
 
@@ -43,8 +43,8 @@ public abstract class MouseHookManagerServiceBase
 
     protected MouseHookManagerServiceBase()
     {
-        _primaryDown = NativeMethods.IsMousePrimaryButtonSwapped ? _rightButtonDown : _leftButtonDown;
-        _primaryUp = NativeMethods.IsMousePrimaryButtonSwapped ? _rightButtonUp : _leftButtonUp;
+        _primaryDown = WinApi.IsMousePrimaryButtonSwapped ? _rightButtonDown : _leftButtonDown;
+        _primaryUp = WinApi.IsMousePrimaryButtonSwapped ? _rightButtonUp : _leftButtonUp;
         _hookId = IntPtr.Zero;
         _registeredLowKeyBinds = new Dictionary<IntPtr, Action<IntPtr, IntPtr>>();
     }
@@ -56,7 +56,7 @@ public abstract class MouseHookManagerServiceBase
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
             _hook = HookCallback;
-            _hookId = NativeMethods.SetWindowsHookEx(WH_MOUSE_LL, _hook, NativeMethods.User32Pointer, 0);
+            _hookId = WinApi.SetWindowsHookEx(EHookExType.WH_MOUSE_LL, _hook, WinApi.User32Pointer, 0);
             _isStarted = true;
         });
     }
@@ -67,7 +67,7 @@ public abstract class MouseHookManagerServiceBase
 
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
-            NativeMethods.UnhookWindowsHookEx(_hookId);
+            WinApi.UnhookWindowsHookEx(_hookId);
             _isStarted = false;
         });
     }
@@ -192,7 +192,7 @@ public abstract class MouseHookManagerServiceBase
 
     private IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
     {
-        var nextHookPtr = NativeMethods.CallNextHookEx(_hookId, nCode, wParam, lParam);
+        var nextHookPtr = WinApi.CallNextHookEx(_hookId, nCode, wParam, lParam);
 
         if (wParam == _mouseMove || !_registeredLowKeyBinds.ContainsKey(wParam) || nCode < 0)
         {

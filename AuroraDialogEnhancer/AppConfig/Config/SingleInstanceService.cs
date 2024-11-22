@@ -25,7 +25,7 @@ public sealed class SingleInstanceService : IDisposable
     public SingleInstanceService()
     {
         _isStartServer           = true;
-        _applicationId           = Global.AssemblyInfo.Name;
+        _applicationId           = AppConstants.AssemblyInfo.Name;
         _pipeName                = "Local\\Pipe" + _applicationId;
         _clientConnectionTimeout = TimeSpan.FromSeconds(3);
     }

@@ -6,7 +6,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.Utils;
 
 public class InfoDialogConfig
 {
-    public string WindowTitle { get; set; } = Global.AssemblyInfo.Name;
+    public string WindowTitle { get; set; } = AppConstants.AssemblyInfo.Name;
 
     public bool ShowSecondaryButton { get; set; }
 

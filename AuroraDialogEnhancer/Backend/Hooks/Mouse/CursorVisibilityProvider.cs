@@ -23,7 +23,7 @@ public class CursorVisibilityProvider
         // The native method changes the size of the struct to 0 every time after calling it.
         // Therefore, the new struct data will not be reflected until the struct size is specified again.
         _cursorInfoStruct.StructByteSize = _structSize;
-        NativeMethods.GetCursorInfo(ref _cursorInfoStruct);
+        WinApi.GetCursorInfo(ref _cursorInfoStruct);
         return (_cursorInfoStruct.StateFlags & Showing) != 0;
     }
 }

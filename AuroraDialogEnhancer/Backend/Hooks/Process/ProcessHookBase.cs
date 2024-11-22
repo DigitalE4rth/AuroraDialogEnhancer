@@ -22,8 +22,8 @@ public abstract class ProcessHookBase
     private const uint WINEVENT_SKIPOWNTHREAD  = 0x0001;
     
     private IntPtr _handle;
-    private NativeMethods.WinEventDelegate _winEventDelegate;
     protected virtual uint ProcessId => 0;
+    private WinApi.WinEventDelegate _winEventDelegate;
     public virtual uint EventMin => 0x0000;
     public virtual uint EventMax => 0x0000;
 
@@ -32,7 +32,7 @@ public abstract class ProcessHookBase
         _winEventDelegate = EventHookCallback;
     }
     
-    public virtual void SetWinEventHook(NativeMethods.WinEventDelegate winEventDelegate)
+    public virtual void SetWinEventHook(WinApi.WinEventDelegate winEventDelegate)
     {
         _winEventDelegate = winEventDelegate;
         SetWinEventHook();
@@ -42,7 +42,7 @@ public abstract class ProcessHookBase
     {
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
-            _handle = NativeMethods.SetWinEventHook(
+            _handle = WinApi.SetWinEventHook(
                 EventMin, 
                 EventMax,
                 IntPtr.Zero,
@@ -63,7 +63,7 @@ public abstract class ProcessHookBase
 
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
-            NativeMethods.UnhookWinEvent(_handle);
+            WinApi.UnhookWinEvent(_handle);
             _handle = IntPtr.Zero;
         }, DispatcherPriority.Normal);
     }

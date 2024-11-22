@@ -118,7 +118,7 @@ public partial class SettingsPage
                 streamWriter.WriteLine($"Unregister-ScheduledTask -TaskName {taskName} -Confirm:$false -ErrorAction SilentlyContinue");
                 streamWriter.WriteLine($"$taskname = {taskName}");
                 streamWriter.WriteLine("$taskpath = \"Microsoft\\Windows\\Startup\"");
-                streamWriter.WriteLine($"$action = New-ScheduledTaskAction -Execute \"{Global.Locations.AssemblyExe}\"");
+                streamWriter.WriteLine($"$action = New-ScheduledTaskAction -Execute \"{AppConstants.Locations.AssemblyExe}\"");
                 streamWriter.WriteLine("$trigger = New-ScheduledTaskTrigger -AtLogon -User $env:USERNAME");
                 streamWriter.WriteLine("$principal = New-ScheduledTaskPrincipal -RunLevel Highest -UserID $env:USERNAME");
                 streamWriter.WriteLine("$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit \"00:00:00\"");

@@ -51,7 +51,7 @@ public class ScreenCaptureService : IDisposable
         }
 
         var path = string.IsNullOrEmpty(extensionConfig.ScreenshotsLocation) 
-            ? Path.Combine(Global.Locations.ExtensionsFolder, extensionConfig.Name, Global.Locations.ScreenshotsFolderName)
+            ? Path.Combine(AppConstants.Locations.ExtensionsFolder, extensionConfig.Name, AppConstants.Locations.ScreenshotsFolderName)
             : extensionConfig.ScreenshotsLocation;
 
         if (!Directory.Exists(path))

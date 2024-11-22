@@ -34,12 +34,12 @@ public class FolderProcessStartService
     {
         EnsureNoEndTrailing(ref folderPath);
         var process = Process.GetProcesses().FirstOrDefault(process =>
-            process.ProcessName.Equals("explorer") && process.MainWindowTitle.Equals(folderPath));
+            process.ProcessName.Equals(AppConstants.OsEnvironment.ExplorerProcessName) && process.MainWindowTitle.Equals(folderPath));
 
         if (process == null || process.MainWindowHandle == IntPtr.Zero) return false;
 
-        NativeMethods.ShowWindowAsync(new HandleRef(null, process.MainWindowHandle));
-        NativeMethods.SetForegroundWindow(process.MainWindowHandle);
+        WinApi.ShowWindowAsync(process.MainWindowHandle, EShowWindowMode.SW_RESTORE);
+        WinApi.SetForegroundWindow(process.MainWindowHandle);
         return true;
     }
 
@@ -49,7 +49,7 @@ public class FolderProcessStartService
         {
             Arguments = arguments,
             UseShellExecute = true,
-            FileName = Global.StringConstants.ExplorerName
+            FileName = AppConstants.OsEnvironment.ExplorerName
         });
     }
 }

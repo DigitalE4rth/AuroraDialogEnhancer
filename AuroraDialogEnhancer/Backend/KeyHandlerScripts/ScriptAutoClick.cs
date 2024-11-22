@@ -5,7 +5,7 @@ using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
 using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 
-namespace AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+namespace AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 
 public class ScriptAutoClick : IDisposable
 {

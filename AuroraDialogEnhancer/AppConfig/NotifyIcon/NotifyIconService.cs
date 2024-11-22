@@ -17,7 +17,7 @@ public class NotifyIconService
         _notifyIcon = new System.Windows.Forms.NotifyIcon
         {
             Text = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title,
-            Icon = System.Drawing.Icon.ExtractAssociatedIcon(Statics.Global.Locations.AssemblyExe)
+            Icon = System.Drawing.Icon.ExtractAssociatedIcon(Statics.AppConstants.Locations.AssemblyExe)
         };
 
         _notifyIcon.Click       += NotifyIcon_OnClick;

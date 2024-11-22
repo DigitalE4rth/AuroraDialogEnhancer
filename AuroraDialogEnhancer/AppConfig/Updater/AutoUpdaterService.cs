@@ -50,11 +50,11 @@ public class AutoUpdaterService
     public void PatchKeyBindings()
     {
         var previousVersion = new Version(Properties.Settings.Default.App_CurrentVersion);
-        if (previousVersion >= Global.AssemblyInfo.Version) return;
+        if (previousVersion >= AppConstants.AssemblyInfo.Version) return;
 
         AppServices.ServiceProvider.GetRequiredService<PatchService>().Patch(previousVersion);
 
-        Properties.Settings.Default.App_CurrentVersion = Global.AssemblyInfo.VersionString;
+        Properties.Settings.Default.App_CurrentVersion = AppConstants.AssemblyInfo.VersionString;
         Properties.Settings.Default.Save();
     }
 
@@ -216,7 +216,7 @@ public class AutoUpdaterService
         }
         else
         {
-            updateDialog.Title = $"{Global.AssemblyInfo.Name} | {Properties.Localization.Resources.AutoUpdate_WindowTitle}";
+            updateDialog.Title = $"{AppConstants.AssemblyInfo.Name} | {Properties.Localization.Resources.AutoUpdate_WindowTitle}";
             updateDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
         updateDialog.Initialize(updateInfo);
@@ -236,7 +236,7 @@ public class AutoUpdaterService
         }
         else
         {
-            downloadDialog.Title = $"{Global.AssemblyInfo.Name} | {Properties.Localization.Resources.AutoUpdate_WindowTitle_Download}";
+            downloadDialog.Title = $"{AppConstants.AssemblyInfo.Name} | {Properties.Localization.Resources.AutoUpdate_WindowTitle_Download}";
             downloadDialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 

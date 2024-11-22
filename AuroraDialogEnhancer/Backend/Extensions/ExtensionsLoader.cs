@@ -32,10 +32,10 @@ public class ExtensionsLoader
 
     public void Initialize()
     {
-        Directory.CreateDirectory(Global.Locations.ExtensionsFolder);
+        Directory.CreateDirectory(AppConstants.Locations.ExtensionsFolder);
 
         var extensionPaths = new List<string>();
-        foreach (var extensionsDirectory in Directory.GetDirectories(Global.Locations.ExtensionsFolder))
+        foreach (var extensionsDirectory in Directory.GetDirectories(AppConstants.Locations.ExtensionsFolder))
         {
             var dllFiles = Directory.GetFiles(extensionsDirectory, "*.dll", SearchOption.TopDirectoryOnly);
             extensionPaths.AddRange(dllFiles);
@@ -65,9 +65,9 @@ public class ExtensionsLoader
 
     public void CreateConfigIfNotExists()
     {
-        if (!Directory.Exists(Global.Locations.ExtensionsFolder))
+        if (!Directory.Exists(AppConstants.Locations.ExtensionsFolder))
         {
-            Directory.CreateDirectory(Global.Locations.ExtensionsFolder);
+            Directory.CreateDirectory(AppConstants.Locations.ExtensionsFolder);
         }
 
         foreach (var extension in _extensionsProvider.ExtensionsDictionary.Values)
@@ -82,7 +82,7 @@ public class ExtensionsLoader
                 _keyBindingProfileService.Create(extension);
             }
 
-            var screenshotsFolder = Path.Combine(Global.Locations.ExtensionsFolder, extension.Name, Global.Locations.ScreenshotsFolderName);
+            var screenshotsFolder = Path.Combine(AppConstants.Locations.ExtensionsFolder, extension.Name, AppConstants.Locations.ScreenshotsFolderName);
             if (!Directory.Exists(screenshotsFolder))
             {
                 Directory.CreateDirectory(screenshotsFolder);

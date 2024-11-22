@@ -15,7 +15,7 @@ public class ExtensionConfigViewModel : INotifyPropertyChanged
         Config = config;
     }
 
-    public string GameType
+    public string AppId
     {
         get => Config.Id;
         set
@@ -25,7 +25,7 @@ public class ExtensionConfigViewModel : INotifyPropertyChanged
         }
     }
 
-    public string GameLocation
+    public string AppLocation
     {
         get => Config.GameLocation;
         set
@@ -48,7 +48,7 @@ public class ExtensionConfigViewModel : INotifyPropertyChanged
     public string ScreenshotsLocation
     {
         get => string.IsNullOrEmpty(Config.ScreenshotsLocation) 
-            ? Path.Combine(Global.Locations.ExtensionsFolder, Config.Name, Global.Locations.ScreenshotsFolderName)
+            ? Path.Combine(AppConstants.Locations.ExtensionsFolder, Config.Name, AppConstants.Locations.ScreenshotsFolderName)
             : Config.ScreenshotsLocation;
         set
         {

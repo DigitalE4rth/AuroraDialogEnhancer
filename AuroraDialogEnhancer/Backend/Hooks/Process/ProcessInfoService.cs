@@ -51,7 +51,7 @@ public class ProcessInfoService
         {
             Arguments = targetProcessLocation,
             UseShellExecute = true,
-            FileName = Global.StringConstants.ExplorerName
+            FileName = AppConstants.OsEnvironment.ExplorerName
         });
     }
 
@@ -78,7 +78,12 @@ public class ProcessInfoService
 
     public bool IsProcessPresent(string processName, string location) => GetProcess(processName, location) is not null;
 
-    private System.Diagnostics.Process? GetProcess(string processName, string location)
+    public System.Diagnostics.Process? GetProcess(int processId)
+    {
+        return System.Diagnostics.Process.GetProcesses().FirstOrDefault(process => process.Id == processId);
+    }
+
+    private System.Diagnostics.Process? GetProcess(string processName, string location = "")
     {
         var processes = System.Diagnostics.Process.GetProcesses();
         var filteredProcesses = processes.Where(process => process.ProcessName.Equals(processName, StringComparison.Ordinal));
@@ -97,13 +102,13 @@ public class ProcessInfoService
     }
 
     // Access Denied permission bypass, while accessing x32 app from x64 app and vise versa.
-    private string? GetProcessLocation(System.Diagnostics.Process process)
+    public string? GetProcessLocation(System.Diagnostics.Process process)
     {
         var capacity = 4000;
         var builder = new StringBuilder(capacity);
-        var ptr = NativeMethods.OpenProcess(NativeMethods.ProcessAccessFlags.QueryLimitedInformation, false, process.Id);
-        var result = !NativeMethods.QueryFullProcessImageName(ptr, 0, builder, ref capacity) ? null : builder.ToString();
-        NativeMethods.CloseHandle(ptr);
+        var ptr = WinApi.OpenProcess(WinApi.ProcessAccessFlags.QueryLimitedInformation, false, process.Id);
+        var result = !WinApi.QueryFullProcessImageName(ptr, 0, builder, ref capacity) ? null : builder.ToString();
+        WinApi.CloseHandle(ptr);
         return result;
     }
 
@@ -225,7 +230,7 @@ public class ProcessInfoService
     /// <returns>Target window client rectangle.</returns>
     private Rectangle GetClientRectangle(IntPtr intPtr)
     {
-        NativeMethods.GetClientRect(intPtr, out var clientRectangle);
+        WinApi.GetClientRect(intPtr, out var clientRectangle);
         return clientRectangle;
     }
 
@@ -237,7 +242,7 @@ public class ProcessInfoService
     private Rectangle GetWindowRectangle(IntPtr intPtr)
     {
         var windowRectangle = new Rectangle();
-        NativeMethods.GetWindowRect(intPtr, ref windowRectangle);
+        WinApi.GetWindowRect(intPtr, ref windowRectangle);
         return windowRectangle;
     }
 }

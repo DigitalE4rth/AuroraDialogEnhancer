@@ -133,11 +133,11 @@ public partial class AppearancePage
 
     private void Button_CreateTheme_OnClick(object sender, RoutedEventArgs e)
     {
-        Directory.CreateDirectory(Global.Locations.ThemesFolder);
+        Directory.CreateDirectory(AppConstants.Locations.ThemesFolder);
 
         var dialog = new SaveFileDialog
         {
-            InitialDirectory = Global.Locations.ThemesFolder,
+            InitialDirectory = AppConstants.Locations.ThemesFolder,
             RestoreDirectory = true,
             CheckPathExists  = true,
             FileName   = "ADE_Theme",
@@ -153,11 +153,11 @@ public partial class AppearancePage
 
     private void ImportTheme()
     {
-        Directory.CreateDirectory(Global.Locations.ThemesFolder);
+        Directory.CreateDirectory(AppConstants.Locations.ThemesFolder);
 
         var dialog = new OpenFileDialog
         {
-            InitialDirectory = Global.Locations.ThemesFolder,
+            InitialDirectory = AppConstants.Locations.ThemesFolder,
             CheckFileExists  = true,
             CheckPathExists  = true,
             RestoreDirectory = true,
@@ -171,12 +171,12 @@ public partial class AppearancePage
 
     private void Button_ExportTheme_OnClick(object sender, RoutedEventArgs e)
     {
-        Directory.CreateDirectory(Global.Locations.ThemesFolder);
+        Directory.CreateDirectory(AppConstants.Locations.ThemesFolder);
 
         var (themeName, theme) = _colorThemeService.GetAppliedTheme();
         var dialog = new SaveFileDialog
         {
-            InitialDirectory = Global.Locations.ThemesFolder,
+            InitialDirectory = AppConstants.Locations.ThemesFolder,
             CheckPathExists  = true,
             RestoreDirectory = true,
             FileName         = themeName,

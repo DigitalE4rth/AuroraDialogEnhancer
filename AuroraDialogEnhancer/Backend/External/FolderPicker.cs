@@ -39,7 +39,7 @@ public class FolderPicker
     // For all .NET
     public virtual bool? ShowDialog(IntPtr owner, bool throwOnError = false)
     {
-        // ReSharper disable once SuspiciousTypeConversion.Global
+        // ReSharper disable once SuspiciousTypeConversion.AppConstants
         var dialog = (IFileOpenDialog)new FileOpenDialog();
         if (InputPath is not null && !string.IsNullOrEmpty(InputPath))
         {

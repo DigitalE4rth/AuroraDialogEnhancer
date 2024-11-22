@@ -38,7 +38,7 @@ public abstract class KeyboardHookManagerServiceBase
 
     protected SortedSet<int> DownModifierKeys { get; }
 
-    private NativeMethods.HookProc? _hook;
+    private WinApi.HookProc? _hook;
     private IntPtr _hookId = IntPtr.Zero;
     private bool   _isStarted;
     protected readonly object _modifiersLock;
@@ -83,7 +83,7 @@ public abstract class KeyboardHookManagerServiceBase
 
         System.Windows.Application.Current.Dispatcher.Invoke(() =>
         {
-            NativeMethods.UnhookWindowsHookEx(_hookId);
+            WinApi.UnhookWindowsHookEx(_hookId);
         });
 
         DownKeys.Clear();
@@ -203,14 +203,14 @@ public abstract class KeyboardHookManagerServiceBase
     #endregion
 
     #region Low level keyboard hook
-    private IntPtr SetHook(NativeMethods.HookProc proc)
+    private IntPtr SetHook(WinApi.HookProc proc)
     {
-        return NativeMethods.SetWindowsHookEx(WH_KEYBOARD_LL, proc, NativeMethods.User32Pointer, 0);
+        return WinApi.SetWindowsHookEx(EHookExType.WH_KEYBOARD_LL, proc, WinApi.User32Pointer, 0);
     }
 
     private IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
     {
-        var nextHookPtr = NativeMethods.CallNextHookEx(_hookId, nCode, wParam, lParam);
+        var nextHookPtr = WinApi.CallNextHookEx(_hookId, nCode, wParam, lParam);
 
         if (nCode < 0) return nextHookPtr;
 

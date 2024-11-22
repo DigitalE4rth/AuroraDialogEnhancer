@@ -29,7 +29,7 @@ public class PatchService
     public bool Patch(Version previous)
     {
         previous = new Version(Properties.Settings.Default.App_CurrentVersion);
-        var current = Global.AssemblyInfo.Version;
+        var current = AppConstants.AssemblyInfo.Version;
         if (previous >= current) return false;
 
         var patches = 

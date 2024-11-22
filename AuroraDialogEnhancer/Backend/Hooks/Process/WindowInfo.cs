@@ -28,7 +28,7 @@ public class WindowInfo
         SetLocation(clientRectangle, windowRectangle);
     }
 
-    public bool IsMinimized() => NativeMethods.IsIconic(_handle);
+    public bool IsMinimized() => WinApi.IsIconic(_handle);
 
     public void SetLocation(Rectangle clientRectangle, Rectangle windowRectangle)
     {

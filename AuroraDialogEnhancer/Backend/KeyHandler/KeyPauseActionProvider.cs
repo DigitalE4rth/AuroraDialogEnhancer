@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
-using AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+using AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 
@@ -29,7 +29,6 @@ public class KeyPauseActionProvider
     {
         if (_keyActionUtility.IsHookPause)
         {
-            Debug.WriteLine("R");
             _keyActionRegistrar!.UnRegister(_keyActionUtility.KeyBindingProfile.PauseResume);
             _keyActionRegistrar.RegisterKeyBinds();
 
@@ -37,8 +36,6 @@ public class KeyPauseActionProvider
             _keyActionUtility.IsHookPause = false;
             return;
         }
-
-        Debug.WriteLine("P");
 
         _scriptAutoSkip.Stop();
 

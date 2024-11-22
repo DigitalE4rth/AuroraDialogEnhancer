@@ -57,6 +57,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>10</LangVersion>
+    <Prefer32bit>false</Prefer32bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -155,7 +156,7 @@
     <Compile Include="AppConfig\NotifyIcon\NotifyMenuWindow.xaml.cs">
       <DependentUpon>NotifyMenuWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppConfig\Statics\StringConstants.cs" />
+    <Compile Include="AppConfig\Statics\OsEnvironment.cs" />
     <Compile Include="AppConfig\Theme\ColorThemeService.cs" />
     <Compile Include="AppConfig\Theme\EColorTheme.cs" />
     <Compile Include="AppConfig\Theme\EAppCursor.cs" />
@@ -418,7 +419,7 @@
     <Compile Include="AppConfig\DependencyInjection\AppServices.cs" />
     <Compile Include="AppConfig\DependencyInjection\ServiceProviderConfigurator.cs" />
     <Compile Include="AppConfig\Statics\AssemblyInfo.cs" />
-    <Compile Include="AppConfig\Statics\Global.cs" />
+    <Compile Include="AppConfig\Statics\AppConstants.cs" />
     <Compile Include="AppConfig\Statics\Locations.cs" />
     <Compile Include="AppConfig\Localization\CultureInfo.cs" />
     <Compile Include="AppConfig\Localization\CultureService.cs" />
@@ -426,7 +427,7 @@
     <Compile Include="AppConfig\Config\AppConfig.cs" />
     <Compile Include="Backend\Hooks\Mouse\CursorInfoStruct.cs" />
     <Compile Include="Backend\Hooks\Mouse\CursorVisibilityProvider.cs" />
-    <Compile Include="Backend\External\NativeMethods.cs" />
+    <Compile Include="Backend\External\WinApi.cs" />
     <Compile Include="Backend\Core\CoreService.cs" />
     <Compile Include="Backend\Hooks\Game\EHookState.cs" />
     <Compile Include="Backend\Hooks\Mouse\LowLevelMouseHookStruct.cs" />
@@ -655,7 +656,6 @@
   <ItemGroup>
     <None Include="Resources\screenshot.wav" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rem Copy compiled l18n assemblies to alt folder

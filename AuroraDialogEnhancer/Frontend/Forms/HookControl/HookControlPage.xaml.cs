@@ -86,7 +86,7 @@ public partial class HookControlPage
         var config = _extensionConfigService.UpdateLocations(Properties.Settings.Default.App_HookSettings_SelectedGameId);
         if (config is null) return;
 
-        _hookSettingsDataContext!.ExtensionConfig.GameLocation = config.GameLocation;
+        _hookSettingsDataContext!.ExtensionConfig.AppLocation = config.GameLocation;
         _hookSettingsDataContext.ExtensionConfig.LauncherLocation = config.LauncherLocation;
         _hookSettingsDataContext.ExtensionConfig.ScreenshotsLocation = config.ScreenshotsLocation;
     }
