@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media;
-using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Extensions;
@@ -16,7 +14,6 @@ using AuroraDialogEnhancer.Backend.Utils;
 using AuroraDialogEnhancer.Frontend.Forms.Utils;
 using AuroraDialogEnhancer.Frontend.Providers;
 using IWshRuntimeLibrary;
-using Microsoft.Extensions.DependencyInjection;
 using Application = System.Windows.Application;
 using CheckBox = System.Windows.Controls.CheckBox;
 
@@ -25,6 +22,7 @@ namespace AuroraDialogEnhancer.Frontend.Forms.HookControl;
 public partial class HookControlPage
 {
     private readonly BlobToBitmapImageConverter _blobToBitmapImageConverter;
+    private readonly CoreService                _coreService;
     private readonly ExtensionConfigService     _extensionConfigService;
     private readonly ExtensionsProvider         _extensionsProvider;
     private readonly ProcessDataProvider        _processDataProvider;
@@ -33,22 +31,24 @@ public partial class HookControlPage
     private          HookSettingsDataContext?   _hookSettingsDataContext;
 
     public HookControlPage(BlobToBitmapImageConverter blobToBitmapImageConverter,
+                           CoreService                coreService, 
                            ExtensionConfigService     extensionConfigService,
                            ExtensionsProvider         extensionsProvider,
                            ProcessDataProvider        processDataProvider)
     {
         _blobToBitmapImageConverter = blobToBitmapImageConverter;
+        _coreService                = coreService;
         _extensionConfigService     = extensionConfigService;
         _extensionsProvider         = extensionsProvider;
         _processDataProvider        = processDataProvider;
         _defaultUiElementsProvider  = new DefaultUiElementsProvider();
 
         InitializeComponent();
-        
         InitializeGames();
         InitializeComboBoxHookLaunchType();
         SetHookInfoText();
         InitializeBackground();
+        InitializeHookInfoButtonState();
     }
 
     #region Startup
@@ -62,6 +62,17 @@ public partial class HookControlPage
         Unloaded += SettingsPage_Unloaded;
         _processDataProvider.OnHookStateChanged += OnHookDataStateChanged;
         GameSelector.OnGameChanged += GameSelector_OnGameChanged;
+    }
+
+    private void InitializeHookInfoButtonState()
+    {
+        Application.Current.Dispatcher.Invoke(() => { CardButtonHookInfo.IsEnabled = !_coreService.IsProcessing; });
+        _coreService.OnProcessing += CoreServiceOnProcessing;
+    }
+
+    private void CoreServiceOnProcessing(object sender, bool e)
+    {
+        Application.Current.Dispatcher.Invoke(() => { CardButtonHookInfo.IsEnabled = !e; });
     }
 
     private void ComboBoxSettings_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -178,6 +189,16 @@ public partial class HookControlPage
                     _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Search_PressToStop)
                 };
                 break;
+            case EHookState.Switch:
+                // ToDo: add switch description
+                iconName = "I.R.SwitchAccess";
+                hookContent = new List<UIElement>
+                {
+                    _defaultUiElementsProvider.GetTextBlock(Properties.Localization.Resources.HookSettings_State_Error), 
+                    _defaultUiElementsProvider.GetDivider(),
+                    _defaultUiElementsProvider.GetTextBlock(_processDataProvider.Message)
+                };
+                break;
             case EHookState.Paused:
                 iconName = "I.S.PlayArrow";
                 hookContent = new List<UIElement>
@@ -229,9 +250,7 @@ public partial class HookControlPage
 
     private void Button_StartHook_OnClick(object sender, RoutedEventArgs e)
     {
-        Task.Run(() => AppServices.ServiceProvider.GetRequiredService<CoreService>()
-            .RestartAutoDetection(_hookSettingsDataContext!.ExtensionConfig.GameType))
-            .ConfigureAwait(false);
+        _coreService.Run(_hookSettingsDataContext!.ExtensionConfig.AppId);
     }
 
     private void Button_GameLocation_OnClick(object sender, RoutedEventArgs e)
@@ -247,7 +266,7 @@ public partial class HookControlPage
         
         if (dialog.ShowDialog() != DialogResult.OK) return;
 
-        _hookSettingsDataContext!.ExtensionConfig.GameLocation = dialog.FileName;
+        _hookSettingsDataContext!.ExtensionConfig.AppLocation = dialog.FileName;
         _extensionConfigService.SaveAndRestartHookIfNecessary(_hookSettingsDataContext!.ExtensionConfig.Config);
     }
 
@@ -349,9 +368,9 @@ public partial class HookControlPage
         IWshShortcut shortcut     = new WshShell().CreateShortcut(dialog.FileName);
         shortcut.Arguments        = $"{Properties.DefaultSettings.Default.App_StartupArgument_Profile} {_hookSettingsDataContext!.ExtensionConfig.Config.Id}";
         shortcut.Description      = $"ADE Profile: {_hookSettingsDataContext.ExtensionConfig.Config.Name}";
-        shortcut.TargetPath       = Global.Locations.AssemblyExe;
-        shortcut.WorkingDirectory = Global.Locations.AssemblyFolder;
-        shortcut.IconLocation     = Global.Locations.AssemblyExe;
+        shortcut.TargetPath       = AppConstants.Locations.AssemblyExe;
+        shortcut.WorkingDirectory = AppConstants.Locations.AssemblyFolder;
+        shortcut.IconLocation     = AppConstants.Locations.AssemblyExe;
         shortcut.Save();
     }
 
@@ -376,6 +395,7 @@ public partial class HookControlPage
         GameSelector.OnGameChanged -= GameSelector_OnGameChanged;
         ComboBoxHookLaunchType.SelectionChanged -= ComboBox_HookLaunchType_OnSelectionChanged;
         _processDataProvider.OnHookStateChanged -= OnHookDataStateChanged;
+        _coreService.OnProcessing -= CoreServiceOnProcessing;
     }
     #endregion
 }

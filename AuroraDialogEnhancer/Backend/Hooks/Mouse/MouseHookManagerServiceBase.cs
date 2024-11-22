@@ -4,16 +4,14 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AuroraDialogEnhancer.Backend.External;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
-using NativeMethods = AuroraDialogEnhancer.Backend.External.NativeMethods;
 
 namespace AuroraDialogEnhancer.Backend.Hooks.Mouse;
 
 public abstract class MouseHookManagerServiceBase
 {
-    protected const int WH_MOUSE_LL = 14;
-
     protected readonly IntPtr _mouseMove        = new(0x0200);
     protected readonly IntPtr _leftButtonDown   = new(0x0201);
     protected readonly IntPtr _leftButtonUp     = new(0x0202);

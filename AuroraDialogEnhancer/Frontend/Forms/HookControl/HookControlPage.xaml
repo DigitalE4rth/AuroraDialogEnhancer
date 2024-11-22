@@ -1,21 +1,22 @@
-﻿<Page x:Class="AuroraDialogEnhancer.Frontend.Forms.HookControl.HookControlPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:cards="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.Cards"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:game="clr-namespace:AuroraDialogEnhancer.Backend.Hooks.Game"
-      xmlns:gameSelector="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.GameSelector"
-      xmlns:hookControl="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.HookControl"
-      xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
-      xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-      d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
-      d:DataContext="{d:DesignInstance d:Type=hookControl:HookSettingsDataContext,
-                                       IsDesignTimeCreatable=False}"
-      d:DesignHeight="750"
-      d:DesignWidth="800"
-      mc:Ignorable="d">
+﻿<Page
+    x:Class="AuroraDialogEnhancer.Frontend.Forms.HookControl.HookControlPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cards="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.Cards"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:game="clr-namespace:AuroraDialogEnhancer.Backend.Hooks.Game"
+    xmlns:gameSelector="clr-namespace:AuroraDialogEnhancer.Frontend.Controls.GameSelector"
+    xmlns:hookControl="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.HookControl"
+    xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
+    xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+    d:Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Background, Mode=OneTime}"
+    d:DataContext="{d:DesignInstance d:Type=hookControl:HookSettingsDataContext,
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="750"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
 
     <woControls:ScrollViewer IsInnerScrollbarsArrangement="True" VerticalScrollBarVisibility="Auto">
         <StackPanel MaxWidth="800" Margin="55,22,55,25">
@@ -37,21 +38,23 @@
                         </Grid.ColumnDefinitions>
 
                         <!--  Title  -->
-                        <TextBlock Grid.Column="0"
-                                   VerticalAlignment="Bottom"
-                                   Style="{StaticResource CardTitle}"
-                                   Text="{x:Static localization:Resources.HookSettings_Profile}" />
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Bottom"
+                            Style="{StaticResource CardTitle}"
+                            Text="{x:Static localization:Resources.HookSettings_Profile}" />
 
-                        <woControls:ComboBox Grid.Column="1"
-                                             Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
-                                             Margin="3,0,0,5"
-                                             d:Background="LightGray"
-                                             Background="Transparent"
-                                             BorderThickness="0"
-                                             IsMenu="True"
-                                             PopUpPlacementMode="Bottom"
-                                             PopupVerticalOffset="3"
-                                             SelectionChanged="ComboBoxSettings_OnSelectionChanged">
+                        <woControls:ComboBox
+                            Grid.Column="1"
+                            Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                            Margin="3,0,0,5"
+                            d:Background="LightGray"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            IsMenu="True"
+                            PopUpPlacementMode="Bottom"
+                            PopupVerticalOffset="3"
+                            SelectionChanged="ComboBoxSettings_OnSelectionChanged">
 
                             <woControls:ComboBox.Title>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
@@ -67,15 +70,17 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Grid Grid.Column="0"
-                                              Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
-                                              Margin="0,0,10,0">
+                                        <Grid
+                                            Grid.Column="0"
+                                            Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
+                                            Margin="0,0,10,0">
                                             <woControls:PathIcon Data="{StaticResource I.R.Location}" Style="{StaticResource IconMedium}" />
                                         </Grid>
 
-                                        <TextBlock Grid.Column="1"
-                                                   VerticalAlignment="Center"
-                                                   Text="{x:Static localization:Resources.HookSettings_Settings_Action_Locate}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            Text="{x:Static localization:Resources.HookSettings_Settings_Action_Locate}" />
                                     </Grid>
                                 </ComboBoxItem.Content>
                             </ComboBoxItem>
@@ -88,15 +93,17 @@
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
 
-                                        <Grid Grid.Column="0"
-                                              Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
-                                              Margin="0,0,10,0">
+                                        <Grid
+                                            Grid.Column="0"
+                                            Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}"
+                                            Margin="0,0,10,0">
                                             <woControls:PathIcon Data="{StaticResource I.S.RotateLeft}" Style="{StaticResource IconMedium}" />
                                         </Grid>
 
-                                        <TextBlock Grid.Column="1"
-                                                   VerticalAlignment="Center"
-                                                   Text="{x:Static localization:Resources.HookSettings_Settings_Action_Reset}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            Text="{x:Static localization:Resources.HookSettings_Settings_Action_Reset}" />
                                     </Grid>
                                 </ComboBoxItem.Content>
                             </ComboBoxItem>
@@ -105,30 +112,34 @@
                     </Grid>
 
                     <!--  Game Selector  -->
-                    <gameSelector:GameSelector x:Name="GameSelector"
-                                               Grid.Column="1"
-                                               MinWidth="190"
-                                               Margin="0,0,0,5"
-                                               HorizontalAlignment="Right" />
+                    <gameSelector:GameSelector
+                        x:Name="GameSelector"
+                        Grid.Column="1"
+                        MinWidth="190"
+                        Margin="0,0,0,5"
+                        HorizontalAlignment="Right" />
                 </Grid>
 
                 <!--  Hook control  -->
-                <cards:CardButtonWithCustomBackground x:Name="CardButtonHookInfo"
-                                                      Title="{x:Static localization:Resources.HookSettings_HookInfo}"
-                                                      MinHeight="55"
-                                                      Margin="0,0,0,5"
-                                                      Click="Button_StartHook_OnClick"
-                                                      ContentForeground="Secondary">
+                <cards:CardButtonWithCustomBackground
+                    x:Name="CardButtonHookInfo"
+                    Title="{x:Static localization:Resources.HookSettings_HookInfo}"
+                    MinHeight="55"
+                    Margin="0,0,0,5"
+                    Click="Button_StartHook_OnClick"
+                    ContentForeground="Secondary">
 
                     <cards:CardButtonWithCustomBackground.CustomBackground>
-                        <Canvas x:Name="CanvasContainer"
-                                HorizontalAlignment="Right"
-                                d:Width="250">
-                            <Image x:Name="HookControlBackgroundImage"
-                                   d:Height="250"
-                                   d:Width="250"
-                                   Opacity="0.3"
-                                   RenderOptions.BitmapScalingMode="Fant">
+                        <Canvas
+                            x:Name="CanvasContainer"
+                            HorizontalAlignment="Right"
+                            d:Width="250">
+                            <Image
+                                x:Name="HookControlBackgroundImage"
+                                d:Height="250"
+                                d:Width="250"
+                                Opacity="0.3"
+                                RenderOptions.BitmapScalingMode="Fant">
                                 <Image.OpacityMask>
                                     <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                                         <LinearGradientBrush.GradientStops>
@@ -147,29 +158,32 @@
                         </Grid>
                     </cards:CardButtonWithCustomBackground.LeftIcon>
 
-                    <TextBlock x:Name="TextBlockHookContent"
-                               VerticalAlignment="Center"
-                               d:Text="d: ProcessId: 123456789 | Resolution: 1920x1080"
-                               Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurfaceVariant, Mode=OneTime}" />
+                    <TextBlock
+                        x:Name="TextBlockHookContent"
+                        VerticalAlignment="Center"
+                        d:Text="d: ProcessId: 123456789 | Resolution: 1920x1080"
+                        Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurfaceVariant, Mode=OneTime}" />
 
                     <cards:CardButtonWithCustomBackground.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon x:Name="PathIconHookInfoRight"
-                                                 Data="{StaticResource I.S.PlayArrow}"
-                                                 Style="{StaticResource IconSmall}" />
+                            <woControls:PathIcon
+                                x:Name="PathIconHookInfoRight"
+                                Data="{StaticResource I.S.PlayArrow}"
+                                Style="{StaticResource IconSmall}" />
                         </Grid>
                     </cards:CardButtonWithCustomBackground.RightIcon>
 
                 </cards:CardButtonWithCustomBackground>
 
                 <!--  Game location  -->
-                <woControls:CardButton Title="{x:Static localization:Resources.HookSettings_Location_Game}"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       d:Description="d: C:\Games\Genshin Impact\GenshinImpact.exe"
-                                       Click="Button_GameLocation_OnClick"
-                                       ContentForeground="Secondary"
-                                       Description="{Binding Path=ExtensionConfig.GameLocation}">
+                <woControls:CardButton
+                    Title="{x:Static localization:Resources.HookSettings_Location_Game}"
+                    MinHeight="55"
+                    Margin="0,0,0,5"
+                    d:Description="d: C:\Games\Genshin Impact\GenshinImpact.exe"
+                    Click="Button_GameLocation_OnClick"
+                    ContentForeground="Secondary"
+                    Description="{Binding Path=ExtensionConfig.AppLocation}">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -185,13 +199,14 @@
                 </woControls:CardButton>
 
                 <!--  Launcher location  -->
-                <woControls:CardButton Title="{x:Static localization:Resources.HookSettings_Location_Launcher}"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       d:Description="d: C:\Games\Genshin Impact\Launcher.exe"
-                                       Click="Button_LauncherLocation_OnClick"
-                                       ContentForeground="Secondary"
-                                       Description="{Binding Path=ExtensionConfig.LauncherLocation}">
+                <woControls:CardButton
+                    Title="{x:Static localization:Resources.HookSettings_Location_Launcher}"
+                    MinHeight="55"
+                    Margin="0,0,0,5"
+                    d:Description="d: C:\Games\Genshin Impact\Launcher.exe"
+                    Click="Button_LauncherLocation_OnClick"
+                    ContentForeground="Secondary"
+                    Description="{Binding Path=ExtensionConfig.LauncherLocation}">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -207,13 +222,14 @@
                 </woControls:CardButton>
 
                 <!--  Game process name  -->
-                <woControls:CardButton Title="{x:Static localization:Resources.HookSettings_ProcessName_Game}"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       d:Content="d: GameProcessName"
-                                       Click="Button_SetGameProcessName_OnClick"
-                                       Content="{Binding Path=ExtensionConfig.GameProcessName}"
-                                       ContentForeground="Secondary">
+                <woControls:CardButton
+                    Title="{x:Static localization:Resources.HookSettings_ProcessName_Game}"
+                    MinHeight="55"
+                    Margin="0,0,0,5"
+                    d:Content="d: GameProcessName"
+                    Click="Button_SetGameProcessName_OnClick"
+                    Content="{Binding Path=ExtensionConfig.GameProcessName}"
+                    ContentForeground="Secondary">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -230,13 +246,14 @@
                 </woControls:CardButton>
 
                 <!--  Launcher process name  -->
-                <woControls:CardButton Title="{x:Static localization:Resources.HookSettings_ProcessName_Launcher}"
-                                       MinHeight="55"
-                                       Margin="0,0,0,0"
-                                       d:Content="d: LauncherProcessName"
-                                       Click="Button_SetLauncherProcessName_OnClick"
-                                       Content="{Binding Path=ExtensionConfig.LauncherProcessName}"
-                                       ContentForeground="Secondary">
+                <woControls:CardButton
+                    Title="{x:Static localization:Resources.HookSettings_ProcessName_Launcher}"
+                    MinHeight="55"
+                    Margin="0,0,0,0"
+                    d:Content="d: LauncherProcessName"
+                    Click="Button_SetLauncherProcessName_OnClick"
+                    Content="{Binding Path=ExtensionConfig.LauncherProcessName}"
+                    ContentForeground="Secondary">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -258,11 +275,12 @@
                 <TextBlock Style="{StaticResource CardTitle}" Text="{x:Static localization:Resources.HookSettings_AdditionalSettings}" />
 
                 <!--  Open screenshots folder  -->
-                <woControls:CardButton Title="{x:Static localization:Resources.HookSettings_OpenScreenShotsFolder}"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="CardButton_OpenScreenShotsFolder"
-                                       ContentForeground="Secondary">
+                <woControls:CardButton
+                    Title="{x:Static localization:Resources.HookSettings_OpenScreenShotsFolder}"
+                    MinHeight="55"
+                    Margin="0,0,0,5"
+                    Click="CardButton_OpenScreenShotsFolder"
+                    ContentForeground="Secondary">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -278,14 +296,15 @@
                 </woControls:CardButton>
 
                 <!--  Screenshots location  -->
-                <woControls:CardButton Title="{x:Static localization:Resources.HookSettings_Location_Screenshots}"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       d:Description="d: C:\Games\Genshin Impact\ScreenShots\"
-                                       Click="Button_ScreenShotsLocation_OnClick"
-                                       ContentForeground="Secondary"
-                                       Description="{Binding Path=ExtensionConfig.ScreenshotsLocation}"
-                                       ToolTip="{Binding Path=ExtensionConfig.ScreenshotsLocation}">
+                <woControls:CardButton
+                    Title="{x:Static localization:Resources.HookSettings_Location_Screenshots}"
+                    MinHeight="55"
+                    Margin="0,0,0,5"
+                    d:Description="d: C:\Games\Genshin Impact\ScreenShots\"
+                    Click="Button_ScreenShotsLocation_OnClick"
+                    ContentForeground="Secondary"
+                    Description="{Binding Path=ExtensionConfig.ScreenshotsLocation}"
+                    ToolTip="{Binding Path=ExtensionConfig.ScreenshotsLocation}">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -301,12 +320,13 @@
                 </woControls:CardButton>
 
                 <!--  Launch type  -->
-                <woControls:CardComboBox x:Name="ComboBoxHookLaunchType"
-                                         Title="{x:Static localization:Resources.HookSettings_OnLaunch_Action}"
-                                         MinHeight="55"
-                                         Margin="0,0,0,5"
-                                         d:SelectedIndex="0"
-                                         ContentForeground="Secondary">
+                <woControls:CardComboBox
+                    x:Name="ComboBoxHookLaunchType"
+                    Title="{x:Static localization:Resources.HookSettings_OnLaunch_Action}"
+                    MinHeight="55"
+                    Margin="0,0,0,5"
+                    d:SelectedIndex="0"
+                    ContentForeground="Secondary">
 
                     <woControls:CardComboBox.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -320,19 +340,21 @@
 
                     <woControls:CardComboBox.RightIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Medium, Mode=OneTime}">
-                            <woControls:PathIcon Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
-                                                 Data="{StaticResource I.R.ExpandMore}"
-                                                 Style="{StaticResource IconSmall}" />
+                            <woControls:PathIcon
+                                Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Small, Mode=OneTime}"
+                                Data="{StaticResource I.R.ExpandMore}"
+                                Style="{StaticResource IconSmall}" />
                         </Grid>
                     </woControls:CardComboBox.RightIcon>
                 </woControls:CardComboBox>
 
                 <!--  Auto launch  -->
-                <woControls:CardButton Title="{x:Static localization:Resources.HookSettings_CreateShortcut_Title}"
-                                       MinHeight="55"
-                                       Margin="0,0,0,5"
-                                       Click="CardButton_CreateShortcut_OnClick"
-                                       Description="{x:Static localization:Resources.HookSettings_CreateShortcut_Description}">
+                <woControls:CardButton
+                    Title="{x:Static localization:Resources.HookSettings_CreateShortcut_Title}"
+                    MinHeight="55"
+                    Margin="0,0,0,5"
+                    Click="CardButton_CreateShortcut_OnClick"
+                    Description="{x:Static localization:Resources.HookSettings_CreateShortcut_Description}">
 
                     <woControls:CardButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -348,12 +370,13 @@
                 </woControls:CardButton>
 
                 <!--  Exit with the game  -->
-                <woControls:CardToggleButton x:Name="CardToggleButtonExitWithTheGame"
-                                             Title="{x:Static localization:Resources.HookSettings_ExitSettings_Title}"
-                                             MinHeight="55"
-                                             Click="CheckBox_ExitWithTheGame_OnClick"
-                                             Description="{x:Static localization:Resources.HookSettings_ExitSettings_Description}"
-                                             IsChecked="{Binding Path=ExtensionConfig.IsExitWithTheGame}">
+                <woControls:CardToggleButton
+                    x:Name="CardToggleButtonExitWithTheGame"
+                    Title="{x:Static localization:Resources.HookSettings_ExitSettings_Title}"
+                    MinHeight="55"
+                    Click="CheckBox_ExitWithTheGame_OnClick"
+                    Description="{x:Static localization:Resources.HookSettings_ExitSettings_Description}"
+                    IsChecked="{Binding Path=ExtensionConfig.IsExitWithTheGame}">
 
                     <woControls:CardToggleButton.LeftIcon>
                         <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">

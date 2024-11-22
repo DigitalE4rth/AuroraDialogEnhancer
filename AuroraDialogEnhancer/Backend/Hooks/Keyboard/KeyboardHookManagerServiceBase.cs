@@ -19,7 +19,6 @@ public abstract class KeyboardHookManagerServiceBase
     protected readonly ModifierKeysProvider _modifierKeysProvider;
 
     // Source: https://blogs.msdn.microsoft.com/toub/2006/05/03/low-level-keyboard-hook-in-c/
-    protected const int WH_KEYBOARD_LL = 13;
     protected const int WM_KEYDOWN     = 0x0100;
     protected const int WM_KEYUP       = 0x0101;
     protected const int WM_SYSKEYDOWN  = 0x0104;

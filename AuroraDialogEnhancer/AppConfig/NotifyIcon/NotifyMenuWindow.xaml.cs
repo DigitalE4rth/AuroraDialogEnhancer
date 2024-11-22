@@ -53,6 +53,7 @@ public partial class NotifyMenuWindow
 
         InitializeComponent();
         InitializeGameButtons();
+        InitializeHookInfoButtonState();
     }
 
     private void InitializeGameButtons()
@@ -90,6 +91,24 @@ public partial class NotifyMenuWindow
         _processDataProvider.OnHookStateChanged += OnHookDataStateChanged;
     }
 
+    private void InitializeHookInfoButtonState()
+    {
+        foreach (var button in _buttonsByGameId.Values)
+        {
+            Application.Current.Dispatcher.Invoke(() => { button.IsEnabled = !_coreService.IsProcessing; });
+        }
+        
+        _coreService.OnProcessing += CoreServiceOnProcessing;
+    }
+
+    private void CoreServiceOnProcessing(object sender, bool e)
+    {
+        foreach (var button in _buttonsByGameId.Values)
+        {
+            Application.Current.Dispatcher.Invoke(() => { button.IsEnabled = !e; });
+        }
+    }
+
     private void GameButton_Click(object sender, RoutedEventArgs e)
     {
         _latestGameId = (string) ((Button) sender).Tag;
@@ -100,7 +119,7 @@ public partial class NotifyMenuWindow
             Properties.Settings.Default.Save();
         }
 
-        Task.Run(() => _coreService.RestartAutoDetection(_latestGameId).ConfigureAwait(false));
+        _coreService.Run(_latestGameId);
         CloseNotifyMenuWindow();
     }
 
@@ -232,5 +251,10 @@ public partial class NotifyMenuWindow
     {
         Unloaded -= NotifyMenuWindow_Unloaded;
         _processDataProvider.OnHookStateChanged -= OnHookDataStateChanged;
+        _coreService.OnProcessing -= CoreServiceOnProcessing;
+        foreach (var button in _buttonsByGameId.Values)
+        {
+            button.Click -= GameButton_Click;
+        }
     }
 }

@@ -22,7 +22,7 @@ public class ProcessInfoService
         _processDataProvider = processDataProvider;
     }
 
-    public async Task AutoDetectProcessAsync(ExtensionConfig extensionConfig, CancellationTokenSource cancellationTokenSource)
+    public async Task StartAndDetectProcessAsync(ExtensionConfig extensionConfig, CancellationTokenSource cancellationTokenSource)
     {
         StartProcess(extensionConfig);
         ApplyProcessInfo(extensionConfig);
@@ -38,7 +38,7 @@ public class ProcessInfoService
         }
     }
 
-    private void StartProcess(ExtensionConfig extensionConfig)
+    public void StartProcess(ExtensionConfig extensionConfig)
     {
         if (extensionConfig.HookLaunchType == EHookLaunchType.Nothing) return;
 
@@ -59,7 +59,7 @@ public class ProcessInfoService
     /// Concrete process detection method.
     /// </summary>
     /// <returns>Detected <see cref="ProcessInfo"/> or <see langword="null"/> if not found.</returns>
-    private void ApplyProcessInfo(ExtensionConfig extensionConfig)
+    public void ApplyProcessInfo(ExtensionConfig extensionConfig)
     {
         var targetProcess = GetProcess(extensionConfig.GameProcessName, extensionConfig.GameLocation);
         if (targetProcess is null) return;
@@ -71,9 +71,6 @@ public class ProcessInfoService
             GameProcess = targetProcess
         };
         ApplyMainWindowInfo(targetProcess.MainWindowHandle);
-
-        // Manual focus call workaround to handle initial focused window on focus hook.
-        //NativeMethods.SetFocus(targetProcess.MainWindowHandle);
     }
 
     public bool IsProcessPresent(string processName, string location) => GetProcess(processName, location) is not null;

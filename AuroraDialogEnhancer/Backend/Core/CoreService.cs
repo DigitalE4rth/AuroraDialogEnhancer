@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -8,6 +10,7 @@ using System.Windows.Threading;
 using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.Extensions;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
+using AuroraDialogEnhancer.Backend.Hooks.Global;
 using AuroraDialogEnhancer.Backend.Hooks.Process;
 using AuroraDialogEnhancer.Backend.Hooks.Window;
 using AuroraDialogEnhancer.Backend.KeyHandler;
@@ -20,7 +23,7 @@ public class CoreService : IDisposable
 {
     private readonly ComputerVisionPresetService _computerVisionPresetService;
     private readonly ExtensionConfigService      _extensionConfigService;
-    private readonly FocusHookService            _focusHookService;
+    private readonly GlobalFocusService          _globalFocusHookService;
     private readonly KeyActionControls           _keyActionControls;
     private readonly KeyActionExecution          _keyActionExecution;
     private readonly KeyActionMediator           _keyActionMediator;
@@ -30,21 +33,19 @@ public class CoreService : IDisposable
     private readonly ProcessInfoService          _processInfoService;
     private readonly ScreenCaptureService        _screenCaptureService;
     private readonly WindowLocationHook          _windowLocationHook;
-
-
-    private readonly object _cancellingLock;
-    private readonly object _processingLock;
-
-    private Task? _autoDetectionTask;
-
-    private bool _isAutoDetectionRunning;
-    private bool _isCancellationRunning;
-
+    
+    private Task?                    _autoDetectionTask;
+    private SemaphoreSlim?           _autoDetectionSemaphore;
     private CancellationTokenSource? _cancellationTokenSource;
+    private readonly object          _processExitLock;
+    private readonly object          _processingLock;
+    
+    public bool IsProcessing { get; private set; }
+    public event EventHandler<bool>? OnProcessing;
 
     public CoreService(ComputerVisionPresetService computerVisionPresetService,
                        ExtensionConfigService      extensionConfigService,
-                       FocusHookService            focusHookService,
+                       GlobalFocusService          globalFocusHookService,
                        KeyActionControls           keyActionControls,
                        KeyActionExecution          keyActionExecution,
                        KeyActionMediator           keyActionMediator,
@@ -57,7 +58,7 @@ public class CoreService : IDisposable
     {
         _computerVisionPresetService = computerVisionPresetService;
         _extensionConfigService      = extensionConfigService;
-        _focusHookService            = focusHookService;
+        _globalFocusHookService      = globalFocusHookService;
         _keyActionControls           = keyActionControls;
         _keyActionExecution          = keyActionExecution;
         _keyActionMediator           = keyActionMediator;
@@ -68,120 +69,118 @@ public class CoreService : IDisposable
         _screenCaptureService        = screenCaptureService;
         _windowLocationHook          = windowLocationHook;
 
-        _cancellingLock = new object();
-        _processingLock = new object();
+        _processExitLock = new object();
+        _processingLock  = new object();
     }
 
-    #region Controls
-    public async Task RestartAutoDetection(string gameId, bool isRestart = false)
+    #region Control
+    public void Run(string id, EStartMode mode = EStartMode.Default) => Task.Run(() => WithLock(() => Resolve(id, mode)));
+    
+    private void WithLock(Action action)
     {
-        lock (_cancellingLock)
-        {
-            if (_isCancellationRunning) return;
-            _isCancellationRunning = true;
-        }
-
-        if (_keyActionControls.IsResumePause())
-        {
-            _isCancellationRunning = false;
-            return;
-        }
-
-        var isStartAutoDetection = await CancelAndDetermineIfNeedToStart(gameId, isRestart);
-        if (!isStartAutoDetection)
-        {
-            _isAutoDetectionRunning = false;
-            _isCancellationRunning  = false;
-            return;
-        }
-
         lock (_processingLock)
         {
-            if (_isAutoDetectionRunning) return;
-            _isAutoDetectionRunning = true;
-            _isCancellationRunning  = false;
+            IsProcessing = true;
+            OnProcessing?.Invoke(this, true);
+            action.Invoke();
+            IsProcessing = false;
+            OnProcessing?.Invoke(this, false);
         }
+    }
 
-        var extensionConfig = _extensionConfigService.Get(gameId);
-        _processDataProvider.Id = gameId;
-
-        if (!IsProcessInfoSpecified(extensionConfig))
+    private void Resolve(string id, EStartMode mode)
+    {
+        if (_processDataProvider.Id is not null &&
+            !id.Equals(_processDataProvider.Id))
         {
-            _isAutoDetectionRunning = false;
+            Switch(id, mode);
             return;
         }
 
-        _autoDetectionTask = StartAutoDetection(extensionConfig, isRestart);
-        await _autoDetectionTask;
-    }
-
-    private async Task<bool> CancelAndDetermineIfNeedToStart(string? gameId, bool restart)
-    {
-        if (_processDataProvider.Id is null) return true;
-        var processingGameId = string.Copy(_processDataProvider.Id);
-        var shouldRestart = (_processDataProvider.HookState is EHookState.Error or EHookState.Warning) || restart;
-
-        SetStateCancelling();
-
-        // Cancel running search.
-        _cancellationTokenSource?.Cancel();
-        Dispose();
-
-        // Canceled. Waiting for cleanup.
-        if (_autoDetectionTask is { IsCompleted: false })
+        switch (_processDataProvider.HookState)
         {
-            await _autoDetectionTask;
-            _cancellationTokenSource?.Dispose();
-            _cancellationTokenSource = null;
+            case EHookState.Paused:
+                _keyActionControls.ResumeFromPauseIfPaused();
+                return;
+            case EHookState.Error or EHookState.Warning:
+                Stop();
+                Start(id, mode);
+                return;
+            case EHookState.Search or EHookState.Hooked:
+                if (mode is EStartMode.StartOnly) return;
+                Stop();
+                if (mode is not EStartMode.Restart) return;
+                Start(id, mode);
+                return;
+            case EHookState.None:
+                Start(id, mode);
+                return;
+            case EHookState.Switch:
+                return;
+            default:
+                Stop();
+                return;
         }
-
-        _autoDetectionTask = null;
-
-        // Stop if current.
-        if (processingGameId != gameId || shouldRestart) return true;
-
-        SetStateNone();
-        return false;
     }
 
-    private async Task StartAutoDetection(ExtensionConfig extensionConfig, bool isRestart)
+    private void Start(string id, EStartMode mode)
+    {
+        var extensionConfig = _extensionConfigService.Get(id);
+        _processDataProvider.Id = id;
+        _cancellationTokenSource = new CancellationTokenSource();
+        _autoDetectionSemaphore = new SemaphoreSlim(0);
+        _globalFocusHookService.SetWinEventHook();
+        
+        SetStateSearch();
+        _autoDetectionTask = StartAutoDetection(extensionConfig, mode);
+    }
+    
+    private void Stop()
+    {
+        SetStateCancel();
+        ReleaseResources();
+        SetStateNone();
+    }
+
+    private void Switch(string id, EStartMode mode)
+    {
+        SetStateSwitch();
+        ReleaseResources();
+        Start(id, mode);
+    }
+    
+    private async Task StartAutoDetection(ExtensionConfig extensionConfig, EStartMode mode)
     {
         try
         {
-            _cancellationTokenSource = new CancellationTokenSource();
-
-            SetStateSearch();
+            _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
+            if (!ValidateAndNotifyOnError(extensionConfig)) return;
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
-            
-            await _processInfoService.AutoDetectProcessAsync(extensionConfig, _cancellationTokenSource!);
-
-            _keyActionControls.InitializeFocusHook();
-            _focusHookService.SetWinEventHook();
+            await _processInfoService.StartAndDetectProcessAsync(extensionConfig, _cancellationTokenSource!);
 
             _processDataProvider.Data!.GameProcess!.Exited += ProcessOnExited;
             if (_processDataProvider.Data.GameProcess.HasExited)
             {
                 if (HandleProcessExited()) return;
-
                 SetStateNone();
                 return;
             }
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
+            _keyActionControls.InitializeFocusHook();
 
             if (_processDataProvider.Data!.GameWindowInfo!.IsMinimized())
             {
                 SetStateHooked();
             }
 
+            _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
             if (!await _minimizationEndObserver.AwaitMinimizationEndAsync(_cancellationTokenSource!.Token)) return;
-
             _minimizationHook.SetWinEventHook();
             _windowLocationHook.SetWinEventHook();
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
-
             var (isSuccess, message) = _computerVisionPresetService.SetPreset(_processDataProvider.Data);
             if (!isSuccess)
             {
@@ -191,24 +190,27 @@ public class CoreService : IDisposable
             }
 
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
-
             _screenCaptureService.SetScreenshotsFolder(extensionConfig);
             _keyActionControls.ApplyKeyBinds();
-            _focusHookService.SendFocusedEvent();
-            if (isRestart) _keyActionExecution.HideCursorOnReload();
+            _globalFocusHookService.SendFocusedEvent();
+            Debug.WriteLine("AuroraDialogEnhancer: Started");
+            if (mode is EStartMode.Restart) _keyActionExecution.HideCursorOnReload();
             _cancellationTokenSource?.Token.ThrowIfCancellationRequested();
 
             SetStateHooked();
         }
         catch
         {
-            DisposeAutoDetectionTask();
+            _autoDetectionSemaphore?.Release();
+            Dispose();
         }
+        
+        _autoDetectionSemaphore?.Release();
     }
     #endregion
 
     #region Validators
-    private bool IsProcessInfoSpecified(ExtensionConfig extensionConfig)
+    private bool ValidateAndNotifyOnError(ExtensionConfig extensionConfig)
     {
         if (string.IsNullOrEmpty(extensionConfig.GameProcessName))
         {
@@ -250,13 +252,25 @@ public class CoreService : IDisposable
 
     private bool HandleProcessExited()
     {
-        lock (_processingLock)
+        lock (_processExitLock)
         {
             if (_processDataProvider.IsGameProcessAlive())
             {
                 _processDataProvider.Data!.GameProcess!.Exited -= ProcessOnExited;
             }
-
+            
+            List<(string id, string processName)> idToProcessNamePair = _extensionConfigService.GetIdToProcessNameList(_processDataProvider.Id!);
+            if (idToProcessNamePair.Any())
+            {
+                var processes = Process.GetProcesses();
+                var nextExtensionToHookId = idToProcessNamePair.FirstOrDefault(pair => processes.Any(process => pair.processName!.Equals(process.ProcessName)));
+                if (nextExtensionToHookId != (null, null))
+                {
+                    Run(nextExtensionToHookId.id, EStartMode.StartOnly);
+                    return true;
+                }
+            }
+            
             _processDataProvider.SetStateAndNotify(EHookState.Canceled);
             var isExitWithTheGame = _processDataProvider.IsExtenstionConfigPresent() &&
                                     _processDataProvider.Data!.ExtensionConfig!.IsExitWithTheGame;
@@ -291,6 +305,11 @@ public class CoreService : IDisposable
     {
         _processDataProvider.SetStateAndNotify(EHookState.Search);
     }
+    
+    private void SetStateSwitch()
+    {
+        _processDataProvider.SetStateAndNotify(EHookState.Switch);
+    }
 
     private void SetStateNone()
     {
@@ -298,7 +317,7 @@ public class CoreService : IDisposable
         _processDataProvider.SetStateAndNotify(EHookState.None);
     }
 
-    private void SetStateCancelling()
+    private void SetStateCancel()
     {
         _processDataProvider.SetStateAndNotify(EHookState.Canceled);
     }
@@ -315,38 +334,36 @@ public class CoreService : IDisposable
     #endregion
 
     #region Cleanup
-    private void DisposeAutoDetectionTask()
+
+    private void ReleaseResources()
     {
         _minimizationHook.UnhookWinEvent();
         _minimizationEndObserver.UnhookWinEvent();
         _windowLocationHook.UnhookWinEvent();
-        _focusHookService.UnhookWinEvent();
-
+        
         _keyActionMediator.Dispose();
         _processDataProvider.Dispose();
         _screenCaptureService.Dispose();
 
         if (_processDataProvider.IsGameProcessAlive())
-        {
             _processDataProvider.Data!.GameProcess!.Exited -= ProcessOnExited;
-        }
 
-        _cancellationTokenSource?.Dispose();
-        _cancellationTokenSource = null;
-        _autoDetectionTask = null;
-        _isAutoDetectionRunning = false;
-    }
-
-    public void Dispose()
-    {
         _cancellationTokenSource?.Cancel();
 
-        if (_autoDetectionTask?.IsCompleted == false)
-        {
-            _autoDetectionTask?.Wait();
-        }
-
-        DisposeAutoDetectionTask();
+        if (_autoDetectionTask is { IsCompleted: false })
+            _autoDetectionSemaphore?.Wait();
+        
+        _autoDetectionSemaphore?.Dispose();
+        _cancellationTokenSource?.Dispose();
+        _cancellationTokenSource = null;
+        _autoDetectionSemaphore = null;
+        _autoDetectionTask = null;
+    }
+    
+    public void Dispose()
+    {
+        ReleaseResources();
+        _globalFocusHookService.UnhookWinEvent();
     }
     #endregion
 }

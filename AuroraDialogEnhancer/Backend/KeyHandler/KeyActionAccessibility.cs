@@ -2,37 +2,37 @@
 using System.Linq;
 using AuroraDialogEnhancer.Backend.ComputerVision;
 using AuroraDialogEnhancer.Backend.CursorPositioning;
-using AuroraDialogEnhancer.Backend.Hooks.Game;
+using AuroraDialogEnhancer.Backend.Hooks.Global;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Scripts;
-using AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+using AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 
 public class KeyActionAccessibility : IDisposable
 {
-    private readonly FocusHookService         _focusHookService;
     private readonly ComputerVisionService    _computerVisionService;
     private readonly CursorPositioningService _cursorPositioningService;
     private readonly CursorVisibilityProvider _cursorVisibilityProvider;
+    private readonly GlobalFocusService       _globalFocusService;
     private readonly KeyActionUtility         _keyActionUtility;
     private readonly ScriptAutoSkipUtilities  _scriptAutoSkipUtilities;
 
     private bool _isLocked;
     private readonly object _lock = new();
 
-    public KeyActionAccessibility(FocusHookService         focusHookService,
-                                  ComputerVisionService    computerVisionService,
+    public KeyActionAccessibility(ComputerVisionService    computerVisionService,
                                   CursorPositioningService cursorPositioningService,
                                   CursorVisibilityProvider cursorVisibilityProvider,
+                                  GlobalFocusService       globalFocusService,
                                   KeyActionUtility         keyActionUtility,
                                   ScriptAutoSkipUtilities  scriptAutoSkipUtilities)
     {
-        _focusHookService         = focusHookService;
         _computerVisionService    = computerVisionService;
         _cursorPositioningService = cursorPositioningService;
         _cursorVisibilityProvider = cursorVisibilityProvider;
+        _globalFocusService       = globalFocusService;
         _keyActionUtility         = keyActionUtility;
         _scriptAutoSkipUtilities  = scriptAutoSkipUtilities;
     }
@@ -79,7 +79,7 @@ public class KeyActionAccessibility : IDisposable
     /// </returns>
     private bool IsAccessible()
     {
-        return _focusHookService.IsFocused &&
+        return _globalFocusService.IsFocused &&
                _cursorVisibilityProvider.IsVisible() &&
                _cursorPositioningService.IsCursorInsideClient();
     }

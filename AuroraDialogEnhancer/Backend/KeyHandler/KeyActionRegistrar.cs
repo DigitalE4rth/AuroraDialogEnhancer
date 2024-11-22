@@ -5,7 +5,7 @@ using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.InteractionPoints;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Keys;
-using AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+using AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 

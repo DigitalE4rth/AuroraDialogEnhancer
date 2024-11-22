@@ -22,8 +22,8 @@ public abstract class ProcessHookBase
     private const uint WINEVENT_SKIPOWNTHREAD  = 0x0001;
     
     private IntPtr _handle;
-    protected virtual uint ProcessId => 0;
     private WinApi.WinEventDelegate _winEventDelegate;
+    protected virtual uint ProcessId { get; set;}
     public virtual uint EventMin => 0x0000;
     public virtual uint EventMax => 0x0000;
 

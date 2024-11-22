@@ -41,11 +41,12 @@ public class ExtensionsLoader
             extensionPaths.AddRange(dllFiles);
         }
 
-        var extensionsEnumerable = from   extension in extensionPaths
-                                   select Assembly.LoadFrom(extension) into extensionAssembly
-                                   select extensionAssembly.GetTypes().FirstOrDefault(eType => typeof(ExtensionDto).IsAssignableFrom(eType)) into extensionType
-                                   where  extensionType is not null
-                                   select (ExtensionDto) Activator.CreateInstance(extensionType);
+        var extensionsEnumerable = (from   extension in extensionPaths
+                                    select Assembly.LoadFrom(extension) into extensionAssembly
+                                    select extensionAssembly.GetTypes().FirstOrDefault(eType => typeof(ExtensionDto).IsAssignableFrom(eType)) into extensionType
+                                    where  extensionType is not null
+                                    select (ExtensionDto) Activator.CreateInstance(extensionType))
+                                    .ToList();
 
         _extensionsProvider.Initialize(extensionsEnumerable);
 
@@ -57,6 +58,7 @@ public class ExtensionsLoader
         }
 
         CreateConfigIfNotExists();
+        _extensionConfigService.Initialize();
 
         if (_extensionsProvider.ExtensionsDictionary.ContainsKey(Properties.Settings.Default.App_HookSettings_SelectedGameId)) return;
         Properties.Settings.Default.App_HookSettings_SelectedGameId = _extensionsProvider.ExtensionsDictionary.Keys.First();

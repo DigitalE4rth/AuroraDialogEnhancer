@@ -1,14 +1,15 @@
 ﻿using System;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
+using AuroraDialogEnhancer.Backend.Hooks.Global;
 using AuroraDialogEnhancer.Backend.Hooks.Keyboard;
 using AuroraDialogEnhancer.Backend.Hooks.Mouse;
-using AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+using AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 
 public class KeyActionControls : IDisposable
 {
-    private readonly FocusHookService            _focusHookService;
+    private readonly GlobalFocusService          _globalFocusService;
     private readonly KeyActionRegistrar          _keyActionRegistrar;
     private readonly KeyActionUtility            _keyActionUtility;
     private readonly KeyPauseActionProvider      _keyPauseActionProvider;
@@ -18,7 +19,9 @@ public class KeyActionControls : IDisposable
     private readonly ScriptAutoClick             _scriptAutoClick;
     private readonly ScriptAutoSkip              _scriptAutoSkip;
 
-    public KeyActionControls(FocusHookService            focusHookService,
+    private bool _previousFocusState;
+
+    public KeyActionControls(GlobalFocusService          globalFocusService,
                              KeyActionRegistrar          keyActionRegistrar,
                              KeyActionUtility            keyActionUtility,
                              KeyPauseActionProvider      keyPauseActionProvider,
@@ -28,7 +31,7 @@ public class KeyActionControls : IDisposable
                              ScriptAutoClick             scriptAutoClick,
                              ScriptAutoSkip              scriptAutoSkip)
     {
-        _focusHookService           = focusHookService;
+        _globalFocusService         = globalFocusService;
         _keyActionRegistrar         = keyActionRegistrar;
         _keyActionUtility           = keyActionUtility;
         _keyPauseActionProvider     = keyPauseActionProvider;
@@ -64,7 +67,7 @@ public class KeyActionControls : IDisposable
         _keyActionUtility.DialogOptions.Clear();
     }
 
-    public bool IsResumePause()
+    public bool ResumeFromPauseIfPaused()
     {
         if (_processDataProvider.HookState is not EHookState.Paused) return false;
 
@@ -74,13 +77,14 @@ public class KeyActionControls : IDisposable
 
     public void InitializeFocusHook()
     {
-        _focusHookService.OnFocusChanged -= ApplicationFocusChanged;
-        _focusHookService.Initialize();
-        _focusHookService.OnFocusChanged += ApplicationFocusChanged;
+        _globalFocusService.OnFocusChanged += ApplicationFocusChanged;
     }
 
     private void ApplicationFocusChanged(object sender, bool state)
     {
+        if (_previousFocusState == state) return;
+        _previousFocusState = state;
+        
         if (state)
         {
             StartPeripheryHook();
@@ -92,8 +96,8 @@ public class KeyActionControls : IDisposable
 
     public void Dispose()
     {
-        _focusHookService.OnFocusChanged -= ApplicationFocusChanged;
-        _focusHookService.Dispose();
+        _globalFocusService.OnFocusChanged -= ApplicationFocusChanged;
         StopPeripheryHook();
+        _previousFocusState = false;
     }
 }

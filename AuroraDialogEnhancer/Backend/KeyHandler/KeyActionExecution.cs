@@ -8,7 +8,7 @@ using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.CursorPositioning;
 using AuroraDialogEnhancer.Backend.Hooks.Game;
 using AuroraDialogEnhancer.Backend.KeyBinding.Models.Behaviour;
-using AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+using AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 using AuroraDialogEnhancer.Backend.PeripheralEmulators;
 using AuroraDialogEnhancer.Backend.ScreenCapture;
 using Microsoft.Extensions.DependencyInjection;
@@ -54,9 +54,7 @@ public class KeyActionExecution
 
     public void OnReload()
     {
-        Task.Run(() => AppServices.ServiceProvider.GetRequiredService<CoreService>()
-            .RestartAutoDetection(_processDataProvider.Data!.ExtensionConfig!.Id, true))
-            .ConfigureAwait(false);
+        AppServices.ServiceProvider.GetRequiredService<CoreService>().Run(_processDataProvider.Data!.ExtensionConfig!.Id, EStartMode.Restart);
     }
 
     public void OnScreenshot()

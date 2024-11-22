@@ -88,16 +88,15 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddTransient<MouseHookManagerRecordService>();
         serviceCollection.AddSingleton<MouseHookManagerService>();
 
-        serviceCollection.AddSingleton<FocusHookDefaultService>();
         serviceCollection.AddSingleton<ProcessInfoService>();
-        serviceCollection.AddSingleton<FocusHookService>();
         serviceCollection.AddSingleton<WindowLocationHook>();
         serviceCollection.AddSingleton<MinimizationEndHook>();
         serviceCollection.AddSingleton<MinimizationEndObserver>();
         serviceCollection.AddSingleton<MinimizationHook>();
         
-        serviceCollection.AddSingleton<FocusHookGiService>();
-        serviceCollection.AddSingleton<FocusHookGi>();
+        serviceCollection.AddSingleton<GlobalFocusService>();
+        serviceCollection.AddSingleton<GlobalKeyboardHook>();
+        
         serviceCollection.AddSingleton<MinimizationHookGi>();
         serviceCollection.AddSingleton<KeyboardFocusHook>();
         #endregion
@@ -115,7 +114,6 @@ internal class ServiceProviderConfigurator
 
         #region KeyHandler
         serviceCollection.AddSingleton<CursorPositioningService>();
-        serviceCollection.AddSingleton<KeyHandlerService>();
 
         serviceCollection.AddSingleton<KeyActionMediator>();
 
@@ -148,8 +146,6 @@ internal class ServiceProviderConfigurator
         serviceCollection.AddTransient<BlobToBitmapImageConverter>();
         #endregion
         #endregion
-
-
 
         #region FrontEnd
         #region Forms

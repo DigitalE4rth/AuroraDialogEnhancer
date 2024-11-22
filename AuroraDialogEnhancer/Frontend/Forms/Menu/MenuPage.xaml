@@ -1,20 +1,21 @@
-﻿<Page x:Class="AuroraDialogEnhancer.Frontend.Forms.Menu.MenuPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.Menu"
-      xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
-      xmlns:statics="clr-namespace:AuroraDialogEnhancer.AppConfig.Statics"
-      xmlns:sys="clr-namespace:System;assembly=mscorlib"
-      xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
-      xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
-      MinWidth="210"
-      d:DesignHeight="450"
-      d:DesignWidth="250"
-      Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Surface, Mode=OneTime}"
-      mc:Ignorable="d">
+﻿<Page
+    x:Class="AuroraDialogEnhancer.Frontend.Forms.Menu.MenuPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AuroraDialogEnhancer.Frontend.Forms.Menu"
+    xmlns:localization="clr-namespace:AuroraDialogEnhancer.Properties.Localization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:properties="clr-namespace:AuroraDialogEnhancer.Properties"
+    xmlns:statics="clr-namespace:AuroraDialogEnhancer.AppConfig.Statics"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:woControls="clr-namespace:WhyOrchid.Controls;assembly=WhyOrchid"
+    xmlns:woProperties="clr-namespace:WhyOrchid.Properties;assembly=WhyOrchid"
+    MinWidth="210"
+    d:DesignHeight="450"
+    d:DesignWidth="250"
+    Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Surface, Mode=OneTime}"
+    mc:Ignorable="d">
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Page.Resources>
@@ -35,9 +36,10 @@
                 </Grid.RowDefinitions>
 
                 <!--  ADE  -->
-                <Grid Grid.Row="0"
-                      Height="46"
-                      Margin="17.5,0">
+                <Grid
+                    Grid.Row="0"
+                    Height="46"
+                    Margin="17.5,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
@@ -45,19 +47,21 @@
                     </Grid.ColumnDefinitions>
 
                     <!--  A  -->
-                    <TextBlock Grid.Column="0"
-                               VerticalAlignment="Center"
-                               FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
-                               FontWeight="Bold"
-                               Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
-                               Text="A" />
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
+                        FontWeight="Bold"
+                        Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                        Text="A" />
 
-                    <TextBlock Grid.Column="0"
-                               VerticalAlignment="Center"
-                               FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
-                               FontWeight="Bold"
-                               Opacity="0.12"
-                               Text="A">
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
+                        FontWeight="Bold"
+                        Opacity="0.12"
+                        Text="A">
                         <TextBlock.Foreground>
                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                 <GradientStop Offset="0" Color="Transparent" />
@@ -67,24 +71,27 @@
                     </TextBlock>
 
                     <!--  DE  -->
-                    <TextBlock Grid.Column="1"
-                               Margin="0,0,10,0"
-                               VerticalAlignment="Center"
-                               FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
-                               FontWeight="Bold"
-                               Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
-                               Text="DE" />
+                    <TextBlock
+                        Grid.Column="1"
+                        Margin="0,0,10,0"
+                        VerticalAlignment="Center"
+                        FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=UI_FontStyle_Title, Mode=OneTime}"
+                        FontWeight="Bold"
+                        Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
+                        Text="DE" />
 
                     <!--  Icon  -->
                     <Grid Grid.Column="2" HorizontalAlignment="Right">
-                        <woControls:PathIcon Data="{StaticResource I.R.Aurora}"
-                                             Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
-                                             Opacity="1"
-                                             Style="{StaticResource IconLarge}" />
+                        <woControls:PathIcon
+                            Data="{StaticResource I.R.Aurora}"
+                            Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                            Opacity="1"
+                            Style="{StaticResource IconLarge}" />
 
-                        <woControls:PathIcon Data="{StaticResource I.R.Aurora}"
-                                             Opacity="0.2"
-                                             Style="{StaticResource IconLarge}">
+                        <woControls:PathIcon
+                            Data="{StaticResource I.R.Aurora}"
+                            Opacity="0.2"
+                            Style="{StaticResource IconLarge}">
                             <woControls:PathIcon.Foreground>
                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                     <GradientStop Color="Transparent" />
@@ -95,23 +102,26 @@
                     </Grid>
                 </Grid>
 
-                <Border Grid.Row="1"
-                        Height="1"
-                        Margin="5,0,5,0"
-                        VerticalAlignment="Bottom"
-                        Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
+                <Border
+                    Grid.Row="1"
+                    Height="1"
+                    Margin="5,0,5,0"
+                    VerticalAlignment="Bottom"
+                    Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
 
-                <StackPanel x:Name="PanelMenuItems"
-                            Grid.Row="2"
-                            Margin="5">
+                <StackPanel
+                    x:Name="PanelMenuItems"
+                    Grid.Row="2"
+                    Margin="5">
 
                     <!--  Hook control  -->
-                    <woControls:MenuStateButton MinHeight="40"
-                                                Margin="0,0,0,3"
-                                                d:IsChecked="True"
-                                                Checked="MenuItem_OnChecked"
-                                                GroupName="Menu"
-                                                Tag="{x:Static local:EPageType.HookSettings}">
+                    <woControls:MenuStateButton
+                        MinHeight="40"
+                        Margin="0,0,0,3"
+                        d:IsChecked="True"
+                        Checked="MenuItem_OnChecked"
+                        GroupName="Menu"
+                        Tag="{x:Static local:EPageType.HookSettings}">
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -132,24 +142,27 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0"
-                                           VerticalAlignment="Center"
-                                           Text="{x:Static localization:Resources.Menu_HookControl}" />
+                                <TextBlock
+                                    Grid.Column="0"
+                                    VerticalAlignment="Center"
+                                    Text="{x:Static localization:Resources.Menu_HookControl}" />
 
-                                <local:MenuHookStateIcon x:Name="MenuHookStateIcon"
-                                                         Grid.Column="1"
-                                                         Margin="12.5,0,0,0" />
+                                <local:MenuHookStateIcon
+                                    x:Name="MenuHookStateIcon"
+                                    Grid.Column="1"
+                                    Margin="12.5,0,0,0" />
                             </Grid>
                         </woControls:MenuStateButton.Content>
                     </woControls:MenuStateButton>
 
                     <!--  Key binding  -->
-                    <woControls:MenuStateButton MinHeight="40"
-                                                Margin="0,0,0,3"
-                                                Checked="MenuItem_OnChecked"
-                                                Content="{x:Static localization:Resources.Menu_KeyBindings}"
-                                                GroupName="Menu"
-                                                Tag="{x:Static local:EPageType.KeyBinding}">
+                    <woControls:MenuStateButton
+                        MinHeight="40"
+                        Margin="0,0,0,3"
+                        Checked="MenuItem_OnChecked"
+                        Content="{x:Static localization:Resources.Menu_KeyBindings}"
+                        GroupName="Menu"
+                        Tag="{x:Static local:EPageType.KeyBinding}">
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -165,12 +178,13 @@
                     </woControls:MenuStateButton>
 
                     <!--  Appearance  -->
-                    <woControls:MenuStateButton MinHeight="40"
-                                                Margin="0,0,0,3"
-                                                Checked="MenuItem_OnChecked"
-                                                Content="{x:Static localization:Resources.Menu_Appearance}"
-                                                GroupName="Menu"
-                                                Tag="{x:Static local:EPageType.Appearance}">
+                    <woControls:MenuStateButton
+                        MinHeight="40"
+                        Margin="0,0,0,3"
+                        Checked="MenuItem_OnChecked"
+                        Content="{x:Static localization:Resources.Menu_Appearance}"
+                        GroupName="Menu"
+                        Tag="{x:Static local:EPageType.Appearance}">
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -186,12 +200,13 @@
                     </woControls:MenuStateButton>
 
                     <!--  Settings  -->
-                    <woControls:MenuStateButton MinHeight="40"
-                                                Margin="0,0,0,3"
-                                                Checked="MenuItem_OnChecked"
-                                                Content="{x:Static localization:Resources.Menu_Settings}"
-                                                GroupName="Menu"
-                                                Tag="{x:Static local:EPageType.Settings}">
+                    <woControls:MenuStateButton
+                        MinHeight="40"
+                        Margin="0,0,0,3"
+                        Checked="MenuItem_OnChecked"
+                        Content="{x:Static localization:Resources.Menu_Settings}"
+                        GroupName="Menu"
+                        Tag="{x:Static local:EPageType.Settings}">
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -207,11 +222,12 @@
                     </woControls:MenuStateButton>
 
                     <!--  About  -->
-                    <woControls:MenuStateButton MinHeight="40"
-                                                Margin="0,0,0,3"
-                                                Checked="MenuItem_OnChecked"
-                                                GroupName="Menu"
-                                                Tag="{x:Static local:EPageType.About}">
+                    <woControls:MenuStateButton
+                        MinHeight="40"
+                        Margin="0,0,0,3"
+                        Checked="MenuItem_OnChecked"
+                        GroupName="Menu"
+                        Tag="{x:Static local:EPageType.About}">
 
                         <woControls:MenuStateButton.Icon>
                             <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -232,27 +248,31 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0"
-                                           VerticalAlignment="Center"
-                                           Text="{x:Static localization:Resources.Menu_About}" />
+                                <TextBlock
+                                    Grid.Column="0"
+                                    VerticalAlignment="Center"
+                                    Text="{x:Static localization:Resources.Menu_About}" />
 
-                                <Grid x:Name="UpdateNotifyIcon"
-                                      Grid.Column="1"
-                                      Margin="12.5,0,0,0"
-                                      d:Visibility="Visible"
-                                      Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Update_IsUpdateAvailable, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Grid
+                                    x:Name="UpdateNotifyIcon"
+                                    Grid.Column="1"
+                                    Margin="12.5,0,0,0"
+                                    d:Visibility="Visible"
+                                    Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=Update_IsUpdateAvailable, Converter={StaticResource BooleanToVisibilityConverter}}">
 
                                     <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                        <woControls:PathIcon Data="{StaticResource I.R.NotificationsActive}"
-                                                             Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
-                                                             Opacity="1"
-                                                             Style="{StaticResource IconLarge}" />
+                                        <woControls:PathIcon
+                                            Data="{StaticResource I.R.NotificationsActive}"
+                                            Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Primary, Mode=OneTime}"
+                                            Opacity="1"
+                                            Style="{StaticResource IconLarge}" />
                                     </Grid>
 
                                     <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
-                                        <woControls:PathIcon Data="{StaticResource I.R.NotificationsActive}"
-                                                             Opacity="0.2"
-                                                             Style="{StaticResource IconLarge}">
+                                        <woControls:PathIcon
+                                            Data="{StaticResource I.R.NotificationsActive}"
+                                            Opacity="0.2"
+                                            Style="{StaticResource IconLarge}">
                                             <woControls:PathIcon.Foreground>
                                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                                     <GradientStop Color="Transparent" />
@@ -267,23 +287,26 @@
                     </woControls:MenuStateButton>
 
                     <!--  Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=App_IsExpertMode, Converter={StaticResource BooleanToVisibilityConverter}}"  -->
-                    <StackPanel x:Name="ContainerWip"
-                                d:Visibility="Visible"
-                                Visibility="Collapsed">
+                    <StackPanel
+                        x:Name="ContainerWip"
+                        d:Visibility="Visible"
+                        Visibility="Collapsed">
 
-                        <Border Height="1"
-                                Margin="5,2,5,5"
-                                VerticalAlignment="Bottom"
-                                Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
+                        <Border
+                            Height="1"
+                            Margin="5,2,5,5"
+                            VerticalAlignment="Bottom"
+                            Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_Outline, Mode=OneTime}" />
 
                         <!--  Presets  -->
-                        <woControls:MenuStateButton x:Name="MenuButtonPresets"
-                                                    MinHeight="40"
-                                                    Margin="0,0,0,3"
-                                                    Checked="MenuItem_OnChecked"
-                                                    Content="{x:Static localization:Resources.Menu_Presets}"
-                                                    GroupName="Menu"
-                                                    Tag="{x:Static local:EPageType.PresetsEditor}">
+                        <woControls:MenuStateButton
+                            x:Name="MenuButtonPresets"
+                            MinHeight="40"
+                            Margin="0,0,0,3"
+                            Checked="MenuItem_OnChecked"
+                            Content="{x:Static localization:Resources.Menu_Presets}"
+                            GroupName="Menu"
+                            Tag="{x:Static local:EPageType.PresetsEditor}">
 
                             <woControls:MenuStateButton.Icon>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -299,13 +322,14 @@
                         </woControls:MenuStateButton>
 
                         <!--  Debug  -->
-                        <woControls:MenuStateButton x:Name="MenuButtonDebug"
-                                                    MinHeight="40"
-                                                    Margin="0,0,0,3"
-                                                    Checked="MenuItem_OnChecked"
-                                                    Content="{x:Static localization:Resources.Menu_DebugMode}"
-                                                    GroupName="Menu"
-                                                    Tag="{x:Static local:EPageType.Debug}">
+                        <woControls:MenuStateButton
+                            x:Name="MenuButtonDebug"
+                            MinHeight="40"
+                            Margin="0,0,0,3"
+                            Checked="MenuItem_OnChecked"
+                            Content="{x:Static localization:Resources.Menu_DebugMode}"
+                            GroupName="Menu"
+                            Tag="{x:Static local:EPageType.Debug}">
 
                             <woControls:MenuStateButton.Icon>
                                 <Grid Width="{Binding Source={x:Static woProperties:Settings.Default}, Path=FontStyle_Large, Mode=OneTime}">
@@ -322,27 +346,30 @@
                     </StackPanel>
                 </StackPanel>
 
-                <Grid Grid.Row="3"
-                      Margin="15,0,14,10"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Bottom">
+                <Grid
+                    Grid.Row="3"
+                    Margin="15,0,14,10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"
-                               Margin="0,0,0,3"
-                               HorizontalAlignment="Center"
-                               Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
-                               Opacity="0.38">
+                    <TextBlock
+                        Grid.Row="0"
+                        Margin="0,0,0,3"
+                        HorizontalAlignment="Center"
+                        Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
+                        Opacity="0.38">
                         <Run Text="{x:Static localization:Resources.Menu_Version}" />
-                        <Run Text="{Binding Source={x:Static statics:Global.AssemblyInfo}, Path=Version, Mode=OneTime}" />
+                        <Run Text="{Binding Source={x:Static statics:AppConstants.AssemblyInfo}, Path=Version, Mode=OneTime}" />
                     </TextBlock>
 
-                    <TextBlock Grid.Row="1"
-                               HorizontalAlignment="Center"
-                               Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
-                               Opacity="0.38">
+                    <TextBlock
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Foreground="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OnSurface, Mode=OneTime}"
+                        Opacity="0.38">
                         <Run Text="©️" />
                         <Run Text="{Binding Source={x:Static sys:DateTime.Today}, Path=Year, Mode=OneTime}" />
                         <Run Text="Aurora Works, OPC" />
@@ -350,9 +377,10 @@
                 </Grid>
             </Grid>
 
-            <Border Grid.Column="1"
-                    Width="1"
-                    Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OutlineVariant, Mode=OneTime}" />
+            <Border
+                Grid.Column="1"
+                Width="1"
+                Background="{Binding Source={x:Static woProperties:Settings.Default}, Path=Color_OutlineVariant, Mode=OneTime}" />
         </Grid>
     </ScrollViewer>
 </Page>

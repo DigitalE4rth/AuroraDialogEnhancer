@@ -6,6 +6,7 @@ public enum EHookState
     Canceled,
     Search,
     Hooked,
+    Switch,
     Paused,
     Warning,
     Error

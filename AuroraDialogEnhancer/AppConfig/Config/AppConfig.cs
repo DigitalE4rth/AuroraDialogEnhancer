@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using AuroraDialogEnhancer.AppConfig.Localization;
@@ -10,6 +9,7 @@ using AuroraDialogEnhancer.AppConfig.Theme;
 using AuroraDialogEnhancer.AppConfig.Updater;
 using AuroraDialogEnhancer.Backend.Core;
 using AuroraDialogEnhancer.Backend.Extensions;
+using AuroraDialogEnhancer.Backend.Hooks.Global;
 using AuroraDialogEnhancer.Frontend.Generics;
 using AuroraDialogEnhancer.Frontend.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,26 +21,29 @@ public class AppConfig : IDisposable
     private readonly AutoUpdaterService    _autoUpdaterService;
     private readonly CoreService           _coreService;
     private readonly CultureService        _cultureService;
-    private readonly NotifyIconService     _notifyIconService;
     private readonly ExtensionsLoader      _extensionsLoader;
+    private readonly GlobalFocusService    _globalFocusService;
+    private readonly NotifyIconService     _notifyIconService;
     private readonly SingleInstanceService _singleInstanceService;
     private readonly UiService             _uiService;
 
     public AppConfig(AutoUpdaterService    autoUpdaterService,
                      CoreService           coreService,
                      CultureService        cultureService,
-                     NotifyIconService     notifyIconService,
                      ExtensionsLoader      extensionsLoader,
-                     UiService             uiService,
-                     SingleInstanceService singleInstanceService)
+                     GlobalFocusService    globalFocusService,
+                     NotifyIconService     notifyIconService,
+                     SingleInstanceService singleInstanceService,
+                     UiService             uiService)
     {
         _autoUpdaterService    = autoUpdaterService;
         _coreService           = coreService;
         _cultureService        = cultureService;
-        _notifyIconService     = notifyIconService;
         _extensionsLoader      = extensionsLoader;
-        _uiService             = uiService;
+        _globalFocusService    = globalFocusService;
+        _notifyIconService     = notifyIconService;
         _singleInstanceService = singleInstanceService;
+        _uiService             = uiService;
     }
 
     public bool Initialize(StartupEventArgs startupEventArgs)
@@ -95,7 +98,7 @@ public class AppConfig : IDisposable
 
         if (!string.IsNullOrEmpty(startupProfileId))
         {
-            Task.Run(() => _coreService.RestartAutoDetection(startupProfileId)).ConfigureAwait(false);
+            _coreService.Run(startupProfileId);
             ShowMainWindow(true);
             return;
         }
@@ -139,13 +142,13 @@ public class AppConfig : IDisposable
     private void StartAutoDetectionByLaunchArgument(string? profileId)
     {
         if (string.IsNullOrEmpty(profileId)) return;
-        Task.Run(() => _coreService.RestartAutoDetection(profileId!)).ConfigureAwait(false);
+        _coreService.Run(profileId!);
     }
 
     public void Restart()
     {
         _singleInstanceService.Dispose();
-        Process.Start(Statics.Global.Locations.AssemblyExe);
+        Process.Start(Statics.AppConstants.Locations.AssemblyExe);
         Application.Current.Dispatcher.Invoke(Application.Current.Shutdown, DispatcherPriority.Send);
     }
 

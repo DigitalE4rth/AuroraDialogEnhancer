@@ -1,5 +1,5 @@
 ﻿using System;
-using AuroraDialogEnhancer.Backend.KeyHandler.Scripts;
+using AuroraDialogEnhancer.Backend.KeyHandlerScripts;
 
 namespace AuroraDialogEnhancer.Backend.KeyHandler;
 

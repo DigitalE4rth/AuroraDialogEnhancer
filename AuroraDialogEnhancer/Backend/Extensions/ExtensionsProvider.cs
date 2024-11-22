@@ -7,7 +7,7 @@ public class ExtensionsProvider
 {
     public Dictionary<string, ExtensionDto> ExtensionsDictionary { get; } = new();
 
-    public void Initialize(IEnumerable<ExtensionDto> extensions)
+    public void Initialize(List<ExtensionDto> extensions)
     {
         foreach (var extension in extensions)
         {

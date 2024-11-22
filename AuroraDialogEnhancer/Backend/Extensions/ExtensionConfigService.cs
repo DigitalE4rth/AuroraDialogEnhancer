@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
+using System.Linq;
 using AuroraDialogEnhancer.AppConfig.DependencyInjection;
 using AuroraDialogEnhancer.AppConfig.Statics;
 using AuroraDialogEnhancer.Backend.Core;
@@ -17,6 +18,10 @@ public class ExtensionConfigService
     private readonly ExtensionsProvider        _extensionsProvider;
     private readonly ProcessDataProvider       _processDataProvider;
     private readonly ScreenCaptureService      _screenCaptureService;
+    
+    private readonly Dictionary<string, ExtensionConfig> _idToConfigDict      = new();
+    private          Dictionary<string, string>          _processNameToIdDict = new();
+    private          Dictionary<string, string>          _idToProcessNameDict = new();
 
     public ExtensionConfigService(ExtensionConfigRepository extensionConfigRepository,
                                   ProcessDataProvider       processDataProvider,
@@ -30,9 +35,40 @@ public class ExtensionConfigService
     }
 
     #region Create/Update
+    public void Initialize()
+    {
+        foreach (var pair in _extensionsProvider.ExtensionsDictionary)
+        {
+            if (string.IsNullOrEmpty(pair.Key)) continue;
+            var filePath = Path.Combine(AppConstants.Locations.ExtensionsFolder, pair.Value.Name, AppConstants.Locations.ExtensionConfigFileName);
+            var extension = _extensionConfigRepository.Get(filePath);
+            _idToConfigDict.Add(pair.Key, extension);
+            
+            _idToProcessNameDict.Add(pair.Key, extension.GameProcessName);
+            if (_processNameToIdDict.ContainsKey(extension.GameProcessName)) continue;
+            _processNameToIdDict.Add(extension.GameProcessName, pair.Key);
+        }
+    }
+
+    private void UpdateDictionariesInfo()
+    {
+        var newIdToProcessNameDict = new Dictionary<string, string>();
+        var newProcessNameToIdDict = new Dictionary<string, string>();
+        
+        foreach (var pair in _idToConfigDict)
+        {
+            newIdToProcessNameDict.Add(pair.Key, pair.Value.GameProcessName);
+            if (newProcessNameToIdDict.ContainsKey(pair.Value.GameProcessName)) continue;
+            newProcessNameToIdDict.Add(pair.Value.GameProcessName, pair.Key);
+        }
+        
+        _processNameToIdDict = newIdToProcessNameDict;
+        _idToProcessNameDict = newProcessNameToIdDict;
+    }
+    
     public void Create(ExtensionDto extension)
     {
-        Directory.CreateDirectory(Path.Combine(Global.Locations.ExtensionsFolder, extension.Name));
+        Directory.CreateDirectory(Path.Combine(AppConstants.Locations.ExtensionsFolder, extension.Name));
         Save(new ExtensionConfigMapper().Map(extension));
     }
 
@@ -45,10 +81,7 @@ public class ExtensionConfigService
     #region Read
     public ExtensionConfig Get(string id)
     {
-        var extension = _extensionsProvider.ExtensionsDictionary[id];
-        var filePath = Path.Combine(Global.Locations.ExtensionsFolder, extension.Name, Global.Locations.ExtensionConfigFileName);
-
-        return _extensionConfigRepository.Get(filePath);
+        return _idToConfigDict[id];
     }
 
     public ExtensionConfigViewModel GerViewModel(string id)
@@ -56,36 +89,51 @@ public class ExtensionConfigService
         return new ExtensionConfigViewModel(Get(id));
     }
 
+    public List<(string, string)> GetIdToProcessNameList(string exceptId = "")
+    {
+        return _idToProcessNameDict
+            .Where(pair => !pair.Key.Equals(exceptId))
+            .Select(pair => (pair.Key, pair.Value))
+            .ToList();
+    }
+
+    public string? GetIdByProcessName(string processName)
+    {
+        return _processNameToIdDict.TryGetValue(processName, out var id) ? id : null;
+    }
+    
     public string GetScreenshotsLocation(string id)
     {
         var extensionConfig = Get(id);
         return string.IsNullOrEmpty(extensionConfig.ScreenshotsLocation) 
-            ? Path.Combine(Global.Locations.ExtensionsFolder, extensionConfig.Name, Global.Locations.ScreenshotsFolderName)
+            ? Path.Combine(AppConstants.Locations.ExtensionsFolder, extensionConfig.Name, AppConstants.Locations.ScreenshotsFolderName)
             : extensionConfig.ScreenshotsLocation;
     }
 
     public bool Exists(string fileName)
     {
-        return File.Exists(Path.Combine(Global.Locations.ExtensionsFolder, fileName, Global.Locations.ExtensionConfigFileName));
+        return File.Exists(Path.Combine(AppConstants.Locations.ExtensionsFolder, fileName, AppConstants.Locations.ExtensionConfigFileName));
     }
     #endregion
 
     #region Update
     public void SaveAndRestartHookIfNecessary(ExtensionConfig config)
     {
-        _extensionConfigRepository.Save(config, Path.Combine(Global.Locations.ExtensionsFolder, config.Name, Global.Locations.ExtensionConfigFileName));
+        _extensionConfigRepository.Save(config, Path.Combine(AppConstants.Locations.ExtensionsFolder, config.Name, AppConstants.Locations.ExtensionConfigFileName));
 
         if (_processDataProvider.Id is not null &&
             _processDataProvider.Id.Equals(config.Id, StringComparison.Ordinal) &&
             _processDataProvider.HookState is not EHookState.None)
         {
-            Task.Run(() => AppServices.ServiceProvider.GetRequiredService<CoreService>().RestartAutoDetection(config.Id, true)).ConfigureAwait(false);
+            AppServices.ServiceProvider.GetRequiredService<CoreService>().Run(config.Id, EStartMode.Restart);
         }
     }
 
     public void Save(ExtensionConfig config)
     {
-        _extensionConfigRepository.Save(config, Path.Combine(Global.Locations.ExtensionsFolder, config.Name, Global.Locations.ExtensionConfigFileName));
+        _extensionConfigRepository.Save(config, Path.Combine(AppConstants.Locations.ExtensionsFolder, config.Name, AppConstants.Locations.ExtensionConfigFileName));
+        _idToConfigDict[config.Id] = config;
+        UpdateDictionariesInfo();
     }
 
     public void SetScreenshotsFolderForActiveGameIfNecessary(ExtensionConfig config)
@@ -99,7 +147,7 @@ public class ExtensionConfigService
     public ExtensionConfig? UpdateLocations(string id)
     {
         var extension = _extensionsProvider.ExtensionsDictionary[id];
-        var filePath = Path.Combine(Global.Locations.ExtensionsFolder, extension.Name, Global.Locations.ExtensionConfigFileName);
+        var filePath = Path.Combine(AppConstants.Locations.ExtensionsFolder, extension.Name, AppConstants.Locations.ExtensionConfigFileName);
         var config = _extensionConfigRepository.Get(filePath);
         var locationProvider = extension.GetLocationProvider();
 
