@@ -1,4 +1,18 @@
 <div align="center">
+  <h1>Discontinued</h1>
+</div>
+
+  HoYoverse developers have added native support for dialog control with keyboard and mouse wheel. And with that, this program no longer has any meaning - it served its purpose, but that's the end of it.
+  
+  Thank you, everyone. For using ADE, for your support, feedback, comments, help in development, in other words, for everything.
+  
+  It's been a long road for me as a developer, and I've learned a lot along the way. But it's time to say goodbye friends, at least to this project. 
+
+<div align="right">
+  <b>See you space cowboy...</b>
+</div>
+
+<div align="center">
   <h1><img src="https://raw.githubusercontent.com/DigitalE4rth/AuroraDialogEnhancer/readme-resources/ade_logo.png" width="35px" height="35px" style="max-width: 100%;" /> Aurora Dialog Enhancer</h1>
 </div>
 
